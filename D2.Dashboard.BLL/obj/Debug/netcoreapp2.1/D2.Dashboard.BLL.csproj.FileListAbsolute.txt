@@ -1,0 +1,6 @@
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\bin\Debug\netcoreapp2.1\D2.Dashboard.BLL.deps.json
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\bin\Debug\netcoreapp2.1\D2.Dashboard.BLL.dll
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\obj\Debug\netcoreapp2.1\D2.Dashboard.BLL.csprojAssemblyReference.cache
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\obj\Debug\netcoreapp2.1\D2.Dashboard.BLL.csproj.CoreCompileInputs.cache
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\obj\Debug\netcoreapp2.1\D2.Dashboard.BLL.AssemblyInfoInputs.cache
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\obj\Debug\netcoreapp2.1\D2.Dashboard.BLL.AssemblyInfo.cs

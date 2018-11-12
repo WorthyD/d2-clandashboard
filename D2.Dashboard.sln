@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D2.Dashboard", "D2.Dashboard\D2.Dashboard.csproj", "{D213B7FF-3E95-4120-BBBC-2AB45C3C4EE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D2.Dashboard", "D2.Dashboard\D2.Dashboard.csproj", "{D213B7FF-3E95-4120-BBBC-2AB45C3C4EE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D2.Dashboard.BLL", "D2.Dashboard.BLL\D2.Dashboard.BLL.csproj", "{231CE22F-7B2D-481A-AD0D-F93FFFFE762F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D213B7FF-3E95-4120-BBBC-2AB45C3C4EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D213B7FF-3E95-4120-BBBC-2AB45C3C4EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D213B7FF-3E95-4120-BBBC-2AB45C3C4EE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{231CE22F-7B2D-481A-AD0D-F93FFFFE762F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{231CE22F-7B2D-481A-AD0D-F93FFFFE762F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{231CE22F-7B2D-481A-AD0D-F93FFFFE762F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{231CE22F-7B2D-481A-AD0D-F93FFFFE762F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
