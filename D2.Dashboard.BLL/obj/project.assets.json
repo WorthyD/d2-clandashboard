@@ -719,23 +719,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Daniel\\.nuget\\packages\\": {},
+    "C:\\Users\\daniel.worthy\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Dev\\d2-clandashboard\\D2.Dashboard.BLL\\D2.Dashboard.BLL.csproj",
+      "projectUniqueName": "C:\\dev\\projects\\903-d2dashboard\\D2.Dashboard.BLL\\D2.Dashboard.BLL.csproj",
       "projectName": "D2.Dashboard.BLL",
-      "projectPath": "G:\\Dev\\d2-clandashboard\\D2.Dashboard.BLL\\D2.Dashboard.BLL.csproj",
-      "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-      "outputPath": "G:\\Dev\\d2-clandashboard\\D2.Dashboard.BLL\\obj\\",
+      "projectPath": "C:\\dev\\projects\\903-d2dashboard\\D2.Dashboard.BLL\\D2.Dashboard.BLL.csproj",
+      "packagesPath": "C:\\Users\\daniel.worthy\\.nuget\\packages\\",
+      "outputPath": "C:\\dev\\projects\\903-d2dashboard\\D2.Dashboard.BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\daniel.worthy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
