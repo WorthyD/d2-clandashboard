@@ -7,7 +7,7 @@
 namespace BungieAPI.DTOs
 {
 #pragma warning disable // Disable all warnings
-    /*
+
 
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.11.0.0 (Newtonsoft.Json v9.0.0.0)")]
@@ -19961,7 +19961,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-       // _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20123,7 +20123,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20143,7 +20143,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20217,7 +20217,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20255,7 +20255,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20275,7 +20275,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20295,7 +20295,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20315,7 +20315,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20335,7 +20335,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20355,7 +20355,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20375,7 +20375,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20417,7 +20417,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20459,7 +20459,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20479,7 +20479,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20499,7 +20499,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20519,7 +20519,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20539,7 +20539,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20559,7 +20559,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20579,7 +20579,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20599,7 +20599,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20619,7 +20619,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20639,7 +20639,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20659,7 +20659,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20679,7 +20679,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20699,7 +20699,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20719,7 +20719,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20753,7 +20753,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20773,7 +20773,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20915,7 +20915,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -20935,7 +20935,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -21087,7 +21087,7 @@ namespace BungieAPI.DTOs
 
         _254 = 254,
 
-        _1 = -1,
+        __1 = -1,
 
     }
 
@@ -30246,5 +30246,4 @@ namespace BungieAPI.DTOs
         }
     }
 
-    */
 }

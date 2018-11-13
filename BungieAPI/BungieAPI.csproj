@@ -5,14 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="BungieAPIClients.cs.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="BungieAPIClients.cs.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
