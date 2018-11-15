@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyMilestoneQuest" /> class.
         /// </summary>
-        /// <param name="questItemHash">Quests are defined as Items in content. As such, this is the hash identifier of the DestinyInventoryItemDefinition that represents this quest. It will have pointers to all of the steps in the quest, and display information for the quest (title, description, icon etc) Individual steps will be referred to in the Quest item&#39;s DestinyInventoryItemDefinition.setData property, and themselves are Items with their own renderable data..</param>
-        /// <param name="status">The current status of the quest for the character making the request..</param>
-        /// <param name="activity">*IF* the Milestone has an active Activity that can give you greater details about what you need to do, it will be returned here. Remember to associate this with the DestinyMilestoneDefinition&#39;s activities to get details about the activity, including what specific quest it is related to if you have multiple quests to choose from..</param>
-        /// <param name="challenges">The activities referred to by this quest can have many associated challenges. They are all contained here, with activityHashes so that you can associate them with the specific activity variants in which they can be found. In retrospect, I probably should have put these under the specific Activity Variants, but it&#39;s too late to change it now. Theoretically, a quest without Activities can still have Challenges, which is why this is on a higher level than activity/variants, but it probably should have been in both places. That may come as a later revision..</param>
-        public DestinyMilestonesDestinyMilestoneQuest(int? questItemHash = default(int?), Object status = default(Object), Object activity = default(Object), List<DestinyChallengesDestinyChallengeStatus> challenges = default(List<DestinyChallengesDestinyChallengeStatus>))
+        /// <param name="QuestItemHash">Quests are defined as Items in content. As such, this is the hash identifier of the DestinyInventoryItemDefinition that represents this quest. It will have pointers to all of the steps in the quest, and display information for the quest (title, description, icon etc) Individual steps will be referred to in the Quest item&#39;s DestinyInventoryItemDefinition.setData property, and themselves are Items with their own renderable data..</param>
+        /// <param name="Status">The current status of the quest for the character making the request..</param>
+        /// <param name="Activity">*IF* the Milestone has an active Activity that can give you greater details about what you need to do, it will be returned here. Remember to associate this with the DestinyMilestoneDefinition&#39;s activities to get details about the activity, including what specific quest it is related to if you have multiple quests to choose from..</param>
+        /// <param name="Challenges">The activities referred to by this quest can have many associated challenges. They are all contained here, with activityHashes so that you can associate them with the specific activity variants in which they can be found. In retrospect, I probably should have put these under the specific Activity Variants, but it&#39;s too late to change it now. Theoretically, a quest without Activities can still have Challenges, which is why this is on a higher level than activity/variants, but it probably should have been in both places. That may come as a later revision..</param>
+        public DestinyMilestonesDestinyMilestoneQuest(uint? QuestItemHash = default(uint?), DestinyQuestsDestinyQuestStatus Status = default(DestinyQuestsDestinyQuestStatus), DestinyMilestonesDestinyMilestoneActivity Activity = default(DestinyMilestonesDestinyMilestoneActivity), List<DestinyChallengesDestinyChallengeStatus> Challenges = default(List<DestinyChallengesDestinyChallengeStatus>))
         {
-            this.QuestItemHash = questItemHash;
-            this.Status = status;
-            this.Activity = activity;
-            this.Challenges = challenges;
+            this.QuestItemHash = QuestItemHash;
+            this.Status = Status;
+            this.Activity = Activity;
+            this.Challenges = Challenges;
         }
         
         /// <summary>
@@ -50,21 +50,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Quests are defined as Items in content. As such, this is the hash identifier of the DestinyInventoryItemDefinition that represents this quest. It will have pointers to all of the steps in the quest, and display information for the quest (title, description, icon etc) Individual steps will be referred to in the Quest item&#39;s DestinyInventoryItemDefinition.setData property, and themselves are Items with their own renderable data.</value>
         [DataMember(Name="questItemHash", EmitDefaultValue=false)]
-        public int? QuestItemHash { get; set; }
+        public uint? QuestItemHash { get; set; }
 
         /// <summary>
         /// The current status of the quest for the character making the request.
         /// </summary>
         /// <value>The current status of the quest for the character making the request.</value>
         [DataMember(Name="status", EmitDefaultValue=false)]
-        public Object Status { get; set; }
+        public DestinyQuestsDestinyQuestStatus Status { get; set; }
 
         /// <summary>
         /// *IF* the Milestone has an active Activity that can give you greater details about what you need to do, it will be returned here. Remember to associate this with the DestinyMilestoneDefinition&#39;s activities to get details about the activity, including what specific quest it is related to if you have multiple quests to choose from.
         /// </summary>
         /// <value>*IF* the Milestone has an active Activity that can give you greater details about what you need to do, it will be returned here. Remember to associate this with the DestinyMilestoneDefinition&#39;s activities to get details about the activity, including what specific quest it is related to if you have multiple quests to choose from.</value>
         [DataMember(Name="activity", EmitDefaultValue=false)]
-        public Object Activity { get; set; }
+        public DestinyMilestonesDestinyMilestoneActivity Activity { get; set; }
 
         /// <summary>
         /// The activities referred to by this quest can have many associated challenges. They are all contained here, with activityHashes so that you can associate them with the specific activity variants in which they can be found. In retrospect, I probably should have put these under the specific Activity Variants, but it&#39;s too late to change it now. Theoretically, a quest without Activities can still have Challenges, which is why this is on a higher level than activity/variants, but it probably should have been in both places. That may come as a later revision.
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

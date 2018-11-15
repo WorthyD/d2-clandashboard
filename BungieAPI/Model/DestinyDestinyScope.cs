@@ -28,23 +28,21 @@ namespace BungieAPI.Model
     /// There&#39;s a lot of places where we need to know scope on more than just a profile or character level. For everything else, there&#39;s this more generic sense of scope.
     /// </summary>
     /// <value>There&#39;s a lot of places where we need to know scope on more than just a profile or character level. For everything else, there&#39;s this more generic sense of scope.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyScope
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// There&#39;s a lot of places where we need to know scope on more than just a profile or character level. For everything else, there&#39;s this more generic sense of scope.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Profile,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2
+		/// <summary>
+		/// There&#39;s a lot of places where we need to know scope on more than just a profile or character level. For everything else, there&#39;s this more generic sense of scope.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Character
     }
 
 }

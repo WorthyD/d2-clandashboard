@@ -33,24 +33,24 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyVendorsDestinyVendorReceipt" /> class.
         /// </summary>
-        /// <param name="currencyPaid">The amount paid for the item, in terms of items that were consumed in the purchase and their quantity..</param>
-        /// <param name="itemReceived">The item that was received, and its quantity..</param>
-        /// <param name="licenseUnlockHash">The unlock flag used to determine whether you still have the purchased item..</param>
-        /// <param name="purchasedByCharacterId">The ID of the character who made the purchase..</param>
-        /// <param name="refundPolicy">Whether you can get a refund, and what happens in order for the refund to be received. See the DestinyVendorItemRefundPolicy enum for details..</param>
-        /// <param name="sequenceNumber">The identifier of this receipt..</param>
-        /// <param name="timeToExpiration">The seconds since epoch at which this receipt is rendered invalid..</param>
-        /// <param name="expiresOn">The date at which this receipt is rendered invalid..</param>
-        public DestinyVendorsDestinyVendorReceipt(List<DestinyDestinyItemQuantity> currencyPaid = default(List<DestinyDestinyItemQuantity>), Object itemReceived = default(Object), int? licenseUnlockHash = default(int?), long? purchasedByCharacterId = default(long?), Object refundPolicy = default(Object), int? sequenceNumber = default(int?), long? timeToExpiration = default(long?), DateTime? expiresOn = default(DateTime?))
+        /// <param name="CurrencyPaid">The amount paid for the item, in terms of items that were consumed in the purchase and their quantity..</param>
+        /// <param name="ItemReceived">The item that was received, and its quantity..</param>
+        /// <param name="LicenseUnlockHash">The unlock flag used to determine whether you still have the purchased item..</param>
+        /// <param name="PurchasedByCharacterId">The ID of the character who made the purchase..</param>
+        /// <param name="RefundPolicy">Whether you can get a refund, and what happens in order for the refund to be received. See the DestinyVendorItemRefundPolicy enum for details..</param>
+        /// <param name="SequenceNumber">The identifier of this receipt..</param>
+        /// <param name="TimeToExpiration">The seconds since epoch at which this receipt is rendered invalid..</param>
+        /// <param name="ExpiresOn">The date at which this receipt is rendered invalid..</param>
+        public DestinyVendorsDestinyVendorReceipt(List<DestinyDestinyItemQuantity> CurrencyPaid = default(List<DestinyDestinyItemQuantity>), DestinyDestinyItemQuantity ItemReceived = default(DestinyDestinyItemQuantity), uint? LicenseUnlockHash = default(uint?), long? PurchasedByCharacterId = default(long?), DestinyDestinyVendorItemRefundPolicy RefundPolicy = default(DestinyDestinyVendorItemRefundPolicy), int? SequenceNumber = default(int?), long? TimeToExpiration = default(long?), DateTime? ExpiresOn = default(DateTime?))
         {
-            this.CurrencyPaid = currencyPaid;
-            this.ItemReceived = itemReceived;
-            this.LicenseUnlockHash = licenseUnlockHash;
-            this.PurchasedByCharacterId = purchasedByCharacterId;
-            this.RefundPolicy = refundPolicy;
-            this.SequenceNumber = sequenceNumber;
-            this.TimeToExpiration = timeToExpiration;
-            this.ExpiresOn = expiresOn;
+            this.CurrencyPaid = CurrencyPaid;
+            this.ItemReceived = ItemReceived;
+            this.LicenseUnlockHash = LicenseUnlockHash;
+            this.PurchasedByCharacterId = PurchasedByCharacterId;
+            this.RefundPolicy = RefundPolicy;
+            this.SequenceNumber = SequenceNumber;
+            this.TimeToExpiration = TimeToExpiration;
+            this.ExpiresOn = ExpiresOn;
         }
         
         /// <summary>
@@ -65,14 +65,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The item that was received, and its quantity.</value>
         [DataMember(Name="itemReceived", EmitDefaultValue=false)]
-        public Object ItemReceived { get; set; }
+        public DestinyDestinyItemQuantity ItemReceived { get; set; }
 
         /// <summary>
         /// The unlock flag used to determine whether you still have the purchased item.
         /// </summary>
         /// <value>The unlock flag used to determine whether you still have the purchased item.</value>
         [DataMember(Name="licenseUnlockHash", EmitDefaultValue=false)]
-        public int? LicenseUnlockHash { get; set; }
+        public uint? LicenseUnlockHash { get; set; }
 
         /// <summary>
         /// The ID of the character who made the purchase.
@@ -86,7 +86,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Whether you can get a refund, and what happens in order for the refund to be received. See the DestinyVendorItemRefundPolicy enum for details.</value>
         [DataMember(Name="refundPolicy", EmitDefaultValue=false)]
-        public Object RefundPolicy { get; set; }
+        public DestinyDestinyVendorItemRefundPolicy RefundPolicy { get; set; }
 
         /// <summary>
         /// The identifier of this receipt.
@@ -133,7 +133,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

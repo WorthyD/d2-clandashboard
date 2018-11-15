@@ -28,41 +28,39 @@ namespace BungieAPI.Model
     /// A hint for how the presentation node should be displayed when shown in a list. How you use this is your UI is up to you.
     /// </summary>
     /// <value>A hint for how the presentation node should be displayed when shown in a list. How you use this is your UI is up to you.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyPresentationDisplayStyle
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// Display the item as a category, through which sub-items are filtered.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Category,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// A hint for how the presentation node should be displayed when shown in a list. How you use this is your UI is up to you.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Badge,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// A hint for how the presentation node should be displayed when shown in a list. How you use this is your UI is up to you.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Medals,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4,
+		/// <summary>
+		/// A hint for how the presentation node should be displayed when shown in a list. How you use this is your UI is up to you.
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Collectible,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 5
+		/// <summary>
+		/// A hint for how the presentation node should be displayed when shown in a list. How you use this is your UI is up to you.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        Record
     }
 
 }

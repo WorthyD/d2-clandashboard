@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DictionaryComponentResponseOfint64AndDestinyKiosksComponent" /> class.
         /// </summary>
-        /// <param name="data">data.</param>
-        /// <param name="privacy">privacy.</param>
-        public DictionaryComponentResponseOfint64AndDestinyKiosksComponent(Dictionary<string, DestinyComponentsKiosksDestinyKiosksComponent> data = default(Dictionary<string, DestinyComponentsKiosksDestinyKiosksComponent>), ComponentsComponentPrivacySetting privacy = default(ComponentsComponentPrivacySetting))
+        /// <param name="Data">Data.</param>
+        /// <param name="Privacy">Privacy.</param>
+        public DictionaryComponentResponseOfint64AndDestinyKiosksComponent(Dictionary<string, DestinyComponentsKiosksDestinyKiosksComponent> Data = default(Dictionary<string, DestinyComponentsKiosksDestinyKiosksComponent>), ComponentsComponentPrivacySetting Privacy = default(ComponentsComponentPrivacySetting))
         {
-            this.Data = data;
-            this.Privacy = privacy;
+            this.Data = Data;
+            this.Privacy = Privacy;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

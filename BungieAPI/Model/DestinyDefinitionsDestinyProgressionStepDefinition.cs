@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyProgressionStepDefinition" /> class.
         /// </summary>
-        /// <param name="stepName">Very rarely, Progressions will have localized text describing the Level of the progression. This will be that localized text, if it exists. Otherwise, the standard appears to be to simply show the level numerically..</param>
-        /// <param name="displayEffectType">This appears to be, when you \&quot;level up\&quot;, whether a visual effect will display and on what entity. See DestinyProgressionStepDisplayEffect for slightly more info..</param>
-        /// <param name="progressTotal">The total amount of progression points/\&quot;experience\&quot; you will need to initially reach this step. If this is the last step and the progression is repeating indefinitely (DestinyProgressionDefinition.repeatLastStep), this will also be the progress needed to level it up further by repeating this step again..</param>
-        /// <param name="rewardItems">A listing of items rewarded as a result of reaching this level..</param>
-        /// <param name="icon">If this progression step has a specific icon related to it, this is the icon to show..</param>
-        public DestinyDefinitionsDestinyProgressionStepDefinition(string stepName = default(string), Object displayEffectType = default(Object), int? progressTotal = default(int?), List<DestinyDestinyItemQuantity> rewardItems = default(List<DestinyDestinyItemQuantity>), string icon = default(string))
+        /// <param name="StepName">Very rarely, Progressions will have localized text describing the Level of the progression. This will be that localized text, if it exists. Otherwise, the standard appears to be to simply show the level numerically..</param>
+        /// <param name="DisplayEffectType">This appears to be, when you \&quot;level up\&quot;, whether a visual effect will display and on what entity. See DestinyProgressionStepDisplayEffect for slightly more info..</param>
+        /// <param name="ProgressTotal">The total amount of progression points/\&quot;experience\&quot; you will need to initially reach this step. If this is the last step and the progression is repeating indefinitely (DestinyProgressionDefinition.repeatLastStep), this will also be the progress needed to level it up further by repeating this step again..</param>
+        /// <param name="RewardItems">A listing of items rewarded as a result of reaching this level..</param>
+        /// <param name="Icon">If this progression step has a specific icon related to it, this is the icon to show..</param>
+        public DestinyDefinitionsDestinyProgressionStepDefinition(string StepName = default(string), DestinyDestinyProgressionStepDisplayEffect DisplayEffectType = default(DestinyDestinyProgressionStepDisplayEffect), int? ProgressTotal = default(int?), List<DestinyDestinyItemQuantity> RewardItems = default(List<DestinyDestinyItemQuantity>), string Icon = default(string))
         {
-            this.StepName = stepName;
-            this.DisplayEffectType = displayEffectType;
-            this.ProgressTotal = progressTotal;
-            this.RewardItems = rewardItems;
-            this.Icon = icon;
+            this.StepName = StepName;
+            this.DisplayEffectType = DisplayEffectType;
+            this.ProgressTotal = ProgressTotal;
+            this.RewardItems = RewardItems;
+            this.Icon = Icon;
         }
         
         /// <summary>
@@ -59,7 +59,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>This appears to be, when you \&quot;level up\&quot;, whether a visual effect will display and on what entity. See DestinyProgressionStepDisplayEffect for slightly more info.</value>
         [DataMember(Name="displayEffectType", EmitDefaultValue=false)]
-        public Object DisplayEffectType { get; set; }
+        public DestinyDestinyProgressionStepDisplayEffect DisplayEffectType { get; set; }
 
         /// <summary>
         /// The total amount of progression points/\&quot;experience\&quot; you will need to initially reach this step. If this is the last step and the progression is repeating indefinitely (DestinyProgressionDefinition.repeatLastStep), this will also be the progress needed to level it up further by repeating this step again.
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

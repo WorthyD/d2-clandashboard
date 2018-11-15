@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemSetBlockEntryDefinition" /> class.
         /// </summary>
-        /// <param name="trackingValue">Used for tracking which step a user reached. These values will be populated in the user&#39;s internal state, which we expose externally as a more usable DestinyQuestStatus object. If this item has been obtained, this value will be set in trackingUnlockValueHash..</param>
-        /// <param name="itemHash">This is the hash identifier for a DestinyInventoryItemDefinition representing this quest step..</param>
-        public DestinyDefinitionsDestinyItemSetBlockEntryDefinition(int? trackingValue = default(int?), int? itemHash = default(int?))
+        /// <param name="TrackingValue">Used for tracking which step a user reached. These values will be populated in the user&#39;s internal state, which we expose externally as a more usable DestinyQuestStatus object. If this item has been obtained, this value will be set in trackingUnlockValueHash..</param>
+        /// <param name="ItemHash">This is the hash identifier for a DestinyInventoryItemDefinition representing this quest step..</param>
+        public DestinyDefinitionsDestinyItemSetBlockEntryDefinition(int? TrackingValue = default(int?), uint? ItemHash = default(uint?))
         {
-            this.TrackingValue = trackingValue;
-            this.ItemHash = itemHash;
+            this.TrackingValue = TrackingValue;
+            this.ItemHash = ItemHash;
         }
         
         /// <summary>
@@ -53,7 +53,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>This is the hash identifier for a DestinyInventoryItemDefinition representing this quest step.</value>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

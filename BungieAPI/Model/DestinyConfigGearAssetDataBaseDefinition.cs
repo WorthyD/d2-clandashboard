@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyConfigGearAssetDataBaseDefinition" /> class.
         /// </summary>
-        /// <param name="version">version.</param>
-        /// <param name="path">path.</param>
-        public DestinyConfigGearAssetDataBaseDefinition(int? version = default(int?), string path = default(string))
+        /// <param name="Version">Version.</param>
+        /// <param name="Path">Path.</param>
+        public DestinyConfigGearAssetDataBaseDefinition(int? Version = default(int?), string Path = default(string))
         {
-            this.Version = version;
-            this.Path = path;
+            this.Version = Version;
+            this.Path = Path;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,28 +33,28 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ForumForumRecruitmentDetail" /> class.
         /// </summary>
-        /// <param name="topicId">topicId.</param>
-        /// <param name="microphoneRequired">microphoneRequired.</param>
-        /// <param name="intensity">intensity.</param>
-        /// <param name="tone">tone.</param>
-        /// <param name="approved">approved.</param>
-        /// <param name="conversationId">conversationId.</param>
-        /// <param name="playerSlotsTotal">playerSlotsTotal.</param>
-        /// <param name="playerSlotsRemaining">playerSlotsRemaining.</param>
-        /// <param name="fireteam">fireteam.</param>
-        /// <param name="kickedPlayerIds">kickedPlayerIds.</param>
-        public ForumForumRecruitmentDetail(long? topicId = default(long?), bool? microphoneRequired = default(bool?), ForumForumRecruitmentIntensityLabel intensity = default(ForumForumRecruitmentIntensityLabel), ForumForumRecruitmentToneLabel tone = default(ForumForumRecruitmentToneLabel), bool? approved = default(bool?), long? conversationId = default(long?), int? playerSlotsTotal = default(int?), int? playerSlotsRemaining = default(int?), List<UserGeneralUser> fireteam = default(List<UserGeneralUser>), List<long?> kickedPlayerIds = default(List<long?>))
+        /// <param name="TopicId">TopicId.</param>
+        /// <param name="MicrophoneRequired">MicrophoneRequired.</param>
+        /// <param name="Intensity">Intensity.</param>
+        /// <param name="Tone">Tone.</param>
+        /// <param name="Approved">Approved.</param>
+        /// <param name="ConversationId">ConversationId.</param>
+        /// <param name="PlayerSlotsTotal">PlayerSlotsTotal.</param>
+        /// <param name="PlayerSlotsRemaining">PlayerSlotsRemaining.</param>
+        /// <param name="Fireteam">Fireteam.</param>
+        /// <param name="KickedPlayerIds">KickedPlayerIds.</param>
+        public ForumForumRecruitmentDetail(long? TopicId = default(long?), bool? MicrophoneRequired = default(bool?), ForumForumRecruitmentIntensityLabel Intensity = default(ForumForumRecruitmentIntensityLabel), ForumForumRecruitmentToneLabel Tone = default(ForumForumRecruitmentToneLabel), bool? Approved = default(bool?), long? ConversationId = default(long?), int? PlayerSlotsTotal = default(int?), int? PlayerSlotsRemaining = default(int?), List<UserGeneralUser> Fireteam = default(List<UserGeneralUser>), List<long?> KickedPlayerIds = default(List<long?>))
         {
-            this.TopicId = topicId;
-            this.MicrophoneRequired = microphoneRequired;
-            this.Intensity = intensity;
-            this.Tone = tone;
-            this.Approved = approved;
-            this.ConversationId = conversationId;
-            this.PlayerSlotsTotal = playerSlotsTotal;
-            this.PlayerSlotsRemaining = playerSlotsRemaining;
-            this.Fireteam = fireteam;
-            this.KickedPlayerIds = kickedPlayerIds;
+            this.TopicId = TopicId;
+            this.MicrophoneRequired = MicrophoneRequired;
+            this.Intensity = Intensity;
+            this.Tone = Tone;
+            this.Approved = Approved;
+            this.ConversationId = ConversationId;
+            this.PlayerSlotsTotal = PlayerSlotsTotal;
+            this.PlayerSlotsRemaining = PlayerSlotsRemaining;
+            this.Fireteam = Fireteam;
+            this.KickedPlayerIds = KickedPlayerIds;
         }
         
         /// <summary>
@@ -143,7 +143,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

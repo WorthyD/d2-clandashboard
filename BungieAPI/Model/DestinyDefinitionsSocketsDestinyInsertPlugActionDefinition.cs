@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsSocketsDestinyInsertPlugActionDefinition" /> class.
         /// </summary>
-        /// <param name="actionExecuteSeconds">How long it takes for the Plugging of the item to be completed once it is initiated, if you care..</param>
-        /// <param name="actionType">The type of action being performed when you act on this Socket Type. The most common value is \&quot;insert plug\&quot;, but there are others as well (for instance, a \&quot;Masterwork\&quot; socket may allow for Re-initialization, and an Infusion socket allows for items to be consumed to upgrade the item).</param>
-        public DestinyDefinitionsSocketsDestinyInsertPlugActionDefinition(int? actionExecuteSeconds = default(int?), Object actionType = default(Object))
+        /// <param name="ActionExecuteSeconds">How long it takes for the Plugging of the item to be completed once it is initiated, if you care..</param>
+        /// <param name="ActionType">The type of action being performed when you act on this Socket Type. The most common value is \&quot;insert plug\&quot;, but there are others as well (for instance, a \&quot;Masterwork\&quot; socket may allow for Re-initialization, and an Infusion socket allows for items to be consumed to upgrade the item).</param>
+        public DestinyDefinitionsSocketsDestinyInsertPlugActionDefinition(int? ActionExecuteSeconds = default(int?), DestinySocketTypeActionType ActionType = default(DestinySocketTypeActionType))
         {
-            this.ActionExecuteSeconds = actionExecuteSeconds;
-            this.ActionType = actionType;
+            this.ActionExecuteSeconds = ActionExecuteSeconds;
+            this.ActionType = ActionType;
         }
         
         /// <summary>
@@ -53,7 +53,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The type of action being performed when you act on this Socket Type. The most common value is \&quot;insert plug\&quot;, but there are others as well (for instance, a \&quot;Masterwork\&quot; socket may allow for Re-initialization, and an Infusion socket allows for items to be consumed to upgrade the item)</value>
         [DataMember(Name="actionType", EmitDefaultValue=false)]
-        public Object ActionType { get; set; }
+        public DestinySocketTypeActionType ActionType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

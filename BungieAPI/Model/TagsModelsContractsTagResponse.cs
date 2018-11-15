@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TagsModelsContractsTagResponse" /> class.
         /// </summary>
-        /// <param name="tagText">tagText.</param>
-        /// <param name="ignoreStatus">ignoreStatus.</param>
-        public TagsModelsContractsTagResponse(string tagText = default(string), IgnoresIgnoreResponse ignoreStatus = default(IgnoresIgnoreResponse))
+        /// <param name="TagText">TagText.</param>
+        /// <param name="IgnoreStatus">IgnoreStatus.</param>
+        public TagsModelsContractsTagResponse(string TagText = default(string), IgnoresIgnoreResponse IgnoreStatus = default(IgnoresIgnoreResponse))
         {
-            this.TagText = tagText;
-            this.IgnoreStatus = ignoreStatus;
+            this.TagText = TagText;
+            this.IgnoreStatus = IgnoreStatus;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

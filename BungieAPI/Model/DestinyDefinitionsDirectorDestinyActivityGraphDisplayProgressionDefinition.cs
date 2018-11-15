@@ -33,25 +33,25 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDirectorDestinyActivityGraphDisplayProgressionDefinition" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="progressionHash">progressionHash.</param>
-        public DestinyDefinitionsDirectorDestinyActivityGraphDisplayProgressionDefinition(int? id = default(int?), int? progressionHash = default(int?))
+        /// <param name="Id">Id.</param>
+        /// <param name="ProgressionHash">ProgressionHash.</param>
+        public DestinyDefinitionsDirectorDestinyActivityGraphDisplayProgressionDefinition(uint? Id = default(uint?), uint? ProgressionHash = default(uint?))
         {
-            this.Id = id;
-            this.ProgressionHash = progressionHash;
+            this.Id = Id;
+            this.ProgressionHash = ProgressionHash;
         }
         
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public int? Id { get; set; }
+        public uint? Id { get; set; }
 
         /// <summary>
         /// Gets or Sets ProgressionHash
         /// </summary>
         [DataMember(Name="progressionHash", EmitDefaultValue=false)]
-        public int? ProgressionHash { get; set; }
+        public uint? ProgressionHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

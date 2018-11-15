@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesCharactersDestinyCharacterProgressionComponent" /> class.
         /// </summary>
-        /// <param name="progressions">A Dictionary of all known progressions for the Character, keyed by the Progression&#39;s hash.  Not all progressions have user-facing data, but those who do will have that data contained in the DestinyProgressionDefinition..</param>
-        /// <param name="factions">A dictionary of all known Factions, keyed by the Faction&#39;s hash. It contains data about this character&#39;s status with the faction..</param>
-        /// <param name="milestones">Milestones are related to the simple progressions shown in the game, but return additional and hopefully helpful information for users about the specifics of the Milestone&#39;s status..</param>
-        /// <param name="quests">If the user has any active quests, the quests&#39; statuses will be returned here.  Note that quests have been largely supplanted by Milestones, but that doesn&#39;t mean that they won&#39;t make a comeback independent of milestones at some point..</param>
-        /// <param name="uninstancedItemObjectives">Sometimes, you have items in your inventory that don&#39;t have instances, but still have Objective information. This provides you that objective information for uninstanced items.   This dictionary is keyed by the item&#39;s hash: which you can use to look up the name and description for the overall task(s) implied by the objective. The value is the list of objectives for this item, and their statuses..</param>
-        /// <param name="checklists">The set of checklists that can be examined for this specific character, keyed by the hash identifier of the Checklist (DestinyChecklistDefinition)  For each checklist returned, its value is itself a Dictionary keyed by the checklist&#39;s hash identifier with the value being a boolean indicating if it&#39;s been discovered yet..</param>
-        public DestinyEntitiesCharactersDestinyCharacterProgressionComponent(Dictionary<string, DestinyDestinyProgression> progressions = default(Dictionary<string, DestinyDestinyProgression>), Dictionary<string, DestinyProgressionDestinyFactionProgression> factions = default(Dictionary<string, DestinyProgressionDestinyFactionProgression>), Dictionary<string, DestinyMilestonesDestinyMilestone> milestones = default(Dictionary<string, DestinyMilestonesDestinyMilestone>), List<DestinyQuestsDestinyQuestStatus> quests = default(List<DestinyQuestsDestinyQuestStatus>), Dictionary<string, List<DestinyQuestsDestinyObjectiveProgress>> uninstancedItemObjectives = default(Dictionary<string, List<DestinyQuestsDestinyObjectiveProgress>>), Dictionary<string, Dictionary<string, bool?>> checklists = default(Dictionary<string, Dictionary<string, bool?>>))
+        /// <param name="Progressions">A Dictionary of all known progressions for the Character, keyed by the Progression&#39;s hash.  Not all progressions have user-facing data, but those who do will have that data contained in the DestinyProgressionDefinition..</param>
+        /// <param name="Factions">A dictionary of all known Factions, keyed by the Faction&#39;s hash. It contains data about this character&#39;s status with the faction..</param>
+        /// <param name="Milestones">Milestones are related to the simple progressions shown in the game, but return additional and hopefully helpful information for users about the specifics of the Milestone&#39;s status..</param>
+        /// <param name="Quests">If the user has any active quests, the quests&#39; statuses will be returned here.  Note that quests have been largely supplanted by Milestones, but that doesn&#39;t mean that they won&#39;t make a comeback independent of milestones at some point..</param>
+        /// <param name="UninstancedItemObjectives">Sometimes, you have items in your inventory that don&#39;t have instances, but still have Objective information. This provides you that objective information for uninstanced items.   This dictionary is keyed by the item&#39;s hash: which you can use to look up the name and description for the overall task(s) implied by the objective. The value is the list of objectives for this item, and their statuses..</param>
+        /// <param name="Checklists">The set of checklists that can be examined for this specific character, keyed by the hash identifier of the Checklist (DestinyChecklistDefinition)  For each checklist returned, its value is itself a Dictionary keyed by the checklist&#39;s hash identifier with the value being a boolean indicating if it&#39;s been discovered yet..</param>
+        public DestinyEntitiesCharactersDestinyCharacterProgressionComponent(Dictionary<string, DestinyDestinyProgression> Progressions = default(Dictionary<string, DestinyDestinyProgression>), Dictionary<string, DestinyProgressionDestinyFactionProgression> Factions = default(Dictionary<string, DestinyProgressionDestinyFactionProgression>), Dictionary<string, DestinyMilestonesDestinyMilestone> Milestones = default(Dictionary<string, DestinyMilestonesDestinyMilestone>), List<DestinyQuestsDestinyQuestStatus> Quests = default(List<DestinyQuestsDestinyQuestStatus>), Dictionary<string, List<DestinyQuestsDestinyObjectiveProgress>> UninstancedItemObjectives = default(Dictionary<string, List<DestinyQuestsDestinyObjectiveProgress>>), Dictionary<string, Dictionary<string, bool?>> Checklists = default(Dictionary<string, Dictionary<string, bool?>>))
         {
-            this.Progressions = progressions;
-            this.Factions = factions;
-            this.Milestones = milestones;
-            this.Quests = quests;
-            this.UninstancedItemObjectives = uninstancedItemObjectives;
-            this.Checklists = checklists;
+            this.Progressions = Progressions;
+            this.Factions = Factions;
+            this.Milestones = Milestones;
+            this.Quests = Quests;
+            this.UninstancedItemObjectives = UninstancedItemObjectives;
+            this.Checklists = Checklists;
         }
         
         /// <summary>
@@ -113,7 +113,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

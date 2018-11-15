@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorGroupReference" /> class.
         /// </summary>
-        /// <param name="vendorGroupHash">The DestinyVendorGroupDefinition to which this Vendor can belong..</param>
-        public DestinyDefinitionsDestinyVendorGroupReference(int? vendorGroupHash = default(int?))
+        /// <param name="VendorGroupHash">The DestinyVendorGroupDefinition to which this Vendor can belong..</param>
+        public DestinyDefinitionsDestinyVendorGroupReference(uint? VendorGroupHash = default(uint?))
         {
-            this.VendorGroupHash = vendorGroupHash;
+            this.VendorGroupHash = VendorGroupHash;
         }
         
         /// <summary>
@@ -44,7 +44,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The DestinyVendorGroupDefinition to which this Vendor can belong.</value>
         [DataMember(Name="vendorGroupHash", EmitDefaultValue=false)]
-        public int? VendorGroupHash { get; set; }
+        public uint? VendorGroupHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

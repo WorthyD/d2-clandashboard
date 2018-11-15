@@ -33,22 +33,22 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesVendorsDestinyVendorComponent" /> class.
         /// </summary>
-        /// <param name="vendorHash">The unique identifier for the vendor. Use it to look up their DestinyVendorDefinition..</param>
-        /// <param name="nextRefreshDate">The date when this vendor&#39;s inventory will next rotate/refresh.  Note that this is distinct from the date ranges that the vendor is visible/available in-game: this field indicates the specific time when the vendor&#39;s available items refresh and rotate, regardless of whether the vendor is actually available at that time. Unfortunately, these two values may be (and are, for the case of important vendors like Xur) different.  Issue https://github.com/Bungie-net/api/issues/353 is tracking a fix to start providing visibility date ranges where possible in addition to this refresh date, so that all important dates for vendors are available for use..</param>
-        /// <param name="enabled">If True, the Vendor is currently accessible.   If False, they may not actually be visible in the world at the moment..</param>
-        /// <param name="canPurchase">If True, you can purchase from the Vendor.  Theoretically, Vendors can be restricted from selling items. In practice, none do that (yet?)..</param>
-        /// <param name="progression">If the Vendor has a related Reputation, this is the Progression data that represents the character&#39;s Reputation level with this Vendor..</param>
-        /// <param name="vendorLocationIndex">An index into the vendor definition&#39;s \&quot;locations\&quot; property array, indicating which location they are at currently. If -1, then the vendor has no known location (and you may choose not to show them in your UI as a result. I mean, it&#39;s your bag honey).</param>
-        /// <param name="seasonalRank">If this vendor has a seasonal rank, this will be the calculated value of that rank. How nice is that? I mean, that&#39;s pretty sweeet. It&#39;s a whole 32 bit integer..</param>
-        public DestinyEntitiesVendorsDestinyVendorComponent(int? vendorHash = default(int?), DateTime? nextRefreshDate = default(DateTime?), bool? enabled = default(bool?), bool? canPurchase = default(bool?), Object progression = default(Object), int? vendorLocationIndex = default(int?), int? seasonalRank = default(int?))
+        /// <param name="VendorHash">The unique identifier for the vendor. Use it to look up their DestinyVendorDefinition..</param>
+        /// <param name="NextRefreshDate">The date when this vendor&#39;s inventory will next rotate/refresh.  Note that this is distinct from the date ranges that the vendor is visible/available in-game: this field indicates the specific time when the vendor&#39;s available items refresh and rotate, regardless of whether the vendor is actually available at that time. Unfortunately, these two values may be (and are, for the case of important vendors like Xur) different.  Issue https://github.com/Bungie-net/api/issues/353 is tracking a fix to start providing visibility date ranges where possible in addition to this refresh date, so that all important dates for vendors are available for use..</param>
+        /// <param name="Enabled">If True, the Vendor is currently accessible.   If False, they may not actually be visible in the world at the moment..</param>
+        /// <param name="CanPurchase">If True, you can purchase from the Vendor.  Theoretically, Vendors can be restricted from selling items. In practice, none do that (yet?)..</param>
+        /// <param name="Progression">If the Vendor has a related Reputation, this is the Progression data that represents the character&#39;s Reputation level with this Vendor..</param>
+        /// <param name="VendorLocationIndex">An index into the vendor definition&#39;s \&quot;locations\&quot; property array, indicating which location they are at currently. If -1, then the vendor has no known location (and you may choose not to show them in your UI as a result. I mean, it&#39;s your bag honey).</param>
+        /// <param name="SeasonalRank">If this vendor has a seasonal rank, this will be the calculated value of that rank. How nice is that? I mean, that&#39;s pretty sweeet. It&#39;s a whole 32 bit integer..</param>
+        public DestinyEntitiesVendorsDestinyVendorComponent(uint? VendorHash = default(uint?), DateTime? NextRefreshDate = default(DateTime?), bool? Enabled = default(bool?), bool? CanPurchase = default(bool?), DestinyDestinyProgression Progression = default(DestinyDestinyProgression), int? VendorLocationIndex = default(int?), int? SeasonalRank = default(int?))
         {
-            this.VendorHash = vendorHash;
-            this.NextRefreshDate = nextRefreshDate;
-            this.Enabled = enabled;
-            this.CanPurchase = canPurchase;
-            this.Progression = progression;
-            this.VendorLocationIndex = vendorLocationIndex;
-            this.SeasonalRank = seasonalRank;
+            this.VendorHash = VendorHash;
+            this.NextRefreshDate = NextRefreshDate;
+            this.Enabled = Enabled;
+            this.CanPurchase = CanPurchase;
+            this.Progression = Progression;
+            this.VendorLocationIndex = VendorLocationIndex;
+            this.SeasonalRank = SeasonalRank;
         }
         
         /// <summary>
@@ -56,7 +56,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for the vendor. Use it to look up their DestinyVendorDefinition.</value>
         [DataMember(Name="vendorHash", EmitDefaultValue=false)]
-        public int? VendorHash { get; set; }
+        public uint? VendorHash { get; set; }
 
         /// <summary>
         /// The date when this vendor&#39;s inventory will next rotate/refresh.  Note that this is distinct from the date ranges that the vendor is visible/available in-game: this field indicates the specific time when the vendor&#39;s available items refresh and rotate, regardless of whether the vendor is actually available at that time. Unfortunately, these two values may be (and are, for the case of important vendors like Xur) different.  Issue https://github.com/Bungie-net/api/issues/353 is tracking a fix to start providing visibility date ranges where possible in addition to this refresh date, so that all important dates for vendors are available for use.
@@ -84,7 +84,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the Vendor has a related Reputation, this is the Progression data that represents the character&#39;s Reputation level with this Vendor.</value>
         [DataMember(Name="progression", EmitDefaultValue=false)]
-        public Object Progression { get; set; }
+        public DestinyDestinyProgression Progression { get; set; }
 
         /// <summary>
         /// An index into the vendor definition&#39;s \&quot;locations\&quot; property array, indicating which location they are at currently. If -1, then the vendor has no known location (and you may choose not to show them in your UI as a result. I mean, it&#39;s your bag honey)
@@ -123,7 +123,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

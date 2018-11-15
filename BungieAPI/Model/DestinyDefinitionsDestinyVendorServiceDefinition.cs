@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorServiceDefinition" /> class.
         /// </summary>
-        /// <param name="name">The localized name of a service provided..</param>
-        public DestinyDefinitionsDestinyVendorServiceDefinition(string name = default(string))
+        /// <param name="Name">The localized name of a service provided..</param>
+        public DestinyDefinitionsDestinyVendorServiceDefinition(string Name = default(string))
         {
-            this.Name = name;
+            this.Name = Name;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

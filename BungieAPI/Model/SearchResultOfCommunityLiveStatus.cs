@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchResultOfCommunityLiveStatus" /> class.
         /// </summary>
-        /// <param name="results">results.</param>
-        /// <param name="totalResults">totalResults.</param>
-        /// <param name="hasMore">hasMore.</param>
-        /// <param name="query">query.</param>
-        /// <param name="replacementContinuationToken">replacementContinuationToken.</param>
-        /// <param name="useTotalResults">If useTotalResults is true, then totalResults represents an accurate count.  If False, it does not, and may be estimated/only the size of the current page.  Either way, you should probably always only trust hasMore.  This is a long-held historical throwback to when we used to do paging with known total results. Those queries toasted our database, and we were left to hastily alter our endpoints and create backward- compatible shims, of which useTotalResults is one..</param>
-        public SearchResultOfCommunityLiveStatus(List<CommunityCommunityLiveStatus> results = default(List<CommunityCommunityLiveStatus>), int? totalResults = default(int?), bool? hasMore = default(bool?), QueriesPagedQuery query = default(QueriesPagedQuery), string replacementContinuationToken = default(string), bool? useTotalResults = default(bool?))
+        /// <param name="Results">Results.</param>
+        /// <param name="TotalResults">TotalResults.</param>
+        /// <param name="HasMore">HasMore.</param>
+        /// <param name="Query">Query.</param>
+        /// <param name="ReplacementContinuationToken">ReplacementContinuationToken.</param>
+        /// <param name="UseTotalResults">If useTotalResults is true, then totalResults represents an accurate count.  If False, it does not, and may be estimated/only the size of the current page.  Either way, you should probably always only trust hasMore.  This is a long-held historical throwback to when we used to do paging with known total results. Those queries toasted our database, and we were left to hastily alter our endpoints and create backward- compatible shims, of which useTotalResults is one..</param>
+        public SearchResultOfCommunityLiveStatus(List<CommunityCommunityLiveStatus> Results = default(List<CommunityCommunityLiveStatus>), int? TotalResults = default(int?), bool? HasMore = default(bool?), QueriesPagedQuery Query = default(QueriesPagedQuery), string ReplacementContinuationToken = default(string), bool? UseTotalResults = default(bool?))
         {
-            this.Results = results;
-            this.TotalResults = totalResults;
-            this.HasMore = hasMore;
-            this.Query = query;
-            this.ReplacementContinuationToken = replacementContinuationToken;
-            this.UseTotalResults = useTotalResults;
+            this.Results = Results;
+            this.TotalResults = TotalResults;
+            this.HasMore = HasMore;
+            this.Query = Query;
+            this.ReplacementContinuationToken = ReplacementContinuationToken;
+            this.UseTotalResults = UseTotalResults;
         }
         
         /// <summary>
@@ -108,7 +108,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

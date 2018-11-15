@@ -28,47 +28,45 @@ namespace BungieAPI.Model
     /// The type of milestone. Milestones can be Tutorials, one-time/triggered/non-repeating but not necessarily tutorials, or Repeating Milestones.
     /// </summary>
     /// <value>The type of milestone. Milestones can be Tutorials, one-time/triggered/non-repeating but not necessarily tutorials, or Repeating Milestones.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDefinitionsMilestonesDestinyMilestoneType
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// The type of milestone. Milestones can be Tutorials, one-time/triggered/non-repeating but not necessarily tutorials, or Repeating Milestones.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Unknown,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// One-time milestones that are specifically oriented toward teaching players about new mechanics and gameplay modes.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Tutorial,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// Milestones that, once completed a single time, can never be repeated.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        OneTime,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4,
+		/// <summary>
+		/// Milestones that repeat/reset on a weekly basis. They need not all reset on the same day or time, but do need to reset weekly to qualify for this type.
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Weekly,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 5,
+		/// <summary>
+		/// Milestones that repeat or reset on a daily basis.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        Daily,
         
-        /// <summary>
-        /// Enum NUMBER_5 for value: 5
-        /// </summary>
-        [EnumMember(Value = "5")]
-        NUMBER_5 = 6
+		/// <summary>
+		/// Special indicates that the event is not on a daily/weekly cadence, but does occur more than once. For instance, Iron Banner in Destiny 1 or the Dawning were examples of what could be termed &quot;Special&quot; events.
+		/// </summary>
+		[EnumMember(Value = "5")]
+        Special
     }
 
 }

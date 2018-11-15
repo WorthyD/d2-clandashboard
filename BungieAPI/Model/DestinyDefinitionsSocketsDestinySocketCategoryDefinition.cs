@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsSocketsDestinySocketCategoryDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="uiCategoryStyle">A string hinting to the game&#39;s UI system about how the sockets in this category should be displayed.  BNet doesn&#39;t use it: it&#39;s up to you to find valid values and make your own special UI if you want to honor this category style..</param>
-        /// <param name="categoryStyle">Same as uiCategoryStyle, but in a more usable enumeration form..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsSocketsDestinySocketCategoryDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), int? uiCategoryStyle = default(int?), Object categoryStyle = default(Object), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="UiCategoryStyle">A string hinting to the game&#39;s UI system about how the sockets in this category should be displayed.  BNet doesn&#39;t use it: it&#39;s up to you to find valid values and make your own special UI if you want to honor this category style..</param>
+        /// <param name="CategoryStyle">Same as uiCategoryStyle, but in a more usable enumeration form..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsSocketsDestinySocketCategoryDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), uint? UiCategoryStyle = default(uint?), DestinyDestinySocketCategoryStyle CategoryStyle = default(DestinyDestinySocketCategoryStyle), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.UiCategoryStyle = uiCategoryStyle;
-            this.CategoryStyle = categoryStyle;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.UiCategoryStyle = UiCategoryStyle;
+            this.CategoryStyle = CategoryStyle;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -60,21 +60,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A string hinting to the game&#39;s UI system about how the sockets in this category should be displayed.  BNet doesn&#39;t use it: it&#39;s up to you to find valid values and make your own special UI if you want to honor this category style.</value>
         [DataMember(Name="uiCategoryStyle", EmitDefaultValue=false)]
-        public int? UiCategoryStyle { get; set; }
+        public uint? UiCategoryStyle { get; set; }
 
         /// <summary>
         /// Same as uiCategoryStyle, but in a more usable enumeration form.
         /// </summary>
         /// <value>Same as uiCategoryStyle, but in a more usable enumeration form.</value>
         [DataMember(Name="categoryStyle", EmitDefaultValue=false)]
-        public Object CategoryStyle { get; set; }
+        public DestinyDestinySocketCategoryStyle CategoryStyle { get; set; }
 
         /// <summary>
         /// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -112,7 +112,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

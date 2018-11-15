@@ -33,24 +33,24 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TrendingTrendingEntryDestinyRitual" /> class.
         /// </summary>
-        /// <param name="image">image.</param>
-        /// <param name="icon">icon.</param>
-        /// <param name="title">title.</param>
-        /// <param name="subtitle">subtitle.</param>
-        /// <param name="dateStart">dateStart.</param>
-        /// <param name="dateEnd">dateEnd.</param>
-        /// <param name="milestoneDetails">A destiny event does not necessarily have a related Milestone, but if it does the details will be returned here..</param>
-        /// <param name="eventContent">A destiny event will not necessarily have milestone \&quot;custom content\&quot;, but if it does the details will be here..</param>
-        public TrendingTrendingEntryDestinyRitual(string image = default(string), string icon = default(string), string title = default(string), string subtitle = default(string), DateTime? dateStart = default(DateTime?), DateTime? dateEnd = default(DateTime?), Object milestoneDetails = default(Object), Object eventContent = default(Object))
+        /// <param name="Image">Image.</param>
+        /// <param name="Icon">Icon.</param>
+        /// <param name="Title">Title.</param>
+        /// <param name="Subtitle">Subtitle.</param>
+        /// <param name="DateStart">DateStart.</param>
+        /// <param name="DateEnd">DateEnd.</param>
+        /// <param name="MilestoneDetails">A destiny event does not necessarily have a related Milestone, but if it does the details will be returned here..</param>
+        /// <param name="EventContent">A destiny event will not necessarily have milestone \&quot;custom content\&quot;, but if it does the details will be here..</param>
+        public TrendingTrendingEntryDestinyRitual(string Image = default(string), string Icon = default(string), string Title = default(string), string Subtitle = default(string), DateTime? DateStart = default(DateTime?), DateTime? DateEnd = default(DateTime?), DestinyMilestonesDestinyPublicMilestone MilestoneDetails = default(DestinyMilestonesDestinyPublicMilestone), DestinyMilestonesDestinyMilestoneContent EventContent = default(DestinyMilestonesDestinyMilestoneContent))
         {
-            this.Image = image;
-            this.Icon = icon;
-            this.Title = title;
-            this.Subtitle = subtitle;
-            this.DateStart = dateStart;
-            this.DateEnd = dateEnd;
-            this.MilestoneDetails = milestoneDetails;
-            this.EventContent = eventContent;
+            this.Image = Image;
+            this.Icon = Icon;
+            this.Title = Title;
+            this.Subtitle = Subtitle;
+            this.DateStart = DateStart;
+            this.DateEnd = DateEnd;
+            this.MilestoneDetails = MilestoneDetails;
+            this.EventContent = EventContent;
         }
         
         /// <summary>
@@ -94,14 +94,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A destiny event does not necessarily have a related Milestone, but if it does the details will be returned here.</value>
         [DataMember(Name="milestoneDetails", EmitDefaultValue=false)]
-        public Object MilestoneDetails { get; set; }
+        public DestinyMilestonesDestinyPublicMilestone MilestoneDetails { get; set; }
 
         /// <summary>
         /// A destiny event will not necessarily have milestone \&quot;custom content\&quot;, but if it does the details will be here.
         /// </summary>
         /// <value>A destiny event will not necessarily have milestone \&quot;custom content\&quot;, but if it does the details will be here.</value>
         [DataMember(Name="eventContent", EmitDefaultValue=false)]
-        public Object EventContent { get; set; }
+        public DestinyMilestonesDestinyMilestoneContent EventContent { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -127,7 +127,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -28,29 +28,27 @@ namespace BungieAPI.Model
     /// Used for setting the guided game permission level override (admins and founders can always host guided games).
     /// </summary>
     /// <value>Used for setting the guided game permission level override (admins and founders can always host guided games).</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum GroupsV2HostGuidedGamesPermissionLevel
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// Used for setting the guided game permission level override (admins and founders can always host guided games).
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// Used for setting the guided game permission level override (admins and founders can always host guided games).
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Beginner,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3
+		/// <summary>
+		/// Used for setting the guided game permission level override (admins and founders can always host guided games).
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Member
     }
 
 }

@@ -31,34 +31,24 @@ namespace BungieAPI.Model
     public partial class GlobalAlert :  IEquatable<GlobalAlert>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets AlertLevel
-        /// </summary>
-        [DataMember(Name="AlertLevel", EmitDefaultValue=false)]
-        public GlobalAlertLevel? AlertLevel { get; set; }
-        /// <summary>
-        /// Gets or Sets AlertType
-        /// </summary>
-        [DataMember(Name="AlertType", EmitDefaultValue=false)]
-        public GlobalAlertType? AlertType { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="GlobalAlert" /> class.
         /// </summary>
-        /// <param name="alertKey">alertKey.</param>
-        /// <param name="alertHtml">alertHtml.</param>
-        /// <param name="alertTimestamp">alertTimestamp.</param>
-        /// <param name="alertLink">alertLink.</param>
-        /// <param name="alertLevel">alertLevel.</param>
-        /// <param name="alertType">alertType.</param>
-        /// <param name="streamInfo">streamInfo.</param>
-        public GlobalAlert(string alertKey = default(string), string alertHtml = default(string), DateTime? alertTimestamp = default(DateTime?), string alertLink = default(string), GlobalAlertLevel? alertLevel = default(GlobalAlertLevel?), GlobalAlertType? alertType = default(GlobalAlertType?), StreamInfo streamInfo = default(StreamInfo))
+        /// <param name="AlertKey">AlertKey.</param>
+        /// <param name="AlertHtml">AlertHtml.</param>
+        /// <param name="AlertTimestamp">AlertTimestamp.</param>
+        /// <param name="AlertLink">AlertLink.</param>
+        /// <param name="AlertLevel">AlertLevel.</param>
+        /// <param name="AlertType">AlertType.</param>
+        /// <param name="StreamInfo">StreamInfo.</param>
+        public GlobalAlert(string AlertKey = default(string), string AlertHtml = default(string), DateTime? AlertTimestamp = default(DateTime?), string AlertLink = default(string), GlobalAlertLevel AlertLevel = default(GlobalAlertLevel), GlobalAlertType AlertType = default(GlobalAlertType), StreamInfo StreamInfo = default(StreamInfo))
         {
-            this.AlertKey = alertKey;
-            this.AlertHtml = alertHtml;
-            this.AlertTimestamp = alertTimestamp;
-            this.AlertLink = alertLink;
-            this.AlertLevel = alertLevel;
-            this.AlertType = alertType;
-            this.StreamInfo = streamInfo;
+            this.AlertKey = AlertKey;
+            this.AlertHtml = AlertHtml;
+            this.AlertTimestamp = AlertTimestamp;
+            this.AlertLink = AlertLink;
+            this.AlertLevel = AlertLevel;
+            this.AlertType = AlertType;
+            this.StreamInfo = StreamInfo;
         }
         
         /// <summary>
@@ -85,7 +75,17 @@ namespace BungieAPI.Model
         [DataMember(Name="AlertLink", EmitDefaultValue=false)]
         public string AlertLink { get; set; }
 
+        /// <summary>
+        /// Gets or Sets AlertLevel
+        /// </summary>
+        [DataMember(Name="AlertLevel", EmitDefaultValue=false)]
+        public GlobalAlertLevel AlertLevel { get; set; }
 
+        /// <summary>
+        /// Gets or Sets AlertType
+        /// </summary>
+        [DataMember(Name="AlertType", EmitDefaultValue=false)]
+        public GlobalAlertType AlertType { get; set; }
 
         /// <summary>
         /// Gets or Sets StreamInfo
@@ -116,7 +116,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

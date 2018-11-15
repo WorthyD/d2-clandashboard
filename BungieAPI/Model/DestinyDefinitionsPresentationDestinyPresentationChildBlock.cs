@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsPresentationDestinyPresentationChildBlock" /> class.
         /// </summary>
-        /// <param name="presentationNodeType">presentationNodeType.</param>
-        /// <param name="parentPresentationNodeHashes">parentPresentationNodeHashes.</param>
-        /// <param name="displayStyle">displayStyle.</param>
-        public DestinyDefinitionsPresentationDestinyPresentationChildBlock(DestinyDestinyPresentationNodeType presentationNodeType = default(DestinyDestinyPresentationNodeType), List<int?> parentPresentationNodeHashes = default(List<int?>), DestinyDestinyPresentationDisplayStyle displayStyle = default(DestinyDestinyPresentationDisplayStyle))
+        /// <param name="PresentationNodeType">PresentationNodeType.</param>
+        /// <param name="ParentPresentationNodeHashes">ParentPresentationNodeHashes.</param>
+        /// <param name="DisplayStyle">DisplayStyle.</param>
+        public DestinyDefinitionsPresentationDestinyPresentationChildBlock(DestinyDestinyPresentationNodeType PresentationNodeType = default(DestinyDestinyPresentationNodeType), List<uint?> ParentPresentationNodeHashes = default(List<uint?>), DestinyDestinyPresentationDisplayStyle DisplayStyle = default(DestinyDestinyPresentationDisplayStyle))
         {
-            this.PresentationNodeType = presentationNodeType;
-            this.ParentPresentationNodeHashes = parentPresentationNodeHashes;
-            this.DisplayStyle = displayStyle;
+            this.PresentationNodeType = PresentationNodeType;
+            this.ParentPresentationNodeHashes = ParentPresentationNodeHashes;
+            this.DisplayStyle = DisplayStyle;
         }
         
         /// <summary>
@@ -53,7 +53,7 @@ namespace BungieAPI.Model
         /// Gets or Sets ParentPresentationNodeHashes
         /// </summary>
         [DataMember(Name="parentPresentationNodeHashes", EmitDefaultValue=false)]
-        public List<int?> ParentPresentationNodeHashes { get; set; }
+        public List<uint?> ParentPresentationNodeHashes { get; set; }
 
         /// <summary>
         /// Gets or Sets DisplayStyle
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

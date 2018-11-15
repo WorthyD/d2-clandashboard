@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyResponsesDestinyVendorResponse" /> class.
         /// </summary>
-        /// <param name="vendor">The base properties of the vendor.  COMPONENT TYPE: Vendors.</param>
-        /// <param name="categories">Categories that the vendor has available, and references to the sales therein.  COMPONENT TYPE: VendorCategories.</param>
-        /// <param name="sales">Sales, keyed by the vendorItemIndex of the item being sold.  COMPONENT TYPE: VendorSales.</param>
-        /// <param name="itemComponents">Item components, keyed by the vendorItemIndex of the active sale items.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.].</param>
-        /// <param name="currencyLookups">A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups.</param>
-        public DestinyResponsesDestinyVendorResponse(Object vendor = default(Object), Object categories = default(Object), Object sales = default(Object), Object itemComponents = default(Object), Object currencyLookups = default(Object))
+        /// <param name="Vendor">The base properties of the vendor.  COMPONENT TYPE: Vendors.</param>
+        /// <param name="Categories">Categories that the vendor has available, and references to the sales therein.  COMPONENT TYPE: VendorCategories.</param>
+        /// <param name="Sales">Sales, keyed by the vendorItemIndex of the item being sold.  COMPONENT TYPE: VendorSales.</param>
+        /// <param name="ItemComponents">Item components, keyed by the vendorItemIndex of the active sale items.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.].</param>
+        /// <param name="CurrencyLookups">A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups.</param>
+        public DestinyResponsesDestinyVendorResponse(SingleComponentResponseOfDestinyVendorComponent Vendor = default(SingleComponentResponseOfDestinyVendorComponent), SingleComponentResponseOfDestinyVendorCategoriesComponent Categories = default(SingleComponentResponseOfDestinyVendorCategoriesComponent), DictionaryComponentResponseOfint32AndDestinyVendorSaleItemComponent Sales = default(DictionaryComponentResponseOfint32AndDestinyVendorSaleItemComponent), DestinyItemComponentSetOfint32 ItemComponents = default(DestinyItemComponentSetOfint32), SingleComponentResponseOfDestinyCurrenciesComponent CurrencyLookups = default(SingleComponentResponseOfDestinyCurrenciesComponent))
         {
-            this.Vendor = vendor;
-            this.Categories = categories;
-            this.Sales = sales;
-            this.ItemComponents = itemComponents;
-            this.CurrencyLookups = currencyLookups;
+            this.Vendor = Vendor;
+            this.Categories = Categories;
+            this.Sales = Sales;
+            this.ItemComponents = ItemComponents;
+            this.CurrencyLookups = CurrencyLookups;
         }
         
         /// <summary>
@@ -52,35 +52,35 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The base properties of the vendor.  COMPONENT TYPE: Vendors</value>
         [DataMember(Name="vendor", EmitDefaultValue=false)]
-        public Object Vendor { get; set; }
+        public SingleComponentResponseOfDestinyVendorComponent Vendor { get; set; }
 
         /// <summary>
         /// Categories that the vendor has available, and references to the sales therein.  COMPONENT TYPE: VendorCategories
         /// </summary>
         /// <value>Categories that the vendor has available, and references to the sales therein.  COMPONENT TYPE: VendorCategories</value>
         [DataMember(Name="categories", EmitDefaultValue=false)]
-        public Object Categories { get; set; }
+        public SingleComponentResponseOfDestinyVendorCategoriesComponent Categories { get; set; }
 
         /// <summary>
         /// Sales, keyed by the vendorItemIndex of the item being sold.  COMPONENT TYPE: VendorSales
         /// </summary>
         /// <value>Sales, keyed by the vendorItemIndex of the item being sold.  COMPONENT TYPE: VendorSales</value>
         [DataMember(Name="sales", EmitDefaultValue=false)]
-        public Object Sales { get; set; }
+        public DictionaryComponentResponseOfint32AndDestinyVendorSaleItemComponent Sales { get; set; }
 
         /// <summary>
         /// Item components, keyed by the vendorItemIndex of the active sale items.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
         /// </summary>
         /// <value>Item components, keyed by the vendorItemIndex of the active sale items.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]</value>
         [DataMember(Name="itemComponents", EmitDefaultValue=false)]
-        public Object ItemComponents { get; set; }
+        public DestinyItemComponentSetOfint32 ItemComponents { get; set; }
 
         /// <summary>
         /// A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups
         /// </summary>
         /// <value>A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups</value>
         [DataMember(Name="currencyLookups", EmitDefaultValue=false)]
-        public Object CurrencyLookups { get; set; }
+        public SingleComponentResponseOfDestinyCurrenciesComponent CurrencyLookups { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

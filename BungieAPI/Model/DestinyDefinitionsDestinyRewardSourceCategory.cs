@@ -28,35 +28,33 @@ namespace BungieAPI.Model
     /// BNet&#39;s custom categorization of reward sources. We took a look at the existing ways that items could be spawned, and tried to make high-level categorizations of them. This needs to be re-evaluated for Destiny 2.
     /// </summary>
     /// <value>BNet&#39;s custom categorization of reward sources. We took a look at the existing ways that items could be spawned, and tried to make high-level categorizations of them. This needs to be re-evaluated for Destiny 2.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDefinitionsDestinyRewardSourceCategory
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// The source doesn&#39;t fit well into any of the other types.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// The source is directly related to the rewards gained by playing an activity or set of activities. This currently includes Quests and other action in-game.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Activity,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// This source is directly related to items that Vendors sell.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Vendor,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4
+		/// <summary>
+		/// This source is a custom aggregation of items that can be earned in many ways, but that share some other property in common that is useful to share. For instance, in Destiny 1 we would make &quot;Reward Sources&quot; for every game expansion: that way, you could search reward sources to see what items became available with any given Expansion.
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Aggregate
     }
 
 }

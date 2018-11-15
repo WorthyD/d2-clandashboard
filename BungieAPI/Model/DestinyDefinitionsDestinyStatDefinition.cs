@@ -33,22 +33,22 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyStatDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="aggregationType">Stats can exist on a character or an item, and they may potentially be aggregated in different ways. The DestinyStatAggregationType enum value indicates the way that this stat is being aggregated..</param>
-        /// <param name="hasComputedBlock">True if the stat is computed rather than being delivered as a raw value on items.  For instance, the Light stat in Destiny 1 was a computed stat..</param>
-        /// <param name="statCategory">The category of the stat, according to the game..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyStatDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), Object aggregationType = default(Object), bool? hasComputedBlock = default(bool?), Object statCategory = default(Object), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="AggregationType">Stats can exist on a character or an item, and they may potentially be aggregated in different ways. The DestinyStatAggregationType enum value indicates the way that this stat is being aggregated..</param>
+        /// <param name="HasComputedBlock">True if the stat is computed rather than being delivered as a raw value on items.  For instance, the Light stat in Destiny 1 was a computed stat..</param>
+        /// <param name="StatCategory">The category of the stat, according to the game..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyStatDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), DestinyDestinyStatAggregationType AggregationType = default(DestinyDestinyStatAggregationType), bool? HasComputedBlock = default(bool?), DestinyDestinyStatCategory StatCategory = default(DestinyDestinyStatCategory), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.AggregationType = aggregationType;
-            this.HasComputedBlock = hasComputedBlock;
-            this.StatCategory = statCategory;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.AggregationType = AggregationType;
+            this.HasComputedBlock = HasComputedBlock;
+            this.StatCategory = StatCategory;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Stats can exist on a character or an item, and they may potentially be aggregated in different ways. The DestinyStatAggregationType enum value indicates the way that this stat is being aggregated.</value>
         [DataMember(Name="aggregationType", EmitDefaultValue=false)]
-        public Object AggregationType { get; set; }
+        public DestinyDestinyStatAggregationType AggregationType { get; set; }
 
         /// <summary>
         /// True if the stat is computed rather than being delivered as a raw value on items.  For instance, the Light stat in Destiny 1 was a computed stat.
@@ -76,14 +76,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The category of the stat, according to the game.</value>
         [DataMember(Name="statCategory", EmitDefaultValue=false)]
-        public Object StatCategory { get; set; }
+        public DestinyDestinyStatCategory StatCategory { get; set; }
 
         /// <summary>
         /// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -122,7 +122,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

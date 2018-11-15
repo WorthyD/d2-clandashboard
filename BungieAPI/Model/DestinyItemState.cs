@@ -28,35 +28,33 @@ namespace BungieAPI.Model
     /// A flags enumeration where each bit represents a different possible state that the item can be in that may effect how the item is displayed to the user and what actions can be performed against it.
     /// </summary>
     /// <value>A flags enumeration where each bit represents a different possible state that the item can be in that may effect how the item is displayed to the user and what actions can be performed against it.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyItemState
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// A flags enumeration where each bit represents a different possible state that the item can be in that may effect how the item is displayed to the user and what actions can be performed against it.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// If this bit is set, the item has been &quot;locked&quot; by the user and cannot be deleted. You may want to represent this visually with a &quot;lock&quot; icon.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Locked,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// If this bit is set, the item is a quest that&#39;s being tracked by the user. You may want a visual indicator to show that this is a tracked quest.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Tracked,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 4
+		/// <summary>
+		/// If this bit is set, the item has a Masterwork plug inserted. This usually coincides with having a special &quot;glowing&quot; effect applied to the item&#39;s icon.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        Masterwork
     }
 
 }

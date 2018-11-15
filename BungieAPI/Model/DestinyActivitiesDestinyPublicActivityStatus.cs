@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyActivitiesDestinyPublicActivityStatus" /> class.
         /// </summary>
-        /// <param name="challengeObjectiveHashes">Active Challenges for the activity, if any - represented as hashes for DestinyObjectiveDefinitions..</param>
-        /// <param name="modifierHashes">The active modifiers on this activity, if any - represented as hashes for DestinyActivityModifierDefinitions..</param>
-        /// <param name="rewardTooltipItems">If the activity itself provides any specific \&quot;mock\&quot; rewards, this will be the items and their quantity.  Why \&quot;mock\&quot;, you ask? Because these are the rewards as they are represented in the tooltip of the Activity.  These are often pointers to fake items that look good in a tooltip, but represent an abstract concept of what you will get for a reward rather than the specific items you may obtain..</param>
-        public DestinyActivitiesDestinyPublicActivityStatus(List<int?> challengeObjectiveHashes = default(List<int?>), List<int?> modifierHashes = default(List<int?>), List<DestinyDestinyItemQuantity> rewardTooltipItems = default(List<DestinyDestinyItemQuantity>))
+        /// <param name="ChallengeObjectiveHashes">Active Challenges for the activity, if any - represented as hashes for DestinyObjectiveDefinitions..</param>
+        /// <param name="ModifierHashes">The active modifiers on this activity, if any - represented as hashes for DestinyActivityModifierDefinitions..</param>
+        /// <param name="RewardTooltipItems">If the activity itself provides any specific \&quot;mock\&quot; rewards, this will be the items and their quantity.  Why \&quot;mock\&quot;, you ask? Because these are the rewards as they are represented in the tooltip of the Activity.  These are often pointers to fake items that look good in a tooltip, but represent an abstract concept of what you will get for a reward rather than the specific items you may obtain..</param>
+        public DestinyActivitiesDestinyPublicActivityStatus(List<uint?> ChallengeObjectiveHashes = default(List<uint?>), List<uint?> ModifierHashes = default(List<uint?>), List<DestinyDestinyItemQuantity> RewardTooltipItems = default(List<DestinyDestinyItemQuantity>))
         {
-            this.ChallengeObjectiveHashes = challengeObjectiveHashes;
-            this.ModifierHashes = modifierHashes;
-            this.RewardTooltipItems = rewardTooltipItems;
+            this.ChallengeObjectiveHashes = ChallengeObjectiveHashes;
+            this.ModifierHashes = ModifierHashes;
+            this.RewardTooltipItems = RewardTooltipItems;
         }
         
         /// <summary>
@@ -48,14 +48,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Active Challenges for the activity, if any - represented as hashes for DestinyObjectiveDefinitions.</value>
         [DataMember(Name="challengeObjectiveHashes", EmitDefaultValue=false)]
-        public List<int?> ChallengeObjectiveHashes { get; set; }
+        public List<uint?> ChallengeObjectiveHashes { get; set; }
 
         /// <summary>
         /// The active modifiers on this activity, if any - represented as hashes for DestinyActivityModifierDefinitions.
         /// </summary>
         /// <value>The active modifiers on this activity, if any - represented as hashes for DestinyActivityModifierDefinitions.</value>
         [DataMember(Name="modifierHashes", EmitDefaultValue=false)]
-        public List<int?> ModifierHashes { get; set; }
+        public List<uint?> ModifierHashes { get; set; }
 
         /// <summary>
         /// If the activity itself provides any specific \&quot;mock\&quot; rewards, this will be the items and their quantity.  Why \&quot;mock\&quot;, you ask? Because these are the rewards as they are represented in the tooltip of the Activity.  These are often pointers to fake items that look good in a tooltip, but represent an abstract concept of what you will get for a reward rather than the specific items you may obtain.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyActivityMatchmakingBlockDefinition" /> class.
         /// </summary>
-        /// <param name="isMatchmade">If TRUE, the activity is matchmade. Otherwise, it requires explicit forming of a party..</param>
-        /// <param name="minParty">The minimum # of people in the fireteam for the activity to launch..</param>
-        /// <param name="maxParty">The maximum # of people allowed in a Fireteam..</param>
-        /// <param name="maxPlayers">The maximum # of people allowed across all teams in the activity..</param>
-        /// <param name="requiresGuardianOath">If true, you have to Solemnly Swear to be up to Nothing But Good(tm) to play..</param>
-        public DestinyDefinitionsDestinyActivityMatchmakingBlockDefinition(bool? isMatchmade = default(bool?), int? minParty = default(int?), int? maxParty = default(int?), int? maxPlayers = default(int?), bool? requiresGuardianOath = default(bool?))
+        /// <param name="IsMatchmade">If TRUE, the activity is matchmade. Otherwise, it requires explicit forming of a party..</param>
+        /// <param name="MinParty">The minimum # of people in the fireteam for the activity to launch..</param>
+        /// <param name="MaxParty">The maximum # of people allowed in a Fireteam..</param>
+        /// <param name="MaxPlayers">The maximum # of people allowed across all teams in the activity..</param>
+        /// <param name="RequiresGuardianOath">If true, you have to Solemnly Swear to be up to Nothing But Good(tm) to play..</param>
+        public DestinyDefinitionsDestinyActivityMatchmakingBlockDefinition(bool? IsMatchmade = default(bool?), int? MinParty = default(int?), int? MaxParty = default(int?), int? MaxPlayers = default(int?), bool? RequiresGuardianOath = default(bool?))
         {
-            this.IsMatchmade = isMatchmade;
-            this.MinParty = minParty;
-            this.MaxParty = maxParty;
-            this.MaxPlayers = maxPlayers;
-            this.RequiresGuardianOath = requiresGuardianOath;
+            this.IsMatchmade = IsMatchmade;
+            this.MinParty = MinParty;
+            this.MaxParty = MaxParty;
+            this.MaxPlayers = MaxPlayers;
+            this.RequiresGuardianOath = RequiresGuardianOath;
         }
         
         /// <summary>
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationsApiUsage" /> class.
         /// </summary>
-        /// <param name="range">The date range for the data being reported..</param>
-        /// <param name="apiCalls">Counts for on API calls made for the time range..</param>
-        /// <param name="throttledRequests">Instances of blocked requests or requests that crossed the warn threshold during the time range..</param>
-        public ApplicationsApiUsage(Object range = default(Object), List<ApplicationsSeries> apiCalls = default(List<ApplicationsSeries>), List<ApplicationsSeries> throttledRequests = default(List<ApplicationsSeries>))
+        /// <param name="Range">The date range for the data being reported..</param>
+        /// <param name="ApiCalls">Counts for on API calls made for the time range..</param>
+        /// <param name="ThrottledRequests">Instances of blocked requests or requests that crossed the warn threshold during the time range..</param>
+        public ApplicationsApiUsage(DatesDateRange Range = default(DatesDateRange), List<ApplicationsSeries> ApiCalls = default(List<ApplicationsSeries>), List<ApplicationsSeries> ThrottledRequests = default(List<ApplicationsSeries>))
         {
-            this.Range = range;
-            this.ApiCalls = apiCalls;
-            this.ThrottledRequests = throttledRequests;
+            this.Range = Range;
+            this.ApiCalls = ApiCalls;
+            this.ThrottledRequests = ThrottledRequests;
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The date range for the data being reported.</value>
         [DataMember(Name="range", EmitDefaultValue=false)]
-        public Object Range { get; set; }
+        public DatesDateRange Range { get; set; }
 
         /// <summary>
         /// Counts for on API calls made for the time range.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

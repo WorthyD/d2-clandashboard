@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorInteractionReplyDefinition" /> class.
         /// </summary>
-        /// <param name="itemRewardsSelection">The rewards granted upon responding to the vendor..</param>
-        /// <param name="reply">The localized text for the reply..</param>
-        /// <param name="replyType">An enum indicating the type of reply being made..</param>
-        public DestinyDefinitionsDestinyVendorInteractionReplyDefinition(Object itemRewardsSelection = default(Object), string reply = default(string), Object replyType = default(Object))
+        /// <param name="ItemRewardsSelection">The rewards granted upon responding to the vendor..</param>
+        /// <param name="Reply">The localized text for the reply..</param>
+        /// <param name="ReplyType">An enum indicating the type of reply being made..</param>
+        public DestinyDefinitionsDestinyVendorInteractionReplyDefinition(DestinyDestinyVendorInteractionRewardSelection ItemRewardsSelection = default(DestinyDestinyVendorInteractionRewardSelection), string Reply = default(string), DestinyDestinyVendorReplyType ReplyType = default(DestinyDestinyVendorReplyType))
         {
-            this.ItemRewardsSelection = itemRewardsSelection;
-            this.Reply = reply;
-            this.ReplyType = replyType;
+            this.ItemRewardsSelection = ItemRewardsSelection;
+            this.Reply = Reply;
+            this.ReplyType = ReplyType;
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The rewards granted upon responding to the vendor.</value>
         [DataMember(Name="itemRewardsSelection", EmitDefaultValue=false)]
-        public Object ItemRewardsSelection { get; set; }
+        public DestinyDestinyVendorInteractionRewardSelection ItemRewardsSelection { get; set; }
 
         /// <summary>
         /// The localized text for the reply.
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>An enum indicating the type of reply being made.</value>
         [DataMember(Name="replyType", EmitDefaultValue=false)]
-        public Object ReplyType { get; set; }
+        public DestinyDestinyVendorReplyType ReplyType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

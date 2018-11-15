@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyHistoricalWeaponStats" /> class.
         /// </summary>
-        /// <param name="referenceId">The hash ID of the item definition that describes the weapon..</param>
-        /// <param name="values">Collection of stats for the period..</param>
-        public DestinyHistoricalStatsDestinyHistoricalWeaponStats(int? referenceId = default(int?), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> values = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>))
+        /// <param name="ReferenceId">The hash ID of the item definition that describes the weapon..</param>
+        /// <param name="Values">Collection of stats for the period..</param>
+        public DestinyHistoricalStatsDestinyHistoricalWeaponStats(uint? ReferenceId = default(uint?), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> Values = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>))
         {
-            this.ReferenceId = referenceId;
-            this.Values = values;
+            this.ReferenceId = ReferenceId;
+            this.Values = Values;
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash ID of the item definition that describes the weapon.</value>
         [DataMember(Name="referenceId", EmitDefaultValue=false)]
-        public int? ReferenceId { get; set; }
+        public uint? ReferenceId { get; set; }
 
         /// <summary>
         /// Collection of stats for the period.
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

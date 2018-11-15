@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDestinyActivity" /> class.
         /// </summary>
-        /// <param name="activityHash">The hash identifier of the Activity. Use this to look up the DestinyActivityDefinition of the activity..</param>
-        /// <param name="isNew">If true, then the activity should have a \&quot;new\&quot; indicator in the Director UI..</param>
-        /// <param name="canLead">If true, the user is allowed to lead a Fireteam into this activity..</param>
-        /// <param name="canJoin">If true, the user is allowed to join with another Fireteam in this activity..</param>
-        /// <param name="isCompleted">If true, we both have the ability to know that the user has completed this activity and they have completed it. Unfortunately, we can&#39;t necessarily know this for all activities. As such, this should probably only be used if you already know in advance which specific activities you wish to check..</param>
-        /// <param name="isVisible">If true, the user should be able to see this activity..</param>
-        /// <param name="displayLevel">The difficulty level of the activity, if applicable..</param>
-        /// <param name="recommendedLight">The recommended light level for the activity, if applicable..</param>
-        /// <param name="difficultyTier">A DestinyActivityDifficultyTier enum value indicating the difficulty of the activity..</param>
-        public DestinyDestinyActivity(int? activityHash = default(int?), bool? isNew = default(bool?), bool? canLead = default(bool?), bool? canJoin = default(bool?), bool? isCompleted = default(bool?), bool? isVisible = default(bool?), int? displayLevel = default(int?), int? recommendedLight = default(int?), Object difficultyTier = default(Object))
+        /// <param name="ActivityHash">The hash identifier of the Activity. Use this to look up the DestinyActivityDefinition of the activity..</param>
+        /// <param name="IsNew">If true, then the activity should have a \&quot;new\&quot; indicator in the Director UI..</param>
+        /// <param name="CanLead">If true, the user is allowed to lead a Fireteam into this activity..</param>
+        /// <param name="CanJoin">If true, the user is allowed to join with another Fireteam in this activity..</param>
+        /// <param name="IsCompleted">If true, we both have the ability to know that the user has completed this activity and they have completed it. Unfortunately, we can&#39;t necessarily know this for all activities. As such, this should probably only be used if you already know in advance which specific activities you wish to check..</param>
+        /// <param name="IsVisible">If true, the user should be able to see this activity..</param>
+        /// <param name="DisplayLevel">The difficulty level of the activity, if applicable..</param>
+        /// <param name="RecommendedLight">The recommended light level for the activity, if applicable..</param>
+        /// <param name="DifficultyTier">A DestinyActivityDifficultyTier enum value indicating the difficulty of the activity..</param>
+        public DestinyDestinyActivity(uint? ActivityHash = default(uint?), bool? IsNew = default(bool?), bool? CanLead = default(bool?), bool? CanJoin = default(bool?), bool? IsCompleted = default(bool?), bool? IsVisible = default(bool?), int? DisplayLevel = default(int?), int? RecommendedLight = default(int?), DestinyDestinyActivityDifficultyTier DifficultyTier = default(DestinyDestinyActivityDifficultyTier))
         {
-            this.ActivityHash = activityHash;
-            this.IsNew = isNew;
-            this.CanLead = canLead;
-            this.CanJoin = canJoin;
-            this.IsCompleted = isCompleted;
-            this.IsVisible = isVisible;
-            this.DisplayLevel = displayLevel;
-            this.RecommendedLight = recommendedLight;
-            this.DifficultyTier = difficultyTier;
+            this.ActivityHash = ActivityHash;
+            this.IsNew = IsNew;
+            this.CanLead = CanLead;
+            this.CanJoin = CanJoin;
+            this.IsCompleted = IsCompleted;
+            this.IsVisible = IsVisible;
+            this.DisplayLevel = DisplayLevel;
+            this.RecommendedLight = RecommendedLight;
+            this.DifficultyTier = DifficultyTier;
         }
         
         /// <summary>
@@ -60,7 +60,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the Activity. Use this to look up the DestinyActivityDefinition of the activity.</value>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// If true, then the activity should have a \&quot;new\&quot; indicator in the Director UI.
@@ -116,7 +116,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A DestinyActivityDifficultyTier enum value indicating the difficulty of the activity.</value>
         [DataMember(Name="difficultyTier", EmitDefaultValue=false)]
-        public Object DifficultyTier { get; set; }
+        public DestinyDestinyActivityDifficultyTier DifficultyTier { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -143,7 +143,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

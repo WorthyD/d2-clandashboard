@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsVendorsDestinyVendorGroupComponent" /> class.
         /// </summary>
-        /// <param name="groups">The ordered list of groups being returned..</param>
-        public DestinyComponentsVendorsDestinyVendorGroupComponent(List<DestinyComponentsVendorsDestinyVendorGroup> groups = default(List<DestinyComponentsVendorsDestinyVendorGroup>))
+        /// <param name="Groups">The ordered list of groups being returned..</param>
+        public DestinyComponentsVendorsDestinyVendorGroupComponent(List<DestinyComponentsVendorsDestinyVendorGroup> Groups = default(List<DestinyComponentsVendorsDestinyVendorGroup>))
         {
-            this.Groups = groups;
+            this.Groups = Groups;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

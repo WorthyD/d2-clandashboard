@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsCollectiblesDestinyProfileCollectiblesComponent" /> class.
         /// </summary>
-        /// <param name="recentCollectibleHashes">The list of collectibles determined by the game as having been \&quot;recently\&quot; acquired..</param>
-        /// <param name="newnessFlaggedCollectibleHashes">The list of collectibles determined by the game as having been \&quot;recently\&quot; acquired.  The game client itself actually controls this data, so I personally question whether anyone will get much use out of this: because we can&#39;t edit this value through the API. But in case anyone finds it useful, here it is..</param>
-        /// <param name="collectibles">collectibles.</param>
-        public DestinyComponentsCollectiblesDestinyProfileCollectiblesComponent(List<int?> recentCollectibleHashes = default(List<int?>), List<int?> newnessFlaggedCollectibleHashes = default(List<int?>), Dictionary<string, DestinyComponentsCollectiblesDestinyCollectibleComponent> collectibles = default(Dictionary<string, DestinyComponentsCollectiblesDestinyCollectibleComponent>))
+        /// <param name="RecentCollectibleHashes">The list of collectibles determined by the game as having been \&quot;recently\&quot; acquired..</param>
+        /// <param name="NewnessFlaggedCollectibleHashes">The list of collectibles determined by the game as having been \&quot;recently\&quot; acquired.  The game client itself actually controls this data, so I personally question whether anyone will get much use out of this: because we can&#39;t edit this value through the API. But in case anyone finds it useful, here it is..</param>
+        /// <param name="Collectibles">Collectibles.</param>
+        public DestinyComponentsCollectiblesDestinyProfileCollectiblesComponent(List<uint?> RecentCollectibleHashes = default(List<uint?>), List<uint?> NewnessFlaggedCollectibleHashes = default(List<uint?>), Dictionary<string, DestinyComponentsCollectiblesDestinyCollectibleComponent> Collectibles = default(Dictionary<string, DestinyComponentsCollectiblesDestinyCollectibleComponent>))
         {
-            this.RecentCollectibleHashes = recentCollectibleHashes;
-            this.NewnessFlaggedCollectibleHashes = newnessFlaggedCollectibleHashes;
-            this.Collectibles = collectibles;
+            this.RecentCollectibleHashes = RecentCollectibleHashes;
+            this.NewnessFlaggedCollectibleHashes = NewnessFlaggedCollectibleHashes;
+            this.Collectibles = Collectibles;
         }
         
         /// <summary>
@@ -48,14 +48,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The list of collectibles determined by the game as having been \&quot;recently\&quot; acquired.</value>
         [DataMember(Name="recentCollectibleHashes", EmitDefaultValue=false)]
-        public List<int?> RecentCollectibleHashes { get; set; }
+        public List<uint?> RecentCollectibleHashes { get; set; }
 
         /// <summary>
         /// The list of collectibles determined by the game as having been \&quot;recently\&quot; acquired.  The game client itself actually controls this data, so I personally question whether anyone will get much use out of this: because we can&#39;t edit this value through the API. But in case anyone finds it useful, here it is.
         /// </summary>
         /// <value>The list of collectibles determined by the game as having been \&quot;recently\&quot; acquired.  The game client itself actually controls this data, so I personally question whether anyone will get much use out of this: because we can&#39;t edit this value through the API. But in case anyone finds it useful, here it is.</value>
         [DataMember(Name="newnessFlaggedCollectibleHashes", EmitDefaultValue=false)]
-        public List<int?> NewnessFlaggedCollectibleHashes { get; set; }
+        public List<uint?> NewnessFlaggedCollectibleHashes { get; set; }
 
         /// <summary>
         /// Gets or Sets Collectibles
@@ -82,7 +82,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

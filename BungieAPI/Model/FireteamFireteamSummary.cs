@@ -33,44 +33,44 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FireteamFireteamSummary" /> class.
         /// </summary>
-        /// <param name="fireteamId">fireteamId.</param>
-        /// <param name="groupId">groupId.</param>
-        /// <param name="platform">platform.</param>
-        /// <param name="activityType">activityType.</param>
-        /// <param name="isImmediate">isImmediate.</param>
-        /// <param name="scheduledTime">scheduledTime.</param>
-        /// <param name="ownerMembershipId">ownerMembershipId.</param>
-        /// <param name="playerSlotCount">playerSlotCount.</param>
-        /// <param name="alternateSlotCount">alternateSlotCount.</param>
-        /// <param name="availablePlayerSlotCount">availablePlayerSlotCount.</param>
-        /// <param name="availableAlternateSlotCount">availableAlternateSlotCount.</param>
-        /// <param name="title">title.</param>
-        /// <param name="dateCreated">dateCreated.</param>
-        /// <param name="dateModified">dateModified.</param>
-        /// <param name="isPublic">isPublic.</param>
-        /// <param name="locale">locale.</param>
-        /// <param name="isValid">isValid.</param>
-        /// <param name="datePlayerModified">datePlayerModified.</param>
-        public FireteamFireteamSummary(long? fireteamId = default(long?), long? groupId = default(long?), FireteamFireteamPlatform platform = default(FireteamFireteamPlatform), FireteamFireteamActivityType activityType = default(FireteamFireteamActivityType), bool? isImmediate = default(bool?), DateTime? scheduledTime = default(DateTime?), long? ownerMembershipId = default(long?), int? playerSlotCount = default(int?), int? alternateSlotCount = default(int?), int? availablePlayerSlotCount = default(int?), int? availableAlternateSlotCount = default(int?), string title = default(string), DateTime? dateCreated = default(DateTime?), DateTime? dateModified = default(DateTime?), bool? isPublic = default(bool?), string locale = default(string), bool? isValid = default(bool?), DateTime? datePlayerModified = default(DateTime?))
+        /// <param name="FireteamId">FireteamId.</param>
+        /// <param name="GroupId">GroupId.</param>
+        /// <param name="Platform">Platform.</param>
+        /// <param name="ActivityType">ActivityType.</param>
+        /// <param name="IsImmediate">IsImmediate.</param>
+        /// <param name="ScheduledTime">ScheduledTime.</param>
+        /// <param name="OwnerMembershipId">OwnerMembershipId.</param>
+        /// <param name="PlayerSlotCount">PlayerSlotCount.</param>
+        /// <param name="AlternateSlotCount">AlternateSlotCount.</param>
+        /// <param name="AvailablePlayerSlotCount">AvailablePlayerSlotCount.</param>
+        /// <param name="AvailableAlternateSlotCount">AvailableAlternateSlotCount.</param>
+        /// <param name="Title">Title.</param>
+        /// <param name="DateCreated">DateCreated.</param>
+        /// <param name="DateModified">DateModified.</param>
+        /// <param name="IsPublic">IsPublic.</param>
+        /// <param name="Locale">Locale.</param>
+        /// <param name="IsValid">IsValid.</param>
+        /// <param name="DatePlayerModified">DatePlayerModified.</param>
+        public FireteamFireteamSummary(long? FireteamId = default(long?), long? GroupId = default(long?), FireteamFireteamPlatform Platform = default(FireteamFireteamPlatform), FireteamFireteamActivityType ActivityType = default(FireteamFireteamActivityType), bool? IsImmediate = default(bool?), DateTime? ScheduledTime = default(DateTime?), long? OwnerMembershipId = default(long?), int? PlayerSlotCount = default(int?), int? AlternateSlotCount = default(int?), int? AvailablePlayerSlotCount = default(int?), int? AvailableAlternateSlotCount = default(int?), string Title = default(string), DateTime? DateCreated = default(DateTime?), DateTime? DateModified = default(DateTime?), bool? IsPublic = default(bool?), string Locale = default(string), bool? IsValid = default(bool?), DateTime? DatePlayerModified = default(DateTime?))
         {
-            this.FireteamId = fireteamId;
-            this.GroupId = groupId;
-            this.Platform = platform;
-            this.ActivityType = activityType;
-            this.IsImmediate = isImmediate;
-            this.ScheduledTime = scheduledTime;
-            this.OwnerMembershipId = ownerMembershipId;
-            this.PlayerSlotCount = playerSlotCount;
-            this.AlternateSlotCount = alternateSlotCount;
-            this.AvailablePlayerSlotCount = availablePlayerSlotCount;
-            this.AvailableAlternateSlotCount = availableAlternateSlotCount;
-            this.Title = title;
-            this.DateCreated = dateCreated;
-            this.DateModified = dateModified;
-            this.IsPublic = isPublic;
-            this.Locale = locale;
-            this.IsValid = isValid;
-            this.DatePlayerModified = datePlayerModified;
+            this.FireteamId = FireteamId;
+            this.GroupId = GroupId;
+            this.Platform = Platform;
+            this.ActivityType = ActivityType;
+            this.IsImmediate = IsImmediate;
+            this.ScheduledTime = ScheduledTime;
+            this.OwnerMembershipId = OwnerMembershipId;
+            this.PlayerSlotCount = PlayerSlotCount;
+            this.AlternateSlotCount = AlternateSlotCount;
+            this.AvailablePlayerSlotCount = AvailablePlayerSlotCount;
+            this.AvailableAlternateSlotCount = AvailableAlternateSlotCount;
+            this.Title = Title;
+            this.DateCreated = DateCreated;
+            this.DateModified = DateModified;
+            this.IsPublic = IsPublic;
+            this.Locale = Locale;
+            this.IsValid = IsValid;
+            this.DatePlayerModified = DatePlayerModified;
         }
         
         /// <summary>
@@ -215,7 +215,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,40 +33,40 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsPresentationDestinyPresentationNodeDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="originalIcon">The original icon for this presentation node, before we futzed with it..</param>
-        /// <param name="rootViewIcon">Some presentation nodes are meant to be explicitly shown on the \&quot;root\&quot; or \&quot;entry\&quot; screens for the feature to which they are related. You should use this icon when showing them on such a view, if you have a similar \&quot;entry point\&quot; view in your UI. If you don&#39;t have a UI, then I guess it doesn&#39;t matter either way does it?.</param>
-        /// <param name="nodeType">nodeType.</param>
-        /// <param name="scope">Indicates whether this presentation node&#39;s state is determined on a per-character or on an account-wide basis..</param>
-        /// <param name="objectiveHash">If this presentation node shows a related objective (for instance, if it tracks the progress of its children), the objective being tracked is indicated here..</param>
-        /// <param name="completionRecordHash">If this presentation node has an associated \&quot;Record\&quot; that you can accomplish for completing its children, this is the identifier of that Record..</param>
-        /// <param name="children">The child entities contained by this presentation node..</param>
-        /// <param name="displayStyle">A hint for how to display this presentation node when it&#39;s shown in a list..</param>
-        /// <param name="screenStyle">A hint for how to display this presentation node when it&#39;s shown in its own detail screen..</param>
-        /// <param name="requirements">The requirements for being able to interact with this presentation node and its children..</param>
-        /// <param name="disableChildSubscreenNavigation">If this presentation node has children, but the game doesn&#39;t let you inspect the details of those children, that is indicated here..</param>
-        /// <param name="parentNodeHashes">A quick reference to presentation nodes that have this node as a child. (presentation nodes can be parented under multiple parents).</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsPresentationDestinyPresentationNodeDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string originalIcon = default(string), string rootViewIcon = default(string), DestinyDestinyPresentationNodeType nodeType = default(DestinyDestinyPresentationNodeType), Object scope = default(Object), int? objectiveHash = default(int?), int? completionRecordHash = default(int?), Object children = default(Object), Object displayStyle = default(Object), Object screenStyle = default(Object), Object requirements = default(Object), bool? disableChildSubscreenNavigation = default(bool?), List<int?> parentNodeHashes = default(List<int?>), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="OriginalIcon">The original icon for this presentation node, before we futzed with it..</param>
+        /// <param name="RootViewIcon">Some presentation nodes are meant to be explicitly shown on the \&quot;root\&quot; or \&quot;entry\&quot; screens for the feature to which they are related. You should use this icon when showing them on such a view, if you have a similar \&quot;entry point\&quot; view in your UI. If you don&#39;t have a UI, then I guess it doesn&#39;t matter either way does it?.</param>
+        /// <param name="NodeType">NodeType.</param>
+        /// <param name="Scope">Indicates whether this presentation node&#39;s state is determined on a per-character or on an account-wide basis..</param>
+        /// <param name="ObjectiveHash">If this presentation node shows a related objective (for instance, if it tracks the progress of its children), the objective being tracked is indicated here..</param>
+        /// <param name="CompletionRecordHash">If this presentation node has an associated \&quot;Record\&quot; that you can accomplish for completing its children, this is the identifier of that Record..</param>
+        /// <param name="Children">The child entities contained by this presentation node..</param>
+        /// <param name="DisplayStyle">A hint for how to display this presentation node when it&#39;s shown in a list..</param>
+        /// <param name="ScreenStyle">A hint for how to display this presentation node when it&#39;s shown in its own detail screen..</param>
+        /// <param name="Requirements">The requirements for being able to interact with this presentation node and its children..</param>
+        /// <param name="DisableChildSubscreenNavigation">If this presentation node has children, but the game doesn&#39;t let you inspect the details of those children, that is indicated here..</param>
+        /// <param name="ParentNodeHashes">A quick reference to presentation nodes that have this node as a child. (presentation nodes can be parented under multiple parents).</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsPresentationDestinyPresentationNodeDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string OriginalIcon = default(string), string RootViewIcon = default(string), DestinyDestinyPresentationNodeType NodeType = default(DestinyDestinyPresentationNodeType), DestinyDestinyScope Scope = default(DestinyDestinyScope), uint? ObjectiveHash = default(uint?), uint? CompletionRecordHash = default(uint?), DestinyDefinitionsPresentationDestinyPresentationNodeChildrenBlock Children = default(DestinyDefinitionsPresentationDestinyPresentationNodeChildrenBlock), DestinyDestinyPresentationDisplayStyle DisplayStyle = default(DestinyDestinyPresentationDisplayStyle), DestinyDestinyPresentationScreenStyle ScreenStyle = default(DestinyDestinyPresentationScreenStyle), DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock Requirements = default(DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock), bool? DisableChildSubscreenNavigation = default(bool?), List<uint?> ParentNodeHashes = default(List<uint?>), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.OriginalIcon = originalIcon;
-            this.RootViewIcon = rootViewIcon;
-            this.NodeType = nodeType;
-            this.Scope = scope;
-            this.ObjectiveHash = objectiveHash;
-            this.CompletionRecordHash = completionRecordHash;
-            this.Children = children;
-            this.DisplayStyle = displayStyle;
-            this.ScreenStyle = screenStyle;
-            this.Requirements = requirements;
-            this.DisableChildSubscreenNavigation = disableChildSubscreenNavigation;
-            this.ParentNodeHashes = parentNodeHashes;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.OriginalIcon = OriginalIcon;
+            this.RootViewIcon = RootViewIcon;
+            this.NodeType = NodeType;
+            this.Scope = Scope;
+            this.ObjectiveHash = ObjectiveHash;
+            this.CompletionRecordHash = CompletionRecordHash;
+            this.Children = Children;
+            this.DisplayStyle = DisplayStyle;
+            this.ScreenStyle = ScreenStyle;
+            this.Requirements = Requirements;
+            this.DisableChildSubscreenNavigation = DisableChildSubscreenNavigation;
+            this.ParentNodeHashes = ParentNodeHashes;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -100,49 +100,49 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Indicates whether this presentation node&#39;s state is determined on a per-character or on an account-wide basis.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Object Scope { get; set; }
+        public DestinyDestinyScope Scope { get; set; }
 
         /// <summary>
         /// If this presentation node shows a related objective (for instance, if it tracks the progress of its children), the objective being tracked is indicated here.
         /// </summary>
         /// <value>If this presentation node shows a related objective (for instance, if it tracks the progress of its children), the objective being tracked is indicated here.</value>
         [DataMember(Name="objectiveHash", EmitDefaultValue=false)]
-        public int? ObjectiveHash { get; set; }
+        public uint? ObjectiveHash { get; set; }
 
         /// <summary>
         /// If this presentation node has an associated \&quot;Record\&quot; that you can accomplish for completing its children, this is the identifier of that Record.
         /// </summary>
         /// <value>If this presentation node has an associated \&quot;Record\&quot; that you can accomplish for completing its children, this is the identifier of that Record.</value>
         [DataMember(Name="completionRecordHash", EmitDefaultValue=false)]
-        public int? CompletionRecordHash { get; set; }
+        public uint? CompletionRecordHash { get; set; }
 
         /// <summary>
         /// The child entities contained by this presentation node.
         /// </summary>
         /// <value>The child entities contained by this presentation node.</value>
         [DataMember(Name="children", EmitDefaultValue=false)]
-        public Object Children { get; set; }
+        public DestinyDefinitionsPresentationDestinyPresentationNodeChildrenBlock Children { get; set; }
 
         /// <summary>
         /// A hint for how to display this presentation node when it&#39;s shown in a list.
         /// </summary>
         /// <value>A hint for how to display this presentation node when it&#39;s shown in a list.</value>
         [DataMember(Name="displayStyle", EmitDefaultValue=false)]
-        public Object DisplayStyle { get; set; }
+        public DestinyDestinyPresentationDisplayStyle DisplayStyle { get; set; }
 
         /// <summary>
         /// A hint for how to display this presentation node when it&#39;s shown in its own detail screen.
         /// </summary>
         /// <value>A hint for how to display this presentation node when it&#39;s shown in its own detail screen.</value>
         [DataMember(Name="screenStyle", EmitDefaultValue=false)]
-        public Object ScreenStyle { get; set; }
+        public DestinyDestinyPresentationScreenStyle ScreenStyle { get; set; }
 
         /// <summary>
         /// The requirements for being able to interact with this presentation node and its children.
         /// </summary>
         /// <value>The requirements for being able to interact with this presentation node and its children.</value>
         [DataMember(Name="requirements", EmitDefaultValue=false)]
-        public Object Requirements { get; set; }
+        public DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock Requirements { get; set; }
 
         /// <summary>
         /// If this presentation node has children, but the game doesn&#39;t let you inspect the details of those children, that is indicated here.
@@ -156,14 +156,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A quick reference to presentation nodes that have this node as a child. (presentation nodes can be parented under multiple parents)</value>
         [DataMember(Name="parentNodeHashes", EmitDefaultValue=false)]
-        public List<int?> ParentNodeHashes { get; set; }
+        public List<uint?> ParentNodeHashes { get; set; }
 
         /// <summary>
         /// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -211,7 +211,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

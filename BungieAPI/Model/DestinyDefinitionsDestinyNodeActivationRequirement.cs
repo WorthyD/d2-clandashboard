@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyNodeActivationRequirement" /> class.
         /// </summary>
-        /// <param name="gridLevel">The Progression level on the Talent Grid required to activate this node.  See DestinyTalentGridDefinition.progressionHash for the related Progression, and read DestinyProgressionDefinition&#39;s documentation to learn more about Progressions..</param>
-        /// <param name="materialRequirementHashes">The list of hash identifiers for material requirement sets: materials that are required for the node to be activated. See DestinyMaterialRequirementSetDefinition for more information about material requirements.  In this case, only a single DestinyMaterialRequirementSetDefinition will be chosen from this list, and we won&#39;t know which one will be chosen until an instance of the item is created..</param>
-        public DestinyDefinitionsDestinyNodeActivationRequirement(int? gridLevel = default(int?), List<int?> materialRequirementHashes = default(List<int?>))
+        /// <param name="GridLevel">The Progression level on the Talent Grid required to activate this node.  See DestinyTalentGridDefinition.progressionHash for the related Progression, and read DestinyProgressionDefinition&#39;s documentation to learn more about Progressions..</param>
+        /// <param name="MaterialRequirementHashes">The list of hash identifiers for material requirement sets: materials that are required for the node to be activated. See DestinyMaterialRequirementSetDefinition for more information about material requirements.  In this case, only a single DestinyMaterialRequirementSetDefinition will be chosen from this list, and we won&#39;t know which one will be chosen until an instance of the item is created..</param>
+        public DestinyDefinitionsDestinyNodeActivationRequirement(int? GridLevel = default(int?), List<uint?> MaterialRequirementHashes = default(List<uint?>))
         {
-            this.GridLevel = gridLevel;
-            this.MaterialRequirementHashes = materialRequirementHashes;
+            this.GridLevel = GridLevel;
+            this.MaterialRequirementHashes = MaterialRequirementHashes;
         }
         
         /// <summary>
@@ -53,7 +53,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The list of hash identifiers for material requirement sets: materials that are required for the node to be activated. See DestinyMaterialRequirementSetDefinition for more information about material requirements.  In this case, only a single DestinyMaterialRequirementSetDefinition will be chosen from this list, and we won&#39;t know which one will be chosen until an instance of the item is created.</value>
         [DataMember(Name="materialRequirementHashes", EmitDefaultValue=false)]
-        public List<int?> MaterialRequirementHashes { get; set; }
+        public List<uint?> MaterialRequirementHashes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

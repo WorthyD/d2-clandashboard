@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemGearsetBlockDefinition" /> class.
         /// </summary>
-        /// <param name="trackingValueMax">The maximum possible number of items that can be collected..</param>
-        /// <param name="itemList">The list of hashes for items in the gearset. Use them to look up DestinyInventoryItemDefinition entries for the items in the set..</param>
-        public DestinyDefinitionsDestinyItemGearsetBlockDefinition(int? trackingValueMax = default(int?), List<int?> itemList = default(List<int?>))
+        /// <param name="TrackingValueMax">The maximum possible number of items that can be collected..</param>
+        /// <param name="ItemList">The list of hashes for items in the gearset. Use them to look up DestinyInventoryItemDefinition entries for the items in the set..</param>
+        public DestinyDefinitionsDestinyItemGearsetBlockDefinition(int? TrackingValueMax = default(int?), List<uint?> ItemList = default(List<uint?>))
         {
-            this.TrackingValueMax = trackingValueMax;
-            this.ItemList = itemList;
+            this.TrackingValueMax = TrackingValueMax;
+            this.ItemList = ItemList;
         }
         
         /// <summary>
@@ -53,7 +53,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The list of hashes for items in the gearset. Use them to look up DestinyInventoryItemDefinition entries for the items in the set.</value>
         [DataMember(Name="itemList", EmitDefaultValue=false)]
-        public List<int?> ItemList { get; set; }
+        public List<uint?> ItemList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

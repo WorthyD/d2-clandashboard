@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyFactionVendorDefinition" /> class.
         /// </summary>
-        /// <param name="vendorHash">The faction vendor hash..</param>
-        /// <param name="destinationHash">The hash identifier for a Destination at which this vendor may be located. Each destination where a Vendor may exist will only ever have a single entry..</param>
-        /// <param name="backgroundImagePath">The relative path to the background image representing this Vendor at this location, for use in a banner..</param>
-        public DestinyDefinitionsDestinyFactionVendorDefinition(int? vendorHash = default(int?), int? destinationHash = default(int?), string backgroundImagePath = default(string))
+        /// <param name="VendorHash">The faction vendor hash..</param>
+        /// <param name="DestinationHash">The hash identifier for a Destination at which this vendor may be located. Each destination where a Vendor may exist will only ever have a single entry..</param>
+        /// <param name="BackgroundImagePath">The relative path to the background image representing this Vendor at this location, for use in a banner..</param>
+        public DestinyDefinitionsDestinyFactionVendorDefinition(uint? VendorHash = default(uint?), uint? DestinationHash = default(uint?), string BackgroundImagePath = default(string))
         {
-            this.VendorHash = vendorHash;
-            this.DestinationHash = destinationHash;
-            this.BackgroundImagePath = backgroundImagePath;
+            this.VendorHash = VendorHash;
+            this.DestinationHash = DestinationHash;
+            this.BackgroundImagePath = BackgroundImagePath;
         }
         
         /// <summary>
@@ -48,14 +48,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The faction vendor hash.</value>
         [DataMember(Name="vendorHash", EmitDefaultValue=false)]
-        public int? VendorHash { get; set; }
+        public uint? VendorHash { get; set; }
 
         /// <summary>
         /// The hash identifier for a Destination at which this vendor may be located. Each destination where a Vendor may exist will only ever have a single entry.
         /// </summary>
         /// <value>The hash identifier for a Destination at which this vendor may be located. Each destination where a Vendor may exist will only ever have a single entry.</value>
         [DataMember(Name="destinationHash", EmitDefaultValue=false)]
-        public int? DestinationHash { get; set; }
+        public uint? DestinationHash { get; set; }
 
         /// <summary>
         /// The relative path to the background image representing this Vendor at this location, for use in a banner.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

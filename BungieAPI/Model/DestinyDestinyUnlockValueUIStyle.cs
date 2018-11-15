@@ -28,71 +28,69 @@ namespace BungieAPI.Model
     /// If you&#39;re showing an unlock value in the UI, this is the format in which it should be shown. You&#39;ll have to build your own algorithms on the client side to determine how best to render these options.
     /// </summary>
     /// <value>If you&#39;re showing an unlock value in the UI, this is the format in which it should be shown. You&#39;ll have to build your own algorithms on the client side to determine how best to render these options.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyUnlockValueUIStyle
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// Generally, Automatic means &quot;Just show the number&quot;
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Automatic,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// Show the number as a fractional value. For this to make sense, the value being displayed should have a comparable upper bound, like the progress to the next level of a Progression.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Fraction,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// Show the number as a checkbox. 0 Will mean unchecked, any other value will mean checked.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Checkbox,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4,
+		/// <summary>
+		/// Show the number as a percentage. For this to make sense, the value being displayed should have a comparable upper bound, like the progress to the next level of a Progression.
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Percentage,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 5,
+		/// <summary>
+		/// Show the number as a date and time. The number will be the number of seconds since the Unix Epoch (January 1st, 1970 at midnight UTC). It&#39;ll be up to you to convert this into a date and time format understandable to the user in their time zone.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        DateTime,
         
-        /// <summary>
-        /// Enum NUMBER_5 for value: 5
-        /// </summary>
-        [EnumMember(Value = "5")]
-        NUMBER_5 = 6,
+		/// <summary>
+		/// Show the number as a floating point value that represents a fraction, where 0 is min and 1 is max. For this to make sense, the value being displayed should have a comparable upper bound, like the progress to the next level of a Progression.
+		/// </summary>
+		[EnumMember(Value = "5")]
+        FractionFloat,
         
-        /// <summary>
-        /// Enum NUMBER_6 for value: 6
-        /// </summary>
-        [EnumMember(Value = "6")]
-        NUMBER_6 = 7,
+		/// <summary>
+		/// Show the number as a straight-up integer.
+		/// </summary>
+		[EnumMember(Value = "6")]
+        Integer,
         
-        /// <summary>
-        /// Enum NUMBER_7 for value: 7
-        /// </summary>
-        [EnumMember(Value = "7")]
-        NUMBER_7 = 8,
+		/// <summary>
+		/// Show the number as a time duration. The value will be returned as seconds.
+		/// </summary>
+		[EnumMember(Value = "7")]
+        TimeDuration,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 9,
+		/// <summary>
+		/// Don&#39;t bother showing the value at all, it&#39;s not easily human-interpretable, and used for some internal purpose.
+		/// </summary>
+		[EnumMember(Value = "8")]
+        Hidden,
         
-        /// <summary>
-        /// Enum NUMBER_9 for value: 9
-        /// </summary>
-        [EnumMember(Value = "9")]
-        NUMBER_9 = 10
+		/// <summary>
+		/// If you&#39;re showing an unlock value in the UI, this is the format in which it should be shown. You&#39;ll have to build your own algorithms on the client side to determine how best to render these options.
+		/// </summary>
+		[EnumMember(Value = "9")]
+        Multiplier
     }
 
 }

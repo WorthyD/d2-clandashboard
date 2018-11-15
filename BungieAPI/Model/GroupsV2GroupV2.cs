@@ -33,64 +33,64 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupV2" /> class.
         /// </summary>
-        /// <param name="groupId">groupId.</param>
-        /// <param name="name">name.</param>
-        /// <param name="groupType">groupType.</param>
-        /// <param name="membershipIdCreated">membershipIdCreated.</param>
-        /// <param name="creationDate">creationDate.</param>
-        /// <param name="modificationDate">modificationDate.</param>
-        /// <param name="about">about.</param>
-        /// <param name="tags">tags.</param>
-        /// <param name="memberCount">memberCount.</param>
-        /// <param name="isPublic">isPublic.</param>
-        /// <param name="isPublicTopicAdminOnly">isPublicTopicAdminOnly.</param>
-        /// <param name="motto">motto.</param>
-        /// <param name="allowChat">allowChat.</param>
-        /// <param name="isDefaultPostPublic">isDefaultPostPublic.</param>
-        /// <param name="chatSecurity">chatSecurity.</param>
-        /// <param name="locale">locale.</param>
-        /// <param name="avatarImageIndex">avatarImageIndex.</param>
-        /// <param name="homepage">homepage.</param>
-        /// <param name="membershipOption">membershipOption.</param>
-        /// <param name="defaultPublicity">defaultPublicity.</param>
-        /// <param name="theme">theme.</param>
-        /// <param name="bannerPath">bannerPath.</param>
-        /// <param name="avatarPath">avatarPath.</param>
-        /// <param name="conversationId">conversationId.</param>
-        /// <param name="enableInvitationMessagingForAdmins">enableInvitationMessagingForAdmins.</param>
-        /// <param name="banExpireDate">banExpireDate.</param>
-        /// <param name="features">features.</param>
-        /// <param name="clanInfo">clanInfo.</param>
-        public GroupsV2GroupV2(long? groupId = default(long?), string name = default(string), GroupsV2GroupType groupType = default(GroupsV2GroupType), long? membershipIdCreated = default(long?), DateTime? creationDate = default(DateTime?), DateTime? modificationDate = default(DateTime?), string about = default(string), List<string> tags = default(List<string>), int? memberCount = default(int?), bool? isPublic = default(bool?), bool? isPublicTopicAdminOnly = default(bool?), string motto = default(string), bool? allowChat = default(bool?), bool? isDefaultPostPublic = default(bool?), GroupsV2ChatSecuritySetting chatSecurity = default(GroupsV2ChatSecuritySetting), string locale = default(string), int? avatarImageIndex = default(int?), GroupsV2GroupHomepage homepage = default(GroupsV2GroupHomepage), GroupsV2MembershipOption membershipOption = default(GroupsV2MembershipOption), GroupsV2GroupPostPublicity defaultPublicity = default(GroupsV2GroupPostPublicity), string theme = default(string), string bannerPath = default(string), string avatarPath = default(string), long? conversationId = default(long?), bool? enableInvitationMessagingForAdmins = default(bool?), DateTime? banExpireDate = default(DateTime?), GroupsV2GroupFeatures features = default(GroupsV2GroupFeatures), GroupsV2GroupV2ClanInfoAndInvestment clanInfo = default(GroupsV2GroupV2ClanInfoAndInvestment))
+        /// <param name="GroupId">GroupId.</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="GroupType">GroupType.</param>
+        /// <param name="MembershipIdCreated">MembershipIdCreated.</param>
+        /// <param name="CreationDate">CreationDate.</param>
+        /// <param name="ModificationDate">ModificationDate.</param>
+        /// <param name="About">About.</param>
+        /// <param name="Tags">Tags.</param>
+        /// <param name="MemberCount">MemberCount.</param>
+        /// <param name="IsPublic">IsPublic.</param>
+        /// <param name="IsPublicTopicAdminOnly">IsPublicTopicAdminOnly.</param>
+        /// <param name="Motto">Motto.</param>
+        /// <param name="AllowChat">AllowChat.</param>
+        /// <param name="IsDefaultPostPublic">IsDefaultPostPublic.</param>
+        /// <param name="ChatSecurity">ChatSecurity.</param>
+        /// <param name="Locale">Locale.</param>
+        /// <param name="AvatarImageIndex">AvatarImageIndex.</param>
+        /// <param name="Homepage">Homepage.</param>
+        /// <param name="MembershipOption">MembershipOption.</param>
+        /// <param name="DefaultPublicity">DefaultPublicity.</param>
+        /// <param name="Theme">Theme.</param>
+        /// <param name="BannerPath">BannerPath.</param>
+        /// <param name="AvatarPath">AvatarPath.</param>
+        /// <param name="ConversationId">ConversationId.</param>
+        /// <param name="EnableInvitationMessagingForAdmins">EnableInvitationMessagingForAdmins.</param>
+        /// <param name="BanExpireDate">BanExpireDate.</param>
+        /// <param name="Features">Features.</param>
+        /// <param name="ClanInfo">ClanInfo.</param>
+        public GroupsV2GroupV2(long? GroupId = default(long?), string Name = default(string), GroupsV2GroupType GroupType = default(GroupsV2GroupType), long? MembershipIdCreated = default(long?), DateTime? CreationDate = default(DateTime?), DateTime? ModificationDate = default(DateTime?), string About = default(string), List<string> Tags = default(List<string>), int? MemberCount = default(int?), bool? IsPublic = default(bool?), bool? IsPublicTopicAdminOnly = default(bool?), string Motto = default(string), bool? AllowChat = default(bool?), bool? IsDefaultPostPublic = default(bool?), GroupsV2ChatSecuritySetting ChatSecurity = default(GroupsV2ChatSecuritySetting), string Locale = default(string), int? AvatarImageIndex = default(int?), GroupsV2GroupHomepage Homepage = default(GroupsV2GroupHomepage), GroupsV2MembershipOption MembershipOption = default(GroupsV2MembershipOption), GroupsV2GroupPostPublicity DefaultPublicity = default(GroupsV2GroupPostPublicity), string Theme = default(string), string BannerPath = default(string), string AvatarPath = default(string), long? ConversationId = default(long?), bool? EnableInvitationMessagingForAdmins = default(bool?), DateTime? BanExpireDate = default(DateTime?), GroupsV2GroupFeatures Features = default(GroupsV2GroupFeatures), GroupsV2GroupV2ClanInfoAndInvestment ClanInfo = default(GroupsV2GroupV2ClanInfoAndInvestment))
         {
-            this.GroupId = groupId;
-            this.Name = name;
-            this.GroupType = groupType;
-            this.MembershipIdCreated = membershipIdCreated;
-            this.CreationDate = creationDate;
-            this.ModificationDate = modificationDate;
-            this.About = about;
-            this.Tags = tags;
-            this.MemberCount = memberCount;
-            this.IsPublic = isPublic;
-            this.IsPublicTopicAdminOnly = isPublicTopicAdminOnly;
-            this.Motto = motto;
-            this.AllowChat = allowChat;
-            this.IsDefaultPostPublic = isDefaultPostPublic;
-            this.ChatSecurity = chatSecurity;
-            this.Locale = locale;
-            this.AvatarImageIndex = avatarImageIndex;
-            this.Homepage = homepage;
-            this.MembershipOption = membershipOption;
-            this.DefaultPublicity = defaultPublicity;
-            this.Theme = theme;
-            this.BannerPath = bannerPath;
-            this.AvatarPath = avatarPath;
-            this.ConversationId = conversationId;
-            this.EnableInvitationMessagingForAdmins = enableInvitationMessagingForAdmins;
-            this.BanExpireDate = banExpireDate;
-            this.Features = features;
-            this.ClanInfo = clanInfo;
+            this.GroupId = GroupId;
+            this.Name = Name;
+            this.GroupType = GroupType;
+            this.MembershipIdCreated = MembershipIdCreated;
+            this.CreationDate = CreationDate;
+            this.ModificationDate = ModificationDate;
+            this.About = About;
+            this.Tags = Tags;
+            this.MemberCount = MemberCount;
+            this.IsPublic = IsPublic;
+            this.IsPublicTopicAdminOnly = IsPublicTopicAdminOnly;
+            this.Motto = Motto;
+            this.AllowChat = AllowChat;
+            this.IsDefaultPostPublic = IsDefaultPostPublic;
+            this.ChatSecurity = ChatSecurity;
+            this.Locale = Locale;
+            this.AvatarImageIndex = AvatarImageIndex;
+            this.Homepage = Homepage;
+            this.MembershipOption = MembershipOption;
+            this.DefaultPublicity = DefaultPublicity;
+            this.Theme = Theme;
+            this.BannerPath = BannerPath;
+            this.AvatarPath = AvatarPath;
+            this.ConversationId = ConversationId;
+            this.EnableInvitationMessagingForAdmins = EnableInvitationMessagingForAdmins;
+            this.BanExpireDate = BanExpireDate;
+            this.Features = Features;
+            this.ClanInfo = ClanInfo;
         }
         
         /// <summary>
@@ -305,7 +305,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

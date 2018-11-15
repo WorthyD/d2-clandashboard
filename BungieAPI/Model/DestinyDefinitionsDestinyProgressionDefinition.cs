@@ -33,28 +33,28 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyProgressionDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="scope">The \&quot;Scope\&quot; of the progression indicates the source of the progression&#39;s live data.  See the DestinyProgressionScope enum for more info: but essentially, a Progression can either be backed by a stored value, or it can be a calculated derivative of other values..</param>
-        /// <param name="repeatLastStep">If this is True, then the progression doesn&#39;t have a maximum level..</param>
-        /// <param name="source">If there&#39;s a description of how to earn this progression in the local config, this will be that localized description..</param>
-        /// <param name="steps">Progressions are divided into Steps, which roughly equate to \&quot;Levels\&quot; in the traditional sense of a Progression. Notably, the last step can be repeated indefinitely if repeatLastStep is true, meaning that the calculation for your level is not as simple as comparing your current progress to the max progress of the steps.   These and more calculations are done for you if you grab live character progression data, such as in the DestinyCharacterProgressionComponent..</param>
-        /// <param name="visible">If true, the Progression is something worth showing to users.  If false, BNet isn&#39;t going to show it. But that doesn&#39;t mean you can&#39;t. We&#39;re all friends here..</param>
-        /// <param name="factionHash">If the value exists, this is the hash identifier for the Faction that owns this Progression.  This is purely for convenience, if you&#39;re looking at a progression and want to know if and who it&#39;s related to in terms of Faction Reputation..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyProgressionDefinition(DestinyDefinitionsDestinyProgressionDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsDestinyProgressionDisplayPropertiesDefinition), Object scope = default(Object), bool? repeatLastStep = default(bool?), string source = default(string), List<DestinyDefinitionsDestinyProgressionStepDefinition> steps = default(List<DestinyDefinitionsDestinyProgressionStepDefinition>), bool? visible = default(bool?), int? factionHash = default(int?), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="Scope">The \&quot;Scope\&quot; of the progression indicates the source of the progression&#39;s live data.  See the DestinyProgressionScope enum for more info: but essentially, a Progression can either be backed by a stored value, or it can be a calculated derivative of other values..</param>
+        /// <param name="RepeatLastStep">If this is True, then the progression doesn&#39;t have a maximum level..</param>
+        /// <param name="Source">If there&#39;s a description of how to earn this progression in the local config, this will be that localized description..</param>
+        /// <param name="Steps">Progressions are divided into Steps, which roughly equate to \&quot;Levels\&quot; in the traditional sense of a Progression. Notably, the last step can be repeated indefinitely if repeatLastStep is true, meaning that the calculation for your level is not as simple as comparing your current progress to the max progress of the steps.   These and more calculations are done for you if you grab live character progression data, such as in the DestinyCharacterProgressionComponent..</param>
+        /// <param name="Visible">If true, the Progression is something worth showing to users.  If false, BNet isn&#39;t going to show it. But that doesn&#39;t mean you can&#39;t. We&#39;re all friends here..</param>
+        /// <param name="FactionHash">If the value exists, this is the hash identifier for the Faction that owns this Progression.  This is purely for convenience, if you&#39;re looking at a progression and want to know if and who it&#39;s related to in terms of Faction Reputation..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyProgressionDefinition(DestinyDefinitionsDestinyProgressionDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsDestinyProgressionDisplayPropertiesDefinition), DestinyDestinyProgressionScope Scope = default(DestinyDestinyProgressionScope), bool? RepeatLastStep = default(bool?), string Source = default(string), List<DestinyDefinitionsDestinyProgressionStepDefinition> Steps = default(List<DestinyDefinitionsDestinyProgressionStepDefinition>), bool? Visible = default(bool?), uint? FactionHash = default(uint?), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.Scope = scope;
-            this.RepeatLastStep = repeatLastStep;
-            this.Source = source;
-            this.Steps = steps;
-            this.Visible = visible;
-            this.FactionHash = factionHash;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.Scope = Scope;
+            this.RepeatLastStep = RepeatLastStep;
+            this.Source = Source;
+            this.Steps = Steps;
+            this.Visible = Visible;
+            this.FactionHash = FactionHash;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -68,7 +68,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The \&quot;Scope\&quot; of the progression indicates the source of the progression&#39;s live data.  See the DestinyProgressionScope enum for more info: but essentially, a Progression can either be backed by a stored value, or it can be a calculated derivative of other values.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Object Scope { get; set; }
+        public DestinyDestinyProgressionScope Scope { get; set; }
 
         /// <summary>
         /// If this is True, then the progression doesn&#39;t have a maximum level.
@@ -103,14 +103,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the value exists, this is the hash identifier for the Faction that owns this Progression.  This is purely for convenience, if you&#39;re looking at a progression and want to know if and who it&#39;s related to in terms of Faction Reputation.</value>
         [DataMember(Name="factionHash", EmitDefaultValue=false)]
-        public int? FactionHash { get; set; }
+        public uint? FactionHash { get; set; }
 
         /// <summary>
         /// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -152,7 +152,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

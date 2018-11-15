@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupApplicationRequest" /> class.
         /// </summary>
-        /// <param name="message">message.</param>
-        public GroupsV2GroupApplicationRequest(string message = default(string))
+        /// <param name="Message">Message.</param>
+        public GroupsV2GroupApplicationRequest(string Message = default(string))
         {
-            this.Message = message;
+            this.Message = Message;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

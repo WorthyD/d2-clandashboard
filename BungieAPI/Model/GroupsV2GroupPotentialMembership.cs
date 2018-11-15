@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupPotentialMembership" /> class.
         /// </summary>
-        /// <param name="member">member.</param>
-        /// <param name="group">group.</param>
-        public GroupsV2GroupPotentialMembership(GroupsV2GroupPotentialMember member = default(GroupsV2GroupPotentialMember), GroupsV2GroupV2 group = default(GroupsV2GroupV2))
+        /// <param name="Member">Member.</param>
+        /// <param name="Group">Group.</param>
+        public GroupsV2GroupPotentialMembership(GroupsV2GroupPotentialMember Member = default(GroupsV2GroupPotentialMember), GroupsV2GroupV2 Group = default(GroupsV2GroupV2))
         {
-            this.Member = member;
-            this.Group = group;
+            this.Member = Member;
+            this.Group = Group;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

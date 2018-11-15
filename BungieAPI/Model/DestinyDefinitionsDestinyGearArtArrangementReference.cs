@@ -33,25 +33,25 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyGearArtArrangementReference" /> class.
         /// </summary>
-        /// <param name="classHash">classHash.</param>
-        /// <param name="artArrangementHash">artArrangementHash.</param>
-        public DestinyDefinitionsDestinyGearArtArrangementReference(int? classHash = default(int?), int? artArrangementHash = default(int?))
+        /// <param name="ClassHash">ClassHash.</param>
+        /// <param name="ArtArrangementHash">ArtArrangementHash.</param>
+        public DestinyDefinitionsDestinyGearArtArrangementReference(uint? ClassHash = default(uint?), uint? ArtArrangementHash = default(uint?))
         {
-            this.ClassHash = classHash;
-            this.ArtArrangementHash = artArrangementHash;
+            this.ClassHash = ClassHash;
+            this.ArtArrangementHash = ArtArrangementHash;
         }
         
         /// <summary>
         /// Gets or Sets ClassHash
         /// </summary>
         [DataMember(Name="classHash", EmitDefaultValue=false)]
-        public int? ClassHash { get; set; }
+        public uint? ClassHash { get; set; }
 
         /// <summary>
         /// Gets or Sets ArtArrangementHash
         /// </summary>
         [DataMember(Name="artArrangementHash", EmitDefaultValue=false)]
-        public int? ArtArrangementHash { get; set; }
+        public uint? ArtArrangementHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

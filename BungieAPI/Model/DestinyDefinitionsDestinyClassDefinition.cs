@@ -33,22 +33,22 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyClassDefinition" /> class.
         /// </summary>
-        /// <param name="classType">In Destiny 1, we added a convenience Enumeration for referring to classes. We&#39;ve kept it, though mostly for posterity. This is the enum value for this definition&#39;s class..</param>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="genderedClassNames">A localized string referring to the singular form of the Class&#39;s name when referred to in gendered form. Keyed by the DestinyGender..</param>
-        /// <param name="mentorVendorHash">Mentors don&#39;t really mean anything anymore. Don&#39;t expect this to be populated..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyClassDefinition(Object classType = default(Object), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), Dictionary<string, string> genderedClassNames = default(Dictionary<string, string>), int? mentorVendorHash = default(int?), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="ClassType">In Destiny 1, we added a convenience Enumeration for referring to classes. We&#39;ve kept it, though mostly for posterity. This is the enum value for this definition&#39;s class..</param>
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="GenderedClassNames">A localized string referring to the singular form of the Class&#39;s name when referred to in gendered form. Keyed by the DestinyGender..</param>
+        /// <param name="MentorVendorHash">Mentors don&#39;t really mean anything anymore. Don&#39;t expect this to be populated..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyClassDefinition(DestinyDestinyClass ClassType = default(DestinyDestinyClass), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), Dictionary<string, string> GenderedClassNames = default(Dictionary<string, string>), uint? MentorVendorHash = default(uint?), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.ClassType = classType;
-            this.DisplayProperties = displayProperties;
-            this.GenderedClassNames = genderedClassNames;
-            this.MentorVendorHash = mentorVendorHash;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.ClassType = ClassType;
+            this.DisplayProperties = DisplayProperties;
+            this.GenderedClassNames = GenderedClassNames;
+            this.MentorVendorHash = MentorVendorHash;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -56,7 +56,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>In Destiny 1, we added a convenience Enumeration for referring to classes. We&#39;ve kept it, though mostly for posterity. This is the enum value for this definition&#39;s class.</value>
         [DataMember(Name="classType", EmitDefaultValue=false)]
-        public Object ClassType { get; set; }
+        public DestinyDestinyClass ClassType { get; set; }
 
         /// <summary>
         /// Gets or Sets DisplayProperties
@@ -76,14 +76,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Mentors don&#39;t really mean anything anymore. Don&#39;t expect this to be populated.</value>
         [DataMember(Name="mentorVendorHash", EmitDefaultValue=false)]
-        public int? MentorVendorHash { get; set; }
+        public uint? MentorVendorHash { get; set; }
 
         /// <summary>
         /// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -122,7 +122,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

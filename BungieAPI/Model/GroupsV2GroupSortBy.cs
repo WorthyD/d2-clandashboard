@@ -27,35 +27,33 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines GroupsV2.GroupSortBy
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum GroupsV2GroupSortBy
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Name,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Date,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Popularity,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Id
     }
 
 }

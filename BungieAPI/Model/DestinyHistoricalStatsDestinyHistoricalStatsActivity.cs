@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyHistoricalStatsActivity" /> class.
         /// </summary>
-        /// <param name="referenceId">The unique hash identifier of the DestinyActivityDefinition that was played. If I had this to do over, it&#39;d be named activityHash. Too late now..</param>
-        /// <param name="directorActivityHash">The unique hash identifier of the DestinyActivityDefinition that was played..</param>
-        /// <param name="instanceId">The unique identifier for this *specific* match that was played.  This value can be used to get additional data about this activity such as who else was playing via the GetPostGameCarnageReport endpoint..</param>
-        /// <param name="mode">Indicates the most specific game mode of the activity that we could find..</param>
-        /// <param name="modes">The list of all Activity Modes to which this activity applies, including aggregates. This will let you see, for example, whether the activity was both Clash and part of the Trials of the Nine event..</param>
-        /// <param name="isPrivate">Whether or not the match was a private match. There&#39;s no private matches in Destiny 2... yet... DUN DUN DUNNNN.</param>
-        public DestinyHistoricalStatsDestinyHistoricalStatsActivity(int? referenceId = default(int?), int? directorActivityHash = default(int?), long? instanceId = default(long?), Object mode = default(Object), List<DestinyHistoricalStatsDefinitionsDestinyActivityModeType> modes = default(List<DestinyHistoricalStatsDefinitionsDestinyActivityModeType>), bool? isPrivate = default(bool?))
+        /// <param name="ReferenceId">The unique hash identifier of the DestinyActivityDefinition that was played. If I had this to do over, it&#39;d be named activityHash. Too late now..</param>
+        /// <param name="DirectorActivityHash">The unique hash identifier of the DestinyActivityDefinition that was played..</param>
+        /// <param name="InstanceId">The unique identifier for this *specific* match that was played.  This value can be used to get additional data about this activity such as who else was playing via the GetPostGameCarnageReport endpoint..</param>
+        /// <param name="Mode">Indicates the most specific game mode of the activity that we could find..</param>
+        /// <param name="Modes">The list of all Activity Modes to which this activity applies, including aggregates. This will let you see, for example, whether the activity was both Clash and part of the Trials of the Nine event..</param>
+        /// <param name="IsPrivate">Whether or not the match was a private match. There&#39;s no private matches in Destiny 2... yet... DUN DUN DUNNNN.</param>
+        public DestinyHistoricalStatsDestinyHistoricalStatsActivity(uint? ReferenceId = default(uint?), uint? DirectorActivityHash = default(uint?), long? InstanceId = default(long?), DestinyHistoricalStatsDefinitionsDestinyActivityModeType Mode = default(DestinyHistoricalStatsDefinitionsDestinyActivityModeType), List<DestinyHistoricalStatsDefinitionsDestinyActivityModeType> Modes = default(List<DestinyHistoricalStatsDefinitionsDestinyActivityModeType>), bool? IsPrivate = default(bool?))
         {
-            this.ReferenceId = referenceId;
-            this.DirectorActivityHash = directorActivityHash;
-            this.InstanceId = instanceId;
-            this.Mode = mode;
-            this.Modes = modes;
-            this.IsPrivate = isPrivate;
+            this.ReferenceId = ReferenceId;
+            this.DirectorActivityHash = DirectorActivityHash;
+            this.InstanceId = InstanceId;
+            this.Mode = Mode;
+            this.Modes = Modes;
+            this.IsPrivate = IsPrivate;
         }
         
         /// <summary>
@@ -54,14 +54,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique hash identifier of the DestinyActivityDefinition that was played. If I had this to do over, it&#39;d be named activityHash. Too late now.</value>
         [DataMember(Name="referenceId", EmitDefaultValue=false)]
-        public int? ReferenceId { get; set; }
+        public uint? ReferenceId { get; set; }
 
         /// <summary>
         /// The unique hash identifier of the DestinyActivityDefinition that was played.
         /// </summary>
         /// <value>The unique hash identifier of the DestinyActivityDefinition that was played.</value>
         [DataMember(Name="directorActivityHash", EmitDefaultValue=false)]
-        public int? DirectorActivityHash { get; set; }
+        public uint? DirectorActivityHash { get; set; }
 
         /// <summary>
         /// The unique identifier for this *specific* match that was played.  This value can be used to get additional data about this activity such as who else was playing via the GetPostGameCarnageReport endpoint.
@@ -75,7 +75,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Indicates the most specific game mode of the activity that we could find.</value>
         [DataMember(Name="mode", EmitDefaultValue=false)]
-        public Object Mode { get; set; }
+        public DestinyHistoricalStatsDefinitionsDestinyActivityModeType Mode { get; set; }
 
         /// <summary>
         /// The list of all Activity Modes to which this activity applies, including aggregates. This will let you see, for example, whether the activity was both Clash and part of the Trials of the Nine event.
@@ -113,7 +113,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

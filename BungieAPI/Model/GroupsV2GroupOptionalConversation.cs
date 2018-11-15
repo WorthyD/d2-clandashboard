@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupOptionalConversation" /> class.
         /// </summary>
-        /// <param name="groupId">groupId.</param>
-        /// <param name="conversationId">conversationId.</param>
-        /// <param name="chatEnabled">chatEnabled.</param>
-        /// <param name="chatName">chatName.</param>
-        /// <param name="chatSecurity">chatSecurity.</param>
-        public GroupsV2GroupOptionalConversation(long? groupId = default(long?), long? conversationId = default(long?), bool? chatEnabled = default(bool?), string chatName = default(string), GroupsV2ChatSecuritySetting chatSecurity = default(GroupsV2ChatSecuritySetting))
+        /// <param name="GroupId">GroupId.</param>
+        /// <param name="ConversationId">ConversationId.</param>
+        /// <param name="ChatEnabled">ChatEnabled.</param>
+        /// <param name="ChatName">ChatName.</param>
+        /// <param name="ChatSecurity">ChatSecurity.</param>
+        public GroupsV2GroupOptionalConversation(long? GroupId = default(long?), long? ConversationId = default(long?), bool? ChatEnabled = default(bool?), string ChatName = default(string), GroupsV2ChatSecuritySetting ChatSecurity = default(GroupsV2ChatSecuritySetting))
         {
-            this.GroupId = groupId;
-            this.ConversationId = conversationId;
-            this.ChatEnabled = chatEnabled;
-            this.ChatName = chatName;
-            this.ChatSecurity = chatSecurity;
+            this.GroupId = GroupId;
+            this.ConversationId = ConversationId;
+            this.ChatEnabled = ChatEnabled;
+            this.ChatName = ChatName;
+            this.ChatSecurity = ChatSecurity;
         }
         
         /// <summary>
@@ -98,7 +98,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

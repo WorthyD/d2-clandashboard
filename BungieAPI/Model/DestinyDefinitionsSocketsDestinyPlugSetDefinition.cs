@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsSocketsDestinyPlugSetDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">If you want to show these plugs in isolation, these are the display properties for them..</param>
-        /// <param name="reusablePlugItems">This is a list of pre-determined plugs that can be plugged into this socket, without the character having the plug in their inventory.  If this list is populated, you will not be allowed to plug an arbitrary item in the socket: you will only be able to choose from one of these reusable plugs..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsSocketsDestinyPlugSetDefinition(Object displayProperties = default(Object), List<DestinyDefinitionsDestinyItemSocketEntryPlugItemDefinition> reusablePlugItems = default(List<DestinyDefinitionsDestinyItemSocketEntryPlugItemDefinition>), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">If you want to show these plugs in isolation, these are the display properties for them..</param>
+        /// <param name="ReusablePlugItems">This is a list of pre-determined plugs that can be plugged into this socket, without the character having the plug in their inventory.  If this list is populated, you will not be allowed to plug an arbitrary item in the socket: you will only be able to choose from one of these reusable plugs..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsSocketsDestinyPlugSetDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), List<DestinyDefinitionsDestinyItemSocketEntryPlugItemDefinition> ReusablePlugItems = default(List<DestinyDefinitionsDestinyItemSocketEntryPlugItemDefinition>), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.ReusablePlugItems = reusablePlugItems;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.ReusablePlugItems = ReusablePlugItems;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -52,7 +52,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If you want to show these plugs in isolation, these are the display properties for them.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// This is a list of pre-determined plugs that can be plugged into this socket, without the character having the plug in their inventory.  If this list is populated, you will not be allowed to plug an arbitrary item in the socket: you will only be able to choose from one of these reusable plugs.
@@ -66,7 +66,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

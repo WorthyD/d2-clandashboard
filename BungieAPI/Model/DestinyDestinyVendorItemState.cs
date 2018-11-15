@@ -28,77 +28,75 @@ namespace BungieAPI.Model
     /// The possible states of Destiny Profile Records. IMPORTANT: Any given item can theoretically have many of these states simultaneously: as a result, this was altered to be a flags enumeration for v3.2.0.
     /// </summary>
     /// <value>The possible states of Destiny Profile Records. IMPORTANT: Any given item can theoretically have many of these states simultaneously: as a result, this was altered to be a flags enumeration for v3.2.0.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyVendorItemState
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// There are no augments on the item.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// Deprecated forever (probably). There was a time when Records were going to be implemented through Vendors, and this field was relevant. Now they&#39;re implemented through Presentation Nodes, and this field doesn&#39;t matter anymore.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Incomplete,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// Deprecated forever (probably). See the description of the &quot;Incomplete&quot; value for the juicy scoop.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        RewardAvailable,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 4,
+		/// <summary>
+		/// Deprecated forever (probably). See the description of the &quot;Incomplete&quot; value for the juicy scoop.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        Complete,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 5,
+		/// <summary>
+		/// This item is considered to be &quot;newly available&quot;, and should have some UI showing how shiny it is.
+		/// </summary>
+		[EnumMember(Value = "8")]
+        New,
         
-        /// <summary>
-        /// Enum NUMBER_16 for value: 16
-        /// </summary>
-        [EnumMember(Value = "16")]
-        NUMBER_16 = 6,
+		/// <summary>
+		/// This item is being &quot;featured&quot;, and should be shiny in a different way from items that are merely new.
+		/// </summary>
+		[EnumMember(Value = "16")]
+        Featured,
         
-        /// <summary>
-        /// Enum NUMBER_32 for value: 32
-        /// </summary>
-        [EnumMember(Value = "32")]
-        NUMBER_32 = 7,
+		/// <summary>
+		/// This item is only available for a limited time, and that time is approaching.
+		/// </summary>
+		[EnumMember(Value = "32")]
+        Ending,
         
-        /// <summary>
-        /// Enum NUMBER_64 for value: 64
-        /// </summary>
-        [EnumMember(Value = "64")]
-        NUMBER_64 = 8,
+		/// <summary>
+		/// This item is &quot;on sale&quot;. Get it while it&#39;s hot.
+		/// </summary>
+		[EnumMember(Value = "64")]
+        OnSale,
         
-        /// <summary>
-        /// Enum NUMBER_128 for value: 128
-        /// </summary>
-        [EnumMember(Value = "128")]
-        NUMBER_128 = 9,
+		/// <summary>
+		/// This item is already owned.
+		/// </summary>
+		[EnumMember(Value = "128")]
+        Owned,
         
-        /// <summary>
-        /// Enum NUMBER_256 for value: 256
-        /// </summary>
-        [EnumMember(Value = "256")]
-        NUMBER_256 = 10,
+		/// <summary>
+		/// This item should be shown with a &quot;wide view&quot; instead of normal icon view.
+		/// </summary>
+		[EnumMember(Value = "256")]
+        WideView,
         
-        /// <summary>
-        /// Enum NUMBER_512 for value: 512
-        /// </summary>
-        [EnumMember(Value = "512")]
-        NUMBER_512 = 11
+		/// <summary>
+		/// This indicates that you should show some kind of attention-requesting indicator on the item, in a similar manner to items in the nexus that have such notifications.
+		/// </summary>
+		[EnumMember(Value = "512")]
+        NexusAttention
     }
 
 }

@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyMilestoneRewardCategory" /> class.
         /// </summary>
-        /// <param name="rewardCategoryHash">Look up the relevant DestinyMilestoneDefinition, and then use rewardCategoryHash to look up the category info in DestinyMilestoneDefinition.rewards..</param>
-        /// <param name="entries">The individual reward entries for this category, and their status..</param>
-        public DestinyMilestonesDestinyMilestoneRewardCategory(int? rewardCategoryHash = default(int?), List<DestinyMilestonesDestinyMilestoneRewardEntry> entries = default(List<DestinyMilestonesDestinyMilestoneRewardEntry>))
+        /// <param name="RewardCategoryHash">Look up the relevant DestinyMilestoneDefinition, and then use rewardCategoryHash to look up the category info in DestinyMilestoneDefinition.rewards..</param>
+        /// <param name="Entries">The individual reward entries for this category, and their status..</param>
+        public DestinyMilestonesDestinyMilestoneRewardCategory(uint? RewardCategoryHash = default(uint?), List<DestinyMilestonesDestinyMilestoneRewardEntry> Entries = default(List<DestinyMilestonesDestinyMilestoneRewardEntry>))
         {
-            this.RewardCategoryHash = rewardCategoryHash;
-            this.Entries = entries;
+            this.RewardCategoryHash = RewardCategoryHash;
+            this.Entries = Entries;
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Look up the relevant DestinyMilestoneDefinition, and then use rewardCategoryHash to look up the category info in DestinyMilestoneDefinition.rewards.</value>
         [DataMember(Name="rewardCategoryHash", EmitDefaultValue=false)]
-        public int? RewardCategoryHash { get; set; }
+        public uint? RewardCategoryHash { get; set; }
 
         /// <summary>
         /// The individual reward entries for this category, and their status.
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsPlugSetsDestinyPlugSetsComponent" /> class.
         /// </summary>
-        /// <param name="plugs">The shared list of plugs for each relevant PlugSet, keyed by the hash identifier of the PlugSet (DestinyPlugSetDefinition)..</param>
-        public DestinyComponentsPlugSetsDestinyPlugSetsComponent(Dictionary<string, List<DestinySocketsDestinyItemPlug>> plugs = default(Dictionary<string, List<DestinySocketsDestinyItemPlug>>))
+        /// <param name="Plugs">The shared list of plugs for each relevant PlugSet, keyed by the hash identifier of the PlugSet (DestinyPlugSetDefinition)..</param>
+        public DestinyComponentsPlugSetsDestinyPlugSetsComponent(Dictionary<string, List<DestinySocketsDestinyItemPlug>> Plugs = default(Dictionary<string, List<DestinySocketsDestinyItemPlug>>))
         {
-            this.Plugs = plugs;
+            this.Plugs = Plugs;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

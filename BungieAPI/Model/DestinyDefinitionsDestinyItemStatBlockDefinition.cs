@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemStatBlockDefinition" /> class.
         /// </summary>
-        /// <param name="disablePrimaryStatDisplay">If true, the game won&#39;t show the \&quot;primary\&quot; stat on this item when you inspect it.  NOTE: This is being manually mapped, because I happen to want it in a block that isn&#39;t going to directly create this derivative block..</param>
-        /// <param name="statGroupHash">If the item&#39;s stats are meant to be modified by a DestinyStatGroupDefinition, this will be the identifier for that definition.  If you are using live data or precomputed stats data on the DestinyInventoryItemDefinition.stats.stats property, you don&#39;t have to worry about statGroupHash and how it alters stats: the already altered stats are provided to you. But if you want to see how the sausage gets made, or perform computations yourself, this is valuable information..</param>
-        /// <param name="stats">If you are looking for precomputed values for the stats on a weapon, this is where they are stored. Technically these are the \&quot;Display\&quot; stat values. Please see DestinyStatsDefinition for what Display Stat Values means, it&#39;s a very long story... but essentially these are the closest values BNet can get to the item stats that you see in-game.  These stats are keyed by the DestinyStatDefinition&#39;s hash identifier for the stat that&#39;s found on the item..</param>
-        /// <param name="hasDisplayableStats">A quick and lazy way to determine whether any stat other than the \&quot;primary\&quot; stat is actually visible on the item. Items often have stats that we return in case people find them useful, but they&#39;re not part of the \&quot;Stat Group\&quot; and thus we wouldn&#39;t display them in our UI. If this is False, then we&#39;re not going to display any of these stats other than the primary one..</param>
-        /// <param name="primaryBaseStatHash">This stat is determined to be the \&quot;primary\&quot; stat, and can be looked up in the stats or any other stat collection related to the item.  Use this hash to look up the stat&#39;s value using DestinyInventoryItemDefinition.stats.stats, and the renderable data for the primary stat in the related DestinyStatDefinition..</param>
-        public DestinyDefinitionsDestinyItemStatBlockDefinition(bool? disablePrimaryStatDisplay = default(bool?), int? statGroupHash = default(int?), Dictionary<string, DestinyDefinitionsDestinyInventoryItemStatDefinition> stats = default(Dictionary<string, DestinyDefinitionsDestinyInventoryItemStatDefinition>), bool? hasDisplayableStats = default(bool?), int? primaryBaseStatHash = default(int?))
+        /// <param name="DisablePrimaryStatDisplay">If true, the game won&#39;t show the \&quot;primary\&quot; stat on this item when you inspect it.  NOTE: This is being manually mapped, because I happen to want it in a block that isn&#39;t going to directly create this derivative block..</param>
+        /// <param name="StatGroupHash">If the item&#39;s stats are meant to be modified by a DestinyStatGroupDefinition, this will be the identifier for that definition.  If you are using live data or precomputed stats data on the DestinyInventoryItemDefinition.stats.stats property, you don&#39;t have to worry about statGroupHash and how it alters stats: the already altered stats are provided to you. But if you want to see how the sausage gets made, or perform computations yourself, this is valuable information..</param>
+        /// <param name="Stats">If you are looking for precomputed values for the stats on a weapon, this is where they are stored. Technically these are the \&quot;Display\&quot; stat values. Please see DestinyStatsDefinition for what Display Stat Values means, it&#39;s a very long story... but essentially these are the closest values BNet can get to the item stats that you see in-game.  These stats are keyed by the DestinyStatDefinition&#39;s hash identifier for the stat that&#39;s found on the item..</param>
+        /// <param name="HasDisplayableStats">A quick and lazy way to determine whether any stat other than the \&quot;primary\&quot; stat is actually visible on the item. Items often have stats that we return in case people find them useful, but they&#39;re not part of the \&quot;Stat Group\&quot; and thus we wouldn&#39;t display them in our UI. If this is False, then we&#39;re not going to display any of these stats other than the primary one..</param>
+        /// <param name="PrimaryBaseStatHash">This stat is determined to be the \&quot;primary\&quot; stat, and can be looked up in the stats or any other stat collection related to the item.  Use this hash to look up the stat&#39;s value using DestinyInventoryItemDefinition.stats.stats, and the renderable data for the primary stat in the related DestinyStatDefinition..</param>
+        public DestinyDefinitionsDestinyItemStatBlockDefinition(bool? DisablePrimaryStatDisplay = default(bool?), uint? StatGroupHash = default(uint?), Dictionary<string, DestinyDefinitionsDestinyInventoryItemStatDefinition> Stats = default(Dictionary<string, DestinyDefinitionsDestinyInventoryItemStatDefinition>), bool? HasDisplayableStats = default(bool?), uint? PrimaryBaseStatHash = default(uint?))
         {
-            this.DisablePrimaryStatDisplay = disablePrimaryStatDisplay;
-            this.StatGroupHash = statGroupHash;
-            this.Stats = stats;
-            this.HasDisplayableStats = hasDisplayableStats;
-            this.PrimaryBaseStatHash = primaryBaseStatHash;
+            this.DisablePrimaryStatDisplay = DisablePrimaryStatDisplay;
+            this.StatGroupHash = StatGroupHash;
+            this.Stats = Stats;
+            this.HasDisplayableStats = HasDisplayableStats;
+            this.PrimaryBaseStatHash = PrimaryBaseStatHash;
         }
         
         /// <summary>
@@ -59,7 +59,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the item&#39;s stats are meant to be modified by a DestinyStatGroupDefinition, this will be the identifier for that definition.  If you are using live data or precomputed stats data on the DestinyInventoryItemDefinition.stats.stats property, you don&#39;t have to worry about statGroupHash and how it alters stats: the already altered stats are provided to you. But if you want to see how the sausage gets made, or perform computations yourself, this is valuable information.</value>
         [DataMember(Name="statGroupHash", EmitDefaultValue=false)]
-        public int? StatGroupHash { get; set; }
+        public uint? StatGroupHash { get; set; }
 
         /// <summary>
         /// If you are looking for precomputed values for the stats on a weapon, this is where they are stored. Technically these are the \&quot;Display\&quot; stat values. Please see DestinyStatsDefinition for what Display Stat Values means, it&#39;s a very long story... but essentially these are the closest values BNet can get to the item stats that you see in-game.  These stats are keyed by the DestinyStatDefinition&#39;s hash identifier for the stat that&#39;s found on the item.
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>This stat is determined to be the \&quot;primary\&quot; stat, and can be looked up in the stats or any other stat collection related to the item.  Use this hash to look up the stat&#39;s value using DestinyInventoryItemDefinition.stats.stats, and the renderable data for the primary stat in the related DestinyStatDefinition.</value>
         [DataMember(Name="primaryBaseStatHash", EmitDefaultValue=false)]
-        public int? PrimaryBaseStatHash { get; set; }
+        public uint? PrimaryBaseStatHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupBanRequest" /> class.
         /// </summary>
-        /// <param name="comment">comment.</param>
-        /// <param name="length">length.</param>
-        public GroupsV2GroupBanRequest(string comment = default(string), IgnoresIgnoreLength length = default(IgnoresIgnoreLength))
+        /// <param name="Comment">Comment.</param>
+        /// <param name="Length">Length.</param>
+        public GroupsV2GroupBanRequest(string Comment = default(string), IgnoresIgnoreLength Length = default(IgnoresIgnoreLength))
         {
-            this.Comment = comment;
-            this.Length = length;
+            this.Comment = Comment;
+            this.Length = Length;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -34,356 +34,357 @@ namespace BungieAPI.Model
         /// The enumeration equivalent of the most specific Activity Mode under which this activity is played.
         /// </summary>
         /// <value>The enumeration equivalent of the most specific Activity Mode under which this activity is played.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
         public enum ActivityModeTypeEnum
         {
             
             /// <summary>
-            /// Enum NUMBER_0 for value: 0
+            /// Enum None for 0
             /// </summary>
-            
-            NUMBER_0 = 0,
+            [EnumMember(Value = "0")]
+            None = 0,
             
             /// <summary>
-            /// Enum NUMBER_2 for value: 2
+            /// Enum Story for 2
             /// </summary>
-            
-            NUMBER_2 = 2,
+            [EnumMember(Value = "2")]
+            Story = 2,
             
             /// <summary>
-            /// Enum NUMBER_3 for value: 3
+            /// Enum Strike for 3
             /// </summary>
-            
-            NUMBER_3 = 3,
+            [EnumMember(Value = "3")]
+            Strike = 3,
             
             /// <summary>
-            /// Enum NUMBER_4 for value: 4
+            /// Enum Raid for 4
             /// </summary>
-            
-            NUMBER_4 = 4,
+            [EnumMember(Value = "4")]
+            Raid = 4,
             
             /// <summary>
-            /// Enum NUMBER_5 for value: 5
+            /// Enum AllPvP for 5
             /// </summary>
-            
-            NUMBER_5 = 5,
+            [EnumMember(Value = "5")]
+            AllPvP = 5,
             
             /// <summary>
-            /// Enum NUMBER_6 for value: 6
+            /// Enum Patrol for 6
             /// </summary>
-            
-            NUMBER_6 = 6,
+            [EnumMember(Value = "6")]
+            Patrol = 6,
             
             /// <summary>
-            /// Enum NUMBER_7 for value: 7
+            /// Enum AllPvE for 7
             /// </summary>
-            
-            NUMBER_7 = 7,
+            [EnumMember(Value = "7")]
+            AllPvE = 7,
             
             /// <summary>
-            /// Enum NUMBER_9 for value: 9
+            /// Enum Reserved9 for 9
             /// </summary>
-            
-            NUMBER_9 = 9,
+            [EnumMember(Value = "9")]
+            Reserved9 = 9,
             
             /// <summary>
-            /// Enum NUMBER_10 for value: 10
+            /// Enum Control for 10
             /// </summary>
-            
-            NUMBER_10 = 10,
+            [EnumMember(Value = "10")]
+            Control = 10,
             
             /// <summary>
-            /// Enum NUMBER_11 for value: 11
+            /// Enum Reserved11 for 11
             /// </summary>
-            
-            NUMBER_11 = 11,
+            [EnumMember(Value = "11")]
+            Reserved11 = 11,
             
             /// <summary>
-            /// Enum NUMBER_12 for value: 12
+            /// Enum Clash for 12
             /// </summary>
-            
-            NUMBER_12 = 12,
+            [EnumMember(Value = "12")]
+            Clash = 12,
             
             /// <summary>
-            /// Enum NUMBER_13 for value: 13
+            /// Enum Reserved13 for 13
             /// </summary>
-            
-            NUMBER_13 = 13,
+            [EnumMember(Value = "13")]
+            Reserved13 = 13,
             
             /// <summary>
-            /// Enum NUMBER_15 for value: 15
+            /// Enum CrimsonDoubles for 15
             /// </summary>
-            
-            NUMBER_15 = 15,
+            [EnumMember(Value = "15")]
+            CrimsonDoubles = 15,
             
             /// <summary>
-            /// Enum NUMBER_16 for value: 16
+            /// Enum Nightfall for 16
             /// </summary>
-            
-            NUMBER_16 = 16,
+            [EnumMember(Value = "16")]
+            Nightfall = 16,
             
             /// <summary>
-            /// Enum NUMBER_17 for value: 17
+            /// Enum HeroicNightfall for 17
             /// </summary>
-            
-            NUMBER_17 = 17,
+            [EnumMember(Value = "17")]
+            HeroicNightfall = 17,
             
             /// <summary>
-            /// Enum NUMBER_18 for value: 18
+            /// Enum AllStrikes for 18
             /// </summary>
-            
-            NUMBER_18 = 18,
+            [EnumMember(Value = "18")]
+            AllStrikes = 18,
             
             /// <summary>
-            /// Enum NUMBER_19 for value: 19
+            /// Enum IronBanner for 19
             /// </summary>
-            
-            NUMBER_19 = 19,
+            [EnumMember(Value = "19")]
+            IronBanner = 19,
             
             /// <summary>
-            /// Enum NUMBER_20 for value: 20
+            /// Enum Reserved20 for 20
             /// </summary>
-            
-            NUMBER_20 = 20,
+            [EnumMember(Value = "20")]
+            Reserved20 = 20,
             
             /// <summary>
-            /// Enum NUMBER_21 for value: 21
+            /// Enum Reserved21 for 21
             /// </summary>
-            
-            NUMBER_21 = 21,
+            [EnumMember(Value = "21")]
+            Reserved21 = 21,
             
             /// <summary>
-            /// Enum NUMBER_22 for value: 22
+            /// Enum Reserved22 for 22
             /// </summary>
-            
-            NUMBER_22 = 22,
+            [EnumMember(Value = "22")]
+            Reserved22 = 22,
             
             /// <summary>
-            /// Enum NUMBER_24 for value: 24
+            /// Enum Reserved24 for 24
             /// </summary>
-            
-            NUMBER_24 = 24,
+            [EnumMember(Value = "24")]
+            Reserved24 = 24,
             
             /// <summary>
-            /// Enum NUMBER_25 for value: 25
+            /// Enum AllMayhem for 25
             /// </summary>
-            
-            NUMBER_25 = 25,
+            [EnumMember(Value = "25")]
+            AllMayhem = 25,
             
             /// <summary>
-            /// Enum NUMBER_26 for value: 26
+            /// Enum Reserved26 for 26
             /// </summary>
-            
-            NUMBER_26 = 26,
+            [EnumMember(Value = "26")]
+            Reserved26 = 26,
             
             /// <summary>
-            /// Enum NUMBER_27 for value: 27
+            /// Enum Reserved27 for 27
             /// </summary>
-            
-            NUMBER_27 = 27,
+            [EnumMember(Value = "27")]
+            Reserved27 = 27,
             
             /// <summary>
-            /// Enum NUMBER_28 for value: 28
+            /// Enum Reserved28 for 28
             /// </summary>
-            
-            NUMBER_28 = 28,
+            [EnumMember(Value = "28")]
+            Reserved28 = 28,
             
             /// <summary>
-            /// Enum NUMBER_29 for value: 29
+            /// Enum Reserved29 for 29
             /// </summary>
-            
-            NUMBER_29 = 29,
+            [EnumMember(Value = "29")]
+            Reserved29 = 29,
             
             /// <summary>
-            /// Enum NUMBER_30 for value: 30
+            /// Enum Reserved30 for 30
             /// </summary>
-            
-            NUMBER_30 = 30,
+            [EnumMember(Value = "30")]
+            Reserved30 = 30,
             
             /// <summary>
-            /// Enum NUMBER_31 for value: 31
+            /// Enum Supremacy for 31
             /// </summary>
-            
-            NUMBER_31 = 31,
+            [EnumMember(Value = "31")]
+            Supremacy = 31,
             
             /// <summary>
-            /// Enum NUMBER_32 for value: 32
+            /// Enum PrivateMatchesAll for 32
             /// </summary>
-            
-            NUMBER_32 = 32,
+            [EnumMember(Value = "32")]
+            PrivateMatchesAll = 32,
             
             /// <summary>
-            /// Enum NUMBER_37 for value: 37
+            /// Enum Survival for 37
             /// </summary>
-            
-            NUMBER_37 = 37,
+            [EnumMember(Value = "37")]
+            Survival = 37,
             
             /// <summary>
-            /// Enum NUMBER_38 for value: 38
+            /// Enum Countdown for 38
             /// </summary>
-            
-            NUMBER_38 = 38,
+            [EnumMember(Value = "38")]
+            Countdown = 38,
             
             /// <summary>
-            /// Enum NUMBER_39 for value: 39
+            /// Enum TrialsOfTheNine for 39
             /// </summary>
-            
-            NUMBER_39 = 39,
+            [EnumMember(Value = "39")]
+            TrialsOfTheNine = 39,
             
             /// <summary>
-            /// Enum NUMBER_40 for value: 40
+            /// Enum Social for 40
             /// </summary>
-            
-            NUMBER_40 = 40,
+            [EnumMember(Value = "40")]
+            Social = 40,
             
             /// <summary>
-            /// Enum NUMBER_41 for value: 41
+            /// Enum TrialsCountdown for 41
             /// </summary>
-            
-            NUMBER_41 = 41,
+            [EnumMember(Value = "41")]
+            TrialsCountdown = 41,
             
             /// <summary>
-            /// Enum NUMBER_42 for value: 42
+            /// Enum TrialsSurvival for 42
             /// </summary>
-            
-            NUMBER_42 = 42,
+            [EnumMember(Value = "42")]
+            TrialsSurvival = 42,
             
             /// <summary>
-            /// Enum NUMBER_43 for value: 43
+            /// Enum IronBannerControl for 43
             /// </summary>
-            
-            NUMBER_43 = 43,
+            [EnumMember(Value = "43")]
+            IronBannerControl = 43,
             
             /// <summary>
-            /// Enum NUMBER_44 for value: 44
+            /// Enum IronBannerClash for 44
             /// </summary>
-            
-            NUMBER_44 = 44,
+            [EnumMember(Value = "44")]
+            IronBannerClash = 44,
             
             /// <summary>
-            /// Enum NUMBER_45 for value: 45
+            /// Enum IronBannerSupremacy for 45
             /// </summary>
-            
-            NUMBER_45 = 45,
+            [EnumMember(Value = "45")]
+            IronBannerSupremacy = 45,
             
             /// <summary>
-            /// Enum NUMBER_46 for value: 46
+            /// Enum ScoredNightfall for 46
             /// </summary>
-            
-            NUMBER_46 = 46,
+            [EnumMember(Value = "46")]
+            ScoredNightfall = 46,
             
             /// <summary>
-            /// Enum NUMBER_47 for value: 47
+            /// Enum ScoredHeroicNightfall for 47
             /// </summary>
-            
-            NUMBER_47 = 47,
+            [EnumMember(Value = "47")]
+            ScoredHeroicNightfall = 47,
             
             /// <summary>
-            /// Enum NUMBER_48 for value: 48
+            /// Enum Rumble for 48
             /// </summary>
-            
-            NUMBER_48 = 48,
+            [EnumMember(Value = "48")]
+            Rumble = 48,
             
             /// <summary>
-            /// Enum NUMBER_49 for value: 49
+            /// Enum AllDoubles for 49
             /// </summary>
-            
-            NUMBER_49 = 49,
+            [EnumMember(Value = "49")]
+            AllDoubles = 49,
             
             /// <summary>
-            /// Enum NUMBER_50 for value: 50
+            /// Enum Doubles for 50
             /// </summary>
-            
-            NUMBER_50 = 50,
+            [EnumMember(Value = "50")]
+            Doubles = 50,
             
             /// <summary>
-            /// Enum NUMBER_51 for value: 51
+            /// Enum PrivateMatchesClash for 51
             /// </summary>
-            
-            NUMBER_51 = 51,
+            [EnumMember(Value = "51")]
+            PrivateMatchesClash = 51,
             
             /// <summary>
-            /// Enum NUMBER_52 for value: 52
+            /// Enum PrivateMatchesControl for 52
             /// </summary>
-            
-            NUMBER_52 = 52,
+            [EnumMember(Value = "52")]
+            PrivateMatchesControl = 52,
             
             /// <summary>
-            /// Enum NUMBER_53 for value: 53
+            /// Enum PrivateMatchesSupremacy for 53
             /// </summary>
-            
-            NUMBER_53 = 53,
+            [EnumMember(Value = "53")]
+            PrivateMatchesSupremacy = 53,
             
             /// <summary>
-            /// Enum NUMBER_54 for value: 54
+            /// Enum PrivateMatchesCountdown for 54
             /// </summary>
-            
-            NUMBER_54 = 54,
+            [EnumMember(Value = "54")]
+            PrivateMatchesCountdown = 54,
             
             /// <summary>
-            /// Enum NUMBER_55 for value: 55
+            /// Enum PrivateMatchesSurvival for 55
             /// </summary>
-            
-            NUMBER_55 = 55,
+            [EnumMember(Value = "55")]
+            PrivateMatchesSurvival = 55,
             
             /// <summary>
-            /// Enum NUMBER_56 for value: 56
+            /// Enum PrivateMatchesMayhem for 56
             /// </summary>
-            
-            NUMBER_56 = 56,
+            [EnumMember(Value = "56")]
+            PrivateMatchesMayhem = 56,
             
             /// <summary>
-            /// Enum NUMBER_57 for value: 57
+            /// Enum PrivateMatchesRumble for 57
             /// </summary>
-            
-            NUMBER_57 = 57,
+            [EnumMember(Value = "57")]
+            PrivateMatchesRumble = 57,
             
             /// <summary>
-            /// Enum NUMBER_58 for value: 58
+            /// Enum HeroicAdventure for 58
             /// </summary>
-            
-            NUMBER_58 = 58,
+            [EnumMember(Value = "58")]
+            HeroicAdventure = 58,
             
             /// <summary>
-            /// Enum NUMBER_59 for value: 59
+            /// Enum Showdown for 59
             /// </summary>
-            
-            NUMBER_59 = 59,
+            [EnumMember(Value = "59")]
+            Showdown = 59,
             
             /// <summary>
-            /// Enum NUMBER_60 for value: 60
+            /// Enum Lockdown for 60
             /// </summary>
-            
-            NUMBER_60 = 60,
+            [EnumMember(Value = "60")]
+            Lockdown = 60,
             
             /// <summary>
-            /// Enum NUMBER_61 for value: 61
+            /// Enum Scorched for 61
             /// </summary>
-            
-            NUMBER_61 = 61,
+            [EnumMember(Value = "61")]
+            Scorched = 61,
             
             /// <summary>
-            /// Enum NUMBER_62 for value: 62
+            /// Enum ScorchedTeam for 62
             /// </summary>
-            
-            NUMBER_62 = 62,
+            [EnumMember(Value = "62")]
+            ScorchedTeam = 62,
             
             /// <summary>
-            /// Enum NUMBER_63 for value: 63
+            /// Enum Gambit for 63
             /// </summary>
-            
-            NUMBER_63 = 63,
+            [EnumMember(Value = "63")]
+            Gambit = 63,
             
             /// <summary>
-            /// Enum NUMBER_64 for value: 64
+            /// Enum AllPvECompetitive for 64
             /// </summary>
-            
-            NUMBER_64 = 64,
+            [EnumMember(Value = "64")]
+            AllPvECompetitive = 64,
             
             /// <summary>
-            /// Enum NUMBER_65 for value: 65
+            /// Enum Breakthrough for 65
             /// </summary>
-            
-            NUMBER_65 = 65
+            [EnumMember(Value = "65")]
+            Breakthrough = 65
         }
 
         /// <summary>
@@ -395,16 +396,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyMilestoneActivityVariant" /> class.
         /// </summary>
-        /// <param name="activityHash">The hash for the specific variant of the activity related to this milestone. You can pull more detailed static info from the DestinyActivityDefinition, such as difficulty level..</param>
-        /// <param name="completionStatus">An OPTIONAL component: if it makes sense to talk about this activity variant in terms of whether or not it has been completed or what progress you have made in it, this will be returned. Otherwise, this will be NULL..</param>
-        /// <param name="activityModeHash">The hash identifier of the most specific Activity Mode under which this activity is played. This is useful for situations where the activity in question is - for instance - a PVP map, but it&#39;s not clear what mode the PVP map is being played under. If it&#39;s a playlist, this will be less specific: but hopefully useful in some way..</param>
-        /// <param name="activityModeType">The enumeration equivalent of the most specific Activity Mode under which this activity is played..</param>
-        public DestinyMilestonesDestinyMilestoneActivityVariant(int? activityHash = default(int?), Object completionStatus = default(Object), int? activityModeHash = default(int?), ActivityModeTypeEnum? activityModeType = default(ActivityModeTypeEnum?))
+        /// <param name="ActivityHash">The hash for the specific variant of the activity related to this milestone. You can pull more detailed static info from the DestinyActivityDefinition, such as difficulty level..</param>
+        /// <param name="CompletionStatus">An OPTIONAL component: if it makes sense to talk about this activity variant in terms of whether or not it has been completed or what progress you have made in it, this will be returned. Otherwise, this will be NULL..</param>
+        /// <param name="ActivityModeHash">The hash identifier of the most specific Activity Mode under which this activity is played. This is useful for situations where the activity in question is - for instance - a PVP map, but it&#39;s not clear what mode the PVP map is being played under. If it&#39;s a playlist, this will be less specific: but hopefully useful in some way..</param>
+        /// <param name="ActivityModeType">The enumeration equivalent of the most specific Activity Mode under which this activity is played..</param>
+        public DestinyMilestonesDestinyMilestoneActivityVariant(uint? ActivityHash = default(uint?), DestinyMilestonesDestinyMilestoneActivityCompletionStatus CompletionStatus = default(DestinyMilestonesDestinyMilestoneActivityCompletionStatus), uint? ActivityModeHash = default(uint?), ActivityModeTypeEnum? ActivityModeType = default(ActivityModeTypeEnum?))
         {
-            this.ActivityHash = activityHash;
-            this.CompletionStatus = completionStatus;
-            this.ActivityModeHash = activityModeHash;
-            this.ActivityModeType = activityModeType;
+            this.ActivityHash = ActivityHash;
+            this.CompletionStatus = CompletionStatus;
+            this.ActivityModeHash = ActivityModeHash;
+            this.ActivityModeType = ActivityModeType;
         }
         
         /// <summary>
@@ -412,21 +413,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash for the specific variant of the activity related to this milestone. You can pull more detailed static info from the DestinyActivityDefinition, such as difficulty level.</value>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// An OPTIONAL component: if it makes sense to talk about this activity variant in terms of whether or not it has been completed or what progress you have made in it, this will be returned. Otherwise, this will be NULL.
         /// </summary>
         /// <value>An OPTIONAL component: if it makes sense to talk about this activity variant in terms of whether or not it has been completed or what progress you have made in it, this will be returned. Otherwise, this will be NULL.</value>
         [DataMember(Name="completionStatus", EmitDefaultValue=false)]
-        public Object CompletionStatus { get; set; }
+        public DestinyMilestonesDestinyMilestoneActivityCompletionStatus CompletionStatus { get; set; }
 
         /// <summary>
         /// The hash identifier of the most specific Activity Mode under which this activity is played. This is useful for situations where the activity in question is - for instance - a PVP map, but it&#39;s not clear what mode the PVP map is being played under. If it&#39;s a playlist, this will be less specific: but hopefully useful in some way.
         /// </summary>
         /// <value>The hash identifier of the most specific Activity Mode under which this activity is played. This is useful for situations where the activity in question is - for instance - a PVP map, but it&#39;s not clear what mode the PVP map is being played under. If it&#39;s a playlist, this will be less specific: but hopefully useful in some way.</value>
         [DataMember(Name="activityModeHash", EmitDefaultValue=false)]
-        public int? ActivityModeHash { get; set; }
+        public uint? ActivityModeHash { get; set; }
 
 
         /// <summary>
@@ -449,7 +450,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

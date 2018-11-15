@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TrendingTrendingDetail" /> class.
         /// </summary>
-        /// <param name="identifier">identifier.</param>
-        /// <param name="entityType">entityType.</param>
-        /// <param name="news">news.</param>
-        /// <param name="support">support.</param>
-        /// <param name="destinyItem">destinyItem.</param>
-        /// <param name="destinyActivity">destinyActivity.</param>
-        /// <param name="destinyRitual">destinyRitual.</param>
-        /// <param name="creation">creation.</param>
-        /// <param name="stream">stream.</param>
-        public TrendingTrendingDetail(string identifier = default(string), TrendingTrendingEntryType entityType = default(TrendingTrendingEntryType), TrendingTrendingEntryNews news = default(TrendingTrendingEntryNews), TrendingTrendingEntrySupportArticle support = default(TrendingTrendingEntrySupportArticle), TrendingTrendingEntryDestinyItem destinyItem = default(TrendingTrendingEntryDestinyItem), TrendingTrendingEntryDestinyActivity destinyActivity = default(TrendingTrendingEntryDestinyActivity), TrendingTrendingEntryDestinyRitual destinyRitual = default(TrendingTrendingEntryDestinyRitual), TrendingTrendingEntryCommunityCreation creation = default(TrendingTrendingEntryCommunityCreation), TrendingTrendingEntryCommunityStream stream = default(TrendingTrendingEntryCommunityStream))
+        /// <param name="Identifier">Identifier.</param>
+        /// <param name="EntityType">EntityType.</param>
+        /// <param name="News">News.</param>
+        /// <param name="Support">Support.</param>
+        /// <param name="DestinyItem">DestinyItem.</param>
+        /// <param name="DestinyActivity">DestinyActivity.</param>
+        /// <param name="DestinyRitual">DestinyRitual.</param>
+        /// <param name="Creation">Creation.</param>
+        /// <param name="Stream">Stream.</param>
+        public TrendingTrendingDetail(string Identifier = default(string), TrendingTrendingEntryType EntityType = default(TrendingTrendingEntryType), TrendingTrendingEntryNews News = default(TrendingTrendingEntryNews), TrendingTrendingEntrySupportArticle Support = default(TrendingTrendingEntrySupportArticle), TrendingTrendingEntryDestinyItem DestinyItem = default(TrendingTrendingEntryDestinyItem), TrendingTrendingEntryDestinyActivity DestinyActivity = default(TrendingTrendingEntryDestinyActivity), TrendingTrendingEntryDestinyRitual DestinyRitual = default(TrendingTrendingEntryDestinyRitual), TrendingTrendingEntryCommunityCreation Creation = default(TrendingTrendingEntryCommunityCreation), TrendingTrendingEntryCommunityStream Stream = default(TrendingTrendingEntryCommunityStream))
         {
-            this.Identifier = identifier;
-            this.EntityType = entityType;
-            this.News = news;
-            this.Support = support;
-            this.DestinyItem = destinyItem;
-            this.DestinyActivity = destinyActivity;
-            this.DestinyRitual = destinyRitual;
-            this.Creation = creation;
-            this.Stream = stream;
+            this.Identifier = Identifier;
+            this.EntityType = EntityType;
+            this.News = News;
+            this.Support = Support;
+            this.DestinyItem = DestinyItem;
+            this.DestinyActivity = DestinyActivity;
+            this.DestinyRitual = DestinyRitual;
+            this.Creation = Creation;
+            this.Stream = Stream;
         }
         
         /// <summary>
@@ -134,7 +134,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

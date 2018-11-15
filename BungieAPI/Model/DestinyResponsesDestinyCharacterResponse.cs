@@ -33,36 +33,36 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyResponsesDestinyCharacterResponse" /> class.
         /// </summary>
-        /// <param name="inventory">The character-level non-equipped inventory items.  COMPONENT TYPE: CharacterInventories.</param>
-        /// <param name="character">Base information about the character in question.  COMPONENT TYPE: Characters.</param>
-        /// <param name="progressions">Character progression data, including Milestones.  COMPONENT TYPE: CharacterProgressions.</param>
-        /// <param name="renderData">Character rendering data - a minimal set of information about equipment and dyes used for rendering.  COMPONENT TYPE: CharacterRenderData.</param>
-        /// <param name="activities">Activity data - info about current activities available to the player.  COMPONENT TYPE: CharacterActivities.</param>
-        /// <param name="equipment">Equipped items on the character.  COMPONENT TYPE: CharacterEquipment.</param>
-        /// <param name="kiosks">Items available from Kiosks that are available to this specific character.   COMPONENT TYPE: Kiosks.</param>
-        /// <param name="plugSets">When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states that are scoped to this character.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets.</param>
-        /// <param name="presentationNodes">COMPONENT TYPE: PresentationNodes.</param>
-        /// <param name="records">COMPONENT TYPE: Records.</param>
-        /// <param name="collectibles">COMPONENT TYPE: Collectibles.</param>
-        /// <param name="itemComponents">The set of components belonging to the player&#39;s instanced items.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.].</param>
-        /// <param name="uninstancedItemComponents">The set of components belonging to the player&#39;s UNinstanced items. Because apparently now those too can have information relevant to the character&#39;s state.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.].</param>
-        /// <param name="currencyLookups">A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups.</param>
-        public DestinyResponsesDestinyCharacterResponse(Object inventory = default(Object), Object character = default(Object), Object progressions = default(Object), Object renderData = default(Object), Object activities = default(Object), Object equipment = default(Object), Object kiosks = default(Object), Object plugSets = default(Object), Object presentationNodes = default(Object), Object records = default(Object), Object collectibles = default(Object), Object itemComponents = default(Object), Object uninstancedItemComponents = default(Object), Object currencyLookups = default(Object))
+        /// <param name="Inventory">The character-level non-equipped inventory items.  COMPONENT TYPE: CharacterInventories.</param>
+        /// <param name="Character">Base information about the character in question.  COMPONENT TYPE: Characters.</param>
+        /// <param name="Progressions">Character progression data, including Milestones.  COMPONENT TYPE: CharacterProgressions.</param>
+        /// <param name="RenderData">Character rendering data - a minimal set of information about equipment and dyes used for rendering.  COMPONENT TYPE: CharacterRenderData.</param>
+        /// <param name="Activities">Activity data - info about current activities available to the player.  COMPONENT TYPE: CharacterActivities.</param>
+        /// <param name="Equipment">Equipped items on the character.  COMPONENT TYPE: CharacterEquipment.</param>
+        /// <param name="Kiosks">Items available from Kiosks that are available to this specific character.   COMPONENT TYPE: Kiosks.</param>
+        /// <param name="PlugSets">When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states that are scoped to this character.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets.</param>
+        /// <param name="PresentationNodes">COMPONENT TYPE: PresentationNodes.</param>
+        /// <param name="Records">COMPONENT TYPE: Records.</param>
+        /// <param name="Collectibles">COMPONENT TYPE: Collectibles.</param>
+        /// <param name="ItemComponents">The set of components belonging to the player&#39;s instanced items.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.].</param>
+        /// <param name="UninstancedItemComponents">The set of components belonging to the player&#39;s UNinstanced items. Because apparently now those too can have information relevant to the character&#39;s state.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.].</param>
+        /// <param name="CurrencyLookups">A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups.</param>
+        public DestinyResponsesDestinyCharacterResponse(SingleComponentResponseOfDestinyInventoryComponent Inventory = default(SingleComponentResponseOfDestinyInventoryComponent), SingleComponentResponseOfDestinyCharacterComponent Character = default(SingleComponentResponseOfDestinyCharacterComponent), SingleComponentResponseOfDestinyCharacterProgressionComponent Progressions = default(SingleComponentResponseOfDestinyCharacterProgressionComponent), SingleComponentResponseOfDestinyCharacterRenderComponent RenderData = default(SingleComponentResponseOfDestinyCharacterRenderComponent), SingleComponentResponseOfDestinyCharacterActivitiesComponent Activities = default(SingleComponentResponseOfDestinyCharacterActivitiesComponent), SingleComponentResponseOfDestinyInventoryComponent Equipment = default(SingleComponentResponseOfDestinyInventoryComponent), SingleComponentResponseOfDestinyKiosksComponent Kiosks = default(SingleComponentResponseOfDestinyKiosksComponent), SingleComponentResponseOfDestinyPlugSetsComponent PlugSets = default(SingleComponentResponseOfDestinyPlugSetsComponent), SingleComponentResponseOfDestinyPresentationNodesComponent PresentationNodes = default(SingleComponentResponseOfDestinyPresentationNodesComponent), SingleComponentResponseOfDestinyCharacterRecordsComponent Records = default(SingleComponentResponseOfDestinyCharacterRecordsComponent), SingleComponentResponseOfDestinyCollectiblesComponent Collectibles = default(SingleComponentResponseOfDestinyCollectiblesComponent), DestinyItemComponentSetOfint64 ItemComponents = default(DestinyItemComponentSetOfint64), DestinyBaseItemComponentSetOfuint32 UninstancedItemComponents = default(DestinyBaseItemComponentSetOfuint32), SingleComponentResponseOfDestinyCurrenciesComponent CurrencyLookups = default(SingleComponentResponseOfDestinyCurrenciesComponent))
         {
-            this.Inventory = inventory;
-            this.Character = character;
-            this.Progressions = progressions;
-            this.RenderData = renderData;
-            this.Activities = activities;
-            this.Equipment = equipment;
-            this.Kiosks = kiosks;
-            this.PlugSets = plugSets;
-            this.PresentationNodes = presentationNodes;
-            this.Records = records;
-            this.Collectibles = collectibles;
-            this.ItemComponents = itemComponents;
-            this.UninstancedItemComponents = uninstancedItemComponents;
-            this.CurrencyLookups = currencyLookups;
+            this.Inventory = Inventory;
+            this.Character = Character;
+            this.Progressions = Progressions;
+            this.RenderData = RenderData;
+            this.Activities = Activities;
+            this.Equipment = Equipment;
+            this.Kiosks = Kiosks;
+            this.PlugSets = PlugSets;
+            this.PresentationNodes = PresentationNodes;
+            this.Records = Records;
+            this.Collectibles = Collectibles;
+            this.ItemComponents = ItemComponents;
+            this.UninstancedItemComponents = UninstancedItemComponents;
+            this.CurrencyLookups = CurrencyLookups;
         }
         
         /// <summary>
@@ -70,98 +70,98 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The character-level non-equipped inventory items.  COMPONENT TYPE: CharacterInventories</value>
         [DataMember(Name="inventory", EmitDefaultValue=false)]
-        public Object Inventory { get; set; }
+        public SingleComponentResponseOfDestinyInventoryComponent Inventory { get; set; }
 
         /// <summary>
         /// Base information about the character in question.  COMPONENT TYPE: Characters
         /// </summary>
         /// <value>Base information about the character in question.  COMPONENT TYPE: Characters</value>
         [DataMember(Name="character", EmitDefaultValue=false)]
-        public Object Character { get; set; }
+        public SingleComponentResponseOfDestinyCharacterComponent Character { get; set; }
 
         /// <summary>
         /// Character progression data, including Milestones.  COMPONENT TYPE: CharacterProgressions
         /// </summary>
         /// <value>Character progression data, including Milestones.  COMPONENT TYPE: CharacterProgressions</value>
         [DataMember(Name="progressions", EmitDefaultValue=false)]
-        public Object Progressions { get; set; }
+        public SingleComponentResponseOfDestinyCharacterProgressionComponent Progressions { get; set; }
 
         /// <summary>
         /// Character rendering data - a minimal set of information about equipment and dyes used for rendering.  COMPONENT TYPE: CharacterRenderData
         /// </summary>
         /// <value>Character rendering data - a minimal set of information about equipment and dyes used for rendering.  COMPONENT TYPE: CharacterRenderData</value>
         [DataMember(Name="renderData", EmitDefaultValue=false)]
-        public Object RenderData { get; set; }
+        public SingleComponentResponseOfDestinyCharacterRenderComponent RenderData { get; set; }
 
         /// <summary>
         /// Activity data - info about current activities available to the player.  COMPONENT TYPE: CharacterActivities
         /// </summary>
         /// <value>Activity data - info about current activities available to the player.  COMPONENT TYPE: CharacterActivities</value>
         [DataMember(Name="activities", EmitDefaultValue=false)]
-        public Object Activities { get; set; }
+        public SingleComponentResponseOfDestinyCharacterActivitiesComponent Activities { get; set; }
 
         /// <summary>
         /// Equipped items on the character.  COMPONENT TYPE: CharacterEquipment
         /// </summary>
         /// <value>Equipped items on the character.  COMPONENT TYPE: CharacterEquipment</value>
         [DataMember(Name="equipment", EmitDefaultValue=false)]
-        public Object Equipment { get; set; }
+        public SingleComponentResponseOfDestinyInventoryComponent Equipment { get; set; }
 
         /// <summary>
         /// Items available from Kiosks that are available to this specific character.   COMPONENT TYPE: Kiosks
         /// </summary>
         /// <value>Items available from Kiosks that are available to this specific character.   COMPONENT TYPE: Kiosks</value>
         [DataMember(Name="kiosks", EmitDefaultValue=false)]
-        public Object Kiosks { get; set; }
+        public SingleComponentResponseOfDestinyKiosksComponent Kiosks { get; set; }
 
         /// <summary>
         /// When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states that are scoped to this character.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets
         /// </summary>
         /// <value>When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states that are scoped to this character.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets</value>
         [DataMember(Name="plugSets", EmitDefaultValue=false)]
-        public Object PlugSets { get; set; }
+        public SingleComponentResponseOfDestinyPlugSetsComponent PlugSets { get; set; }
 
         /// <summary>
         /// COMPONENT TYPE: PresentationNodes
         /// </summary>
         /// <value>COMPONENT TYPE: PresentationNodes</value>
         [DataMember(Name="presentationNodes", EmitDefaultValue=false)]
-        public Object PresentationNodes { get; set; }
+        public SingleComponentResponseOfDestinyPresentationNodesComponent PresentationNodes { get; set; }
 
         /// <summary>
         /// COMPONENT TYPE: Records
         /// </summary>
         /// <value>COMPONENT TYPE: Records</value>
         [DataMember(Name="records", EmitDefaultValue=false)]
-        public Object Records { get; set; }
+        public SingleComponentResponseOfDestinyCharacterRecordsComponent Records { get; set; }
 
         /// <summary>
         /// COMPONENT TYPE: Collectibles
         /// </summary>
         /// <value>COMPONENT TYPE: Collectibles</value>
         [DataMember(Name="collectibles", EmitDefaultValue=false)]
-        public Object Collectibles { get; set; }
+        public SingleComponentResponseOfDestinyCollectiblesComponent Collectibles { get; set; }
 
         /// <summary>
         /// The set of components belonging to the player&#39;s instanced items.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
         /// </summary>
         /// <value>The set of components belonging to the player&#39;s instanced items.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]</value>
         [DataMember(Name="itemComponents", EmitDefaultValue=false)]
-        public Object ItemComponents { get; set; }
+        public DestinyItemComponentSetOfint64 ItemComponents { get; set; }
 
         /// <summary>
         /// The set of components belonging to the player&#39;s UNinstanced items. Because apparently now those too can have information relevant to the character&#39;s state.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
         /// </summary>
         /// <value>The set of components belonging to the player&#39;s UNinstanced items. Because apparently now those too can have information relevant to the character&#39;s state.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]</value>
         [DataMember(Name="uninstancedItemComponents", EmitDefaultValue=false)]
-        public Object UninstancedItemComponents { get; set; }
+        public DestinyBaseItemComponentSetOfuint32 UninstancedItemComponents { get; set; }
 
         /// <summary>
         /// A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups
         /// </summary>
         /// <value>A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups</value>
         [DataMember(Name="currencyLookups", EmitDefaultValue=false)]
-        public Object CurrencyLookups { get; set; }
+        public SingleComponentResponseOfDestinyCurrenciesComponent CurrencyLookups { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -193,7 +193,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

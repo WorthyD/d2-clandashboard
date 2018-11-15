@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyResponsesDestinyCollectibleNodeDetailResponse" /> class.
         /// </summary>
-        /// <param name="collectibles">COMPONENT TYPE: Collectibles.</param>
-        /// <param name="collectibleItemComponents">Item components, keyed by the item hash of the items pointed at collectibles found under the requested Presentation Node.  NOTE: I had a lot of hemming and hawing about whether these should be keyed by collectible hash or item hash... but ultimately having it be keyed by item hash meant that UI that already uses DestinyItemComponentSet data wouldn&#39;t have to have a special override to do the collectible -&gt; item lookup once you delve into an item&#39;s details, and it also meant that you didn&#39;t have to remember that the Hash being used as the key for plugSets was different from the Hash being used for the other Dictionaries. As a result, using the Item Hash felt like the least crappy solution.  We may all come to regret this decision. We will see.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.].</param>
-        public DestinyResponsesDestinyCollectibleNodeDetailResponse(Object collectibles = default(Object), Object collectibleItemComponents = default(Object))
+        /// <param name="Collectibles">COMPONENT TYPE: Collectibles.</param>
+        /// <param name="CollectibleItemComponents">Item components, keyed by the item hash of the items pointed at collectibles found under the requested Presentation Node.  NOTE: I had a lot of hemming and hawing about whether these should be keyed by collectible hash or item hash... but ultimately having it be keyed by item hash meant that UI that already uses DestinyItemComponentSet data wouldn&#39;t have to have a special override to do the collectible -&gt; item lookup once you delve into an item&#39;s details, and it also meant that you didn&#39;t have to remember that the Hash being used as the key for plugSets was different from the Hash being used for the other Dictionaries. As a result, using the Item Hash felt like the least crappy solution.  We may all come to regret this decision. We will see.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.].</param>
+        public DestinyResponsesDestinyCollectibleNodeDetailResponse(SingleComponentResponseOfDestinyCollectiblesComponent Collectibles = default(SingleComponentResponseOfDestinyCollectiblesComponent), DestinyItemComponentSetOfuint32 CollectibleItemComponents = default(DestinyItemComponentSetOfuint32))
         {
-            this.Collectibles = collectibles;
-            this.CollectibleItemComponents = collectibleItemComponents;
+            this.Collectibles = Collectibles;
+            this.CollectibleItemComponents = CollectibleItemComponents;
         }
         
         /// <summary>
@@ -46,14 +46,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>COMPONENT TYPE: Collectibles</value>
         [DataMember(Name="collectibles", EmitDefaultValue=false)]
-        public Object Collectibles { get; set; }
+        public SingleComponentResponseOfDestinyCollectiblesComponent Collectibles { get; set; }
 
         /// <summary>
         /// Item components, keyed by the item hash of the items pointed at collectibles found under the requested Presentation Node.  NOTE: I had a lot of hemming and hawing about whether these should be keyed by collectible hash or item hash... but ultimately having it be keyed by item hash meant that UI that already uses DestinyItemComponentSet data wouldn&#39;t have to have a special override to do the collectible -&gt; item lookup once you delve into an item&#39;s details, and it also meant that you didn&#39;t have to remember that the Hash being used as the key for plugSets was different from the Hash being used for the other Dictionaries. As a result, using the Item Hash felt like the least crappy solution.  We may all come to regret this decision. We will see.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
         /// </summary>
         /// <value>Item components, keyed by the item hash of the items pointed at collectibles found under the requested Presentation Node.  NOTE: I had a lot of hemming and hawing about whether these should be keyed by collectible hash or item hash... but ultimately having it be keyed by item hash meant that UI that already uses DestinyItemComponentSet data wouldn&#39;t have to have a special override to do the collectible -&gt; item lookup once you delve into an item&#39;s details, and it also meant that you didn&#39;t have to remember that the Hash being used as the key for plugSets was different from the Hash being used for the other Dictionaries. As a result, using the Item Hash felt like the least crappy solution.  We may all come to regret this decision. We will see.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]</value>
         [DataMember(Name="collectibleItemComponents", EmitDefaultValue=false)]
-        public Object CollectibleItemComponents { get; set; }
+        public DestinyItemComponentSetOfuint32 CollectibleItemComponents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

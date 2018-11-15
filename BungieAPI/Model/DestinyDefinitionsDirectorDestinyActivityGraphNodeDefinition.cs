@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDirectorDestinyActivityGraphNodeDefinition" /> class.
         /// </summary>
-        /// <param name="nodeId">An identifier for the Activity Graph Node, only guaranteed to be unique within its parent Activity Graph..</param>
-        /// <param name="overrideDisplay">The node *may* have display properties that override the active Activity&#39;s display properties..</param>
-        /// <param name="position">The position on the map for this node..</param>
-        /// <param name="featuringStates">The node may have various visual accents placed on it, or styles applied. These are the list of possible styles that the Node can have. The game iterates through each, looking for the first one that passes a check of the required game/character/account state in order to show that style, and then renders the node in that style..</param>
-        /// <param name="activities">The node may have various possible activities that could be active for it, however only one may be active at a time. See the DestinyActivityGraphNodeActivityDefinition for details..</param>
-        /// <param name="states">Represents possible states that the graph node can be in. These are combined with some checking that happens in the game client and server to determine which state is actually active at any given time..</param>
-        public DestinyDefinitionsDirectorDestinyActivityGraphNodeDefinition(int? nodeId = default(int?), Object overrideDisplay = default(Object), Object position = default(Object), List<DestinyDefinitionsDirectorDestinyActivityGraphNodeFeaturingStateDefinition> featuringStates = default(List<DestinyDefinitionsDirectorDestinyActivityGraphNodeFeaturingStateDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphNodeActivityDefinition> activities = default(List<DestinyDefinitionsDirectorDestinyActivityGraphNodeActivityDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphNodeStateEntry> states = default(List<DestinyDefinitionsDirectorDestinyActivityGraphNodeStateEntry>))
+        /// <param name="NodeId">An identifier for the Activity Graph Node, only guaranteed to be unique within its parent Activity Graph..</param>
+        /// <param name="OverrideDisplay">The node *may* have display properties that override the active Activity&#39;s display properties..</param>
+        /// <param name="Position">The position on the map for this node..</param>
+        /// <param name="FeaturingStates">The node may have various visual accents placed on it, or styles applied. These are the list of possible styles that the Node can have. The game iterates through each, looking for the first one that passes a check of the required game/character/account state in order to show that style, and then renders the node in that style..</param>
+        /// <param name="Activities">The node may have various possible activities that could be active for it, however only one may be active at a time. See the DestinyActivityGraphNodeActivityDefinition for details..</param>
+        /// <param name="States">Represents possible states that the graph node can be in. These are combined with some checking that happens in the game client and server to determine which state is actually active at any given time..</param>
+        public DestinyDefinitionsDirectorDestinyActivityGraphNodeDefinition(uint? NodeId = default(uint?), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition OverrideDisplay = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), DestinyDefinitionsCommonDestinyPositionDefinition Position = default(DestinyDefinitionsCommonDestinyPositionDefinition), List<DestinyDefinitionsDirectorDestinyActivityGraphNodeFeaturingStateDefinition> FeaturingStates = default(List<DestinyDefinitionsDirectorDestinyActivityGraphNodeFeaturingStateDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphNodeActivityDefinition> Activities = default(List<DestinyDefinitionsDirectorDestinyActivityGraphNodeActivityDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphNodeStateEntry> States = default(List<DestinyDefinitionsDirectorDestinyActivityGraphNodeStateEntry>))
         {
-            this.NodeId = nodeId;
-            this.OverrideDisplay = overrideDisplay;
-            this.Position = position;
-            this.FeaturingStates = featuringStates;
-            this.Activities = activities;
-            this.States = states;
+            this.NodeId = NodeId;
+            this.OverrideDisplay = OverrideDisplay;
+            this.Position = Position;
+            this.FeaturingStates = FeaturingStates;
+            this.Activities = Activities;
+            this.States = States;
         }
         
         /// <summary>
@@ -54,21 +54,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>An identifier for the Activity Graph Node, only guaranteed to be unique within its parent Activity Graph.</value>
         [DataMember(Name="nodeId", EmitDefaultValue=false)]
-        public int? NodeId { get; set; }
+        public uint? NodeId { get; set; }
 
         /// <summary>
         /// The node *may* have display properties that override the active Activity&#39;s display properties.
         /// </summary>
         /// <value>The node *may* have display properties that override the active Activity&#39;s display properties.</value>
         [DataMember(Name="overrideDisplay", EmitDefaultValue=false)]
-        public Object OverrideDisplay { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition OverrideDisplay { get; set; }
 
         /// <summary>
         /// The position on the map for this node.
         /// </summary>
         /// <value>The position on the map for this node.</value>
         [DataMember(Name="position", EmitDefaultValue=false)]
-        public Object Position { get; set; }
+        public DestinyDefinitionsCommonDestinyPositionDefinition Position { get; set; }
 
         /// <summary>
         /// The node may have various visual accents placed on it, or styles applied. These are the list of possible styles that the Node can have. The game iterates through each, looking for the first one that passes a check of the required game/character/account state in order to show that style, and then renders the node in that style.
@@ -113,7 +113,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

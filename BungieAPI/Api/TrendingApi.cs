@@ -172,7 +172,7 @@ namespace BungieAPI.Api
         /// <returns></returns>
         public TrendingApi(String basePath)
         {
-            this.Configuration = new BungieAPI.Client.Configuration { BasePath = basePath };
+            this.Configuration = new Configuration { BasePath = basePath };
 
             ExceptionFactory = BungieAPI.Client.Configuration.DefaultExceptionFactory;
         }
@@ -183,10 +183,10 @@ namespace BungieAPI.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public TrendingApi(BungieAPI.Client.Configuration configuration = null)
+        public TrendingApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
-                this.Configuration = BungieAPI.Client.Configuration.Default;
+                this.Configuration = Configuration.Default;
             else
                 this.Configuration = configuration;
 
@@ -216,7 +216,7 @@ namespace BungieAPI.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public BungieAPI.Client.Configuration Configuration {get; set;}
+        public Configuration Configuration {get; set;}
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -278,7 +278,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Trending/Categories/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -286,19 +286,19 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -312,7 +312,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20062>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20062) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20062)));
+                (InlineResponse20062) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20062)));
         }
 
         /// <summary>
@@ -338,7 +338,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Trending/Categories/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -346,19 +346,19 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -372,7 +372,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20062>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20062) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20062)));
+                (InlineResponse20062) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20062)));
         }
 
         /// <summary>
@@ -407,7 +407,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Trending/Categories/{categoryId}/{pageNumber}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -415,21 +415,21 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (categoryId != null) localVarPathParams.Add("categoryId", this.Configuration.ApiClient.ParameterToString(categoryId)); // path parameter
-            if (pageNumber != null) localVarPathParams.Add("pageNumber", this.Configuration.ApiClient.ParameterToString(pageNumber)); // path parameter
+            if (categoryId != null) localVarPathParams.Add("categoryId", Configuration.ApiClient.ParameterToString(categoryId)); // path parameter
+            if (pageNumber != null) localVarPathParams.Add("pageNumber", Configuration.ApiClient.ParameterToString(pageNumber)); // path parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -443,7 +443,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20063>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20063) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20063)));
+                (InlineResponse20063) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20063)));
         }
 
         /// <summary>
@@ -479,7 +479,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Trending/Categories/{categoryId}/{pageNumber}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -487,21 +487,21 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (categoryId != null) localVarPathParams.Add("categoryId", this.Configuration.ApiClient.ParameterToString(categoryId)); // path parameter
-            if (pageNumber != null) localVarPathParams.Add("pageNumber", this.Configuration.ApiClient.ParameterToString(pageNumber)); // path parameter
+            if (categoryId != null) localVarPathParams.Add("categoryId", Configuration.ApiClient.ParameterToString(categoryId)); // path parameter
+            if (pageNumber != null) localVarPathParams.Add("pageNumber", Configuration.ApiClient.ParameterToString(pageNumber)); // path parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -515,7 +515,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20063>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20063) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20063)));
+                (InlineResponse20063) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20063)));
         }
 
         /// <summary>
@@ -550,7 +550,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Trending/Details/{trendingEntryType}/{identifier}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -558,21 +558,21 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
-            if (trendingEntryType != null) localVarPathParams.Add("trendingEntryType", this.Configuration.ApiClient.ParameterToString(trendingEntryType)); // path parameter
+            if (identifier != null) localVarPathParams.Add("identifier", Configuration.ApiClient.ParameterToString(identifier)); // path parameter
+            if (trendingEntryType != null) localVarPathParams.Add("trendingEntryType", Configuration.ApiClient.ParameterToString(trendingEntryType)); // path parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -586,7 +586,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20064>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20064) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20064)));
+                (InlineResponse20064) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20064)));
         }
 
         /// <summary>
@@ -622,7 +622,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Trending/Details/{trendingEntryType}/{identifier}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -630,21 +630,21 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (identifier != null) localVarPathParams.Add("identifier", this.Configuration.ApiClient.ParameterToString(identifier)); // path parameter
-            if (trendingEntryType != null) localVarPathParams.Add("trendingEntryType", this.Configuration.ApiClient.ParameterToString(trendingEntryType)); // path parameter
+            if (identifier != null) localVarPathParams.Add("identifier", Configuration.ApiClient.ParameterToString(identifier)); // path parameter
+            if (trendingEntryType != null) localVarPathParams.Add("trendingEntryType", Configuration.ApiClient.ParameterToString(trendingEntryType)); // path parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -658,7 +658,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20064>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20064) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20064)));
+                (InlineResponse20064) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20064)));
         }
 
     }

@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinySandboxPerkDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">These display properties are by no means guaranteed to be populated. Usually when it is, it&#39;s only because we back-filled them with the displayProperties of some Talent Node or Plug item that happened to be uniquely providing that perk..</param>
-        /// <param name="perkIdentifier">The string identifier for the perk..</param>
-        /// <param name="isDisplayable">If true, you can actually show the perk in the UI. Otherwise, it doesn&#39;t have useful player-facing information..</param>
-        /// <param name="damageType">If this perk grants a damage type to a weapon, the damage type will be defined here.  Unless you have a compelling reason to use this enum value, use the damageTypeHash instead to look up the actual DestinyDamageTypeDefinition..</param>
-        /// <param name="damageTypeHash">The hash identifier for looking up the DestinyDamageTypeDefinition, if this perk has a damage type.  This is preferred over using the damageType enumeration value, which has been left purely because it is occasionally convenient..</param>
-        /// <param name="perkGroups">An old holdover from the original Armory, this was an attempt to group perks by functionality.  It is as yet unpopulated, and there will be quite a bit of work needed to restore it to its former working order..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinySandboxPerkDefinition(Object displayProperties = default(Object), string perkIdentifier = default(string), bool? isDisplayable = default(bool?), Object damageType = default(Object), int? damageTypeHash = default(int?), Object perkGroups = default(Object), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">These display properties are by no means guaranteed to be populated. Usually when it is, it&#39;s only because we back-filled them with the displayProperties of some Talent Node or Plug item that happened to be uniquely providing that perk..</param>
+        /// <param name="PerkIdentifier">The string identifier for the perk..</param>
+        /// <param name="IsDisplayable">If true, you can actually show the perk in the UI. Otherwise, it doesn&#39;t have useful player-facing information..</param>
+        /// <param name="DamageType">If this perk grants a damage type to a weapon, the damage type will be defined here.  Unless you have a compelling reason to use this enum value, use the damageTypeHash instead to look up the actual DestinyDamageTypeDefinition..</param>
+        /// <param name="DamageTypeHash">The hash identifier for looking up the DestinyDamageTypeDefinition, if this perk has a damage type.  This is preferred over using the damageType enumeration value, which has been left purely because it is occasionally convenient..</param>
+        /// <param name="PerkGroups">An old holdover from the original Armory, this was an attempt to group perks by functionality.  It is as yet unpopulated, and there will be quite a bit of work needed to restore it to its former working order..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinySandboxPerkDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string PerkIdentifier = default(string), bool? IsDisplayable = default(bool?), DestinyDamageType DamageType = default(DestinyDamageType), uint? DamageTypeHash = default(uint?), DestinyDefinitionsDestinyTalentNodeStepGroups PerkGroups = default(DestinyDefinitionsDestinyTalentNodeStepGroups), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.PerkIdentifier = perkIdentifier;
-            this.IsDisplayable = isDisplayable;
-            this.DamageType = damageType;
-            this.DamageTypeHash = damageTypeHash;
-            this.PerkGroups = perkGroups;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.PerkIdentifier = PerkIdentifier;
+            this.IsDisplayable = IsDisplayable;
+            this.DamageType = DamageType;
+            this.DamageTypeHash = DamageTypeHash;
+            this.PerkGroups = PerkGroups;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -60,7 +60,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>These display properties are by no means guaranteed to be populated. Usually when it is, it&#39;s only because we back-filled them with the displayProperties of some Talent Node or Plug item that happened to be uniquely providing that perk.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// The string identifier for the perk.
@@ -81,28 +81,28 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If this perk grants a damage type to a weapon, the damage type will be defined here.  Unless you have a compelling reason to use this enum value, use the damageTypeHash instead to look up the actual DestinyDamageTypeDefinition.</value>
         [DataMember(Name="damageType", EmitDefaultValue=false)]
-        public Object DamageType { get; set; }
+        public DestinyDamageType DamageType { get; set; }
 
         /// <summary>
         /// The hash identifier for looking up the DestinyDamageTypeDefinition, if this perk has a damage type.  This is preferred over using the damageType enumeration value, which has been left purely because it is occasionally convenient.
         /// </summary>
         /// <value>The hash identifier for looking up the DestinyDamageTypeDefinition, if this perk has a damage type.  This is preferred over using the damageType enumeration value, which has been left purely because it is occasionally convenient.</value>
         [DataMember(Name="damageTypeHash", EmitDefaultValue=false)]
-        public int? DamageTypeHash { get; set; }
+        public uint? DamageTypeHash { get; set; }
 
         /// <summary>
         /// An old holdover from the original Armory, this was an attempt to group perks by functionality.  It is as yet unpopulated, and there will be quite a bit of work needed to restore it to its former working order.
         /// </summary>
         /// <value>An old holdover from the original Armory, this was an attempt to group perks by functionality.  It is as yet unpopulated, and there will be quite a bit of work needed to restore it to its former working order.</value>
         [DataMember(Name="perkGroups", EmitDefaultValue=false)]
-        public Object PerkGroups { get; set; }
+        public DestinyDefinitionsDestinyTalentNodeStepGroups PerkGroups { get; set; }
 
         /// <summary>
         /// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -143,7 +143,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -27,41 +27,39 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines Fireteam.FireteamDateRange
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum FireteamFireteamDateRange
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "0")]
+        All,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Now,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "2")]
+        TwentyFourHours,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "3")]
+        FortyEightHours,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 5
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "4")]
+        ThisWeek
     }
 
 }

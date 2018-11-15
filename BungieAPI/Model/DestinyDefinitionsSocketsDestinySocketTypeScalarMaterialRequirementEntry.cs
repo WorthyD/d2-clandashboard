@@ -33,19 +33,19 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsSocketsDestinySocketTypeScalarMaterialRequirementEntry" /> class.
         /// </summary>
-        /// <param name="currencyItemHash">currencyItemHash.</param>
-        /// <param name="scalarValue">scalarValue.</param>
-        public DestinyDefinitionsSocketsDestinySocketTypeScalarMaterialRequirementEntry(int? currencyItemHash = default(int?), int? scalarValue = default(int?))
+        /// <param name="CurrencyItemHash">CurrencyItemHash.</param>
+        /// <param name="ScalarValue">ScalarValue.</param>
+        public DestinyDefinitionsSocketsDestinySocketTypeScalarMaterialRequirementEntry(uint? CurrencyItemHash = default(uint?), int? ScalarValue = default(int?))
         {
-            this.CurrencyItemHash = currencyItemHash;
-            this.ScalarValue = scalarValue;
+            this.CurrencyItemHash = CurrencyItemHash;
+            this.ScalarValue = ScalarValue;
         }
         
         /// <summary>
         /// Gets or Sets CurrencyItemHash
         /// </summary>
         [DataMember(Name="currencyItemHash", EmitDefaultValue=false)]
-        public int? CurrencyItemHash { get; set; }
+        public uint? CurrencyItemHash { get; set; }
 
         /// <summary>
         /// Gets or Sets ScalarValue
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -28,65 +28,63 @@ namespace BungieAPI.Model
     /// As you run into items that need to be classified for Milestone purposes in ways that we cannot infer via direct data, add a new classification here and use a string constant to represent it in the local item config file.  NOTE: This is not all of the item types available, and some of these are holdovers from Destiny 1 that may or may not still exist.
     /// </summary>
     /// <value>As you run into items that need to be classified for Milestone purposes in ways that we cannot infer via direct data, add a new classification here and use a string constant to represent it in the local item config file.  NOTE: This is not all of the item types available, and some of these are holdovers from Destiny 1 that may or may not still exist.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinySpecialItemType
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// As you run into items that need to be classified for Milestone purposes in ways that we cannot infer via direct data, add a new classification here and use a string constant to represent it in the local item config file.  NOTE: This is not all of the item types available, and some of these are holdovers from Destiny 1 that may or may not still exist.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// As you run into items that need to be classified for Milestone purposes in ways that we cannot infer via direct data, add a new classification here and use a string constant to represent it in the local item config file.  NOTE: This is not all of the item types available, and some of these are holdovers from Destiny 1 that may or may not still exist.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        SpecialCurrency,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 3,
+		/// <summary>
+		/// As you run into items that need to be classified for Milestone purposes in ways that we cannot infer via direct data, add a new classification here and use a string constant to represent it in the local item config file.  NOTE: This is not all of the item types available, and some of these are holdovers from Destiny 1 that may or may not still exist.
+		/// </summary>
+		[EnumMember(Value = "8")]
+        Armor,
         
-        /// <summary>
-        /// Enum NUMBER_9 for value: 9
-        /// </summary>
-        [EnumMember(Value = "9")]
-        NUMBER_9 = 4,
+		/// <summary>
+		/// As you run into items that need to be classified for Milestone purposes in ways that we cannot infer via direct data, add a new classification here and use a string constant to represent it in the local item config file.  NOTE: This is not all of the item types available, and some of these are holdovers from Destiny 1 that may or may not still exist.
+		/// </summary>
+		[EnumMember(Value = "9")]
+        Weapon,
         
-        /// <summary>
-        /// Enum NUMBER_23 for value: 23
-        /// </summary>
-        [EnumMember(Value = "23")]
-        NUMBER_23 = 5,
+		/// <summary>
+		/// As you run into items that need to be classified for Milestone purposes in ways that we cannot infer via direct data, add a new classification here and use a string constant to represent it in the local item config file.  NOTE: This is not all of the item types available, and some of these are holdovers from Destiny 1 that may or may not still exist.
+		/// </summary>
+		[EnumMember(Value = "23")]
+        Engram,
         
-        /// <summary>
-        /// Enum NUMBER_24 for value: 24
-        /// </summary>
-        [EnumMember(Value = "24")]
-        NUMBER_24 = 6,
+		/// <summary>
+		/// As you run into items that need to be classified for Milestone purposes in ways that we cannot infer via direct data, add a new classification here and use a string constant to represent it in the local item config file.  NOTE: This is not all of the item types available, and some of these are holdovers from Destiny 1 that may or may not still exist.
+		/// </summary>
+		[EnumMember(Value = "24")]
+        Consumable,
         
-        /// <summary>
-        /// Enum NUMBER_25 for value: 25
-        /// </summary>
-        [EnumMember(Value = "25")]
-        NUMBER_25 = 7,
+		/// <summary>
+		/// As you run into items that need to be classified for Milestone purposes in ways that we cannot infer via direct data, add a new classification here and use a string constant to represent it in the local item config file.  NOTE: This is not all of the item types available, and some of these are holdovers from Destiny 1 that may or may not still exist.
+		/// </summary>
+		[EnumMember(Value = "25")]
+        ExchangeMaterial,
         
-        /// <summary>
-        /// Enum NUMBER_27 for value: 27
-        /// </summary>
-        [EnumMember(Value = "27")]
-        NUMBER_27 = 8,
+		/// <summary>
+		/// As you run into items that need to be classified for Milestone purposes in ways that we cannot infer via direct data, add a new classification here and use a string constant to represent it in the local item config file.  NOTE: This is not all of the item types available, and some of these are holdovers from Destiny 1 that may or may not still exist.
+		/// </summary>
+		[EnumMember(Value = "27")]
+        MissionReward,
         
-        /// <summary>
-        /// Enum NUMBER_29 for value: 29
-        /// </summary>
-        [EnumMember(Value = "29")]
-        NUMBER_29 = 9
+		/// <summary>
+		/// As you run into items that need to be classified for Milestone purposes in ways that we cannot infer via direct data, add a new classification here and use a string constant to represent it in the local item config file.  NOTE: This is not all of the item types available, and some of these are holdovers from Destiny 1 that may or may not still exist.
+		/// </summary>
+		[EnumMember(Value = "29")]
+        Currency
     }
 
 }

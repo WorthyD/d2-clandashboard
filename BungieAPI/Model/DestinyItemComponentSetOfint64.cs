@@ -33,24 +33,24 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyItemComponentSetOfint64" /> class.
         /// </summary>
-        /// <param name="instances">instances.</param>
-        /// <param name="perks">perks.</param>
-        /// <param name="renderData">renderData.</param>
-        /// <param name="stats">stats.</param>
-        /// <param name="sockets">sockets.</param>
-        /// <param name="talentGrids">talentGrids.</param>
-        /// <param name="plugStates">plugStates.</param>
-        /// <param name="objectives">objectives.</param>
-        public DestinyItemComponentSetOfint64(DictionaryComponentResponseOfint64AndDestinyItemInstanceComponent instances = default(DictionaryComponentResponseOfint64AndDestinyItemInstanceComponent), DictionaryComponentResponseOfint64AndDestinyItemPerksComponent perks = default(DictionaryComponentResponseOfint64AndDestinyItemPerksComponent), DictionaryComponentResponseOfint64AndDestinyItemRenderComponent renderData = default(DictionaryComponentResponseOfint64AndDestinyItemRenderComponent), DictionaryComponentResponseOfint64AndDestinyItemStatsComponent stats = default(DictionaryComponentResponseOfint64AndDestinyItemStatsComponent), DictionaryComponentResponseOfint64AndDestinyItemSocketsComponent sockets = default(DictionaryComponentResponseOfint64AndDestinyItemSocketsComponent), DictionaryComponentResponseOfint64AndDestinyItemTalentGridComponent talentGrids = default(DictionaryComponentResponseOfint64AndDestinyItemTalentGridComponent), DictionaryComponentResponseOfuint32AndDestinyItemPlugComponent plugStates = default(DictionaryComponentResponseOfuint32AndDestinyItemPlugComponent), DictionaryComponentResponseOfint64AndDestinyItemObjectivesComponent objectives = default(DictionaryComponentResponseOfint64AndDestinyItemObjectivesComponent))
+        /// <param name="Instances">Instances.</param>
+        /// <param name="Perks">Perks.</param>
+        /// <param name="RenderData">RenderData.</param>
+        /// <param name="Stats">Stats.</param>
+        /// <param name="Sockets">Sockets.</param>
+        /// <param name="TalentGrids">TalentGrids.</param>
+        /// <param name="PlugStates">PlugStates.</param>
+        /// <param name="Objectives">Objectives.</param>
+        public DestinyItemComponentSetOfint64(DictionaryComponentResponseOfint64AndDestinyItemInstanceComponent Instances = default(DictionaryComponentResponseOfint64AndDestinyItemInstanceComponent), DictionaryComponentResponseOfint64AndDestinyItemPerksComponent Perks = default(DictionaryComponentResponseOfint64AndDestinyItemPerksComponent), DictionaryComponentResponseOfint64AndDestinyItemRenderComponent RenderData = default(DictionaryComponentResponseOfint64AndDestinyItemRenderComponent), DictionaryComponentResponseOfint64AndDestinyItemStatsComponent Stats = default(DictionaryComponentResponseOfint64AndDestinyItemStatsComponent), DictionaryComponentResponseOfint64AndDestinyItemSocketsComponent Sockets = default(DictionaryComponentResponseOfint64AndDestinyItemSocketsComponent), DictionaryComponentResponseOfint64AndDestinyItemTalentGridComponent TalentGrids = default(DictionaryComponentResponseOfint64AndDestinyItemTalentGridComponent), DictionaryComponentResponseOfuint32AndDestinyItemPlugComponent PlugStates = default(DictionaryComponentResponseOfuint32AndDestinyItemPlugComponent), DictionaryComponentResponseOfint64AndDestinyItemObjectivesComponent Objectives = default(DictionaryComponentResponseOfint64AndDestinyItemObjectivesComponent))
         {
-            this.Instances = instances;
-            this.Perks = perks;
-            this.RenderData = renderData;
-            this.Stats = stats;
-            this.Sockets = sockets;
-            this.TalentGrids = talentGrids;
-            this.PlugStates = plugStates;
-            this.Objectives = objectives;
+            this.Instances = Instances;
+            this.Perks = Perks;
+            this.RenderData = RenderData;
+            this.Stats = Stats;
+            this.Sockets = Sockets;
+            this.TalentGrids = TalentGrids;
+            this.PlugStates = PlugStates;
+            this.Objectives = Objectives;
         }
         
         /// <summary>
@@ -125,7 +125,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

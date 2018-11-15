@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDirectorDestinyActivityGraphDefinition" /> class.
         /// </summary>
-        /// <param name="nodes">These represent the visual \&quot;nodes\&quot; on the map&#39;s view. These are the activities you can click on in the map..</param>
-        /// <param name="artElements">Represents one-off/special UI elements that appear on the map..</param>
-        /// <param name="connections">Represents connections between graph nodes. However, it lacks context that we&#39;d need to make good use of it..</param>
-        /// <param name="displayObjectives">Objectives can display on maps, and this is supposedly metadata for that. I have not had the time to analyze the details of what is useful within however: we could be missing important data to make this work. Expect this property to be expanded on later if possible..</param>
-        /// <param name="displayProgressions">Progressions can also display on maps, but similarly to displayObjectives we appear to lack some required information and context right now. We will have to look into it later and add more data if possible..</param>
-        /// <param name="linkedGraphs">Represents links between this Activity Graph and other ones..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDirectorDestinyActivityGraphDefinition(List<DestinyDefinitionsDirectorDestinyActivityGraphNodeDefinition> nodes = default(List<DestinyDefinitionsDirectorDestinyActivityGraphNodeDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphArtElementDefinition> artElements = default(List<DestinyDefinitionsDirectorDestinyActivityGraphArtElementDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphConnectionDefinition> connections = default(List<DestinyDefinitionsDirectorDestinyActivityGraphConnectionDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphDisplayObjectiveDefinition> displayObjectives = default(List<DestinyDefinitionsDirectorDestinyActivityGraphDisplayObjectiveDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphDisplayProgressionDefinition> displayProgressions = default(List<DestinyDefinitionsDirectorDestinyActivityGraphDisplayProgressionDefinition>), List<DestinyDefinitionsDirectorDestinyLinkedGraphDefinition> linkedGraphs = default(List<DestinyDefinitionsDirectorDestinyLinkedGraphDefinition>), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="Nodes">These represent the visual \&quot;nodes\&quot; on the map&#39;s view. These are the activities you can click on in the map..</param>
+        /// <param name="ArtElements">Represents one-off/special UI elements that appear on the map..</param>
+        /// <param name="Connections">Represents connections between graph nodes. However, it lacks context that we&#39;d need to make good use of it..</param>
+        /// <param name="DisplayObjectives">Objectives can display on maps, and this is supposedly metadata for that. I have not had the time to analyze the details of what is useful within however: we could be missing important data to make this work. Expect this property to be expanded on later if possible..</param>
+        /// <param name="DisplayProgressions">Progressions can also display on maps, but similarly to displayObjectives we appear to lack some required information and context right now. We will have to look into it later and add more data if possible..</param>
+        /// <param name="LinkedGraphs">Represents links between this Activity Graph and other ones..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDirectorDestinyActivityGraphDefinition(List<DestinyDefinitionsDirectorDestinyActivityGraphNodeDefinition> Nodes = default(List<DestinyDefinitionsDirectorDestinyActivityGraphNodeDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphArtElementDefinition> ArtElements = default(List<DestinyDefinitionsDirectorDestinyActivityGraphArtElementDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphConnectionDefinition> Connections = default(List<DestinyDefinitionsDirectorDestinyActivityGraphConnectionDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphDisplayObjectiveDefinition> DisplayObjectives = default(List<DestinyDefinitionsDirectorDestinyActivityGraphDisplayObjectiveDefinition>), List<DestinyDefinitionsDirectorDestinyActivityGraphDisplayProgressionDefinition> DisplayProgressions = default(List<DestinyDefinitionsDirectorDestinyActivityGraphDisplayProgressionDefinition>), List<DestinyDefinitionsDirectorDestinyLinkedGraphDefinition> LinkedGraphs = default(List<DestinyDefinitionsDirectorDestinyLinkedGraphDefinition>), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.Nodes = nodes;
-            this.ArtElements = artElements;
-            this.Connections = connections;
-            this.DisplayObjectives = displayObjectives;
-            this.DisplayProgressions = displayProgressions;
-            this.LinkedGraphs = linkedGraphs;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.Nodes = Nodes;
+            this.ArtElements = ArtElements;
+            this.Connections = Connections;
+            this.DisplayObjectives = DisplayObjectives;
+            this.DisplayProgressions = DisplayProgressions;
+            this.LinkedGraphs = LinkedGraphs;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -102,7 +102,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -143,7 +143,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

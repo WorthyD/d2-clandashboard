@@ -27,41 +27,39 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines Applications.ApplicationStatus
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum ApplicationsApplicationStatus
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// No value assigned
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// Application exists and works but will not appear in any public catalog. New applications start in this state, test applications will remain in this state.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Private,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// Active applications that can appear in an catalog.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Public,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4,
+		/// <summary>
+		/// Application disabled by the owner. All authorizations will be treated as terminated while in this state. Owner can move back to private or public state.
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Disabled,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 5
+		/// <summary>
+		/// Application has been blocked by Bungie. It cannot be transitioned out of this state by the owner. Authorizations are terminated when an application is in this state.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        Blocked
     }
 
 }

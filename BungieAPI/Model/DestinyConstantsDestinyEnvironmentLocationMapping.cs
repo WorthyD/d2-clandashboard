@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyConstantsDestinyEnvironmentLocationMapping" /> class.
         /// </summary>
-        /// <param name="locationHash">The location that is revealed on the director by this mapping..</param>
-        /// <param name="activationSource">A hint that the UI uses to figure out how this location is activated by the player..</param>
-        /// <param name="itemHash">If this is populated, it is the item that you must possess for this location to be active because of this mapping. (theoretically, a location can have multiple mappings, and some might require an item while others don&#39;t).</param>
-        /// <param name="objectiveHash">If this is populated, this is an objective related to the location..</param>
-        /// <param name="activityHash">If this is populated, this is the activity you have to be playing in order to see this location appear because of this mapping. (theoretically, a location can have multiple mappings, and some might require you to be in a specific activity when others don&#39;t).</param>
-        public DestinyConstantsDestinyEnvironmentLocationMapping(int? locationHash = default(int?), string activationSource = default(string), int? itemHash = default(int?), int? objectiveHash = default(int?), int? activityHash = default(int?))
+        /// <param name="LocationHash">The location that is revealed on the director by this mapping..</param>
+        /// <param name="ActivationSource">A hint that the UI uses to figure out how this location is activated by the player..</param>
+        /// <param name="ItemHash">If this is populated, it is the item that you must possess for this location to be active because of this mapping. (theoretically, a location can have multiple mappings, and some might require an item while others don&#39;t).</param>
+        /// <param name="ObjectiveHash">If this is populated, this is an objective related to the location..</param>
+        /// <param name="ActivityHash">If this is populated, this is the activity you have to be playing in order to see this location appear because of this mapping. (theoretically, a location can have multiple mappings, and some might require you to be in a specific activity when others don&#39;t).</param>
+        public DestinyConstantsDestinyEnvironmentLocationMapping(uint? LocationHash = default(uint?), string ActivationSource = default(string), uint? ItemHash = default(uint?), uint? ObjectiveHash = default(uint?), uint? ActivityHash = default(uint?))
         {
-            this.LocationHash = locationHash;
-            this.ActivationSource = activationSource;
-            this.ItemHash = itemHash;
-            this.ObjectiveHash = objectiveHash;
-            this.ActivityHash = activityHash;
+            this.LocationHash = LocationHash;
+            this.ActivationSource = ActivationSource;
+            this.ItemHash = ItemHash;
+            this.ObjectiveHash = ObjectiveHash;
+            this.ActivityHash = ActivityHash;
         }
         
         /// <summary>
@@ -52,7 +52,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The location that is revealed on the director by this mapping.</value>
         [DataMember(Name="locationHash", EmitDefaultValue=false)]
-        public int? LocationHash { get; set; }
+        public uint? LocationHash { get; set; }
 
         /// <summary>
         /// A hint that the UI uses to figure out how this location is activated by the player.
@@ -66,21 +66,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If this is populated, it is the item that you must possess for this location to be active because of this mapping. (theoretically, a location can have multiple mappings, and some might require an item while others don&#39;t)</value>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// If this is populated, this is an objective related to the location.
         /// </summary>
         /// <value>If this is populated, this is an objective related to the location.</value>
         [DataMember(Name="objectiveHash", EmitDefaultValue=false)]
-        public int? ObjectiveHash { get; set; }
+        public uint? ObjectiveHash { get; set; }
 
         /// <summary>
         /// If this is populated, this is the activity you have to be playing in order to see this location appear because of this mapping. (theoretically, a location can have multiple mappings, and some might require you to be in a specific activity when others don&#39;t)
         /// </summary>
         /// <value>If this is populated, this is the activity you have to be playing in order to see this location appear because of this mapping. (theoretically, a location can have multiple mappings, and some might require you to be in a specific activity when others don&#39;t)</value>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

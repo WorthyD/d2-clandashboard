@@ -33,52 +33,52 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CommunityCommunityLiveStatus" /> class.
         /// </summary>
-        /// <param name="dateStatusUpdated">dateStatusUpdated.</param>
-        /// <param name="url">url.</param>
-        /// <param name="partnershipIdentifier">partnershipIdentifier.</param>
-        /// <param name="partnershipType">partnershipType.</param>
-        /// <param name="thumbnail">thumbnail.</param>
-        /// <param name="thumbnailSmall">thumbnailSmall.</param>
-        /// <param name="thumbnailLarge">thumbnailLarge.</param>
-        /// <param name="destinyCharacterId">destinyCharacterId.</param>
-        /// <param name="userInfo">userInfo.</param>
-        /// <param name="currentActivityHash">currentActivityHash.</param>
-        /// <param name="dateLastPlayed">dateLastPlayed.</param>
-        /// <param name="dateStreamStarted">dateStreamStarted.</param>
-        /// <param name="locale">locale.</param>
-        /// <param name="currentViewers">currentViewers.</param>
-        /// <param name="followers">followers.</param>
-        /// <param name="overallViewers">overallViewers.</param>
-        /// <param name="isFeatured">isFeatured.</param>
-        /// <param name="title">title.</param>
-        /// <param name="activityModeHash">activityModeHash.</param>
-        /// <param name="dateFeatured">dateFeatured.</param>
-        /// <param name="trendingValue">trendingValue.</param>
-        /// <param name="isSubscribable">isSubscribable.</param>
-        public CommunityCommunityLiveStatus(DateTime? dateStatusUpdated = default(DateTime?), string url = default(string), string partnershipIdentifier = default(string), PartnershipsPartnershipType partnershipType = default(PartnershipsPartnershipType), string thumbnail = default(string), string thumbnailSmall = default(string), string thumbnailLarge = default(string), long? destinyCharacterId = default(long?), UserUserInfoCard userInfo = default(UserUserInfoCard), int? currentActivityHash = default(int?), DateTime? dateLastPlayed = default(DateTime?), DateTime? dateStreamStarted = default(DateTime?), string locale = default(string), int? currentViewers = default(int?), int? followers = default(int?), int? overallViewers = default(int?), bool? isFeatured = default(bool?), string title = default(string), int? activityModeHash = default(int?), DateTime? dateFeatured = default(DateTime?), float? trendingValue = default(float?), bool? isSubscribable = default(bool?))
+        /// <param name="DateStatusUpdated">DateStatusUpdated.</param>
+        /// <param name="Url">Url.</param>
+        /// <param name="PartnershipIdentifier">PartnershipIdentifier.</param>
+        /// <param name="PartnershipType">PartnershipType.</param>
+        /// <param name="Thumbnail">Thumbnail.</param>
+        /// <param name="ThumbnailSmall">ThumbnailSmall.</param>
+        /// <param name="ThumbnailLarge">ThumbnailLarge.</param>
+        /// <param name="DestinyCharacterId">DestinyCharacterId.</param>
+        /// <param name="UserInfo">UserInfo.</param>
+        /// <param name="CurrentActivityHash">CurrentActivityHash.</param>
+        /// <param name="DateLastPlayed">DateLastPlayed.</param>
+        /// <param name="DateStreamStarted">DateStreamStarted.</param>
+        /// <param name="Locale">Locale.</param>
+        /// <param name="CurrentViewers">CurrentViewers.</param>
+        /// <param name="Followers">Followers.</param>
+        /// <param name="OverallViewers">OverallViewers.</param>
+        /// <param name="IsFeatured">IsFeatured.</param>
+        /// <param name="Title">Title.</param>
+        /// <param name="ActivityModeHash">ActivityModeHash.</param>
+        /// <param name="DateFeatured">DateFeatured.</param>
+        /// <param name="TrendingValue">TrendingValue.</param>
+        /// <param name="IsSubscribable">IsSubscribable.</param>
+        public CommunityCommunityLiveStatus(DateTime? DateStatusUpdated = default(DateTime?), string Url = default(string), string PartnershipIdentifier = default(string), PartnershipsPartnershipType PartnershipType = default(PartnershipsPartnershipType), string Thumbnail = default(string), string ThumbnailSmall = default(string), string ThumbnailLarge = default(string), long? DestinyCharacterId = default(long?), UserUserInfoCard UserInfo = default(UserUserInfoCard), uint? CurrentActivityHash = default(uint?), DateTime? DateLastPlayed = default(DateTime?), DateTime? DateStreamStarted = default(DateTime?), string Locale = default(string), int? CurrentViewers = default(int?), int? Followers = default(int?), int? OverallViewers = default(int?), bool? IsFeatured = default(bool?), string Title = default(string), uint? ActivityModeHash = default(uint?), DateTime? DateFeatured = default(DateTime?), float? TrendingValue = default(float?), bool? IsSubscribable = default(bool?))
         {
-            this.DateStatusUpdated = dateStatusUpdated;
-            this.Url = url;
-            this.PartnershipIdentifier = partnershipIdentifier;
-            this.PartnershipType = partnershipType;
-            this.Thumbnail = thumbnail;
-            this.ThumbnailSmall = thumbnailSmall;
-            this.ThumbnailLarge = thumbnailLarge;
-            this.DestinyCharacterId = destinyCharacterId;
-            this.UserInfo = userInfo;
-            this.CurrentActivityHash = currentActivityHash;
-            this.DateLastPlayed = dateLastPlayed;
-            this.DateStreamStarted = dateStreamStarted;
-            this.Locale = locale;
-            this.CurrentViewers = currentViewers;
-            this.Followers = followers;
-            this.OverallViewers = overallViewers;
-            this.IsFeatured = isFeatured;
-            this.Title = title;
-            this.ActivityModeHash = activityModeHash;
-            this.DateFeatured = dateFeatured;
-            this.TrendingValue = trendingValue;
-            this.IsSubscribable = isSubscribable;
+            this.DateStatusUpdated = DateStatusUpdated;
+            this.Url = Url;
+            this.PartnershipIdentifier = PartnershipIdentifier;
+            this.PartnershipType = PartnershipType;
+            this.Thumbnail = Thumbnail;
+            this.ThumbnailSmall = ThumbnailSmall;
+            this.ThumbnailLarge = ThumbnailLarge;
+            this.DestinyCharacterId = DestinyCharacterId;
+            this.UserInfo = UserInfo;
+            this.CurrentActivityHash = CurrentActivityHash;
+            this.DateLastPlayed = DateLastPlayed;
+            this.DateStreamStarted = DateStreamStarted;
+            this.Locale = Locale;
+            this.CurrentViewers = CurrentViewers;
+            this.Followers = Followers;
+            this.OverallViewers = OverallViewers;
+            this.IsFeatured = IsFeatured;
+            this.Title = Title;
+            this.ActivityModeHash = ActivityModeHash;
+            this.DateFeatured = DateFeatured;
+            this.TrendingValue = TrendingValue;
+            this.IsSubscribable = IsSubscribable;
         }
         
         /// <summary>
@@ -139,7 +139,7 @@ namespace BungieAPI.Model
         /// Gets or Sets CurrentActivityHash
         /// </summary>
         [DataMember(Name="currentActivityHash", EmitDefaultValue=false)]
-        public int? CurrentActivityHash { get; set; }
+        public uint? CurrentActivityHash { get; set; }
 
         /// <summary>
         /// Gets or Sets DateLastPlayed
@@ -193,7 +193,7 @@ namespace BungieAPI.Model
         /// Gets or Sets ActivityModeHash
         /// </summary>
         [DataMember(Name="activityModeHash", EmitDefaultValue=false)]
-        public int? ActivityModeHash { get; set; }
+        public uint? ActivityModeHash { get; set; }
 
         /// <summary>
         /// Gets or Sets DateFeatured
@@ -251,7 +251,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

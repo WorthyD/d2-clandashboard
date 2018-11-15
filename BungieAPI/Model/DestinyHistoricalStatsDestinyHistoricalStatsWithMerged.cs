@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyHistoricalStatsWithMerged" /> class.
         /// </summary>
-        /// <param name="results">results.</param>
-        /// <param name="merged">merged.</param>
-        public DestinyHistoricalStatsDestinyHistoricalStatsWithMerged(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsByPeriod> results = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsByPeriod>), DestinyHistoricalStatsDestinyHistoricalStatsByPeriod merged = default(DestinyHistoricalStatsDestinyHistoricalStatsByPeriod))
+        /// <param name="Results">Results.</param>
+        /// <param name="Merged">Merged.</param>
+        public DestinyHistoricalStatsDestinyHistoricalStatsWithMerged(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsByPeriod> Results = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsByPeriod>), DestinyHistoricalStatsDestinyHistoricalStatsByPeriod Merged = default(DestinyHistoricalStatsDestinyHistoricalStatsByPeriod))
         {
-            this.Results = results;
-            this.Merged = merged;
+            this.Results = Results;
+            this.Merged = Merged;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

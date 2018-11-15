@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsVendorsDestinyVendorGroup" /> class.
         /// </summary>
-        /// <param name="vendorGroupHash">vendorGroupHash.</param>
-        /// <param name="vendorHashes">The ordered list of vendors within a particular group..</param>
-        public DestinyComponentsVendorsDestinyVendorGroup(int? vendorGroupHash = default(int?), List<int?> vendorHashes = default(List<int?>))
+        /// <param name="VendorGroupHash">VendorGroupHash.</param>
+        /// <param name="VendorHashes">The ordered list of vendors within a particular group..</param>
+        public DestinyComponentsVendorsDestinyVendorGroup(uint? VendorGroupHash = default(uint?), List<uint?> VendorHashes = default(List<uint?>))
         {
-            this.VendorGroupHash = vendorGroupHash;
-            this.VendorHashes = vendorHashes;
+            this.VendorGroupHash = VendorGroupHash;
+            this.VendorHashes = VendorHashes;
         }
         
         /// <summary>
         /// Gets or Sets VendorGroupHash
         /// </summary>
         [DataMember(Name="vendorGroupHash", EmitDefaultValue=false)]
-        public int? VendorGroupHash { get; set; }
+        public uint? VendorGroupHash { get; set; }
 
         /// <summary>
         /// The ordered list of vendors within a particular group.
         /// </summary>
         /// <value>The ordered list of vendors within a particular group.</value>
         [DataMember(Name="vendorHashes", EmitDefaultValue=false)]
-        public List<int?> VendorHashes { get; set; }
+        public List<uint?> VendorHashes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,7 +72,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

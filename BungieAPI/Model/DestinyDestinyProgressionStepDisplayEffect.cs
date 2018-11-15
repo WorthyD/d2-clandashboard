@@ -28,29 +28,27 @@ namespace BungieAPI.Model
     /// If progression is earned, this determines whether the progression shows visual effects on the character or its item - or neither.
     /// </summary>
     /// <value>If progression is earned, this determines whether the progression shows visual effects on the character or its item - or neither.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyProgressionStepDisplayEffect
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// If progression is earned, this determines whether the progression shows visual effects on the character or its item - or neither.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// If progression is earned, this determines whether the progression shows visual effects on the character or its item - or neither.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Character,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3
+		/// <summary>
+		/// If progression is earned, this determines whether the progression shows visual effects on the character or its item - or neither.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Item
     }
 
 }

@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyStatOverrideDefinition" /> class.
         /// </summary>
-        /// <param name="statHash">The hash identifier of the stat whose display properties are being overridden..</param>
-        /// <param name="displayProperties">The display properties to show instead of the base DestinyStatDefinition display properties..</param>
-        public DestinyDefinitionsDestinyStatOverrideDefinition(int? statHash = default(int?), Object displayProperties = default(Object))
+        /// <param name="StatHash">The hash identifier of the stat whose display properties are being overridden..</param>
+        /// <param name="DisplayProperties">The display properties to show instead of the base DestinyStatDefinition display properties..</param>
+        public DestinyDefinitionsDestinyStatOverrideDefinition(uint? StatHash = default(uint?), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition))
         {
-            this.StatHash = statHash;
-            this.DisplayProperties = displayProperties;
+            this.StatHash = StatHash;
+            this.DisplayProperties = DisplayProperties;
         }
         
         /// <summary>
@@ -46,14 +46,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the stat whose display properties are being overridden.</value>
         [DataMember(Name="statHash", EmitDefaultValue=false)]
-        public int? StatHash { get; set; }
+        public uint? StatHash { get; set; }
 
         /// <summary>
         /// The display properties to show instead of the base DestinyStatDefinition display properties.
         /// </summary>
         /// <value>The display properties to show instead of the base DestinyStatDefinition display properties.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

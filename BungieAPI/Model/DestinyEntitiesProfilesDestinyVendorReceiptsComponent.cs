@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesProfilesDestinyVendorReceiptsComponent" /> class.
         /// </summary>
-        /// <param name="receipts">The receipts for refundable purchases made at a vendor..</param>
-        public DestinyEntitiesProfilesDestinyVendorReceiptsComponent(List<DestinyVendorsDestinyVendorReceipt> receipts = default(List<DestinyVendorsDestinyVendorReceipt>))
+        /// <param name="Receipts">The receipts for refundable purchases made at a vendor..</param>
+        public DestinyEntitiesProfilesDestinyVendorReceiptsComponent(List<DestinyVendorsDestinyVendorReceipt> Receipts = default(List<DestinyVendorsDestinyVendorReceipt>))
         {
-            this.Receipts = receipts;
+            this.Receipts = Receipts;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

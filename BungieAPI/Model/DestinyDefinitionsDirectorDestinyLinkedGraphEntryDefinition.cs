@@ -33,17 +33,17 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDirectorDestinyLinkedGraphEntryDefinition" /> class.
         /// </summary>
-        /// <param name="activityGraphHash">activityGraphHash.</param>
-        public DestinyDefinitionsDirectorDestinyLinkedGraphEntryDefinition(int? activityGraphHash = default(int?))
+        /// <param name="ActivityGraphHash">ActivityGraphHash.</param>
+        public DestinyDefinitionsDirectorDestinyLinkedGraphEntryDefinition(uint? ActivityGraphHash = default(uint?))
         {
-            this.ActivityGraphHash = activityGraphHash;
+            this.ActivityGraphHash = ActivityGraphHash;
         }
         
         /// <summary>
         /// Gets or Sets ActivityGraphHash
         /// </summary>
         [DataMember(Name="activityGraphHash", EmitDefaultValue=false)]
-        public int? ActivityGraphHash { get; set; }
+        public uint? ActivityGraphHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentModelsContentTypeDefaultValue" /> class.
         /// </summary>
-        /// <param name="whenClause">whenClause.</param>
-        /// <param name="whenValue">whenValue.</param>
-        /// <param name="defaultValue">defaultValue.</param>
-        public ContentModelsContentTypeDefaultValue(string whenClause = default(string), string whenValue = default(string), string defaultValue = default(string))
+        /// <param name="WhenClause">WhenClause.</param>
+        /// <param name="WhenValue">WhenValue.</param>
+        /// <param name="DefaultValue">DefaultValue.</param>
+        public ContentModelsContentTypeDefaultValue(string WhenClause = default(string), string WhenValue = default(string), string DefaultValue = default(string))
         {
-            this.WhenClause = whenClause;
-            this.WhenValue = whenValue;
-            this.DefaultValue = defaultValue;
+            this.WhenClause = WhenClause;
+            this.WhenValue = WhenValue;
+            this.DefaultValue = DefaultValue;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

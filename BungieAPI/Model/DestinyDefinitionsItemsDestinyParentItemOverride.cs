@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsItemsDestinyParentItemOverride" /> class.
         /// </summary>
-        /// <param name="additionalEquipRequirementsDisplayStrings">additionalEquipRequirementsDisplayStrings.</param>
-        /// <param name="pipIcon">pipIcon.</param>
-        public DestinyDefinitionsItemsDestinyParentItemOverride(List<string> additionalEquipRequirementsDisplayStrings = default(List<string>), string pipIcon = default(string))
+        /// <param name="AdditionalEquipRequirementsDisplayStrings">AdditionalEquipRequirementsDisplayStrings.</param>
+        /// <param name="PipIcon">PipIcon.</param>
+        public DestinyDefinitionsItemsDestinyParentItemOverride(List<string> AdditionalEquipRequirementsDisplayStrings = default(List<string>), string PipIcon = default(string))
         {
-            this.AdditionalEquipRequirementsDisplayStrings = additionalEquipRequirementsDisplayStrings;
-            this.PipIcon = pipIcon;
+            this.AdditionalEquipRequirementsDisplayStrings = AdditionalEquipRequirementsDisplayStrings;
+            this.PipIcon = PipIcon;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

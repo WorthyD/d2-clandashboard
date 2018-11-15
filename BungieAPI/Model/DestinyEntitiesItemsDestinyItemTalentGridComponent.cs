@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesItemsDestinyItemTalentGridComponent" /> class.
         /// </summary>
-        /// <param name="talentGridHash">Most items don&#39;t have useful talent grids anymore, but Builds in particular still do.  You can use this hash to lookup the DestinyTalentGridDefinition attached to this item, which will be crucial for understanding the node values on the item..</param>
-        /// <param name="nodes">Detailed information about the individual nodes in the talent grid.  A node represents a single visual \&quot;pip\&quot; in the talent grid or Build detail view, though each node may have multiple \&quot;steps\&quot; which indicate the actual bonuses and visual representation of that node..</param>
-        /// <param name="isGridComplete">Indicates whether the talent grid on this item is completed, and thus whether it should have a gold border around it.  Only will be true if the item actually *has* a talent grid, and only then if it is completed (i.e. every exclusive set has an activated node, and every non-exclusive set node has been activated).</param>
-        /// <param name="gridProgression">If the item has a progression, it will be detailed here. A progression means that the item can gain experience. Thresholds of experience are what determines whether and when a talent node can be activated..</param>
-        public DestinyEntitiesItemsDestinyItemTalentGridComponent(int? talentGridHash = default(int?), List<DestinyDestinyTalentNode> nodes = default(List<DestinyDestinyTalentNode>), bool? isGridComplete = default(bool?), Object gridProgression = default(Object))
+        /// <param name="TalentGridHash">Most items don&#39;t have useful talent grids anymore, but Builds in particular still do.  You can use this hash to lookup the DestinyTalentGridDefinition attached to this item, which will be crucial for understanding the node values on the item..</param>
+        /// <param name="Nodes">Detailed information about the individual nodes in the talent grid.  A node represents a single visual \&quot;pip\&quot; in the talent grid or Build detail view, though each node may have multiple \&quot;steps\&quot; which indicate the actual bonuses and visual representation of that node..</param>
+        /// <param name="IsGridComplete">Indicates whether the talent grid on this item is completed, and thus whether it should have a gold border around it.  Only will be true if the item actually *has* a talent grid, and only then if it is completed (i.e. every exclusive set has an activated node, and every non-exclusive set node has been activated).</param>
+        /// <param name="GridProgression">If the item has a progression, it will be detailed here. A progression means that the item can gain experience. Thresholds of experience are what determines whether and when a talent node can be activated..</param>
+        public DestinyEntitiesItemsDestinyItemTalentGridComponent(uint? TalentGridHash = default(uint?), List<DestinyDestinyTalentNode> Nodes = default(List<DestinyDestinyTalentNode>), bool? IsGridComplete = default(bool?), DestinyDestinyProgression GridProgression = default(DestinyDestinyProgression))
         {
-            this.TalentGridHash = talentGridHash;
-            this.Nodes = nodes;
-            this.IsGridComplete = isGridComplete;
-            this.GridProgression = gridProgression;
+            this.TalentGridHash = TalentGridHash;
+            this.Nodes = Nodes;
+            this.IsGridComplete = IsGridComplete;
+            this.GridProgression = GridProgression;
         }
         
         /// <summary>
@@ -50,7 +50,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Most items don&#39;t have useful talent grids anymore, but Builds in particular still do.  You can use this hash to lookup the DestinyTalentGridDefinition attached to this item, which will be crucial for understanding the node values on the item.</value>
         [DataMember(Name="talentGridHash", EmitDefaultValue=false)]
-        public int? TalentGridHash { get; set; }
+        public uint? TalentGridHash { get; set; }
 
         /// <summary>
         /// Detailed information about the individual nodes in the talent grid.  A node represents a single visual \&quot;pip\&quot; in the talent grid or Build detail view, though each node may have multiple \&quot;steps\&quot; which indicate the actual bonuses and visual representation of that node.
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the item has a progression, it will be detailed here. A progression means that the item can gain experience. Thresholds of experience are what determines whether and when a talent node can be activated.</value>
         [DataMember(Name="gridProgression", EmitDefaultValue=false)]
-        public Object GridProgression { get; set; }
+        public DestinyDestinyProgression GridProgression { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

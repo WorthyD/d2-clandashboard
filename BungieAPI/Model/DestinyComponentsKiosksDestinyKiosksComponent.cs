@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsKiosksDestinyKiosksComponent" /> class.
         /// </summary>
-        /// <param name="kioskItems">A dictionary keyed by the Kiosk Vendor&#39;s hash identifier (use it to look up the DestinyVendorDefinition for the relevant kiosk vendor), and whose value is a list of all the items that the user can \&quot;see\&quot; in the Kiosk, and any other interesting metadata..</param>
-        public DestinyComponentsKiosksDestinyKiosksComponent(Dictionary<string, List<DestinyComponentsKiosksDestinyKioskItem>> kioskItems = default(Dictionary<string, List<DestinyComponentsKiosksDestinyKioskItem>>))
+        /// <param name="KioskItems">A dictionary keyed by the Kiosk Vendor&#39;s hash identifier (use it to look up the DestinyVendorDefinition for the relevant kiosk vendor), and whose value is a list of all the items that the user can \&quot;see\&quot; in the Kiosk, and any other interesting metadata..</param>
+        public DestinyComponentsKiosksDestinyKiosksComponent(Dictionary<string, List<DestinyComponentsKiosksDestinyKioskItem>> KioskItems = default(Dictionary<string, List<DestinyComponentsKiosksDestinyKioskItem>>))
         {
-            this.KioskItems = kioskItems;
+            this.KioskItems = KioskItems;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

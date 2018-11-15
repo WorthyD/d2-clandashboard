@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyActivityModifierReferenceDefinition" /> class.
         /// </summary>
-        /// <param name="activityModifierHash">The hash identifier for the DestinyActivityModifierDefinition referenced by this activity..</param>
-        public DestinyDefinitionsDestinyActivityModifierReferenceDefinition(int? activityModifierHash = default(int?))
+        /// <param name="ActivityModifierHash">The hash identifier for the DestinyActivityModifierDefinition referenced by this activity..</param>
+        public DestinyDefinitionsDestinyActivityModifierReferenceDefinition(uint? ActivityModifierHash = default(uint?))
         {
-            this.ActivityModifierHash = activityModifierHash;
+            this.ActivityModifierHash = ActivityModifierHash;
         }
         
         /// <summary>
@@ -44,7 +44,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the DestinyActivityModifierDefinition referenced by this activity.</value>
         [DataMember(Name="activityModifierHash", EmitDefaultValue=false)]
-        public int? ActivityModifierHash { get; set; }
+        public uint? ActivityModifierHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

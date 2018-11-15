@@ -33,30 +33,30 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyTalentGridDefinition" /> class.
         /// </summary>
-        /// <param name="maxGridLevel">The maximum possible level of the Talent Grid: at this level, any nodes are allowed to be activated..</param>
-        /// <param name="gridLevelPerColumn">The meaning of this has been lost in the sands of time: it still exists as a property, but appears to be unused in the modern UI of talent grids. It used to imply that each visual \&quot;column\&quot; of talent nodes required identical progression levels in order to be activated. Returning this value in case it is still useful to someone? Perhaps it&#39;s just a bit of interesting history..</param>
-        /// <param name="progressionHash">The hash identifier of the Progression (DestinyProgressionDefinition) that drives whether and when Talent Nodes can be activated on the Grid. Items will have instances of this Progression, and will gain experience that will eventually cause the grid to increase in level. As the grid&#39;s level increases, it will cross the threshold where nodes can be activated. See DestinyTalentGridStepDefinition&#39;s activation requirements for more information..</param>
-        /// <param name="nodes">The list of Talent Nodes on the Grid (recall that Nodes themselves are really just locations in the UI to show whatever their current Step is. You will only know the current step for a node by retrieving instanced data through platform calls to the API that return DestinyItemTalentGridComponent)..</param>
-        /// <param name="exclusiveSets">Talent Nodes can exist in \&quot;exclusive sets\&quot;: these are sets of nodes in which only a single node in the set can be activated at any given time. Activating a node in this set will automatically deactivate the other nodes in the set (referred to as a \&quot;Swap\&quot;).  If a node in the exclusive set has already been activated, the game will not charge you materials to activate another node in the set, even if you have never activated it before, because you already paid the cost to activate one node in the set.  Not to be confused with Exclusive Groups. (how the heck do we NOT get confused by that? Jeez) See the groups property for information about that only-tangentially-related concept..</param>
-        /// <param name="independentNodeIndexes">This is a quick reference to the indexes of nodes that are not part of exclusive sets. Handy for knowing which talent nodes can only be activated directly, rather than via swapping..</param>
-        /// <param name="groups">Talent Nodes can have \&quot;Exclusive Groups\&quot;. These are not to be confused with Exclusive Sets (see exclusiveSets property).  Look at the definition of DestinyTalentExclusiveGroup for more information and how they work. These groups are keyed by the \&quot;groupHash\&quot; from DestinyTalentExclusiveGroup..</param>
-        /// <param name="nodeCategories">BNet wants to show talent nodes grouped by similar purpose with localized titles. This is the ordered list of those categories: if you want to show nodes by category, you can iterate over this list, render the displayProperties for the category as the title, and then iterate over the talent nodes referenced by the category to show the related nodes.  Note that this is different from Exclusive Groups or Sets, because these categories also incorporate \&quot;Independent\&quot; nodes that belong to neither sets nor groups. These are purely for visual grouping of nodes rather than functional grouping..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyTalentGridDefinition(int? maxGridLevel = default(int?), int? gridLevelPerColumn = default(int?), int? progressionHash = default(int?), List<DestinyDefinitionsDestinyTalentNodeDefinition> nodes = default(List<DestinyDefinitionsDestinyTalentNodeDefinition>), List<DestinyDefinitionsDestinyTalentNodeExclusiveSetDefinition> exclusiveSets = default(List<DestinyDefinitionsDestinyTalentNodeExclusiveSetDefinition>), List<int?> independentNodeIndexes = default(List<int?>), Dictionary<string, DestinyDefinitionsDestinyTalentExclusiveGroup> groups = default(Dictionary<string, DestinyDefinitionsDestinyTalentExclusiveGroup>), List<DestinyDefinitionsDestinyTalentNodeCategory> nodeCategories = default(List<DestinyDefinitionsDestinyTalentNodeCategory>), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="MaxGridLevel">The maximum possible level of the Talent Grid: at this level, any nodes are allowed to be activated..</param>
+        /// <param name="GridLevelPerColumn">The meaning of this has been lost in the sands of time: it still exists as a property, but appears to be unused in the modern UI of talent grids. It used to imply that each visual \&quot;column\&quot; of talent nodes required identical progression levels in order to be activated. Returning this value in case it is still useful to someone? Perhaps it&#39;s just a bit of interesting history..</param>
+        /// <param name="ProgressionHash">The hash identifier of the Progression (DestinyProgressionDefinition) that drives whether and when Talent Nodes can be activated on the Grid. Items will have instances of this Progression, and will gain experience that will eventually cause the grid to increase in level. As the grid&#39;s level increases, it will cross the threshold where nodes can be activated. See DestinyTalentGridStepDefinition&#39;s activation requirements for more information..</param>
+        /// <param name="Nodes">The list of Talent Nodes on the Grid (recall that Nodes themselves are really just locations in the UI to show whatever their current Step is. You will only know the current step for a node by retrieving instanced data through platform calls to the API that return DestinyItemTalentGridComponent)..</param>
+        /// <param name="ExclusiveSets">Talent Nodes can exist in \&quot;exclusive sets\&quot;: these are sets of nodes in which only a single node in the set can be activated at any given time. Activating a node in this set will automatically deactivate the other nodes in the set (referred to as a \&quot;Swap\&quot;).  If a node in the exclusive set has already been activated, the game will not charge you materials to activate another node in the set, even if you have never activated it before, because you already paid the cost to activate one node in the set.  Not to be confused with Exclusive Groups. (how the heck do we NOT get confused by that? Jeez) See the groups property for information about that only-tangentially-related concept..</param>
+        /// <param name="IndependentNodeIndexes">This is a quick reference to the indexes of nodes that are not part of exclusive sets. Handy for knowing which talent nodes can only be activated directly, rather than via swapping..</param>
+        /// <param name="Groups">Talent Nodes can have \&quot;Exclusive Groups\&quot;. These are not to be confused with Exclusive Sets (see exclusiveSets property).  Look at the definition of DestinyTalentExclusiveGroup for more information and how they work. These groups are keyed by the \&quot;groupHash\&quot; from DestinyTalentExclusiveGroup..</param>
+        /// <param name="NodeCategories">BNet wants to show talent nodes grouped by similar purpose with localized titles. This is the ordered list of those categories: if you want to show nodes by category, you can iterate over this list, render the displayProperties for the category as the title, and then iterate over the talent nodes referenced by the category to show the related nodes.  Note that this is different from Exclusive Groups or Sets, because these categories also incorporate \&quot;Independent\&quot; nodes that belong to neither sets nor groups. These are purely for visual grouping of nodes rather than functional grouping..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyTalentGridDefinition(int? MaxGridLevel = default(int?), int? GridLevelPerColumn = default(int?), uint? ProgressionHash = default(uint?), List<DestinyDefinitionsDestinyTalentNodeDefinition> Nodes = default(List<DestinyDefinitionsDestinyTalentNodeDefinition>), List<DestinyDefinitionsDestinyTalentNodeExclusiveSetDefinition> ExclusiveSets = default(List<DestinyDefinitionsDestinyTalentNodeExclusiveSetDefinition>), List<int?> IndependentNodeIndexes = default(List<int?>), Dictionary<string, DestinyDefinitionsDestinyTalentExclusiveGroup> Groups = default(Dictionary<string, DestinyDefinitionsDestinyTalentExclusiveGroup>), List<DestinyDefinitionsDestinyTalentNodeCategory> NodeCategories = default(List<DestinyDefinitionsDestinyTalentNodeCategory>), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.MaxGridLevel = maxGridLevel;
-            this.GridLevelPerColumn = gridLevelPerColumn;
-            this.ProgressionHash = progressionHash;
-            this.Nodes = nodes;
-            this.ExclusiveSets = exclusiveSets;
-            this.IndependentNodeIndexes = independentNodeIndexes;
-            this.Groups = groups;
-            this.NodeCategories = nodeCategories;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.MaxGridLevel = MaxGridLevel;
+            this.GridLevelPerColumn = GridLevelPerColumn;
+            this.ProgressionHash = ProgressionHash;
+            this.Nodes = Nodes;
+            this.ExclusiveSets = ExclusiveSets;
+            this.IndependentNodeIndexes = IndependentNodeIndexes;
+            this.Groups = Groups;
+            this.NodeCategories = NodeCategories;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -78,7 +78,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the Progression (DestinyProgressionDefinition) that drives whether and when Talent Nodes can be activated on the Grid. Items will have instances of this Progression, and will gain experience that will eventually cause the grid to increase in level. As the grid&#39;s level increases, it will cross the threshold where nodes can be activated. See DestinyTalentGridStepDefinition&#39;s activation requirements for more information.</value>
         [DataMember(Name="progressionHash", EmitDefaultValue=false)]
-        public int? ProgressionHash { get; set; }
+        public uint? ProgressionHash { get; set; }
 
         /// <summary>
         /// The list of Talent Nodes on the Grid (recall that Nodes themselves are really just locations in the UI to show whatever their current Step is. You will only know the current step for a node by retrieving instanced data through platform calls to the API that return DestinyItemTalentGridComponent).
@@ -120,7 +120,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -163,7 +163,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

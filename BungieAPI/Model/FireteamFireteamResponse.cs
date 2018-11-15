@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FireteamFireteamResponse" /> class.
         /// </summary>
-        /// <param name="summary">summary.</param>
-        /// <param name="members">members.</param>
-        /// <param name="alternates">alternates.</param>
-        public FireteamFireteamResponse(FireteamFireteamSummary summary = default(FireteamFireteamSummary), List<FireteamFireteamMember> members = default(List<FireteamFireteamMember>), List<FireteamFireteamMember> alternates = default(List<FireteamFireteamMember>))
+        /// <param name="Summary">Summary.</param>
+        /// <param name="Members">Members.</param>
+        /// <param name="Alternates">Alternates.</param>
+        public FireteamFireteamResponse(FireteamFireteamSummary Summary = default(FireteamFireteamSummary), List<FireteamFireteamMember> Members = default(List<FireteamFireteamMember>), List<FireteamFireteamMember> Alternates = default(List<FireteamFireteamMember>))
         {
-            this.Summary = summary;
-            this.Members = members;
-            this.Alternates = alternates;
+            this.Summary = Summary;
+            this.Members = Members;
+            this.Alternates = Alternates;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

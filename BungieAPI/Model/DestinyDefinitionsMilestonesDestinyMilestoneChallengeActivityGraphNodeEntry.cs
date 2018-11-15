@@ -33,25 +33,25 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityGraphNodeEntry" /> class.
         /// </summary>
-        /// <param name="activityGraphHash">activityGraphHash.</param>
-        /// <param name="activityGraphNodeHash">activityGraphNodeHash.</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityGraphNodeEntry(int? activityGraphHash = default(int?), int? activityGraphNodeHash = default(int?))
+        /// <param name="ActivityGraphHash">ActivityGraphHash.</param>
+        /// <param name="ActivityGraphNodeHash">ActivityGraphNodeHash.</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityGraphNodeEntry(uint? ActivityGraphHash = default(uint?), uint? ActivityGraphNodeHash = default(uint?))
         {
-            this.ActivityGraphHash = activityGraphHash;
-            this.ActivityGraphNodeHash = activityGraphNodeHash;
+            this.ActivityGraphHash = ActivityGraphHash;
+            this.ActivityGraphNodeHash = ActivityGraphNodeHash;
         }
         
         /// <summary>
         /// Gets or Sets ActivityGraphHash
         /// </summary>
         [DataMember(Name="activityGraphHash", EmitDefaultValue=false)]
-        public int? ActivityGraphHash { get; set; }
+        public uint? ActivityGraphHash { get; set; }
 
         /// <summary>
         /// Gets or Sets ActivityGraphNodeHash
         /// </summary>
         [DataMember(Name="activityGraphNodeHash", EmitDefaultValue=false)]
-        public int? ActivityGraphNodeHash { get; set; }
+        public uint? ActivityGraphNodeHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

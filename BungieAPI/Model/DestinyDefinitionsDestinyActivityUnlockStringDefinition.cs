@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyActivityUnlockStringDefinition" /> class.
         /// </summary>
-        /// <param name="displayString">The string to be displayed if the conditions are met..</param>
-        public DestinyDefinitionsDestinyActivityUnlockStringDefinition(string displayString = default(string))
+        /// <param name="DisplayString">The string to be displayed if the conditions are met..</param>
+        public DestinyDefinitionsDestinyActivityUnlockStringDefinition(string DisplayString = default(string))
         {
-            this.DisplayString = displayString;
+            this.DisplayString = DisplayString;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorInventoryFlyoutBucketDefinition" /> class.
         /// </summary>
-        /// <param name="collapsible">If true, the inventory bucket should be able to be collapsed visually..</param>
-        /// <param name="inventoryBucketHash">The inventory bucket whose contents should be shown..</param>
-        /// <param name="sortItemsBy">The methodology to use for sorting items from the flyout..</param>
-        public DestinyDefinitionsDestinyVendorInventoryFlyoutBucketDefinition(bool? collapsible = default(bool?), int? inventoryBucketHash = default(int?), Object sortItemsBy = default(Object))
+        /// <param name="Collapsible">If true, the inventory bucket should be able to be collapsed visually..</param>
+        /// <param name="InventoryBucketHash">The inventory bucket whose contents should be shown..</param>
+        /// <param name="SortItemsBy">The methodology to use for sorting items from the flyout..</param>
+        public DestinyDefinitionsDestinyVendorInventoryFlyoutBucketDefinition(bool? Collapsible = default(bool?), uint? InventoryBucketHash = default(uint?), DestinyDestinyItemSortType SortItemsBy = default(DestinyDestinyItemSortType))
         {
-            this.Collapsible = collapsible;
-            this.InventoryBucketHash = inventoryBucketHash;
-            this.SortItemsBy = sortItemsBy;
+            this.Collapsible = Collapsible;
+            this.InventoryBucketHash = InventoryBucketHash;
+            this.SortItemsBy = SortItemsBy;
         }
         
         /// <summary>
@@ -55,14 +55,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The inventory bucket whose contents should be shown.</value>
         [DataMember(Name="inventoryBucketHash", EmitDefaultValue=false)]
-        public int? InventoryBucketHash { get; set; }
+        public uint? InventoryBucketHash { get; set; }
 
         /// <summary>
         /// The methodology to use for sorting items from the flyout.
         /// </summary>
         /// <value>The methodology to use for sorting items from the flyout.</value>
         [DataMember(Name="sortItemsBy", EmitDefaultValue=false)]
-        public Object SortItemsBy { get; set; }
+        public DestinyDestinyItemSortType SortItemsBy { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

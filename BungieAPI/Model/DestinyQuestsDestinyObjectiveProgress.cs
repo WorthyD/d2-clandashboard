@@ -33,22 +33,22 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyQuestsDestinyObjectiveProgress" /> class.
         /// </summary>
-        /// <param name="objectiveHash">The unique identifier of the Objective being referred to. Use to look up the DestinyObjectiveDefinition in static data..</param>
-        /// <param name="destinationHash">If the Objective has a Destination associated with it, this is the unique identifier of the Destination being referred to. Use to look up the DestinyDestinationDefinition in static data. This will give localized data about *where* in the universe the objective should be achieved..</param>
-        /// <param name="activityHash">If the Objective has an Activity associated with it, this is the unique identifier of the Activity being referred to. Use to look up the DestinyActivityDefinition in static data. This will give localized data about *what* you should be playing for the objective to be achieved..</param>
-        /// <param name="progress">If progress has been made, and the progress can be measured numerically, this will be the value of that progress. You can compare it to the DestinyObjectiveDefinition.completionValue property for current vs. upper bounds, and use DestinyObjectiveDefinition.valueStyle to determine how this should be rendered. Note that progress, in Destiny 2, need not be a literal numeric progression. It could be one of a number of possible values, even a Timestamp. Always examine DestinyObjectiveDefinition.valueStyle before rendering progress..</param>
-        /// <param name="completionValue">As of Forsaken, objectives&#39; completion value is determined dynamically at runtime.  This value represents the threshold of progress you need to surpass in order for this objective to be considered \&quot;complete\&quot;.  If you were using objective data, switch from using the DestinyObjectiveDefinition&#39;s \&quot;completionValue\&quot; to this value..</param>
-        /// <param name="complete">Whether or not the Objective is completed..</param>
-        /// <param name="visible">If this is true, the objective is visible in-game. Otherwise, it&#39;s not yet visible to the player. Up to you if you want to honor this property..</param>
-        public DestinyQuestsDestinyObjectiveProgress(int? objectiveHash = default(int?), int? destinationHash = default(int?), int? activityHash = default(int?), int? progress = default(int?), int? completionValue = default(int?), bool? complete = default(bool?), bool? visible = default(bool?))
+        /// <param name="ObjectiveHash">The unique identifier of the Objective being referred to. Use to look up the DestinyObjectiveDefinition in static data..</param>
+        /// <param name="DestinationHash">If the Objective has a Destination associated with it, this is the unique identifier of the Destination being referred to. Use to look up the DestinyDestinationDefinition in static data. This will give localized data about *where* in the universe the objective should be achieved..</param>
+        /// <param name="ActivityHash">If the Objective has an Activity associated with it, this is the unique identifier of the Activity being referred to. Use to look up the DestinyActivityDefinition in static data. This will give localized data about *what* you should be playing for the objective to be achieved..</param>
+        /// <param name="Progress">If progress has been made, and the progress can be measured numerically, this will be the value of that progress. You can compare it to the DestinyObjectiveDefinition.completionValue property for current vs. upper bounds, and use DestinyObjectiveDefinition.valueStyle to determine how this should be rendered. Note that progress, in Destiny 2, need not be a literal numeric progression. It could be one of a number of possible values, even a Timestamp. Always examine DestinyObjectiveDefinition.valueStyle before rendering progress..</param>
+        /// <param name="CompletionValue">As of Forsaken, objectives&#39; completion value is determined dynamically at runtime.  This value represents the threshold of progress you need to surpass in order for this objective to be considered \&quot;complete\&quot;.  If you were using objective data, switch from using the DestinyObjectiveDefinition&#39;s \&quot;completionValue\&quot; to this value..</param>
+        /// <param name="Complete">Whether or not the Objective is completed..</param>
+        /// <param name="Visible">If this is true, the objective is visible in-game. Otherwise, it&#39;s not yet visible to the player. Up to you if you want to honor this property..</param>
+        public DestinyQuestsDestinyObjectiveProgress(uint? ObjectiveHash = default(uint?), uint? DestinationHash = default(uint?), uint? ActivityHash = default(uint?), int? Progress = default(int?), int? CompletionValue = default(int?), bool? Complete = default(bool?), bool? Visible = default(bool?))
         {
-            this.ObjectiveHash = objectiveHash;
-            this.DestinationHash = destinationHash;
-            this.ActivityHash = activityHash;
-            this.Progress = progress;
-            this.CompletionValue = completionValue;
-            this.Complete = complete;
-            this.Visible = visible;
+            this.ObjectiveHash = ObjectiveHash;
+            this.DestinationHash = DestinationHash;
+            this.ActivityHash = ActivityHash;
+            this.Progress = Progress;
+            this.CompletionValue = CompletionValue;
+            this.Complete = Complete;
+            this.Visible = Visible;
         }
         
         /// <summary>
@@ -56,21 +56,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier of the Objective being referred to. Use to look up the DestinyObjectiveDefinition in static data.</value>
         [DataMember(Name="objectiveHash", EmitDefaultValue=false)]
-        public int? ObjectiveHash { get; set; }
+        public uint? ObjectiveHash { get; set; }
 
         /// <summary>
         /// If the Objective has a Destination associated with it, this is the unique identifier of the Destination being referred to. Use to look up the DestinyDestinationDefinition in static data. This will give localized data about *where* in the universe the objective should be achieved.
         /// </summary>
         /// <value>If the Objective has a Destination associated with it, this is the unique identifier of the Destination being referred to. Use to look up the DestinyDestinationDefinition in static data. This will give localized data about *where* in the universe the objective should be achieved.</value>
         [DataMember(Name="destinationHash", EmitDefaultValue=false)]
-        public int? DestinationHash { get; set; }
+        public uint? DestinationHash { get; set; }
 
         /// <summary>
         /// If the Objective has an Activity associated with it, this is the unique identifier of the Activity being referred to. Use to look up the DestinyActivityDefinition in static data. This will give localized data about *what* you should be playing for the objective to be achieved.
         /// </summary>
         /// <value>If the Objective has an Activity associated with it, this is the unique identifier of the Activity being referred to. Use to look up the DestinyActivityDefinition in static data. This will give localized data about *what* you should be playing for the objective to be achieved.</value>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// If progress has been made, and the progress can be measured numerically, this will be the value of that progress. You can compare it to the DestinyObjectiveDefinition.completionValue property for current vs. upper bounds, and use DestinyObjectiveDefinition.valueStyle to determine how this should be rendered. Note that progress, in Destiny 2, need not be a literal numeric progression. It could be one of a number of possible values, even a Timestamp. Always examine DestinyObjectiveDefinition.valueStyle before rendering progress.
@@ -123,7 +123,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

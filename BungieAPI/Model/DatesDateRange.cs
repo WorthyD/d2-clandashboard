@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DatesDateRange" /> class.
         /// </summary>
-        /// <param name="start">start.</param>
-        /// <param name="end">end.</param>
-        public DatesDateRange(DateTime? start = default(DateTime?), DateTime? end = default(DateTime?))
+        /// <param name="Start">Start.</param>
+        /// <param name="End">End.</param>
+        public DatesDateRange(DateTime? Start = default(DateTime?), DateTime? End = default(DateTime?))
         {
-            this.Start = start;
-            this.End = end;
+            this.Start = Start;
+            this.End = End;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

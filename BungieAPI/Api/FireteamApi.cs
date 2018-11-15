@@ -324,7 +324,7 @@ namespace BungieAPI.Api
         /// <returns></returns>
         public FireteamApi(String basePath)
         {
-            this.Configuration = new BungieAPI.Client.Configuration { BasePath = basePath };
+            this.Configuration = new Configuration { BasePath = basePath };
 
             ExceptionFactory = BungieAPI.Client.Configuration.DefaultExceptionFactory;
         }
@@ -335,10 +335,10 @@ namespace BungieAPI.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public FireteamApi(BungieAPI.Client.Configuration configuration = null)
+        public FireteamApi(Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
-                this.Configuration = BungieAPI.Client.Configuration.Default;
+                this.Configuration = Configuration.Default;
             else
                 this.Configuration = configuration;
 
@@ -368,7 +368,7 @@ namespace BungieAPI.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public BungieAPI.Client.Configuration Configuration {get; set;}
+        public Configuration Configuration {get; set;}
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -435,7 +435,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Fireteam/Clan/{groupId}/ActiveCount/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -443,26 +443,26 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (groupId != null) localVarPathParams.Add("groupId", Configuration.ApiClient.ParameterToString(groupId)); // path parameter
 
             // authentication (oauth2) required
             // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -476,7 +476,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20019>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20019) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20019)));
+                (InlineResponse20019) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20019)));
         }
 
         /// <summary>
@@ -507,7 +507,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Fireteam/Clan/{groupId}/ActiveCount/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -515,26 +515,26 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (groupId != null) localVarPathParams.Add("groupId", Configuration.ApiClient.ParameterToString(groupId)); // path parameter
 
             // authentication (oauth2) required
             // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -548,7 +548,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20019>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20019) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20019)));
+                (InlineResponse20019) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20019)));
         }
 
         /// <summary>
@@ -610,7 +610,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Fireteam/Clan/{groupId}/Available/{platform}/{activityType}/{dateRange}/{slotFilter}/{publicOnly}/{page}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -618,33 +618,33 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (activityType != null) localVarPathParams.Add("activityType", this.Configuration.ApiClient.ParameterToString(activityType)); // path parameter
-            if (dateRange != null) localVarPathParams.Add("dateRange", this.Configuration.ApiClient.ParameterToString(dateRange)); // path parameter
-            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
-            if (page != null) localVarPathParams.Add("page", this.Configuration.ApiClient.ParameterToString(page)); // path parameter
-            if (platform != null) localVarPathParams.Add("platform", this.Configuration.ApiClient.ParameterToString(platform)); // path parameter
-            if (publicOnly != null) localVarPathParams.Add("publicOnly", this.Configuration.ApiClient.ParameterToString(publicOnly)); // path parameter
-            if (slotFilter != null) localVarPathParams.Add("slotFilter", this.Configuration.ApiClient.ParameterToString(slotFilter)); // path parameter
-            if (langFilter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
+            if (activityType != null) localVarPathParams.Add("activityType", Configuration.ApiClient.ParameterToString(activityType)); // path parameter
+            if (dateRange != null) localVarPathParams.Add("dateRange", Configuration.ApiClient.ParameterToString(dateRange)); // path parameter
+            if (groupId != null) localVarPathParams.Add("groupId", Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (page != null) localVarPathParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // path parameter
+            if (platform != null) localVarPathParams.Add("platform", Configuration.ApiClient.ParameterToString(platform)); // path parameter
+            if (publicOnly != null) localVarPathParams.Add("publicOnly", Configuration.ApiClient.ParameterToString(publicOnly)); // path parameter
+            if (slotFilter != null) localVarPathParams.Add("slotFilter", Configuration.ApiClient.ParameterToString(slotFilter)); // path parameter
+            if (langFilter != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
 
             // authentication (oauth2) required
             // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -658,7 +658,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20065>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20065) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20065)));
+                (InlineResponse20065) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20065)));
         }
 
         /// <summary>
@@ -721,7 +721,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Fireteam/Clan/{groupId}/Available/{platform}/{activityType}/{dateRange}/{slotFilter}/{publicOnly}/{page}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -729,33 +729,33 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (activityType != null) localVarPathParams.Add("activityType", this.Configuration.ApiClient.ParameterToString(activityType)); // path parameter
-            if (dateRange != null) localVarPathParams.Add("dateRange", this.Configuration.ApiClient.ParameterToString(dateRange)); // path parameter
-            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
-            if (page != null) localVarPathParams.Add("page", this.Configuration.ApiClient.ParameterToString(page)); // path parameter
-            if (platform != null) localVarPathParams.Add("platform", this.Configuration.ApiClient.ParameterToString(platform)); // path parameter
-            if (publicOnly != null) localVarPathParams.Add("publicOnly", this.Configuration.ApiClient.ParameterToString(publicOnly)); // path parameter
-            if (slotFilter != null) localVarPathParams.Add("slotFilter", this.Configuration.ApiClient.ParameterToString(slotFilter)); // path parameter
-            if (langFilter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
+            if (activityType != null) localVarPathParams.Add("activityType", Configuration.ApiClient.ParameterToString(activityType)); // path parameter
+            if (dateRange != null) localVarPathParams.Add("dateRange", Configuration.ApiClient.ParameterToString(dateRange)); // path parameter
+            if (groupId != null) localVarPathParams.Add("groupId", Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (page != null) localVarPathParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // path parameter
+            if (platform != null) localVarPathParams.Add("platform", Configuration.ApiClient.ParameterToString(platform)); // path parameter
+            if (publicOnly != null) localVarPathParams.Add("publicOnly", Configuration.ApiClient.ParameterToString(publicOnly)); // path parameter
+            if (slotFilter != null) localVarPathParams.Add("slotFilter", Configuration.ApiClient.ParameterToString(slotFilter)); // path parameter
+            if (langFilter != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
 
             // authentication (oauth2) required
             // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -769,7 +769,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20065>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20065) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20065)));
+                (InlineResponse20065) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20065)));
         }
 
         /// <summary>
@@ -804,7 +804,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Fireteam/Clan/{groupId}/Summary/{fireteamId}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -812,27 +812,27 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (fireteamId != null) localVarPathParams.Add("fireteamId", this.Configuration.ApiClient.ParameterToString(fireteamId)); // path parameter
-            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (fireteamId != null) localVarPathParams.Add("fireteamId", Configuration.ApiClient.ParameterToString(fireteamId)); // path parameter
+            if (groupId != null) localVarPathParams.Add("groupId", Configuration.ApiClient.ParameterToString(groupId)); // path parameter
 
             // authentication (oauth2) required
             // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -846,7 +846,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20067>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20067) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20067)));
+                (InlineResponse20067) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20067)));
         }
 
         /// <summary>
@@ -882,7 +882,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Fireteam/Clan/{groupId}/Summary/{fireteamId}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -890,27 +890,27 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (fireteamId != null) localVarPathParams.Add("fireteamId", this.Configuration.ApiClient.ParameterToString(fireteamId)); // path parameter
-            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (fireteamId != null) localVarPathParams.Add("fireteamId", Configuration.ApiClient.ParameterToString(fireteamId)); // path parameter
+            if (groupId != null) localVarPathParams.Add("groupId", Configuration.ApiClient.ParameterToString(groupId)); // path parameter
 
             // authentication (oauth2) required
             // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -924,7 +924,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20067>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20067) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20067)));
+                (InlineResponse20067) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20067)));
         }
 
         /// <summary>
@@ -973,7 +973,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Fireteam/Clan/{groupId}/My/{platform}/{includeClosed}/{page}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -981,31 +981,31 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
-            if (includeClosed != null) localVarPathParams.Add("includeClosed", this.Configuration.ApiClient.ParameterToString(includeClosed)); // path parameter
-            if (page != null) localVarPathParams.Add("page", this.Configuration.ApiClient.ParameterToString(page)); // path parameter
-            if (platform != null) localVarPathParams.Add("platform", this.Configuration.ApiClient.ParameterToString(platform)); // path parameter
-            if (groupFilter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "groupFilter", groupFilter)); // query parameter
-            if (langFilter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
+            if (groupId != null) localVarPathParams.Add("groupId", Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (includeClosed != null) localVarPathParams.Add("includeClosed", Configuration.ApiClient.ParameterToString(includeClosed)); // path parameter
+            if (page != null) localVarPathParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // path parameter
+            if (platform != null) localVarPathParams.Add("platform", Configuration.ApiClient.ParameterToString(platform)); // path parameter
+            if (groupFilter != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "groupFilter", groupFilter)); // query parameter
+            if (langFilter != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
 
             // authentication (oauth2) required
             // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -1019,7 +1019,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20066>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20066) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20066)));
+                (InlineResponse20066) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20066)));
         }
 
         /// <summary>
@@ -1069,7 +1069,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Fireteam/Clan/{groupId}/My/{platform}/{includeClosed}/{page}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -1077,31 +1077,31 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (groupId != null) localVarPathParams.Add("groupId", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
-            if (includeClosed != null) localVarPathParams.Add("includeClosed", this.Configuration.ApiClient.ParameterToString(includeClosed)); // path parameter
-            if (page != null) localVarPathParams.Add("page", this.Configuration.ApiClient.ParameterToString(page)); // path parameter
-            if (platform != null) localVarPathParams.Add("platform", this.Configuration.ApiClient.ParameterToString(platform)); // path parameter
-            if (groupFilter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "groupFilter", groupFilter)); // query parameter
-            if (langFilter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
+            if (groupId != null) localVarPathParams.Add("groupId", Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (includeClosed != null) localVarPathParams.Add("includeClosed", Configuration.ApiClient.ParameterToString(includeClosed)); // path parameter
+            if (page != null) localVarPathParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // path parameter
+            if (platform != null) localVarPathParams.Add("platform", Configuration.ApiClient.ParameterToString(platform)); // path parameter
+            if (groupFilter != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "groupFilter", groupFilter)); // query parameter
+            if (langFilter != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
 
             // authentication (oauth2) required
             // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -1115,7 +1115,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20066>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20066) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20066)));
+                (InlineResponse20066) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20066)));
         }
 
         /// <summary>
@@ -1167,7 +1167,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Fireteam/Search/Available/{platform}/{activityType}/{dateRange}/{slotFilter}/{page}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -1175,31 +1175,31 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (activityType != null) localVarPathParams.Add("activityType", this.Configuration.ApiClient.ParameterToString(activityType)); // path parameter
-            if (dateRange != null) localVarPathParams.Add("dateRange", this.Configuration.ApiClient.ParameterToString(dateRange)); // path parameter
-            if (page != null) localVarPathParams.Add("page", this.Configuration.ApiClient.ParameterToString(page)); // path parameter
-            if (platform != null) localVarPathParams.Add("platform", this.Configuration.ApiClient.ParameterToString(platform)); // path parameter
-            if (slotFilter != null) localVarPathParams.Add("slotFilter", this.Configuration.ApiClient.ParameterToString(slotFilter)); // path parameter
-            if (langFilter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
+            if (activityType != null) localVarPathParams.Add("activityType", Configuration.ApiClient.ParameterToString(activityType)); // path parameter
+            if (dateRange != null) localVarPathParams.Add("dateRange", Configuration.ApiClient.ParameterToString(dateRange)); // path parameter
+            if (page != null) localVarPathParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // path parameter
+            if (platform != null) localVarPathParams.Add("platform", Configuration.ApiClient.ParameterToString(platform)); // path parameter
+            if (slotFilter != null) localVarPathParams.Add("slotFilter", Configuration.ApiClient.ParameterToString(slotFilter)); // path parameter
+            if (langFilter != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
 
             // authentication (oauth2) required
             // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -1213,7 +1213,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20065>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20065) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20065)));
+                (InlineResponse20065) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20065)));
         }
 
         /// <summary>
@@ -1266,7 +1266,7 @@ namespace BungieAPI.Api
             var localVarPath = "/Fireteam/Search/Available/{platform}/{activityType}/{dateRange}/{slotFilter}/{page}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -1274,31 +1274,31 @@ namespace BungieAPI.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (activityType != null) localVarPathParams.Add("activityType", this.Configuration.ApiClient.ParameterToString(activityType)); // path parameter
-            if (dateRange != null) localVarPathParams.Add("dateRange", this.Configuration.ApiClient.ParameterToString(dateRange)); // path parameter
-            if (page != null) localVarPathParams.Add("page", this.Configuration.ApiClient.ParameterToString(page)); // path parameter
-            if (platform != null) localVarPathParams.Add("platform", this.Configuration.ApiClient.ParameterToString(platform)); // path parameter
-            if (slotFilter != null) localVarPathParams.Add("slotFilter", this.Configuration.ApiClient.ParameterToString(slotFilter)); // path parameter
-            if (langFilter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
+            if (activityType != null) localVarPathParams.Add("activityType", Configuration.ApiClient.ParameterToString(activityType)); // path parameter
+            if (dateRange != null) localVarPathParams.Add("dateRange", Configuration.ApiClient.ParameterToString(dateRange)); // path parameter
+            if (page != null) localVarPathParams.Add("page", Configuration.ApiClient.ParameterToString(page)); // path parameter
+            if (platform != null) localVarPathParams.Add("platform", Configuration.ApiClient.ParameterToString(platform)); // path parameter
+            if (slotFilter != null) localVarPathParams.Add("slotFilter", Configuration.ApiClient.ParameterToString(slotFilter)); // path parameter
+            if (langFilter != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "langFilter", langFilter)); // query parameter
 
             // authentication (oauth2) required
             // oauth required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -1312,7 +1312,7 @@ namespace BungieAPI.Api
 
             return new ApiResponse<InlineResponse20065>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse20065) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20065)));
+                (InlineResponse20065) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20065)));
         }
 
     }

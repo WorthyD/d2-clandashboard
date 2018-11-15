@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemSetBlockDefinition" /> class.
         /// </summary>
-        /// <param name="itemList">A collection of hashes of set items, for items such as Quest Metadata items that possess this data..</param>
-        /// <param name="requireOrderedSetItemAdd">If true, items in the set can only be added in increasing order, and adding an item will remove any previous item. For Quests, this is by necessity true. Only one quest step is present at a time, and previous steps are removed as you advance in the quest..</param>
-        /// <param name="setIsFeatured">If true, the UI should treat this quest as \&quot;featured\&quot;.</param>
-        /// <param name="setType">A string identifier we can use to attempt to identify the category of the Quest..</param>
-        public DestinyDefinitionsDestinyItemSetBlockDefinition(List<DestinyDefinitionsDestinyItemSetBlockEntryDefinition> itemList = default(List<DestinyDefinitionsDestinyItemSetBlockEntryDefinition>), bool? requireOrderedSetItemAdd = default(bool?), bool? setIsFeatured = default(bool?), string setType = default(string))
+        /// <param name="ItemList">A collection of hashes of set items, for items such as Quest Metadata items that possess this data..</param>
+        /// <param name="RequireOrderedSetItemAdd">If true, items in the set can only be added in increasing order, and adding an item will remove any previous item. For Quests, this is by necessity true. Only one quest step is present at a time, and previous steps are removed as you advance in the quest..</param>
+        /// <param name="SetIsFeatured">If true, the UI should treat this quest as \&quot;featured\&quot;.</param>
+        /// <param name="SetType">A string identifier we can use to attempt to identify the category of the Quest..</param>
+        public DestinyDefinitionsDestinyItemSetBlockDefinition(List<DestinyDefinitionsDestinyItemSetBlockEntryDefinition> ItemList = default(List<DestinyDefinitionsDestinyItemSetBlockEntryDefinition>), bool? RequireOrderedSetItemAdd = default(bool?), bool? SetIsFeatured = default(bool?), string SetType = default(string))
         {
-            this.ItemList = itemList;
-            this.RequireOrderedSetItemAdd = requireOrderedSetItemAdd;
-            this.SetIsFeatured = setIsFeatured;
-            this.SetType = setType;
+            this.ItemList = ItemList;
+            this.RequireOrderedSetItemAdd = RequireOrderedSetItemAdd;
+            this.SetIsFeatured = SetIsFeatured;
+            this.SetType = SetType;
         }
         
         /// <summary>
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

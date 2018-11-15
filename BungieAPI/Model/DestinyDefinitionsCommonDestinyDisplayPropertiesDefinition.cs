@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition" /> class.
         /// </summary>
-        /// <param name="description">description.</param>
-        /// <param name="name">name.</param>
-        /// <param name="icon">Note that \&quot;icon\&quot; is sometimes misleading, and should be interpreted in the context of the entity. For instance, in Destiny 1 the DestinyRecordBookDefinition&#39;s icon was a big picture of a book.  But usually, it will be a small square image that you can use as... well, an icon..</param>
-        /// <param name="hasIcon">hasIcon.</param>
-        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition(string description = default(string), string name = default(string), string icon = default(string), bool? hasIcon = default(bool?))
+        /// <param name="Description">Description.</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="Icon">Note that \&quot;icon\&quot; is sometimes misleading, and should be interpreted in the context of the entity. For instance, in Destiny 1 the DestinyRecordBookDefinition&#39;s icon was a big picture of a book.  But usually, it will be a small square image that you can use as... well, an icon..</param>
+        /// <param name="HasIcon">HasIcon.</param>
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition(string Description = default(string), string Name = default(string), string Icon = default(string), bool? HasIcon = default(bool?))
         {
-            this.Description = description;
-            this.Name = name;
-            this.Icon = icon;
-            this.HasIcon = hasIcon;
+            this.Description = Description;
+            this.Name = Name;
+            this.Icon = Icon;
+            this.HasIcon = HasIcon;
         }
         
         /// <summary>
@@ -90,7 +90,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

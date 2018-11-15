@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyMilestoneActivityCompletionStatus" /> class.
         /// </summary>
-        /// <param name="completed">If the activity has been \&quot;completed\&quot;, that information will be returned here..</param>
-        /// <param name="phases">If the Activity has discrete \&quot;phases\&quot; that we can track, that info will be here. Otherwise, this value will be NULL. Note that this is a list and not a dictionary: the order implies the ascending order of phases or progression in this activity..</param>
-        public DestinyMilestonesDestinyMilestoneActivityCompletionStatus(bool? completed = default(bool?), List<DestinyMilestonesDestinyMilestoneActivityPhase> phases = default(List<DestinyMilestonesDestinyMilestoneActivityPhase>))
+        /// <param name="Completed">If the activity has been \&quot;completed\&quot;, that information will be returned here..</param>
+        /// <param name="Phases">If the Activity has discrete \&quot;phases\&quot; that we can track, that info will be here. Otherwise, this value will be NULL. Note that this is a list and not a dictionary: the order implies the ascending order of phases or progression in this activity..</param>
+        public DestinyMilestonesDestinyMilestoneActivityCompletionStatus(bool? Completed = default(bool?), List<DestinyMilestonesDestinyMilestoneActivityPhase> Phases = default(List<DestinyMilestonesDestinyMilestoneActivityPhase>))
         {
-            this.Completed = completed;
-            this.Phases = phases;
+            this.Completed = Completed;
+            this.Phases = Phases;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorSaleItemActionBlockDefinition" /> class.
         /// </summary>
-        /// <param name="executeSeconds">executeSeconds.</param>
-        /// <param name="isPositive">isPositive.</param>
-        public DestinyDefinitionsDestinyVendorSaleItemActionBlockDefinition(float? executeSeconds = default(float?), bool? isPositive = default(bool?))
+        /// <param name="ExecuteSeconds">ExecuteSeconds.</param>
+        /// <param name="IsPositive">IsPositive.</param>
+        public DestinyDefinitionsDestinyVendorSaleItemActionBlockDefinition(float? ExecuteSeconds = default(float?), bool? IsPositive = default(bool?))
         {
-            this.ExecuteSeconds = executeSeconds;
-            this.IsPositive = isPositive;
+            this.ExecuteSeconds = ExecuteSeconds;
+            this.IsPositive = IsPositive;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

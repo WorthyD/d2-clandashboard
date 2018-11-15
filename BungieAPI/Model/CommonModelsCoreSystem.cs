@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CommonModelsCoreSystem" /> class.
         /// </summary>
-        /// <param name="enabled">enabled.</param>
-        /// <param name="parameters">parameters.</param>
-        public CommonModelsCoreSystem(bool? enabled = default(bool?), Dictionary<string, string> parameters = default(Dictionary<string, string>))
+        /// <param name="Enabled">Enabled.</param>
+        /// <param name="Parameters">Parameters.</param>
+        public CommonModelsCoreSystem(bool? Enabled = default(bool?), Dictionary<string, string> Parameters = default(Dictionary<string, string>))
         {
-            this.Enabled = enabled;
-            this.Parameters = parameters;
+            this.Enabled = Enabled;
+            this.Parameters = Parameters;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,36 +33,36 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsSocketsDestinySocketTypeDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">There are fields for this display data, but they appear to be unpopulated as of now. I am not sure where in the UI these would show if they even were populated, but I will continue to return this data in case it becomes useful..</param>
-        /// <param name="insertAction">Defines what happens when a plug is inserted into sockets of this type..</param>
-        /// <param name="plugWhitelist">A list of Plug \&quot;Categories\&quot; that are allowed to be plugged into sockets of this type.  These should be compared against a given plug item&#39;s DestinyInventoryItemDefinition.plug.plugCategoryHash, which indicates the plug item&#39;s category.  If the plug&#39;s category matches any whitelisted plug, or if the whitelist is empty, it is allowed to be inserted..</param>
-        /// <param name="socketCategoryHash">socketCategoryHash.</param>
-        /// <param name="visibility">Sometimes a socket isn&#39;t visible. These are some of the conditions under which sockets of this type are not visible. Unfortunately, the truth of visibility is much, much more complex. Best to rely on the live data for whether the socket is visible and enabled..</param>
-        /// <param name="alwaysRandomizeSockets">alwaysRandomizeSockets.</param>
-        /// <param name="isPreviewEnabled">isPreviewEnabled.</param>
-        /// <param name="hideDuplicateReusablePlugs">hideDuplicateReusablePlugs.</param>
-        /// <param name="overridesUiAppearance">This property indicates if the socket type determines whether Emblem icons and nameplates should be overridden by the inserted plug item&#39;s icon and nameplate..</param>
-        /// <param name="avoidDuplicatesOnInitialization">avoidDuplicatesOnInitialization.</param>
-        /// <param name="currencyScalars">currencyScalars.</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsSocketsDestinySocketTypeDefinition(Object displayProperties = default(Object), Object insertAction = default(Object), List<DestinyDefinitionsSocketsDestinyPlugWhitelistEntryDefinition> plugWhitelist = default(List<DestinyDefinitionsSocketsDestinyPlugWhitelistEntryDefinition>), int? socketCategoryHash = default(int?), Object visibility = default(Object), bool? alwaysRandomizeSockets = default(bool?), bool? isPreviewEnabled = default(bool?), bool? hideDuplicateReusablePlugs = default(bool?), bool? overridesUiAppearance = default(bool?), bool? avoidDuplicatesOnInitialization = default(bool?), List<DestinyDefinitionsSocketsDestinySocketTypeScalarMaterialRequirementEntry> currencyScalars = default(List<DestinyDefinitionsSocketsDestinySocketTypeScalarMaterialRequirementEntry>), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">There are fields for this display data, but they appear to be unpopulated as of now. I am not sure where in the UI these would show if they even were populated, but I will continue to return this data in case it becomes useful..</param>
+        /// <param name="InsertAction">Defines what happens when a plug is inserted into sockets of this type..</param>
+        /// <param name="PlugWhitelist">A list of Plug \&quot;Categories\&quot; that are allowed to be plugged into sockets of this type.  These should be compared against a given plug item&#39;s DestinyInventoryItemDefinition.plug.plugCategoryHash, which indicates the plug item&#39;s category.  If the plug&#39;s category matches any whitelisted plug, or if the whitelist is empty, it is allowed to be inserted..</param>
+        /// <param name="SocketCategoryHash">SocketCategoryHash.</param>
+        /// <param name="Visibility">Sometimes a socket isn&#39;t visible. These are some of the conditions under which sockets of this type are not visible. Unfortunately, the truth of visibility is much, much more complex. Best to rely on the live data for whether the socket is visible and enabled..</param>
+        /// <param name="AlwaysRandomizeSockets">AlwaysRandomizeSockets.</param>
+        /// <param name="IsPreviewEnabled">IsPreviewEnabled.</param>
+        /// <param name="HideDuplicateReusablePlugs">HideDuplicateReusablePlugs.</param>
+        /// <param name="OverridesUiAppearance">This property indicates if the socket type determines whether Emblem icons and nameplates should be overridden by the inserted plug item&#39;s icon and nameplate..</param>
+        /// <param name="AvoidDuplicatesOnInitialization">AvoidDuplicatesOnInitialization.</param>
+        /// <param name="CurrencyScalars">CurrencyScalars.</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsSocketsDestinySocketTypeDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), DestinyDefinitionsSocketsDestinyInsertPlugActionDefinition InsertAction = default(DestinyDefinitionsSocketsDestinyInsertPlugActionDefinition), List<DestinyDefinitionsSocketsDestinyPlugWhitelistEntryDefinition> PlugWhitelist = default(List<DestinyDefinitionsSocketsDestinyPlugWhitelistEntryDefinition>), uint? SocketCategoryHash = default(uint?), DestinyDestinySocketVisibility Visibility = default(DestinyDestinySocketVisibility), bool? AlwaysRandomizeSockets = default(bool?), bool? IsPreviewEnabled = default(bool?), bool? HideDuplicateReusablePlugs = default(bool?), bool? OverridesUiAppearance = default(bool?), bool? AvoidDuplicatesOnInitialization = default(bool?), List<DestinyDefinitionsSocketsDestinySocketTypeScalarMaterialRequirementEntry> CurrencyScalars = default(List<DestinyDefinitionsSocketsDestinySocketTypeScalarMaterialRequirementEntry>), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.InsertAction = insertAction;
-            this.PlugWhitelist = plugWhitelist;
-            this.SocketCategoryHash = socketCategoryHash;
-            this.Visibility = visibility;
-            this.AlwaysRandomizeSockets = alwaysRandomizeSockets;
-            this.IsPreviewEnabled = isPreviewEnabled;
-            this.HideDuplicateReusablePlugs = hideDuplicateReusablePlugs;
-            this.OverridesUiAppearance = overridesUiAppearance;
-            this.AvoidDuplicatesOnInitialization = avoidDuplicatesOnInitialization;
-            this.CurrencyScalars = currencyScalars;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.InsertAction = InsertAction;
+            this.PlugWhitelist = PlugWhitelist;
+            this.SocketCategoryHash = SocketCategoryHash;
+            this.Visibility = Visibility;
+            this.AlwaysRandomizeSockets = AlwaysRandomizeSockets;
+            this.IsPreviewEnabled = IsPreviewEnabled;
+            this.HideDuplicateReusablePlugs = HideDuplicateReusablePlugs;
+            this.OverridesUiAppearance = OverridesUiAppearance;
+            this.AvoidDuplicatesOnInitialization = AvoidDuplicatesOnInitialization;
+            this.CurrencyScalars = CurrencyScalars;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -70,14 +70,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>There are fields for this display data, but they appear to be unpopulated as of now. I am not sure where in the UI these would show if they even were populated, but I will continue to return this data in case it becomes useful.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// Defines what happens when a plug is inserted into sockets of this type.
         /// </summary>
         /// <value>Defines what happens when a plug is inserted into sockets of this type.</value>
         [DataMember(Name="insertAction", EmitDefaultValue=false)]
-        public Object InsertAction { get; set; }
+        public DestinyDefinitionsSocketsDestinyInsertPlugActionDefinition InsertAction { get; set; }
 
         /// <summary>
         /// A list of Plug \&quot;Categories\&quot; that are allowed to be plugged into sockets of this type.  These should be compared against a given plug item&#39;s DestinyInventoryItemDefinition.plug.plugCategoryHash, which indicates the plug item&#39;s category.  If the plug&#39;s category matches any whitelisted plug, or if the whitelist is empty, it is allowed to be inserted.
@@ -90,14 +90,14 @@ namespace BungieAPI.Model
         /// Gets or Sets SocketCategoryHash
         /// </summary>
         [DataMember(Name="socketCategoryHash", EmitDefaultValue=false)]
-        public int? SocketCategoryHash { get; set; }
+        public uint? SocketCategoryHash { get; set; }
 
         /// <summary>
         /// Sometimes a socket isn&#39;t visible. These are some of the conditions under which sockets of this type are not visible. Unfortunately, the truth of visibility is much, much more complex. Best to rely on the live data for whether the socket is visible and enabled.
         /// </summary>
         /// <value>Sometimes a socket isn&#39;t visible. These are some of the conditions under which sockets of this type are not visible. Unfortunately, the truth of visibility is much, much more complex. Best to rely on the live data for whether the socket is visible and enabled.</value>
         [DataMember(Name="visibility", EmitDefaultValue=false)]
-        public Object Visibility { get; set; }
+        public DestinyDestinySocketVisibility Visibility { get; set; }
 
         /// <summary>
         /// Gets or Sets AlwaysRandomizeSockets
@@ -141,7 +141,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -187,7 +187,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

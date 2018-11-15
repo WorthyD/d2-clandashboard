@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyAggregateActivityStats" /> class.
         /// </summary>
-        /// <param name="activityHash">Hash ID that can be looked up in the DestinyActivityTable..</param>
-        /// <param name="values">Collection of stats for the player in this activity..</param>
-        public DestinyHistoricalStatsDestinyAggregateActivityStats(int? activityHash = default(int?), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> values = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>))
+        /// <param name="ActivityHash">Hash ID that can be looked up in the DestinyActivityTable..</param>
+        /// <param name="Values">Collection of stats for the player in this activity..</param>
+        public DestinyHistoricalStatsDestinyAggregateActivityStats(uint? ActivityHash = default(uint?), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> Values = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>))
         {
-            this.ActivityHash = activityHash;
-            this.Values = values;
+            this.ActivityHash = ActivityHash;
+            this.Values = Values;
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Hash ID that can be looked up in the DestinyActivityTable.</value>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// Collection of stats for the player in this activity.
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

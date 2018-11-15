@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyHistoricalStatsValue" /> class.
         /// </summary>
-        /// <param name="statId">Unique ID for this stat.</param>
-        /// <param name="basic">Basic stat value..</param>
-        /// <param name="pga">Per game average for the statistic, if applicable.</param>
-        /// <param name="weighted">Weighted value of the stat if a weight greater than 1 has been assigned..</param>
-        /// <param name="activityId">When a stat represents the best, most, longest, fastest or some other personal best, the actual activity ID where that personal best was established is available on this property..</param>
-        public DestinyHistoricalStatsDestinyHistoricalStatsValue(string statId = default(string), Object basic = default(Object), Object pga = default(Object), Object weighted = default(Object), long? activityId = default(long?))
+        /// <param name="StatId">Unique ID for this stat.</param>
+        /// <param name="Basic">Basic stat value..</param>
+        /// <param name="Pga">Per game average for the statistic, if applicable.</param>
+        /// <param name="Weighted">Weighted value of the stat if a weight greater than 1 has been assigned..</param>
+        /// <param name="ActivityId">When a stat represents the best, most, longest, fastest or some other personal best, the actual activity ID where that personal best was established is available on this property..</param>
+        public DestinyHistoricalStatsDestinyHistoricalStatsValue(string StatId = default(string), DestinyHistoricalStatsDestinyHistoricalStatsValuePair Basic = default(DestinyHistoricalStatsDestinyHistoricalStatsValuePair), DestinyHistoricalStatsDestinyHistoricalStatsValuePair Pga = default(DestinyHistoricalStatsDestinyHistoricalStatsValuePair), DestinyHistoricalStatsDestinyHistoricalStatsValuePair Weighted = default(DestinyHistoricalStatsDestinyHistoricalStatsValuePair), long? ActivityId = default(long?))
         {
-            this.StatId = statId;
-            this.Basic = basic;
-            this.Pga = pga;
-            this.Weighted = weighted;
-            this.ActivityId = activityId;
+            this.StatId = StatId;
+            this.Basic = Basic;
+            this.Pga = Pga;
+            this.Weighted = Weighted;
+            this.ActivityId = ActivityId;
         }
         
         /// <summary>
@@ -59,21 +59,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Basic stat value.</value>
         [DataMember(Name="basic", EmitDefaultValue=false)]
-        public Object Basic { get; set; }
+        public DestinyHistoricalStatsDestinyHistoricalStatsValuePair Basic { get; set; }
 
         /// <summary>
         /// Per game average for the statistic, if applicable
         /// </summary>
         /// <value>Per game average for the statistic, if applicable</value>
         [DataMember(Name="pga", EmitDefaultValue=false)]
-        public Object Pga { get; set; }
+        public DestinyHistoricalStatsDestinyHistoricalStatsValuePair Pga { get; set; }
 
         /// <summary>
         /// Weighted value of the stat if a weight greater than 1 has been assigned.
         /// </summary>
         /// <value>Weighted value of the stat if a weight greater than 1 has been assigned.</value>
         [DataMember(Name="weighted", EmitDefaultValue=false)]
-        public Object Weighted { get; set; }
+        public DestinyHistoricalStatsDestinyHistoricalStatsValuePair Weighted { get; set; }
 
         /// <summary>
         /// When a stat represents the best, most, longest, fastest or some other personal best, the actual activity ID where that personal best was established is available on this property.
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

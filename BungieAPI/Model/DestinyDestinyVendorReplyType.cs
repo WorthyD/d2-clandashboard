@@ -28,29 +28,27 @@ namespace BungieAPI.Model
     /// This determines the type of reply that a Vendor will have during an Interaction.
     /// </summary>
     /// <value>This determines the type of reply that a Vendor will have during an Interaction.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyVendorReplyType
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// This determines the type of reply that a Vendor will have during an Interaction.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Accept,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// This determines the type of reply that a Vendor will have during an Interaction.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Decline,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3
+		/// <summary>
+		/// This determines the type of reply that a Vendor will have during an Interaction.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Complete
     }
 
 }

@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorRequirementDisplayEntryDefinition" /> class.
         /// </summary>
-        /// <param name="icon">icon.</param>
-        /// <param name="name">name.</param>
-        /// <param name="source">source.</param>
-        /// <param name="type">type.</param>
-        public DestinyDefinitionsDestinyVendorRequirementDisplayEntryDefinition(string icon = default(string), string name = default(string), string source = default(string), string type = default(string))
+        /// <param name="Icon">Icon.</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="Source">Source.</param>
+        /// <param name="Type">Type.</param>
+        public DestinyDefinitionsDestinyVendorRequirementDisplayEntryDefinition(string Icon = default(string), string Name = default(string), string Source = default(string), string Type = default(string))
         {
-            this.Icon = icon;
-            this.Name = name;
-            this.Source = source;
-            this.Type = type;
+            this.Icon = Icon;
+            this.Name = Name;
+            this.Source = Source;
+            this.Type = Type;
         }
         
         /// <summary>
@@ -89,7 +89,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

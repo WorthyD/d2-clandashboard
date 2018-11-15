@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsPresentationDestinyPresentationNodeChildrenBlock" /> class.
         /// </summary>
-        /// <param name="presentationNodes">presentationNodes.</param>
-        /// <param name="collectibles">collectibles.</param>
-        /// <param name="records">records.</param>
-        public DestinyDefinitionsPresentationDestinyPresentationNodeChildrenBlock(List<DestinyDefinitionsPresentationDestinyPresentationNodeChildEntry> presentationNodes = default(List<DestinyDefinitionsPresentationDestinyPresentationNodeChildEntry>), List<DestinyDefinitionsPresentationDestinyPresentationNodeCollectibleChildEntry> collectibles = default(List<DestinyDefinitionsPresentationDestinyPresentationNodeCollectibleChildEntry>), List<DestinyDefinitionsPresentationDestinyPresentationNodeRecordChildEntry> records = default(List<DestinyDefinitionsPresentationDestinyPresentationNodeRecordChildEntry>))
+        /// <param name="PresentationNodes">PresentationNodes.</param>
+        /// <param name="Collectibles">Collectibles.</param>
+        /// <param name="Records">Records.</param>
+        public DestinyDefinitionsPresentationDestinyPresentationNodeChildrenBlock(List<DestinyDefinitionsPresentationDestinyPresentationNodeChildEntry> PresentationNodes = default(List<DestinyDefinitionsPresentationDestinyPresentationNodeChildEntry>), List<DestinyDefinitionsPresentationDestinyPresentationNodeCollectibleChildEntry> Collectibles = default(List<DestinyDefinitionsPresentationDestinyPresentationNodeCollectibleChildEntry>), List<DestinyDefinitionsPresentationDestinyPresentationNodeRecordChildEntry> Records = default(List<DestinyDefinitionsPresentationDestinyPresentationNodeRecordChildEntry>))
         {
-            this.PresentationNodes = presentationNodes;
-            this.Collectibles = collectibles;
-            this.Records = records;
+            this.PresentationNodes = PresentationNodes;
+            this.Collectibles = Collectibles;
+            this.Records = Records;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

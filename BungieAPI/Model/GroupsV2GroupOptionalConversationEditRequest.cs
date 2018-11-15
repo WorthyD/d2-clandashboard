@@ -31,22 +31,23 @@ namespace BungieAPI.Model
     public partial class GroupsV2GroupOptionalConversationEditRequest :  IEquatable<GroupsV2GroupOptionalConversationEditRequest>, IValidatableObject
     {
         /// <summary>
-        /// Defines ChatSecurity
+        /// Gets or Sets ChatSecurity
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public enum ChatSecurityEnum
         {
             
             /// <summary>
-            /// Enum NUMBER_0 for value: 0
+            /// Enum Group for 0
             /// </summary>
-            
-            NUMBER_0 = 0,
+            [EnumMember(Value = "0")]
+            Group = 0,
             
             /// <summary>
-            /// Enum NUMBER_1 for value: 1
+            /// Enum Admins for 1
             /// </summary>
-            
-            NUMBER_1 = 1
+            [EnumMember(Value = "1")]
+            Admins = 1
         }
 
         /// <summary>
@@ -57,14 +58,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupOptionalConversationEditRequest" /> class.
         /// </summary>
-        /// <param name="chatEnabled">chatEnabled.</param>
-        /// <param name="chatName">chatName.</param>
-        /// <param name="chatSecurity">chatSecurity.</param>
-        public GroupsV2GroupOptionalConversationEditRequest(bool? chatEnabled = default(bool?), string chatName = default(string), ChatSecurityEnum? chatSecurity = default(ChatSecurityEnum?))
+        /// <param name="ChatEnabled">ChatEnabled.</param>
+        /// <param name="ChatName">ChatName.</param>
+        /// <param name="ChatSecurity">ChatSecurity.</param>
+        public GroupsV2GroupOptionalConversationEditRequest(bool? ChatEnabled = default(bool?), string ChatName = default(string), ChatSecurityEnum? ChatSecurity = default(ChatSecurityEnum?))
         {
-            this.ChatEnabled = chatEnabled;
-            this.ChatName = chatName;
-            this.ChatSecurity = chatSecurity;
+            this.ChatEnabled = ChatEnabled;
+            this.ChatName = ChatName;
+            this.ChatSecurity = ChatSecurity;
         }
         
         /// <summary>
@@ -99,7 +100,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

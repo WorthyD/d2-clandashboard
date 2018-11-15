@@ -33,30 +33,30 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorDisplayPropertiesDefinition" /> class.
         /// </summary>
-        /// <param name="largeIcon">I regret calling this a \&quot;large icon\&quot;. It&#39;s more like a medium-sized image with a picture of the vendor&#39;s mug on it, trying their best to look cool. Not what one would call an icon..</param>
-        /// <param name="subtitle">subtitle.</param>
-        /// <param name="originalIcon">If we replaced the icon with something more glitzy, this is the original icon that the vendor had according to the game&#39;s content. It may be more lame and/or have less razzle-dazzle. But who am I to tell you which icon to use..</param>
-        /// <param name="requirementsDisplay">Vendors, in addition to expected display property data, may also show some \&quot;common requirements\&quot; as statically defined definition data. This might be when a vendor accepts a single type of currency, or when the currency is unique to the vendor and the designers wanted to show that currency when you interact with the vendor..</param>
-        /// <param name="smallTransparentIcon">This is the icon used in parts of the game UI such as the vendor&#39;s waypoint..</param>
-        /// <param name="mapIcon">This is the icon used in the map overview, when the vendor is located on the map..</param>
-        /// <param name="largeTransparentIcon">This is apparently the \&quot;Watermark\&quot;. I am not certain offhand where this is actually used in the Game UI, but some people may find it useful..</param>
-        /// <param name="description">description.</param>
-        /// <param name="name">name.</param>
-        /// <param name="icon">Note that \&quot;icon\&quot; is sometimes misleading, and should be interpreted in the context of the entity. For instance, in Destiny 1 the DestinyRecordBookDefinition&#39;s icon was a big picture of a book.  But usually, it will be a small square image that you can use as... well, an icon..</param>
-        /// <param name="hasIcon">hasIcon.</param>
-        public DestinyDefinitionsDestinyVendorDisplayPropertiesDefinition(string largeIcon = default(string), string subtitle = default(string), string originalIcon = default(string), List<DestinyDefinitionsDestinyVendorRequirementDisplayEntryDefinition> requirementsDisplay = default(List<DestinyDefinitionsDestinyVendorRequirementDisplayEntryDefinition>), string smallTransparentIcon = default(string), string mapIcon = default(string), string largeTransparentIcon = default(string), string description = default(string), string name = default(string), string icon = default(string), bool? hasIcon = default(bool?))
+        /// <param name="LargeIcon">I regret calling this a \&quot;large icon\&quot;. It&#39;s more like a medium-sized image with a picture of the vendor&#39;s mug on it, trying their best to look cool. Not what one would call an icon..</param>
+        /// <param name="Subtitle">Subtitle.</param>
+        /// <param name="OriginalIcon">If we replaced the icon with something more glitzy, this is the original icon that the vendor had according to the game&#39;s content. It may be more lame and/or have less razzle-dazzle. But who am I to tell you which icon to use..</param>
+        /// <param name="RequirementsDisplay">Vendors, in addition to expected display property data, may also show some \&quot;common requirements\&quot; as statically defined definition data. This might be when a vendor accepts a single type of currency, or when the currency is unique to the vendor and the designers wanted to show that currency when you interact with the vendor..</param>
+        /// <param name="SmallTransparentIcon">This is the icon used in parts of the game UI such as the vendor&#39;s waypoint..</param>
+        /// <param name="MapIcon">This is the icon used in the map overview, when the vendor is located on the map..</param>
+        /// <param name="LargeTransparentIcon">This is apparently the \&quot;Watermark\&quot;. I am not certain offhand where this is actually used in the Game UI, but some people may find it useful..</param>
+        /// <param name="Description">Description.</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="Icon">Note that \&quot;icon\&quot; is sometimes misleading, and should be interpreted in the context of the entity. For instance, in Destiny 1 the DestinyRecordBookDefinition&#39;s icon was a big picture of a book.  But usually, it will be a small square image that you can use as... well, an icon..</param>
+        /// <param name="HasIcon">HasIcon.</param>
+        public DestinyDefinitionsDestinyVendorDisplayPropertiesDefinition(string LargeIcon = default(string), string Subtitle = default(string), string OriginalIcon = default(string), List<DestinyDefinitionsDestinyVendorRequirementDisplayEntryDefinition> RequirementsDisplay = default(List<DestinyDefinitionsDestinyVendorRequirementDisplayEntryDefinition>), string SmallTransparentIcon = default(string), string MapIcon = default(string), string LargeTransparentIcon = default(string), string Description = default(string), string Name = default(string), string Icon = default(string), bool? HasIcon = default(bool?))
         {
-            this.LargeIcon = largeIcon;
-            this.Subtitle = subtitle;
-            this.OriginalIcon = originalIcon;
-            this.RequirementsDisplay = requirementsDisplay;
-            this.SmallTransparentIcon = smallTransparentIcon;
-            this.MapIcon = mapIcon;
-            this.LargeTransparentIcon = largeTransparentIcon;
-            this.Description = description;
-            this.Name = name;
-            this.Icon = icon;
-            this.HasIcon = hasIcon;
+            this.LargeIcon = LargeIcon;
+            this.Subtitle = Subtitle;
+            this.OriginalIcon = OriginalIcon;
+            this.RequirementsDisplay = RequirementsDisplay;
+            this.SmallTransparentIcon = SmallTransparentIcon;
+            this.MapIcon = MapIcon;
+            this.LargeTransparentIcon = LargeTransparentIcon;
+            this.Description = Description;
+            this.Name = Name;
+            this.Icon = Icon;
+            this.HasIcon = HasIcon;
         }
         
         /// <summary>
@@ -159,7 +159,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationsDatapoint" /> class.
         /// </summary>
-        /// <param name="time">Timestamp for the related count..</param>
-        /// <param name="count">Count associated with timestamp.</param>
-        public ApplicationsDatapoint(DateTime? time = default(DateTime?), double? count = default(double?))
+        /// <param name="Time">Timestamp for the related count..</param>
+        /// <param name="Count">Count associated with timestamp.</param>
+        public ApplicationsDatapoint(DateTime? Time = default(DateTime?), double? Count = default(double?))
         {
-            this.Time = time;
-            this.Count = count;
+            this.Time = Time;
+            this.Count = Count;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,19 +33,19 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsRecordsDestinyCharacterRecordsComponent" /> class.
         /// </summary>
-        /// <param name="featuredRecordHashes">featuredRecordHashes.</param>
-        /// <param name="records">records.</param>
-        public DestinyComponentsRecordsDestinyCharacterRecordsComponent(List<int?> featuredRecordHashes = default(List<int?>), Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent> records = default(Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent>))
+        /// <param name="FeaturedRecordHashes">FeaturedRecordHashes.</param>
+        /// <param name="Records">Records.</param>
+        public DestinyComponentsRecordsDestinyCharacterRecordsComponent(List<uint?> FeaturedRecordHashes = default(List<uint?>), Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent> Records = default(Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent>))
         {
-            this.FeaturedRecordHashes = featuredRecordHashes;
-            this.Records = records;
+            this.FeaturedRecordHashes = FeaturedRecordHashes;
+            this.Records = Records;
         }
         
         /// <summary>
         /// Gets or Sets FeaturedRecordHashes
         /// </summary>
         [DataMember(Name="featuredRecordHashes", EmitDefaultValue=false)]
-        public List<int?> FeaturedRecordHashes { get; set; }
+        public List<uint?> FeaturedRecordHashes { get; set; }
 
         /// <summary>
         /// Gets or Sets Records
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

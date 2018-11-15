@@ -33,34 +33,34 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupV2Card" /> class.
         /// </summary>
-        /// <param name="groupId">groupId.</param>
-        /// <param name="name">name.</param>
-        /// <param name="groupType">groupType.</param>
-        /// <param name="creationDate">creationDate.</param>
-        /// <param name="about">about.</param>
-        /// <param name="motto">motto.</param>
-        /// <param name="memberCount">memberCount.</param>
-        /// <param name="locale">locale.</param>
-        /// <param name="membershipOption">membershipOption.</param>
-        /// <param name="capabilities">capabilities.</param>
-        /// <param name="clanInfo">clanInfo.</param>
-        /// <param name="avatarPath">avatarPath.</param>
-        /// <param name="theme">theme.</param>
-        public GroupsV2GroupV2Card(long? groupId = default(long?), string name = default(string), GroupsV2GroupType groupType = default(GroupsV2GroupType), DateTime? creationDate = default(DateTime?), string about = default(string), string motto = default(string), int? memberCount = default(int?), string locale = default(string), GroupsV2MembershipOption membershipOption = default(GroupsV2MembershipOption), GroupsV2Capabilities capabilities = default(GroupsV2Capabilities), GroupsV2GroupV2ClanInfo clanInfo = default(GroupsV2GroupV2ClanInfo), string avatarPath = default(string), string theme = default(string))
+        /// <param name="GroupId">GroupId.</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="GroupType">GroupType.</param>
+        /// <param name="CreationDate">CreationDate.</param>
+        /// <param name="About">About.</param>
+        /// <param name="Motto">Motto.</param>
+        /// <param name="MemberCount">MemberCount.</param>
+        /// <param name="Locale">Locale.</param>
+        /// <param name="MembershipOption">MembershipOption.</param>
+        /// <param name="Capabilities">Capabilities.</param>
+        /// <param name="ClanInfo">ClanInfo.</param>
+        /// <param name="AvatarPath">AvatarPath.</param>
+        /// <param name="Theme">Theme.</param>
+        public GroupsV2GroupV2Card(long? GroupId = default(long?), string Name = default(string), GroupsV2GroupType GroupType = default(GroupsV2GroupType), DateTime? CreationDate = default(DateTime?), string About = default(string), string Motto = default(string), int? MemberCount = default(int?), string Locale = default(string), GroupsV2MembershipOption MembershipOption = default(GroupsV2MembershipOption), GroupsV2Capabilities Capabilities = default(GroupsV2Capabilities), GroupsV2GroupV2ClanInfo ClanInfo = default(GroupsV2GroupV2ClanInfo), string AvatarPath = default(string), string Theme = default(string))
         {
-            this.GroupId = groupId;
-            this.Name = name;
-            this.GroupType = groupType;
-            this.CreationDate = creationDate;
-            this.About = about;
-            this.Motto = motto;
-            this.MemberCount = memberCount;
-            this.Locale = locale;
-            this.MembershipOption = membershipOption;
-            this.Capabilities = capabilities;
-            this.ClanInfo = clanInfo;
-            this.AvatarPath = avatarPath;
-            this.Theme = theme;
+            this.GroupId = GroupId;
+            this.Name = Name;
+            this.GroupType = GroupType;
+            this.CreationDate = CreationDate;
+            this.About = About;
+            this.Motto = Motto;
+            this.MemberCount = MemberCount;
+            this.Locale = Locale;
+            this.MembershipOption = MembershipOption;
+            this.Capabilities = Capabilities;
+            this.ClanInfo = ClanInfo;
+            this.AvatarPath = AvatarPath;
+            this.Theme = Theme;
         }
         
         /// <summary>
@@ -170,7 +170,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

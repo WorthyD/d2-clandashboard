@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SingleComponentResponseOfDestinyCharacterRecordsComponent" /> class.
         /// </summary>
-        /// <param name="data">data.</param>
-        /// <param name="privacy">privacy.</param>
-        public SingleComponentResponseOfDestinyCharacterRecordsComponent(DestinyComponentsRecordsDestinyCharacterRecordsComponent data = default(DestinyComponentsRecordsDestinyCharacterRecordsComponent), ComponentsComponentPrivacySetting privacy = default(ComponentsComponentPrivacySetting))
+        /// <param name="Data">Data.</param>
+        /// <param name="Privacy">Privacy.</param>
+        public SingleComponentResponseOfDestinyCharacterRecordsComponent(DestinyComponentsRecordsDestinyCharacterRecordsComponent Data = default(DestinyComponentsRecordsDestinyCharacterRecordsComponent), ComponentsComponentPrivacySetting Privacy = default(ComponentsComponentPrivacySetting))
         {
-            this.Data = data;
-            this.Privacy = privacy;
+            this.Data = Data;
+            this.Privacy = Privacy;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

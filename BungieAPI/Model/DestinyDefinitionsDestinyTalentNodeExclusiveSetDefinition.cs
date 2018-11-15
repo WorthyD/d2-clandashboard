@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyTalentNodeExclusiveSetDefinition" /> class.
         /// </summary>
-        /// <param name="nodeIndexes">The list of node indexes for the exclusive set. Historically, these were indexes. I would have liked to replace this with nodeHashes for consistency, but it&#39;s way too late for that. (9:09 PM, he&#39;s right!).</param>
-        public DestinyDefinitionsDestinyTalentNodeExclusiveSetDefinition(List<int?> nodeIndexes = default(List<int?>))
+        /// <param name="NodeIndexes">The list of node indexes for the exclusive set. Historically, these were indexes. I would have liked to replace this with nodeHashes for consistency, but it&#39;s way too late for that. (9:09 PM, he&#39;s right!).</param>
+        public DestinyDefinitionsDestinyTalentNodeExclusiveSetDefinition(List<int?> NodeIndexes = default(List<int?>))
         {
-            this.NodeIndexes = nodeIndexes;
+            this.NodeIndexes = NodeIndexes;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

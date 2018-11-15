@@ -33,50 +33,50 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentModelsContentTypeDescription" /> class.
         /// </summary>
-        /// <param name="cType">cType.</param>
-        /// <param name="name">name.</param>
-        /// <param name="contentDescription">contentDescription.</param>
-        /// <param name="previewImage">previewImage.</param>
-        /// <param name="priority">priority.</param>
-        /// <param name="reminder">reminder.</param>
-        /// <param name="properties">properties.</param>
-        /// <param name="tagMetadata">tagMetadata.</param>
-        /// <param name="tagMetadataItems">tagMetadataItems.</param>
-        /// <param name="usageExamples">usageExamples.</param>
-        /// <param name="showInContentEditor">showInContentEditor.</param>
-        /// <param name="typeOf">typeOf.</param>
-        /// <param name="bindIdentifierToProperty">bindIdentifierToProperty.</param>
-        /// <param name="boundRegex">boundRegex.</param>
-        /// <param name="forceIdentifierBinding">forceIdentifierBinding.</param>
-        /// <param name="allowComments">allowComments.</param>
-        /// <param name="autoEnglishPropertyFallback">autoEnglishPropertyFallback.</param>
-        /// <param name="bulkUploadable">bulkUploadable.</param>
-        /// <param name="previews">previews.</param>
-        /// <param name="suppressCmsPath">suppressCmsPath.</param>
-        /// <param name="propertySections">propertySections.</param>
-        public ContentModelsContentTypeDescription(string cType = default(string), string name = default(string), string contentDescription = default(string), string previewImage = default(string), int? priority = default(int?), string reminder = default(string), List<ContentModelsContentTypeProperty> properties = default(List<ContentModelsContentTypeProperty>), List<ContentModelsTagMetadataDefinition> tagMetadata = default(List<ContentModelsTagMetadataDefinition>), Dictionary<string, ContentModelsTagMetadataItem> tagMetadataItems = default(Dictionary<string, ContentModelsTagMetadataItem>), List<string> usageExamples = default(List<string>), bool? showInContentEditor = default(bool?), string typeOf = default(string), string bindIdentifierToProperty = default(string), string boundRegex = default(string), bool? forceIdentifierBinding = default(bool?), bool? allowComments = default(bool?), bool? autoEnglishPropertyFallback = default(bool?), bool? bulkUploadable = default(bool?), List<ContentModelsContentPreview> previews = default(List<ContentModelsContentPreview>), bool? suppressCmsPath = default(bool?), List<ContentModelsContentTypePropertySection> propertySections = default(List<ContentModelsContentTypePropertySection>))
+        /// <param name="CType">CType.</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="ContentDescription">ContentDescription.</param>
+        /// <param name="PreviewImage">PreviewImage.</param>
+        /// <param name="Priority">Priority.</param>
+        /// <param name="Reminder">Reminder.</param>
+        /// <param name="Properties">Properties.</param>
+        /// <param name="TagMetadata">TagMetadata.</param>
+        /// <param name="TagMetadataItems">TagMetadataItems.</param>
+        /// <param name="UsageExamples">UsageExamples.</param>
+        /// <param name="ShowInContentEditor">ShowInContentEditor.</param>
+        /// <param name="_TypeOf">_TypeOf.</param>
+        /// <param name="BindIdentifierToProperty">BindIdentifierToProperty.</param>
+        /// <param name="BoundRegex">BoundRegex.</param>
+        /// <param name="ForceIdentifierBinding">ForceIdentifierBinding.</param>
+        /// <param name="AllowComments">AllowComments.</param>
+        /// <param name="AutoEnglishPropertyFallback">AutoEnglishPropertyFallback.</param>
+        /// <param name="BulkUploadable">BulkUploadable.</param>
+        /// <param name="Previews">Previews.</param>
+        /// <param name="SuppressCmsPath">SuppressCmsPath.</param>
+        /// <param name="PropertySections">PropertySections.</param>
+        public ContentModelsContentTypeDescription(string CType = default(string), string Name = default(string), string ContentDescription = default(string), string PreviewImage = default(string), int? Priority = default(int?), string Reminder = default(string), List<ContentModelsContentTypeProperty> Properties = default(List<ContentModelsContentTypeProperty>), List<ContentModelsTagMetadataDefinition> TagMetadata = default(List<ContentModelsTagMetadataDefinition>), Dictionary<string, ContentModelsTagMetadataItem> TagMetadataItems = default(Dictionary<string, ContentModelsTagMetadataItem>), List<string> UsageExamples = default(List<string>), bool? ShowInContentEditor = default(bool?), string _TypeOf = default(string), string BindIdentifierToProperty = default(string), string BoundRegex = default(string), bool? ForceIdentifierBinding = default(bool?), bool? AllowComments = default(bool?), bool? AutoEnglishPropertyFallback = default(bool?), bool? BulkUploadable = default(bool?), List<ContentModelsContentPreview> Previews = default(List<ContentModelsContentPreview>), bool? SuppressCmsPath = default(bool?), List<ContentModelsContentTypePropertySection> PropertySections = default(List<ContentModelsContentTypePropertySection>))
         {
-            this.CType = cType;
-            this.Name = name;
-            this.ContentDescription = contentDescription;
-            this.PreviewImage = previewImage;
-            this.Priority = priority;
-            this.Reminder = reminder;
-            this.Properties = properties;
-            this.TagMetadata = tagMetadata;
-            this.TagMetadataItems = tagMetadataItems;
-            this.UsageExamples = usageExamples;
-            this.ShowInContentEditor = showInContentEditor;
-            this.TypeOf = typeOf;
-            this.BindIdentifierToProperty = bindIdentifierToProperty;
-            this.BoundRegex = boundRegex;
-            this.ForceIdentifierBinding = forceIdentifierBinding;
-            this.AllowComments = allowComments;
-            this.AutoEnglishPropertyFallback = autoEnglishPropertyFallback;
-            this.BulkUploadable = bulkUploadable;
-            this.Previews = previews;
-            this.SuppressCmsPath = suppressCmsPath;
-            this.PropertySections = propertySections;
+            this.CType = CType;
+            this.Name = Name;
+            this.ContentDescription = ContentDescription;
+            this.PreviewImage = PreviewImage;
+            this.Priority = Priority;
+            this.Reminder = Reminder;
+            this.Properties = Properties;
+            this.TagMetadata = TagMetadata;
+            this.TagMetadataItems = TagMetadataItems;
+            this.UsageExamples = UsageExamples;
+            this.ShowInContentEditor = ShowInContentEditor;
+            this._TypeOf = _TypeOf;
+            this.BindIdentifierToProperty = BindIdentifierToProperty;
+            this.BoundRegex = BoundRegex;
+            this.ForceIdentifierBinding = ForceIdentifierBinding;
+            this.AllowComments = AllowComments;
+            this.AutoEnglishPropertyFallback = AutoEnglishPropertyFallback;
+            this.BulkUploadable = BulkUploadable;
+            this.Previews = Previews;
+            this.SuppressCmsPath = SuppressCmsPath;
+            this.PropertySections = PropertySections;
         }
         
         /// <summary>
@@ -146,10 +146,10 @@ namespace BungieAPI.Model
         public bool? ShowInContentEditor { get; set; }
 
         /// <summary>
-        /// Gets or Sets TypeOf
+        /// Gets or Sets _TypeOf
         /// </summary>
         [DataMember(Name="typeOf", EmitDefaultValue=false)]
-        public string TypeOf { get; set; }
+        public string _TypeOf { get; set; }
 
         /// <summary>
         /// Gets or Sets BindIdentifierToProperty
@@ -224,7 +224,7 @@ namespace BungieAPI.Model
             sb.Append("  TagMetadataItems: ").Append(TagMetadataItems).Append("\n");
             sb.Append("  UsageExamples: ").Append(UsageExamples).Append("\n");
             sb.Append("  ShowInContentEditor: ").Append(ShowInContentEditor).Append("\n");
-            sb.Append("  TypeOf: ").Append(TypeOf).Append("\n");
+            sb.Append("  _TypeOf: ").Append(_TypeOf).Append("\n");
             sb.Append("  BindIdentifierToProperty: ").Append(BindIdentifierToProperty).Append("\n");
             sb.Append("  BoundRegex: ").Append(BoundRegex).Append("\n");
             sb.Append("  ForceIdentifierBinding: ").Append(ForceIdentifierBinding).Append("\n");
@@ -242,7 +242,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -324,9 +324,9 @@ namespace BungieAPI.Model
                     this.ShowInContentEditor.Equals(input.ShowInContentEditor))
                 ) && 
                 (
-                    this.TypeOf == input.TypeOf ||
-                    (this.TypeOf != null &&
-                    this.TypeOf.Equals(input.TypeOf))
+                    this._TypeOf == input._TypeOf ||
+                    (this._TypeOf != null &&
+                    this._TypeOf.Equals(input._TypeOf))
                 ) && 
                 (
                     this.BindIdentifierToProperty == input.BindIdentifierToProperty ||
@@ -406,8 +406,8 @@ namespace BungieAPI.Model
                     hashCode = hashCode * 59 + this.UsageExamples.GetHashCode();
                 if (this.ShowInContentEditor != null)
                     hashCode = hashCode * 59 + this.ShowInContentEditor.GetHashCode();
-                if (this.TypeOf != null)
-                    hashCode = hashCode * 59 + this.TypeOf.GetHashCode();
+                if (this._TypeOf != null)
+                    hashCode = hashCode * 59 + this._TypeOf.GetHashCode();
                 if (this.BindIdentifierToProperty != null)
                     hashCode = hashCode * 59 + this.BindIdentifierToProperty.GetHashCode();
                 if (this.BoundRegex != null)

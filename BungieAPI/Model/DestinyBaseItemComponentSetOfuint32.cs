@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyBaseItemComponentSetOfuint32" /> class.
         /// </summary>
-        /// <param name="objectives">objectives.</param>
-        public DestinyBaseItemComponentSetOfuint32(DictionaryComponentResponseOfuint32AndDestinyItemObjectivesComponent objectives = default(DictionaryComponentResponseOfuint32AndDestinyItemObjectivesComponent))
+        /// <param name="Objectives">Objectives.</param>
+        public DestinyBaseItemComponentSetOfuint32(DictionaryComponentResponseOfuint32AndDestinyItemObjectivesComponent Objectives = default(DictionaryComponentResponseOfuint32AndDestinyItemObjectivesComponent))
         {
-            this.Objectives = objectives;
+            this.Objectives = Objectives;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

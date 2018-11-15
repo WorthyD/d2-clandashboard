@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentModelsContentPreview" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="path">path.</param>
-        /// <param name="itemInSet">itemInSet.</param>
-        /// <param name="setTag">setTag.</param>
-        /// <param name="setNesting">setNesting.</param>
-        /// <param name="useSetId">useSetId.</param>
-        public ContentModelsContentPreview(string name = default(string), string path = default(string), bool? itemInSet = default(bool?), string setTag = default(string), int? setNesting = default(int?), int? useSetId = default(int?))
+        /// <param name="Name">Name.</param>
+        /// <param name="Path">Path.</param>
+        /// <param name="ItemInSet">ItemInSet.</param>
+        /// <param name="SetTag">SetTag.</param>
+        /// <param name="SetNesting">SetNesting.</param>
+        /// <param name="UseSetId">UseSetId.</param>
+        public ContentModelsContentPreview(string Name = default(string), string Path = default(string), bool? ItemInSet = default(bool?), string SetTag = default(string), int? SetNesting = default(int?), int? UseSetId = default(int?))
         {
-            this.Name = name;
-            this.Path = path;
-            this.ItemInSet = itemInSet;
-            this.SetTag = setTag;
-            this.SetNesting = setNesting;
-            this.UseSetId = useSetId;
+            this.Name = Name;
+            this.Path = Path;
+            this.ItemInSet = ItemInSet;
+            this.SetTag = SetTag;
+            this.SetNesting = SetNesting;
+            this.UseSetId = UseSetId;
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

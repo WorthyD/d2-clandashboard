@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyMilestoneContentItemCategory" /> class.
         /// </summary>
-        /// <param name="title">title.</param>
-        /// <param name="itemHashes">itemHashes.</param>
-        public DestinyMilestonesDestinyMilestoneContentItemCategory(string title = default(string), List<int?> itemHashes = default(List<int?>))
+        /// <param name="Title">Title.</param>
+        /// <param name="ItemHashes">ItemHashes.</param>
+        public DestinyMilestonesDestinyMilestoneContentItemCategory(string Title = default(string), List<uint?> ItemHashes = default(List<uint?>))
         {
-            this.Title = title;
-            this.ItemHashes = itemHashes;
+            this.Title = Title;
+            this.ItemHashes = ItemHashes;
         }
         
         /// <summary>
@@ -51,7 +51,7 @@ namespace BungieAPI.Model
         /// Gets or Sets ItemHashes
         /// </summary>
         [DataMember(Name="itemHashes", EmitDefaultValue=false)]
-        public List<int?> ItemHashes { get; set; }
+        public List<uint?> ItemHashes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

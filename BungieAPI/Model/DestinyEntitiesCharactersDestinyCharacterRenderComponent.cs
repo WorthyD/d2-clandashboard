@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesCharactersDestinyCharacterRenderComponent" /> class.
         /// </summary>
-        /// <param name="customDyes">Custom dyes, calculated by iterating over the character&#39;s equipped items. Useful for pre-fetching all of the dye data needed from our server..</param>
-        /// <param name="customization">This is actually something that Spasm.js *doesn&#39;t* do right now, and that we don&#39;t return assets for yet. This is the data about what character customization options you picked. You can combine this with DestinyCharacterCustomizationOptionDefinition to show some cool info, and hopefully someday to actually render a user&#39;s face in 3D. We&#39;ll see if we ever end up with time for that..</param>
-        /// <param name="peerView">A minimal view of:  - Equipped items  - The rendering-related custom options on those equipped items  Combined, that should be enough to render all of the items on the equipped character..</param>
-        public DestinyEntitiesCharactersDestinyCharacterRenderComponent(List<DestinyDyeReference> customDyes = default(List<DestinyDyeReference>), Object customization = default(Object), Object peerView = default(Object))
+        /// <param name="CustomDyes">Custom dyes, calculated by iterating over the character&#39;s equipped items. Useful for pre-fetching all of the dye data needed from our server..</param>
+        /// <param name="Customization">This is actually something that Spasm.js *doesn&#39;t* do right now, and that we don&#39;t return assets for yet. This is the data about what character customization options you picked. You can combine this with DestinyCharacterCustomizationOptionDefinition to show some cool info, and hopefully someday to actually render a user&#39;s face in 3D. We&#39;ll see if we ever end up with time for that..</param>
+        /// <param name="PeerView">A minimal view of:  - Equipped items  - The rendering-related custom options on those equipped items  Combined, that should be enough to render all of the items on the equipped character..</param>
+        public DestinyEntitiesCharactersDestinyCharacterRenderComponent(List<DestinyDyeReference> CustomDyes = default(List<DestinyDyeReference>), DestinyCharacterDestinyCharacterCustomization Customization = default(DestinyCharacterDestinyCharacterCustomization), DestinyCharacterDestinyCharacterPeerView PeerView = default(DestinyCharacterDestinyCharacterPeerView))
         {
-            this.CustomDyes = customDyes;
-            this.Customization = customization;
-            this.PeerView = peerView;
+            this.CustomDyes = CustomDyes;
+            this.Customization = Customization;
+            this.PeerView = PeerView;
         }
         
         /// <summary>
@@ -55,14 +55,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>This is actually something that Spasm.js *doesn&#39;t* do right now, and that we don&#39;t return assets for yet. This is the data about what character customization options you picked. You can combine this with DestinyCharacterCustomizationOptionDefinition to show some cool info, and hopefully someday to actually render a user&#39;s face in 3D. We&#39;ll see if we ever end up with time for that.</value>
         [DataMember(Name="customization", EmitDefaultValue=false)]
-        public Object Customization { get; set; }
+        public DestinyCharacterDestinyCharacterCustomization Customization { get; set; }
 
         /// <summary>
         /// A minimal view of:  - Equipped items  - The rendering-related custom options on those equipped items  Combined, that should be enough to render all of the items on the equipped character.
         /// </summary>
         /// <value>A minimal view of:  - Equipped items  - The rendering-related custom options on those equipped items  Combined, that should be enough to render all of the items on the equipped character.</value>
         [DataMember(Name="peerView", EmitDefaultValue=false)]
-        public Object PeerView { get; set; }
+        public DestinyCharacterDestinyCharacterPeerView PeerView { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

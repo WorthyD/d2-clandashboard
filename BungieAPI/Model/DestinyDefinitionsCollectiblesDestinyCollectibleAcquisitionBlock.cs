@@ -33,25 +33,25 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsCollectiblesDestinyCollectibleAcquisitionBlock" /> class.
         /// </summary>
-        /// <param name="acquireMaterialRequirementHash">acquireMaterialRequirementHash.</param>
-        /// <param name="acquireTimestampUnlockValueHash">acquireTimestampUnlockValueHash.</param>
-        public DestinyDefinitionsCollectiblesDestinyCollectibleAcquisitionBlock(int? acquireMaterialRequirementHash = default(int?), int? acquireTimestampUnlockValueHash = default(int?))
+        /// <param name="AcquireMaterialRequirementHash">AcquireMaterialRequirementHash.</param>
+        /// <param name="AcquireTimestampUnlockValueHash">AcquireTimestampUnlockValueHash.</param>
+        public DestinyDefinitionsCollectiblesDestinyCollectibleAcquisitionBlock(uint? AcquireMaterialRequirementHash = default(uint?), uint? AcquireTimestampUnlockValueHash = default(uint?))
         {
-            this.AcquireMaterialRequirementHash = acquireMaterialRequirementHash;
-            this.AcquireTimestampUnlockValueHash = acquireTimestampUnlockValueHash;
+            this.AcquireMaterialRequirementHash = AcquireMaterialRequirementHash;
+            this.AcquireTimestampUnlockValueHash = AcquireTimestampUnlockValueHash;
         }
         
         /// <summary>
         /// Gets or Sets AcquireMaterialRequirementHash
         /// </summary>
         [DataMember(Name="acquireMaterialRequirementHash", EmitDefaultValue=false)]
-        public int? AcquireMaterialRequirementHash { get; set; }
+        public uint? AcquireMaterialRequirementHash { get; set; }
 
         /// <summary>
         /// Gets or Sets AcquireTimestampUnlockValueHash
         /// </summary>
         [DataMember(Name="acquireTimestampUnlockValueHash", EmitDefaultValue=false)]
-        public int? AcquireTimestampUnlockValueHash { get; set; }
+        public uint? AcquireTimestampUnlockValueHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

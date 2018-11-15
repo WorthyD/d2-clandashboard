@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupApplicationResponse" /> class.
         /// </summary>
-        /// <param name="resolution">resolution.</param>
-        public GroupsV2GroupApplicationResponse(GroupsV2GroupApplicationResolveState resolution = default(GroupsV2GroupApplicationResolveState))
+        /// <param name="Resolution">Resolution.</param>
+        public GroupsV2GroupApplicationResponse(GroupsV2GroupApplicationResolveState Resolution = default(GroupsV2GroupApplicationResolveState))
         {
-            this.Resolution = resolution;
+            this.Resolution = Resolution;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

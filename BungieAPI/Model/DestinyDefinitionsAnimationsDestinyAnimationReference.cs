@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsAnimationsDestinyAnimationReference" /> class.
         /// </summary>
-        /// <param name="animName">animName.</param>
-        /// <param name="animIdentifier">animIdentifier.</param>
-        /// <param name="path">path.</param>
-        public DestinyDefinitionsAnimationsDestinyAnimationReference(string animName = default(string), string animIdentifier = default(string), string path = default(string))
+        /// <param name="AnimName">AnimName.</param>
+        /// <param name="AnimIdentifier">AnimIdentifier.</param>
+        /// <param name="Path">Path.</param>
+        public DestinyDefinitionsAnimationsDestinyAnimationReference(string AnimName = default(string), string AnimIdentifier = default(string), string Path = default(string))
         {
-            this.AnimName = animName;
-            this.AnimIdentifier = animIdentifier;
-            this.Path = path;
+            this.AnimName = AnimName;
+            this.AnimIdentifier = AnimIdentifier;
+            this.Path = Path;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,32 +33,32 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyInventoryBucketDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="scope">Where the bucket is found. 0 &#x3D; Character, 1 &#x3D; Account.</param>
-        /// <param name="category">An enum value for what items can be found in the bucket. See the BucketCategory enum for more details..</param>
-        /// <param name="bucketOrder">Use this property to provide a quick-and-dirty recommended ordering for buckets in the UI. Most UIs will likely want to forsake this for something more custom and manual..</param>
-        /// <param name="itemCount">The maximum # of item \&quot;slots\&quot; in a bucket. A slot is a given combination of item + quantity.  For instance, a Weapon will always take up a single slot, and always have a quantity of 1. But a material could take up only a single slot with hundreds of quantity..</param>
-        /// <param name="location">Sometimes, inventory buckets represent conceptual \&quot;locations\&quot; in the game that might not be expected. This value indicates the conceptual location of the bucket, regardless of where it is actually contained on the character/account.   See ItemLocation for details.   Note that location includes the Vault and the Postmaster (both of whom being just inventory buckets with additional actions that can be performed on them through a Vendor).</param>
-        /// <param name="hasTransferDestination">If TRUE, there is at least one Vendor that can transfer items to/from this bucket. See the DestinyVendorDefinition&#39;s acceptedItems property for more information on how transferring works..</param>
-        /// <param name="enabled">If True, this bucket is enabled. Disabled buckets may include buckets that were included for test purposes, or that were going to be used but then were abandoned but never removed from content *cough*..</param>
-        /// <param name="fifo">if a FIFO bucket fills up, it will delete the oldest item from said bucket when a new item tries to be added to it. If this is FALSE, the bucket will not allow new items to be placed in it until room is made by the user manually deleting items from it. You can see an example of this with the Postmaster&#39;s bucket..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyInventoryBucketDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), Object scope = default(Object), Object category = default(Object), int? bucketOrder = default(int?), int? itemCount = default(int?), Object location = default(Object), bool? hasTransferDestination = default(bool?), bool? enabled = default(bool?), bool? fifo = default(bool?), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="Scope">Where the bucket is found. 0 &#x3D; Character, 1 &#x3D; Account.</param>
+        /// <param name="Category">An enum value for what items can be found in the bucket. See the BucketCategory enum for more details..</param>
+        /// <param name="BucketOrder">Use this property to provide a quick-and-dirty recommended ordering for buckets in the UI. Most UIs will likely want to forsake this for something more custom and manual..</param>
+        /// <param name="ItemCount">The maximum # of item \&quot;slots\&quot; in a bucket. A slot is a given combination of item + quantity.  For instance, a Weapon will always take up a single slot, and always have a quantity of 1. But a material could take up only a single slot with hundreds of quantity..</param>
+        /// <param name="Location">Sometimes, inventory buckets represent conceptual \&quot;locations\&quot; in the game that might not be expected. This value indicates the conceptual location of the bucket, regardless of where it is actually contained on the character/account.   See ItemLocation for details.   Note that location includes the Vault and the Postmaster (both of whom being just inventory buckets with additional actions that can be performed on them through a Vendor).</param>
+        /// <param name="HasTransferDestination">If TRUE, there is at least one Vendor that can transfer items to/from this bucket. See the DestinyVendorDefinition&#39;s acceptedItems property for more information on how transferring works..</param>
+        /// <param name="Enabled">If True, this bucket is enabled. Disabled buckets may include buckets that were included for test purposes, or that were going to be used but then were abandoned but never removed from content *cough*..</param>
+        /// <param name="Fifo">if a FIFO bucket fills up, it will delete the oldest item from said bucket when a new item tries to be added to it. If this is FALSE, the bucket will not allow new items to be placed in it until room is made by the user manually deleting items from it. You can see an example of this with the Postmaster&#39;s bucket..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyInventoryBucketDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), DestinyBucketScope Scope = default(DestinyBucketScope), DestinyBucketCategory Category = default(DestinyBucketCategory), int? BucketOrder = default(int?), int? ItemCount = default(int?), DestinyItemLocation Location = default(DestinyItemLocation), bool? HasTransferDestination = default(bool?), bool? Enabled = default(bool?), bool? Fifo = default(bool?), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.Scope = scope;
-            this.Category = category;
-            this.BucketOrder = bucketOrder;
-            this.ItemCount = itemCount;
-            this.Location = location;
-            this.HasTransferDestination = hasTransferDestination;
-            this.Enabled = enabled;
-            this.Fifo = fifo;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.Scope = Scope;
+            this.Category = Category;
+            this.BucketOrder = BucketOrder;
+            this.ItemCount = ItemCount;
+            this.Location = Location;
+            this.HasTransferDestination = HasTransferDestination;
+            this.Enabled = Enabled;
+            this.Fifo = Fifo;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -72,14 +72,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Where the bucket is found. 0 &#x3D; Character, 1 &#x3D; Account</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Object Scope { get; set; }
+        public DestinyBucketScope Scope { get; set; }
 
         /// <summary>
         /// An enum value for what items can be found in the bucket. See the BucketCategory enum for more details.
         /// </summary>
         /// <value>An enum value for what items can be found in the bucket. See the BucketCategory enum for more details.</value>
         [DataMember(Name="category", EmitDefaultValue=false)]
-        public Object Category { get; set; }
+        public DestinyBucketCategory Category { get; set; }
 
         /// <summary>
         /// Use this property to provide a quick-and-dirty recommended ordering for buckets in the UI. Most UIs will likely want to forsake this for something more custom and manual.
@@ -100,7 +100,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Sometimes, inventory buckets represent conceptual \&quot;locations\&quot; in the game that might not be expected. This value indicates the conceptual location of the bucket, regardless of where it is actually contained on the character/account.   See ItemLocation for details.   Note that location includes the Vault and the Postmaster (both of whom being just inventory buckets with additional actions that can be performed on them through a Vendor)</value>
         [DataMember(Name="location", EmitDefaultValue=false)]
-        public Object Location { get; set; }
+        public DestinyItemLocation Location { get; set; }
 
         /// <summary>
         /// If TRUE, there is at least one Vendor that can transfer items to/from this bucket. See the DestinyVendorDefinition&#39;s acceptedItems property for more information on how transferring works.
@@ -128,7 +128,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -172,7 +172,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

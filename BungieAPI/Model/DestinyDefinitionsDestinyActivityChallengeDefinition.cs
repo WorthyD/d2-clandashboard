@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyActivityChallengeDefinition" /> class.
         /// </summary>
-        /// <param name="objectiveHash">The hash for the Objective that matches this challenge. Use it to look up the DestinyObjectiveDefinition..</param>
-        /// <param name="dummyRewards">The rewards as they&#39;re represented in the UI. Note that they generally link to \&quot;dummy\&quot; items that give a summary of rewards rather than direct, real items themselves.  If the quantity is 0, don&#39;t show the quantity..</param>
-        public DestinyDefinitionsDestinyActivityChallengeDefinition(int? objectiveHash = default(int?), List<DestinyDestinyItemQuantity> dummyRewards = default(List<DestinyDestinyItemQuantity>))
+        /// <param name="ObjectiveHash">The hash for the Objective that matches this challenge. Use it to look up the DestinyObjectiveDefinition..</param>
+        /// <param name="DummyRewards">The rewards as they&#39;re represented in the UI. Note that they generally link to \&quot;dummy\&quot; items that give a summary of rewards rather than direct, real items themselves.  If the quantity is 0, don&#39;t show the quantity..</param>
+        public DestinyDefinitionsDestinyActivityChallengeDefinition(uint? ObjectiveHash = default(uint?), List<DestinyDestinyItemQuantity> DummyRewards = default(List<DestinyDestinyItemQuantity>))
         {
-            this.ObjectiveHash = objectiveHash;
-            this.DummyRewards = dummyRewards;
+            this.ObjectiveHash = ObjectiveHash;
+            this.DummyRewards = DummyRewards;
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash for the Objective that matches this challenge. Use it to look up the DestinyObjectiveDefinition.</value>
         [DataMember(Name="objectiveHash", EmitDefaultValue=false)]
-        public int? ObjectiveHash { get; set; }
+        public uint? ObjectiveHash { get; set; }
 
         /// <summary>
         /// The rewards as they&#39;re represented in the UI. Note that they generally link to \&quot;dummy\&quot; items that give a summary of rewards rather than direct, real items themselves.  If the quantity is 0, don&#39;t show the quantity.
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

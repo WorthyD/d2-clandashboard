@@ -33,24 +33,24 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupBan" /> class.
         /// </summary>
-        /// <param name="groupId">groupId.</param>
-        /// <param name="lastModifiedBy">lastModifiedBy.</param>
-        /// <param name="createdBy">createdBy.</param>
-        /// <param name="dateBanned">dateBanned.</param>
-        /// <param name="dateExpires">dateExpires.</param>
-        /// <param name="comment">comment.</param>
-        /// <param name="bungieNetUserInfo">bungieNetUserInfo.</param>
-        /// <param name="destinyUserInfo">destinyUserInfo.</param>
-        public GroupsV2GroupBan(long? groupId = default(long?), UserUserInfoCard lastModifiedBy = default(UserUserInfoCard), UserUserInfoCard createdBy = default(UserUserInfoCard), DateTime? dateBanned = default(DateTime?), DateTime? dateExpires = default(DateTime?), string comment = default(string), UserUserInfoCard bungieNetUserInfo = default(UserUserInfoCard), UserUserInfoCard destinyUserInfo = default(UserUserInfoCard))
+        /// <param name="GroupId">GroupId.</param>
+        /// <param name="LastModifiedBy">LastModifiedBy.</param>
+        /// <param name="CreatedBy">CreatedBy.</param>
+        /// <param name="DateBanned">DateBanned.</param>
+        /// <param name="DateExpires">DateExpires.</param>
+        /// <param name="Comment">Comment.</param>
+        /// <param name="BungieNetUserInfo">BungieNetUserInfo.</param>
+        /// <param name="DestinyUserInfo">DestinyUserInfo.</param>
+        public GroupsV2GroupBan(long? GroupId = default(long?), UserUserInfoCard LastModifiedBy = default(UserUserInfoCard), UserUserInfoCard CreatedBy = default(UserUserInfoCard), DateTime? DateBanned = default(DateTime?), DateTime? DateExpires = default(DateTime?), string Comment = default(string), UserUserInfoCard BungieNetUserInfo = default(UserUserInfoCard), UserUserInfoCard DestinyUserInfo = default(UserUserInfoCard))
         {
-            this.GroupId = groupId;
-            this.LastModifiedBy = lastModifiedBy;
-            this.CreatedBy = createdBy;
-            this.DateBanned = dateBanned;
-            this.DateExpires = dateExpires;
-            this.Comment = comment;
-            this.BungieNetUserInfo = bungieNetUserInfo;
-            this.DestinyUserInfo = destinyUserInfo;
+            this.GroupId = GroupId;
+            this.LastModifiedBy = LastModifiedBy;
+            this.CreatedBy = CreatedBy;
+            this.DateBanned = DateBanned;
+            this.DateExpires = DateExpires;
+            this.Comment = Comment;
+            this.BungieNetUserInfo = BungieNetUserInfo;
+            this.DestinyUserInfo = DestinyUserInfo;
         }
         
         /// <summary>
@@ -125,7 +125,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

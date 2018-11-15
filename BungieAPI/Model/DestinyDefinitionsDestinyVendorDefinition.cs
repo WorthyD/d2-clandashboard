@@ -33,76 +33,76 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="buyString">If the vendor has a custom localized string describing the \&quot;buy\&quot; action, that is returned here..</param>
-        /// <param name="sellString">Ditto for selling. Not that you can sell items to a vendor anymore. Will it come back? Who knows. The string&#39;s still there..</param>
-        /// <param name="displayItemHash">If the vendor has an item that should be displayed as the \&quot;featured\&quot; item, this is the hash identifier for that DestinyVendorItemDefinition.  Apparently this is usually a related currency, like a reputation token. But it need not be restricted to that..</param>
-        /// <param name="inhibitBuying">If this is true, you aren&#39;t allowed to buy whatever the vendor is selling..</param>
-        /// <param name="inhibitSelling">If this is true, you&#39;re not allowed to sell whatever the vendor is buying..</param>
-        /// <param name="factionHash">If the Vendor has a faction, this hash will be valid and point to a DestinyFactionDefinition.  The game UI and BNet often mine the faction definition for additional elements and details to place on the screen, such as the faction&#39;s Progression status (aka \&quot;Reputation\&quot;)..</param>
-        /// <param name="resetIntervalMinutes">A number used for calculating the frequency of a vendor&#39;s inventory resetting/refreshing.  Don&#39;t worry about calculating this - we do it on the server side and send you the next refresh date with the live data..</param>
-        /// <param name="resetOffsetMinutes">Again, used for reset/refreshing of inventory. Don&#39;t worry too much about it. Unless you want to..</param>
-        /// <param name="failureStrings">If an item can&#39;t be purchased from the vendor, there may be many \&quot;custom\&quot;/game state specific reasons why not.  This is a list of localized strings with messages for those custom failures. The live BNet data will return a failureIndexes property for items that can&#39;t be purchased: using those values to index into this array, you can show the user the appropriate failure message for the item that can&#39;t be bought..</param>
-        /// <param name="unlockRanges">If we were able to predict the dates when this Vendor will be visible/available, this will be the list of those date ranges. Sadly, we&#39;re not able to predict this very frequently, so this will often be useless data..</param>
-        /// <param name="vendorIdentifier">The internal identifier for the Vendor. A holdover from the old days of Vendors, but we don&#39;t have time to refactor it away..</param>
-        /// <param name="vendorPortrait">A portrait of the Vendor&#39;s smiling mug. Or frothing tentacles..</param>
-        /// <param name="vendorBanner">If the vendor has a custom banner image, that can be found here..</param>
-        /// <param name="enabled">If a vendor is not enabled, we won&#39;t even save the vendor&#39;s definition, and we won&#39;t return any items or info about them. It&#39;s as if they don&#39;t exist..</param>
-        /// <param name="visible">If a vendor is not visible, we still have and will give vendor definition info, but we won&#39;t use them for things like Advisors or UI..</param>
-        /// <param name="vendorSubcategoryIdentifier">The identifier of the VendorCategoryDefinition for this vendor&#39;s subcategory..</param>
-        /// <param name="consolidateCategories">If TRUE, consolidate categories that only differ by trivial properties (such as having minor differences in name).</param>
-        /// <param name="actions">Describes \&quot;actions\&quot; that can be performed on a vendor. Currently, none of these exist. But theoretically a Vendor could let you interact with it by performing actions. We&#39;ll see what these end up looking like if they ever get used..</param>
-        /// <param name="categories">These are the headers for sections of items that the vendor is selling. When you see items organized by category in the header, it is these categories that it is showing.  Well, technically not *exactly* these. On BNet, it doesn&#39;t make sense to have categories be \&quot;paged\&quot; as we do in Destiny, so we run some heuristics to attempt to aggregate pages of categories together.   These are the categories post-concatenation, if the vendor had concatenation applied. If you want the pre-aggregated category data, use originalCategories..</param>
-        /// <param name="originalCategories">See the categories property for a description of categories and why originalCategories exists..</param>
-        /// <param name="displayCategories">Display Categories are different from \&quot;categories\&quot; in that these are specifically for visual grouping and display of categories in Vendor UI.   The \&quot;categories\&quot; structure is for validation of the contained items, and can be categorized entirely separately from \&quot;Display Categories\&quot;, there need be and often will be no meaningful relationship between the two..</param>
-        /// <param name="interactions">In addition to selling items, vendors can have \&quot;interactions\&quot;: UI where you \&quot;talk\&quot; with the vendor and they offer you a reward, some item, or merely acknowledge via dialog that you did something cool..</param>
-        /// <param name="inventoryFlyouts">If the vendor shows you items from your own inventory - such as the Vault vendor does - this data describes the UI around showing those inventory buckets and which ones get shown..</param>
-        /// <param name="itemList">If the vendor sells items (or merely has a list of items to show like the \&quot;Sack\&quot; vendors do), this is the list of those items that the vendor can sell. From this list, only a subset will be available from the vendor at any given time, selected randomly and reset on the vendor&#39;s refresh interval.  Note that a vendor can sell the same item multiple ways: for instance, nothing stops a vendor from selling you some specific weapon but using two different currencies, or the same weapon at multiple \&quot;item levels\&quot;..</param>
-        /// <param name="services">BNet doesn&#39;t use this data yet, but it appears to be an optional list of flavor text about services that the Vendor can provide..</param>
-        /// <param name="acceptedItems">If the Vendor is actually a vehicle for the transferring of items (like the Vault and Postmaster vendors), this defines the list of source-&gt;destination buckets for transferring..</param>
-        /// <param name="returnWithVendorRequest">As many of you know, Vendor data has historically been pretty brutal on the BNet servers. In an effort to reduce this workload, only Vendors with this flag set will be returned on Vendor requests. This allows us to filter out Vendors that don&#39;t dynamic data that&#39;s particularly useful: things like \&quot;Preview/Sack\&quot; vendors, for example, that you can usually suss out the details for using just the definitions themselves..</param>
-        /// <param name="locations">A vendor can be at different places in the world depending on the game/character/account state. This is the list of possible locations for the vendor, along with conditions we use to determine which one is currently active..</param>
-        /// <param name="groups">A vendor can be a part of 0 or 1 \&quot;groups\&quot; at a time: a group being a collection of Vendors related by either location or function/purpose. It&#39;s used for our our Companion Vendor UI. Only one of these can be active for a Vendor at a time..</param>
-        /// <param name="ignoreSaleItemHashes">Some items don&#39;t make sense to return in the API, for example because they represent an action to be performed rather than an item being sold. I&#39;d rather we not do this, but at least in the short term this is a workable workaround..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyVendorDefinition(DestinyDefinitionsDestinyVendorDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsDestinyVendorDisplayPropertiesDefinition), string buyString = default(string), string sellString = default(string), int? displayItemHash = default(int?), bool? inhibitBuying = default(bool?), bool? inhibitSelling = default(bool?), int? factionHash = default(int?), int? resetIntervalMinutes = default(int?), int? resetOffsetMinutes = default(int?), List<string> failureStrings = default(List<string>), List<DatesDateRange> unlockRanges = default(List<DatesDateRange>), string vendorIdentifier = default(string), string vendorPortrait = default(string), string vendorBanner = default(string), bool? enabled = default(bool?), bool? visible = default(bool?), string vendorSubcategoryIdentifier = default(string), bool? consolidateCategories = default(bool?), List<DestinyDefinitionsDestinyVendorActionDefinition> actions = default(List<DestinyDefinitionsDestinyVendorActionDefinition>), List<DestinyDefinitionsDestinyVendorCategoryEntryDefinition> categories = default(List<DestinyDefinitionsDestinyVendorCategoryEntryDefinition>), List<DestinyDefinitionsDestinyVendorCategoryEntryDefinition> originalCategories = default(List<DestinyDefinitionsDestinyVendorCategoryEntryDefinition>), List<DestinyDefinitionsDestinyDisplayCategoryDefinition> displayCategories = default(List<DestinyDefinitionsDestinyDisplayCategoryDefinition>), List<DestinyDefinitionsDestinyVendorInteractionDefinition> interactions = default(List<DestinyDefinitionsDestinyVendorInteractionDefinition>), List<DestinyDefinitionsDestinyVendorInventoryFlyoutDefinition> inventoryFlyouts = default(List<DestinyDefinitionsDestinyVendorInventoryFlyoutDefinition>), List<DestinyDefinitionsDestinyVendorItemDefinition> itemList = default(List<DestinyDefinitionsDestinyVendorItemDefinition>), List<DestinyDefinitionsDestinyVendorServiceDefinition> services = default(List<DestinyDefinitionsDestinyVendorServiceDefinition>), List<DestinyDefinitionsDestinyVendorAcceptedItemDefinition> acceptedItems = default(List<DestinyDefinitionsDestinyVendorAcceptedItemDefinition>), bool? returnWithVendorRequest = default(bool?), List<DestinyDefinitionsVendorsDestinyVendorLocationDefinition> locations = default(List<DestinyDefinitionsVendorsDestinyVendorLocationDefinition>), List<DestinyDefinitionsDestinyVendorGroupReference> groups = default(List<DestinyDefinitionsDestinyVendorGroupReference>), List<int?> ignoreSaleItemHashes = default(List<int?>), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="BuyString">If the vendor has a custom localized string describing the \&quot;buy\&quot; action, that is returned here..</param>
+        /// <param name="SellString">Ditto for selling. Not that you can sell items to a vendor anymore. Will it come back? Who knows. The string&#39;s still there..</param>
+        /// <param name="DisplayItemHash">If the vendor has an item that should be displayed as the \&quot;featured\&quot; item, this is the hash identifier for that DestinyVendorItemDefinition.  Apparently this is usually a related currency, like a reputation token. But it need not be restricted to that..</param>
+        /// <param name="InhibitBuying">If this is true, you aren&#39;t allowed to buy whatever the vendor is selling..</param>
+        /// <param name="InhibitSelling">If this is true, you&#39;re not allowed to sell whatever the vendor is buying..</param>
+        /// <param name="FactionHash">If the Vendor has a faction, this hash will be valid and point to a DestinyFactionDefinition.  The game UI and BNet often mine the faction definition for additional elements and details to place on the screen, such as the faction&#39;s Progression status (aka \&quot;Reputation\&quot;)..</param>
+        /// <param name="ResetIntervalMinutes">A number used for calculating the frequency of a vendor&#39;s inventory resetting/refreshing.  Don&#39;t worry about calculating this - we do it on the server side and send you the next refresh date with the live data..</param>
+        /// <param name="ResetOffsetMinutes">Again, used for reset/refreshing of inventory. Don&#39;t worry too much about it. Unless you want to..</param>
+        /// <param name="FailureStrings">If an item can&#39;t be purchased from the vendor, there may be many \&quot;custom\&quot;/game state specific reasons why not.  This is a list of localized strings with messages for those custom failures. The live BNet data will return a failureIndexes property for items that can&#39;t be purchased: using those values to index into this array, you can show the user the appropriate failure message for the item that can&#39;t be bought..</param>
+        /// <param name="UnlockRanges">If we were able to predict the dates when this Vendor will be visible/available, this will be the list of those date ranges. Sadly, we&#39;re not able to predict this very frequently, so this will often be useless data..</param>
+        /// <param name="VendorIdentifier">The internal identifier for the Vendor. A holdover from the old days of Vendors, but we don&#39;t have time to refactor it away..</param>
+        /// <param name="VendorPortrait">A portrait of the Vendor&#39;s smiling mug. Or frothing tentacles..</param>
+        /// <param name="VendorBanner">If the vendor has a custom banner image, that can be found here..</param>
+        /// <param name="Enabled">If a vendor is not enabled, we won&#39;t even save the vendor&#39;s definition, and we won&#39;t return any items or info about them. It&#39;s as if they don&#39;t exist..</param>
+        /// <param name="Visible">If a vendor is not visible, we still have and will give vendor definition info, but we won&#39;t use them for things like Advisors or UI..</param>
+        /// <param name="VendorSubcategoryIdentifier">The identifier of the VendorCategoryDefinition for this vendor&#39;s subcategory..</param>
+        /// <param name="ConsolidateCategories">If TRUE, consolidate categories that only differ by trivial properties (such as having minor differences in name).</param>
+        /// <param name="Actions">Describes \&quot;actions\&quot; that can be performed on a vendor. Currently, none of these exist. But theoretically a Vendor could let you interact with it by performing actions. We&#39;ll see what these end up looking like if they ever get used..</param>
+        /// <param name="Categories">These are the headers for sections of items that the vendor is selling. When you see items organized by category in the header, it is these categories that it is showing.  Well, technically not *exactly* these. On BNet, it doesn&#39;t make sense to have categories be \&quot;paged\&quot; as we do in Destiny, so we run some heuristics to attempt to aggregate pages of categories together.   These are the categories post-concatenation, if the vendor had concatenation applied. If you want the pre-aggregated category data, use originalCategories..</param>
+        /// <param name="OriginalCategories">See the categories property for a description of categories and why originalCategories exists..</param>
+        /// <param name="DisplayCategories">Display Categories are different from \&quot;categories\&quot; in that these are specifically for visual grouping and display of categories in Vendor UI.   The \&quot;categories\&quot; structure is for validation of the contained items, and can be categorized entirely separately from \&quot;Display Categories\&quot;, there need be and often will be no meaningful relationship between the two..</param>
+        /// <param name="Interactions">In addition to selling items, vendors can have \&quot;interactions\&quot;: UI where you \&quot;talk\&quot; with the vendor and they offer you a reward, some item, or merely acknowledge via dialog that you did something cool..</param>
+        /// <param name="InventoryFlyouts">If the vendor shows you items from your own inventory - such as the Vault vendor does - this data describes the UI around showing those inventory buckets and which ones get shown..</param>
+        /// <param name="ItemList">If the vendor sells items (or merely has a list of items to show like the \&quot;Sack\&quot; vendors do), this is the list of those items that the vendor can sell. From this list, only a subset will be available from the vendor at any given time, selected randomly and reset on the vendor&#39;s refresh interval.  Note that a vendor can sell the same item multiple ways: for instance, nothing stops a vendor from selling you some specific weapon but using two different currencies, or the same weapon at multiple \&quot;item levels\&quot;..</param>
+        /// <param name="Services">BNet doesn&#39;t use this data yet, but it appears to be an optional list of flavor text about services that the Vendor can provide..</param>
+        /// <param name="AcceptedItems">If the Vendor is actually a vehicle for the transferring of items (like the Vault and Postmaster vendors), this defines the list of source-&gt;destination buckets for transferring..</param>
+        /// <param name="ReturnWithVendorRequest">As many of you know, Vendor data has historically been pretty brutal on the BNet servers. In an effort to reduce this workload, only Vendors with this flag set will be returned on Vendor requests. This allows us to filter out Vendors that don&#39;t dynamic data that&#39;s particularly useful: things like \&quot;Preview/Sack\&quot; vendors, for example, that you can usually suss out the details for using just the definitions themselves..</param>
+        /// <param name="Locations">A vendor can be at different places in the world depending on the game/character/account state. This is the list of possible locations for the vendor, along with conditions we use to determine which one is currently active..</param>
+        /// <param name="Groups">A vendor can be a part of 0 or 1 \&quot;groups\&quot; at a time: a group being a collection of Vendors related by either location or function/purpose. It&#39;s used for our our Companion Vendor UI. Only one of these can be active for a Vendor at a time..</param>
+        /// <param name="IgnoreSaleItemHashes">Some items don&#39;t make sense to return in the API, for example because they represent an action to be performed rather than an item being sold. I&#39;d rather we not do this, but at least in the short term this is a workable workaround..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyVendorDefinition(DestinyDefinitionsDestinyVendorDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsDestinyVendorDisplayPropertiesDefinition), string BuyString = default(string), string SellString = default(string), uint? DisplayItemHash = default(uint?), bool? InhibitBuying = default(bool?), bool? InhibitSelling = default(bool?), uint? FactionHash = default(uint?), int? ResetIntervalMinutes = default(int?), int? ResetOffsetMinutes = default(int?), List<string> FailureStrings = default(List<string>), List<DatesDateRange> UnlockRanges = default(List<DatesDateRange>), string VendorIdentifier = default(string), string VendorPortrait = default(string), string VendorBanner = default(string), bool? Enabled = default(bool?), bool? Visible = default(bool?), string VendorSubcategoryIdentifier = default(string), bool? ConsolidateCategories = default(bool?), List<DestinyDefinitionsDestinyVendorActionDefinition> Actions = default(List<DestinyDefinitionsDestinyVendorActionDefinition>), List<DestinyDefinitionsDestinyVendorCategoryEntryDefinition> Categories = default(List<DestinyDefinitionsDestinyVendorCategoryEntryDefinition>), List<DestinyDefinitionsDestinyVendorCategoryEntryDefinition> OriginalCategories = default(List<DestinyDefinitionsDestinyVendorCategoryEntryDefinition>), List<DestinyDefinitionsDestinyDisplayCategoryDefinition> DisplayCategories = default(List<DestinyDefinitionsDestinyDisplayCategoryDefinition>), List<DestinyDefinitionsDestinyVendorInteractionDefinition> Interactions = default(List<DestinyDefinitionsDestinyVendorInteractionDefinition>), List<DestinyDefinitionsDestinyVendorInventoryFlyoutDefinition> InventoryFlyouts = default(List<DestinyDefinitionsDestinyVendorInventoryFlyoutDefinition>), List<DestinyDefinitionsDestinyVendorItemDefinition> ItemList = default(List<DestinyDefinitionsDestinyVendorItemDefinition>), List<DestinyDefinitionsDestinyVendorServiceDefinition> Services = default(List<DestinyDefinitionsDestinyVendorServiceDefinition>), List<DestinyDefinitionsDestinyVendorAcceptedItemDefinition> AcceptedItems = default(List<DestinyDefinitionsDestinyVendorAcceptedItemDefinition>), bool? ReturnWithVendorRequest = default(bool?), List<DestinyDefinitionsVendorsDestinyVendorLocationDefinition> Locations = default(List<DestinyDefinitionsVendorsDestinyVendorLocationDefinition>), List<DestinyDefinitionsDestinyVendorGroupReference> Groups = default(List<DestinyDefinitionsDestinyVendorGroupReference>), List<uint?> IgnoreSaleItemHashes = default(List<uint?>), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.BuyString = buyString;
-            this.SellString = sellString;
-            this.DisplayItemHash = displayItemHash;
-            this.InhibitBuying = inhibitBuying;
-            this.InhibitSelling = inhibitSelling;
-            this.FactionHash = factionHash;
-            this.ResetIntervalMinutes = resetIntervalMinutes;
-            this.ResetOffsetMinutes = resetOffsetMinutes;
-            this.FailureStrings = failureStrings;
-            this.UnlockRanges = unlockRanges;
-            this.VendorIdentifier = vendorIdentifier;
-            this.VendorPortrait = vendorPortrait;
-            this.VendorBanner = vendorBanner;
-            this.Enabled = enabled;
-            this.Visible = visible;
-            this.VendorSubcategoryIdentifier = vendorSubcategoryIdentifier;
-            this.ConsolidateCategories = consolidateCategories;
-            this.Actions = actions;
-            this.Categories = categories;
-            this.OriginalCategories = originalCategories;
-            this.DisplayCategories = displayCategories;
-            this.Interactions = interactions;
-            this.InventoryFlyouts = inventoryFlyouts;
-            this.ItemList = itemList;
-            this.Services = services;
-            this.AcceptedItems = acceptedItems;
-            this.ReturnWithVendorRequest = returnWithVendorRequest;
-            this.Locations = locations;
-            this.Groups = groups;
-            this.IgnoreSaleItemHashes = ignoreSaleItemHashes;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.BuyString = BuyString;
+            this.SellString = SellString;
+            this.DisplayItemHash = DisplayItemHash;
+            this.InhibitBuying = InhibitBuying;
+            this.InhibitSelling = InhibitSelling;
+            this.FactionHash = FactionHash;
+            this.ResetIntervalMinutes = ResetIntervalMinutes;
+            this.ResetOffsetMinutes = ResetOffsetMinutes;
+            this.FailureStrings = FailureStrings;
+            this.UnlockRanges = UnlockRanges;
+            this.VendorIdentifier = VendorIdentifier;
+            this.VendorPortrait = VendorPortrait;
+            this.VendorBanner = VendorBanner;
+            this.Enabled = Enabled;
+            this.Visible = Visible;
+            this.VendorSubcategoryIdentifier = VendorSubcategoryIdentifier;
+            this.ConsolidateCategories = ConsolidateCategories;
+            this.Actions = Actions;
+            this.Categories = Categories;
+            this.OriginalCategories = OriginalCategories;
+            this.DisplayCategories = DisplayCategories;
+            this.Interactions = Interactions;
+            this.InventoryFlyouts = InventoryFlyouts;
+            this.ItemList = ItemList;
+            this.Services = Services;
+            this.AcceptedItems = AcceptedItems;
+            this.ReturnWithVendorRequest = ReturnWithVendorRequest;
+            this.Locations = Locations;
+            this.Groups = Groups;
+            this.IgnoreSaleItemHashes = IgnoreSaleItemHashes;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -130,7 +130,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the vendor has an item that should be displayed as the \&quot;featured\&quot; item, this is the hash identifier for that DestinyVendorItemDefinition.  Apparently this is usually a related currency, like a reputation token. But it need not be restricted to that.</value>
         [DataMember(Name="displayItemHash", EmitDefaultValue=false)]
-        public int? DisplayItemHash { get; set; }
+        public uint? DisplayItemHash { get; set; }
 
         /// <summary>
         /// If this is true, you aren&#39;t allowed to buy whatever the vendor is selling.
@@ -151,7 +151,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the Vendor has a faction, this hash will be valid and point to a DestinyFactionDefinition.  The game UI and BNet often mine the faction definition for additional elements and details to place on the screen, such as the faction&#39;s Progression status (aka \&quot;Reputation\&quot;).</value>
         [DataMember(Name="factionHash", EmitDefaultValue=false)]
-        public int? FactionHash { get; set; }
+        public uint? FactionHash { get; set; }
 
         /// <summary>
         /// A number used for calculating the frequency of a vendor&#39;s inventory resetting/refreshing.  Don&#39;t worry about calculating this - we do it on the server side and send you the next refresh date with the live data.
@@ -319,14 +319,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Some items don&#39;t make sense to return in the API, for example because they represent an action to be performed rather than an item being sold. I&#39;d rather we not do this, but at least in the short term this is a workable workaround.</value>
         [DataMember(Name="ignoreSaleItemHashes", EmitDefaultValue=false)]
-        public List<int?> IgnoreSaleItemHashes { get; set; }
+        public List<uint?> IgnoreSaleItemHashes { get; set; }
 
         /// <summary>
         /// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -392,7 +392,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

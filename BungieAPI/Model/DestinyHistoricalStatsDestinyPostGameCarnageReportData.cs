@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyPostGameCarnageReportData" /> class.
         /// </summary>
-        /// <param name="period">Date and time for the activity..</param>
-        /// <param name="startingPhaseIndex">If this activity has \&quot;phases\&quot;, this is the phase at which the activity was started..</param>
-        /// <param name="activityDetails">Details about the activity..</param>
-        /// <param name="entries">Collection of players and their data for this activity..</param>
-        /// <param name="teams">Collection of stats for the player in this activity..</param>
-        public DestinyHistoricalStatsDestinyPostGameCarnageReportData(DateTime? period = default(DateTime?), int? startingPhaseIndex = default(int?), Object activityDetails = default(Object), List<DestinyHistoricalStatsDestinyPostGameCarnageReportEntry> entries = default(List<DestinyHistoricalStatsDestinyPostGameCarnageReportEntry>), List<DestinyHistoricalStatsDestinyPostGameCarnageReportTeamEntry> teams = default(List<DestinyHistoricalStatsDestinyPostGameCarnageReportTeamEntry>))
+        /// <param name="Period">Date and time for the activity..</param>
+        /// <param name="StartingPhaseIndex">If this activity has \&quot;phases\&quot;, this is the phase at which the activity was started..</param>
+        /// <param name="ActivityDetails">Details about the activity..</param>
+        /// <param name="Entries">Collection of players and their data for this activity..</param>
+        /// <param name="Teams">Collection of stats for the player in this activity..</param>
+        public DestinyHistoricalStatsDestinyPostGameCarnageReportData(DateTime? Period = default(DateTime?), int? StartingPhaseIndex = default(int?), DestinyHistoricalStatsDestinyHistoricalStatsActivity ActivityDetails = default(DestinyHistoricalStatsDestinyHistoricalStatsActivity), List<DestinyHistoricalStatsDestinyPostGameCarnageReportEntry> Entries = default(List<DestinyHistoricalStatsDestinyPostGameCarnageReportEntry>), List<DestinyHistoricalStatsDestinyPostGameCarnageReportTeamEntry> Teams = default(List<DestinyHistoricalStatsDestinyPostGameCarnageReportTeamEntry>))
         {
-            this.Period = period;
-            this.StartingPhaseIndex = startingPhaseIndex;
-            this.ActivityDetails = activityDetails;
-            this.Entries = entries;
-            this.Teams = teams;
+            this.Period = Period;
+            this.StartingPhaseIndex = StartingPhaseIndex;
+            this.ActivityDetails = ActivityDetails;
+            this.Entries = Entries;
+            this.Teams = Teams;
         }
         
         /// <summary>
@@ -66,7 +66,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Details about the activity.</value>
         [DataMember(Name="activityDetails", EmitDefaultValue=false)]
-        public Object ActivityDetails { get; set; }
+        public DestinyHistoricalStatsDestinyHistoricalStatsActivity ActivityDetails { get; set; }
 
         /// <summary>
         /// Collection of players and their data for this activity.
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

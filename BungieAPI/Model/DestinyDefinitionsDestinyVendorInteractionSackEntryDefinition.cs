@@ -33,17 +33,17 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorInteractionSackEntryDefinition" /> class.
         /// </summary>
-        /// <param name="sackType">sackType.</param>
-        public DestinyDefinitionsDestinyVendorInteractionSackEntryDefinition(int? sackType = default(int?))
+        /// <param name="SackType">SackType.</param>
+        public DestinyDefinitionsDestinyVendorInteractionSackEntryDefinition(uint? SackType = default(uint?))
         {
-            this.SackType = sackType;
+            this.SackType = SackType;
         }
         
         /// <summary>
         /// Gets or Sets SackType
         /// </summary>
         [DataMember(Name="sackType", EmitDefaultValue=false)]
-        public int? SackType { get; set; }
+        public uint? SackType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

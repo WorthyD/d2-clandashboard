@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyStatDisplayDefinition" /> class.
         /// </summary>
-        /// <param name="statHash">The hash identifier for the stat being transformed into a Display stat.  Use it to look up the DestinyStatDefinition, or key into a DestinyInventoryItemDefinition&#39;s stats property..</param>
-        /// <param name="maximumValue">Regardless of the output of interpolation, this is the maximum possible value that the stat can be. It should also be used as the upper bound for displaying the stat as a progress bar (the minimum always being 0).</param>
-        /// <param name="displayAsNumeric">If this is true, the stat should be displayed as a number. Otherwise, display it as a progress bar. Or, you know, do whatever you want. There&#39;s no displayAsNumeric police..</param>
-        /// <param name="displayInterpolation">The interpolation table representing how the Investment Stat is transformed into a Display Stat.   See DestinyStatDefinition for a description of the stages of stat transformation..</param>
-        public DestinyDefinitionsDestinyStatDisplayDefinition(int? statHash = default(int?), int? maximumValue = default(int?), bool? displayAsNumeric = default(bool?), List<InterpolationInterpolationPoint> displayInterpolation = default(List<InterpolationInterpolationPoint>))
+        /// <param name="StatHash">The hash identifier for the stat being transformed into a Display stat.  Use it to look up the DestinyStatDefinition, or key into a DestinyInventoryItemDefinition&#39;s stats property..</param>
+        /// <param name="MaximumValue">Regardless of the output of interpolation, this is the maximum possible value that the stat can be. It should also be used as the upper bound for displaying the stat as a progress bar (the minimum always being 0).</param>
+        /// <param name="DisplayAsNumeric">If this is true, the stat should be displayed as a number. Otherwise, display it as a progress bar. Or, you know, do whatever you want. There&#39;s no displayAsNumeric police..</param>
+        /// <param name="DisplayInterpolation">The interpolation table representing how the Investment Stat is transformed into a Display Stat.   See DestinyStatDefinition for a description of the stages of stat transformation..</param>
+        public DestinyDefinitionsDestinyStatDisplayDefinition(uint? StatHash = default(uint?), int? MaximumValue = default(int?), bool? DisplayAsNumeric = default(bool?), List<InterpolationInterpolationPoint> DisplayInterpolation = default(List<InterpolationInterpolationPoint>))
         {
-            this.StatHash = statHash;
-            this.MaximumValue = maximumValue;
-            this.DisplayAsNumeric = displayAsNumeric;
-            this.DisplayInterpolation = displayInterpolation;
+            this.StatHash = StatHash;
+            this.MaximumValue = MaximumValue;
+            this.DisplayAsNumeric = DisplayAsNumeric;
+            this.DisplayInterpolation = DisplayInterpolation;
         }
         
         /// <summary>
@@ -50,7 +50,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the stat being transformed into a Display stat.  Use it to look up the DestinyStatDefinition, or key into a DestinyInventoryItemDefinition&#39;s stats property.</value>
         [DataMember(Name="statHash", EmitDefaultValue=false)]
-        public int? StatHash { get; set; }
+        public uint? StatHash { get; set; }
 
         /// <summary>
         /// Regardless of the output of interpolation, this is the maximum possible value that the stat can be. It should also be used as the upper bound for displaying the stat as a progress bar (the minimum always being 0)
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

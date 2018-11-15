@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="StreamInfo" /> class.
         /// </summary>
-        /// <param name="channelName">channelName.</param>
-        public StreamInfo(string channelName = default(string))
+        /// <param name="ChannelName">ChannelName.</param>
+        public StreamInfo(string ChannelName = default(string))
         {
-            this.ChannelName = channelName;
+            this.ChannelName = ChannelName;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

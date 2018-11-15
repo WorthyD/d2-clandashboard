@@ -28,29 +28,27 @@ namespace BungieAPI.Model
     /// Indicates the type of actions that can be performed
     /// </summary>
     /// <value>Indicates the type of actions that can be performed</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinySocketTypeActionType
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// Indicates the type of actions that can be performed
+		/// </summary>
+		[EnumMember(Value = "0")]
+        InsertPlug,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// Indicates the type of actions that can be performed
+		/// </summary>
+		[EnumMember(Value = "1")]
+        InfuseItem,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3
+		/// <summary>
+		/// Indicates the type of actions that can be performed
+		/// </summary>
+		[EnumMember(Value = "2")]
+        ReinitializeSocket
     }
 
 }

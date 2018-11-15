@@ -33,44 +33,44 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CommonModelsCoreSettingsConfiguration" /> class.
         /// </summary>
-        /// <param name="systems">systems.</param>
-        /// <param name="ignoreReasons">ignoreReasons.</param>
-        /// <param name="forumCategories">forumCategories.</param>
-        /// <param name="groupAvatars">groupAvatars.</param>
-        /// <param name="destinyMembershipTypes">destinyMembershipTypes.</param>
-        /// <param name="recruitmentPlatformTags">recruitmentPlatformTags.</param>
-        /// <param name="recruitmentMiscTags">recruitmentMiscTags.</param>
-        /// <param name="recruitmentActivities">recruitmentActivities.</param>
-        /// <param name="userContentLocales">userContentLocales.</param>
-        /// <param name="systemContentLocales">systemContentLocales.</param>
-        /// <param name="clanBannerDecals">clanBannerDecals.</param>
-        /// <param name="clanBannerDecalColors">clanBannerDecalColors.</param>
-        /// <param name="clanBannerGonfalons">clanBannerGonfalons.</param>
-        /// <param name="clanBannerGonfalonColors">clanBannerGonfalonColors.</param>
-        /// <param name="clanBannerGonfalonDetails">clanBannerGonfalonDetails.</param>
-        /// <param name="clanBannerGonfalonDetailColors">clanBannerGonfalonDetailColors.</param>
-        /// <param name="clanBannerStandards">clanBannerStandards.</param>
-        /// <param name="destiny2CoreSettings">destiny2CoreSettings.</param>
-        public CommonModelsCoreSettingsConfiguration(Dictionary<string, CommonModelsCoreSystem> systems = default(Dictionary<string, CommonModelsCoreSystem>), List<CommonModelsCoreSetting> ignoreReasons = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> forumCategories = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> groupAvatars = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> destinyMembershipTypes = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> recruitmentPlatformTags = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> recruitmentMiscTags = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> recruitmentActivities = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> userContentLocales = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> systemContentLocales = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> clanBannerDecals = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> clanBannerDecalColors = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> clanBannerGonfalons = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> clanBannerGonfalonColors = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> clanBannerGonfalonDetails = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> clanBannerGonfalonDetailColors = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> clanBannerStandards = default(List<CommonModelsCoreSetting>), CommonModelsDestiny2CoreSettings destiny2CoreSettings = default(CommonModelsDestiny2CoreSettings))
+        /// <param name="Systems">Systems.</param>
+        /// <param name="IgnoreReasons">IgnoreReasons.</param>
+        /// <param name="ForumCategories">ForumCategories.</param>
+        /// <param name="GroupAvatars">GroupAvatars.</param>
+        /// <param name="DestinyMembershipTypes">DestinyMembershipTypes.</param>
+        /// <param name="RecruitmentPlatformTags">RecruitmentPlatformTags.</param>
+        /// <param name="RecruitmentMiscTags">RecruitmentMiscTags.</param>
+        /// <param name="RecruitmentActivities">RecruitmentActivities.</param>
+        /// <param name="UserContentLocales">UserContentLocales.</param>
+        /// <param name="SystemContentLocales">SystemContentLocales.</param>
+        /// <param name="ClanBannerDecals">ClanBannerDecals.</param>
+        /// <param name="ClanBannerDecalColors">ClanBannerDecalColors.</param>
+        /// <param name="ClanBannerGonfalons">ClanBannerGonfalons.</param>
+        /// <param name="ClanBannerGonfalonColors">ClanBannerGonfalonColors.</param>
+        /// <param name="ClanBannerGonfalonDetails">ClanBannerGonfalonDetails.</param>
+        /// <param name="ClanBannerGonfalonDetailColors">ClanBannerGonfalonDetailColors.</param>
+        /// <param name="ClanBannerStandards">ClanBannerStandards.</param>
+        /// <param name="Destiny2CoreSettings">Destiny2CoreSettings.</param>
+        public CommonModelsCoreSettingsConfiguration(Dictionary<string, CommonModelsCoreSystem> Systems = default(Dictionary<string, CommonModelsCoreSystem>), List<CommonModelsCoreSetting> IgnoreReasons = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> ForumCategories = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> GroupAvatars = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> DestinyMembershipTypes = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> RecruitmentPlatformTags = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> RecruitmentMiscTags = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> RecruitmentActivities = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> UserContentLocales = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> SystemContentLocales = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> ClanBannerDecals = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> ClanBannerDecalColors = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> ClanBannerGonfalons = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> ClanBannerGonfalonColors = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> ClanBannerGonfalonDetails = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> ClanBannerGonfalonDetailColors = default(List<CommonModelsCoreSetting>), List<CommonModelsCoreSetting> ClanBannerStandards = default(List<CommonModelsCoreSetting>), CommonModelsDestiny2CoreSettings Destiny2CoreSettings = default(CommonModelsDestiny2CoreSettings))
         {
-            this.Systems = systems;
-            this.IgnoreReasons = ignoreReasons;
-            this.ForumCategories = forumCategories;
-            this.GroupAvatars = groupAvatars;
-            this.DestinyMembershipTypes = destinyMembershipTypes;
-            this.RecruitmentPlatformTags = recruitmentPlatformTags;
-            this.RecruitmentMiscTags = recruitmentMiscTags;
-            this.RecruitmentActivities = recruitmentActivities;
-            this.UserContentLocales = userContentLocales;
-            this.SystemContentLocales = systemContentLocales;
-            this.ClanBannerDecals = clanBannerDecals;
-            this.ClanBannerDecalColors = clanBannerDecalColors;
-            this.ClanBannerGonfalons = clanBannerGonfalons;
-            this.ClanBannerGonfalonColors = clanBannerGonfalonColors;
-            this.ClanBannerGonfalonDetails = clanBannerGonfalonDetails;
-            this.ClanBannerGonfalonDetailColors = clanBannerGonfalonDetailColors;
-            this.ClanBannerStandards = clanBannerStandards;
-            this.Destiny2CoreSettings = destiny2CoreSettings;
+            this.Systems = Systems;
+            this.IgnoreReasons = IgnoreReasons;
+            this.ForumCategories = ForumCategories;
+            this.GroupAvatars = GroupAvatars;
+            this.DestinyMembershipTypes = DestinyMembershipTypes;
+            this.RecruitmentPlatformTags = RecruitmentPlatformTags;
+            this.RecruitmentMiscTags = RecruitmentMiscTags;
+            this.RecruitmentActivities = RecruitmentActivities;
+            this.UserContentLocales = UserContentLocales;
+            this.SystemContentLocales = SystemContentLocales;
+            this.ClanBannerDecals = ClanBannerDecals;
+            this.ClanBannerDecalColors = ClanBannerDecalColors;
+            this.ClanBannerGonfalons = ClanBannerGonfalons;
+            this.ClanBannerGonfalonColors = ClanBannerGonfalonColors;
+            this.ClanBannerGonfalonDetails = ClanBannerGonfalonDetails;
+            this.ClanBannerGonfalonDetailColors = ClanBannerGonfalonDetailColors;
+            this.ClanBannerStandards = ClanBannerStandards;
+            this.Destiny2CoreSettings = Destiny2CoreSettings;
         }
         
         /// <summary>
@@ -215,7 +215,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -28,65 +28,63 @@ namespace BungieAPI.Model
     /// If the enum value is &gt; 100, it is a \&quot;special\&quot; group that cannot be queried for directly (special cases apply to when they are returned, and are not relevant in general cases)
     /// </summary>
     /// <value>If the enum value is &gt; 100, it is a \&quot;special\&quot; group that cannot be queried for directly (special cases apply to when they are returned, and are not relevant in general cases)</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyHistoricalStatsDefinitionsDestinyStatsGroupType
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// If the enum value is &gt; 100, it is a \&quot;special\&quot; group that cannot be queried for directly (special cases apply to when they are returned, and are not relevant in general cases)
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// If the enum value is &gt; 100, it is a \&quot;special\&quot; group that cannot be queried for directly (special cases apply to when they are returned, and are not relevant in general cases)
+		/// </summary>
+		[EnumMember(Value = "1")]
+        General,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// If the enum value is &gt; 100, it is a \&quot;special\&quot; group that cannot be queried for directly (special cases apply to when they are returned, and are not relevant in general cases)
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Weapons,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4,
+		/// <summary>
+		/// If the enum value is &gt; 100, it is a \&quot;special\&quot; group that cannot be queried for directly (special cases apply to when they are returned, and are not relevant in general cases)
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Medals,
         
-        /// <summary>
-        /// Enum NUMBER_100 for value: 100
-        /// </summary>
-        [EnumMember(Value = "100")]
-        NUMBER_100 = 5,
+		/// <summary>
+		/// This is purely to serve as the dividing line between filterable and un-filterable groups. Below this number is a group you can pass as a filter. Above it are groups used in very specific circumstances and not relevant for filtering.
+		/// </summary>
+		[EnumMember(Value = "100")]
+        ReservedGroups,
         
-        /// <summary>
-        /// Enum NUMBER_101 for value: 101
-        /// </summary>
-        [EnumMember(Value = "101")]
-        NUMBER_101 = 6,
+		/// <summary>
+		/// Only applicable while generating leaderboards.
+		/// </summary>
+		[EnumMember(Value = "101")]
+        Leaderboard,
         
-        /// <summary>
-        /// Enum NUMBER_102 for value: 102
-        /// </summary>
-        [EnumMember(Value = "102")]
-        NUMBER_102 = 7,
+		/// <summary>
+		/// These will *only* be consumed by GetAggregateStatsByActivity
+		/// </summary>
+		[EnumMember(Value = "102")]
+        Activity,
         
-        /// <summary>
-        /// Enum NUMBER_103 for value: 103
-        /// </summary>
-        [EnumMember(Value = "103")]
-        NUMBER_103 = 8,
+		/// <summary>
+		/// These are only consumed and returned by GetUniqueWeaponHistory
+		/// </summary>
+		[EnumMember(Value = "103")]
+        UniqueWeapon,
         
-        /// <summary>
-        /// Enum NUMBER_104 for value: 104
-        /// </summary>
-        [EnumMember(Value = "104")]
-        NUMBER_104 = 9
+		/// <summary>
+		/// If the enum value is &gt; 100, it is a \&quot;special\&quot; group that cannot be queried for directly (special cases apply to when they are returned, and are not relevant in general cases)
+		/// </summary>
+		[EnumMember(Value = "104")]
+        Internal
     }
 
 }

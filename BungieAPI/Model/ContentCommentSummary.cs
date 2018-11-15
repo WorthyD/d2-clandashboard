@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentCommentSummary" /> class.
         /// </summary>
-        /// <param name="topicId">topicId.</param>
-        /// <param name="commentCount">commentCount.</param>
-        public ContentCommentSummary(long? topicId = default(long?), int? commentCount = default(int?))
+        /// <param name="TopicId">TopicId.</param>
+        /// <param name="CommentCount">CommentCount.</param>
+        public ContentCommentSummary(long? TopicId = default(long?), int? CommentCount = default(int?))
         {
-            this.TopicId = topicId;
-            this.CommentCount = commentCount;
+            this.TopicId = TopicId;
+            this.CommentCount = CommentCount;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

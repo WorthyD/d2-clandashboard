@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TrendingTrendingCategories" /> class.
         /// </summary>
-        /// <param name="categories">categories.</param>
-        public TrendingTrendingCategories(List<TrendingTrendingCategory> categories = default(List<TrendingTrendingCategory>))
+        /// <param name="Categories">Categories.</param>
+        public TrendingTrendingCategories(List<TrendingTrendingCategory> Categories = default(List<TrendingTrendingCategory>))
         {
-            this.Categories = categories;
+            this.Categories = Categories;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

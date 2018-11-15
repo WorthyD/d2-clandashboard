@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemSackBlockDefinition" /> class.
         /// </summary>
-        /// <param name="detailAction">A description of what will happen when you open the sack. As far as I can tell, this is blank currently. Unknown whether it will eventually be populated with useful info..</param>
-        /// <param name="openAction">The localized name of the action being performed when you open the sack..</param>
-        /// <param name="selectItemCount">selectItemCount.</param>
-        /// <param name="vendorSackType">vendorSackType.</param>
-        /// <param name="openOnAcquire">openOnAcquire.</param>
-        public DestinyDefinitionsDestinyItemSackBlockDefinition(string detailAction = default(string), string openAction = default(string), int? selectItemCount = default(int?), string vendorSackType = default(string), bool? openOnAcquire = default(bool?))
+        /// <param name="DetailAction">A description of what will happen when you open the sack. As far as I can tell, this is blank currently. Unknown whether it will eventually be populated with useful info..</param>
+        /// <param name="OpenAction">The localized name of the action being performed when you open the sack..</param>
+        /// <param name="SelectItemCount">SelectItemCount.</param>
+        /// <param name="VendorSackType">VendorSackType.</param>
+        /// <param name="OpenOnAcquire">OpenOnAcquire.</param>
+        public DestinyDefinitionsDestinyItemSackBlockDefinition(string DetailAction = default(string), string OpenAction = default(string), int? SelectItemCount = default(int?), string VendorSackType = default(string), bool? OpenOnAcquire = default(bool?))
         {
-            this.DetailAction = detailAction;
-            this.OpenAction = openAction;
-            this.SelectItemCount = selectItemCount;
-            this.VendorSackType = vendorSackType;
-            this.OpenOnAcquire = openOnAcquire;
+            this.DetailAction = DetailAction;
+            this.OpenAction = OpenAction;
+            this.SelectItemCount = SelectItemCount;
+            this.VendorSackType = VendorSackType;
+            this.OpenOnAcquire = OpenOnAcquire;
         }
         
         /// <summary>
@@ -100,7 +100,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -27,83 +27,81 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines Ignores.IgnoreLength
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum IgnoresIgnoreLength
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Week,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "2")]
+        TwoWeeks,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "3")]
+        ThreeWeeks,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 5,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "4")]
+        Month,
         
-        /// <summary>
-        /// Enum NUMBER_5 for value: 5
-        /// </summary>
-        [EnumMember(Value = "5")]
-        NUMBER_5 = 6,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "5")]
+        ThreeMonths,
         
-        /// <summary>
-        /// Enum NUMBER_6 for value: 6
-        /// </summary>
-        [EnumMember(Value = "6")]
-        NUMBER_6 = 7,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "6")]
+        SixMonths,
         
-        /// <summary>
-        /// Enum NUMBER_7 for value: 7
-        /// </summary>
-        [EnumMember(Value = "7")]
-        NUMBER_7 = 8,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "7")]
+        Year,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 9,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "8")]
+        Forever,
         
-        /// <summary>
-        /// Enum NUMBER_9 for value: 9
-        /// </summary>
-        [EnumMember(Value = "9")]
-        NUMBER_9 = 10,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "9")]
+        ThreeMinutes,
         
-        /// <summary>
-        /// Enum NUMBER_10 for value: 10
-        /// </summary>
-        [EnumMember(Value = "10")]
-        NUMBER_10 = 11,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "10")]
+        Hour,
         
-        /// <summary>
-        /// Enum NUMBER_11 for value: 11
-        /// </summary>
-        [EnumMember(Value = "11")]
-        NUMBER_11 = 12
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "11")]
+        ThirtyDays
     }
 
 }

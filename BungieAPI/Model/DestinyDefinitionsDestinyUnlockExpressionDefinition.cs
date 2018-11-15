@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyUnlockExpressionDefinition" /> class.
         /// </summary>
-        /// <param name="scope">A shortcut for determining the most restrictive gating that this expression performs. See the DestinyGatingScope enum&#39;s documentation for more details..</param>
-        public DestinyDefinitionsDestinyUnlockExpressionDefinition(Object scope = default(Object))
+        /// <param name="Scope">A shortcut for determining the most restrictive gating that this expression performs. See the DestinyGatingScope enum&#39;s documentation for more details..</param>
+        public DestinyDefinitionsDestinyUnlockExpressionDefinition(DestinyDestinyGatingScope Scope = default(DestinyDestinyGatingScope))
         {
-            this.Scope = scope;
+            this.Scope = Scope;
         }
         
         /// <summary>
@@ -44,7 +44,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A shortcut for determining the most restrictive gating that this expression performs. See the DestinyGatingScope enum&#39;s documentation for more details.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Object Scope { get; set; }
+        public DestinyDestinyGatingScope Scope { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

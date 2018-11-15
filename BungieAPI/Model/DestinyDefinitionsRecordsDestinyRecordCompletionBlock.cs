@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsRecordsDestinyRecordCompletionBlock" /> class.
         /// </summary>
-        /// <param name="partialCompletionObjectiveCountThreshold">partialCompletionObjectiveCountThreshold.</param>
-        /// <param name="scoreValue">scoreValue.</param>
-        /// <param name="shouldFireToast">shouldFireToast.</param>
-        /// <param name="toastStyle">toastStyle.</param>
-        public DestinyDefinitionsRecordsDestinyRecordCompletionBlock(int? partialCompletionObjectiveCountThreshold = default(int?), int? scoreValue = default(int?), bool? shouldFireToast = default(bool?), DestinyDestinyRecordToastStyle toastStyle = default(DestinyDestinyRecordToastStyle))
+        /// <param name="PartialCompletionObjectiveCountThreshold">PartialCompletionObjectiveCountThreshold.</param>
+        /// <param name="ScoreValue">ScoreValue.</param>
+        /// <param name="ShouldFireToast">ShouldFireToast.</param>
+        /// <param name="ToastStyle">ToastStyle.</param>
+        public DestinyDefinitionsRecordsDestinyRecordCompletionBlock(int? PartialCompletionObjectiveCountThreshold = default(int?), int? ScoreValue = default(int?), bool? ShouldFireToast = default(bool?), DestinyDestinyRecordToastStyle ToastStyle = default(DestinyDestinyRecordToastStyle))
         {
-            this.PartialCompletionObjectiveCountThreshold = partialCompletionObjectiveCountThreshold;
-            this.ScoreValue = scoreValue;
-            this.ShouldFireToast = shouldFireToast;
-            this.ToastStyle = toastStyle;
+            this.PartialCompletionObjectiveCountThreshold = PartialCompletionObjectiveCountThreshold;
+            this.ScoreValue = ScoreValue;
+            this.ShouldFireToast = ShouldFireToast;
+            this.ToastStyle = ToastStyle;
         }
         
         /// <summary>
@@ -89,7 +89,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

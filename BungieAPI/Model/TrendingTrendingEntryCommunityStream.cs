@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TrendingTrendingEntryCommunityStream" /> class.
         /// </summary>
-        /// <param name="image">image.</param>
-        /// <param name="title">title.</param>
-        /// <param name="partnershipIdentifier">partnershipIdentifier.</param>
-        /// <param name="partnershipType">partnershipType.</param>
-        public TrendingTrendingEntryCommunityStream(string image = default(string), string title = default(string), string partnershipIdentifier = default(string), PartnershipsPartnershipType partnershipType = default(PartnershipsPartnershipType))
+        /// <param name="Image">Image.</param>
+        /// <param name="Title">Title.</param>
+        /// <param name="PartnershipIdentifier">PartnershipIdentifier.</param>
+        /// <param name="PartnershipType">PartnershipType.</param>
+        public TrendingTrendingEntryCommunityStream(string Image = default(string), string Title = default(string), string PartnershipIdentifier = default(string), PartnershipsPartnershipType PartnershipType = default(PartnershipsPartnershipType))
         {
-            this.Image = image;
-            this.Title = title;
-            this.PartnershipIdentifier = partnershipIdentifier;
-            this.PartnershipType = partnershipType;
+            this.Image = Image;
+            this.Title = Title;
+            this.PartnershipIdentifier = PartnershipIdentifier;
+            this.PartnershipType = PartnershipType;
         }
         
         /// <summary>
@@ -89,7 +89,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -28,29 +28,27 @@ namespace BungieAPI.Model
     /// When a Vendor Interaction provides rewards, they&#39;ll either let you choose one or let you have all of them. This determines which it will be.
     /// </summary>
     /// <value>When a Vendor Interaction provides rewards, they&#39;ll either let you choose one or let you have all of them. This determines which it will be.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyVendorInteractionRewardSelection
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// When a Vendor Interaction provides rewards, they&#39;ll either let you choose one or let you have all of them. This determines which it will be.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// When a Vendor Interaction provides rewards, they&#39;ll either let you choose one or let you have all of them. This determines which it will be.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        One,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3
+		/// <summary>
+		/// When a Vendor Interaction provides rewards, they&#39;ll either let you choose one or let you have all of them. This determines which it will be.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        All
     }
 
 }

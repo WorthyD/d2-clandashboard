@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsReportingDestinyReportReasonDefinition" /> class.
         /// </summary>
-        /// <param name="reasonHash">The identifier for the reason: they are only guaranteed unique under the Category in which they are found..</param>
-        /// <param name="displayProperties">displayProperties.</param>
-        public DestinyDefinitionsReportingDestinyReportReasonDefinition(int? reasonHash = default(int?), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition))
+        /// <param name="ReasonHash">The identifier for the reason: they are only guaranteed unique under the Category in which they are found..</param>
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        public DestinyDefinitionsReportingDestinyReportReasonDefinition(uint? ReasonHash = default(uint?), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition))
         {
-            this.ReasonHash = reasonHash;
-            this.DisplayProperties = displayProperties;
+            this.ReasonHash = ReasonHash;
+            this.DisplayProperties = DisplayProperties;
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The identifier for the reason: they are only guaranteed unique under the Category in which they are found.</value>
         [DataMember(Name="reasonHash", EmitDefaultValue=false)]
-        public int? ReasonHash { get; set; }
+        public uint? ReasonHash { get; set; }
 
         /// <summary>
         /// Gets or Sets DisplayProperties
@@ -72,7 +72,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

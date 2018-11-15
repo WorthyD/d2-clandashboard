@@ -33,32 +33,32 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemInventoryBlockDefinition" /> class.
         /// </summary>
-        /// <param name="stackUniqueLabel">If this string is populated, you can&#39;t have more than one stack with this label in a given inventory. Note that this is different from the equipping block&#39;s unique label, which is used for equipping uniqueness..</param>
-        /// <param name="maxStackSize">The maximum quantity of this item that can exist in a stack..</param>
-        /// <param name="bucketTypeHash">The hash identifier for the DestinyInventoryBucketDefinition to which this item belongs. I should have named this \&quot;bucketHash\&quot;, but too many things refer to it now. Sigh..</param>
-        /// <param name="recoveryBucketTypeHash">If the item is picked up by the lost loot queue, this is the hash identifier for the DestinyInventoryBucketDefinition into which it will be placed. Again, I should have named this recoveryBucketHash instead..</param>
-        /// <param name="tierTypeHash">The hash identifier for the Tier Type of the item, use to look up its DestinyItemTierTypeDefinition if you need to show localized data for the item&#39;s tier..</param>
-        /// <param name="isInstanceItem">If TRUE, this item is instanced. Otherwise, it is a generic item that merely has a quantity in a stack (like Glimmer)..</param>
-        /// <param name="tierTypeName">The localized name of the tier type, which is a useful shortcut so you don&#39;t have to look up the definition every time. However, it&#39;s mostly a holdover from days before we had a DestinyItemTierTypeDefinition to refer to..</param>
-        /// <param name="tierType">The enumeration matching the tier type of the item to known values, again for convenience sake..</param>
-        /// <param name="expirationTooltip">The tooltip message to show, if any, when the item expires..</param>
-        /// <param name="expiredInActivityMessage">If the item expires while playing in an activity, we show a different message..</param>
-        /// <param name="expiredInOrbitMessage">If the item expires in orbit, we show a... more different message. (\&quot;Consummate V&#39;s, consummate!\&quot;).</param>
-        /// <param name="suppressExpirationWhenObjectivesComplete">suppressExpirationWhenObjectivesComplete.</param>
-        public DestinyDefinitionsDestinyItemInventoryBlockDefinition(string stackUniqueLabel = default(string), int? maxStackSize = default(int?), int? bucketTypeHash = default(int?), int? recoveryBucketTypeHash = default(int?), int? tierTypeHash = default(int?), bool? isInstanceItem = default(bool?), string tierTypeName = default(string), Object tierType = default(Object), string expirationTooltip = default(string), string expiredInActivityMessage = default(string), string expiredInOrbitMessage = default(string), bool? suppressExpirationWhenObjectivesComplete = default(bool?))
+        /// <param name="StackUniqueLabel">If this string is populated, you can&#39;t have more than one stack with this label in a given inventory. Note that this is different from the equipping block&#39;s unique label, which is used for equipping uniqueness..</param>
+        /// <param name="MaxStackSize">The maximum quantity of this item that can exist in a stack..</param>
+        /// <param name="BucketTypeHash">The hash identifier for the DestinyInventoryBucketDefinition to which this item belongs. I should have named this \&quot;bucketHash\&quot;, but too many things refer to it now. Sigh..</param>
+        /// <param name="RecoveryBucketTypeHash">If the item is picked up by the lost loot queue, this is the hash identifier for the DestinyInventoryBucketDefinition into which it will be placed. Again, I should have named this recoveryBucketHash instead..</param>
+        /// <param name="TierTypeHash">The hash identifier for the Tier Type of the item, use to look up its DestinyItemTierTypeDefinition if you need to show localized data for the item&#39;s tier..</param>
+        /// <param name="IsInstanceItem">If TRUE, this item is instanced. Otherwise, it is a generic item that merely has a quantity in a stack (like Glimmer)..</param>
+        /// <param name="TierTypeName">The localized name of the tier type, which is a useful shortcut so you don&#39;t have to look up the definition every time. However, it&#39;s mostly a holdover from days before we had a DestinyItemTierTypeDefinition to refer to..</param>
+        /// <param name="TierType">The enumeration matching the tier type of the item to known values, again for convenience sake..</param>
+        /// <param name="ExpirationTooltip">The tooltip message to show, if any, when the item expires..</param>
+        /// <param name="ExpiredInActivityMessage">If the item expires while playing in an activity, we show a different message..</param>
+        /// <param name="ExpiredInOrbitMessage">If the item expires in orbit, we show a... more different message. (\&quot;Consummate V&#39;s, consummate!\&quot;).</param>
+        /// <param name="SuppressExpirationWhenObjectivesComplete">SuppressExpirationWhenObjectivesComplete.</param>
+        public DestinyDefinitionsDestinyItemInventoryBlockDefinition(string StackUniqueLabel = default(string), int? MaxStackSize = default(int?), uint? BucketTypeHash = default(uint?), uint? RecoveryBucketTypeHash = default(uint?), uint? TierTypeHash = default(uint?), bool? IsInstanceItem = default(bool?), string TierTypeName = default(string), DestinyTierType TierType = default(DestinyTierType), string ExpirationTooltip = default(string), string ExpiredInActivityMessage = default(string), string ExpiredInOrbitMessage = default(string), bool? SuppressExpirationWhenObjectivesComplete = default(bool?))
         {
-            this.StackUniqueLabel = stackUniqueLabel;
-            this.MaxStackSize = maxStackSize;
-            this.BucketTypeHash = bucketTypeHash;
-            this.RecoveryBucketTypeHash = recoveryBucketTypeHash;
-            this.TierTypeHash = tierTypeHash;
-            this.IsInstanceItem = isInstanceItem;
-            this.TierTypeName = tierTypeName;
-            this.TierType = tierType;
-            this.ExpirationTooltip = expirationTooltip;
-            this.ExpiredInActivityMessage = expiredInActivityMessage;
-            this.ExpiredInOrbitMessage = expiredInOrbitMessage;
-            this.SuppressExpirationWhenObjectivesComplete = suppressExpirationWhenObjectivesComplete;
+            this.StackUniqueLabel = StackUniqueLabel;
+            this.MaxStackSize = MaxStackSize;
+            this.BucketTypeHash = BucketTypeHash;
+            this.RecoveryBucketTypeHash = RecoveryBucketTypeHash;
+            this.TierTypeHash = TierTypeHash;
+            this.IsInstanceItem = IsInstanceItem;
+            this.TierTypeName = TierTypeName;
+            this.TierType = TierType;
+            this.ExpirationTooltip = ExpirationTooltip;
+            this.ExpiredInActivityMessage = ExpiredInActivityMessage;
+            this.ExpiredInOrbitMessage = ExpiredInOrbitMessage;
+            this.SuppressExpirationWhenObjectivesComplete = SuppressExpirationWhenObjectivesComplete;
         }
         
         /// <summary>
@@ -80,21 +80,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the DestinyInventoryBucketDefinition to which this item belongs. I should have named this \&quot;bucketHash\&quot;, but too many things refer to it now. Sigh.</value>
         [DataMember(Name="bucketTypeHash", EmitDefaultValue=false)]
-        public int? BucketTypeHash { get; set; }
+        public uint? BucketTypeHash { get; set; }
 
         /// <summary>
         /// If the item is picked up by the lost loot queue, this is the hash identifier for the DestinyInventoryBucketDefinition into which it will be placed. Again, I should have named this recoveryBucketHash instead.
         /// </summary>
         /// <value>If the item is picked up by the lost loot queue, this is the hash identifier for the DestinyInventoryBucketDefinition into which it will be placed. Again, I should have named this recoveryBucketHash instead.</value>
         [DataMember(Name="recoveryBucketTypeHash", EmitDefaultValue=false)]
-        public int? RecoveryBucketTypeHash { get; set; }
+        public uint? RecoveryBucketTypeHash { get; set; }
 
         /// <summary>
         /// The hash identifier for the Tier Type of the item, use to look up its DestinyItemTierTypeDefinition if you need to show localized data for the item&#39;s tier.
         /// </summary>
         /// <value>The hash identifier for the Tier Type of the item, use to look up its DestinyItemTierTypeDefinition if you need to show localized data for the item&#39;s tier.</value>
         [DataMember(Name="tierTypeHash", EmitDefaultValue=false)]
-        public int? TierTypeHash { get; set; }
+        public uint? TierTypeHash { get; set; }
 
         /// <summary>
         /// If TRUE, this item is instanced. Otherwise, it is a generic item that merely has a quantity in a stack (like Glimmer).
@@ -115,7 +115,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The enumeration matching the tier type of the item to known values, again for convenience sake.</value>
         [DataMember(Name="tierType", EmitDefaultValue=false)]
-        public Object TierType { get; set; }
+        public DestinyTierType TierType { get; set; }
 
         /// <summary>
         /// The tooltip message to show, if any, when the item expires.
@@ -172,7 +172,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

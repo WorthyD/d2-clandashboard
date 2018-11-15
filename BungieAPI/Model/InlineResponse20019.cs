@@ -33,22 +33,22 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20019" /> class.
         /// </summary>
-        /// <param name="response">response.</param>
-        /// <param name="errorCode">errorCode.</param>
-        /// <param name="throttleSeconds">throttleSeconds.</param>
-        /// <param name="errorStatus">errorStatus.</param>
-        /// <param name="message">message.</param>
-        /// <param name="messageData">messageData.</param>
-        /// <param name="detailedErrorTrace">detailedErrorTrace.</param>
-        public InlineResponse20019(int? response = default(int?), ExceptionsPlatformErrorCodes errorCode = default(ExceptionsPlatformErrorCodes), int? throttleSeconds = default(int?), string errorStatus = default(string), string message = default(string), Dictionary<string, string> messageData = default(Dictionary<string, string>), string detailedErrorTrace = default(string))
+        /// <param name="Response">Response.</param>
+        /// <param name="ErrorCode">ErrorCode.</param>
+        /// <param name="ThrottleSeconds">ThrottleSeconds.</param>
+        /// <param name="ErrorStatus">ErrorStatus.</param>
+        /// <param name="Message">Message.</param>
+        /// <param name="MessageData">MessageData.</param>
+        /// <param name="DetailedErrorTrace">DetailedErrorTrace.</param>
+        public InlineResponse20019(int? Response = default(int?), ExceptionsPlatformErrorCodes ErrorCode = default(ExceptionsPlatformErrorCodes), int? ThrottleSeconds = default(int?), string ErrorStatus = default(string), string Message = default(string), Dictionary<string, string> MessageData = default(Dictionary<string, string>), string DetailedErrorTrace = default(string))
         {
-            this.Response = response;
-            this.ErrorCode = errorCode;
-            this.ThrottleSeconds = throttleSeconds;
-            this.ErrorStatus = errorStatus;
-            this.Message = message;
-            this.MessageData = messageData;
-            this.DetailedErrorTrace = detailedErrorTrace;
+            this.Response = Response;
+            this.ErrorCode = ErrorCode;
+            this.ThrottleSeconds = ThrottleSeconds;
+            this.ErrorStatus = ErrorStatus;
+            this.Message = Message;
+            this.MessageData = MessageData;
+            this.DetailedErrorTrace = DetailedErrorTrace;
         }
         
         /// <summary>
@@ -116,7 +116,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

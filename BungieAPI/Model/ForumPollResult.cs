@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ForumPollResult" /> class.
         /// </summary>
-        /// <param name="answerText">answerText.</param>
-        /// <param name="answerSlot">answerSlot.</param>
-        /// <param name="lastVoteDate">lastVoteDate.</param>
-        /// <param name="votes">votes.</param>
-        /// <param name="requestingUserVoted">requestingUserVoted.</param>
-        public ForumPollResult(string answerText = default(string), int? answerSlot = default(int?), DateTime? lastVoteDate = default(DateTime?), int? votes = default(int?), bool? requestingUserVoted = default(bool?))
+        /// <param name="AnswerText">AnswerText.</param>
+        /// <param name="AnswerSlot">AnswerSlot.</param>
+        /// <param name="LastVoteDate">LastVoteDate.</param>
+        /// <param name="Votes">Votes.</param>
+        /// <param name="RequestingUserVoted">RequestingUserVoted.</param>
+        public ForumPollResult(string AnswerText = default(string), int? AnswerSlot = default(int?), DateTime? LastVoteDate = default(DateTime?), int? Votes = default(int?), bool? RequestingUserVoted = default(bool?))
         {
-            this.AnswerText = answerText;
-            this.AnswerSlot = answerSlot;
-            this.LastVoteDate = lastVoteDate;
-            this.Votes = votes;
-            this.RequestingUserVoted = requestingUserVoted;
+            this.AnswerText = AnswerText;
+            this.AnswerSlot = AnswerSlot;
+            this.LastVoteDate = LastVoteDate;
+            this.Votes = Votes;
+            this.RequestingUserVoted = RequestingUserVoted;
         }
         
         /// <summary>
@@ -98,7 +98,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

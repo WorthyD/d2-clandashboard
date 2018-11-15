@@ -27,83 +27,81 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines Applications.ApplicationScopes
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum ApplicationsApplicationScopes
     {
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 1,
+		/// <summary>
+		/// Read basic user profile information such as the user&#39;s handle, avatar icon, etc.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        ReadBasicUserProfile,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 2,
+		/// <summary>
+		/// Read Group/Clan Forums, Wall, and Members for groups and clans that the user has joined.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        ReadGroups,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 3,
+		/// <summary>
+		/// Write Group/Clan Forums, Wall, and Members for groups and clans that the user has joined.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        WriteGroups,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 4,
+		/// <summary>
+		/// Administer Group/Clan Forums, Wall, and Members for groups and clans that the user is a founder or an administrator.
+		/// </summary>
+		[EnumMember(Value = "8")]
+        AdminGroups,
         
-        /// <summary>
-        /// Enum NUMBER_16 for value: 16
-        /// </summary>
-        [EnumMember(Value = "16")]
-        NUMBER_16 = 5,
+		/// <summary>
+		/// Create new groups, clans, and forum posts.
+		/// </summary>
+		[EnumMember(Value = "16")]
+        BnetWrite,
         
-        /// <summary>
-        /// Enum NUMBER_32 for value: 32
-        /// </summary>
-        [EnumMember(Value = "32")]
-        NUMBER_32 = 6,
+		/// <summary>
+		/// Move or equip Destiny items
+		/// </summary>
+		[EnumMember(Value = "32")]
+        MoveEquipDestinyItems,
         
-        /// <summary>
-        /// Enum NUMBER_64 for value: 64
-        /// </summary>
-        [EnumMember(Value = "64")]
-        NUMBER_64 = 7,
+		/// <summary>
+		/// Read Destiny 1 Inventory and Vault contents. For Destiny 2, this scope is needed to read anything regarded as private. This is the only scope a Destiny 2 app needs for read operations against Destiny 2 data such as inventory, vault, currency, vendors, milestones, progression, etc.
+		/// </summary>
+		[EnumMember(Value = "64")]
+        ReadDestinyInventoryAndVault,
         
-        /// <summary>
-        /// Enum NUMBER_128 for value: 128
-        /// </summary>
-        [EnumMember(Value = "128")]
-        NUMBER_128 = 8,
+		/// <summary>
+		/// Read user data such as who they are web notifications, clan/group memberships, recent activity, muted users.
+		/// </summary>
+		[EnumMember(Value = "128")]
+        ReadUserData,
         
-        /// <summary>
-        /// Enum NUMBER_256 for value: 256
-        /// </summary>
-        [EnumMember(Value = "256")]
-        NUMBER_256 = 9,
+		/// <summary>
+		/// Edit user data such as preferred language, status, motto, avatar selection and theme.
+		/// </summary>
+		[EnumMember(Value = "256")]
+        EditUserData,
         
-        /// <summary>
-        /// Enum NUMBER_512 for value: 512
-        /// </summary>
-        [EnumMember(Value = "512")]
-        NUMBER_512 = 10,
+		/// <summary>
+		/// Access vendor and advisor data specific to a user. OBSOLETE. This scope is only used on the Destiny 1 API.
+		/// </summary>
+		[EnumMember(Value = "512")]
+        ReadDestinyVendorsAndAdvisors,
         
-        /// <summary>
-        /// Enum NUMBER_1024 for value: 1024
-        /// </summary>
-        [EnumMember(Value = "1024")]
-        NUMBER_1024 = 11,
+		/// <summary>
+		/// Read offer history and claim and apply tokens for the user.
+		/// </summary>
+		[EnumMember(Value = "1024")]
+        ReadAndApplyTokens,
         
-        /// <summary>
-        /// Enum NUMBER_2048 for value: 2048
-        /// </summary>
-        [EnumMember(Value = "2048")]
-        NUMBER_2048 = 12
+		/// <summary>
+		/// Can perform actions that will result in a prompt to the user via the Destiny app.
+		/// </summary>
+		[EnumMember(Value = "2048")]
+        AdvancedWriteActions
     }
 
 }

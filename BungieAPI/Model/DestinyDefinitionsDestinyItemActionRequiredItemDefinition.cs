@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemActionRequiredItemDefinition" /> class.
         /// </summary>
-        /// <param name="count">The minimum quantity of the item you have to have..</param>
-        /// <param name="itemHash">The hash identifier of the item you need to have. Use it to look up the DestinyInventoryItemDefinition for more info..</param>
-        /// <param name="deleteOnAction">If true, the item/quantity will be deleted from your inventory when the action is performed. Otherwise, you&#39;ll retain these required items after the action is complete..</param>
-        public DestinyDefinitionsDestinyItemActionRequiredItemDefinition(int? count = default(int?), int? itemHash = default(int?), bool? deleteOnAction = default(bool?))
+        /// <param name="Count">The minimum quantity of the item you have to have..</param>
+        /// <param name="ItemHash">The hash identifier of the item you need to have. Use it to look up the DestinyInventoryItemDefinition for more info..</param>
+        /// <param name="DeleteOnAction">If true, the item/quantity will be deleted from your inventory when the action is performed. Otherwise, you&#39;ll retain these required items after the action is complete..</param>
+        public DestinyDefinitionsDestinyItemActionRequiredItemDefinition(int? Count = default(int?), uint? ItemHash = default(uint?), bool? DeleteOnAction = default(bool?))
         {
-            this.Count = count;
-            this.ItemHash = itemHash;
-            this.DeleteOnAction = deleteOnAction;
+            this.Count = Count;
+            this.ItemHash = ItemHash;
+            this.DeleteOnAction = DeleteOnAction;
         }
         
         /// <summary>
@@ -55,7 +55,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the item you need to have. Use it to look up the DestinyInventoryItemDefinition for more info.</value>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// If true, the item/quantity will be deleted from your inventory when the action is performed. Otherwise, you&#39;ll retain these required items after the action is complete.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

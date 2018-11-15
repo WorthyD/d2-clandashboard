@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsCommonDestinyPositionDefinition" /> class.
         /// </summary>
-        /// <param name="x">x.</param>
-        /// <param name="y">y.</param>
-        /// <param name="z">z.</param>
-        public DestinyDefinitionsCommonDestinyPositionDefinition(int? x = default(int?), int? y = default(int?), int? z = default(int?))
+        /// <param name="X">X.</param>
+        /// <param name="Y">Y.</param>
+        /// <param name="Z">Z.</param>
+        public DestinyDefinitionsCommonDestinyPositionDefinition(int? X = default(int?), int? Y = default(int?), int? Z = default(int?))
         {
-            this.X = x;
-            this.Y = y;
-            this.Z = z;
+            this.X = X;
+            this.Y = Y;
+            this.Z = Z;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

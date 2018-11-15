@@ -33,34 +33,34 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyProgressionDestinyFactionProgression" /> class.
         /// </summary>
-        /// <param name="factionHash">The hash identifier of the Faction related to this progression. Use it to look up the DestinyFactionDefinition for more rendering info..</param>
-        /// <param name="factionVendorIndex">The index of the Faction vendor that is currently available. Will be set to -1 if no vendors are available..</param>
-        /// <param name="progressionHash">The hash identifier of the Progression in question. Use it to look up the DestinyProgressionDefinition in static data..</param>
-        /// <param name="dailyProgress">The amount of progress earned today for this progression..</param>
-        /// <param name="dailyLimit">If this progression has a daily limit, this is that limit..</param>
-        /// <param name="weeklyProgress">The amount of progress earned toward this progression in the current week..</param>
-        /// <param name="weeklyLimit">If this progression has a weekly limit, this is that limit..</param>
-        /// <param name="currentProgress">This is the total amount of progress obtained overall for this progression (for instance, the total amount of Character Level experience earned).</param>
-        /// <param name="level">This is the level of the progression (for instance, the Character Level)..</param>
-        /// <param name="levelCap">This is the maximum possible level you can achieve for this progression (for example, the maximum character level obtainable).</param>
-        /// <param name="stepIndex">Progressions define their levels in \&quot;steps\&quot;. Since the last step may be repeatable, the user may be at a higher level than the actual Step achieved in the progression. Not necessarily useful, but potentially interesting for those cruising the API. Relate this to the \&quot;steps\&quot; property of the DestinyProgression to see which step the user is on, if you care about that. (Note that this is Content Version dependent since it refers to indexes.).</param>
-        /// <param name="progressToNextLevel">The amount of progression (i.e. \&quot;Experience\&quot;) needed to reach the next level of this Progression. Jeez, progression is such an overloaded word..</param>
-        /// <param name="nextLevelAt">The total amount of progression (i.e. \&quot;Experience\&quot;) needed in order to reach the next level..</param>
-        public DestinyProgressionDestinyFactionProgression(int? factionHash = default(int?), int? factionVendorIndex = default(int?), int? progressionHash = default(int?), int? dailyProgress = default(int?), int? dailyLimit = default(int?), int? weeklyProgress = default(int?), int? weeklyLimit = default(int?), int? currentProgress = default(int?), int? level = default(int?), int? levelCap = default(int?), int? stepIndex = default(int?), int? progressToNextLevel = default(int?), int? nextLevelAt = default(int?))
+        /// <param name="FactionHash">The hash identifier of the Faction related to this progression. Use it to look up the DestinyFactionDefinition for more rendering info..</param>
+        /// <param name="FactionVendorIndex">The index of the Faction vendor that is currently available. Will be set to -1 if no vendors are available..</param>
+        /// <param name="ProgressionHash">The hash identifier of the Progression in question. Use it to look up the DestinyProgressionDefinition in static data..</param>
+        /// <param name="DailyProgress">The amount of progress earned today for this progression..</param>
+        /// <param name="DailyLimit">If this progression has a daily limit, this is that limit..</param>
+        /// <param name="WeeklyProgress">The amount of progress earned toward this progression in the current week..</param>
+        /// <param name="WeeklyLimit">If this progression has a weekly limit, this is that limit..</param>
+        /// <param name="CurrentProgress">This is the total amount of progress obtained overall for this progression (for instance, the total amount of Character Level experience earned).</param>
+        /// <param name="Level">This is the level of the progression (for instance, the Character Level)..</param>
+        /// <param name="LevelCap">This is the maximum possible level you can achieve for this progression (for example, the maximum character level obtainable).</param>
+        /// <param name="StepIndex">Progressions define their levels in \&quot;steps\&quot;. Since the last step may be repeatable, the user may be at a higher level than the actual Step achieved in the progression. Not necessarily useful, but potentially interesting for those cruising the API. Relate this to the \&quot;steps\&quot; property of the DestinyProgression to see which step the user is on, if you care about that. (Note that this is Content Version dependent since it refers to indexes.).</param>
+        /// <param name="ProgressToNextLevel">The amount of progression (i.e. \&quot;Experience\&quot;) needed to reach the next level of this Progression. Jeez, progression is such an overloaded word..</param>
+        /// <param name="NextLevelAt">The total amount of progression (i.e. \&quot;Experience\&quot;) needed in order to reach the next level..</param>
+        public DestinyProgressionDestinyFactionProgression(uint? FactionHash = default(uint?), int? FactionVendorIndex = default(int?), uint? ProgressionHash = default(uint?), int? DailyProgress = default(int?), int? DailyLimit = default(int?), int? WeeklyProgress = default(int?), int? WeeklyLimit = default(int?), int? CurrentProgress = default(int?), int? Level = default(int?), int? LevelCap = default(int?), int? StepIndex = default(int?), int? ProgressToNextLevel = default(int?), int? NextLevelAt = default(int?))
         {
-            this.FactionHash = factionHash;
-            this.FactionVendorIndex = factionVendorIndex;
-            this.ProgressionHash = progressionHash;
-            this.DailyProgress = dailyProgress;
-            this.DailyLimit = dailyLimit;
-            this.WeeklyProgress = weeklyProgress;
-            this.WeeklyLimit = weeklyLimit;
-            this.CurrentProgress = currentProgress;
-            this.Level = level;
-            this.LevelCap = levelCap;
-            this.StepIndex = stepIndex;
-            this.ProgressToNextLevel = progressToNextLevel;
-            this.NextLevelAt = nextLevelAt;
+            this.FactionHash = FactionHash;
+            this.FactionVendorIndex = FactionVendorIndex;
+            this.ProgressionHash = ProgressionHash;
+            this.DailyProgress = DailyProgress;
+            this.DailyLimit = DailyLimit;
+            this.WeeklyProgress = WeeklyProgress;
+            this.WeeklyLimit = WeeklyLimit;
+            this.CurrentProgress = CurrentProgress;
+            this.Level = Level;
+            this.LevelCap = LevelCap;
+            this.StepIndex = StepIndex;
+            this.ProgressToNextLevel = ProgressToNextLevel;
+            this.NextLevelAt = NextLevelAt;
         }
         
         /// <summary>
@@ -68,7 +68,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the Faction related to this progression. Use it to look up the DestinyFactionDefinition for more rendering info.</value>
         [DataMember(Name="factionHash", EmitDefaultValue=false)]
-        public int? FactionHash { get; set; }
+        public uint? FactionHash { get; set; }
 
         /// <summary>
         /// The index of the Faction vendor that is currently available. Will be set to -1 if no vendors are available.
@@ -82,7 +82,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the Progression in question. Use it to look up the DestinyProgressionDefinition in static data.</value>
         [DataMember(Name="progressionHash", EmitDefaultValue=false)]
-        public int? ProgressionHash { get; set; }
+        public uint? ProgressionHash { get; set; }
 
         /// <summary>
         /// The amount of progress earned today for this progression.
@@ -183,7 +183,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

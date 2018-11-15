@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneRewardCategoryDefinition" /> class.
         /// </summary>
-        /// <param name="categoryHash">Identifies the reward category. Only guaranteed unique within this specific component!.</param>
-        /// <param name="categoryIdentifier">The string identifier for the category, if you want to use it for some end. Guaranteed unique within the specific component..</param>
-        /// <param name="displayProperties">Hopefully this is obvious by now..</param>
-        /// <param name="rewardEntries">If this milestone can provide rewards, this will define the sets of rewards that can be earned, the conditions under which they can be acquired, internal data that we&#39;ll use at runtime to determine whether you&#39;ve already earned or redeemed this set of rewards, and the category that this reward should be placed under..</param>
-        /// <param name="order">If you want to use BNet&#39;s recommended order for rendering categories programmatically, use this value and compare it to other categories to determine the order in which they should be rendered. I don&#39;t feel great about putting this here, I won&#39;t lie..</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneRewardCategoryDefinition(int? categoryHash = default(int?), string categoryIdentifier = default(string), Object displayProperties = default(Object), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneRewardEntryDefinition> rewardEntries = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneRewardEntryDefinition>), int? order = default(int?))
+        /// <param name="CategoryHash">Identifies the reward category. Only guaranteed unique within this specific component!.</param>
+        /// <param name="CategoryIdentifier">The string identifier for the category, if you want to use it for some end. Guaranteed unique within the specific component..</param>
+        /// <param name="DisplayProperties">Hopefully this is obvious by now..</param>
+        /// <param name="RewardEntries">If this milestone can provide rewards, this will define the sets of rewards that can be earned, the conditions under which they can be acquired, internal data that we&#39;ll use at runtime to determine whether you&#39;ve already earned or redeemed this set of rewards, and the category that this reward should be placed under..</param>
+        /// <param name="Order">If you want to use BNet&#39;s recommended order for rendering categories programmatically, use this value and compare it to other categories to determine the order in which they should be rendered. I don&#39;t feel great about putting this here, I won&#39;t lie..</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneRewardCategoryDefinition(uint? CategoryHash = default(uint?), string CategoryIdentifier = default(string), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneRewardEntryDefinition> RewardEntries = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneRewardEntryDefinition>), int? Order = default(int?))
         {
-            this.CategoryHash = categoryHash;
-            this.CategoryIdentifier = categoryIdentifier;
-            this.DisplayProperties = displayProperties;
-            this.RewardEntries = rewardEntries;
-            this.Order = order;
+            this.CategoryHash = CategoryHash;
+            this.CategoryIdentifier = CategoryIdentifier;
+            this.DisplayProperties = DisplayProperties;
+            this.RewardEntries = RewardEntries;
+            this.Order = Order;
         }
         
         /// <summary>
@@ -52,7 +52,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Identifies the reward category. Only guaranteed unique within this specific component!</value>
         [DataMember(Name="categoryHash", EmitDefaultValue=false)]
-        public int? CategoryHash { get; set; }
+        public uint? CategoryHash { get; set; }
 
         /// <summary>
         /// The string identifier for the category, if you want to use it for some end. Guaranteed unique within the specific component.
@@ -66,7 +66,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Hopefully this is obvious by now.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// If this milestone can provide rewards, this will define the sets of rewards that can be earned, the conditions under which they can be acquired, internal data that we&#39;ll use at runtime to determine whether you&#39;ve already earned or redeemed this set of rewards, and the category that this reward should be placed under.
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

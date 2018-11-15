@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDirectorDestinyActivityGraphNodeFeaturingStateDefinition" /> class.
         /// </summary>
-        /// <param name="highlightType">The node can be highlighted in a variety of ways - the game iterates through these and finds the first FeaturingState that is valid at the present moment given the Game, Account, and Character state, and renders the node in that state. See the ActivityGraphNodeHighlightType enum for possible values..</param>
-        public DestinyDefinitionsDirectorDestinyActivityGraphNodeFeaturingStateDefinition(Object highlightType = default(Object))
+        /// <param name="HighlightType">The node can be highlighted in a variety of ways - the game iterates through these and finds the first FeaturingState that is valid at the present moment given the Game, Account, and Character state, and renders the node in that state. See the ActivityGraphNodeHighlightType enum for possible values..</param>
+        public DestinyDefinitionsDirectorDestinyActivityGraphNodeFeaturingStateDefinition(DestinyActivityGraphNodeHighlightType HighlightType = default(DestinyActivityGraphNodeHighlightType))
         {
-            this.HighlightType = highlightType;
+            this.HighlightType = HighlightType;
         }
         
         /// <summary>
@@ -44,7 +44,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The node can be highlighted in a variety of ways - the game iterates through these and finds the first FeaturingState that is valid at the present moment given the Game, Account, and Character state, and renders the node in that state. See the ActivityGraphNodeHighlightType enum for possible values.</value>
         [DataMember(Name="highlightType", EmitDefaultValue=false)]
-        public Object HighlightType { get; set; }
+        public DestinyActivityGraphNodeHighlightType HighlightType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

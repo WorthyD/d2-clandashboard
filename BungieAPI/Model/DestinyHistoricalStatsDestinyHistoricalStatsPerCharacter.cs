@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyHistoricalStatsPerCharacter" /> class.
         /// </summary>
-        /// <param name="characterId">characterId.</param>
-        /// <param name="deleted">deleted.</param>
-        /// <param name="results">results.</param>
-        /// <param name="merged">merged.</param>
-        public DestinyHistoricalStatsDestinyHistoricalStatsPerCharacter(long? characterId = default(long?), bool? deleted = default(bool?), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsByPeriod> results = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsByPeriod>), DestinyHistoricalStatsDestinyHistoricalStatsByPeriod merged = default(DestinyHistoricalStatsDestinyHistoricalStatsByPeriod))
+        /// <param name="CharacterId">CharacterId.</param>
+        /// <param name="Deleted">Deleted.</param>
+        /// <param name="Results">Results.</param>
+        /// <param name="Merged">Merged.</param>
+        public DestinyHistoricalStatsDestinyHistoricalStatsPerCharacter(long? CharacterId = default(long?), bool? Deleted = default(bool?), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsByPeriod> Results = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsByPeriod>), DestinyHistoricalStatsDestinyHistoricalStatsByPeriod Merged = default(DestinyHistoricalStatsDestinyHistoricalStatsByPeriod))
         {
-            this.CharacterId = characterId;
-            this.Deleted = deleted;
-            this.Results = results;
-            this.Merged = merged;
+            this.CharacterId = CharacterId;
+            this.Deleted = Deleted;
+            this.Results = Results;
+            this.Merged = Merged;
         }
         
         /// <summary>
@@ -89,7 +89,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

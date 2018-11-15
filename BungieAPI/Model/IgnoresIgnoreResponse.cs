@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="IgnoresIgnoreResponse" /> class.
         /// </summary>
-        /// <param name="isIgnored">isIgnored.</param>
-        /// <param name="ignoreFlags">ignoreFlags.</param>
-        public IgnoresIgnoreResponse(bool? isIgnored = default(bool?), IgnoresIgnoreStatus ignoreFlags = default(IgnoresIgnoreStatus))
+        /// <param name="IsIgnored">IsIgnored.</param>
+        /// <param name="IgnoreFlags">IgnoreFlags.</param>
+        public IgnoresIgnoreResponse(bool? IsIgnored = default(bool?), IgnoresIgnoreStatus IgnoreFlags = default(IgnoresIgnoreStatus))
         {
-            this.IsIgnored = isIgnored;
-            this.IgnoreFlags = ignoreFlags;
+            this.IsIgnored = IsIgnored;
+            this.IgnoreFlags = IgnoreFlags;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

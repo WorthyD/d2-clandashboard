@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyAdvancedAwaInitializeResponse" /> class.
         /// </summary>
-        /// <param name="correlationId">ID used to get the token. Present this ID to the user as it will identify this specific request on their device..</param>
-        /// <param name="sentToSelf">True if the PUSH message will only be sent to the device that made this request..</param>
-        public DestinyAdvancedAwaInitializeResponse(string correlationId = default(string), bool? sentToSelf = default(bool?))
+        /// <param name="CorrelationId">ID used to get the token. Present this ID to the user as it will identify this specific request on their device..</param>
+        /// <param name="SentToSelf">True if the PUSH message will only be sent to the device that made this request..</param>
+        public DestinyAdvancedAwaInitializeResponse(string CorrelationId = default(string), bool? SentToSelf = default(bool?))
         {
-            this.CorrelationId = correlationId;
-            this.SentToSelf = sentToSelf;
+            this.CorrelationId = CorrelationId;
+            this.SentToSelf = SentToSelf;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

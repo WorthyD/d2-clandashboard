@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyCharacterDestinyItemPeerView" /> class.
         /// </summary>
-        /// <param name="itemHash">The hash identifier of the item in question. Use it to look up the DestinyInventoryItemDefinition of the item for static rendering data..</param>
-        /// <param name="dyes">The list of dyes that have been applied to this item..</param>
-        public DestinyCharacterDestinyItemPeerView(int? itemHash = default(int?), List<DestinyDyeReference> dyes = default(List<DestinyDyeReference>))
+        /// <param name="ItemHash">The hash identifier of the item in question. Use it to look up the DestinyInventoryItemDefinition of the item for static rendering data..</param>
+        /// <param name="Dyes">The list of dyes that have been applied to this item..</param>
+        public DestinyCharacterDestinyItemPeerView(uint? ItemHash = default(uint?), List<DestinyDyeReference> Dyes = default(List<DestinyDyeReference>))
         {
-            this.ItemHash = itemHash;
-            this.Dyes = dyes;
+            this.ItemHash = ItemHash;
+            this.Dyes = Dyes;
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the item in question. Use it to look up the DestinyInventoryItemDefinition of the item for static rendering data.</value>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// The list of dyes that have been applied to this item.
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

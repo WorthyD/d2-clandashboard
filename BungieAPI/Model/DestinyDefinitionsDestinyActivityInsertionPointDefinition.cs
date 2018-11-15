@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyActivityInsertionPointDefinition" /> class.
         /// </summary>
-        /// <param name="phaseHash">A unique hash value representing the phase. This can be useful for, for example, comparing how different instances of Raids have phases in different orders!.</param>
-        public DestinyDefinitionsDestinyActivityInsertionPointDefinition(int? phaseHash = default(int?))
+        /// <param name="PhaseHash">A unique hash value representing the phase. This can be useful for, for example, comparing how different instances of Raids have phases in different orders!.</param>
+        public DestinyDefinitionsDestinyActivityInsertionPointDefinition(uint? PhaseHash = default(uint?))
         {
-            this.PhaseHash = phaseHash;
+            this.PhaseHash = PhaseHash;
         }
         
         /// <summary>
@@ -44,7 +44,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A unique hash value representing the phase. This can be useful for, for example, comparing how different instances of Raids have phases in different orders!</value>
         [DataMember(Name="phaseHash", EmitDefaultValue=false)]
-        public int? PhaseHash { get; set; }
+        public uint? PhaseHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

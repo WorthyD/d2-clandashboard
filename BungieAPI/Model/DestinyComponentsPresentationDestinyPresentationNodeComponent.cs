@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsPresentationDestinyPresentationNodeComponent" /> class.
         /// </summary>
-        /// <param name="state">state.</param>
-        /// <param name="objective">objective.</param>
-        public DestinyComponentsPresentationDestinyPresentationNodeComponent(DestinyDestinyPresentationNodeState state = default(DestinyDestinyPresentationNodeState), DestinyQuestsDestinyObjectiveProgress objective = default(DestinyQuestsDestinyObjectiveProgress))
+        /// <param name="State">State.</param>
+        /// <param name="Objective">Objective.</param>
+        public DestinyComponentsPresentationDestinyPresentationNodeComponent(DestinyDestinyPresentationNodeState State = default(DestinyDestinyPresentationNodeState), DestinyQuestsDestinyObjectiveProgress Objective = default(DestinyQuestsDestinyObjectiveProgress))
         {
-            this.State = state;
-            this.Objective = objective;
+            this.State = State;
+            this.Objective = Objective;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

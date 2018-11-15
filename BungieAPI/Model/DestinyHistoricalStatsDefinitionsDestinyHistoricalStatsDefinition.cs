@@ -34,26 +34,27 @@ namespace BungieAPI.Model
         /// Optional icon for the statistic
         /// </summary>
         /// <value>Optional icon for the statistic</value>
+        [JsonConverter(typeof(StringEnumConverter))]
         public enum MergeMethodEnum
         {
             
             /// <summary>
-            /// Enum NUMBER_0 for value: 0
+            /// Enum Add for 0
             /// </summary>
-            
-            NUMBER_0 = 0,
+            [EnumMember(Value = "0")]
+            Add = 0,
             
             /// <summary>
-            /// Enum NUMBER_1 for value: 1
+            /// Enum Min for 1
             /// </summary>
-            
-            NUMBER_1 = 1,
+            [EnumMember(Value = "1")]
+            Min = 1,
             
             /// <summary>
-            /// Enum NUMBER_2 for value: 2
+            /// Enum Max for 2
             /// </summary>
-            
-            NUMBER_2 = 2
+            [EnumMember(Value = "2")]
+            Max = 2
         }
 
         /// <summary>
@@ -65,36 +66,36 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDefinitionsDestinyHistoricalStatsDefinition" /> class.
         /// </summary>
-        /// <param name="statId">Unique programmer friendly ID for this stat.</param>
-        /// <param name="group">Statistic group.</param>
-        /// <param name="periodTypes">Time periods the statistic covers.</param>
-        /// <param name="modes">Game modes where this statistic can be reported..</param>
-        /// <param name="category">Category for the stat..</param>
-        /// <param name="statName">Display name.</param>
-        /// <param name="statNameAbbr">Display name abbreviated.</param>
-        /// <param name="statDescription">Description of a stat if applicable..</param>
-        /// <param name="unitType">Unit, if any, for the statistic.</param>
-        /// <param name="iconImage">Optional URI to an icon for the statistic.</param>
-        /// <param name="mergeMethod">Optional icon for the statistic.</param>
-        /// <param name="unitLabel">Localized Unit Name for the stat..</param>
-        /// <param name="weight">Weight assigned to this stat indicating its relative impressiveness..</param>
-        /// <param name="medalTierHash">The tier associated with this medal - be it implicitly or explicitly..</param>
-        public DestinyHistoricalStatsDefinitionsDestinyHistoricalStatsDefinition(string statId = default(string), Object group = default(Object), List<DestinyHistoricalStatsDefinitionsPeriodType> periodTypes = default(List<DestinyHistoricalStatsDefinitionsPeriodType>), List<DestinyHistoricalStatsDefinitionsDestinyActivityModeType> modes = default(List<DestinyHistoricalStatsDefinitionsDestinyActivityModeType>), Object category = default(Object), string statName = default(string), string statNameAbbr = default(string), string statDescription = default(string), Object unitType = default(Object), string iconImage = default(string), MergeMethodEnum? mergeMethod = default(MergeMethodEnum?), string unitLabel = default(string), int? weight = default(int?), int? medalTierHash = default(int?))
+        /// <param name="StatId">Unique programmer friendly ID for this stat.</param>
+        /// <param name="Group">Statistic group.</param>
+        /// <param name="PeriodTypes">Time periods the statistic covers.</param>
+        /// <param name="Modes">Game modes where this statistic can be reported..</param>
+        /// <param name="Category">Category for the stat..</param>
+        /// <param name="StatName">Display name.</param>
+        /// <param name="StatNameAbbr">Display name abbreviated.</param>
+        /// <param name="StatDescription">Description of a stat if applicable..</param>
+        /// <param name="UnitType">Unit, if any, for the statistic.</param>
+        /// <param name="IconImage">Optional URI to an icon for the statistic.</param>
+        /// <param name="MergeMethod">Optional icon for the statistic.</param>
+        /// <param name="UnitLabel">Localized Unit Name for the stat..</param>
+        /// <param name="Weight">Weight assigned to this stat indicating its relative impressiveness..</param>
+        /// <param name="MedalTierHash">The tier associated with this medal - be it implicitly or explicitly..</param>
+        public DestinyHistoricalStatsDefinitionsDestinyHistoricalStatsDefinition(string StatId = default(string), DestinyHistoricalStatsDefinitionsDestinyStatsGroupType Group = default(DestinyHistoricalStatsDefinitionsDestinyStatsGroupType), List<DestinyHistoricalStatsDefinitionsPeriodType> PeriodTypes = default(List<DestinyHistoricalStatsDefinitionsPeriodType>), List<DestinyHistoricalStatsDefinitionsDestinyActivityModeType> Modes = default(List<DestinyHistoricalStatsDefinitionsDestinyActivityModeType>), DestinyHistoricalStatsDefinitionsDestinyStatsCategoryType Category = default(DestinyHistoricalStatsDefinitionsDestinyStatsCategoryType), string StatName = default(string), string StatNameAbbr = default(string), string StatDescription = default(string), DestinyHistoricalStatsDefinitionsUnitType UnitType = default(DestinyHistoricalStatsDefinitionsUnitType), string IconImage = default(string), MergeMethodEnum? MergeMethod = default(MergeMethodEnum?), string UnitLabel = default(string), int? Weight = default(int?), uint? MedalTierHash = default(uint?))
         {
-            this.StatId = statId;
-            this.Group = group;
-            this.PeriodTypes = periodTypes;
-            this.Modes = modes;
-            this.Category = category;
-            this.StatName = statName;
-            this.StatNameAbbr = statNameAbbr;
-            this.StatDescription = statDescription;
-            this.UnitType = unitType;
-            this.IconImage = iconImage;
-            this.MergeMethod = mergeMethod;
-            this.UnitLabel = unitLabel;
-            this.Weight = weight;
-            this.MedalTierHash = medalTierHash;
+            this.StatId = StatId;
+            this.Group = Group;
+            this.PeriodTypes = PeriodTypes;
+            this.Modes = Modes;
+            this.Category = Category;
+            this.StatName = StatName;
+            this.StatNameAbbr = StatNameAbbr;
+            this.StatDescription = StatDescription;
+            this.UnitType = UnitType;
+            this.IconImage = IconImage;
+            this.MergeMethod = MergeMethod;
+            this.UnitLabel = UnitLabel;
+            this.Weight = Weight;
+            this.MedalTierHash = MedalTierHash;
         }
         
         /// <summary>
@@ -109,7 +110,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Statistic group</value>
         [DataMember(Name="group", EmitDefaultValue=false)]
-        public Object Group { get; set; }
+        public DestinyHistoricalStatsDefinitionsDestinyStatsGroupType Group { get; set; }
 
         /// <summary>
         /// Time periods the statistic covers
@@ -130,7 +131,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Category for the stat.</value>
         [DataMember(Name="category", EmitDefaultValue=false)]
-        public Object Category { get; set; }
+        public DestinyHistoricalStatsDefinitionsDestinyStatsCategoryType Category { get; set; }
 
         /// <summary>
         /// Display name
@@ -158,7 +159,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Unit, if any, for the statistic</value>
         [DataMember(Name="unitType", EmitDefaultValue=false)]
-        public Object UnitType { get; set; }
+        public DestinyHistoricalStatsDefinitionsUnitType UnitType { get; set; }
 
         /// <summary>
         /// Optional URI to an icon for the statistic
@@ -187,7 +188,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The tier associated with this medal - be it implicitly or explicitly.</value>
         [DataMember(Name="medalTierHash", EmitDefaultValue=false)]
-        public int? MedalTierHash { get; set; }
+        public uint? MedalTierHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -219,7 +220,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

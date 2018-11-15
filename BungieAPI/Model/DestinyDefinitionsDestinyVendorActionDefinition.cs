@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorActionDefinition" /> class.
         /// </summary>
-        /// <param name="description">description.</param>
-        /// <param name="executeSeconds">executeSeconds.</param>
-        /// <param name="icon">icon.</param>
-        /// <param name="name">name.</param>
-        /// <param name="verb">verb.</param>
-        /// <param name="isPositive">isPositive.</param>
-        /// <param name="actionId">actionId.</param>
-        /// <param name="actionHash">actionHash.</param>
-        /// <param name="autoPerformAction">autoPerformAction.</param>
-        public DestinyDefinitionsDestinyVendorActionDefinition(string description = default(string), int? executeSeconds = default(int?), string icon = default(string), string name = default(string), string verb = default(string), bool? isPositive = default(bool?), string actionId = default(string), int? actionHash = default(int?), bool? autoPerformAction = default(bool?))
+        /// <param name="Description">Description.</param>
+        /// <param name="ExecuteSeconds">ExecuteSeconds.</param>
+        /// <param name="Icon">Icon.</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="Verb">Verb.</param>
+        /// <param name="IsPositive">IsPositive.</param>
+        /// <param name="ActionId">ActionId.</param>
+        /// <param name="ActionHash">ActionHash.</param>
+        /// <param name="AutoPerformAction">AutoPerformAction.</param>
+        public DestinyDefinitionsDestinyVendorActionDefinition(string Description = default(string), int? ExecuteSeconds = default(int?), string Icon = default(string), string Name = default(string), string Verb = default(string), bool? IsPositive = default(bool?), string ActionId = default(string), uint? ActionHash = default(uint?), bool? AutoPerformAction = default(bool?))
         {
-            this.Description = description;
-            this.ExecuteSeconds = executeSeconds;
-            this.Icon = icon;
-            this.Name = name;
-            this.Verb = verb;
-            this.IsPositive = isPositive;
-            this.ActionId = actionId;
-            this.ActionHash = actionHash;
-            this.AutoPerformAction = autoPerformAction;
+            this.Description = Description;
+            this.ExecuteSeconds = ExecuteSeconds;
+            this.Icon = Icon;
+            this.Name = Name;
+            this.Verb = Verb;
+            this.IsPositive = IsPositive;
+            this.ActionId = ActionId;
+            this.ActionHash = ActionHash;
+            this.AutoPerformAction = AutoPerformAction;
         }
         
         /// <summary>
@@ -101,7 +101,7 @@ namespace BungieAPI.Model
         /// Gets or Sets ActionHash
         /// </summary>
         [DataMember(Name="actionHash", EmitDefaultValue=false)]
-        public int? ActionHash { get; set; }
+        public uint? ActionHash { get; set; }
 
         /// <summary>
         /// Gets or Sets AutoPerformAction
@@ -134,7 +134,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

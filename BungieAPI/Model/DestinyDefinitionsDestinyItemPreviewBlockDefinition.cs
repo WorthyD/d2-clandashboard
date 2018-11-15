@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemPreviewBlockDefinition" /> class.
         /// </summary>
-        /// <param name="screenStyle">A string that the game UI uses as a hint for which detail screen to show for the item. You, too, can leverage this for your own custom screen detail views. Note, however, that these are arbitrarily defined by designers: there&#39;s no guarantees of a fixed, known number of these - so fall back to something reasonable if you don&#39;t recognize it..</param>
-        /// <param name="previewVendorHash">If the preview data is derived from a fake \&quot;Preview\&quot; Vendor, this will be the hash identifier for the DestinyVendorDefinition of that fake vendor..</param>
-        /// <param name="previewActionString">If the preview has an associated action (like \&quot;Open\&quot;), this will be the localized string for that action..</param>
-        /// <param name="derivedItemCategories">This is a list of the items being previewed, categorized in the same way as they are in the preview UI..</param>
-        public DestinyDefinitionsDestinyItemPreviewBlockDefinition(string screenStyle = default(string), int? previewVendorHash = default(int?), string previewActionString = default(string), List<DestinyDefinitionsItemsDestinyDerivedItemCategoryDefinition> derivedItemCategories = default(List<DestinyDefinitionsItemsDestinyDerivedItemCategoryDefinition>))
+        /// <param name="ScreenStyle">A string that the game UI uses as a hint for which detail screen to show for the item. You, too, can leverage this for your own custom screen detail views. Note, however, that these are arbitrarily defined by designers: there&#39;s no guarantees of a fixed, known number of these - so fall back to something reasonable if you don&#39;t recognize it..</param>
+        /// <param name="PreviewVendorHash">If the preview data is derived from a fake \&quot;Preview\&quot; Vendor, this will be the hash identifier for the DestinyVendorDefinition of that fake vendor..</param>
+        /// <param name="PreviewActionString">If the preview has an associated action (like \&quot;Open\&quot;), this will be the localized string for that action..</param>
+        /// <param name="DerivedItemCategories">This is a list of the items being previewed, categorized in the same way as they are in the preview UI..</param>
+        public DestinyDefinitionsDestinyItemPreviewBlockDefinition(string ScreenStyle = default(string), uint? PreviewVendorHash = default(uint?), string PreviewActionString = default(string), List<DestinyDefinitionsItemsDestinyDerivedItemCategoryDefinition> DerivedItemCategories = default(List<DestinyDefinitionsItemsDestinyDerivedItemCategoryDefinition>))
         {
-            this.ScreenStyle = screenStyle;
-            this.PreviewVendorHash = previewVendorHash;
-            this.PreviewActionString = previewActionString;
-            this.DerivedItemCategories = derivedItemCategories;
+            this.ScreenStyle = ScreenStyle;
+            this.PreviewVendorHash = PreviewVendorHash;
+            this.PreviewActionString = PreviewActionString;
+            this.DerivedItemCategories = DerivedItemCategories;
         }
         
         /// <summary>
@@ -57,7 +57,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the preview data is derived from a fake \&quot;Preview\&quot; Vendor, this will be the hash identifier for the DestinyVendorDefinition of that fake vendor.</value>
         [DataMember(Name="previewVendorHash", EmitDefaultValue=false)]
-        public int? PreviewVendorHash { get; set; }
+        public uint? PreviewVendorHash { get; set; }
 
         /// <summary>
         /// If the preview has an associated action (like \&quot;Open\&quot;), this will be the localized string for that action.
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

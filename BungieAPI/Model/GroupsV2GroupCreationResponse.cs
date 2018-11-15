@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupCreationResponse" /> class.
         /// </summary>
-        /// <param name="groupId">groupId.</param>
-        public GroupsV2GroupCreationResponse(long? groupId = default(long?))
+        /// <param name="GroupId">GroupId.</param>
+        public GroupsV2GroupCreationResponse(long? GroupId = default(long?))
         {
-            this.GroupId = groupId;
+            this.GroupId = GroupId;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

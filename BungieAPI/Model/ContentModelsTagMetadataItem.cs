@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentModelsTagMetadataItem" /> class.
         /// </summary>
-        /// <param name="description">description.</param>
-        /// <param name="tagText">tagText.</param>
-        /// <param name="groups">groups.</param>
-        /// <param name="isDefault">isDefault.</param>
-        /// <param name="name">name.</param>
-        public ContentModelsTagMetadataItem(string description = default(string), string tagText = default(string), List<string> groups = default(List<string>), bool? isDefault = default(bool?), string name = default(string))
+        /// <param name="Description">Description.</param>
+        /// <param name="TagText">TagText.</param>
+        /// <param name="Groups">Groups.</param>
+        /// <param name="IsDefault">IsDefault.</param>
+        /// <param name="Name">Name.</param>
+        public ContentModelsTagMetadataItem(string Description = default(string), string TagText = default(string), List<string> Groups = default(List<string>), bool? IsDefault = default(bool?), string Name = default(string))
         {
-            this.Description = description;
-            this.TagText = tagText;
-            this.Groups = groups;
-            this.IsDefault = isDefault;
-            this.Name = name;
+            this.Description = Description;
+            this.TagText = TagText;
+            this.Groups = Groups;
+            this.IsDefault = IsDefault;
+            this.Name = Name;
         }
         
         /// <summary>
@@ -98,7 +98,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

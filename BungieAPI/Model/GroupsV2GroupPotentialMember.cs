@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupPotentialMember" /> class.
         /// </summary>
-        /// <param name="potentialStatus">potentialStatus.</param>
-        /// <param name="groupId">groupId.</param>
-        /// <param name="destinyUserInfo">destinyUserInfo.</param>
-        /// <param name="bungieNetUserInfo">bungieNetUserInfo.</param>
-        /// <param name="joinDate">joinDate.</param>
-        public GroupsV2GroupPotentialMember(GroupsV2GroupPotentialMemberStatus potentialStatus = default(GroupsV2GroupPotentialMemberStatus), long? groupId = default(long?), UserUserInfoCard destinyUserInfo = default(UserUserInfoCard), UserUserInfoCard bungieNetUserInfo = default(UserUserInfoCard), DateTime? joinDate = default(DateTime?))
+        /// <param name="PotentialStatus">PotentialStatus.</param>
+        /// <param name="GroupId">GroupId.</param>
+        /// <param name="DestinyUserInfo">DestinyUserInfo.</param>
+        /// <param name="BungieNetUserInfo">BungieNetUserInfo.</param>
+        /// <param name="JoinDate">JoinDate.</param>
+        public GroupsV2GroupPotentialMember(GroupsV2GroupPotentialMemberStatus PotentialStatus = default(GroupsV2GroupPotentialMemberStatus), long? GroupId = default(long?), UserUserInfoCard DestinyUserInfo = default(UserUserInfoCard), UserUserInfoCard BungieNetUserInfo = default(UserUserInfoCard), DateTime? JoinDate = default(DateTime?))
         {
-            this.PotentialStatus = potentialStatus;
-            this.GroupId = groupId;
-            this.DestinyUserInfo = destinyUserInfo;
-            this.BungieNetUserInfo = bungieNetUserInfo;
-            this.JoinDate = joinDate;
+            this.PotentialStatus = PotentialStatus;
+            this.GroupId = GroupId;
+            this.DestinyUserInfo = DestinyUserInfo;
+            this.BungieNetUserInfo = BungieNetUserInfo;
+            this.JoinDate = JoinDate;
         }
         
         /// <summary>
@@ -98,7 +98,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

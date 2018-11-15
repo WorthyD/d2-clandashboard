@@ -33,24 +33,24 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupResponse" /> class.
         /// </summary>
-        /// <param name="detail">detail.</param>
-        /// <param name="founder">founder.</param>
-        /// <param name="alliedIds">alliedIds.</param>
-        /// <param name="parentGroup">parentGroup.</param>
-        /// <param name="allianceStatus">allianceStatus.</param>
-        /// <param name="groupJoinInviteCount">groupJoinInviteCount.</param>
-        /// <param name="currentUserMemberMap">This property will be populated if the authenticated user is a member of the group. Note that because of account linking, a user can sometimes be part of a clan more than once. As such, this returns the highest member type available..</param>
-        /// <param name="currentUserPotentialMemberMap">This property will be populated if the authenticated user is an applicant or has an outstanding invitation to join. Note that because of account linking, a user can sometimes be part of a clan more than once..</param>
-        public GroupsV2GroupResponse(GroupsV2GroupV2 detail = default(GroupsV2GroupV2), GroupsV2GroupMember founder = default(GroupsV2GroupMember), List<long?> alliedIds = default(List<long?>), GroupsV2GroupV2 parentGroup = default(GroupsV2GroupV2), GroupsV2GroupAllianceStatus allianceStatus = default(GroupsV2GroupAllianceStatus), int? groupJoinInviteCount = default(int?), Dictionary<string, GroupsV2GroupMember> currentUserMemberMap = default(Dictionary<string, GroupsV2GroupMember>), Dictionary<string, GroupsV2GroupPotentialMember> currentUserPotentialMemberMap = default(Dictionary<string, GroupsV2GroupPotentialMember>))
+        /// <param name="Detail">Detail.</param>
+        /// <param name="Founder">Founder.</param>
+        /// <param name="AlliedIds">AlliedIds.</param>
+        /// <param name="ParentGroup">ParentGroup.</param>
+        /// <param name="AllianceStatus">AllianceStatus.</param>
+        /// <param name="GroupJoinInviteCount">GroupJoinInviteCount.</param>
+        /// <param name="CurrentUserMemberMap">This property will be populated if the authenticated user is a member of the group. Note that because of account linking, a user can sometimes be part of a clan more than once. As such, this returns the highest member type available..</param>
+        /// <param name="CurrentUserPotentialMemberMap">This property will be populated if the authenticated user is an applicant or has an outstanding invitation to join. Note that because of account linking, a user can sometimes be part of a clan more than once..</param>
+        public GroupsV2GroupResponse(GroupsV2GroupV2 Detail = default(GroupsV2GroupV2), GroupsV2GroupMember Founder = default(GroupsV2GroupMember), List<long?> AlliedIds = default(List<long?>), GroupsV2GroupV2 ParentGroup = default(GroupsV2GroupV2), GroupsV2GroupAllianceStatus AllianceStatus = default(GroupsV2GroupAllianceStatus), int? GroupJoinInviteCount = default(int?), Dictionary<string, GroupsV2GroupMember> CurrentUserMemberMap = default(Dictionary<string, GroupsV2GroupMember>), Dictionary<string, GroupsV2GroupPotentialMember> CurrentUserPotentialMemberMap = default(Dictionary<string, GroupsV2GroupPotentialMember>))
         {
-            this.Detail = detail;
-            this.Founder = founder;
-            this.AlliedIds = alliedIds;
-            this.ParentGroup = parentGroup;
-            this.AllianceStatus = allianceStatus;
-            this.GroupJoinInviteCount = groupJoinInviteCount;
-            this.CurrentUserMemberMap = currentUserMemberMap;
-            this.CurrentUserPotentialMemberMap = currentUserPotentialMemberMap;
+            this.Detail = Detail;
+            this.Founder = Founder;
+            this.AlliedIds = AlliedIds;
+            this.ParentGroup = ParentGroup;
+            this.AllianceStatus = AllianceStatus;
+            this.GroupJoinInviteCount = GroupJoinInviteCount;
+            this.CurrentUserMemberMap = CurrentUserMemberMap;
+            this.CurrentUserPotentialMemberMap = CurrentUserPotentialMemberMap;
         }
         
         /// <summary>
@@ -127,7 +127,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

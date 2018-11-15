@@ -33,36 +33,36 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyLocationReleaseDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">Sadly, these don&#39;t appear to be populated anymore (ever?).</param>
-        /// <param name="smallTransparentIcon">smallTransparentIcon.</param>
-        /// <param name="mapIcon">mapIcon.</param>
-        /// <param name="largeTransparentIcon">largeTransparentIcon.</param>
-        /// <param name="spawnPoint">If we had map information, this spawnPoint would be interesting. But sadly, we don&#39;t have that info..</param>
-        /// <param name="destinationHash">The Destination being pointed to by this location..</param>
-        /// <param name="activityHash">The Activity being pointed to by this location..</param>
-        /// <param name="activityGraphHash">The Activity Graph being pointed to by this location..</param>
-        /// <param name="activityGraphNodeHash">The Activity Graph Node being pointed to by this location. (Remember that Activity Graph Node hashes are only unique within an Activity Graph: so use the combination to find the node being spoken of).</param>
-        /// <param name="activityBubbleName">The Activity Bubble within the Destination. Look this up in the DestinyDestinationDefinition&#39;s bubbles and bubbleSettings properties..</param>
-        /// <param name="activityPathBundle">If we had map information, this would tell us something cool about the path this location wants you to take. I wish we had map information..</param>
-        /// <param name="activityPathDestination">If we had map information, this would tell us about path information related to destination on the map. Sad. Maybe you can do something cool with it. Go to town man..</param>
-        /// <param name="navPointType">The type of Nav Point that this represents. See the enumeration for more info..</param>
-        /// <param name="worldPosition">Looks like it should be the position on the map, but sadly it does not look populated... yet?.</param>
-        public DestinyDefinitionsDestinyLocationReleaseDefinition(Object displayProperties = default(Object), string smallTransparentIcon = default(string), string mapIcon = default(string), string largeTransparentIcon = default(string), int? spawnPoint = default(int?), int? destinationHash = default(int?), int? activityHash = default(int?), int? activityGraphHash = default(int?), int? activityGraphNodeHash = default(int?), int? activityBubbleName = default(int?), int? activityPathBundle = default(int?), int? activityPathDestination = default(int?), Object navPointType = default(Object), List<int?> worldPosition = default(List<int?>))
+        /// <param name="DisplayProperties">Sadly, these don&#39;t appear to be populated anymore (ever?).</param>
+        /// <param name="SmallTransparentIcon">SmallTransparentIcon.</param>
+        /// <param name="MapIcon">MapIcon.</param>
+        /// <param name="LargeTransparentIcon">LargeTransparentIcon.</param>
+        /// <param name="SpawnPoint">If we had map information, this spawnPoint would be interesting. But sadly, we don&#39;t have that info..</param>
+        /// <param name="DestinationHash">The Destination being pointed to by this location..</param>
+        /// <param name="ActivityHash">The Activity being pointed to by this location..</param>
+        /// <param name="ActivityGraphHash">The Activity Graph being pointed to by this location..</param>
+        /// <param name="ActivityGraphNodeHash">The Activity Graph Node being pointed to by this location. (Remember that Activity Graph Node hashes are only unique within an Activity Graph: so use the combination to find the node being spoken of).</param>
+        /// <param name="ActivityBubbleName">The Activity Bubble within the Destination. Look this up in the DestinyDestinationDefinition&#39;s bubbles and bubbleSettings properties..</param>
+        /// <param name="ActivityPathBundle">If we had map information, this would tell us something cool about the path this location wants you to take. I wish we had map information..</param>
+        /// <param name="ActivityPathDestination">If we had map information, this would tell us about path information related to destination on the map. Sad. Maybe you can do something cool with it. Go to town man..</param>
+        /// <param name="NavPointType">The type of Nav Point that this represents. See the enumeration for more info..</param>
+        /// <param name="WorldPosition">Looks like it should be the position on the map, but sadly it does not look populated... yet?.</param>
+        public DestinyDefinitionsDestinyLocationReleaseDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string SmallTransparentIcon = default(string), string MapIcon = default(string), string LargeTransparentIcon = default(string), uint? SpawnPoint = default(uint?), uint? DestinationHash = default(uint?), uint? ActivityHash = default(uint?), uint? ActivityGraphHash = default(uint?), uint? ActivityGraphNodeHash = default(uint?), uint? ActivityBubbleName = default(uint?), uint? ActivityPathBundle = default(uint?), uint? ActivityPathDestination = default(uint?), DestinyDestinyActivityNavPointType NavPointType = default(DestinyDestinyActivityNavPointType), List<int?> WorldPosition = default(List<int?>))
         {
-            this.DisplayProperties = displayProperties;
-            this.SmallTransparentIcon = smallTransparentIcon;
-            this.MapIcon = mapIcon;
-            this.LargeTransparentIcon = largeTransparentIcon;
-            this.SpawnPoint = spawnPoint;
-            this.DestinationHash = destinationHash;
-            this.ActivityHash = activityHash;
-            this.ActivityGraphHash = activityGraphHash;
-            this.ActivityGraphNodeHash = activityGraphNodeHash;
-            this.ActivityBubbleName = activityBubbleName;
-            this.ActivityPathBundle = activityPathBundle;
-            this.ActivityPathDestination = activityPathDestination;
-            this.NavPointType = navPointType;
-            this.WorldPosition = worldPosition;
+            this.DisplayProperties = DisplayProperties;
+            this.SmallTransparentIcon = SmallTransparentIcon;
+            this.MapIcon = MapIcon;
+            this.LargeTransparentIcon = LargeTransparentIcon;
+            this.SpawnPoint = SpawnPoint;
+            this.DestinationHash = DestinationHash;
+            this.ActivityHash = ActivityHash;
+            this.ActivityGraphHash = ActivityGraphHash;
+            this.ActivityGraphNodeHash = ActivityGraphNodeHash;
+            this.ActivityBubbleName = ActivityBubbleName;
+            this.ActivityPathBundle = ActivityPathBundle;
+            this.ActivityPathDestination = ActivityPathDestination;
+            this.NavPointType = NavPointType;
+            this.WorldPosition = WorldPosition;
         }
         
         /// <summary>
@@ -70,7 +70,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Sadly, these don&#39;t appear to be populated anymore (ever?)</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// Gets or Sets SmallTransparentIcon
@@ -95,63 +95,63 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If we had map information, this spawnPoint would be interesting. But sadly, we don&#39;t have that info.</value>
         [DataMember(Name="spawnPoint", EmitDefaultValue=false)]
-        public int? SpawnPoint { get; set; }
+        public uint? SpawnPoint { get; set; }
 
         /// <summary>
         /// The Destination being pointed to by this location.
         /// </summary>
         /// <value>The Destination being pointed to by this location.</value>
         [DataMember(Name="destinationHash", EmitDefaultValue=false)]
-        public int? DestinationHash { get; set; }
+        public uint? DestinationHash { get; set; }
 
         /// <summary>
         /// The Activity being pointed to by this location.
         /// </summary>
         /// <value>The Activity being pointed to by this location.</value>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// The Activity Graph being pointed to by this location.
         /// </summary>
         /// <value>The Activity Graph being pointed to by this location.</value>
         [DataMember(Name="activityGraphHash", EmitDefaultValue=false)]
-        public int? ActivityGraphHash { get; set; }
+        public uint? ActivityGraphHash { get; set; }
 
         /// <summary>
         /// The Activity Graph Node being pointed to by this location. (Remember that Activity Graph Node hashes are only unique within an Activity Graph: so use the combination to find the node being spoken of)
         /// </summary>
         /// <value>The Activity Graph Node being pointed to by this location. (Remember that Activity Graph Node hashes are only unique within an Activity Graph: so use the combination to find the node being spoken of)</value>
         [DataMember(Name="activityGraphNodeHash", EmitDefaultValue=false)]
-        public int? ActivityGraphNodeHash { get; set; }
+        public uint? ActivityGraphNodeHash { get; set; }
 
         /// <summary>
         /// The Activity Bubble within the Destination. Look this up in the DestinyDestinationDefinition&#39;s bubbles and bubbleSettings properties.
         /// </summary>
         /// <value>The Activity Bubble within the Destination. Look this up in the DestinyDestinationDefinition&#39;s bubbles and bubbleSettings properties.</value>
         [DataMember(Name="activityBubbleName", EmitDefaultValue=false)]
-        public int? ActivityBubbleName { get; set; }
+        public uint? ActivityBubbleName { get; set; }
 
         /// <summary>
         /// If we had map information, this would tell us something cool about the path this location wants you to take. I wish we had map information.
         /// </summary>
         /// <value>If we had map information, this would tell us something cool about the path this location wants you to take. I wish we had map information.</value>
         [DataMember(Name="activityPathBundle", EmitDefaultValue=false)]
-        public int? ActivityPathBundle { get; set; }
+        public uint? ActivityPathBundle { get; set; }
 
         /// <summary>
         /// If we had map information, this would tell us about path information related to destination on the map. Sad. Maybe you can do something cool with it. Go to town man.
         /// </summary>
         /// <value>If we had map information, this would tell us about path information related to destination on the map. Sad. Maybe you can do something cool with it. Go to town man.</value>
         [DataMember(Name="activityPathDestination", EmitDefaultValue=false)]
-        public int? ActivityPathDestination { get; set; }
+        public uint? ActivityPathDestination { get; set; }
 
         /// <summary>
         /// The type of Nav Point that this represents. See the enumeration for more info.
         /// </summary>
         /// <value>The type of Nav Point that this represents. See the enumeration for more info.</value>
         [DataMember(Name="navPointType", EmitDefaultValue=false)]
-        public Object NavPointType { get; set; }
+        public DestinyDestinyActivityNavPointType NavPointType { get; set; }
 
         /// <summary>
         /// Looks like it should be the position on the map, but sadly it does not look populated... yet?
@@ -190,7 +190,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

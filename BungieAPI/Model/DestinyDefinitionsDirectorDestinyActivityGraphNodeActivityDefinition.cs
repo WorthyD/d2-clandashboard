@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDirectorDestinyActivityGraphNodeActivityDefinition" /> class.
         /// </summary>
-        /// <param name="nodeActivityId">An identifier for this node activity. It is only guaranteed to be unique within the Activity Graph..</param>
-        /// <param name="activityHash">The activity that will be activated if the user clicks on this node. Controls all activity-related information displayed on the node if it is active (the text shown in the tooltip etc).</param>
-        public DestinyDefinitionsDirectorDestinyActivityGraphNodeActivityDefinition(int? nodeActivityId = default(int?), int? activityHash = default(int?))
+        /// <param name="NodeActivityId">An identifier for this node activity. It is only guaranteed to be unique within the Activity Graph..</param>
+        /// <param name="ActivityHash">The activity that will be activated if the user clicks on this node. Controls all activity-related information displayed on the node if it is active (the text shown in the tooltip etc).</param>
+        public DestinyDefinitionsDirectorDestinyActivityGraphNodeActivityDefinition(uint? NodeActivityId = default(uint?), uint? ActivityHash = default(uint?))
         {
-            this.NodeActivityId = nodeActivityId;
-            this.ActivityHash = activityHash;
+            this.NodeActivityId = NodeActivityId;
+            this.ActivityHash = ActivityHash;
         }
         
         /// <summary>
@@ -46,14 +46,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>An identifier for this node activity. It is only guaranteed to be unique within the Activity Graph.</value>
         [DataMember(Name="nodeActivityId", EmitDefaultValue=false)]
-        public int? NodeActivityId { get; set; }
+        public uint? NodeActivityId { get; set; }
 
         /// <summary>
         /// The activity that will be activated if the user clicks on this node. Controls all activity-related information displayed on the node if it is active (the text shown in the tooltip etc)
         /// </summary>
         /// <value>The activity that will be activated if the user clicks on this node. Controls all activity-related information displayed on the node if it is active (the text shown in the tooltip etc)</value>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

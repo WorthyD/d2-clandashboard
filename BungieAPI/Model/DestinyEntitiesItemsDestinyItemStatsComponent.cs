@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesItemsDestinyItemStatsComponent" /> class.
         /// </summary>
-        /// <param name="stats">If the item has stats that it provides (damage, defense, etc...), it will be given here..</param>
-        public DestinyEntitiesItemsDestinyItemStatsComponent(Dictionary<string, DestinyDestinyStat> stats = default(Dictionary<string, DestinyDestinyStat>))
+        /// <param name="Stats">If the item has stats that it provides (damage, defense, etc...), it will be given here..</param>
+        public DestinyEntitiesItemsDestinyItemStatsComponent(Dictionary<string, DestinyDestinyStat> Stats = default(Dictionary<string, DestinyDestinyStat>))
         {
-            this.Stats = stats;
+            this.Stats = Stats;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

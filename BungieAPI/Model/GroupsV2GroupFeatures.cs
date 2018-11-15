@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupFeatures" /> class.
         /// </summary>
-        /// <param name="maximumMembers">maximumMembers.</param>
-        /// <param name="maximumMembershipsOfGroupType">Maximum number of groups of this type a typical membership may join. For example, a user may join about 50 General groups with their Bungie.net account. They may join one clan per Destiny membership..</param>
-        /// <param name="capabilities">capabilities.</param>
-        /// <param name="membershipTypes">membershipTypes.</param>
-        /// <param name="invitePermissionOverride">Minimum Member Level allowed to invite new members to group  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
-        /// <param name="updateCulturePermissionOverride">Minimum Member Level allowed to update group culture  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
-        /// <param name="hostGuidedGamePermissionOverride">Minimum Member Level allowed to host guided games  Always Allowed: Founder, Acting Founder, Admin  Allowed Overrides: None, Member, Beginner  Default is Member for clans, None for groups, although this means nothing for groups..</param>
-        /// <param name="updateBannerPermissionOverride">Minimum Member Level allowed to update banner  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
-        /// <param name="joinLevel">Level to join a member at when accepting an invite, application, or joining an open clan  Default is Beginner..</param>
-        public GroupsV2GroupFeatures(int? maximumMembers = default(int?), int? maximumMembershipsOfGroupType = default(int?), GroupsV2Capabilities capabilities = default(GroupsV2Capabilities), List<BungieMembershipType> membershipTypes = default(List<BungieMembershipType>), bool? invitePermissionOverride = default(bool?), bool? updateCulturePermissionOverride = default(bool?), Object hostGuidedGamePermissionOverride = default(Object), bool? updateBannerPermissionOverride = default(bool?), Object joinLevel = default(Object))
+        /// <param name="MaximumMembers">MaximumMembers.</param>
+        /// <param name="MaximumMembershipsOfGroupType">Maximum number of groups of this type a typical membership may join. For example, a user may join about 50 General groups with their Bungie.net account. They may join one clan per Destiny membership..</param>
+        /// <param name="Capabilities">Capabilities.</param>
+        /// <param name="MembershipTypes">MembershipTypes.</param>
+        /// <param name="InvitePermissionOverride">Minimum Member Level allowed to invite new members to group  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
+        /// <param name="UpdateCulturePermissionOverride">Minimum Member Level allowed to update group culture  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
+        /// <param name="HostGuidedGamePermissionOverride">Minimum Member Level allowed to host guided games  Always Allowed: Founder, Acting Founder, Admin  Allowed Overrides: None, Member, Beginner  Default is Member for clans, None for groups, although this means nothing for groups..</param>
+        /// <param name="UpdateBannerPermissionOverride">Minimum Member Level allowed to update banner  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
+        /// <param name="JoinLevel">Level to join a member at when accepting an invite, application, or joining an open clan  Default is Beginner..</param>
+        public GroupsV2GroupFeatures(int? MaximumMembers = default(int?), int? MaximumMembershipsOfGroupType = default(int?), GroupsV2Capabilities Capabilities = default(GroupsV2Capabilities), List<BungieMembershipType> MembershipTypes = default(List<BungieMembershipType>), bool? InvitePermissionOverride = default(bool?), bool? UpdateCulturePermissionOverride = default(bool?), GroupsV2HostGuidedGamesPermissionLevel HostGuidedGamePermissionOverride = default(GroupsV2HostGuidedGamesPermissionLevel), bool? UpdateBannerPermissionOverride = default(bool?), GroupsV2RuntimeGroupMemberType JoinLevel = default(GroupsV2RuntimeGroupMemberType))
         {
-            this.MaximumMembers = maximumMembers;
-            this.MaximumMembershipsOfGroupType = maximumMembershipsOfGroupType;
-            this.Capabilities = capabilities;
-            this.MembershipTypes = membershipTypes;
-            this.InvitePermissionOverride = invitePermissionOverride;
-            this.UpdateCulturePermissionOverride = updateCulturePermissionOverride;
-            this.HostGuidedGamePermissionOverride = hostGuidedGamePermissionOverride;
-            this.UpdateBannerPermissionOverride = updateBannerPermissionOverride;
-            this.JoinLevel = joinLevel;
+            this.MaximumMembers = MaximumMembers;
+            this.MaximumMembershipsOfGroupType = MaximumMembershipsOfGroupType;
+            this.Capabilities = Capabilities;
+            this.MembershipTypes = MembershipTypes;
+            this.InvitePermissionOverride = InvitePermissionOverride;
+            this.UpdateCulturePermissionOverride = UpdateCulturePermissionOverride;
+            this.HostGuidedGamePermissionOverride = HostGuidedGamePermissionOverride;
+            this.UpdateBannerPermissionOverride = UpdateBannerPermissionOverride;
+            this.JoinLevel = JoinLevel;
         }
         
         /// <summary>
@@ -99,7 +99,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Minimum Member Level allowed to host guided games  Always Allowed: Founder, Acting Founder, Admin  Allowed Overrides: None, Member, Beginner  Default is Member for clans, None for groups, although this means nothing for groups.</value>
         [DataMember(Name="hostGuidedGamePermissionOverride", EmitDefaultValue=false)]
-        public Object HostGuidedGamePermissionOverride { get; set; }
+        public GroupsV2HostGuidedGamesPermissionLevel HostGuidedGamePermissionOverride { get; set; }
 
         /// <summary>
         /// Minimum Member Level allowed to update banner  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups.
@@ -113,7 +113,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Level to join a member at when accepting an invite, application, or joining an open clan  Default is Beginner.</value>
         [DataMember(Name="joinLevel", EmitDefaultValue=false)]
-        public Object JoinLevel { get; set; }
+        public GroupsV2RuntimeGroupMemberType JoinLevel { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,7 +140,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

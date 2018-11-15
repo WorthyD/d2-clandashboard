@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserUserInfoCard" /> class.
         /// </summary>
-        /// <param name="supplementalDisplayName">A platform specific additional display name - ex: psn Real Name, bnet Unique Name, etc..</param>
-        /// <param name="iconPath">URL the Icon if available..</param>
-        /// <param name="membershipType">Type of the membership..</param>
-        /// <param name="membershipId">Membership ID as they user is known in the Accounts service.</param>
-        /// <param name="displayName">Display Name the player has chosen for themselves. The display name is optional when the data type is used as input to a platform API..</param>
-        public UserUserInfoCard(string supplementalDisplayName = default(string), string iconPath = default(string), Object membershipType = default(Object), long? membershipId = default(long?), string displayName = default(string))
+        /// <param name="SupplementalDisplayName">A platform specific additional display name - ex: psn Real Name, bnet Unique Name, etc..</param>
+        /// <param name="IconPath">URL the Icon if available..</param>
+        /// <param name="MembershipType">Type of the membership..</param>
+        /// <param name="MembershipId">Membership ID as they user is known in the Accounts service.</param>
+        /// <param name="DisplayName">Display Name the player has chosen for themselves. The display name is optional when the data type is used as input to a platform API..</param>
+        public UserUserInfoCard(string SupplementalDisplayName = default(string), string IconPath = default(string), BungieMembershipType MembershipType = default(BungieMembershipType), long? MembershipId = default(long?), string DisplayName = default(string))
         {
-            this.SupplementalDisplayName = supplementalDisplayName;
-            this.IconPath = iconPath;
-            this.MembershipType = membershipType;
-            this.MembershipId = membershipId;
-            this.DisplayName = displayName;
+            this.SupplementalDisplayName = SupplementalDisplayName;
+            this.IconPath = IconPath;
+            this.MembershipType = MembershipType;
+            this.MembershipId = MembershipId;
+            this.DisplayName = DisplayName;
         }
         
         /// <summary>
@@ -66,7 +66,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Type of the membership.</value>
         [DataMember(Name="membershipType", EmitDefaultValue=false)]
-        public Object MembershipType { get; set; }
+        public BungieMembershipType MembershipType { get; set; }
 
         /// <summary>
         /// Membership ID as they user is known in the Accounts service
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

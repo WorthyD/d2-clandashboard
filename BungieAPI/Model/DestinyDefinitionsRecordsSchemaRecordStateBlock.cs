@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsRecordsSchemaRecordStateBlock" /> class.
         /// </summary>
-        /// <param name="featuredPriority">featuredPriority.</param>
-        /// <param name="obscuredString">obscuredString.</param>
-        public DestinyDefinitionsRecordsSchemaRecordStateBlock(int? featuredPriority = default(int?), string obscuredString = default(string))
+        /// <param name="FeaturedPriority">FeaturedPriority.</param>
+        /// <param name="ObscuredString">ObscuredString.</param>
+        public DestinyDefinitionsRecordsSchemaRecordStateBlock(int? FeaturedPriority = default(int?), string ObscuredString = default(string))
         {
-            this.FeaturedPriority = featuredPriority;
-            this.ObscuredString = obscuredString;
+            this.FeaturedPriority = FeaturedPriority;
+            this.ObscuredString = ObscuredString;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

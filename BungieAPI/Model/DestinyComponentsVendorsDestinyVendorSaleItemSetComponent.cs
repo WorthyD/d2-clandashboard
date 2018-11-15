@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsVendorsDestinyVendorSaleItemSetComponent" /> class.
         /// </summary>
-        /// <param name="saleItems">The items being sold by this vendor, keyed by the vendorItemIndex of the item being sold. (because showing sale items depends on the ordering dictated by the categories being shown - see DestinyVendorCategoryComponent - this is a dictionary for quick lookup capability.).</param>
-        public DestinyComponentsVendorsDestinyVendorSaleItemSetComponent(Dictionary<string, DestinyEntitiesVendorsDestinyVendorSaleItemComponent> saleItems = default(Dictionary<string, DestinyEntitiesVendorsDestinyVendorSaleItemComponent>))
+        /// <param name="SaleItems">The items being sold by this vendor, keyed by the vendorItemIndex of the item being sold. (because showing sale items depends on the ordering dictated by the categories being shown - see DestinyVendorCategoryComponent - this is a dictionary for quick lookup capability.).</param>
+        public DestinyComponentsVendorsDestinyVendorSaleItemSetComponent(Dictionary<string, DestinyEntitiesVendorsDestinyVendorSaleItemComponent> SaleItems = default(Dictionary<string, DestinyEntitiesVendorsDestinyVendorSaleItemComponent>))
         {
-            this.SaleItems = saleItems;
+            this.SaleItems = SaleItems;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

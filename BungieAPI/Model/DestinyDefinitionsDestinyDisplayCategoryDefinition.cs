@@ -33,24 +33,24 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyDisplayCategoryDefinition" /> class.
         /// </summary>
-        /// <param name="identifier">A string identifier for the display category..</param>
-        /// <param name="displayCategoryHash">displayCategoryHash.</param>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="displayInBanner">If true, this category should be displayed in the \&quot;Banner\&quot; section of the vendor&#39;s UI..</param>
-        /// <param name="progressionHash">If it exists, this is the hash identifier of a DestinyProgressionDefinition that represents the progression to show on this display category.  Specific categories can now have thier own distinct progression, apparently. So that&#39;s cool..</param>
-        /// <param name="sortOrder">If this category sorts items in a nonstandard way, this will be the way we sort..</param>
-        /// <param name="displayStyleHash">An indicator of how the category will be displayed in the UI. It&#39;s up to you to do something cool or interesting in response to this, or just to treat it as a normal category..</param>
-        /// <param name="displayStyleIdentifier">An indicator of how the category will be displayed in the UI. It&#39;s up to you to do something cool or interesting in response to this, or just to treat it as a normal category..</param>
-        public DestinyDefinitionsDestinyDisplayCategoryDefinition(string identifier = default(string), int? displayCategoryHash = default(int?), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), bool? displayInBanner = default(bool?), int? progressionHash = default(int?), Object sortOrder = default(Object), int? displayStyleHash = default(int?), string displayStyleIdentifier = default(string))
+        /// <param name="Identifier">A string identifier for the display category..</param>
+        /// <param name="DisplayCategoryHash">DisplayCategoryHash.</param>
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="DisplayInBanner">If true, this category should be displayed in the \&quot;Banner\&quot; section of the vendor&#39;s UI..</param>
+        /// <param name="ProgressionHash">If it exists, this is the hash identifier of a DestinyProgressionDefinition that represents the progression to show on this display category.  Specific categories can now have thier own distinct progression, apparently. So that&#39;s cool..</param>
+        /// <param name="SortOrder">If this category sorts items in a nonstandard way, this will be the way we sort..</param>
+        /// <param name="DisplayStyleHash">An indicator of how the category will be displayed in the UI. It&#39;s up to you to do something cool or interesting in response to this, or just to treat it as a normal category..</param>
+        /// <param name="DisplayStyleIdentifier">An indicator of how the category will be displayed in the UI. It&#39;s up to you to do something cool or interesting in response to this, or just to treat it as a normal category..</param>
+        public DestinyDefinitionsDestinyDisplayCategoryDefinition(string Identifier = default(string), uint? DisplayCategoryHash = default(uint?), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), bool? DisplayInBanner = default(bool?), uint? ProgressionHash = default(uint?), DestinyVendorDisplayCategorySortOrder SortOrder = default(DestinyVendorDisplayCategorySortOrder), uint? DisplayStyleHash = default(uint?), string DisplayStyleIdentifier = default(string))
         {
-            this.Identifier = identifier;
-            this.DisplayCategoryHash = displayCategoryHash;
-            this.DisplayProperties = displayProperties;
-            this.DisplayInBanner = displayInBanner;
-            this.ProgressionHash = progressionHash;
-            this.SortOrder = sortOrder;
-            this.DisplayStyleHash = displayStyleHash;
-            this.DisplayStyleIdentifier = displayStyleIdentifier;
+            this.Identifier = Identifier;
+            this.DisplayCategoryHash = DisplayCategoryHash;
+            this.DisplayProperties = DisplayProperties;
+            this.DisplayInBanner = DisplayInBanner;
+            this.ProgressionHash = ProgressionHash;
+            this.SortOrder = SortOrder;
+            this.DisplayStyleHash = DisplayStyleHash;
+            this.DisplayStyleIdentifier = DisplayStyleIdentifier;
         }
         
         /// <summary>
@@ -64,7 +64,7 @@ namespace BungieAPI.Model
         /// Gets or Sets DisplayCategoryHash
         /// </summary>
         [DataMember(Name="displayCategoryHash", EmitDefaultValue=false)]
-        public int? DisplayCategoryHash { get; set; }
+        public uint? DisplayCategoryHash { get; set; }
 
         /// <summary>
         /// Gets or Sets DisplayProperties
@@ -84,21 +84,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If it exists, this is the hash identifier of a DestinyProgressionDefinition that represents the progression to show on this display category.  Specific categories can now have thier own distinct progression, apparently. So that&#39;s cool.</value>
         [DataMember(Name="progressionHash", EmitDefaultValue=false)]
-        public int? ProgressionHash { get; set; }
+        public uint? ProgressionHash { get; set; }
 
         /// <summary>
         /// If this category sorts items in a nonstandard way, this will be the way we sort.
         /// </summary>
         /// <value>If this category sorts items in a nonstandard way, this will be the way we sort.</value>
         [DataMember(Name="sortOrder", EmitDefaultValue=false)]
-        public Object SortOrder { get; set; }
+        public DestinyVendorDisplayCategorySortOrder SortOrder { get; set; }
 
         /// <summary>
         /// An indicator of how the category will be displayed in the UI. It&#39;s up to you to do something cool or interesting in response to this, or just to treat it as a normal category.
         /// </summary>
         /// <value>An indicator of how the category will be displayed in the UI. It&#39;s up to you to do something cool or interesting in response to this, or just to treat it as a normal category.</value>
         [DataMember(Name="displayStyleHash", EmitDefaultValue=false)]
-        public int? DisplayStyleHash { get; set; }
+        public uint? DisplayStyleHash { get; set; }
 
         /// <summary>
         /// An indicator of how the category will be displayed in the UI. It&#39;s up to you to do something cool or interesting in response to this, or just to treat it as a normal category.
@@ -131,7 +131,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

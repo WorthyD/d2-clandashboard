@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorItemSocketOverride" /> class.
         /// </summary>
-        /// <param name="singleItemHash">If this is populated, the socket will be overridden with a specific plug.  If this isn&#39;t populated, it&#39;s being overridden by something more complicated that is only known by the Game Server and God, which means we can&#39;t tell you in advance what it&#39;ll be..</param>
-        /// <param name="randomizedOptionsCount">If this is greater than -1, the number of randomized plugs on this socket will be set to this quantity instead of whatever it&#39;s set to by default..</param>
-        /// <param name="socketTypeHash">This appears to be used to select which socket ultimately gets the override defined here..</param>
-        public DestinyDefinitionsDestinyVendorItemSocketOverride(int? singleItemHash = default(int?), int? randomizedOptionsCount = default(int?), int? socketTypeHash = default(int?))
+        /// <param name="SingleItemHash">If this is populated, the socket will be overridden with a specific plug.  If this isn&#39;t populated, it&#39;s being overridden by something more complicated that is only known by the Game Server and God, which means we can&#39;t tell you in advance what it&#39;ll be..</param>
+        /// <param name="RandomizedOptionsCount">If this is greater than -1, the number of randomized plugs on this socket will be set to this quantity instead of whatever it&#39;s set to by default..</param>
+        /// <param name="SocketTypeHash">This appears to be used to select which socket ultimately gets the override defined here..</param>
+        public DestinyDefinitionsDestinyVendorItemSocketOverride(uint? SingleItemHash = default(uint?), int? RandomizedOptionsCount = default(int?), uint? SocketTypeHash = default(uint?))
         {
-            this.SingleItemHash = singleItemHash;
-            this.RandomizedOptionsCount = randomizedOptionsCount;
-            this.SocketTypeHash = socketTypeHash;
+            this.SingleItemHash = SingleItemHash;
+            this.RandomizedOptionsCount = RandomizedOptionsCount;
+            this.SocketTypeHash = SocketTypeHash;
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If this is populated, the socket will be overridden with a specific plug.  If this isn&#39;t populated, it&#39;s being overridden by something more complicated that is only known by the Game Server and God, which means we can&#39;t tell you in advance what it&#39;ll be.</value>
         [DataMember(Name="singleItemHash", EmitDefaultValue=false)]
-        public int? SingleItemHash { get; set; }
+        public uint? SingleItemHash { get; set; }
 
         /// <summary>
         /// If this is greater than -1, the number of randomized plugs on this socket will be set to this quantity instead of whatever it&#39;s set to by default.
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>This appears to be used to select which socket ultimately gets the override defined here.</value>
         [DataMember(Name="socketTypeHash", EmitDefaultValue=false)]
-        public int? SocketTypeHash { get; set; }
+        public uint? SocketTypeHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

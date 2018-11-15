@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyResponsesInventoryChangedResponse" /> class.
         /// </summary>
-        /// <param name="addedInventoryItems">Items that appeared in the inventory possibly as a result of an action..</param>
-        /// <param name="removedInventoryItems">Items that disappeared from the inventory possibly as a result of an action..</param>
-        public DestinyResponsesInventoryChangedResponse(List<DestinyEntitiesItemsDestinyItemComponent> addedInventoryItems = default(List<DestinyEntitiesItemsDestinyItemComponent>), List<DestinyEntitiesItemsDestinyItemComponent> removedInventoryItems = default(List<DestinyEntitiesItemsDestinyItemComponent>))
+        /// <param name="AddedInventoryItems">Items that appeared in the inventory possibly as a result of an action..</param>
+        /// <param name="RemovedInventoryItems">Items that disappeared from the inventory possibly as a result of an action..</param>
+        public DestinyResponsesInventoryChangedResponse(List<DestinyEntitiesItemsDestinyItemComponent> AddedInventoryItems = default(List<DestinyEntitiesItemsDestinyItemComponent>), List<DestinyEntitiesItemsDestinyItemComponent> RemovedInventoryItems = default(List<DestinyEntitiesItemsDestinyItemComponent>))
         {
-            this.AddedInventoryItems = addedInventoryItems;
-            this.RemovedInventoryItems = removedInventoryItems;
+            this.AddedInventoryItems = AddedInventoryItems;
+            this.RemovedInventoryItems = RemovedInventoryItems;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

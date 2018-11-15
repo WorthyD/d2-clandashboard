@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneChallengeDefinition" /> class.
         /// </summary>
-        /// <param name="challengeObjectiveHash">The challenge related to this milestone..</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneChallengeDefinition(int? challengeObjectiveHash = default(int?))
+        /// <param name="ChallengeObjectiveHash">The challenge related to this milestone..</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneChallengeDefinition(uint? ChallengeObjectiveHash = default(uint?))
         {
-            this.ChallengeObjectiveHash = challengeObjectiveHash;
+            this.ChallengeObjectiveHash = ChallengeObjectiveHash;
         }
         
         /// <summary>
@@ -44,7 +44,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The challenge related to this milestone.</value>
         [DataMember(Name="challengeObjectiveHash", EmitDefaultValue=false)]
-        public int? ChallengeObjectiveHash { get; set; }
+        public uint? ChallengeObjectiveHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

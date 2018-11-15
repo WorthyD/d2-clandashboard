@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemObjectiveBlockDefinition" /> class.
         /// </summary>
-        /// <param name="objectiveHashes">The hashes to Objectives (DestinyObjectiveDefinition) that are part of this Quest Step, in the order that they should be rendered..</param>
-        /// <param name="displayActivityHashes">For every entry in objectiveHashes, there is a corresponding entry in this array at the same index. If the objective is meant to be associated with a specific DestinyActivityDefinition, there will be a valid hash at that index. Otherwise, it will be invalid (0).  Rendered somewhat obsolete by perObjectiveDisplayProperties, which currently has much the same information but may end up with more info in the future..</param>
-        /// <param name="requireFullObjectiveCompletion">If True, all objectives must be completed for the step to be completed. If False, any one objective can be completed for the step to be completed..</param>
-        /// <param name="questlineItemHash">The hash for the DestinyInventoryItemDefinition representing the Quest to which this Quest Step belongs..</param>
-        /// <param name="narrative">The localized string for narrative text related to this quest step, if any..</param>
-        /// <param name="objectiveVerbName">The localized string describing an action to be performed associated with the objectives, if any..</param>
-        /// <param name="questTypeIdentifier">The identifier for the type of quest being performed, if any. Not associated with any fixed definition, yet..</param>
-        /// <param name="questTypeHash">A hashed value for the questTypeIdentifier, because apparently I like to be redundant..</param>
-        /// <param name="perObjectiveDisplayProperties">One entry per Objective on the item, it will have related display information..</param>
-        public DestinyDefinitionsDestinyItemObjectiveBlockDefinition(List<int?> objectiveHashes = default(List<int?>), List<int?> displayActivityHashes = default(List<int?>), bool? requireFullObjectiveCompletion = default(bool?), int? questlineItemHash = default(int?), string narrative = default(string), string objectiveVerbName = default(string), string questTypeIdentifier = default(string), int? questTypeHash = default(int?), List<DestinyDefinitionsDestinyObjectiveDisplayProperties> perObjectiveDisplayProperties = default(List<DestinyDefinitionsDestinyObjectiveDisplayProperties>))
+        /// <param name="ObjectiveHashes">The hashes to Objectives (DestinyObjectiveDefinition) that are part of this Quest Step, in the order that they should be rendered..</param>
+        /// <param name="DisplayActivityHashes">For every entry in objectiveHashes, there is a corresponding entry in this array at the same index. If the objective is meant to be associated with a specific DestinyActivityDefinition, there will be a valid hash at that index. Otherwise, it will be invalid (0).  Rendered somewhat obsolete by perObjectiveDisplayProperties, which currently has much the same information but may end up with more info in the future..</param>
+        /// <param name="RequireFullObjectiveCompletion">If True, all objectives must be completed for the step to be completed. If False, any one objective can be completed for the step to be completed..</param>
+        /// <param name="QuestlineItemHash">The hash for the DestinyInventoryItemDefinition representing the Quest to which this Quest Step belongs..</param>
+        /// <param name="Narrative">The localized string for narrative text related to this quest step, if any..</param>
+        /// <param name="ObjectiveVerbName">The localized string describing an action to be performed associated with the objectives, if any..</param>
+        /// <param name="QuestTypeIdentifier">The identifier for the type of quest being performed, if any. Not associated with any fixed definition, yet..</param>
+        /// <param name="QuestTypeHash">A hashed value for the questTypeIdentifier, because apparently I like to be redundant..</param>
+        /// <param name="PerObjectiveDisplayProperties">One entry per Objective on the item, it will have related display information..</param>
+        public DestinyDefinitionsDestinyItemObjectiveBlockDefinition(List<uint?> ObjectiveHashes = default(List<uint?>), List<uint?> DisplayActivityHashes = default(List<uint?>), bool? RequireFullObjectiveCompletion = default(bool?), uint? QuestlineItemHash = default(uint?), string Narrative = default(string), string ObjectiveVerbName = default(string), string QuestTypeIdentifier = default(string), uint? QuestTypeHash = default(uint?), List<DestinyDefinitionsDestinyObjectiveDisplayProperties> PerObjectiveDisplayProperties = default(List<DestinyDefinitionsDestinyObjectiveDisplayProperties>))
         {
-            this.ObjectiveHashes = objectiveHashes;
-            this.DisplayActivityHashes = displayActivityHashes;
-            this.RequireFullObjectiveCompletion = requireFullObjectiveCompletion;
-            this.QuestlineItemHash = questlineItemHash;
-            this.Narrative = narrative;
-            this.ObjectiveVerbName = objectiveVerbName;
-            this.QuestTypeIdentifier = questTypeIdentifier;
-            this.QuestTypeHash = questTypeHash;
-            this.PerObjectiveDisplayProperties = perObjectiveDisplayProperties;
+            this.ObjectiveHashes = ObjectiveHashes;
+            this.DisplayActivityHashes = DisplayActivityHashes;
+            this.RequireFullObjectiveCompletion = RequireFullObjectiveCompletion;
+            this.QuestlineItemHash = QuestlineItemHash;
+            this.Narrative = Narrative;
+            this.ObjectiveVerbName = ObjectiveVerbName;
+            this.QuestTypeIdentifier = QuestTypeIdentifier;
+            this.QuestTypeHash = QuestTypeHash;
+            this.PerObjectiveDisplayProperties = PerObjectiveDisplayProperties;
         }
         
         /// <summary>
@@ -60,14 +60,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hashes to Objectives (DestinyObjectiveDefinition) that are part of this Quest Step, in the order that they should be rendered.</value>
         [DataMember(Name="objectiveHashes", EmitDefaultValue=false)]
-        public List<int?> ObjectiveHashes { get; set; }
+        public List<uint?> ObjectiveHashes { get; set; }
 
         /// <summary>
         /// For every entry in objectiveHashes, there is a corresponding entry in this array at the same index. If the objective is meant to be associated with a specific DestinyActivityDefinition, there will be a valid hash at that index. Otherwise, it will be invalid (0).  Rendered somewhat obsolete by perObjectiveDisplayProperties, which currently has much the same information but may end up with more info in the future.
         /// </summary>
         /// <value>For every entry in objectiveHashes, there is a corresponding entry in this array at the same index. If the objective is meant to be associated with a specific DestinyActivityDefinition, there will be a valid hash at that index. Otherwise, it will be invalid (0).  Rendered somewhat obsolete by perObjectiveDisplayProperties, which currently has much the same information but may end up with more info in the future.</value>
         [DataMember(Name="displayActivityHashes", EmitDefaultValue=false)]
-        public List<int?> DisplayActivityHashes { get; set; }
+        public List<uint?> DisplayActivityHashes { get; set; }
 
         /// <summary>
         /// If True, all objectives must be completed for the step to be completed. If False, any one objective can be completed for the step to be completed.
@@ -81,7 +81,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash for the DestinyInventoryItemDefinition representing the Quest to which this Quest Step belongs.</value>
         [DataMember(Name="questlineItemHash", EmitDefaultValue=false)]
-        public int? QuestlineItemHash { get; set; }
+        public uint? QuestlineItemHash { get; set; }
 
         /// <summary>
         /// The localized string for narrative text related to this quest step, if any.
@@ -109,7 +109,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A hashed value for the questTypeIdentifier, because apparently I like to be redundant.</value>
         [DataMember(Name="questTypeHash", EmitDefaultValue=false)]
-        public int? QuestTypeHash { get; set; }
+        public uint? QuestTypeHash { get; set; }
 
         /// <summary>
         /// One entry per Objective on the item, it will have related display information.
@@ -143,7 +143,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

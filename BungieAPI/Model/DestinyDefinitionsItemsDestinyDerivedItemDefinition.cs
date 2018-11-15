@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsItemsDestinyDerivedItemDefinition" /> class.
         /// </summary>
-        /// <param name="itemHash">The hash for the DestinyInventoryItemDefinition of this derived item, if there is one. Sometimes we are given this information as a manual override, in which case there won&#39;t be an actual DestinyInventoryItemDefinition for what we display, but you can still show the strings from this object itself..</param>
-        /// <param name="itemName">The name of the derived item..</param>
-        /// <param name="itemDetail">Additional details about the derived item, in addition to the description..</param>
-        /// <param name="itemDescription">A brief description of the item..</param>
-        /// <param name="iconPath">An icon for the item..</param>
-        /// <param name="vendorItemIndex">If the item was derived from a \&quot;Preview Vendor\&quot;, this will be an index into the DestinyVendorDefinition&#39;s itemList property. Otherwise, -1..</param>
-        public DestinyDefinitionsItemsDestinyDerivedItemDefinition(int? itemHash = default(int?), string itemName = default(string), string itemDetail = default(string), string itemDescription = default(string), string iconPath = default(string), int? vendorItemIndex = default(int?))
+        /// <param name="ItemHash">The hash for the DestinyInventoryItemDefinition of this derived item, if there is one. Sometimes we are given this information as a manual override, in which case there won&#39;t be an actual DestinyInventoryItemDefinition for what we display, but you can still show the strings from this object itself..</param>
+        /// <param name="ItemName">The name of the derived item..</param>
+        /// <param name="ItemDetail">Additional details about the derived item, in addition to the description..</param>
+        /// <param name="ItemDescription">A brief description of the item..</param>
+        /// <param name="IconPath">An icon for the item..</param>
+        /// <param name="VendorItemIndex">If the item was derived from a \&quot;Preview Vendor\&quot;, this will be an index into the DestinyVendorDefinition&#39;s itemList property. Otherwise, -1..</param>
+        public DestinyDefinitionsItemsDestinyDerivedItemDefinition(uint? ItemHash = default(uint?), string ItemName = default(string), string ItemDetail = default(string), string ItemDescription = default(string), string IconPath = default(string), int? VendorItemIndex = default(int?))
         {
-            this.ItemHash = itemHash;
-            this.ItemName = itemName;
-            this.ItemDetail = itemDetail;
-            this.ItemDescription = itemDescription;
-            this.IconPath = iconPath;
-            this.VendorItemIndex = vendorItemIndex;
+            this.ItemHash = ItemHash;
+            this.ItemName = ItemName;
+            this.ItemDetail = ItemDetail;
+            this.ItemDescription = ItemDescription;
+            this.IconPath = IconPath;
+            this.VendorItemIndex = VendorItemIndex;
         }
         
         /// <summary>
@@ -54,7 +54,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash for the DestinyInventoryItemDefinition of this derived item, if there is one. Sometimes we are given this information as a manual override, in which case there won&#39;t be an actual DestinyInventoryItemDefinition for what we display, but you can still show the strings from this object itself.</value>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// The name of the derived item.
@@ -113,7 +113,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

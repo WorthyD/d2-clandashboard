@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardItem" /> class.
         /// </summary>
-        /// <param name="vendorHash">The quest reward item *may* be associated with a vendor. If so, this is that vendor. Use this hash to look up the DestinyVendorDefinition..</param>
-        /// <param name="vendorItemIndex">The quest reward item *may* be associated with a vendor. If so, this is the index of the item being sold, which we can use at runtime to find instanced item information for the reward item..</param>
-        /// <param name="itemHash">The hash identifier for the item in question. Use it to look up the item&#39;s DestinyInventoryItemDefinition..</param>
-        /// <param name="itemInstanceId">If this quantity is referring to a specific instance of an item, this will have the item&#39;s instance ID. Normally, this will be null..</param>
-        /// <param name="quantity">The amount of the item needed/available depending on the context of where DestinyItemQuantity is being used..</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardItem(int? vendorHash = default(int?), int? vendorItemIndex = default(int?), int? itemHash = default(int?), long? itemInstanceId = default(long?), int? quantity = default(int?))
+        /// <param name="VendorHash">The quest reward item *may* be associated with a vendor. If so, this is that vendor. Use this hash to look up the DestinyVendorDefinition..</param>
+        /// <param name="VendorItemIndex">The quest reward item *may* be associated with a vendor. If so, this is the index of the item being sold, which we can use at runtime to find instanced item information for the reward item..</param>
+        /// <param name="ItemHash">The hash identifier for the item in question. Use it to look up the item&#39;s DestinyInventoryItemDefinition..</param>
+        /// <param name="ItemInstanceId">If this quantity is referring to a specific instance of an item, this will have the item&#39;s instance ID. Normally, this will be null..</param>
+        /// <param name="Quantity">The amount of the item needed/available depending on the context of where DestinyItemQuantity is being used..</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardItem(uint? VendorHash = default(uint?), int? VendorItemIndex = default(int?), uint? ItemHash = default(uint?), long? ItemInstanceId = default(long?), int? Quantity = default(int?))
         {
-            this.VendorHash = vendorHash;
-            this.VendorItemIndex = vendorItemIndex;
-            this.ItemHash = itemHash;
-            this.ItemInstanceId = itemInstanceId;
-            this.Quantity = quantity;
+            this.VendorHash = VendorHash;
+            this.VendorItemIndex = VendorItemIndex;
+            this.ItemHash = ItemHash;
+            this.ItemInstanceId = ItemInstanceId;
+            this.Quantity = Quantity;
         }
         
         /// <summary>
@@ -52,7 +52,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The quest reward item *may* be associated with a vendor. If so, this is that vendor. Use this hash to look up the DestinyVendorDefinition.</value>
         [DataMember(Name="vendorHash", EmitDefaultValue=false)]
-        public int? VendorHash { get; set; }
+        public uint? VendorHash { get; set; }
 
         /// <summary>
         /// The quest reward item *may* be associated with a vendor. If so, this is the index of the item being sold, which we can use at runtime to find instanced item information for the reward item.
@@ -66,7 +66,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the item in question. Use it to look up the item&#39;s DestinyInventoryItemDefinition.</value>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// If this quantity is referring to a specific instance of an item, this will have the item&#39;s instance ID. Normally, this will be null.
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,22 +33,22 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyDamageTypeDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">The description of the damage type, icon etc....</param>
-        /// <param name="transparentIconPath">A variant of the icon that is transparent and colorless..</param>
-        /// <param name="showIcon">If TRUE, the game shows this damage type&#39;s icon. Otherwise, it doesn&#39;t. Whether you show it or not is up to you..</param>
-        /// <param name="enumValue">We have an enumeration for damage types for quick reference. This is the current definition&#39;s damage type enum value..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyDamageTypeDefinition(Object displayProperties = default(Object), string transparentIconPath = default(string), bool? showIcon = default(bool?), Object enumValue = default(Object), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">The description of the damage type, icon etc....</param>
+        /// <param name="TransparentIconPath">A variant of the icon that is transparent and colorless..</param>
+        /// <param name="ShowIcon">If TRUE, the game shows this damage type&#39;s icon. Otherwise, it doesn&#39;t. Whether you show it or not is up to you..</param>
+        /// <param name="EnumValue">We have an enumeration for damage types for quick reference. This is the current definition&#39;s damage type enum value..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyDamageTypeDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string TransparentIconPath = default(string), bool? ShowIcon = default(bool?), DestinyDamageType EnumValue = default(DestinyDamageType), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.TransparentIconPath = transparentIconPath;
-            this.ShowIcon = showIcon;
-            this.EnumValue = enumValue;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.TransparentIconPath = TransparentIconPath;
+            this.ShowIcon = ShowIcon;
+            this.EnumValue = EnumValue;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -56,7 +56,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The description of the damage type, icon etc...</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// A variant of the icon that is transparent and colorless.
@@ -77,14 +77,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>We have an enumeration for damage types for quick reference. This is the current definition&#39;s damage type enum value.</value>
         [DataMember(Name="enumValue", EmitDefaultValue=false)]
-        public Object EnumValue { get; set; }
+        public DestinyDamageType EnumValue { get; set; }
 
         /// <summary>
         /// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -123,7 +123,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,25 +33,25 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyRequestsActionsDestinyPostmasterTransferRequest" /> class.
         /// </summary>
-        /// <param name="itemReferenceHash">itemReferenceHash.</param>
-        /// <param name="stackSize">stackSize.</param>
-        /// <param name="itemId">itemId.</param>
-        /// <param name="characterId">characterId.</param>
-        /// <param name="membershipType">membershipType.</param>
-        public DestinyRequestsActionsDestinyPostmasterTransferRequest(int? itemReferenceHash = default(int?), int? stackSize = default(int?), long? itemId = default(long?), long? characterId = default(long?), BungieMembershipType membershipType = default(BungieMembershipType))
+        /// <param name="ItemReferenceHash">ItemReferenceHash.</param>
+        /// <param name="StackSize">StackSize.</param>
+        /// <param name="ItemId">ItemId.</param>
+        /// <param name="CharacterId">CharacterId.</param>
+        /// <param name="MembershipType">MembershipType.</param>
+        public DestinyRequestsActionsDestinyPostmasterTransferRequest(uint? ItemReferenceHash = default(uint?), int? StackSize = default(int?), long? ItemId = default(long?), long? CharacterId = default(long?), BungieMembershipType MembershipType = default(BungieMembershipType))
         {
-            this.ItemReferenceHash = itemReferenceHash;
-            this.StackSize = stackSize;
-            this.ItemId = itemId;
-            this.CharacterId = characterId;
-            this.MembershipType = membershipType;
+            this.ItemReferenceHash = ItemReferenceHash;
+            this.StackSize = StackSize;
+            this.ItemId = ItemId;
+            this.CharacterId = CharacterId;
+            this.MembershipType = MembershipType;
         }
         
         /// <summary>
         /// Gets or Sets ItemReferenceHash
         /// </summary>
         [DataMember(Name="itemReferenceHash", EmitDefaultValue=false)]
-        public int? ItemReferenceHash { get; set; }
+        public uint? ItemReferenceHash { get; set; }
 
         /// <summary>
         /// Gets or Sets StackSize
@@ -98,7 +98,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

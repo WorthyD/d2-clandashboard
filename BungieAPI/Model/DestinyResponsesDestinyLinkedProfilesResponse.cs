@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyResponsesDestinyLinkedProfilesResponse" /> class.
         /// </summary>
-        /// <param name="profiles">Any Destiny account for whom we could successfully pull characters will be returned here, as the Platform-level summary of user data. (no character data, no Destiny account data other than the Membership ID and Type so you can make further queries).</param>
-        /// <param name="bnetMembership">If the requested membership had a linked Bungie.Net membership ID, this is the basic information about that BNet account.  I know, Tetron; I know this is mixing UserServices concerns with DestinyServices concerns. But it&#39;s so damn convenient! https://www.youtube.com/watch?v&#x3D;X5R-bB-gKVI.</param>
-        /// <param name="profilesWithErrors">This is brief summary info for profiles that we believe have valid Destiny info, but who failed to return data for some other reason and thus we know that subsequent calls for their info will also fail..</param>
-        public DestinyResponsesDestinyLinkedProfilesResponse(List<UserUserInfoCard> profiles = default(List<UserUserInfoCard>), Object bnetMembership = default(Object), List<DestinyResponsesDestinyErrorProfile> profilesWithErrors = default(List<DestinyResponsesDestinyErrorProfile>))
+        /// <param name="Profiles">Any Destiny account for whom we could successfully pull characters will be returned here, as the Platform-level summary of user data. (no character data, no Destiny account data other than the Membership ID and Type so you can make further queries).</param>
+        /// <param name="BnetMembership">If the requested membership had a linked Bungie.Net membership ID, this is the basic information about that BNet account.  I know, Tetron; I know this is mixing UserServices concerns with DestinyServices concerns. But it&#39;s so damn convenient! https://www.youtube.com/watch?v&#x3D;X5R-bB-gKVI.</param>
+        /// <param name="ProfilesWithErrors">This is brief summary info for profiles that we believe have valid Destiny info, but who failed to return data for some other reason and thus we know that subsequent calls for their info will also fail..</param>
+        public DestinyResponsesDestinyLinkedProfilesResponse(List<UserUserInfoCard> Profiles = default(List<UserUserInfoCard>), UserUserInfoCard BnetMembership = default(UserUserInfoCard), List<DestinyResponsesDestinyErrorProfile> ProfilesWithErrors = default(List<DestinyResponsesDestinyErrorProfile>))
         {
-            this.Profiles = profiles;
-            this.BnetMembership = bnetMembership;
-            this.ProfilesWithErrors = profilesWithErrors;
+            this.Profiles = Profiles;
+            this.BnetMembership = BnetMembership;
+            this.ProfilesWithErrors = ProfilesWithErrors;
         }
         
         /// <summary>
@@ -55,7 +55,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the requested membership had a linked Bungie.Net membership ID, this is the basic information about that BNet account.  I know, Tetron; I know this is mixing UserServices concerns with DestinyServices concerns. But it&#39;s so damn convenient! https://www.youtube.com/watch?v&#x3D;X5R-bB-gKVI</value>
         [DataMember(Name="bnetMembership", EmitDefaultValue=false)]
-        public Object BnetMembership { get; set; }
+        public UserUserInfoCard BnetMembership { get; set; }
 
         /// <summary>
         /// This is brief summary info for profiles that we believe have valid Destiny info, but who failed to return data for some other reason and thus we know that subsequent calls for their info will also fail.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

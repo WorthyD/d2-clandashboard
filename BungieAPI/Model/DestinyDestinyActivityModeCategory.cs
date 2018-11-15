@@ -28,35 +28,33 @@ namespace BungieAPI.Model
     /// Activity Modes are grouped into a few possible broad categories.
     /// </summary>
     /// <value>Activity Modes are grouped into a few possible broad categories.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyActivityModeCategory
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// Activities that are neither PVP nor PVE, such as social activities.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// PvE activities, where you shoot aliens in the face.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        PvE,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// PvP activities, where you teabag other humans in the face.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        PvP,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4
+		/// <summary>
+		/// PVE competitive activities.
+		/// </summary>
+		[EnumMember(Value = "3")]
+        PvECompetitive
     }
 
 }

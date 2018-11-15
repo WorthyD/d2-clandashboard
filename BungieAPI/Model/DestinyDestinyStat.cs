@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDestinyStat" /> class.
         /// </summary>
-        /// <param name="statHash">The hash identifier for the Stat. Use it to look up the DestinyStatDefinition for static data about the stat..</param>
-        /// <param name="value">The current value of the Stat..</param>
-        /// <param name="maximumValue">The highest possible value for the stat, if we were able to compute it. (I wouldn&#39;t necessarily trust this value right now. I would like to improve its calculation in later iterations of the API. Consider this a placeholder for desired future functionality).</param>
-        public DestinyDestinyStat(int? statHash = default(int?), int? value = default(int?), int? maximumValue = default(int?))
+        /// <param name="StatHash">The hash identifier for the Stat. Use it to look up the DestinyStatDefinition for static data about the stat..</param>
+        /// <param name="Value">The current value of the Stat..</param>
+        /// <param name="MaximumValue">The highest possible value for the stat, if we were able to compute it. (I wouldn&#39;t necessarily trust this value right now. I would like to improve its calculation in later iterations of the API. Consider this a placeholder for desired future functionality).</param>
+        public DestinyDestinyStat(uint? StatHash = default(uint?), int? Value = default(int?), int? MaximumValue = default(int?))
         {
-            this.StatHash = statHash;
-            this.Value = value;
-            this.MaximumValue = maximumValue;
+            this.StatHash = StatHash;
+            this.Value = Value;
+            this.MaximumValue = MaximumValue;
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the Stat. Use it to look up the DestinyStatDefinition for static data about the stat.</value>
         [DataMember(Name="statHash", EmitDefaultValue=false)]
-        public int? StatHash { get; set; }
+        public uint? StatHash { get; set; }
 
         /// <summary>
         /// The current value of the Stat.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

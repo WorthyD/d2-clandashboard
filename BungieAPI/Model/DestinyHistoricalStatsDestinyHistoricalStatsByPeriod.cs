@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyHistoricalStatsByPeriod" /> class.
         /// </summary>
-        /// <param name="allTime">allTime.</param>
-        /// <param name="allTimeTier1">allTimeTier1.</param>
-        /// <param name="allTimeTier2">allTimeTier2.</param>
-        /// <param name="allTimeTier3">allTimeTier3.</param>
-        /// <param name="daily">daily.</param>
-        /// <param name="monthly">monthly.</param>
-        public DestinyHistoricalStatsDestinyHistoricalStatsByPeriod(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> allTime = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> allTimeTier1 = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> allTimeTier2 = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> allTimeTier3 = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>), List<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup> daily = default(List<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup>), List<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup> monthly = default(List<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup>))
+        /// <param name="AllTime">AllTime.</param>
+        /// <param name="AllTimeTier1">AllTimeTier1.</param>
+        /// <param name="AllTimeTier2">AllTimeTier2.</param>
+        /// <param name="AllTimeTier3">AllTimeTier3.</param>
+        /// <param name="Daily">Daily.</param>
+        /// <param name="Monthly">Monthly.</param>
+        public DestinyHistoricalStatsDestinyHistoricalStatsByPeriod(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> AllTime = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> AllTimeTier1 = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> AllTimeTier2 = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> AllTimeTier3 = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>), List<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup> Daily = default(List<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup>), List<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup> Monthly = default(List<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup>))
         {
-            this.AllTime = allTime;
-            this.AllTimeTier1 = allTimeTier1;
-            this.AllTimeTier2 = allTimeTier2;
-            this.AllTimeTier3 = allTimeTier3;
-            this.Daily = daily;
-            this.Monthly = monthly;
+            this.AllTime = AllTime;
+            this.AllTimeTier1 = AllTimeTier1;
+            this.AllTimeTier2 = AllTimeTier2;
+            this.AllTimeTier3 = AllTimeTier3;
+            this.Daily = Daily;
+            this.Monthly = Monthly;
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

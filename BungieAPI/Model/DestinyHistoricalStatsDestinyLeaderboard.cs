@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyLeaderboard" /> class.
         /// </summary>
-        /// <param name="statId">statId.</param>
-        /// <param name="entries">entries.</param>
-        public DestinyHistoricalStatsDestinyLeaderboard(string statId = default(string), List<DestinyHistoricalStatsDestinyLeaderboardEntry> entries = default(List<DestinyHistoricalStatsDestinyLeaderboardEntry>))
+        /// <param name="StatId">StatId.</param>
+        /// <param name="Entries">Entries.</param>
+        public DestinyHistoricalStatsDestinyLeaderboard(string StatId = default(string), List<DestinyHistoricalStatsDestinyLeaderboardEntry> Entries = default(List<DestinyHistoricalStatsDestinyLeaderboardEntry>))
         {
-            this.StatId = statId;
-            this.Entries = entries;
+            this.StatId = StatId;
+            this.Entries = Entries;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

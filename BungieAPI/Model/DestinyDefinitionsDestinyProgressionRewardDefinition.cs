@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyProgressionRewardDefinition" /> class.
         /// </summary>
-        /// <param name="progressionMappingHash">The hash identifier of the DestinyProgressionMappingDefinition that contains the progressions for which experience should be applied..</param>
-        /// <param name="amount">The amount of experience to give to each of the mapped progressions..</param>
-        /// <param name="applyThrottles">If true, the game&#39;s internal mechanisms to throttle progression should be applied..</param>
-        public DestinyDefinitionsDestinyProgressionRewardDefinition(int? progressionMappingHash = default(int?), int? amount = default(int?), bool? applyThrottles = default(bool?))
+        /// <param name="ProgressionMappingHash">The hash identifier of the DestinyProgressionMappingDefinition that contains the progressions for which experience should be applied..</param>
+        /// <param name="Amount">The amount of experience to give to each of the mapped progressions..</param>
+        /// <param name="ApplyThrottles">If true, the game&#39;s internal mechanisms to throttle progression should be applied..</param>
+        public DestinyDefinitionsDestinyProgressionRewardDefinition(uint? ProgressionMappingHash = default(uint?), int? Amount = default(int?), bool? ApplyThrottles = default(bool?))
         {
-            this.ProgressionMappingHash = progressionMappingHash;
-            this.Amount = amount;
-            this.ApplyThrottles = applyThrottles;
+            this.ProgressionMappingHash = ProgressionMappingHash;
+            this.Amount = Amount;
+            this.ApplyThrottles = ApplyThrottles;
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the DestinyProgressionMappingDefinition that contains the progressions for which experience should be applied.</value>
         [DataMember(Name="progressionMappingHash", EmitDefaultValue=false)]
-        public int? ProgressionMappingHash { get; set; }
+        public uint? ProgressionMappingHash { get; set; }
 
         /// <summary>
         /// The amount of experience to give to each of the mapped progressions.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

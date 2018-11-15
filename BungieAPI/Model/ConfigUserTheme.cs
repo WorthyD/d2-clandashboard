@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfigUserTheme" /> class.
         /// </summary>
-        /// <param name="userThemeId">userThemeId.</param>
-        /// <param name="userThemeName">userThemeName.</param>
-        /// <param name="userThemeDescription">userThemeDescription.</param>
-        public ConfigUserTheme(int? userThemeId = default(int?), string userThemeName = default(string), string userThemeDescription = default(string))
+        /// <param name="UserThemeId">UserThemeId.</param>
+        /// <param name="UserThemeName">UserThemeName.</param>
+        /// <param name="UserThemeDescription">UserThemeDescription.</param>
+        public ConfigUserTheme(int? UserThemeId = default(int?), string UserThemeName = default(string), string UserThemeDescription = default(string))
         {
-            this.UserThemeId = userThemeId;
-            this.UserThemeName = userThemeName;
-            this.UserThemeDescription = userThemeDescription;
+            this.UserThemeId = UserThemeId;
+            this.UserThemeName = UserThemeName;
+            this.UserThemeDescription = UserThemeDescription;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

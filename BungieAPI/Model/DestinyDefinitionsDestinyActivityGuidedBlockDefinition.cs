@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyActivityGuidedBlockDefinition" /> class.
         /// </summary>
-        /// <param name="guidedMaxLobbySize">The maximum amount of people that can be in the waiting lobby..</param>
-        /// <param name="guidedMinLobbySize">The minimum amount of people that can be in the waiting lobby..</param>
-        /// <param name="guidedDisbandCount">If -1, the guided group cannot be disbanded. Otherwise, take the total # of players in the activity and subtract this number: that is the total # of votes needed for the guided group to disband..</param>
-        public DestinyDefinitionsDestinyActivityGuidedBlockDefinition(int? guidedMaxLobbySize = default(int?), int? guidedMinLobbySize = default(int?), int? guidedDisbandCount = default(int?))
+        /// <param name="GuidedMaxLobbySize">The maximum amount of people that can be in the waiting lobby..</param>
+        /// <param name="GuidedMinLobbySize">The minimum amount of people that can be in the waiting lobby..</param>
+        /// <param name="GuidedDisbandCount">If -1, the guided group cannot be disbanded. Otherwise, take the total # of players in the activity and subtract this number: that is the total # of votes needed for the guided group to disband..</param>
+        public DestinyDefinitionsDestinyActivityGuidedBlockDefinition(int? GuidedMaxLobbySize = default(int?), int? GuidedMinLobbySize = default(int?), int? GuidedDisbandCount = default(int?))
         {
-            this.GuidedMaxLobbySize = guidedMaxLobbySize;
-            this.GuidedMinLobbySize = guidedMinLobbySize;
-            this.GuidedDisbandCount = guidedDisbandCount;
+            this.GuidedMaxLobbySize = GuidedMaxLobbySize;
+            this.GuidedMinLobbySize = GuidedMinLobbySize;
+            this.GuidedDisbandCount = GuidedDisbandCount;
         }
         
         /// <summary>
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

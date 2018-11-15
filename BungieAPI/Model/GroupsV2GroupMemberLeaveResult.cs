@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupMemberLeaveResult" /> class.
         /// </summary>
-        /// <param name="group">group.</param>
-        /// <param name="groupDeleted">groupDeleted.</param>
-        public GroupsV2GroupMemberLeaveResult(GroupsV2GroupV2 group = default(GroupsV2GroupV2), bool? groupDeleted = default(bool?))
+        /// <param name="Group">Group.</param>
+        /// <param name="GroupDeleted">GroupDeleted.</param>
+        public GroupsV2GroupMemberLeaveResult(GroupsV2GroupV2 Group = default(GroupsV2GroupV2), bool? GroupDeleted = default(bool?))
         {
-            this.Group = group;
-            this.GroupDeleted = groupDeleted;
+            this.Group = Group;
+            this.GroupDeleted = GroupDeleted;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

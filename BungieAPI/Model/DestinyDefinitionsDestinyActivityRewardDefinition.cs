@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyActivityRewardDefinition" /> class.
         /// </summary>
-        /// <param name="rewardText">The header for the reward set, if any..</param>
-        /// <param name="rewardItems">The \&quot;Items provided\&quot; in the reward. This is almost always a pointer to a DestinyInventoryItemDefintion for an item that you can&#39;t actually earn in-game, but that has name/description/icon information for the vague concept of the rewards you will receive. This is because the actual reward generation is non-deterministic and extremely complicated, so the best the game can do is tell you what you&#39;ll get in vague terms. And so too shall we.  Interesting trivia: you actually *do* earn these items when you complete the activity. They go into a single-slot bucket on your profile, which is how you see the pop-ups of these rewards when you complete an activity that match these \&quot;dummy\&quot; items. You can even see them if you look at the last one you earned in your profile-level inventory through the BNet API! Who said reading documentation is a waste of time?.</param>
-        public DestinyDefinitionsDestinyActivityRewardDefinition(string rewardText = default(string), List<DestinyDestinyItemQuantity> rewardItems = default(List<DestinyDestinyItemQuantity>))
+        /// <param name="RewardText">The header for the reward set, if any..</param>
+        /// <param name="RewardItems">The \&quot;Items provided\&quot; in the reward. This is almost always a pointer to a DestinyInventoryItemDefintion for an item that you can&#39;t actually earn in-game, but that has name/description/icon information for the vague concept of the rewards you will receive. This is because the actual reward generation is non-deterministic and extremely complicated, so the best the game can do is tell you what you&#39;ll get in vague terms. And so too shall we.  Interesting trivia: you actually *do* earn these items when you complete the activity. They go into a single-slot bucket on your profile, which is how you see the pop-ups of these rewards when you complete an activity that match these \&quot;dummy\&quot; items. You can even see them if you look at the last one you earned in your profile-level inventory through the BNet API! Who said reading documentation is a waste of time?.</param>
+        public DestinyDefinitionsDestinyActivityRewardDefinition(string RewardText = default(string), List<DestinyDestinyItemQuantity> RewardItems = default(List<DestinyDestinyItemQuantity>))
         {
-            this.RewardText = rewardText;
-            this.RewardItems = rewardItems;
+            this.RewardText = RewardText;
+            this.RewardItems = RewardItems;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

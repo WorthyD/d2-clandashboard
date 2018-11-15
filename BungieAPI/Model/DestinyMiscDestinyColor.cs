@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMiscDestinyColor" /> class.
         /// </summary>
-        /// <param name="red">red.</param>
-        /// <param name="green">green.</param>
-        /// <param name="blue">blue.</param>
-        /// <param name="alpha">alpha.</param>
-        public DestinyMiscDestinyColor(byte[] red = default(byte[]), byte[] green = default(byte[]), byte[] blue = default(byte[]), byte[] alpha = default(byte[]))
+        /// <param name="Red">Red.</param>
+        /// <param name="Green">Green.</param>
+        /// <param name="Blue">Blue.</param>
+        /// <param name="Alpha">Alpha.</param>
+        public DestinyMiscDestinyColor(byte[] Red = default(byte[]), byte[] Green = default(byte[]), byte[] Blue = default(byte[]), byte[] Alpha = default(byte[]))
         {
-            this.Red = red;
-            this.Green = green;
-            this.Blue = blue;
-            this.Alpha = alpha;
+            this.Red = Red;
+            this.Green = Green;
+            this.Blue = Blue;
+            this.Alpha = Alpha;
         }
         
         /// <summary>
@@ -89,7 +89,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

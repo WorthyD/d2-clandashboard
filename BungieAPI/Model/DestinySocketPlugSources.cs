@@ -28,41 +28,40 @@ namespace BungieAPI.Model
     /// Indicates how a socket is populated, and where you should look for valid plug data. This is a flags enumeration field, as you may have to look in multiple sources across multiple components for valid plugs.
     /// </summary>
     /// <value>Indicates how a socket is populated, and where you should look for valid plug data. This is a flags enumeration field, as you may have to look in multiple sources across multiple components for valid plugs.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinySocketPlugSources
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// If there&#39;s no way we can detect to insert new plugs.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// Use plugs found in the player&#39;s inventory, based on the socket type rules (see DestinySocketTypeDefinition for more info)
+//Note that a socket - like Shaders - can have *both* reusable plugs and inventory items inserted theoretically.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        InventorySourced,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// Use the DestinyItemSocketsComponent.sockets.reusablePlugs property to determine which plugs are valid for this socket.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        ReusablePlugItems,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 4,
+		/// <summary>
+		/// Use the ProfilePlugSets component data to determine which plugs are valid for this socket.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        ProfilePlugSet,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 5
+		/// <summary>
+		/// Use the CharacterPlugSets component data to determine which plugs are valid for this socket.
+		/// </summary>
+		[EnumMember(Value = "8")]
+        CharacterPlugSet
     }
 
 }

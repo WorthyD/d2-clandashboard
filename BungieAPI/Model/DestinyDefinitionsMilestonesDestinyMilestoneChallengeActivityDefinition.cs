@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityDefinition" /> class.
         /// </summary>
-        /// <param name="activityHash">The activity for which this challenge is active..</param>
-        /// <param name="challenges">challenges.</param>
-        /// <param name="activityGraphNodes">If the activity and its challenge is visible on any of these nodes, it will be returned..</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityDefinition(int? activityHash = default(int?), List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeDefinition> challenges = default(List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeDefinition>), List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityGraphNodeEntry> activityGraphNodes = default(List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityGraphNodeEntry>))
+        /// <param name="ActivityHash">The activity for which this challenge is active..</param>
+        /// <param name="Challenges">Challenges.</param>
+        /// <param name="ActivityGraphNodes">If the activity and its challenge is visible on any of these nodes, it will be returned..</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityDefinition(uint? ActivityHash = default(uint?), List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeDefinition> Challenges = default(List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeDefinition>), List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityGraphNodeEntry> ActivityGraphNodes = default(List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityGraphNodeEntry>))
         {
-            this.ActivityHash = activityHash;
-            this.Challenges = challenges;
-            this.ActivityGraphNodes = activityGraphNodes;
+            this.ActivityHash = ActivityHash;
+            this.Challenges = Challenges;
+            this.ActivityGraphNodes = ActivityGraphNodes;
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The activity for which this challenge is active.</value>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// Gets or Sets Challenges
@@ -82,7 +82,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

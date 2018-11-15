@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneValueDefinition" /> class.
         /// </summary>
-        /// <param name="key">key.</param>
-        /// <param name="displayProperties">displayProperties.</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneValueDefinition(string key = default(string), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition))
+        /// <param name="Key">Key.</param>
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneValueDefinition(string Key = default(string), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition))
         {
-            this.Key = key;
-            this.DisplayProperties = displayProperties;
+            this.Key = Key;
+            this.DisplayProperties = DisplayProperties;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

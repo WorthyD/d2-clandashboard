@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyHistoricalStatsAccountResult" /> class.
         /// </summary>
-        /// <param name="mergedDeletedCharacters">mergedDeletedCharacters.</param>
-        /// <param name="mergedAllCharacters">mergedAllCharacters.</param>
-        /// <param name="characters">characters.</param>
-        public DestinyHistoricalStatsDestinyHistoricalStatsAccountResult(DestinyHistoricalStatsDestinyHistoricalStatsWithMerged mergedDeletedCharacters = default(DestinyHistoricalStatsDestinyHistoricalStatsWithMerged), DestinyHistoricalStatsDestinyHistoricalStatsWithMerged mergedAllCharacters = default(DestinyHistoricalStatsDestinyHistoricalStatsWithMerged), List<DestinyHistoricalStatsDestinyHistoricalStatsPerCharacter> characters = default(List<DestinyHistoricalStatsDestinyHistoricalStatsPerCharacter>))
+        /// <param name="MergedDeletedCharacters">MergedDeletedCharacters.</param>
+        /// <param name="MergedAllCharacters">MergedAllCharacters.</param>
+        /// <param name="Characters">Characters.</param>
+        public DestinyHistoricalStatsDestinyHistoricalStatsAccountResult(DestinyHistoricalStatsDestinyHistoricalStatsWithMerged MergedDeletedCharacters = default(DestinyHistoricalStatsDestinyHistoricalStatsWithMerged), DestinyHistoricalStatsDestinyHistoricalStatsWithMerged MergedAllCharacters = default(DestinyHistoricalStatsDestinyHistoricalStatsWithMerged), List<DestinyHistoricalStatsDestinyHistoricalStatsPerCharacter> Characters = default(List<DestinyHistoricalStatsDestinyHistoricalStatsPerCharacter>))
         {
-            this.MergedDeletedCharacters = mergedDeletedCharacters;
-            this.MergedAllCharacters = mergedAllCharacters;
-            this.Characters = characters;
+            this.MergedDeletedCharacters = MergedDeletedCharacters;
+            this.MergedAllCharacters = MergedAllCharacters;
+            this.Characters = Characters;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

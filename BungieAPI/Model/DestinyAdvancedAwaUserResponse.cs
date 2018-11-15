@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyAdvancedAwaUserResponse" /> class.
         /// </summary>
-        /// <param name="selection">Indication of the selection the user has made (Approving or rejecting the action).</param>
-        /// <param name="correlationId">Correlation ID of the request.</param>
-        /// <param name="nonce">Secret nonce received via the PUSH notification..</param>
-        public DestinyAdvancedAwaUserResponse(Object selection = default(Object), string correlationId = default(string), List<byte[]> nonce = default(List<byte[]>))
+        /// <param name="Selection">Indication of the selection the user has made (Approving or rejecting the action).</param>
+        /// <param name="CorrelationId">Correlation ID of the request.</param>
+        /// <param name="Nonce">Secret nonce received via the PUSH notification..</param>
+        public DestinyAdvancedAwaUserResponse(DestinyAdvancedAwaUserSelection Selection = default(DestinyAdvancedAwaUserSelection), string CorrelationId = default(string), List<byte[]> Nonce = default(List<byte[]>))
         {
-            this.Selection = selection;
-            this.CorrelationId = correlationId;
-            this.Nonce = nonce;
+            this.Selection = Selection;
+            this.CorrelationId = CorrelationId;
+            this.Nonce = Nonce;
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Indication of the selection the user has made (Approving or rejecting the action)</value>
         [DataMember(Name="selection", EmitDefaultValue=false)]
-        public Object Selection { get; set; }
+        public DestinyAdvancedAwaUserSelection Selection { get; set; }
 
         /// <summary>
         /// Correlation ID of the request
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

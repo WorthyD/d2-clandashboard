@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyEntitySearchResultItem" /> class.
         /// </summary>
-        /// <param name="hash">The hash identifier of the entity. You will use this to look up the DestinyDefinition relevant for the entity found..</param>
-        /// <param name="entityType">The type of entity, returned as a string matching the DestinyDefinition&#39;s contract class name. You&#39;ll have to have your own mapping from class names to actually looking up those definitions in the manifest databases..</param>
-        /// <param name="displayProperties">Basic display properties on the entity, so you don&#39;t have to look up the definition to show basic results for the item..</param>
-        /// <param name="weight">The ranking value for sorting that we calculated using our relevance formula. This will hopefully get better with time and iteration..</param>
-        public DestinyDefinitionsDestinyEntitySearchResultItem(int? hash = default(int?), string entityType = default(string), Object displayProperties = default(Object), double? weight = default(double?))
+        /// <param name="Hash">The hash identifier of the entity. You will use this to look up the DestinyDefinition relevant for the entity found..</param>
+        /// <param name="EntityType">The type of entity, returned as a string matching the DestinyDefinition&#39;s contract class name. You&#39;ll have to have your own mapping from class names to actually looking up those definitions in the manifest databases..</param>
+        /// <param name="DisplayProperties">Basic display properties on the entity, so you don&#39;t have to look up the definition to show basic results for the item..</param>
+        /// <param name="Weight">The ranking value for sorting that we calculated using our relevance formula. This will hopefully get better with time and iteration..</param>
+        public DestinyDefinitionsDestinyEntitySearchResultItem(uint? Hash = default(uint?), string EntityType = default(string), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), double? Weight = default(double?))
         {
-            this.Hash = hash;
-            this.EntityType = entityType;
-            this.DisplayProperties = displayProperties;
-            this.Weight = weight;
+            this.Hash = Hash;
+            this.EntityType = EntityType;
+            this.DisplayProperties = DisplayProperties;
+            this.Weight = Weight;
         }
         
         /// <summary>
@@ -50,7 +50,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the entity. You will use this to look up the DestinyDefinition relevant for the entity found.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The type of entity, returned as a string matching the DestinyDefinition&#39;s contract class name. You&#39;ll have to have your own mapping from class names to actually looking up those definitions in the manifest databases.
@@ -64,7 +64,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Basic display properties on the entity, so you don&#39;t have to look up the definition to show basic results for the item.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// The ranking value for sorting that we calculated using our relevance formula. This will hopefully get better with time and iteration.
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

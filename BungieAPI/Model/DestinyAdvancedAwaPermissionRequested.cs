@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyAdvancedAwaPermissionRequested" /> class.
         /// </summary>
-        /// <param name="type">Type of advanced write action..</param>
-        /// <param name="affectedItemId">Item instance ID the action shall be applied to. This is optional for all but a new AwaType values. Rule of thumb is to provide the item instance ID if one is available..</param>
-        /// <param name="membershipType">Destiny membership type of the account to modify..</param>
-        /// <param name="characterId">Destiny character ID, if applicable, that will be affected by the action..</param>
-        public DestinyAdvancedAwaPermissionRequested(Object type = default(Object), long? affectedItemId = default(long?), Object membershipType = default(Object), long? characterId = default(long?))
+        /// <param name="Type">Type of advanced write action..</param>
+        /// <param name="AffectedItemId">Item instance ID the action shall be applied to. This is optional for all but a new AwaType values. Rule of thumb is to provide the item instance ID if one is available..</param>
+        /// <param name="MembershipType">Destiny membership type of the account to modify..</param>
+        /// <param name="CharacterId">Destiny character ID, if applicable, that will be affected by the action..</param>
+        public DestinyAdvancedAwaPermissionRequested(DestinyAdvancedAwaType Type = default(DestinyAdvancedAwaType), long? AffectedItemId = default(long?), BungieMembershipType MembershipType = default(BungieMembershipType), long? CharacterId = default(long?))
         {
-            this.Type = type;
-            this.AffectedItemId = affectedItemId;
-            this.MembershipType = membershipType;
-            this.CharacterId = characterId;
+            this.Type = Type;
+            this.AffectedItemId = AffectedItemId;
+            this.MembershipType = MembershipType;
+            this.CharacterId = CharacterId;
         }
         
         /// <summary>
@@ -50,7 +50,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Type of advanced write action.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public Object Type { get; set; }
+        public DestinyAdvancedAwaType Type { get; set; }
 
         /// <summary>
         /// Item instance ID the action shall be applied to. This is optional for all but a new AwaType values. Rule of thumb is to provide the item instance ID if one is available.
@@ -64,7 +64,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Destiny membership type of the account to modify.</value>
         [DataMember(Name="membershipType", EmitDefaultValue=false)]
-        public Object MembershipType { get; set; }
+        public BungieMembershipType MembershipType { get; set; }
 
         /// <summary>
         /// Destiny character ID, if applicable, that will be affected by the action.
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

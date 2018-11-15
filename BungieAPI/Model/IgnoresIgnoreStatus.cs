@@ -27,53 +27,51 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines Ignores.IgnoreStatus
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum IgnoresIgnoreStatus
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "0")]
+        NotIgnored,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "1")]
+        IgnoredUser,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "2")]
+        IgnoredGroup,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 4,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "4")]
+        IgnoredByGroup,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 5,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "8")]
+        IgnoredPost,
         
-        /// <summary>
-        /// Enum NUMBER_16 for value: 16
-        /// </summary>
-        [EnumMember(Value = "16")]
-        NUMBER_16 = 6,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "16")]
+        IgnoredTag,
         
-        /// <summary>
-        /// Enum NUMBER_32 for value: 32
-        /// </summary>
-        [EnumMember(Value = "32")]
-        NUMBER_32 = 7
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "32")]
+        IgnoredGlobal
     }
 
 }

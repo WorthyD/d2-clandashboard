@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyAggregateActivityResults" /> class.
         /// </summary>
-        /// <param name="activities">List of all activities the player has participated in..</param>
-        public DestinyHistoricalStatsDestinyAggregateActivityResults(List<DestinyHistoricalStatsDestinyAggregateActivityStats> activities = default(List<DestinyHistoricalStatsDestinyAggregateActivityStats>))
+        /// <param name="Activities">List of all activities the player has participated in..</param>
+        public DestinyHistoricalStatsDestinyAggregateActivityResults(List<DestinyHistoricalStatsDestinyAggregateActivityStats> Activities = default(List<DestinyHistoricalStatsDestinyAggregateActivityStats>))
         {
-            this.Activities = activities;
+            this.Activities = Activities;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PartnershipsPublicPartnershipDetail" /> class.
         /// </summary>
-        /// <param name="partnerType">partnerType.</param>
-        /// <param name="identifier">identifier.</param>
-        /// <param name="name">name.</param>
-        /// <param name="icon">icon.</param>
-        public PartnershipsPublicPartnershipDetail(PartnershipsPartnershipType partnerType = default(PartnershipsPartnershipType), string identifier = default(string), string name = default(string), string icon = default(string))
+        /// <param name="PartnerType">PartnerType.</param>
+        /// <param name="Identifier">Identifier.</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="Icon">Icon.</param>
+        public PartnershipsPublicPartnershipDetail(PartnershipsPartnershipType PartnerType = default(PartnershipsPartnershipType), string Identifier = default(string), string Name = default(string), string Icon = default(string))
         {
-            this.PartnerType = partnerType;
-            this.Identifier = identifier;
-            this.Name = name;
-            this.Icon = icon;
+            this.PartnerType = PartnerType;
+            this.Identifier = Identifier;
+            this.Name = Name;
+            this.Icon = Icon;
         }
         
         /// <summary>
@@ -89,7 +89,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

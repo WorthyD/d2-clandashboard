@@ -33,25 +33,25 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDyeReference" /> class.
         /// </summary>
-        /// <param name="channelHash">channelHash.</param>
-        /// <param name="dyeHash">dyeHash.</param>
-        public DestinyDyeReference(int? channelHash = default(int?), int? dyeHash = default(int?))
+        /// <param name="ChannelHash">ChannelHash.</param>
+        /// <param name="DyeHash">DyeHash.</param>
+        public DestinyDyeReference(uint? ChannelHash = default(uint?), uint? DyeHash = default(uint?))
         {
-            this.ChannelHash = channelHash;
-            this.DyeHash = dyeHash;
+            this.ChannelHash = ChannelHash;
+            this.DyeHash = DyeHash;
         }
         
         /// <summary>
         /// Gets or Sets ChannelHash
         /// </summary>
         [DataMember(Name="channelHash", EmitDefaultValue=false)]
-        public int? ChannelHash { get; set; }
+        public uint? ChannelHash { get; set; }
 
         /// <summary>
         /// Gets or Sets DyeHash
         /// </summary>
         [DataMember(Name="dyeHash", EmitDefaultValue=false)]
-        public int? DyeHash { get; set; }
+        public uint? DyeHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

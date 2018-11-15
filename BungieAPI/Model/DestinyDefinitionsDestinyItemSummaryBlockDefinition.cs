@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemSummaryBlockDefinition" /> class.
         /// </summary>
-        /// <param name="sortPriority">Apparently when rendering an item in a reward, this should be used as a sort priority. We&#39;re not doing it presently..</param>
-        public DestinyDefinitionsDestinyItemSummaryBlockDefinition(int? sortPriority = default(int?))
+        /// <param name="SortPriority">Apparently when rendering an item in a reward, this should be used as a sort priority. We&#39;re not doing it presently..</param>
+        public DestinyDefinitionsDestinyItemSummaryBlockDefinition(int? SortPriority = default(int?))
         {
-            this.SortPriority = sortPriority;
+            this.SortPriority = SortPriority;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

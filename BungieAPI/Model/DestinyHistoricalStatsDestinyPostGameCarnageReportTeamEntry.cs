@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyPostGameCarnageReportTeamEntry" /> class.
         /// </summary>
-        /// <param name="teamId">Integer ID for the team..</param>
-        /// <param name="standing">Team&#39;s standing relative to other teams..</param>
-        /// <param name="score">Score earned by the team.</param>
-        /// <param name="teamName">Alpha or Bravo.</param>
-        public DestinyHistoricalStatsDestinyPostGameCarnageReportTeamEntry(int? teamId = default(int?), Object standing = default(Object), Object score = default(Object), string teamName = default(string))
+        /// <param name="TeamId">Integer ID for the team..</param>
+        /// <param name="Standing">Team&#39;s standing relative to other teams..</param>
+        /// <param name="Score">Score earned by the team.</param>
+        /// <param name="TeamName">Alpha or Bravo.</param>
+        public DestinyHistoricalStatsDestinyPostGameCarnageReportTeamEntry(int? TeamId = default(int?), DestinyHistoricalStatsDestinyHistoricalStatsValue Standing = default(DestinyHistoricalStatsDestinyHistoricalStatsValue), DestinyHistoricalStatsDestinyHistoricalStatsValue Score = default(DestinyHistoricalStatsDestinyHistoricalStatsValue), string TeamName = default(string))
         {
-            this.TeamId = teamId;
-            this.Standing = standing;
-            this.Score = score;
-            this.TeamName = teamName;
+            this.TeamId = TeamId;
+            this.Standing = Standing;
+            this.Score = Score;
+            this.TeamName = TeamName;
         }
         
         /// <summary>
@@ -57,14 +57,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Team&#39;s standing relative to other teams.</value>
         [DataMember(Name="standing", EmitDefaultValue=false)]
-        public Object Standing { get; set; }
+        public DestinyHistoricalStatsDestinyHistoricalStatsValue Standing { get; set; }
 
         /// <summary>
         /// Score earned by the team
         /// </summary>
         /// <value>Score earned by the team</value>
         [DataMember(Name="score", EmitDefaultValue=false)]
-        public Object Score { get; set; }
+        public DestinyHistoricalStatsDestinyHistoricalStatsValue Score { get; set; }
 
         /// <summary>
         /// Alpha or Bravo
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

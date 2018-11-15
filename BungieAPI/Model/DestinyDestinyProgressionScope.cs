@@ -28,65 +28,63 @@ namespace BungieAPI.Model
     /// There are many Progressions in Destiny (think Character Level, or Reputation). These are the various \&quot;Scopes\&quot; of Progressions, which affect many things: * Where/if they are stored * How they are calculated * Where they can be used in other game logic
     /// </summary>
     /// <value>There are many Progressions in Destiny (think Character Level, or Reputation). These are the various \&quot;Scopes\&quot; of Progressions, which affect many things: * Where/if they are stored * How they are calculated * Where they can be used in other game logic</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyProgressionScope
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// There are many Progressions in Destiny (think Character Level, or Reputation). These are the various \&quot;Scopes\&quot; of Progressions, which affect many things: * Where/if they are stored * How they are calculated * Where they can be used in other game logic
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Account,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// There are many Progressions in Destiny (think Character Level, or Reputation). These are the various \&quot;Scopes\&quot; of Progressions, which affect many things: * Where/if they are stored * How they are calculated * Where they can be used in other game logic
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Character,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// There are many Progressions in Destiny (think Character Level, or Reputation). These are the various \&quot;Scopes\&quot; of Progressions, which affect many things: * Where/if they are stored * How they are calculated * Where they can be used in other game logic
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Clan,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4,
+		/// <summary>
+		/// There are many Progressions in Destiny (think Character Level, or Reputation). These are the various \&quot;Scopes\&quot; of Progressions, which affect many things: * Where/if they are stored * How they are calculated * Where they can be used in other game logic
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Item,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 5,
+		/// <summary>
+		/// There are many Progressions in Destiny (think Character Level, or Reputation). These are the various \&quot;Scopes\&quot; of Progressions, which affect many things: * Where/if they are stored * How they are calculated * Where they can be used in other game logic
+		/// </summary>
+		[EnumMember(Value = "4")]
+        ImplicitFromEquipment,
         
-        /// <summary>
-        /// Enum NUMBER_5 for value: 5
-        /// </summary>
-        [EnumMember(Value = "5")]
-        NUMBER_5 = 6,
+		/// <summary>
+		/// There are many Progressions in Destiny (think Character Level, or Reputation). These are the various \&quot;Scopes\&quot; of Progressions, which affect many things: * Where/if they are stored * How they are calculated * Where they can be used in other game logic
+		/// </summary>
+		[EnumMember(Value = "5")]
+        Mapped,
         
-        /// <summary>
-        /// Enum NUMBER_6 for value: 6
-        /// </summary>
-        [EnumMember(Value = "6")]
-        NUMBER_6 = 7,
+		/// <summary>
+		/// There are many Progressions in Destiny (think Character Level, or Reputation). These are the various \&quot;Scopes\&quot; of Progressions, which affect many things: * Where/if they are stored * How they are calculated * Where they can be used in other game logic
+		/// </summary>
+		[EnumMember(Value = "6")]
+        MappedAggregate,
         
-        /// <summary>
-        /// Enum NUMBER_7 for value: 7
-        /// </summary>
-        [EnumMember(Value = "7")]
-        NUMBER_7 = 8,
+		/// <summary>
+		/// There are many Progressions in Destiny (think Character Level, or Reputation). These are the various \&quot;Scopes\&quot; of Progressions, which affect many things: * Where/if they are stored * How they are calculated * Where they can be used in other game logic
+		/// </summary>
+		[EnumMember(Value = "7")]
+        MappedStat,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 9
+		/// <summary>
+		/// There are many Progressions in Destiny (think Character Level, or Reputation). These are the various \&quot;Scopes\&quot; of Progressions, which affect many things: * Where/if they are stored * How they are calculated * Where they can be used in other game logic
+		/// </summary>
+		[EnumMember(Value = "8")]
+        MappedUnlockValue
     }
 
 }

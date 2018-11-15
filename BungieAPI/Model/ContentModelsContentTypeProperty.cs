@@ -33,90 +33,90 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentModelsContentTypeProperty" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="readableName">readableName.</param>
-        /// <param name="value">value.</param>
-        /// <param name="propertyDescription">propertyDescription.</param>
-        /// <param name="localizable">localizable.</param>
-        /// <param name="fallback">fallback.</param>
-        /// <param name="enabled">enabled.</param>
-        /// <param name="order">order.</param>
-        /// <param name="visible">visible.</param>
-        /// <param name="isTitle">isTitle.</param>
-        /// <param name="required">required.</param>
-        /// <param name="maxLength">maxLength.</param>
-        /// <param name="maxByteLength">maxByteLength.</param>
-        /// <param name="maxFileSize">maxFileSize.</param>
-        /// <param name="regexp">regexp.</param>
-        /// <param name="validateAs">validateAs.</param>
-        /// <param name="rssAttribute">rssAttribute.</param>
-        /// <param name="visibleDependency">visibleDependency.</param>
-        /// <param name="visibleOn">visibleOn.</param>
-        /// <param name="datatype">datatype.</param>
-        /// <param name="attributes">attributes.</param>
-        /// <param name="childProperties">childProperties.</param>
-        /// <param name="contentTypeAllowed">contentTypeAllowed.</param>
-        /// <param name="bindToProperty">bindToProperty.</param>
-        /// <param name="boundRegex">boundRegex.</param>
-        /// <param name="representationSelection">representationSelection.</param>
-        /// <param name="defaultValues">defaultValues.</param>
-        /// <param name="isExternalAllowed">isExternalAllowed.</param>
-        /// <param name="propertySection">propertySection.</param>
-        /// <param name="weight">weight.</param>
-        /// <param name="entitytype">entitytype.</param>
-        /// <param name="isCombo">isCombo.</param>
-        /// <param name="suppressProperty">suppressProperty.</param>
-        /// <param name="legalContentTypes">legalContentTypes.</param>
-        /// <param name="representationValidationString">representationValidationString.</param>
-        /// <param name="minWidth">minWidth.</param>
-        /// <param name="maxWidth">maxWidth.</param>
-        /// <param name="minHeight">minHeight.</param>
-        /// <param name="maxHeight">maxHeight.</param>
-        /// <param name="isVideo">isVideo.</param>
-        /// <param name="isImage">isImage.</param>
-        public ContentModelsContentTypeProperty(string name = default(string), string readableName = default(string), string value = default(string), string propertyDescription = default(string), bool? localizable = default(bool?), bool? fallback = default(bool?), bool? enabled = default(bool?), int? order = default(int?), bool? visible = default(bool?), bool? isTitle = default(bool?), bool? required = default(bool?), int? maxLength = default(int?), int? maxByteLength = default(int?), int? maxFileSize = default(int?), string regexp = default(string), string validateAs = default(string), string rssAttribute = default(string), string visibleDependency = default(string), string visibleOn = default(string), ContentModelsContentPropertyDataTypeEnum datatype = default(ContentModelsContentPropertyDataTypeEnum), Dictionary<string, string> attributes = default(Dictionary<string, string>), List<ContentModelsContentTypeProperty> childProperties = default(List<ContentModelsContentTypeProperty>), string contentTypeAllowed = default(string), string bindToProperty = default(string), string boundRegex = default(string), Dictionary<string, string> representationSelection = default(Dictionary<string, string>), List<ContentModelsContentTypeDefaultValue> defaultValues = default(List<ContentModelsContentTypeDefaultValue>), bool? isExternalAllowed = default(bool?), string propertySection = default(string), int? weight = default(int?), string entitytype = default(string), bool? isCombo = default(bool?), bool? suppressProperty = default(bool?), List<string> legalContentTypes = default(List<string>), string representationValidationString = default(string), int? minWidth = default(int?), int? maxWidth = default(int?), int? minHeight = default(int?), int? maxHeight = default(int?), bool? isVideo = default(bool?), bool? isImage = default(bool?))
+        /// <param name="Name">Name.</param>
+        /// <param name="ReadableName">ReadableName.</param>
+        /// <param name="Value">Value.</param>
+        /// <param name="PropertyDescription">PropertyDescription.</param>
+        /// <param name="Localizable">Localizable.</param>
+        /// <param name="Fallback">Fallback.</param>
+        /// <param name="Enabled">Enabled.</param>
+        /// <param name="Order">Order.</param>
+        /// <param name="Visible">Visible.</param>
+        /// <param name="IsTitle">IsTitle.</param>
+        /// <param name="Required">Required.</param>
+        /// <param name="MaxLength">MaxLength.</param>
+        /// <param name="MaxByteLength">MaxByteLength.</param>
+        /// <param name="MaxFileSize">MaxFileSize.</param>
+        /// <param name="Regexp">Regexp.</param>
+        /// <param name="ValidateAs">ValidateAs.</param>
+        /// <param name="RssAttribute">RssAttribute.</param>
+        /// <param name="VisibleDependency">VisibleDependency.</param>
+        /// <param name="VisibleOn">VisibleOn.</param>
+        /// <param name="Datatype">Datatype.</param>
+        /// <param name="Attributes">Attributes.</param>
+        /// <param name="ChildProperties">ChildProperties.</param>
+        /// <param name="ContentTypeAllowed">ContentTypeAllowed.</param>
+        /// <param name="BindToProperty">BindToProperty.</param>
+        /// <param name="BoundRegex">BoundRegex.</param>
+        /// <param name="RepresentationSelection">RepresentationSelection.</param>
+        /// <param name="DefaultValues">DefaultValues.</param>
+        /// <param name="IsExternalAllowed">IsExternalAllowed.</param>
+        /// <param name="PropertySection">PropertySection.</param>
+        /// <param name="Weight">Weight.</param>
+        /// <param name="Entitytype">Entitytype.</param>
+        /// <param name="IsCombo">IsCombo.</param>
+        /// <param name="SuppressProperty">SuppressProperty.</param>
+        /// <param name="LegalContentTypes">LegalContentTypes.</param>
+        /// <param name="RepresentationValidationString">RepresentationValidationString.</param>
+        /// <param name="MinWidth">MinWidth.</param>
+        /// <param name="MaxWidth">MaxWidth.</param>
+        /// <param name="MinHeight">MinHeight.</param>
+        /// <param name="MaxHeight">MaxHeight.</param>
+        /// <param name="IsVideo">IsVideo.</param>
+        /// <param name="IsImage">IsImage.</param>
+        public ContentModelsContentTypeProperty(string Name = default(string), string ReadableName = default(string), string Value = default(string), string PropertyDescription = default(string), bool? Localizable = default(bool?), bool? Fallback = default(bool?), bool? Enabled = default(bool?), int? Order = default(int?), bool? Visible = default(bool?), bool? IsTitle = default(bool?), bool? Required = default(bool?), int? MaxLength = default(int?), int? MaxByteLength = default(int?), int? MaxFileSize = default(int?), string Regexp = default(string), string ValidateAs = default(string), string RssAttribute = default(string), string VisibleDependency = default(string), string VisibleOn = default(string), ContentModelsContentPropertyDataTypeEnum Datatype = default(ContentModelsContentPropertyDataTypeEnum), Dictionary<string, string> Attributes = default(Dictionary<string, string>), List<ContentModelsContentTypeProperty> ChildProperties = default(List<ContentModelsContentTypeProperty>), string ContentTypeAllowed = default(string), string BindToProperty = default(string), string BoundRegex = default(string), Dictionary<string, string> RepresentationSelection = default(Dictionary<string, string>), List<ContentModelsContentTypeDefaultValue> DefaultValues = default(List<ContentModelsContentTypeDefaultValue>), bool? IsExternalAllowed = default(bool?), string PropertySection = default(string), int? Weight = default(int?), string Entitytype = default(string), bool? IsCombo = default(bool?), bool? SuppressProperty = default(bool?), List<string> LegalContentTypes = default(List<string>), string RepresentationValidationString = default(string), int? MinWidth = default(int?), int? MaxWidth = default(int?), int? MinHeight = default(int?), int? MaxHeight = default(int?), bool? IsVideo = default(bool?), bool? IsImage = default(bool?))
         {
-            this.Name = name;
-            this.ReadableName = readableName;
-            this.Value = value;
-            this.PropertyDescription = propertyDescription;
-            this.Localizable = localizable;
-            this.Fallback = fallback;
-            this.Enabled = enabled;
-            this.Order = order;
-            this.Visible = visible;
-            this.IsTitle = isTitle;
-            this.Required = required;
-            this.MaxLength = maxLength;
-            this.MaxByteLength = maxByteLength;
-            this.MaxFileSize = maxFileSize;
-            this.Regexp = regexp;
-            this.ValidateAs = validateAs;
-            this.RssAttribute = rssAttribute;
-            this.VisibleDependency = visibleDependency;
-            this.VisibleOn = visibleOn;
-            this.Datatype = datatype;
-            this.Attributes = attributes;
-            this.ChildProperties = childProperties;
-            this.ContentTypeAllowed = contentTypeAllowed;
-            this.BindToProperty = bindToProperty;
-            this.BoundRegex = boundRegex;
-            this.RepresentationSelection = representationSelection;
-            this.DefaultValues = defaultValues;
-            this.IsExternalAllowed = isExternalAllowed;
-            this.PropertySection = propertySection;
-            this.Weight = weight;
-            this.Entitytype = entitytype;
-            this.IsCombo = isCombo;
-            this.SuppressProperty = suppressProperty;
-            this.LegalContentTypes = legalContentTypes;
-            this.RepresentationValidationString = representationValidationString;
-            this.MinWidth = minWidth;
-            this.MaxWidth = maxWidth;
-            this.MinHeight = minHeight;
-            this.MaxHeight = maxHeight;
-            this.IsVideo = isVideo;
-            this.IsImage = isImage;
+            this.Name = Name;
+            this.ReadableName = ReadableName;
+            this.Value = Value;
+            this.PropertyDescription = PropertyDescription;
+            this.Localizable = Localizable;
+            this.Fallback = Fallback;
+            this.Enabled = Enabled;
+            this.Order = Order;
+            this.Visible = Visible;
+            this.IsTitle = IsTitle;
+            this.Required = Required;
+            this.MaxLength = MaxLength;
+            this.MaxByteLength = MaxByteLength;
+            this.MaxFileSize = MaxFileSize;
+            this.Regexp = Regexp;
+            this.ValidateAs = ValidateAs;
+            this.RssAttribute = RssAttribute;
+            this.VisibleDependency = VisibleDependency;
+            this.VisibleOn = VisibleOn;
+            this.Datatype = Datatype;
+            this.Attributes = Attributes;
+            this.ChildProperties = ChildProperties;
+            this.ContentTypeAllowed = ContentTypeAllowed;
+            this.BindToProperty = BindToProperty;
+            this.BoundRegex = BoundRegex;
+            this.RepresentationSelection = RepresentationSelection;
+            this.DefaultValues = DefaultValues;
+            this.IsExternalAllowed = IsExternalAllowed;
+            this.PropertySection = PropertySection;
+            this.Weight = Weight;
+            this.Entitytype = Entitytype;
+            this.IsCombo = IsCombo;
+            this.SuppressProperty = SuppressProperty;
+            this.LegalContentTypes = LegalContentTypes;
+            this.RepresentationValidationString = RepresentationValidationString;
+            this.MinWidth = MinWidth;
+            this.MaxWidth = MaxWidth;
+            this.MinHeight = MinHeight;
+            this.MaxHeight = MaxHeight;
+            this.IsVideo = IsVideo;
+            this.IsImage = IsImage;
         }
         
         /// <summary>
@@ -422,7 +422,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

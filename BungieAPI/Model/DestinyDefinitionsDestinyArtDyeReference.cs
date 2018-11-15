@@ -33,17 +33,17 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyArtDyeReference" /> class.
         /// </summary>
-        /// <param name="artDyeChannelHash">artDyeChannelHash.</param>
-        public DestinyDefinitionsDestinyArtDyeReference(int? artDyeChannelHash = default(int?))
+        /// <param name="ArtDyeChannelHash">ArtDyeChannelHash.</param>
+        public DestinyDefinitionsDestinyArtDyeReference(uint? ArtDyeChannelHash = default(uint?))
         {
-            this.ArtDyeChannelHash = artDyeChannelHash;
+            this.ArtDyeChannelHash = ArtDyeChannelHash;
         }
         
         /// <summary>
         /// Gets or Sets ArtDyeChannelHash
         /// </summary>
         [DataMember(Name="artDyeChannelHash", EmitDefaultValue=false)]
-        public int? ArtDyeChannelHash { get; set; }
+        public uint? ArtDyeChannelHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

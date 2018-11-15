@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDirectorDestinyLinkedGraphDefinition" /> class.
         /// </summary>
-        /// <param name="description">description.</param>
-        /// <param name="name">name.</param>
-        /// <param name="unlockExpression">unlockExpression.</param>
-        /// <param name="linkedGraphId">linkedGraphId.</param>
-        /// <param name="linkedGraphs">linkedGraphs.</param>
-        /// <param name="overview">overview.</param>
-        public DestinyDefinitionsDirectorDestinyLinkedGraphDefinition(string description = default(string), string name = default(string), DestinyDefinitionsDestinyUnlockExpressionDefinition unlockExpression = default(DestinyDefinitionsDestinyUnlockExpressionDefinition), int? linkedGraphId = default(int?), List<DestinyDefinitionsDirectorDestinyLinkedGraphEntryDefinition> linkedGraphs = default(List<DestinyDefinitionsDirectorDestinyLinkedGraphEntryDefinition>), string overview = default(string))
+        /// <param name="Description">Description.</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="UnlockExpression">UnlockExpression.</param>
+        /// <param name="LinkedGraphId">LinkedGraphId.</param>
+        /// <param name="LinkedGraphs">LinkedGraphs.</param>
+        /// <param name="Overview">Overview.</param>
+        public DestinyDefinitionsDirectorDestinyLinkedGraphDefinition(string Description = default(string), string Name = default(string), DestinyDefinitionsDestinyUnlockExpressionDefinition UnlockExpression = default(DestinyDefinitionsDestinyUnlockExpressionDefinition), uint? LinkedGraphId = default(uint?), List<DestinyDefinitionsDirectorDestinyLinkedGraphEntryDefinition> LinkedGraphs = default(List<DestinyDefinitionsDirectorDestinyLinkedGraphEntryDefinition>), string Overview = default(string))
         {
-            this.Description = description;
-            this.Name = name;
-            this.UnlockExpression = unlockExpression;
-            this.LinkedGraphId = linkedGraphId;
-            this.LinkedGraphs = linkedGraphs;
-            this.Overview = overview;
+            this.Description = Description;
+            this.Name = Name;
+            this.UnlockExpression = UnlockExpression;
+            this.LinkedGraphId = LinkedGraphId;
+            this.LinkedGraphs = LinkedGraphs;
+            this.Overview = Overview;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Gets or Sets LinkedGraphId
         /// </summary>
         [DataMember(Name="linkedGraphId", EmitDefaultValue=false)]
-        public int? LinkedGraphId { get; set; }
+        public uint? LinkedGraphId { get; set; }
 
         /// <summary>
         /// Gets or Sets LinkedGraphs
@@ -107,7 +107,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

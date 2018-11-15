@@ -33,27 +33,27 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyActivityLoadoutRequirement" /> class.
         /// </summary>
-        /// <param name="equipmentSlotHash">equipmentSlotHash.</param>
-        /// <param name="allowedEquippedItemHashes">allowedEquippedItemHashes.</param>
-        /// <param name="allowedWeaponSubTypes">allowedWeaponSubTypes.</param>
-        public DestinyDefinitionsDestinyActivityLoadoutRequirement(int? equipmentSlotHash = default(int?), List<int?> allowedEquippedItemHashes = default(List<int?>), List<DestinyDestinyItemSubType> allowedWeaponSubTypes = default(List<DestinyDestinyItemSubType>))
+        /// <param name="EquipmentSlotHash">EquipmentSlotHash.</param>
+        /// <param name="AllowedEquippedItemHashes">AllowedEquippedItemHashes.</param>
+        /// <param name="AllowedWeaponSubTypes">AllowedWeaponSubTypes.</param>
+        public DestinyDefinitionsDestinyActivityLoadoutRequirement(uint? EquipmentSlotHash = default(uint?), List<uint?> AllowedEquippedItemHashes = default(List<uint?>), List<DestinyDestinyItemSubType> AllowedWeaponSubTypes = default(List<DestinyDestinyItemSubType>))
         {
-            this.EquipmentSlotHash = equipmentSlotHash;
-            this.AllowedEquippedItemHashes = allowedEquippedItemHashes;
-            this.AllowedWeaponSubTypes = allowedWeaponSubTypes;
+            this.EquipmentSlotHash = EquipmentSlotHash;
+            this.AllowedEquippedItemHashes = AllowedEquippedItemHashes;
+            this.AllowedWeaponSubTypes = AllowedWeaponSubTypes;
         }
         
         /// <summary>
         /// Gets or Sets EquipmentSlotHash
         /// </summary>
         [DataMember(Name="equipmentSlotHash", EmitDefaultValue=false)]
-        public int? EquipmentSlotHash { get; set; }
+        public uint? EquipmentSlotHash { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedEquippedItemHashes
         /// </summary>
         [DataMember(Name="allowedEquippedItemHashes", EmitDefaultValue=false)]
-        public List<int?> AllowedEquippedItemHashes { get; set; }
+        public List<uint?> AllowedEquippedItemHashes { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedWeaponSubTypes
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

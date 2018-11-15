@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsPresentationDestinyPresentationNodesComponent" /> class.
         /// </summary>
-        /// <param name="nodes">nodes.</param>
-        public DestinyComponentsPresentationDestinyPresentationNodesComponent(Dictionary<string, DestinyComponentsPresentationDestinyPresentationNodeComponent> nodes = default(Dictionary<string, DestinyComponentsPresentationDestinyPresentationNodeComponent>))
+        /// <param name="Nodes">Nodes.</param>
+        public DestinyComponentsPresentationDestinyPresentationNodesComponent(Dictionary<string, DestinyComponentsPresentationDestinyPresentationNodeComponent> Nodes = default(Dictionary<string, DestinyComponentsPresentationDestinyPresentationNodeComponent>))
         {
-            this.Nodes = nodes;
+            this.Nodes = Nodes;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

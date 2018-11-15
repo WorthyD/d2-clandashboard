@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CommonModelsCoreSetting" /> class.
         /// </summary>
-        /// <param name="identifier">identifier.</param>
-        /// <param name="isDefault">isDefault.</param>
-        /// <param name="displayName">displayName.</param>
-        /// <param name="summary">summary.</param>
-        /// <param name="imagePath">imagePath.</param>
-        /// <param name="childSettings">childSettings.</param>
-        public CommonModelsCoreSetting(string identifier = default(string), bool? isDefault = default(bool?), string displayName = default(string), string summary = default(string), string imagePath = default(string), List<CommonModelsCoreSetting> childSettings = default(List<CommonModelsCoreSetting>))
+        /// <param name="Identifier">Identifier.</param>
+        /// <param name="IsDefault">IsDefault.</param>
+        /// <param name="DisplayName">DisplayName.</param>
+        /// <param name="Summary">Summary.</param>
+        /// <param name="ImagePath">ImagePath.</param>
+        /// <param name="ChildSettings">ChildSettings.</param>
+        public CommonModelsCoreSetting(string Identifier = default(string), bool? IsDefault = default(bool?), string DisplayName = default(string), string Summary = default(string), string ImagePath = default(string), List<CommonModelsCoreSetting> ChildSettings = default(List<CommonModelsCoreSetting>))
         {
-            this.Identifier = identifier;
-            this.IsDefault = isDefault;
-            this.DisplayName = displayName;
-            this.Summary = summary;
-            this.ImagePath = imagePath;
-            this.ChildSettings = childSettings;
+            this.Identifier = Identifier;
+            this.IsDefault = IsDefault;
+            this.DisplayName = DisplayName;
+            this.Summary = Summary;
+            this.ImagePath = ImagePath;
+            this.ChildSettings = ChildSettings;
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

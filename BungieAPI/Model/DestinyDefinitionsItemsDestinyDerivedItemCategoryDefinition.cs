@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsItemsDestinyDerivedItemCategoryDefinition" /> class.
         /// </summary>
-        /// <param name="categoryDescription">The localized string for the category title. This will be something describing the items you can get as a group, or your likelihood/the quantity you&#39;ll get..</param>
-        /// <param name="items">This is the list of all of the items for this category and the basic properties we&#39;ll know about them..</param>
-        public DestinyDefinitionsItemsDestinyDerivedItemCategoryDefinition(string categoryDescription = default(string), List<DestinyDefinitionsItemsDestinyDerivedItemDefinition> items = default(List<DestinyDefinitionsItemsDestinyDerivedItemDefinition>))
+        /// <param name="CategoryDescription">The localized string for the category title. This will be something describing the items you can get as a group, or your likelihood/the quantity you&#39;ll get..</param>
+        /// <param name="Items">This is the list of all of the items for this category and the basic properties we&#39;ll know about them..</param>
+        public DestinyDefinitionsItemsDestinyDerivedItemCategoryDefinition(string CategoryDescription = default(string), List<DestinyDefinitionsItemsDestinyDerivedItemDefinition> Items = default(List<DestinyDefinitionsItemsDestinyDerivedItemDefinition>))
         {
-            this.CategoryDescription = categoryDescription;
-            this.Items = items;
+            this.CategoryDescription = CategoryDescription;
+            this.Items = Items;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

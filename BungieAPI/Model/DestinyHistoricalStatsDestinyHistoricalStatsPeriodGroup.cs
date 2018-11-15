@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup" /> class.
         /// </summary>
-        /// <param name="period">Period for the group. If the stat periodType is day, then this will have a specific day. If the type is monthly, then this value will be the first day of the applicable month. This value is not set when the periodType is &#39;all time&#39;..</param>
-        /// <param name="activityDetails">If the period group is for a specific activity, this property will be set..</param>
-        /// <param name="values">Collection of stats for the period..</param>
-        public DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup(DateTime? period = default(DateTime?), Object activityDetails = default(Object), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> values = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>))
+        /// <param name="Period">Period for the group. If the stat periodType is day, then this will have a specific day. If the type is monthly, then this value will be the first day of the applicable month. This value is not set when the periodType is &#39;all time&#39;..</param>
+        /// <param name="ActivityDetails">If the period group is for a specific activity, this property will be set..</param>
+        /// <param name="Values">Collection of stats for the period..</param>
+        public DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup(DateTime? Period = default(DateTime?), DestinyHistoricalStatsDestinyHistoricalStatsActivity ActivityDetails = default(DestinyHistoricalStatsDestinyHistoricalStatsActivity), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> Values = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>))
         {
-            this.Period = period;
-            this.ActivityDetails = activityDetails;
-            this.Values = values;
+            this.Period = Period;
+            this.ActivityDetails = ActivityDetails;
+            this.Values = Values;
         }
         
         /// <summary>
@@ -55,7 +55,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the period group is for a specific activity, this property will be set.</value>
         [DataMember(Name="activityDetails", EmitDefaultValue=false)]
-        public Object ActivityDetails { get; set; }
+        public DestinyHistoricalStatsDestinyHistoricalStatsActivity ActivityDetails { get; set; }
 
         /// <summary>
         /// Collection of stats for the period.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

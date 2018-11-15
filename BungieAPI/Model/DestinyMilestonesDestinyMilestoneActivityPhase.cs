@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyMilestoneActivityPhase" /> class.
         /// </summary>
-        /// <param name="complete">Indicates if the phase has been completed..</param>
-        /// <param name="phaseHash">In DestinyActivityDefinition, if the activity has phases, there will be a set of phases defined in the \&quot;insertionPoints\&quot; property. This is the hash that maps to that phase..</param>
-        public DestinyMilestonesDestinyMilestoneActivityPhase(bool? complete = default(bool?), int? phaseHash = default(int?))
+        /// <param name="Complete">Indicates if the phase has been completed..</param>
+        /// <param name="PhaseHash">In DestinyActivityDefinition, if the activity has phases, there will be a set of phases defined in the \&quot;insertionPoints\&quot; property. This is the hash that maps to that phase..</param>
+        public DestinyMilestonesDestinyMilestoneActivityPhase(bool? Complete = default(bool?), uint? PhaseHash = default(uint?))
         {
-            this.Complete = complete;
-            this.PhaseHash = phaseHash;
+            this.Complete = Complete;
+            this.PhaseHash = PhaseHash;
         }
         
         /// <summary>
@@ -53,7 +53,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>In DestinyActivityDefinition, if the activity has phases, there will be a set of phases defined in the \&quot;insertionPoints\&quot; property. This is the hash that maps to that phase.</value>
         [DataMember(Name="phaseHash", EmitDefaultValue=false)]
-        public int? PhaseHash { get; set; }
+        public uint? PhaseHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

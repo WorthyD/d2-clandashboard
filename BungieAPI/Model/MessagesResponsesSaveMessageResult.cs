@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MessagesResponsesSaveMessageResult" /> class.
         /// </summary>
-        /// <param name="conversationId">conversationId.</param>
-        /// <param name="messageId">messageId.</param>
-        public MessagesResponsesSaveMessageResult(long? conversationId = default(long?), long? messageId = default(long?))
+        /// <param name="ConversationId">ConversationId.</param>
+        /// <param name="MessageId">MessageId.</param>
+        public MessagesResponsesSaveMessageResult(long? ConversationId = default(long?), long? MessageId = default(long?))
         {
-            this.ConversationId = conversationId;
-            this.MessageId = messageId;
+            this.ConversationId = ConversationId;
+            this.MessageId = MessageId;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

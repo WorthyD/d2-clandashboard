@@ -33,36 +33,36 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ForumPostResponse" /> class.
         /// </summary>
-        /// <param name="lastReplyTimestamp">lastReplyTimestamp.</param>
-        /// <param name="isPinned">isPinned.</param>
-        /// <param name="urlMediaType">urlMediaType.</param>
-        /// <param name="thumbnail">thumbnail.</param>
-        /// <param name="popularity">popularity.</param>
-        /// <param name="isActive">isActive.</param>
-        /// <param name="isAnnouncement">isAnnouncement.</param>
-        /// <param name="userRating">userRating.</param>
-        /// <param name="userHasRated">userHasRated.</param>
-        /// <param name="userHasMutedPost">userHasMutedPost.</param>
-        /// <param name="latestReplyPostId">latestReplyPostId.</param>
-        /// <param name="latestReplyAuthorId">latestReplyAuthorId.</param>
-        /// <param name="ignoreStatus">ignoreStatus.</param>
-        /// <param name="locale">locale.</param>
-        public ForumPostResponse(DateTime? lastReplyTimestamp = default(DateTime?), bool? isPinned = default(bool?), ForumForumMediaType urlMediaType = default(ForumForumMediaType), string thumbnail = default(string), ForumForumPostPopularity popularity = default(ForumForumPostPopularity), bool? isActive = default(bool?), bool? isAnnouncement = default(bool?), int? userRating = default(int?), bool? userHasRated = default(bool?), bool? userHasMutedPost = default(bool?), long? latestReplyPostId = default(long?), long? latestReplyAuthorId = default(long?), IgnoresIgnoreResponse ignoreStatus = default(IgnoresIgnoreResponse), string locale = default(string))
+        /// <param name="LastReplyTimestamp">LastReplyTimestamp.</param>
+        /// <param name="IsPinned">IsPinned.</param>
+        /// <param name="UrlMediaType">UrlMediaType.</param>
+        /// <param name="Thumbnail">Thumbnail.</param>
+        /// <param name="Popularity">Popularity.</param>
+        /// <param name="IsActive">IsActive.</param>
+        /// <param name="IsAnnouncement">IsAnnouncement.</param>
+        /// <param name="UserRating">UserRating.</param>
+        /// <param name="UserHasRated">UserHasRated.</param>
+        /// <param name="UserHasMutedPost">UserHasMutedPost.</param>
+        /// <param name="LatestReplyPostId">LatestReplyPostId.</param>
+        /// <param name="LatestReplyAuthorId">LatestReplyAuthorId.</param>
+        /// <param name="IgnoreStatus">IgnoreStatus.</param>
+        /// <param name="Locale">Locale.</param>
+        public ForumPostResponse(DateTime? LastReplyTimestamp = default(DateTime?), bool? IsPinned = default(bool?), ForumForumMediaType UrlMediaType = default(ForumForumMediaType), string Thumbnail = default(string), ForumForumPostPopularity Popularity = default(ForumForumPostPopularity), bool? IsActive = default(bool?), bool? IsAnnouncement = default(bool?), int? UserRating = default(int?), bool? UserHasRated = default(bool?), bool? UserHasMutedPost = default(bool?), long? LatestReplyPostId = default(long?), long? LatestReplyAuthorId = default(long?), IgnoresIgnoreResponse IgnoreStatus = default(IgnoresIgnoreResponse), string Locale = default(string))
         {
-            this.LastReplyTimestamp = lastReplyTimestamp;
-            this.IsPinned = isPinned;
-            this.UrlMediaType = urlMediaType;
-            this.Thumbnail = thumbnail;
-            this.Popularity = popularity;
-            this.IsActive = isActive;
-            this.IsAnnouncement = isAnnouncement;
-            this.UserRating = userRating;
-            this.UserHasRated = userHasRated;
-            this.UserHasMutedPost = userHasMutedPost;
-            this.LatestReplyPostId = latestReplyPostId;
-            this.LatestReplyAuthorId = latestReplyAuthorId;
-            this.IgnoreStatus = ignoreStatus;
-            this.Locale = locale;
+            this.LastReplyTimestamp = LastReplyTimestamp;
+            this.IsPinned = IsPinned;
+            this.UrlMediaType = UrlMediaType;
+            this.Thumbnail = Thumbnail;
+            this.Popularity = Popularity;
+            this.IsActive = IsActive;
+            this.IsAnnouncement = IsAnnouncement;
+            this.UserRating = UserRating;
+            this.UserHasRated = UserHasRated;
+            this.UserHasMutedPost = UserHasMutedPost;
+            this.LatestReplyPostId = LatestReplyPostId;
+            this.LatestReplyAuthorId = LatestReplyAuthorId;
+            this.IgnoreStatus = IgnoreStatus;
+            this.Locale = Locale;
         }
         
         /// <summary>
@@ -179,7 +179,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

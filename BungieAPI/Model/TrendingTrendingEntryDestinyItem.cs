@@ -33,17 +33,17 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TrendingTrendingEntryDestinyItem" /> class.
         /// </summary>
-        /// <param name="itemHash">itemHash.</param>
-        public TrendingTrendingEntryDestinyItem(int? itemHash = default(int?))
+        /// <param name="ItemHash">ItemHash.</param>
+        public TrendingTrendingEntryDestinyItem(uint? ItemHash = default(uint?))
         {
-            this.ItemHash = itemHash;
+            this.ItemHash = ItemHash;
         }
         
         /// <summary>
         /// Gets or Sets ItemHash
         /// </summary>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

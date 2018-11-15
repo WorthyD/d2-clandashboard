@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EntitiesEntityActionResult" /> class.
         /// </summary>
-        /// <param name="entityId">entityId.</param>
-        /// <param name="result">result.</param>
-        public EntitiesEntityActionResult(long? entityId = default(long?), ExceptionsPlatformErrorCodes result = default(ExceptionsPlatformErrorCodes))
+        /// <param name="EntityId">EntityId.</param>
+        /// <param name="Result">Result.</param>
+        public EntitiesEntityActionResult(long? EntityId = default(long?), ExceptionsPlatformErrorCodes Result = default(ExceptionsPlatformErrorCodes))
         {
-            this.EntityId = entityId;
-            this.Result = result;
+            this.EntityId = EntityId;
+            this.Result = Result;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsVendorsDestinyVendorLocationDefinition" /> class.
         /// </summary>
-        /// <param name="destinationHash">The hash identifier for a Destination at which this vendor may be located. Each destination where a Vendor may exist will only ever have a single entry..</param>
-        /// <param name="backgroundImagePath">The relative path to the background image representing this Vendor at this location, for use in a banner..</param>
-        public DestinyDefinitionsVendorsDestinyVendorLocationDefinition(int? destinationHash = default(int?), string backgroundImagePath = default(string))
+        /// <param name="DestinationHash">The hash identifier for a Destination at which this vendor may be located. Each destination where a Vendor may exist will only ever have a single entry..</param>
+        /// <param name="BackgroundImagePath">The relative path to the background image representing this Vendor at this location, for use in a banner..</param>
+        public DestinyDefinitionsVendorsDestinyVendorLocationDefinition(uint? DestinationHash = default(uint?), string BackgroundImagePath = default(string))
         {
-            this.DestinationHash = destinationHash;
-            this.BackgroundImagePath = backgroundImagePath;
+            this.DestinationHash = DestinationHash;
+            this.BackgroundImagePath = BackgroundImagePath;
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for a Destination at which this vendor may be located. Each destination where a Vendor may exist will only ever have a single entry.</value>
         [DataMember(Name="destinationHash", EmitDefaultValue=false)]
-        public int? DestinationHash { get; set; }
+        public uint? DestinationHash { get; set; }
 
         /// <summary>
         /// The relative path to the background image representing this Vendor at this location, for use in a banner.
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

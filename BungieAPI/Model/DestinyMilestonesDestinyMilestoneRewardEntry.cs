@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyMilestoneRewardEntry" /> class.
         /// </summary>
-        /// <param name="rewardEntryHash">The identifier for the reward entry in question. It is important to look up the related DestinyMilestoneRewardEntryDefinition to get the static details about the reward, which you can do by looking up the milestone&#39;s DestinyMilestoneDefinition and examining the DestinyMilestoneDefinition.rewards[rewardCategoryHash].rewardEntries[rewardEntryHash] data..</param>
-        /// <param name="earned">If TRUE, the player has earned this reward..</param>
-        /// <param name="redeemed">If TRUE, the player has redeemed/picked up/obtained this reward. Feel free to alias this to \&quot;gotTheShinyBauble\&quot; in your own codebase..</param>
-        public DestinyMilestonesDestinyMilestoneRewardEntry(int? rewardEntryHash = default(int?), bool? earned = default(bool?), bool? redeemed = default(bool?))
+        /// <param name="RewardEntryHash">The identifier for the reward entry in question. It is important to look up the related DestinyMilestoneRewardEntryDefinition to get the static details about the reward, which you can do by looking up the milestone&#39;s DestinyMilestoneDefinition and examining the DestinyMilestoneDefinition.rewards[rewardCategoryHash].rewardEntries[rewardEntryHash] data..</param>
+        /// <param name="Earned">If TRUE, the player has earned this reward..</param>
+        /// <param name="Redeemed">If TRUE, the player has redeemed/picked up/obtained this reward. Feel free to alias this to \&quot;gotTheShinyBauble\&quot; in your own codebase..</param>
+        public DestinyMilestonesDestinyMilestoneRewardEntry(uint? RewardEntryHash = default(uint?), bool? Earned = default(bool?), bool? Redeemed = default(bool?))
         {
-            this.RewardEntryHash = rewardEntryHash;
-            this.Earned = earned;
-            this.Redeemed = redeemed;
+            this.RewardEntryHash = RewardEntryHash;
+            this.Earned = Earned;
+            this.Redeemed = Redeemed;
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The identifier for the reward entry in question. It is important to look up the related DestinyMilestoneRewardEntryDefinition to get the static details about the reward, which you can do by looking up the milestone&#39;s DestinyMilestoneDefinition and examining the DestinyMilestoneDefinition.rewards[rewardCategoryHash].rewardEntries[rewardEntryHash] data.</value>
         [DataMember(Name="rewardEntryHash", EmitDefaultValue=false)]
-        public int? RewardEntryHash { get; set; }
+        public uint? RewardEntryHash { get; set; }
 
         /// <summary>
         /// If TRUE, the player has earned this reward.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

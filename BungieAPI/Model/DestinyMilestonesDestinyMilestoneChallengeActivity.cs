@@ -33,25 +33,25 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyMilestoneChallengeActivity" /> class.
         /// </summary>
-        /// <param name="activityHash">activityHash.</param>
-        /// <param name="challenges">challenges.</param>
-        /// <param name="modifierHashes">If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data.  Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what&#39;s really live..</param>
-        /// <param name="loadoutRequirementIndex">If returned, this is the index into the DestinyActivityDefinition&#39;s \&quot;loadouts\&quot; property, indicating the currently active loadout requirements..</param>
-        /// <param name="phases">If the Activity has discrete \&quot;phases\&quot; that we can track, that info will be here. Otherwise, this value will be NULL. Note that this is a list and not a dictionary: the order implies the ascending order of phases or progression in this activity..</param>
-        public DestinyMilestonesDestinyMilestoneChallengeActivity(int? activityHash = default(int?), List<DestinyChallengesDestinyChallengeStatus> challenges = default(List<DestinyChallengesDestinyChallengeStatus>), List<int?> modifierHashes = default(List<int?>), int? loadoutRequirementIndex = default(int?), List<DestinyMilestonesDestinyMilestoneActivityPhase> phases = default(List<DestinyMilestonesDestinyMilestoneActivityPhase>))
+        /// <param name="ActivityHash">ActivityHash.</param>
+        /// <param name="Challenges">Challenges.</param>
+        /// <param name="ModifierHashes">If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data.  Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what&#39;s really live..</param>
+        /// <param name="LoadoutRequirementIndex">If returned, this is the index into the DestinyActivityDefinition&#39;s \&quot;loadouts\&quot; property, indicating the currently active loadout requirements..</param>
+        /// <param name="Phases">If the Activity has discrete \&quot;phases\&quot; that we can track, that info will be here. Otherwise, this value will be NULL. Note that this is a list and not a dictionary: the order implies the ascending order of phases or progression in this activity..</param>
+        public DestinyMilestonesDestinyMilestoneChallengeActivity(uint? ActivityHash = default(uint?), List<DestinyChallengesDestinyChallengeStatus> Challenges = default(List<DestinyChallengesDestinyChallengeStatus>), List<uint?> ModifierHashes = default(List<uint?>), int? LoadoutRequirementIndex = default(int?), List<DestinyMilestonesDestinyMilestoneActivityPhase> Phases = default(List<DestinyMilestonesDestinyMilestoneActivityPhase>))
         {
-            this.ActivityHash = activityHash;
-            this.Challenges = challenges;
-            this.ModifierHashes = modifierHashes;
-            this.LoadoutRequirementIndex = loadoutRequirementIndex;
-            this.Phases = phases;
+            this.ActivityHash = ActivityHash;
+            this.Challenges = Challenges;
+            this.ModifierHashes = ModifierHashes;
+            this.LoadoutRequirementIndex = LoadoutRequirementIndex;
+            this.Phases = Phases;
         }
         
         /// <summary>
         /// Gets or Sets ActivityHash
         /// </summary>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// Gets or Sets Challenges
@@ -64,7 +64,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data.  Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what&#39;s really live.</value>
         [DataMember(Name="modifierHashes", EmitDefaultValue=false)]
-        public List<int?> ModifierHashes { get; set; }
+        public List<uint?> ModifierHashes { get; set; }
 
         /// <summary>
         /// If returned, this is the index into the DestinyActivityDefinition&#39;s \&quot;loadouts\&quot; property, indicating the currently active loadout requirements.
@@ -101,7 +101,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,46 +33,46 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyObjectiveDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">Ideally, this should tell you what your task is. I&#39;m not going to lie to you though. Sometimes this doesn&#39;t have useful information at all. Which sucks, but there&#39;s nothing either of us can do about it..</param>
-        /// <param name="completionValue">The value that the unlock value defined in unlockValueHash must reach in order for the objective to be considered Completed. Used in calculating progress and completion status..</param>
-        /// <param name="scope">A shortcut for determining the most restrictive gating that this Objective is set to use. This includes both the dynamic determination of progress and of completion values. See the DestinyGatingScope enum&#39;s documentation for more details..</param>
-        /// <param name="locationHash">OPTIONAL: a hash identifier for the location at which this objective must be accomplished, if there is a location defined. Look up the DestinyLocationDefinition for this hash for that additional location info..</param>
-        /// <param name="allowNegativeValue">If true, the value is allowed to go negative..</param>
-        /// <param name="allowValueChangeWhenCompleted">If true, you can effectively \&quot;un-complete\&quot; this objective if you lose progress after crossing the completion threshold.   If False, once you complete the task it will remain completed forever by locking the value..</param>
-        /// <param name="isCountingDownward">If true, completion means having an unlock value less than or equal to the completionValue.  If False, completion means having an unlock value greater than or equal to the completionValue..</param>
-        /// <param name="valueStyle">The UI style applied to the objective. It&#39;s an enum, take a look at DestinyUnlockValueUIStyle for details of the possible styles. Use this info as you wish to customize your UI..</param>
-        /// <param name="progressDescription">Text to describe the progress bar..</param>
-        /// <param name="perks">If this objective enables Perks intrinsically, the conditions for that enabling are defined here..</param>
-        /// <param name="stats">If this objective enables modifications on a player&#39;s stats intrinsically, the conditions are defined here..</param>
-        /// <param name="minimumVisibilityThreshold">If nonzero, this is the minimum value at which the objective&#39;s progression should be shown. Otherwise, don&#39;t show it yet..</param>
-        /// <param name="allowOvercompletion">If True, the progress will continue even beyond the point where the objective met its minimum completion requirements. Your UI will have to accommodate it..</param>
-        /// <param name="showValueOnComplete">If True, you should continue showing the progression value in the UI after it&#39;s complete. I mean, we already do that in BNet anyways, but if you want to be better behaved than us you could honor this flag..</param>
-        /// <param name="completedValueStyle">The style to use when the objective is completed..</param>
-        /// <param name="inProgressValueStyle">The style to use when the objective is still in progress..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyObjectiveDefinition(Object displayProperties = default(Object), int? completionValue = default(int?), Object scope = default(Object), int? locationHash = default(int?), bool? allowNegativeValue = default(bool?), bool? allowValueChangeWhenCompleted = default(bool?), bool? isCountingDownward = default(bool?), Object valueStyle = default(Object), string progressDescription = default(string), Object perks = default(Object), Object stats = default(Object), int? minimumVisibilityThreshold = default(int?), bool? allowOvercompletion = default(bool?), bool? showValueOnComplete = default(bool?), Object completedValueStyle = default(Object), Object inProgressValueStyle = default(Object), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">Ideally, this should tell you what your task is. I&#39;m not going to lie to you though. Sometimes this doesn&#39;t have useful information at all. Which sucks, but there&#39;s nothing either of us can do about it..</param>
+        /// <param name="CompletionValue">The value that the unlock value defined in unlockValueHash must reach in order for the objective to be considered Completed. Used in calculating progress and completion status..</param>
+        /// <param name="Scope">A shortcut for determining the most restrictive gating that this Objective is set to use. This includes both the dynamic determination of progress and of completion values. See the DestinyGatingScope enum&#39;s documentation for more details..</param>
+        /// <param name="LocationHash">OPTIONAL: a hash identifier for the location at which this objective must be accomplished, if there is a location defined. Look up the DestinyLocationDefinition for this hash for that additional location info..</param>
+        /// <param name="AllowNegativeValue">If true, the value is allowed to go negative..</param>
+        /// <param name="AllowValueChangeWhenCompleted">If true, you can effectively \&quot;un-complete\&quot; this objective if you lose progress after crossing the completion threshold.   If False, once you complete the task it will remain completed forever by locking the value..</param>
+        /// <param name="IsCountingDownward">If true, completion means having an unlock value less than or equal to the completionValue.  If False, completion means having an unlock value greater than or equal to the completionValue..</param>
+        /// <param name="ValueStyle">The UI style applied to the objective. It&#39;s an enum, take a look at DestinyUnlockValueUIStyle for details of the possible styles. Use this info as you wish to customize your UI..</param>
+        /// <param name="ProgressDescription">Text to describe the progress bar..</param>
+        /// <param name="Perks">If this objective enables Perks intrinsically, the conditions for that enabling are defined here..</param>
+        /// <param name="Stats">If this objective enables modifications on a player&#39;s stats intrinsically, the conditions are defined here..</param>
+        /// <param name="MinimumVisibilityThreshold">If nonzero, this is the minimum value at which the objective&#39;s progression should be shown. Otherwise, don&#39;t show it yet..</param>
+        /// <param name="AllowOvercompletion">If True, the progress will continue even beyond the point where the objective met its minimum completion requirements. Your UI will have to accommodate it..</param>
+        /// <param name="ShowValueOnComplete">If True, you should continue showing the progression value in the UI after it&#39;s complete. I mean, we already do that in BNet anyways, but if you want to be better behaved than us you could honor this flag..</param>
+        /// <param name="CompletedValueStyle">The style to use when the objective is completed..</param>
+        /// <param name="InProgressValueStyle">The style to use when the objective is still in progress..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyObjectiveDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), int? CompletionValue = default(int?), DestinyDestinyGatingScope Scope = default(DestinyDestinyGatingScope), uint? LocationHash = default(uint?), bool? AllowNegativeValue = default(bool?), bool? AllowValueChangeWhenCompleted = default(bool?), bool? IsCountingDownward = default(bool?), DestinyDestinyUnlockValueUIStyle ValueStyle = default(DestinyDestinyUnlockValueUIStyle), string ProgressDescription = default(string), DestinyDefinitionsDestinyObjectivePerkEntryDefinition Perks = default(DestinyDefinitionsDestinyObjectivePerkEntryDefinition), DestinyDefinitionsDestinyObjectiveStatEntryDefinition Stats = default(DestinyDefinitionsDestinyObjectiveStatEntryDefinition), int? MinimumVisibilityThreshold = default(int?), bool? AllowOvercompletion = default(bool?), bool? ShowValueOnComplete = default(bool?), DestinyDestinyUnlockValueUIStyle CompletedValueStyle = default(DestinyDestinyUnlockValueUIStyle), DestinyDestinyUnlockValueUIStyle InProgressValueStyle = default(DestinyDestinyUnlockValueUIStyle), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.CompletionValue = completionValue;
-            this.Scope = scope;
-            this.LocationHash = locationHash;
-            this.AllowNegativeValue = allowNegativeValue;
-            this.AllowValueChangeWhenCompleted = allowValueChangeWhenCompleted;
-            this.IsCountingDownward = isCountingDownward;
-            this.ValueStyle = valueStyle;
-            this.ProgressDescription = progressDescription;
-            this.Perks = perks;
-            this.Stats = stats;
-            this.MinimumVisibilityThreshold = minimumVisibilityThreshold;
-            this.AllowOvercompletion = allowOvercompletion;
-            this.ShowValueOnComplete = showValueOnComplete;
-            this.CompletedValueStyle = completedValueStyle;
-            this.InProgressValueStyle = inProgressValueStyle;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.CompletionValue = CompletionValue;
+            this.Scope = Scope;
+            this.LocationHash = LocationHash;
+            this.AllowNegativeValue = AllowNegativeValue;
+            this.AllowValueChangeWhenCompleted = AllowValueChangeWhenCompleted;
+            this.IsCountingDownward = IsCountingDownward;
+            this.ValueStyle = ValueStyle;
+            this.ProgressDescription = ProgressDescription;
+            this.Perks = Perks;
+            this.Stats = Stats;
+            this.MinimumVisibilityThreshold = MinimumVisibilityThreshold;
+            this.AllowOvercompletion = AllowOvercompletion;
+            this.ShowValueOnComplete = ShowValueOnComplete;
+            this.CompletedValueStyle = CompletedValueStyle;
+            this.InProgressValueStyle = InProgressValueStyle;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Ideally, this should tell you what your task is. I&#39;m not going to lie to you though. Sometimes this doesn&#39;t have useful information at all. Which sucks, but there&#39;s nothing either of us can do about it.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// The value that the unlock value defined in unlockValueHash must reach in order for the objective to be considered Completed. Used in calculating progress and completion status.
@@ -94,14 +94,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A shortcut for determining the most restrictive gating that this Objective is set to use. This includes both the dynamic determination of progress and of completion values. See the DestinyGatingScope enum&#39;s documentation for more details.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Object Scope { get; set; }
+        public DestinyDestinyGatingScope Scope { get; set; }
 
         /// <summary>
         /// OPTIONAL: a hash identifier for the location at which this objective must be accomplished, if there is a location defined. Look up the DestinyLocationDefinition for this hash for that additional location info.
         /// </summary>
         /// <value>OPTIONAL: a hash identifier for the location at which this objective must be accomplished, if there is a location defined. Look up the DestinyLocationDefinition for this hash for that additional location info.</value>
         [DataMember(Name="locationHash", EmitDefaultValue=false)]
-        public int? LocationHash { get; set; }
+        public uint? LocationHash { get; set; }
 
         /// <summary>
         /// If true, the value is allowed to go negative.
@@ -129,7 +129,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The UI style applied to the objective. It&#39;s an enum, take a look at DestinyUnlockValueUIStyle for details of the possible styles. Use this info as you wish to customize your UI.</value>
         [DataMember(Name="valueStyle", EmitDefaultValue=false)]
-        public Object ValueStyle { get; set; }
+        public DestinyDestinyUnlockValueUIStyle ValueStyle { get; set; }
 
         /// <summary>
         /// Text to describe the progress bar.
@@ -143,14 +143,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If this objective enables Perks intrinsically, the conditions for that enabling are defined here.</value>
         [DataMember(Name="perks", EmitDefaultValue=false)]
-        public Object Perks { get; set; }
+        public DestinyDefinitionsDestinyObjectivePerkEntryDefinition Perks { get; set; }
 
         /// <summary>
         /// If this objective enables modifications on a player&#39;s stats intrinsically, the conditions are defined here.
         /// </summary>
         /// <value>If this objective enables modifications on a player&#39;s stats intrinsically, the conditions are defined here.</value>
         [DataMember(Name="stats", EmitDefaultValue=false)]
-        public Object Stats { get; set; }
+        public DestinyDefinitionsDestinyObjectiveStatEntryDefinition Stats { get; set; }
 
         /// <summary>
         /// If nonzero, this is the minimum value at which the objective&#39;s progression should be shown. Otherwise, don&#39;t show it yet.
@@ -178,21 +178,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The style to use when the objective is completed.</value>
         [DataMember(Name="completedValueStyle", EmitDefaultValue=false)]
-        public Object CompletedValueStyle { get; set; }
+        public DestinyDestinyUnlockValueUIStyle CompletedValueStyle { get; set; }
 
         /// <summary>
         /// The style to use when the objective is still in progress.
         /// </summary>
         /// <value>The style to use when the objective is still in progress.</value>
         [DataMember(Name="inProgressValueStyle", EmitDefaultValue=false)]
-        public Object InProgressValueStyle { get; set; }
+        public DestinyDestinyUnlockValueUIStyle InProgressValueStyle { get; set; }
 
         /// <summary>
         /// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -243,7 +243,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

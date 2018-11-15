@@ -28,29 +28,27 @@ namespace BungieAPI.Model
     /// I know this doesn&#39;t look like a Flags Enumeration right now, but I assure you it is. This is the possible states that a Presentation Node can be in, and it is almost certain that its potential states will increase in the future. So don&#39;t treat it like a straight up enumeration.
     /// </summary>
     /// <value>I know this doesn&#39;t look like a Flags Enumeration right now, but I assure you it is. This is the possible states that a Presentation Node can be in, and it is almost certain that its potential states will increase in the future. So don&#39;t treat it like a straight up enumeration.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyPresentationNodeState
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// I know this doesn&#39;t look like a Flags Enumeration right now, but I assure you it is. This is the possible states that a Presentation Node can be in, and it is almost certain that its potential states will increase in the future. So don&#39;t treat it like a straight up enumeration.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// If this is set, the game recommends that you not show this node. But you know your life, do what you&#39;ve got to do.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Invisible,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3
+		/// <summary>
+		/// Turns out Presentation Nodes can also be obscured. If they are, this is set.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Obscured
     }
 
 }

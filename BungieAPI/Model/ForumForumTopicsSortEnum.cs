@@ -27,59 +27,57 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines Forum.ForumTopicsSortEnum
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum ForumForumTopicsSortEnum
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Default,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "1")]
+        LastReplied,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "2")]
+        MostReplied,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Popularity,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 5,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "4")]
+        Controversiality,
         
-        /// <summary>
-        /// Enum NUMBER_5 for value: 5
-        /// </summary>
-        [EnumMember(Value = "5")]
-        NUMBER_5 = 6,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "5")]
+        Liked,
         
-        /// <summary>
-        /// Enum NUMBER_6 for value: 6
-        /// </summary>
-        [EnumMember(Value = "6")]
-        NUMBER_6 = 7,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "6")]
+        HighestRated,
         
-        /// <summary>
-        /// Enum NUMBER_7 for value: 7
-        /// </summary>
-        [EnumMember(Value = "7")]
-        NUMBER_7 = 8
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "7")]
+        MostUpvoted
     }
 
 }

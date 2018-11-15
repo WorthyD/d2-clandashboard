@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LinksHyperlinkReference" /> class.
         /// </summary>
-        /// <param name="title">title.</param>
-        /// <param name="url">url.</param>
-        public LinksHyperlinkReference(string title = default(string), string url = default(string))
+        /// <param name="Title">Title.</param>
+        /// <param name="Url">Url.</param>
+        public LinksHyperlinkReference(string Title = default(string), string Url = default(string))
         {
-            this.Title = title;
-            this.Url = url;
+            this.Title = Title;
+            this.Url = Url;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

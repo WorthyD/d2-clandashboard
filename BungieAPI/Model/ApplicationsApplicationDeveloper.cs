@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationsApplicationDeveloper" /> class.
         /// </summary>
-        /// <param name="role">role.</param>
-        /// <param name="apiEulaVersion">apiEulaVersion.</param>
-        /// <param name="user">user.</param>
-        public ApplicationsApplicationDeveloper(ApplicationsDeveloperRole role = default(ApplicationsDeveloperRole), int? apiEulaVersion = default(int?), UserUserInfoCard user = default(UserUserInfoCard))
+        /// <param name="Role">Role.</param>
+        /// <param name="ApiEulaVersion">ApiEulaVersion.</param>
+        /// <param name="User">User.</param>
+        public ApplicationsApplicationDeveloper(ApplicationsDeveloperRole Role = default(ApplicationsDeveloperRole), int? ApiEulaVersion = default(int?), UserUserInfoCard User = default(UserUserInfoCard))
         {
-            this.Role = role;
-            this.ApiEulaVersion = apiEulaVersion;
-            this.User = user;
+            this.Role = Role;
+            this.ApiEulaVersion = ApiEulaVersion;
+            this.User = User;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

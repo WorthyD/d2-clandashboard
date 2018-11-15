@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemSocketEntryDefinition" /> class.
         /// </summary>
-        /// <param name="socketTypeHash">All sockets have a type, and this is the hash identifier for this particular type. Use it to look up the DestinySocketTypeDefinition: read there for more information on how socket types affect the behavior of the socket..</param>
-        /// <param name="singleInitialItemHash">If a valid hash, this is the hash identifier for the DestinyInventoryItemDefinition representing the Plug that will be initially inserted into the item on item creation. Otherwise, this Socket will either start without a plug inserted, or will have one randomly inserted..</param>
-        /// <param name="reusablePlugItems">This is a list of pre-determined plugs that can *always* be plugged into this socket, without the character having the plug in their inventory.  If this list is populated, you will not be allowed to plug an arbitrary item in the socket: you will only be able to choose from one of these reusable plugs..</param>
-        /// <param name="preventInitializationOnVendorPurchase">If this is true, then the socket will not be initialized with a plug if the item is purchased from a Vendor.  Remember that Vendors are much more than conceptual vendors: they include \&quot;Collection Kiosks\&quot; and other entities. See DestinyVendorDefinition for more information..</param>
-        /// <param name="hidePerksInItemTooltip">If this is true, the perks provided by this socket shouldn&#39;t be shown in the item&#39;s tooltip. This might be useful if it&#39;s providing a hidden bonus, or if the bonus is less important than other benefits on the item..</param>
-        /// <param name="plugSources">Indicates where you should go to get plugs for this socket. This will affect how you populate your UI, as well as what plugs are valid for this socket. It&#39;s an alternative to having to check for the existence of certain properties (reusablePlugItems for example) to infer where plugs should come from..</param>
-        /// <param name="reusablePlugSetHash">If this socket&#39;s plugs come from a reusable DestinyPlugSetDefinition, this is the identifier for that set. We added this concept to reduce some major duplication that&#39;s going to come from sockets as replacements for what was once implemented as large sets of items and kiosks (like Emotes)..</param>
-        /// <param name="randomizedPlugItems">As of Forsaken, item sockets can have randomized plugs. If this is populated, the live data will return a subset of plugs from this list that are active and able to be inserted into the socket just like a reusable plug..</param>
-        /// <param name="defaultVisible">If true, then this socket is visible in the item&#39;s \&quot;default\&quot; state. If you have an instance, you should always check the runtime state, as that can override this visibility setting: but if you&#39;re looking at the item on a conceptual level, this property can be useful for hiding data such as legacy sockets - which remain defined on items for infrastructure purposes, but can be confusing for users to see..</param>
-        public DestinyDefinitionsDestinyItemSocketEntryDefinition(int? socketTypeHash = default(int?), int? singleInitialItemHash = default(int?), List<DestinyDefinitionsDestinyItemSocketEntryPlugItemDefinition> reusablePlugItems = default(List<DestinyDefinitionsDestinyItemSocketEntryPlugItemDefinition>), bool? preventInitializationOnVendorPurchase = default(bool?), bool? hidePerksInItemTooltip = default(bool?), Object plugSources = default(Object), int? reusablePlugSetHash = default(int?), List<DestinyDefinitionsDestinyItemSocketEntryPlugItemRandomizedDefinition> randomizedPlugItems = default(List<DestinyDefinitionsDestinyItemSocketEntryPlugItemRandomizedDefinition>), bool? defaultVisible = default(bool?))
+        /// <param name="SocketTypeHash">All sockets have a type, and this is the hash identifier for this particular type. Use it to look up the DestinySocketTypeDefinition: read there for more information on how socket types affect the behavior of the socket..</param>
+        /// <param name="SingleInitialItemHash">If a valid hash, this is the hash identifier for the DestinyInventoryItemDefinition representing the Plug that will be initially inserted into the item on item creation. Otherwise, this Socket will either start without a plug inserted, or will have one randomly inserted..</param>
+        /// <param name="ReusablePlugItems">This is a list of pre-determined plugs that can *always* be plugged into this socket, without the character having the plug in their inventory.  If this list is populated, you will not be allowed to plug an arbitrary item in the socket: you will only be able to choose from one of these reusable plugs..</param>
+        /// <param name="PreventInitializationOnVendorPurchase">If this is true, then the socket will not be initialized with a plug if the item is purchased from a Vendor.  Remember that Vendors are much more than conceptual vendors: they include \&quot;Collection Kiosks\&quot; and other entities. See DestinyVendorDefinition for more information..</param>
+        /// <param name="HidePerksInItemTooltip">If this is true, the perks provided by this socket shouldn&#39;t be shown in the item&#39;s tooltip. This might be useful if it&#39;s providing a hidden bonus, or if the bonus is less important than other benefits on the item..</param>
+        /// <param name="PlugSources">Indicates where you should go to get plugs for this socket. This will affect how you populate your UI, as well as what plugs are valid for this socket. It&#39;s an alternative to having to check for the existence of certain properties (reusablePlugItems for example) to infer where plugs should come from..</param>
+        /// <param name="ReusablePlugSetHash">If this socket&#39;s plugs come from a reusable DestinyPlugSetDefinition, this is the identifier for that set. We added this concept to reduce some major duplication that&#39;s going to come from sockets as replacements for what was once implemented as large sets of items and kiosks (like Emotes)..</param>
+        /// <param name="RandomizedPlugItems">As of Forsaken, item sockets can have randomized plugs. If this is populated, the live data will return a subset of plugs from this list that are active and able to be inserted into the socket just like a reusable plug..</param>
+        /// <param name="DefaultVisible">If true, then this socket is visible in the item&#39;s \&quot;default\&quot; state. If you have an instance, you should always check the runtime state, as that can override this visibility setting: but if you&#39;re looking at the item on a conceptual level, this property can be useful for hiding data such as legacy sockets - which remain defined on items for infrastructure purposes, but can be confusing for users to see..</param>
+        public DestinyDefinitionsDestinyItemSocketEntryDefinition(uint? SocketTypeHash = default(uint?), uint? SingleInitialItemHash = default(uint?), List<DestinyDefinitionsDestinyItemSocketEntryPlugItemDefinition> ReusablePlugItems = default(List<DestinyDefinitionsDestinyItemSocketEntryPlugItemDefinition>), bool? PreventInitializationOnVendorPurchase = default(bool?), bool? HidePerksInItemTooltip = default(bool?), DestinySocketPlugSources PlugSources = default(DestinySocketPlugSources), uint? ReusablePlugSetHash = default(uint?), List<DestinyDefinitionsDestinyItemSocketEntryPlugItemRandomizedDefinition> RandomizedPlugItems = default(List<DestinyDefinitionsDestinyItemSocketEntryPlugItemRandomizedDefinition>), bool? DefaultVisible = default(bool?))
         {
-            this.SocketTypeHash = socketTypeHash;
-            this.SingleInitialItemHash = singleInitialItemHash;
-            this.ReusablePlugItems = reusablePlugItems;
-            this.PreventInitializationOnVendorPurchase = preventInitializationOnVendorPurchase;
-            this.HidePerksInItemTooltip = hidePerksInItemTooltip;
-            this.PlugSources = plugSources;
-            this.ReusablePlugSetHash = reusablePlugSetHash;
-            this.RandomizedPlugItems = randomizedPlugItems;
-            this.DefaultVisible = defaultVisible;
+            this.SocketTypeHash = SocketTypeHash;
+            this.SingleInitialItemHash = SingleInitialItemHash;
+            this.ReusablePlugItems = ReusablePlugItems;
+            this.PreventInitializationOnVendorPurchase = PreventInitializationOnVendorPurchase;
+            this.HidePerksInItemTooltip = HidePerksInItemTooltip;
+            this.PlugSources = PlugSources;
+            this.ReusablePlugSetHash = ReusablePlugSetHash;
+            this.RandomizedPlugItems = RandomizedPlugItems;
+            this.DefaultVisible = DefaultVisible;
         }
         
         /// <summary>
@@ -60,14 +60,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>All sockets have a type, and this is the hash identifier for this particular type. Use it to look up the DestinySocketTypeDefinition: read there for more information on how socket types affect the behavior of the socket.</value>
         [DataMember(Name="socketTypeHash", EmitDefaultValue=false)]
-        public int? SocketTypeHash { get; set; }
+        public uint? SocketTypeHash { get; set; }
 
         /// <summary>
         /// If a valid hash, this is the hash identifier for the DestinyInventoryItemDefinition representing the Plug that will be initially inserted into the item on item creation. Otherwise, this Socket will either start without a plug inserted, or will have one randomly inserted.
         /// </summary>
         /// <value>If a valid hash, this is the hash identifier for the DestinyInventoryItemDefinition representing the Plug that will be initially inserted into the item on item creation. Otherwise, this Socket will either start without a plug inserted, or will have one randomly inserted.</value>
         [DataMember(Name="singleInitialItemHash", EmitDefaultValue=false)]
-        public int? SingleInitialItemHash { get; set; }
+        public uint? SingleInitialItemHash { get; set; }
 
         /// <summary>
         /// This is a list of pre-determined plugs that can *always* be plugged into this socket, without the character having the plug in their inventory.  If this list is populated, you will not be allowed to plug an arbitrary item in the socket: you will only be able to choose from one of these reusable plugs.
@@ -95,14 +95,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Indicates where you should go to get plugs for this socket. This will affect how you populate your UI, as well as what plugs are valid for this socket. It&#39;s an alternative to having to check for the existence of certain properties (reusablePlugItems for example) to infer where plugs should come from.</value>
         [DataMember(Name="plugSources", EmitDefaultValue=false)]
-        public Object PlugSources { get; set; }
+        public DestinySocketPlugSources PlugSources { get; set; }
 
         /// <summary>
         /// If this socket&#39;s plugs come from a reusable DestinyPlugSetDefinition, this is the identifier for that set. We added this concept to reduce some major duplication that&#39;s going to come from sockets as replacements for what was once implemented as large sets of items and kiosks (like Emotes).
         /// </summary>
         /// <value>If this socket&#39;s plugs come from a reusable DestinyPlugSetDefinition, this is the identifier for that set. We added this concept to reduce some major duplication that&#39;s going to come from sockets as replacements for what was once implemented as large sets of items and kiosks (like Emotes).</value>
         [DataMember(Name="reusablePlugSetHash", EmitDefaultValue=false)]
-        public int? ReusablePlugSetHash { get; set; }
+        public uint? ReusablePlugSetHash { get; set; }
 
         /// <summary>
         /// As of Forsaken, item sockets can have randomized plugs. If this is populated, the live data will return a subset of plugs from this list that are active and able to be inserted into the socket just like a reusable plug.
@@ -143,7 +143,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

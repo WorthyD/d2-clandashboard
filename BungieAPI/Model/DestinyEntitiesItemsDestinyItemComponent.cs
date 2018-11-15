@@ -33,30 +33,30 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesItemsDestinyItemComponent" /> class.
         /// </summary>
-        /// <param name="itemHash">The identifier for the item&#39;s definition, which is where most of the useful static information for the item can be found..</param>
-        /// <param name="itemInstanceId">If the item is instanced, it will have an instance ID. Lack of an instance ID implies that the item has no distinct local qualities aside from stack size..</param>
-        /// <param name="quantity">The quantity of the item in this stack. Note that Instanced items cannot stack. If an instanced item, this value will always be 1 (as the stack has exactly one item in it).</param>
-        /// <param name="bindStatus">If the item is bound to a location, it will be specified in this enum..</param>
-        /// <param name="location">An easy reference for where the item is located. Redundant if you got the item from an Inventory, but useful when making detail calls on specific items..</param>
-        /// <param name="bucketHash">The hash identifier for the specific inventory bucket in which the item is located..</param>
-        /// <param name="transferStatus">If there is a known error state that would cause this item to not be transferable, this Flags enum will indicate all of those error states. Otherwise, it will be 0 (CanTransfer)..</param>
-        /// <param name="lockable">If the item can be locked, this will indicate that state..</param>
-        /// <param name="state">A flags enumeration indicating the transient/custom states of the item that affect how it is rendered: whether it&#39;s tracked or locked for example, or whether it has a masterwork plug inserted..</param>
-        /// <param name="overrideStyleItemHash">If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.  If you don&#39;t do this, certain items whose styles are being overridden by socketed items - such as the \&quot;Recycle Shader\&quot; item - would show whatever their default icon/style is, and it wouldn&#39;t be pretty or look accurate..</param>
-        /// <param name="expirationDate">If the item can expire, this is the date at which it will/did expire..</param>
-        public DestinyEntitiesItemsDestinyItemComponent(int? itemHash = default(int?), long? itemInstanceId = default(long?), int? quantity = default(int?), Object bindStatus = default(Object), Object location = default(Object), int? bucketHash = default(int?), Object transferStatus = default(Object), bool? lockable = default(bool?), Object state = default(Object), int? overrideStyleItemHash = default(int?), DateTime? expirationDate = default(DateTime?))
+        /// <param name="ItemHash">The identifier for the item&#39;s definition, which is where most of the useful static information for the item can be found..</param>
+        /// <param name="ItemInstanceId">If the item is instanced, it will have an instance ID. Lack of an instance ID implies that the item has no distinct local qualities aside from stack size..</param>
+        /// <param name="Quantity">The quantity of the item in this stack. Note that Instanced items cannot stack. If an instanced item, this value will always be 1 (as the stack has exactly one item in it).</param>
+        /// <param name="BindStatus">If the item is bound to a location, it will be specified in this enum..</param>
+        /// <param name="Location">An easy reference for where the item is located. Redundant if you got the item from an Inventory, but useful when making detail calls on specific items..</param>
+        /// <param name="BucketHash">The hash identifier for the specific inventory bucket in which the item is located..</param>
+        /// <param name="TransferStatus">If there is a known error state that would cause this item to not be transferable, this Flags enum will indicate all of those error states. Otherwise, it will be 0 (CanTransfer)..</param>
+        /// <param name="Lockable">If the item can be locked, this will indicate that state..</param>
+        /// <param name="State">A flags enumeration indicating the transient/custom states of the item that affect how it is rendered: whether it&#39;s tracked or locked for example, or whether it has a masterwork plug inserted..</param>
+        /// <param name="OverrideStyleItemHash">If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.  If you don&#39;t do this, certain items whose styles are being overridden by socketed items - such as the \&quot;Recycle Shader\&quot; item - would show whatever their default icon/style is, and it wouldn&#39;t be pretty or look accurate..</param>
+        /// <param name="ExpirationDate">If the item can expire, this is the date at which it will/did expire..</param>
+        public DestinyEntitiesItemsDestinyItemComponent(uint? ItemHash = default(uint?), long? ItemInstanceId = default(long?), int? Quantity = default(int?), DestinyItemBindStatus BindStatus = default(DestinyItemBindStatus), DestinyItemLocation Location = default(DestinyItemLocation), uint? BucketHash = default(uint?), DestinyTransferStatuses TransferStatus = default(DestinyTransferStatuses), bool? Lockable = default(bool?), DestinyItemState State = default(DestinyItemState), uint? OverrideStyleItemHash = default(uint?), DateTime? ExpirationDate = default(DateTime?))
         {
-            this.ItemHash = itemHash;
-            this.ItemInstanceId = itemInstanceId;
-            this.Quantity = quantity;
-            this.BindStatus = bindStatus;
-            this.Location = location;
-            this.BucketHash = bucketHash;
-            this.TransferStatus = transferStatus;
-            this.Lockable = lockable;
-            this.State = state;
-            this.OverrideStyleItemHash = overrideStyleItemHash;
-            this.ExpirationDate = expirationDate;
+            this.ItemHash = ItemHash;
+            this.ItemInstanceId = ItemInstanceId;
+            this.Quantity = Quantity;
+            this.BindStatus = BindStatus;
+            this.Location = Location;
+            this.BucketHash = BucketHash;
+            this.TransferStatus = TransferStatus;
+            this.Lockable = Lockable;
+            this.State = State;
+            this.OverrideStyleItemHash = OverrideStyleItemHash;
+            this.ExpirationDate = ExpirationDate;
         }
         
         /// <summary>
@@ -64,7 +64,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The identifier for the item&#39;s definition, which is where most of the useful static information for the item can be found.</value>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// If the item is instanced, it will have an instance ID. Lack of an instance ID implies that the item has no distinct local qualities aside from stack size.
@@ -85,28 +85,28 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the item is bound to a location, it will be specified in this enum.</value>
         [DataMember(Name="bindStatus", EmitDefaultValue=false)]
-        public Object BindStatus { get; set; }
+        public DestinyItemBindStatus BindStatus { get; set; }
 
         /// <summary>
         /// An easy reference for where the item is located. Redundant if you got the item from an Inventory, but useful when making detail calls on specific items.
         /// </summary>
         /// <value>An easy reference for where the item is located. Redundant if you got the item from an Inventory, but useful when making detail calls on specific items.</value>
         [DataMember(Name="location", EmitDefaultValue=false)]
-        public Object Location { get; set; }
+        public DestinyItemLocation Location { get; set; }
 
         /// <summary>
         /// The hash identifier for the specific inventory bucket in which the item is located.
         /// </summary>
         /// <value>The hash identifier for the specific inventory bucket in which the item is located.</value>
         [DataMember(Name="bucketHash", EmitDefaultValue=false)]
-        public int? BucketHash { get; set; }
+        public uint? BucketHash { get; set; }
 
         /// <summary>
         /// If there is a known error state that would cause this item to not be transferable, this Flags enum will indicate all of those error states. Otherwise, it will be 0 (CanTransfer).
         /// </summary>
         /// <value>If there is a known error state that would cause this item to not be transferable, this Flags enum will indicate all of those error states. Otherwise, it will be 0 (CanTransfer).</value>
         [DataMember(Name="transferStatus", EmitDefaultValue=false)]
-        public Object TransferStatus { get; set; }
+        public DestinyTransferStatuses TransferStatus { get; set; }
 
         /// <summary>
         /// If the item can be locked, this will indicate that state.
@@ -120,14 +120,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A flags enumeration indicating the transient/custom states of the item that affect how it is rendered: whether it&#39;s tracked or locked for example, or whether it has a masterwork plug inserted.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public Object State { get; set; }
+        public DestinyItemState State { get; set; }
 
         /// <summary>
         /// If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.  If you don&#39;t do this, certain items whose styles are being overridden by socketed items - such as the \&quot;Recycle Shader\&quot; item - would show whatever their default icon/style is, and it wouldn&#39;t be pretty or look accurate.
         /// </summary>
         /// <value>If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.  If you don&#39;t do this, certain items whose styles are being overridden by socketed items - such as the \&quot;Recycle Shader\&quot; item - would show whatever their default icon/style is, and it wouldn&#39;t be pretty or look accurate.</value>
         [DataMember(Name="overrideStyleItemHash", EmitDefaultValue=false)]
-        public int? OverrideStyleItemHash { get; set; }
+        public uint? OverrideStyleItemHash { get; set; }
 
         /// <summary>
         /// If the item can expire, this is the date at which it will/did expire.
@@ -163,7 +163,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -28,59 +28,57 @@ namespace BungieAPI.Model
     /// An enumeration representing the potential difficulty levels of an activity. Their names are... more qualitative than quantitative.
     /// </summary>
     /// <value>An enumeration representing the potential difficulty levels of an activity. Their names are... more qualitative than quantitative.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyActivityDifficultyTier
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// An enumeration representing the potential difficulty levels of an activity. Their names are... more qualitative than quantitative.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Trivial,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// An enumeration representing the potential difficulty levels of an activity. Their names are... more qualitative than quantitative.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Easy,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// An enumeration representing the potential difficulty levels of an activity. Their names are... more qualitative than quantitative.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Normal,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4,
+		/// <summary>
+		/// An enumeration representing the potential difficulty levels of an activity. Their names are... more qualitative than quantitative.
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Challenging,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 5,
+		/// <summary>
+		/// An enumeration representing the potential difficulty levels of an activity. Their names are... more qualitative than quantitative.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        Hard,
         
-        /// <summary>
-        /// Enum NUMBER_5 for value: 5
-        /// </summary>
-        [EnumMember(Value = "5")]
-        NUMBER_5 = 6,
+		/// <summary>
+		/// An enumeration representing the potential difficulty levels of an activity. Their names are... more qualitative than quantitative.
+		/// </summary>
+		[EnumMember(Value = "5")]
+        Brave,
         
-        /// <summary>
-        /// Enum NUMBER_6 for value: 6
-        /// </summary>
-        [EnumMember(Value = "6")]
-        NUMBER_6 = 7,
+		/// <summary>
+		/// An enumeration representing the potential difficulty levels of an activity. Their names are... more qualitative than quantitative.
+		/// </summary>
+		[EnumMember(Value = "6")]
+        AlmostImpossible,
         
-        /// <summary>
-        /// Enum NUMBER_7 for value: 7
-        /// </summary>
-        [EnumMember(Value = "7")]
-        NUMBER_7 = 8
+		/// <summary>
+		/// An enumeration representing the potential difficulty levels of an activity. Their names are... more qualitative than quantitative.
+		/// </summary>
+		[EnumMember(Value = "7")]
+        Impossible
     }
 
 }

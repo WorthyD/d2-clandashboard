@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationsSeries" /> class.
         /// </summary>
-        /// <param name="datapoints">Collection of samples with time and value..</param>
-        /// <param name="target">Target to which to datapoints apply..</param>
-        public ApplicationsSeries(List<ApplicationsDatapoint> datapoints = default(List<ApplicationsDatapoint>), string target = default(string))
+        /// <param name="Datapoints">Collection of samples with time and value..</param>
+        /// <param name="Target">Target to which to datapoints apply..</param>
+        public ApplicationsSeries(List<ApplicationsDatapoint> Datapoints = default(List<ApplicationsDatapoint>), string Target = default(string))
         {
-            this.Datapoints = datapoints;
-            this.Target = target;
+            this.Datapoints = Datapoints;
+            this.Target = Target;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

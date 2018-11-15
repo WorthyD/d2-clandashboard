@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyHistoricalStatsValuePair" /> class.
         /// </summary>
-        /// <param name="value">Raw value of the statistic.</param>
-        /// <param name="displayValue">Localized formated version of the value..</param>
-        public DestinyHistoricalStatsDestinyHistoricalStatsValuePair(double? value = default(double?), string displayValue = default(string))
+        /// <param name="Value">Raw value of the statistic.</param>
+        /// <param name="DisplayValue">Localized formated version of the value..</param>
+        public DestinyHistoricalStatsDestinyHistoricalStatsValuePair(double? Value = default(double?), string DisplayValue = default(string))
         {
-            this.Value = value;
-            this.DisplayValue = displayValue;
+            this.Value = Value;
+            this.DisplayValue = DisplayValue;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

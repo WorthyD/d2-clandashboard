@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserUserToUserContext" /> class.
         /// </summary>
-        /// <param name="isFollowing">isFollowing.</param>
-        /// <param name="ignoreStatus">ignoreStatus.</param>
-        /// <param name="globalIgnoreEndDate">globalIgnoreEndDate.</param>
-        public UserUserToUserContext(bool? isFollowing = default(bool?), IgnoresIgnoreResponse ignoreStatus = default(IgnoresIgnoreResponse), DateTime? globalIgnoreEndDate = default(DateTime?))
+        /// <param name="IsFollowing">IsFollowing.</param>
+        /// <param name="IgnoreStatus">IgnoreStatus.</param>
+        /// <param name="GlobalIgnoreEndDate">GlobalIgnoreEndDate.</param>
+        public UserUserToUserContext(bool? IsFollowing = default(bool?), IgnoresIgnoreResponse IgnoreStatus = default(IgnoresIgnoreResponse), DateTime? GlobalIgnoreEndDate = default(DateTime?))
         {
-            this.IsFollowing = isFollowing;
-            this.IgnoreStatus = ignoreStatus;
-            this.GlobalIgnoreEndDate = globalIgnoreEndDate;
+            this.IsFollowing = IsFollowing;
+            this.IgnoreStatus = IgnoreStatus;
+            this.GlobalIgnoreEndDate = GlobalIgnoreEndDate;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

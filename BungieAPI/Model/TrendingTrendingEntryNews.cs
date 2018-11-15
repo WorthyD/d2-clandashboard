@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TrendingTrendingEntryNews" /> class.
         /// </summary>
-        /// <param name="article">article.</param>
-        public TrendingTrendingEntryNews(ContentContentItemPublicContract article = default(ContentContentItemPublicContract))
+        /// <param name="Article">Article.</param>
+        public TrendingTrendingEntryNews(ContentContentItemPublicContract Article = default(ContentContentItemPublicContract))
         {
-            this.Article = article;
+            this.Article = Article;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

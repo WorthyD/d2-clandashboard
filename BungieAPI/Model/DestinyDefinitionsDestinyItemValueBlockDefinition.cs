@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemValueBlockDefinition" /> class.
         /// </summary>
-        /// <param name="itemValue">References to the items that make up this item&#39;s \&quot;value\&quot;, and the quantity..</param>
-        /// <param name="valueDescription">If there&#39;s a localized text description of the value provided, this will be said description..</param>
-        public DestinyDefinitionsDestinyItemValueBlockDefinition(List<DestinyDestinyItemQuantity> itemValue = default(List<DestinyDestinyItemQuantity>), string valueDescription = default(string))
+        /// <param name="ItemValue">References to the items that make up this item&#39;s \&quot;value\&quot;, and the quantity..</param>
+        /// <param name="ValueDescription">If there&#39;s a localized text description of the value provided, this will be said description..</param>
+        public DestinyDefinitionsDestinyItemValueBlockDefinition(List<DestinyDestinyItemQuantity> ItemValue = default(List<DestinyDestinyItemQuantity>), string ValueDescription = default(string))
         {
-            this.ItemValue = itemValue;
-            this.ValueDescription = valueDescription;
+            this.ItemValue = ItemValue;
+            this.ValueDescription = ValueDescription;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

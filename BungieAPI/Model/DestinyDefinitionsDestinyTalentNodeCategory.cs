@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyTalentNodeCategory" /> class.
         /// </summary>
-        /// <param name="identifier">Mostly just for debug purposes, but if you find it useful you can have it. This is BNet&#39;s manually created identifier for this category..</param>
-        /// <param name="isLoreDriven">If true, we found the localized content in a related DestinyLoreDefinition instead of local BNet localization files. This is mostly for ease of my own future investigations..</param>
-        /// <param name="displayProperties">Will contain at least the \&quot;name\&quot;, which will be the title of the category. We will likely not have description and an icon yet, but I&#39;m going to keep my options open..</param>
-        /// <param name="nodeHashes">The set of all hash identifiers for Talent Nodes (DestinyTalentNodeDefinition) in this Talent Grid that are part of this Category..</param>
-        public DestinyDefinitionsDestinyTalentNodeCategory(string identifier = default(string), bool? isLoreDriven = default(bool?), Object displayProperties = default(Object), List<int?> nodeHashes = default(List<int?>))
+        /// <param name="Identifier">Mostly just for debug purposes, but if you find it useful you can have it. This is BNet&#39;s manually created identifier for this category..</param>
+        /// <param name="IsLoreDriven">If true, we found the localized content in a related DestinyLoreDefinition instead of local BNet localization files. This is mostly for ease of my own future investigations..</param>
+        /// <param name="DisplayProperties">Will contain at least the \&quot;name\&quot;, which will be the title of the category. We will likely not have description and an icon yet, but I&#39;m going to keep my options open..</param>
+        /// <param name="NodeHashes">The set of all hash identifiers for Talent Nodes (DestinyTalentNodeDefinition) in this Talent Grid that are part of this Category..</param>
+        public DestinyDefinitionsDestinyTalentNodeCategory(string Identifier = default(string), bool? IsLoreDriven = default(bool?), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), List<uint?> NodeHashes = default(List<uint?>))
         {
-            this.Identifier = identifier;
-            this.IsLoreDriven = isLoreDriven;
-            this.DisplayProperties = displayProperties;
-            this.NodeHashes = nodeHashes;
+            this.Identifier = Identifier;
+            this.IsLoreDriven = IsLoreDriven;
+            this.DisplayProperties = DisplayProperties;
+            this.NodeHashes = NodeHashes;
         }
         
         /// <summary>
@@ -64,14 +64,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Will contain at least the \&quot;name\&quot;, which will be the title of the category. We will likely not have description and an icon yet, but I&#39;m going to keep my options open.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// The set of all hash identifiers for Talent Nodes (DestinyTalentNodeDefinition) in this Talent Grid that are part of this Category.
         /// </summary>
         /// <value>The set of all hash identifiers for Talent Nodes (DestinyTalentNodeDefinition) in this Talent Grid that are part of this Category.</value>
         [DataMember(Name="nodeHashes", EmitDefaultValue=false)]
-        public List<int?> NodeHashes { get; set; }
+        public List<uint?> NodeHashes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

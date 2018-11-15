@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsRecordsDestinyRecordsComponent" /> class.
         /// </summary>
-        /// <param name="records">records.</param>
-        public DestinyComponentsRecordsDestinyRecordsComponent(Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent> records = default(Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent>))
+        /// <param name="Records">Records.</param>
+        public DestinyComponentsRecordsDestinyRecordsComponent(Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent> Records = default(Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent>))
         {
-            this.Records = records;
+            this.Records = Records;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

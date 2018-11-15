@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyResponsesDestinyErrorProfile" /> class.
         /// </summary>
-        /// <param name="errorCode">The error that we encountered. You should be able to look up localized text to show to the user for these failures..</param>
-        /// <param name="infoCard">Basic info about the account that failed. Don&#39;t expect anything other than membership ID, Membership Type, and displayName to be populated..</param>
-        public DestinyResponsesDestinyErrorProfile(Object errorCode = default(Object), Object infoCard = default(Object))
+        /// <param name="ErrorCode">The error that we encountered. You should be able to look up localized text to show to the user for these failures..</param>
+        /// <param name="InfoCard">Basic info about the account that failed. Don&#39;t expect anything other than membership ID, Membership Type, and displayName to be populated..</param>
+        public DestinyResponsesDestinyErrorProfile(ExceptionsPlatformErrorCodes ErrorCode = default(ExceptionsPlatformErrorCodes), UserUserInfoCard InfoCard = default(UserUserInfoCard))
         {
-            this.ErrorCode = errorCode;
-            this.InfoCard = infoCard;
+            this.ErrorCode = ErrorCode;
+            this.InfoCard = InfoCard;
         }
         
         /// <summary>
@@ -46,14 +46,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The error that we encountered. You should be able to look up localized text to show to the user for these failures.</value>
         [DataMember(Name="errorCode", EmitDefaultValue=false)]
-        public Object ErrorCode { get; set; }
+        public ExceptionsPlatformErrorCodes ErrorCode { get; set; }
 
         /// <summary>
         /// Basic info about the account that failed. Don&#39;t expect anything other than membership ID, Membership Type, and displayName to be populated.
         /// </summary>
         /// <value>Basic info about the account that failed. Don&#39;t expect anything other than membership ID, Membership Type, and displayName to be populated.</value>
         [DataMember(Name="infoCard", EmitDefaultValue=false)]
-        public Object InfoCard { get; set; }
+        public UserUserInfoCard InfoCard { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

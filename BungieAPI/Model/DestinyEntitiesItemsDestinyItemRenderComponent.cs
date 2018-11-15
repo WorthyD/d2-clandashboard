@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesItemsDestinyItemRenderComponent" /> class.
         /// </summary>
-        /// <param name="useCustomDyes">If you should use custom dyes on this item, it will be indicated here..</param>
-        /// <param name="artRegions">A dictionary for rendering gear components, with:  key &#x3D; Art Arrangement Region Index  value &#x3D; The chosen Arrangement Index for the Region, based on the value of a stat on the item used for making the choice..</param>
-        public DestinyEntitiesItemsDestinyItemRenderComponent(bool? useCustomDyes = default(bool?), Dictionary<string, int?> artRegions = default(Dictionary<string, int?>))
+        /// <param name="UseCustomDyes">If you should use custom dyes on this item, it will be indicated here..</param>
+        /// <param name="ArtRegions">A dictionary for rendering gear components, with:  key &#x3D; Art Arrangement Region Index  value &#x3D; The chosen Arrangement Index for the Region, based on the value of a stat on the item used for making the choice..</param>
+        public DestinyEntitiesItemsDestinyItemRenderComponent(bool? UseCustomDyes = default(bool?), Dictionary<string, int?> ArtRegions = default(Dictionary<string, int?>))
         {
-            this.UseCustomDyes = useCustomDyes;
-            this.ArtRegions = artRegions;
+            this.UseCustomDyes = UseCustomDyes;
+            this.ArtRegions = ArtRegions;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

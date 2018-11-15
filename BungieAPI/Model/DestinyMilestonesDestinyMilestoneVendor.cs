@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyMilestoneVendor" /> class.
         /// </summary>
-        /// <param name="vendorHash">The hash identifier of the Vendor related to this Milestone. You can show useful things from this, such as thier Faction icon or whatever you might care about..</param>
-        /// <param name="previewItemHash">If this vendor is featuring a specific item for this event, this will be the hash identifier of that item. I&#39;m taking bets now on how long we go before this needs to be a list or some other, more complex representation instead and I deprecate this too. I&#39;m going to go with 5 months. Calling it now, 2017-09-14 at 9:46pm PST..</param>
-        public DestinyMilestonesDestinyMilestoneVendor(int? vendorHash = default(int?), int? previewItemHash = default(int?))
+        /// <param name="VendorHash">The hash identifier of the Vendor related to this Milestone. You can show useful things from this, such as thier Faction icon or whatever you might care about..</param>
+        /// <param name="PreviewItemHash">If this vendor is featuring a specific item for this event, this will be the hash identifier of that item. I&#39;m taking bets now on how long we go before this needs to be a list or some other, more complex representation instead and I deprecate this too. I&#39;m going to go with 5 months. Calling it now, 2017-09-14 at 9:46pm PST..</param>
+        public DestinyMilestonesDestinyMilestoneVendor(uint? VendorHash = default(uint?), uint? PreviewItemHash = default(uint?))
         {
-            this.VendorHash = vendorHash;
-            this.PreviewItemHash = previewItemHash;
+            this.VendorHash = VendorHash;
+            this.PreviewItemHash = PreviewItemHash;
         }
         
         /// <summary>
@@ -46,14 +46,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the Vendor related to this Milestone. You can show useful things from this, such as thier Faction icon or whatever you might care about.</value>
         [DataMember(Name="vendorHash", EmitDefaultValue=false)]
-        public int? VendorHash { get; set; }
+        public uint? VendorHash { get; set; }
 
         /// <summary>
         /// If this vendor is featuring a specific item for this event, this will be the hash identifier of that item. I&#39;m taking bets now on how long we go before this needs to be a list or some other, more complex representation instead and I deprecate this too. I&#39;m going to go with 5 months. Calling it now, 2017-09-14 at 9:46pm PST.
         /// </summary>
         /// <value>If this vendor is featuring a specific item for this event, this will be the hash identifier of that item. I&#39;m taking bets now on how long we go before this needs to be a list or some other, more complex representation instead and I deprecate this too. I&#39;m going to go with 5 months. Calling it now, 2017-09-14 at 9:46pm PST.</value>
         [DataMember(Name="previewItemHash", EmitDefaultValue=false)]
-        public int? PreviewItemHash { get; set; }
+        public uint? PreviewItemHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsProgressionDestinyProgressionLevelRequirementDefinition" /> class.
         /// </summary>
-        /// <param name="requirementCurve">A curve of level requirements, weighted by the related progressions&#39; level.  Interpolate against this curve with the character&#39;s progression level to determine what the level requirement of the generated item that is using this data will be..</param>
-        /// <param name="progressionHash">The progression whose level should be used to determine the level requirement.  Look up the DestinyProgressionDefinition with this hash for more information about the progression in question..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsProgressionDestinyProgressionLevelRequirementDefinition(List<InterpolationInterpolationPointFloat> requirementCurve = default(List<InterpolationInterpolationPointFloat>), int? progressionHash = default(int?), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="RequirementCurve">A curve of level requirements, weighted by the related progressions&#39; level.  Interpolate against this curve with the character&#39;s progression level to determine what the level requirement of the generated item that is using this data will be..</param>
+        /// <param name="ProgressionHash">The progression whose level should be used to determine the level requirement.  Look up the DestinyProgressionDefinition with this hash for more information about the progression in question..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsProgressionDestinyProgressionLevelRequirementDefinition(List<InterpolationInterpolationPointFloat> RequirementCurve = default(List<InterpolationInterpolationPointFloat>), uint? ProgressionHash = default(uint?), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.RequirementCurve = requirementCurve;
-            this.ProgressionHash = progressionHash;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.RequirementCurve = RequirementCurve;
+            this.ProgressionHash = ProgressionHash;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -59,14 +59,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The progression whose level should be used to determine the level requirement.  Look up the DestinyProgressionDefinition with this hash for more information about the progression in question.</value>
         [DataMember(Name="progressionHash", EmitDefaultValue=false)]
-        public int? ProgressionHash { get; set; }
+        public uint? ProgressionHash { get; set; }
 
         /// <summary>
         /// The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

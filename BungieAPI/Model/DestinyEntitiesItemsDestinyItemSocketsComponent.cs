@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesItemsDestinyItemSocketsComponent" /> class.
         /// </summary>
-        /// <param name="sockets">The list of all sockets on the item, and their status information..</param>
-        public DestinyEntitiesItemsDestinyItemSocketsComponent(List<DestinyEntitiesItemsDestinyItemSocketState> sockets = default(List<DestinyEntitiesItemsDestinyItemSocketState>))
+        /// <param name="Sockets">The list of all sockets on the item, and their status information..</param>
+        public DestinyEntitiesItemsDestinyItemSocketsComponent(List<DestinyEntitiesItemsDestinyItemSocketState> Sockets = default(List<DestinyEntitiesItemsDestinyItemSocketState>))
         {
-            this.Sockets = sockets;
+            this.Sockets = Sockets;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

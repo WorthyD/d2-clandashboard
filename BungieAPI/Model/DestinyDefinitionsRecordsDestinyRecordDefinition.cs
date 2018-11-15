@@ -33,34 +33,34 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsRecordsDestinyRecordDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="scope">Indicates whether this Record&#39;s state is determined on a per-character or on an account-wide basis..</param>
-        /// <param name="presentationInfo">presentationInfo.</param>
-        /// <param name="loreHash">loreHash.</param>
-        /// <param name="objectiveHashes">objectiveHashes.</param>
-        /// <param name="recordValueStyle">recordValueStyle.</param>
-        /// <param name="titleInfo">titleInfo.</param>
-        /// <param name="completionInfo">completionInfo.</param>
-        /// <param name="stateInfo">stateInfo.</param>
-        /// <param name="requirements">requirements.</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsRecordsDestinyRecordDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), Object scope = default(Object), DestinyDefinitionsPresentationDestinyPresentationChildBlock presentationInfo = default(DestinyDefinitionsPresentationDestinyPresentationChildBlock), int? loreHash = default(int?), List<int?> objectiveHashes = default(List<int?>), DestinyDestinyRecordValueStyle recordValueStyle = default(DestinyDestinyRecordValueStyle), DestinyDefinitionsRecordsDestinyRecordTitleBlock titleInfo = default(DestinyDefinitionsRecordsDestinyRecordTitleBlock), DestinyDefinitionsRecordsDestinyRecordCompletionBlock completionInfo = default(DestinyDefinitionsRecordsDestinyRecordCompletionBlock), DestinyDefinitionsRecordsSchemaRecordStateBlock stateInfo = default(DestinyDefinitionsRecordsSchemaRecordStateBlock), DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock requirements = default(DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="Scope">Indicates whether this Record&#39;s state is determined on a per-character or on an account-wide basis..</param>
+        /// <param name="PresentationInfo">PresentationInfo.</param>
+        /// <param name="LoreHash">LoreHash.</param>
+        /// <param name="ObjectiveHashes">ObjectiveHashes.</param>
+        /// <param name="RecordValueStyle">RecordValueStyle.</param>
+        /// <param name="TitleInfo">TitleInfo.</param>
+        /// <param name="CompletionInfo">CompletionInfo.</param>
+        /// <param name="StateInfo">StateInfo.</param>
+        /// <param name="Requirements">Requirements.</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsRecordsDestinyRecordDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), DestinyDestinyScope Scope = default(DestinyDestinyScope), DestinyDefinitionsPresentationDestinyPresentationChildBlock PresentationInfo = default(DestinyDefinitionsPresentationDestinyPresentationChildBlock), uint? LoreHash = default(uint?), List<uint?> ObjectiveHashes = default(List<uint?>), DestinyDestinyRecordValueStyle RecordValueStyle = default(DestinyDestinyRecordValueStyle), DestinyDefinitionsRecordsDestinyRecordTitleBlock TitleInfo = default(DestinyDefinitionsRecordsDestinyRecordTitleBlock), DestinyDefinitionsRecordsDestinyRecordCompletionBlock CompletionInfo = default(DestinyDefinitionsRecordsDestinyRecordCompletionBlock), DestinyDefinitionsRecordsSchemaRecordStateBlock StateInfo = default(DestinyDefinitionsRecordsSchemaRecordStateBlock), DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock Requirements = default(DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.Scope = scope;
-            this.PresentationInfo = presentationInfo;
-            this.LoreHash = loreHash;
-            this.ObjectiveHashes = objectiveHashes;
-            this.RecordValueStyle = recordValueStyle;
-            this.TitleInfo = titleInfo;
-            this.CompletionInfo = completionInfo;
-            this.StateInfo = stateInfo;
-            this.Requirements = requirements;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.Scope = Scope;
+            this.PresentationInfo = PresentationInfo;
+            this.LoreHash = LoreHash;
+            this.ObjectiveHashes = ObjectiveHashes;
+            this.RecordValueStyle = RecordValueStyle;
+            this.TitleInfo = TitleInfo;
+            this.CompletionInfo = CompletionInfo;
+            this.StateInfo = StateInfo;
+            this.Requirements = Requirements;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -74,7 +74,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Indicates whether this Record&#39;s state is determined on a per-character or on an account-wide basis.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Object Scope { get; set; }
+        public DestinyDestinyScope Scope { get; set; }
 
         /// <summary>
         /// Gets or Sets PresentationInfo
@@ -86,13 +86,13 @@ namespace BungieAPI.Model
         /// Gets or Sets LoreHash
         /// </summary>
         [DataMember(Name="loreHash", EmitDefaultValue=false)]
-        public int? LoreHash { get; set; }
+        public uint? LoreHash { get; set; }
 
         /// <summary>
         /// Gets or Sets ObjectiveHashes
         /// </summary>
         [DataMember(Name="objectiveHashes", EmitDefaultValue=false)]
-        public List<int?> ObjectiveHashes { get; set; }
+        public List<uint?> ObjectiveHashes { get; set; }
 
         /// <summary>
         /// Gets or Sets RecordValueStyle
@@ -129,7 +129,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -174,7 +174,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

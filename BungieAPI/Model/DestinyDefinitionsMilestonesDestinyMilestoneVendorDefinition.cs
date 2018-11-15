@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneVendorDefinition" /> class.
         /// </summary>
-        /// <param name="vendorHash">The hash of the vendor whose wares should be shown as associated with the Milestone..</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneVendorDefinition(int? vendorHash = default(int?))
+        /// <param name="VendorHash">The hash of the vendor whose wares should be shown as associated with the Milestone..</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneVendorDefinition(uint? VendorHash = default(uint?))
         {
-            this.VendorHash = vendorHash;
+            this.VendorHash = VendorHash;
         }
         
         /// <summary>
@@ -44,7 +44,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash of the vendor whose wares should be shown as associated with the Milestone.</value>
         [DataMember(Name="vendorHash", EmitDefaultValue=false)]
-        public int? VendorHash { get; set; }
+        public uint? VendorHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

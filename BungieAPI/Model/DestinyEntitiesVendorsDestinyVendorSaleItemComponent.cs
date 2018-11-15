@@ -33,30 +33,30 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesVendorsDestinyVendorSaleItemComponent" /> class.
         /// </summary>
-        /// <param name="vendorItemIndex">The index into the DestinyVendorDefinition.itemList property. Note that this means Vendor data *is* Content Version dependent: make sure you have the latest content before you use Vendor data, or these indexes may mismatch.   Most systems avoid this problem, but Vendors is one area where we are unable to reasonably avoid content dependency at the moment..</param>
-        /// <param name="itemHash">The hash of the item being sold, as a quick shortcut for looking up the DestinyInventoryItemDefinition of the sale item..</param>
-        /// <param name="overrideStyleItemHash">If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.  If you don&#39;t do this, certain items whose styles are being overridden by socketed items - such as the \&quot;Recycle Shader\&quot; item - would show whatever their default icon/style is, and it wouldn&#39;t be pretty or look accurate..</param>
-        /// <param name="quantity">How much of the item you&#39;ll be getting..</param>
-        /// <param name="saleStatus">A flag indicating whether the requesting character can buy the item, and if not the reasons why the character can&#39;t buy it..</param>
-        /// <param name="costs">A summary of the current costs of the item..</param>
-        /// <param name="requiredUnlocks">If you can&#39;t buy the item due to a complex character state, these will be hashes for DestinyUnlockDefinitions that you can check to see messages regarding the failure (if the unlocks have human readable information: it is not guaranteed that Unlocks will have human readable strings, and your application will have to handle that)  Prefer using failureIndexes instead. These are provided for informational purposes, but have largely been supplanted by failureIndexes..</param>
-        /// <param name="unlockStatuses">If any complex unlock states are checked in determining purchasability, these will be returned here along with the status of the unlock check.  Prefer using failureIndexes instead. These are provided for informational purposes, but have largely been supplanted by failureIndexes..</param>
-        /// <param name="failureIndexes">Indexes in to the \&quot;failureStrings\&quot; lookup table in DestinyVendorDefinition for the given Vendor. Gives some more reliable failure information for why you can&#39;t purchase an item.  It is preferred to use these over requiredUnlocks and unlockStatuses: the latter are provided mostly in case someone can do something interesting with it that I didn&#39;t anticipate..</param>
-        /// <param name="augments">A flags enumeration value representing the current state of any \&quot;state modifiers\&quot; on the item being sold. These are meant to correspond with some sort of visual indicator as to the augmentation: for instance, if an item is on sale or if you already own the item in question.  Determining how you want to represent these in your own app (or if you even want to) is an exercise left for the reader..</param>
-        /// <param name="overrideNextRefreshDate">If this item has its own custom date where it may be removed from the Vendor&#39;s rotation, this is that date.  Note that there&#39;s not actually any guarantee that it will go away: it could be chosen again and end up still being in the Vendor&#39;s sale items! But this is the next date where that test will occur, and is also the date that the game shows for availability on things like Bounties being sold. So it&#39;s the best we can give..</param>
-        public DestinyEntitiesVendorsDestinyVendorSaleItemComponent(int? vendorItemIndex = default(int?), int? itemHash = default(int?), int? overrideStyleItemHash = default(int?), int? quantity = default(int?), Object saleStatus = default(Object), List<DestinyDestinyItemQuantity> costs = default(List<DestinyDestinyItemQuantity>), List<int?> requiredUnlocks = default(List<int?>), List<DestinyDestinyUnlockStatus> unlockStatuses = default(List<DestinyDestinyUnlockStatus>), List<int?> failureIndexes = default(List<int?>), Object augments = default(Object), DateTime? overrideNextRefreshDate = default(DateTime?))
+        /// <param name="VendorItemIndex">The index into the DestinyVendorDefinition.itemList property. Note that this means Vendor data *is* Content Version dependent: make sure you have the latest content before you use Vendor data, or these indexes may mismatch.   Most systems avoid this problem, but Vendors is one area where we are unable to reasonably avoid content dependency at the moment..</param>
+        /// <param name="ItemHash">The hash of the item being sold, as a quick shortcut for looking up the DestinyInventoryItemDefinition of the sale item..</param>
+        /// <param name="OverrideStyleItemHash">If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.  If you don&#39;t do this, certain items whose styles are being overridden by socketed items - such as the \&quot;Recycle Shader\&quot; item - would show whatever their default icon/style is, and it wouldn&#39;t be pretty or look accurate..</param>
+        /// <param name="Quantity">How much of the item you&#39;ll be getting..</param>
+        /// <param name="SaleStatus">A flag indicating whether the requesting character can buy the item, and if not the reasons why the character can&#39;t buy it..</param>
+        /// <param name="Costs">A summary of the current costs of the item..</param>
+        /// <param name="RequiredUnlocks">If you can&#39;t buy the item due to a complex character state, these will be hashes for DestinyUnlockDefinitions that you can check to see messages regarding the failure (if the unlocks have human readable information: it is not guaranteed that Unlocks will have human readable strings, and your application will have to handle that)  Prefer using failureIndexes instead. These are provided for informational purposes, but have largely been supplanted by failureIndexes..</param>
+        /// <param name="UnlockStatuses">If any complex unlock states are checked in determining purchasability, these will be returned here along with the status of the unlock check.  Prefer using failureIndexes instead. These are provided for informational purposes, but have largely been supplanted by failureIndexes..</param>
+        /// <param name="FailureIndexes">Indexes in to the \&quot;failureStrings\&quot; lookup table in DestinyVendorDefinition for the given Vendor. Gives some more reliable failure information for why you can&#39;t purchase an item.  It is preferred to use these over requiredUnlocks and unlockStatuses: the latter are provided mostly in case someone can do something interesting with it that I didn&#39;t anticipate..</param>
+        /// <param name="Augments">A flags enumeration value representing the current state of any \&quot;state modifiers\&quot; on the item being sold. These are meant to correspond with some sort of visual indicator as to the augmentation: for instance, if an item is on sale or if you already own the item in question.  Determining how you want to represent these in your own app (or if you even want to) is an exercise left for the reader..</param>
+        /// <param name="OverrideNextRefreshDate">If this item has its own custom date where it may be removed from the Vendor&#39;s rotation, this is that date.  Note that there&#39;s not actually any guarantee that it will go away: it could be chosen again and end up still being in the Vendor&#39;s sale items! But this is the next date where that test will occur, and is also the date that the game shows for availability on things like Bounties being sold. So it&#39;s the best we can give..</param>
+        public DestinyEntitiesVendorsDestinyVendorSaleItemComponent(int? VendorItemIndex = default(int?), uint? ItemHash = default(uint?), uint? OverrideStyleItemHash = default(uint?), int? Quantity = default(int?), DestinyVendorItemStatus SaleStatus = default(DestinyVendorItemStatus), List<DestinyDestinyItemQuantity> Costs = default(List<DestinyDestinyItemQuantity>), List<uint?> RequiredUnlocks = default(List<uint?>), List<DestinyDestinyUnlockStatus> UnlockStatuses = default(List<DestinyDestinyUnlockStatus>), List<int?> FailureIndexes = default(List<int?>), DestinyDestinyVendorItemState Augments = default(DestinyDestinyVendorItemState), DateTime? OverrideNextRefreshDate = default(DateTime?))
         {
-            this.VendorItemIndex = vendorItemIndex;
-            this.ItemHash = itemHash;
-            this.OverrideStyleItemHash = overrideStyleItemHash;
-            this.Quantity = quantity;
-            this.SaleStatus = saleStatus;
-            this.Costs = costs;
-            this.RequiredUnlocks = requiredUnlocks;
-            this.UnlockStatuses = unlockStatuses;
-            this.FailureIndexes = failureIndexes;
-            this.Augments = augments;
-            this.OverrideNextRefreshDate = overrideNextRefreshDate;
+            this.VendorItemIndex = VendorItemIndex;
+            this.ItemHash = ItemHash;
+            this.OverrideStyleItemHash = OverrideStyleItemHash;
+            this.Quantity = Quantity;
+            this.SaleStatus = SaleStatus;
+            this.Costs = Costs;
+            this.RequiredUnlocks = RequiredUnlocks;
+            this.UnlockStatuses = UnlockStatuses;
+            this.FailureIndexes = FailureIndexes;
+            this.Augments = Augments;
+            this.OverrideNextRefreshDate = OverrideNextRefreshDate;
         }
         
         /// <summary>
@@ -71,14 +71,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash of the item being sold, as a quick shortcut for looking up the DestinyInventoryItemDefinition of the sale item.</value>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.  If you don&#39;t do this, certain items whose styles are being overridden by socketed items - such as the \&quot;Recycle Shader\&quot; item - would show whatever their default icon/style is, and it wouldn&#39;t be pretty or look accurate.
         /// </summary>
         /// <value>If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.  If you don&#39;t do this, certain items whose styles are being overridden by socketed items - such as the \&quot;Recycle Shader\&quot; item - would show whatever their default icon/style is, and it wouldn&#39;t be pretty or look accurate.</value>
         [DataMember(Name="overrideStyleItemHash", EmitDefaultValue=false)]
-        public int? OverrideStyleItemHash { get; set; }
+        public uint? OverrideStyleItemHash { get; set; }
 
         /// <summary>
         /// How much of the item you&#39;ll be getting.
@@ -92,7 +92,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A flag indicating whether the requesting character can buy the item, and if not the reasons why the character can&#39;t buy it.</value>
         [DataMember(Name="saleStatus", EmitDefaultValue=false)]
-        public Object SaleStatus { get; set; }
+        public DestinyVendorItemStatus SaleStatus { get; set; }
 
         /// <summary>
         /// A summary of the current costs of the item.
@@ -106,7 +106,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If you can&#39;t buy the item due to a complex character state, these will be hashes for DestinyUnlockDefinitions that you can check to see messages regarding the failure (if the unlocks have human readable information: it is not guaranteed that Unlocks will have human readable strings, and your application will have to handle that)  Prefer using failureIndexes instead. These are provided for informational purposes, but have largely been supplanted by failureIndexes.</value>
         [DataMember(Name="requiredUnlocks", EmitDefaultValue=false)]
-        public List<int?> RequiredUnlocks { get; set; }
+        public List<uint?> RequiredUnlocks { get; set; }
 
         /// <summary>
         /// If any complex unlock states are checked in determining purchasability, these will be returned here along with the status of the unlock check.  Prefer using failureIndexes instead. These are provided for informational purposes, but have largely been supplanted by failureIndexes.
@@ -127,7 +127,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A flags enumeration value representing the current state of any \&quot;state modifiers\&quot; on the item being sold. These are meant to correspond with some sort of visual indicator as to the augmentation: for instance, if an item is on sale or if you already own the item in question.  Determining how you want to represent these in your own app (or if you even want to) is an exercise left for the reader.</value>
         [DataMember(Name="augments", EmitDefaultValue=false)]
-        public Object Augments { get; set; }
+        public DestinyDestinyVendorItemState Augments { get; set; }
 
         /// <summary>
         /// If this item has its own custom date where it may be removed from the Vendor&#39;s rotation, this is that date.  Note that there&#39;s not actually any guarantee that it will go away: it could be chosen again and end up still being in the Vendor&#39;s sale items! But this is the next date where that test will occur, and is also the date that the game shows for availability on things like Bounties being sold. So it&#39;s the best we can give.
@@ -163,7 +163,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

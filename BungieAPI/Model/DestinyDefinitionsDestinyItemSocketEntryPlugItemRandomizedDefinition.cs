@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemSocketEntryPlugItemRandomizedDefinition" /> class.
         /// </summary>
-        /// <param name="plugItemHash">The hash identifier of a DestinyInventoryItemDefinition representing the plug that can be inserted..</param>
-        public DestinyDefinitionsDestinyItemSocketEntryPlugItemRandomizedDefinition(int? plugItemHash = default(int?))
+        /// <param name="PlugItemHash">The hash identifier of a DestinyInventoryItemDefinition representing the plug that can be inserted..</param>
+        public DestinyDefinitionsDestinyItemSocketEntryPlugItemRandomizedDefinition(uint? PlugItemHash = default(uint?))
         {
-            this.PlugItemHash = plugItemHash;
+            this.PlugItemHash = PlugItemHash;
         }
         
         /// <summary>
@@ -44,7 +44,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of a DestinyInventoryItemDefinition representing the plug that can be inserted.</value>
         [DataMember(Name="plugItemHash", EmitDefaultValue=false)]
-        public int? PlugItemHash { get; set; }
+        public uint? PlugItemHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

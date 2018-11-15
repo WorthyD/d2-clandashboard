@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ForumPollResponse" /> class.
         /// </summary>
-        /// <param name="topicId">topicId.</param>
-        /// <param name="results">results.</param>
-        /// <param name="totalVotes">totalVotes.</param>
-        public ForumPollResponse(long? topicId = default(long?), List<ForumPollResult> results = default(List<ForumPollResult>), int? totalVotes = default(int?))
+        /// <param name="TopicId">TopicId.</param>
+        /// <param name="Results">Results.</param>
+        /// <param name="TotalVotes">TotalVotes.</param>
+        public ForumPollResponse(long? TopicId = default(long?), List<ForumPollResult> Results = default(List<ForumPollResult>), int? TotalVotes = default(int?))
         {
-            this.TopicId = topicId;
-            this.Results = results;
-            this.TotalVotes = totalVotes;
+            this.TopicId = TopicId;
+            this.Results = Results;
+            this.TotalVotes = TotalVotes;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

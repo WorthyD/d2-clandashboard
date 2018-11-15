@@ -33,42 +33,42 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorCategoryEntryDefinition" /> class.
         /// </summary>
-        /// <param name="categoryIndex">The index of the category in the original category definitions for the vendor..</param>
-        /// <param name="categoryId">The string identifier of the category..</param>
-        /// <param name="sortValue">Used in sorting items in vendors... but there&#39;s a lot more to it. Just go with the order provided in the itemIndexes property on the DestinyVendorCategoryComponent instead, it should be more reliable than trying to recalculate it yourself..</param>
-        /// <param name="categoryHash">The hashed identifier for the category..</param>
-        /// <param name="quantityAvailable">The amount of items that will be available when this category is shown..</param>
-        /// <param name="showUnavailableItems">If items aren&#39;t up for sale in this category, should we still show them (greyed out)?.</param>
-        /// <param name="hideIfNoCurrency">If you don&#39;t have the currency required to buy items from this category, should the items be hidden?.</param>
-        /// <param name="hideFromRegularPurchase">True if this category doesn&#39;t allow purchases..</param>
-        /// <param name="buyStringOverride">The localized string for making purchases from this category, if it is different from the vendor&#39;s string for purchasing..</param>
-        /// <param name="disabledDescription">If the category is disabled, this is the localized description to show..</param>
-        /// <param name="displayTitle">The localized title of the category..</param>
-        /// <param name="overlay">If this category has an overlay prompt that should appear, this contains the details of that prompt..</param>
-        /// <param name="vendorItemIndexes">A shortcut for the vendor item indexes sold under this category. Saves us from some expensive reorganization at runtime..</param>
-        /// <param name="isPreview">Sometimes a category isn&#39;t actually used to sell items, but rather to preview them. This implies different UI (and manual placement of the category in the UI) in the game, and special treatment..</param>
-        /// <param name="isDisplayOnly">If true, this category only displays items: you can&#39;t purchase anything in them..</param>
-        /// <param name="resetIntervalMinutesOverride">resetIntervalMinutesOverride.</param>
-        /// <param name="resetOffsetMinutesOverride">resetOffsetMinutesOverride.</param>
-        public DestinyDefinitionsDestinyVendorCategoryEntryDefinition(int? categoryIndex = default(int?), string categoryId = default(string), int? sortValue = default(int?), int? categoryHash = default(int?), int? quantityAvailable = default(int?), bool? showUnavailableItems = default(bool?), bool? hideIfNoCurrency = default(bool?), bool? hideFromRegularPurchase = default(bool?), string buyStringOverride = default(string), string disabledDescription = default(string), string displayTitle = default(string), Object overlay = default(Object), List<int?> vendorItemIndexes = default(List<int?>), bool? isPreview = default(bool?), bool? isDisplayOnly = default(bool?), int? resetIntervalMinutesOverride = default(int?), int? resetOffsetMinutesOverride = default(int?))
+        /// <param name="CategoryIndex">The index of the category in the original category definitions for the vendor..</param>
+        /// <param name="CategoryId">The string identifier of the category..</param>
+        /// <param name="SortValue">Used in sorting items in vendors... but there&#39;s a lot more to it. Just go with the order provided in the itemIndexes property on the DestinyVendorCategoryComponent instead, it should be more reliable than trying to recalculate it yourself..</param>
+        /// <param name="CategoryHash">The hashed identifier for the category..</param>
+        /// <param name="QuantityAvailable">The amount of items that will be available when this category is shown..</param>
+        /// <param name="ShowUnavailableItems">If items aren&#39;t up for sale in this category, should we still show them (greyed out)?.</param>
+        /// <param name="HideIfNoCurrency">If you don&#39;t have the currency required to buy items from this category, should the items be hidden?.</param>
+        /// <param name="HideFromRegularPurchase">True if this category doesn&#39;t allow purchases..</param>
+        /// <param name="BuyStringOverride">The localized string for making purchases from this category, if it is different from the vendor&#39;s string for purchasing..</param>
+        /// <param name="DisabledDescription">If the category is disabled, this is the localized description to show..</param>
+        /// <param name="DisplayTitle">The localized title of the category..</param>
+        /// <param name="Overlay">If this category has an overlay prompt that should appear, this contains the details of that prompt..</param>
+        /// <param name="VendorItemIndexes">A shortcut for the vendor item indexes sold under this category. Saves us from some expensive reorganization at runtime..</param>
+        /// <param name="IsPreview">Sometimes a category isn&#39;t actually used to sell items, but rather to preview them. This implies different UI (and manual placement of the category in the UI) in the game, and special treatment..</param>
+        /// <param name="IsDisplayOnly">If true, this category only displays items: you can&#39;t purchase anything in them..</param>
+        /// <param name="ResetIntervalMinutesOverride">ResetIntervalMinutesOverride.</param>
+        /// <param name="ResetOffsetMinutesOverride">ResetOffsetMinutesOverride.</param>
+        public DestinyDefinitionsDestinyVendorCategoryEntryDefinition(int? CategoryIndex = default(int?), string CategoryId = default(string), int? SortValue = default(int?), uint? CategoryHash = default(uint?), int? QuantityAvailable = default(int?), bool? ShowUnavailableItems = default(bool?), bool? HideIfNoCurrency = default(bool?), bool? HideFromRegularPurchase = default(bool?), string BuyStringOverride = default(string), string DisabledDescription = default(string), string DisplayTitle = default(string), DestinyDefinitionsDestinyVendorCategoryOverlayDefinition Overlay = default(DestinyDefinitionsDestinyVendorCategoryOverlayDefinition), List<int?> VendorItemIndexes = default(List<int?>), bool? IsPreview = default(bool?), bool? IsDisplayOnly = default(bool?), int? ResetIntervalMinutesOverride = default(int?), int? ResetOffsetMinutesOverride = default(int?))
         {
-            this.CategoryIndex = categoryIndex;
-            this.CategoryId = categoryId;
-            this.SortValue = sortValue;
-            this.CategoryHash = categoryHash;
-            this.QuantityAvailable = quantityAvailable;
-            this.ShowUnavailableItems = showUnavailableItems;
-            this.HideIfNoCurrency = hideIfNoCurrency;
-            this.HideFromRegularPurchase = hideFromRegularPurchase;
-            this.BuyStringOverride = buyStringOverride;
-            this.DisabledDescription = disabledDescription;
-            this.DisplayTitle = displayTitle;
-            this.Overlay = overlay;
-            this.VendorItemIndexes = vendorItemIndexes;
-            this.IsPreview = isPreview;
-            this.IsDisplayOnly = isDisplayOnly;
-            this.ResetIntervalMinutesOverride = resetIntervalMinutesOverride;
-            this.ResetOffsetMinutesOverride = resetOffsetMinutesOverride;
+            this.CategoryIndex = CategoryIndex;
+            this.CategoryId = CategoryId;
+            this.SortValue = SortValue;
+            this.CategoryHash = CategoryHash;
+            this.QuantityAvailable = QuantityAvailable;
+            this.ShowUnavailableItems = ShowUnavailableItems;
+            this.HideIfNoCurrency = HideIfNoCurrency;
+            this.HideFromRegularPurchase = HideFromRegularPurchase;
+            this.BuyStringOverride = BuyStringOverride;
+            this.DisabledDescription = DisabledDescription;
+            this.DisplayTitle = DisplayTitle;
+            this.Overlay = Overlay;
+            this.VendorItemIndexes = VendorItemIndexes;
+            this.IsPreview = IsPreview;
+            this.IsDisplayOnly = IsDisplayOnly;
+            this.ResetIntervalMinutesOverride = ResetIntervalMinutesOverride;
+            this.ResetOffsetMinutesOverride = ResetOffsetMinutesOverride;
         }
         
         /// <summary>
@@ -97,7 +97,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hashed identifier for the category.</value>
         [DataMember(Name="categoryHash", EmitDefaultValue=false)]
-        public int? CategoryHash { get; set; }
+        public uint? CategoryHash { get; set; }
 
         /// <summary>
         /// The amount of items that will be available when this category is shown.
@@ -153,7 +153,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If this category has an overlay prompt that should appear, this contains the details of that prompt.</value>
         [DataMember(Name="overlay", EmitDefaultValue=false)]
-        public Object Overlay { get; set; }
+        public DestinyDefinitionsDestinyVendorCategoryOverlayDefinition Overlay { get; set; }
 
         /// <summary>
         /// A shortcut for the vendor item indexes sold under this category. Saves us from some expensive reorganization at runtime.
@@ -221,7 +221,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

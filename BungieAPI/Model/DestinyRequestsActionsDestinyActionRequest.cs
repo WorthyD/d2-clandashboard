@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyRequestsActionsDestinyActionRequest" /> class.
         /// </summary>
-        /// <param name="membershipType">membershipType.</param>
-        public DestinyRequestsActionsDestinyActionRequest(BungieMembershipType membershipType = default(BungieMembershipType))
+        /// <param name="MembershipType">MembershipType.</param>
+        public DestinyRequestsActionsDestinyActionRequest(BungieMembershipType MembershipType = default(BungieMembershipType))
         {
-            this.MembershipType = membershipType;
+            this.MembershipType = MembershipType;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

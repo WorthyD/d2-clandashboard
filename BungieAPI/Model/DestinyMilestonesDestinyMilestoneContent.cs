@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyMilestoneContent" /> class.
         /// </summary>
-        /// <param name="about">The \&quot;About this Milestone\&quot; text from the Firehose..</param>
-        /// <param name="status">The Current Status of the Milestone, as driven by the Firehose..</param>
-        /// <param name="tips">A list of tips, provided by the Firehose..</param>
-        /// <param name="itemCategories">If DPS has defined items related to this Milestone, they can categorize those items in the Firehose. That data will then be returned as item categories here..</param>
-        public DestinyMilestonesDestinyMilestoneContent(string about = default(string), string status = default(string), List<string> tips = default(List<string>), List<DestinyMilestonesDestinyMilestoneContentItemCategory> itemCategories = default(List<DestinyMilestonesDestinyMilestoneContentItemCategory>))
+        /// <param name="About">The \&quot;About this Milestone\&quot; text from the Firehose..</param>
+        /// <param name="Status">The Current Status of the Milestone, as driven by the Firehose..</param>
+        /// <param name="Tips">A list of tips, provided by the Firehose..</param>
+        /// <param name="ItemCategories">If DPS has defined items related to this Milestone, they can categorize those items in the Firehose. That data will then be returned as item categories here..</param>
+        public DestinyMilestonesDestinyMilestoneContent(string About = default(string), string Status = default(string), List<string> Tips = default(List<string>), List<DestinyMilestonesDestinyMilestoneContentItemCategory> ItemCategories = default(List<DestinyMilestonesDestinyMilestoneContentItemCategory>))
         {
-            this.About = about;
-            this.Status = status;
-            this.Tips = tips;
-            this.ItemCategories = itemCategories;
+            this.About = About;
+            this.Status = Status;
+            this.Tips = Tips;
+            this.ItemCategories = ItemCategories;
         }
         
         /// <summary>
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

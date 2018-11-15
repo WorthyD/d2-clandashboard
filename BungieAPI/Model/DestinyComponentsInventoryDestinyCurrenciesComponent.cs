@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsInventoryDestinyCurrenciesComponent" /> class.
         /// </summary>
-        /// <param name="itemQuantities">A dictionary - keyed by the item&#39;s hash identifier (DestinyInventoryItemDefinition), and whose value is the amount of that item you have across all available inventory buckets for purchasing.  This allows you to see whether the requesting character can afford any given purchase/action without having to re-create this list itself..</param>
-        public DestinyComponentsInventoryDestinyCurrenciesComponent(Dictionary<string, int?> itemQuantities = default(Dictionary<string, int?>))
+        /// <param name="ItemQuantities">A dictionary - keyed by the item&#39;s hash identifier (DestinyInventoryItemDefinition), and whose value is the amount of that item you have across all available inventory buckets for purchasing.  This allows you to see whether the requesting character can afford any given purchase/action without having to re-create this list itself..</param>
+        public DestinyComponentsInventoryDestinyCurrenciesComponent(Dictionary<string, int?> ItemQuantities = default(Dictionary<string, int?>))
         {
-            this.ItemQuantities = itemQuantities;
+            this.ItemQuantities = ItemQuantities;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemQualityBlockDefinition" /> class.
         /// </summary>
-        /// <param name="itemLevels">The \&quot;base\&quot; defined level of an item. This is a list because, in theory, each Expansion could define its own base level for an item.  In practice, not only was that never done in Destiny 1, but now this isn&#39;t even populated at all. When it&#39;s not populated, the level at which it spawns has to be inferred by Reward information, of which BNet receives an imperfect view and will only be reliable on instanced data as a result..</param>
-        /// <param name="qualityLevel">qualityLevel is used in combination with the item&#39;s level to calculate stats like Attack and Defense. It plays a role in that calculation, but not nearly as large as itemLevel does..</param>
-        /// <param name="infusionCategoryName">The string identifier for this item&#39;s \&quot;infusability\&quot;, if any.   Items that match the same infusionCategoryName are allowed to infuse with each other.  DEPRECATED: Items can now have multiple infusion categories. Please use infusionCategoryHashes instead..</param>
-        /// <param name="infusionCategoryHash">The hash identifier for the infusion. It does not map to a Definition entity.  DEPRECATED: Items can now have multiple infusion categories. Please use infusionCategoryHashes instead..</param>
-        /// <param name="infusionCategoryHashes">If any one of these hashes matches any value in another item&#39;s infusionCategoryHashes, the two can infuse with each other..</param>
-        /// <param name="progressionLevelRequirementHash">An item can refer to pre-set level requirements. They are defined in DestinyProgressionLevelRequirementDefinition, and you can use this hash to find the appropriate definition..</param>
-        public DestinyDefinitionsDestinyItemQualityBlockDefinition(List<int?> itemLevels = default(List<int?>), int? qualityLevel = default(int?), string infusionCategoryName = default(string), int? infusionCategoryHash = default(int?), List<int?> infusionCategoryHashes = default(List<int?>), int? progressionLevelRequirementHash = default(int?))
+        /// <param name="ItemLevels">The \&quot;base\&quot; defined level of an item. This is a list because, in theory, each Expansion could define its own base level for an item.  In practice, not only was that never done in Destiny 1, but now this isn&#39;t even populated at all. When it&#39;s not populated, the level at which it spawns has to be inferred by Reward information, of which BNet receives an imperfect view and will only be reliable on instanced data as a result..</param>
+        /// <param name="QualityLevel">qualityLevel is used in combination with the item&#39;s level to calculate stats like Attack and Defense. It plays a role in that calculation, but not nearly as large as itemLevel does..</param>
+        /// <param name="InfusionCategoryName">The string identifier for this item&#39;s \&quot;infusability\&quot;, if any.   Items that match the same infusionCategoryName are allowed to infuse with each other.  DEPRECATED: Items can now have multiple infusion categories. Please use infusionCategoryHashes instead..</param>
+        /// <param name="InfusionCategoryHash">The hash identifier for the infusion. It does not map to a Definition entity.  DEPRECATED: Items can now have multiple infusion categories. Please use infusionCategoryHashes instead..</param>
+        /// <param name="InfusionCategoryHashes">If any one of these hashes matches any value in another item&#39;s infusionCategoryHashes, the two can infuse with each other..</param>
+        /// <param name="ProgressionLevelRequirementHash">An item can refer to pre-set level requirements. They are defined in DestinyProgressionLevelRequirementDefinition, and you can use this hash to find the appropriate definition..</param>
+        public DestinyDefinitionsDestinyItemQualityBlockDefinition(List<int?> ItemLevels = default(List<int?>), int? QualityLevel = default(int?), string InfusionCategoryName = default(string), uint? InfusionCategoryHash = default(uint?), List<uint?> InfusionCategoryHashes = default(List<uint?>), uint? ProgressionLevelRequirementHash = default(uint?))
         {
-            this.ItemLevels = itemLevels;
-            this.QualityLevel = qualityLevel;
-            this.InfusionCategoryName = infusionCategoryName;
-            this.InfusionCategoryHash = infusionCategoryHash;
-            this.InfusionCategoryHashes = infusionCategoryHashes;
-            this.ProgressionLevelRequirementHash = progressionLevelRequirementHash;
+            this.ItemLevels = ItemLevels;
+            this.QualityLevel = QualityLevel;
+            this.InfusionCategoryName = InfusionCategoryName;
+            this.InfusionCategoryHash = InfusionCategoryHash;
+            this.InfusionCategoryHashes = InfusionCategoryHashes;
+            this.ProgressionLevelRequirementHash = ProgressionLevelRequirementHash;
         }
         
         /// <summary>
@@ -75,21 +75,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the infusion. It does not map to a Definition entity.  DEPRECATED: Items can now have multiple infusion categories. Please use infusionCategoryHashes instead.</value>
         [DataMember(Name="infusionCategoryHash", EmitDefaultValue=false)]
-        public int? InfusionCategoryHash { get; set; }
+        public uint? InfusionCategoryHash { get; set; }
 
         /// <summary>
         /// If any one of these hashes matches any value in another item&#39;s infusionCategoryHashes, the two can infuse with each other.
         /// </summary>
         /// <value>If any one of these hashes matches any value in another item&#39;s infusionCategoryHashes, the two can infuse with each other.</value>
         [DataMember(Name="infusionCategoryHashes", EmitDefaultValue=false)]
-        public List<int?> InfusionCategoryHashes { get; set; }
+        public List<uint?> InfusionCategoryHashes { get; set; }
 
         /// <summary>
         /// An item can refer to pre-set level requirements. They are defined in DestinyProgressionLevelRequirementDefinition, and you can use this hash to find the appropriate definition.
         /// </summary>
         /// <value>An item can refer to pre-set level requirements. They are defined in DestinyProgressionLevelRequirementDefinition, and you can use this hash to find the appropriate definition.</value>
         [DataMember(Name="progressionLevelRequirementHash", EmitDefaultValue=false)]
-        public int? ProgressionLevelRequirementHash { get; set; }
+        public uint? ProgressionLevelRequirementHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,7 +113,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

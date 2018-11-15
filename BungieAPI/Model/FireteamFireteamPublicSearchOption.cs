@@ -27,29 +27,27 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines Fireteam.FireteamPublicSearchOption
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum FireteamFireteamPublicSearchOption
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "0")]
+        PublicAndPrivate,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "1")]
+        PublicOnly,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "2")]
+        PrivateOnly
     }
 
 }

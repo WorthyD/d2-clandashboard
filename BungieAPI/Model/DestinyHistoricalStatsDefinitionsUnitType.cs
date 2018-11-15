@@ -27,95 +27,93 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines Destiny.HistoricalStats.Definitions.UnitType
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyHistoricalStatsDefinitionsUnitType
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// Indicates the statistic is a simple count of something.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Count,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// Indicates the statistic is a per game average.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        PerGame,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4,
+		/// <summary>
+		/// Indicates the number of seconds
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Seconds,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 5,
+		/// <summary>
+		/// Indicates the number of points earned
+		/// </summary>
+		[EnumMember(Value = "4")]
+        Points,
         
-        /// <summary>
-        /// Enum NUMBER_5 for value: 5
-        /// </summary>
-        [EnumMember(Value = "5")]
-        NUMBER_5 = 6,
+		/// <summary>
+		/// Values represents a team ID
+		/// </summary>
+		[EnumMember(Value = "5")]
+        Team,
         
-        /// <summary>
-        /// Enum NUMBER_6 for value: 6
-        /// </summary>
-        [EnumMember(Value = "6")]
-        NUMBER_6 = 7,
+		/// <summary>
+		/// Values represents a distance (units to-be-determined)
+		/// </summary>
+		[EnumMember(Value = "6")]
+        Distance,
         
-        /// <summary>
-        /// Enum NUMBER_7 for value: 7
-        /// </summary>
-        [EnumMember(Value = "7")]
-        NUMBER_7 = 8,
+		/// <summary>
+		/// Ratio represented as a whole value from 0 to 100.
+		/// </summary>
+		[EnumMember(Value = "7")]
+        Percent,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 9,
+		/// <summary>
+		/// Ratio of something, shown with decimal places
+		/// </summary>
+		[EnumMember(Value = "8")]
+        Ratio,
         
-        /// <summary>
-        /// Enum NUMBER_9 for value: 9
-        /// </summary>
-        [EnumMember(Value = "9")]
-        NUMBER_9 = 10,
+		/// <summary>
+		/// True or false
+		/// </summary>
+		[EnumMember(Value = "9")]
+        Boolean,
         
-        /// <summary>
-        /// Enum NUMBER_10 for value: 10
-        /// </summary>
-        [EnumMember(Value = "10")]
-        NUMBER_10 = 11,
+		/// <summary>
+		/// The stat is actually a weapon type.
+		/// </summary>
+		[EnumMember(Value = "10")]
+        WeaponType,
         
-        /// <summary>
-        /// Enum NUMBER_11 for value: 11
-        /// </summary>
-        [EnumMember(Value = "11")]
-        NUMBER_11 = 12,
+		/// <summary>
+		/// Indicates victory, defeat, or something in between.
+		/// </summary>
+		[EnumMember(Value = "11")]
+        Standing,
         
-        /// <summary>
-        /// Enum NUMBER_12 for value: 12
-        /// </summary>
-        [EnumMember(Value = "12")]
-        NUMBER_12 = 13,
+		/// <summary>
+		/// Number of milliseconds some event spanned. For example, race time, or lap time.
+		/// </summary>
+		[EnumMember(Value = "12")]
+        Milliseconds,
         
-        /// <summary>
-        /// Enum NUMBER_13 for value: 13
-        /// </summary>
-        [EnumMember(Value = "13")]
-        NUMBER_13 = 14
+		/// <summary>
+		/// The value is a enumeration of the Completion Reason type.
+		/// </summary>
+		[EnumMember(Value = "13")]
+        CompletionReason
     }
 
 }

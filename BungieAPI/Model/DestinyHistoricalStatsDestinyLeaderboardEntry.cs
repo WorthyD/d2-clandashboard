@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyLeaderboardEntry" /> class.
         /// </summary>
-        /// <param name="rank">Where this player ranks on the leaderboard. A value of 1 is the top rank..</param>
-        /// <param name="player">Identity details of the player.</param>
-        /// <param name="characterId">ID of the player&#39;s best character for the reported stat..</param>
-        /// <param name="value">Value of the stat for this player.</param>
-        public DestinyHistoricalStatsDestinyLeaderboardEntry(int? rank = default(int?), Object player = default(Object), long? characterId = default(long?), Object value = default(Object))
+        /// <param name="Rank">Where this player ranks on the leaderboard. A value of 1 is the top rank..</param>
+        /// <param name="Player">Identity details of the player.</param>
+        /// <param name="CharacterId">ID of the player&#39;s best character for the reported stat..</param>
+        /// <param name="Value">Value of the stat for this player.</param>
+        public DestinyHistoricalStatsDestinyLeaderboardEntry(int? Rank = default(int?), DestinyHistoricalStatsDestinyPlayer Player = default(DestinyHistoricalStatsDestinyPlayer), long? CharacterId = default(long?), DestinyHistoricalStatsDestinyHistoricalStatsValue Value = default(DestinyHistoricalStatsDestinyHistoricalStatsValue))
         {
-            this.Rank = rank;
-            this.Player = player;
-            this.CharacterId = characterId;
-            this.Value = value;
+            this.Rank = Rank;
+            this.Player = Player;
+            this.CharacterId = CharacterId;
+            this.Value = Value;
         }
         
         /// <summary>
@@ -57,7 +57,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Identity details of the player</value>
         [DataMember(Name="player", EmitDefaultValue=false)]
-        public Object Player { get; set; }
+        public DestinyHistoricalStatsDestinyPlayer Player { get; set; }
 
         /// <summary>
         /// ID of the player&#39;s best character for the reported stat.
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Value of the stat for this player</value>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public Object Value { get; set; }
+        public DestinyHistoricalStatsDestinyHistoricalStatsValue Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

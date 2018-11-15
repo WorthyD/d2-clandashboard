@@ -27,23 +27,21 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines GlobalAlertType
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum GlobalAlertType
     {
         
-        /// <summary>
-        /// Enum _0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        _0 = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "0")]
+        GlobalAlert,
         
-        /// <summary>
-        /// Enum _1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        _1 = 2
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "1")]
+        StreamingAlert
     }
 
 }

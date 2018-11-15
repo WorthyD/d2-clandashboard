@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyObjectiveStatEntryDefinition" /> class.
         /// </summary>
-        /// <param name="stat">The stat being modified, and the value used..</param>
-        /// <param name="style">Whether it will be applied as long as the objective is active, when it&#39;s completed, or until it&#39;s completed..</param>
-        public DestinyDefinitionsDestinyObjectiveStatEntryDefinition(Object stat = default(Object), Object style = default(Object))
+        /// <param name="Stat">The stat being modified, and the value used..</param>
+        /// <param name="Style">Whether it will be applied as long as the objective is active, when it&#39;s completed, or until it&#39;s completed..</param>
+        public DestinyDefinitionsDestinyObjectiveStatEntryDefinition(DestinyDefinitionsDestinyItemInvestmentStatDefinition Stat = default(DestinyDefinitionsDestinyItemInvestmentStatDefinition), DestinyDestinyObjectiveGrantStyle Style = default(DestinyDestinyObjectiveGrantStyle))
         {
-            this.Stat = stat;
-            this.Style = style;
+            this.Stat = Stat;
+            this.Style = Style;
         }
         
         /// <summary>
@@ -46,14 +46,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The stat being modified, and the value used.</value>
         [DataMember(Name="stat", EmitDefaultValue=false)]
-        public Object Stat { get; set; }
+        public DestinyDefinitionsDestinyItemInvestmentStatDefinition Stat { get; set; }
 
         /// <summary>
         /// Whether it will be applied as long as the objective is active, when it&#39;s completed, or until it&#39;s completed.
         /// </summary>
         /// <value>Whether it will be applied as long as the objective is active, when it&#39;s completed, or until it&#39;s completed.</value>
         [DataMember(Name="style", EmitDefaultValue=false)]
-        public Object Style { get; set; }
+        public DestinyDestinyObjectiveGrantStyle Style { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

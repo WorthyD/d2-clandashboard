@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyRequestsActionsDestinyItemSetActionRequest" /> class.
         /// </summary>
-        /// <param name="itemIds">itemIds.</param>
-        /// <param name="characterId">characterId.</param>
-        /// <param name="membershipType">membershipType.</param>
-        public DestinyRequestsActionsDestinyItemSetActionRequest(List<long?> itemIds = default(List<long?>), long? characterId = default(long?), BungieMembershipType membershipType = default(BungieMembershipType))
+        /// <param name="ItemIds">ItemIds.</param>
+        /// <param name="CharacterId">CharacterId.</param>
+        /// <param name="MembershipType">MembershipType.</param>
+        public DestinyRequestsActionsDestinyItemSetActionRequest(List<long?> ItemIds = default(List<long?>), long? CharacterId = default(long?), BungieMembershipType MembershipType = default(BungieMembershipType))
         {
-            this.ItemIds = itemIds;
-            this.CharacterId = characterId;
-            this.MembershipType = membershipType;
+            this.ItemIds = ItemIds;
+            this.CharacterId = CharacterId;
+            this.MembershipType = MembershipType;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

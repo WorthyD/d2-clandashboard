@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyActivityLoadoutRequirementSet" /> class.
         /// </summary>
-        /// <param name="requirements">The set of requirements that will be applied on the activity if this requirement set is active..</param>
-        public DestinyDefinitionsDestinyActivityLoadoutRequirementSet(List<DestinyDefinitionsDestinyActivityLoadoutRequirement> requirements = default(List<DestinyDefinitionsDestinyActivityLoadoutRequirement>))
+        /// <param name="Requirements">The set of requirements that will be applied on the activity if this requirement set is active..</param>
+        public DestinyDefinitionsDestinyActivityLoadoutRequirementSet(List<DestinyDefinitionsDestinyActivityLoadoutRequirement> Requirements = default(List<DestinyDefinitionsDestinyActivityLoadoutRequirement>))
         {
-            this.Requirements = requirements;
+            this.Requirements = Requirements;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

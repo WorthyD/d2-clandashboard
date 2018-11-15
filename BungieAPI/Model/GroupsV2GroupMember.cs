@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupMember" /> class.
         /// </summary>
-        /// <param name="memberType">memberType.</param>
-        /// <param name="isOnline">isOnline.</param>
-        /// <param name="groupId">groupId.</param>
-        /// <param name="destinyUserInfo">destinyUserInfo.</param>
-        /// <param name="bungieNetUserInfo">bungieNetUserInfo.</param>
-        /// <param name="joinDate">joinDate.</param>
-        public GroupsV2GroupMember(GroupsV2RuntimeGroupMemberType memberType = default(GroupsV2RuntimeGroupMemberType), bool? isOnline = default(bool?), long? groupId = default(long?), UserUserInfoCard destinyUserInfo = default(UserUserInfoCard), UserUserInfoCard bungieNetUserInfo = default(UserUserInfoCard), DateTime? joinDate = default(DateTime?))
+        /// <param name="MemberType">MemberType.</param>
+        /// <param name="IsOnline">IsOnline.</param>
+        /// <param name="GroupId">GroupId.</param>
+        /// <param name="DestinyUserInfo">DestinyUserInfo.</param>
+        /// <param name="BungieNetUserInfo">BungieNetUserInfo.</param>
+        /// <param name="JoinDate">JoinDate.</param>
+        public GroupsV2GroupMember(GroupsV2RuntimeGroupMemberType MemberType = default(GroupsV2RuntimeGroupMemberType), bool? IsOnline = default(bool?), long? GroupId = default(long?), UserUserInfoCard DestinyUserInfo = default(UserUserInfoCard), UserUserInfoCard BungieNetUserInfo = default(UserUserInfoCard), DateTime? JoinDate = default(DateTime?))
         {
-            this.MemberType = memberType;
-            this.IsOnline = isOnline;
-            this.GroupId = groupId;
-            this.DestinyUserInfo = destinyUserInfo;
-            this.BungieNetUserInfo = bungieNetUserInfo;
-            this.JoinDate = joinDate;
+            this.MemberType = MemberType;
+            this.IsOnline = IsOnline;
+            this.GroupId = GroupId;
+            this.DestinyUserInfo = DestinyUserInfo;
+            this.BungieNetUserInfo = BungieNetUserInfo;
+            this.JoinDate = JoinDate;
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

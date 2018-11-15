@@ -33,58 +33,58 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorItemDefinition" /> class.
         /// </summary>
-        /// <param name="vendorItemIndex">The index into the DestinyVendorDefinition.saleList. This is what we use to refer to items being sold throughout live and definition data..</param>
-        /// <param name="itemHash">The hash identifier of the item being sold (DestinyInventoryItemDefinition).  Note that a vendor can sell the same item in multiple ways, so don&#39;t assume that itemHash is a unique identifier for this entity..</param>
-        /// <param name="quantity">The amount you will recieve of the item described in itemHash if you make the purchase..</param>
-        /// <param name="failureIndexes">An list of indexes into the DestinyVendorDefinition.failureStrings array, indicating the possible failure strings that can be relevant for this item..</param>
-        /// <param name="currencies">This is a pre-compiled aggregation of item value and priceOverrideList, so that we have one place to check for what the purchaser must pay for the item. Use this instead of trying to piece together the price separately.  The somewhat crappy part about this is that, now that item quantity overrides have dynamic modifiers, this will not necessarily be statically true. If you were using this instead of live data, switch to using live data..</param>
-        /// <param name="refundPolicy">If this item can be refunded, this is the policy for what will be refundd, how, and in what time period..</param>
-        /// <param name="refundTimeLimit">The amount of time before refundability of the newly purchased item will expire..</param>
-        /// <param name="creationLevels">The Default level at which the item will spawn. Almost always driven by an adjusto these days. Ideally should be singular. It&#39;s a long story how this ended up as a list, but there is always either going to be 0:1 of these entities..</param>
-        /// <param name="displayCategoryIndex">This is an index specifically into the display category, as opposed to the server-side Categories (which do not need to match or pair with each other in any way: server side categories are really just structures for common validation. Display Category will let us more easily categorize items visually).</param>
-        /// <param name="categoryIndex">The index into the DestinyVendorDefinition.categories array, so you can find the category associated with this item..</param>
-        /// <param name="originalCategoryIndex">Same as above, but for the original category indexes..</param>
-        /// <param name="minimumLevel">The minimum character level at which this item is available for sale..</param>
-        /// <param name="maximumLevel">The maximum character level at which this item is available for sale..</param>
-        /// <param name="action">The action to be performed when purchasing the item, if it&#39;s not just \&quot;buy\&quot;..</param>
-        /// <param name="displayCategory">The string identifier for the category selling this item..</param>
-        /// <param name="inventoryBucketHash">The inventory bucket into which this item will be placed upon purchase..</param>
-        /// <param name="visibilityScope">The most restrictive scope that determines whether the item is available in the Vendor&#39;s inventory. See DestinyGatingScope&#39;s documentation for more information.  This can be determined by Unlock gating, or by whether or not the item has purchase level requirements (minimumLevel and maximumLevel properties)..</param>
-        /// <param name="purchasableScope">Similar to visibilityScope, it represents the most restrictive scope that determines whether the item can be purchased. It will at least be as restrictive as visibilityScope, but could be more restrictive if the item has additional purchase requirements beyond whether it is merely visible or not.  See DestinyGatingScope&#39;s documentation for more information..</param>
-        /// <param name="exclusivity">If this item can only be purchased by a given platform, this indicates the platform to which it is restricted..</param>
-        /// <param name="isOffer">If this sale can only be performed as the result of an offer check, this is true..</param>
-        /// <param name="isCrm">If this sale can only be performed as the result of receiving a CRM offer, this is true..</param>
-        /// <param name="sortValue">*if* the category this item is in supports non-default sorting, this value should represent the sorting value to use, pre-processed and ready to go..</param>
-        /// <param name="expirationTooltip">If this item can expire, this is the tooltip message to show with its expiration info..</param>
-        /// <param name="redirectToSaleIndexes">If this is populated, the purchase of this item should redirect to purchasing these other items instead..</param>
-        /// <param name="socketOverrides">socketOverrides.</param>
-        public DestinyDefinitionsDestinyVendorItemDefinition(int? vendorItemIndex = default(int?), int? itemHash = default(int?), int? quantity = default(int?), List<int?> failureIndexes = default(List<int?>), List<DestinyDefinitionsDestinyVendorItemQuantity> currencies = default(List<DestinyDefinitionsDestinyVendorItemQuantity>), Object refundPolicy = default(Object), int? refundTimeLimit = default(int?), List<DestinyDefinitionsDestinyItemCreationEntryLevelDefinition> creationLevels = default(List<DestinyDefinitionsDestinyItemCreationEntryLevelDefinition>), int? displayCategoryIndex = default(int?), int? categoryIndex = default(int?), int? originalCategoryIndex = default(int?), int? minimumLevel = default(int?), int? maximumLevel = default(int?), Object action = default(Object), string displayCategory = default(string), int? inventoryBucketHash = default(int?), Object visibilityScope = default(Object), Object purchasableScope = default(Object), Object exclusivity = default(Object), bool? isOffer = default(bool?), bool? isCrm = default(bool?), int? sortValue = default(int?), string expirationTooltip = default(string), List<int?> redirectToSaleIndexes = default(List<int?>), List<DestinyDefinitionsDestinyVendorItemSocketOverride> socketOverrides = default(List<DestinyDefinitionsDestinyVendorItemSocketOverride>))
+        /// <param name="VendorItemIndex">The index into the DestinyVendorDefinition.saleList. This is what we use to refer to items being sold throughout live and definition data..</param>
+        /// <param name="ItemHash">The hash identifier of the item being sold (DestinyInventoryItemDefinition).  Note that a vendor can sell the same item in multiple ways, so don&#39;t assume that itemHash is a unique identifier for this entity..</param>
+        /// <param name="Quantity">The amount you will recieve of the item described in itemHash if you make the purchase..</param>
+        /// <param name="FailureIndexes">An list of indexes into the DestinyVendorDefinition.failureStrings array, indicating the possible failure strings that can be relevant for this item..</param>
+        /// <param name="Currencies">This is a pre-compiled aggregation of item value and priceOverrideList, so that we have one place to check for what the purchaser must pay for the item. Use this instead of trying to piece together the price separately.  The somewhat crappy part about this is that, now that item quantity overrides have dynamic modifiers, this will not necessarily be statically true. If you were using this instead of live data, switch to using live data..</param>
+        /// <param name="RefundPolicy">If this item can be refunded, this is the policy for what will be refundd, how, and in what time period..</param>
+        /// <param name="RefundTimeLimit">The amount of time before refundability of the newly purchased item will expire..</param>
+        /// <param name="CreationLevels">The Default level at which the item will spawn. Almost always driven by an adjusto these days. Ideally should be singular. It&#39;s a long story how this ended up as a list, but there is always either going to be 0:1 of these entities..</param>
+        /// <param name="DisplayCategoryIndex">This is an index specifically into the display category, as opposed to the server-side Categories (which do not need to match or pair with each other in any way: server side categories are really just structures for common validation. Display Category will let us more easily categorize items visually).</param>
+        /// <param name="CategoryIndex">The index into the DestinyVendorDefinition.categories array, so you can find the category associated with this item..</param>
+        /// <param name="OriginalCategoryIndex">Same as above, but for the original category indexes..</param>
+        /// <param name="MinimumLevel">The minimum character level at which this item is available for sale..</param>
+        /// <param name="MaximumLevel">The maximum character level at which this item is available for sale..</param>
+        /// <param name="Action">The action to be performed when purchasing the item, if it&#39;s not just \&quot;buy\&quot;..</param>
+        /// <param name="DisplayCategory">The string identifier for the category selling this item..</param>
+        /// <param name="InventoryBucketHash">The inventory bucket into which this item will be placed upon purchase..</param>
+        /// <param name="VisibilityScope">The most restrictive scope that determines whether the item is available in the Vendor&#39;s inventory. See DestinyGatingScope&#39;s documentation for more information.  This can be determined by Unlock gating, or by whether or not the item has purchase level requirements (minimumLevel and maximumLevel properties)..</param>
+        /// <param name="PurchasableScope">Similar to visibilityScope, it represents the most restrictive scope that determines whether the item can be purchased. It will at least be as restrictive as visibilityScope, but could be more restrictive if the item has additional purchase requirements beyond whether it is merely visible or not.  See DestinyGatingScope&#39;s documentation for more information..</param>
+        /// <param name="Exclusivity">If this item can only be purchased by a given platform, this indicates the platform to which it is restricted..</param>
+        /// <param name="IsOffer">If this sale can only be performed as the result of an offer check, this is true..</param>
+        /// <param name="IsCrm">If this sale can only be performed as the result of receiving a CRM offer, this is true..</param>
+        /// <param name="SortValue">*if* the category this item is in supports non-default sorting, this value should represent the sorting value to use, pre-processed and ready to go..</param>
+        /// <param name="ExpirationTooltip">If this item can expire, this is the tooltip message to show with its expiration info..</param>
+        /// <param name="RedirectToSaleIndexes">If this is populated, the purchase of this item should redirect to purchasing these other items instead..</param>
+        /// <param name="SocketOverrides">SocketOverrides.</param>
+        public DestinyDefinitionsDestinyVendorItemDefinition(int? VendorItemIndex = default(int?), uint? ItemHash = default(uint?), int? Quantity = default(int?), List<int?> FailureIndexes = default(List<int?>), List<DestinyDefinitionsDestinyVendorItemQuantity> Currencies = default(List<DestinyDefinitionsDestinyVendorItemQuantity>), DestinyDestinyVendorItemRefundPolicy RefundPolicy = default(DestinyDestinyVendorItemRefundPolicy), int? RefundTimeLimit = default(int?), List<DestinyDefinitionsDestinyItemCreationEntryLevelDefinition> CreationLevels = default(List<DestinyDefinitionsDestinyItemCreationEntryLevelDefinition>), int? DisplayCategoryIndex = default(int?), int? CategoryIndex = default(int?), int? OriginalCategoryIndex = default(int?), int? MinimumLevel = default(int?), int? MaximumLevel = default(int?), DestinyDefinitionsDestinyVendorSaleItemActionBlockDefinition Action = default(DestinyDefinitionsDestinyVendorSaleItemActionBlockDefinition), string DisplayCategory = default(string), uint? InventoryBucketHash = default(uint?), DestinyDestinyGatingScope VisibilityScope = default(DestinyDestinyGatingScope), DestinyDestinyGatingScope PurchasableScope = default(DestinyDestinyGatingScope), BungieMembershipType Exclusivity = default(BungieMembershipType), bool? IsOffer = default(bool?), bool? IsCrm = default(bool?), int? SortValue = default(int?), string ExpirationTooltip = default(string), List<int?> RedirectToSaleIndexes = default(List<int?>), List<DestinyDefinitionsDestinyVendorItemSocketOverride> SocketOverrides = default(List<DestinyDefinitionsDestinyVendorItemSocketOverride>))
         {
-            this.VendorItemIndex = vendorItemIndex;
-            this.ItemHash = itemHash;
-            this.Quantity = quantity;
-            this.FailureIndexes = failureIndexes;
-            this.Currencies = currencies;
-            this.RefundPolicy = refundPolicy;
-            this.RefundTimeLimit = refundTimeLimit;
-            this.CreationLevels = creationLevels;
-            this.DisplayCategoryIndex = displayCategoryIndex;
-            this.CategoryIndex = categoryIndex;
-            this.OriginalCategoryIndex = originalCategoryIndex;
-            this.MinimumLevel = minimumLevel;
-            this.MaximumLevel = maximumLevel;
-            this.Action = action;
-            this.DisplayCategory = displayCategory;
-            this.InventoryBucketHash = inventoryBucketHash;
-            this.VisibilityScope = visibilityScope;
-            this.PurchasableScope = purchasableScope;
-            this.Exclusivity = exclusivity;
-            this.IsOffer = isOffer;
-            this.IsCrm = isCrm;
-            this.SortValue = sortValue;
-            this.ExpirationTooltip = expirationTooltip;
-            this.RedirectToSaleIndexes = redirectToSaleIndexes;
-            this.SocketOverrides = socketOverrides;
+            this.VendorItemIndex = VendorItemIndex;
+            this.ItemHash = ItemHash;
+            this.Quantity = Quantity;
+            this.FailureIndexes = FailureIndexes;
+            this.Currencies = Currencies;
+            this.RefundPolicy = RefundPolicy;
+            this.RefundTimeLimit = RefundTimeLimit;
+            this.CreationLevels = CreationLevels;
+            this.DisplayCategoryIndex = DisplayCategoryIndex;
+            this.CategoryIndex = CategoryIndex;
+            this.OriginalCategoryIndex = OriginalCategoryIndex;
+            this.MinimumLevel = MinimumLevel;
+            this.MaximumLevel = MaximumLevel;
+            this.Action = Action;
+            this.DisplayCategory = DisplayCategory;
+            this.InventoryBucketHash = InventoryBucketHash;
+            this.VisibilityScope = VisibilityScope;
+            this.PurchasableScope = PurchasableScope;
+            this.Exclusivity = Exclusivity;
+            this.IsOffer = IsOffer;
+            this.IsCrm = IsCrm;
+            this.SortValue = SortValue;
+            this.ExpirationTooltip = ExpirationTooltip;
+            this.RedirectToSaleIndexes = RedirectToSaleIndexes;
+            this.SocketOverrides = SocketOverrides;
         }
         
         /// <summary>
@@ -99,7 +99,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the item being sold (DestinyInventoryItemDefinition).  Note that a vendor can sell the same item in multiple ways, so don&#39;t assume that itemHash is a unique identifier for this entity.</value>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// The amount you will recieve of the item described in itemHash if you make the purchase.
@@ -127,7 +127,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If this item can be refunded, this is the policy for what will be refundd, how, and in what time period.</value>
         [DataMember(Name="refundPolicy", EmitDefaultValue=false)]
-        public Object RefundPolicy { get; set; }
+        public DestinyDestinyVendorItemRefundPolicy RefundPolicy { get; set; }
 
         /// <summary>
         /// The amount of time before refundability of the newly purchased item will expire.
@@ -183,7 +183,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The action to be performed when purchasing the item, if it&#39;s not just \&quot;buy\&quot;.</value>
         [DataMember(Name="action", EmitDefaultValue=false)]
-        public Object Action { get; set; }
+        public DestinyDefinitionsDestinyVendorSaleItemActionBlockDefinition Action { get; set; }
 
         /// <summary>
         /// The string identifier for the category selling this item.
@@ -197,28 +197,28 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The inventory bucket into which this item will be placed upon purchase.</value>
         [DataMember(Name="inventoryBucketHash", EmitDefaultValue=false)]
-        public int? InventoryBucketHash { get; set; }
+        public uint? InventoryBucketHash { get; set; }
 
         /// <summary>
         /// The most restrictive scope that determines whether the item is available in the Vendor&#39;s inventory. See DestinyGatingScope&#39;s documentation for more information.  This can be determined by Unlock gating, or by whether or not the item has purchase level requirements (minimumLevel and maximumLevel properties).
         /// </summary>
         /// <value>The most restrictive scope that determines whether the item is available in the Vendor&#39;s inventory. See DestinyGatingScope&#39;s documentation for more information.  This can be determined by Unlock gating, or by whether or not the item has purchase level requirements (minimumLevel and maximumLevel properties).</value>
         [DataMember(Name="visibilityScope", EmitDefaultValue=false)]
-        public Object VisibilityScope { get; set; }
+        public DestinyDestinyGatingScope VisibilityScope { get; set; }
 
         /// <summary>
         /// Similar to visibilityScope, it represents the most restrictive scope that determines whether the item can be purchased. It will at least be as restrictive as visibilityScope, but could be more restrictive if the item has additional purchase requirements beyond whether it is merely visible or not.  See DestinyGatingScope&#39;s documentation for more information.
         /// </summary>
         /// <value>Similar to visibilityScope, it represents the most restrictive scope that determines whether the item can be purchased. It will at least be as restrictive as visibilityScope, but could be more restrictive if the item has additional purchase requirements beyond whether it is merely visible or not.  See DestinyGatingScope&#39;s documentation for more information.</value>
         [DataMember(Name="purchasableScope", EmitDefaultValue=false)]
-        public Object PurchasableScope { get; set; }
+        public DestinyDestinyGatingScope PurchasableScope { get; set; }
 
         /// <summary>
         /// If this item can only be purchased by a given platform, this indicates the platform to which it is restricted.
         /// </summary>
         /// <value>If this item can only be purchased by a given platform, this indicates the platform to which it is restricted.</value>
         [DataMember(Name="exclusivity", EmitDefaultValue=false)]
-        public Object Exclusivity { get; set; }
+        public BungieMembershipType Exclusivity { get; set; }
 
         /// <summary>
         /// If this sale can only be performed as the result of an offer check, this is true.
@@ -302,7 +302,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

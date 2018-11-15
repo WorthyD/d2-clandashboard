@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyRaceDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="raceType">An enumeration defining the existing, known Races/Species for player characters. This value will be the enum value matching this definition..</param>
-        /// <param name="genderedRaceNames">A localized string referring to the singular form of the Race&#39;s name when referred to in gendered form. Keyed by the DestinyGender..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyRaceDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), Object raceType = default(Object), Dictionary<string, string> genderedRaceNames = default(Dictionary<string, string>), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="RaceType">An enumeration defining the existing, known Races/Species for player characters. This value will be the enum value matching this definition..</param>
+        /// <param name="GenderedRaceNames">A localized string referring to the singular form of the Race&#39;s name when referred to in gendered form. Keyed by the DestinyGender..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyRaceDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), DestinyDestinyRace RaceType = default(DestinyDestinyRace), Dictionary<string, string> GenderedRaceNames = default(Dictionary<string, string>), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.RaceType = raceType;
-            this.GenderedRaceNames = genderedRaceNames;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.RaceType = RaceType;
+            this.GenderedRaceNames = GenderedRaceNames;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -60,7 +60,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>An enumeration defining the existing, known Races/Species for player characters. This value will be the enum value matching this definition.</value>
         [DataMember(Name="raceType", EmitDefaultValue=false)]
-        public Object RaceType { get; set; }
+        public DestinyDestinyRace RaceType { get; set; }
 
         /// <summary>
         /// A localized string referring to the singular form of the Race&#39;s name when referred to in gendered form. Keyed by the DestinyGender.
@@ -74,7 +74,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -112,7 +112,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

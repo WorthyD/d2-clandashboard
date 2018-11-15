@@ -27,23 +27,21 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines Forum.ForumPostSortEnum
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum ForumForumPostSortEnum
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Default,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "1")]
+        OldestFirst
     }
 
 }

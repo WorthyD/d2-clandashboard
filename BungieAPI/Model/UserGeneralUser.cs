@@ -33,68 +33,68 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserGeneralUser" /> class.
         /// </summary>
-        /// <param name="membershipId">membershipId.</param>
-        /// <param name="uniqueName">uniqueName.</param>
-        /// <param name="normalizedName">normalizedName.</param>
-        /// <param name="displayName">displayName.</param>
-        /// <param name="profilePicture">profilePicture.</param>
-        /// <param name="profileTheme">profileTheme.</param>
-        /// <param name="userTitle">userTitle.</param>
-        /// <param name="successMessageFlags">successMessageFlags.</param>
-        /// <param name="isDeleted">isDeleted.</param>
-        /// <param name="about">about.</param>
-        /// <param name="firstAccess">firstAccess.</param>
-        /// <param name="lastUpdate">lastUpdate.</param>
-        /// <param name="legacyPortalUID">legacyPortalUID.</param>
-        /// <param name="context">context.</param>
-        /// <param name="psnDisplayName">psnDisplayName.</param>
-        /// <param name="xboxDisplayName">xboxDisplayName.</param>
-        /// <param name="fbDisplayName">fbDisplayName.</param>
-        /// <param name="showActivity">showActivity.</param>
-        /// <param name="locale">locale.</param>
-        /// <param name="localeInheritDefault">localeInheritDefault.</param>
-        /// <param name="lastBanReportId">lastBanReportId.</param>
-        /// <param name="showGroupMessaging">showGroupMessaging.</param>
-        /// <param name="profilePicturePath">profilePicturePath.</param>
-        /// <param name="profilePictureWidePath">profilePictureWidePath.</param>
-        /// <param name="profileThemeName">profileThemeName.</param>
-        /// <param name="userTitleDisplay">userTitleDisplay.</param>
-        /// <param name="statusText">statusText.</param>
-        /// <param name="statusDate">statusDate.</param>
-        /// <param name="profileBanExpire">profileBanExpire.</param>
-        /// <param name="blizzardDisplayName">blizzardDisplayName.</param>
-        public UserGeneralUser(long? membershipId = default(long?), string uniqueName = default(string), string normalizedName = default(string), string displayName = default(string), int? profilePicture = default(int?), int? profileTheme = default(int?), int? userTitle = default(int?), long? successMessageFlags = default(long?), bool? isDeleted = default(bool?), string about = default(string), DateTime? firstAccess = default(DateTime?), DateTime? lastUpdate = default(DateTime?), long? legacyPortalUID = default(long?), UserUserToUserContext context = default(UserUserToUserContext), string psnDisplayName = default(string), string xboxDisplayName = default(string), string fbDisplayName = default(string), bool? showActivity = default(bool?), string locale = default(string), bool? localeInheritDefault = default(bool?), long? lastBanReportId = default(long?), bool? showGroupMessaging = default(bool?), string profilePicturePath = default(string), string profilePictureWidePath = default(string), string profileThemeName = default(string), string userTitleDisplay = default(string), string statusText = default(string), DateTime? statusDate = default(DateTime?), DateTime? profileBanExpire = default(DateTime?), string blizzardDisplayName = default(string))
+        /// <param name="MembershipId">MembershipId.</param>
+        /// <param name="UniqueName">UniqueName.</param>
+        /// <param name="NormalizedName">NormalizedName.</param>
+        /// <param name="DisplayName">DisplayName.</param>
+        /// <param name="ProfilePicture">ProfilePicture.</param>
+        /// <param name="ProfileTheme">ProfileTheme.</param>
+        /// <param name="UserTitle">UserTitle.</param>
+        /// <param name="SuccessMessageFlags">SuccessMessageFlags.</param>
+        /// <param name="IsDeleted">IsDeleted.</param>
+        /// <param name="About">About.</param>
+        /// <param name="FirstAccess">FirstAccess.</param>
+        /// <param name="LastUpdate">LastUpdate.</param>
+        /// <param name="LegacyPortalUID">LegacyPortalUID.</param>
+        /// <param name="Context">Context.</param>
+        /// <param name="PsnDisplayName">PsnDisplayName.</param>
+        /// <param name="XboxDisplayName">XboxDisplayName.</param>
+        /// <param name="FbDisplayName">FbDisplayName.</param>
+        /// <param name="ShowActivity">ShowActivity.</param>
+        /// <param name="Locale">Locale.</param>
+        /// <param name="LocaleInheritDefault">LocaleInheritDefault.</param>
+        /// <param name="LastBanReportId">LastBanReportId.</param>
+        /// <param name="ShowGroupMessaging">ShowGroupMessaging.</param>
+        /// <param name="ProfilePicturePath">ProfilePicturePath.</param>
+        /// <param name="ProfilePictureWidePath">ProfilePictureWidePath.</param>
+        /// <param name="ProfileThemeName">ProfileThemeName.</param>
+        /// <param name="UserTitleDisplay">UserTitleDisplay.</param>
+        /// <param name="StatusText">StatusText.</param>
+        /// <param name="StatusDate">StatusDate.</param>
+        /// <param name="ProfileBanExpire">ProfileBanExpire.</param>
+        /// <param name="BlizzardDisplayName">BlizzardDisplayName.</param>
+        public UserGeneralUser(long? MembershipId = default(long?), string UniqueName = default(string), string NormalizedName = default(string), string DisplayName = default(string), int? ProfilePicture = default(int?), int? ProfileTheme = default(int?), int? UserTitle = default(int?), long? SuccessMessageFlags = default(long?), bool? IsDeleted = default(bool?), string About = default(string), DateTime? FirstAccess = default(DateTime?), DateTime? LastUpdate = default(DateTime?), long? LegacyPortalUID = default(long?), UserUserToUserContext Context = default(UserUserToUserContext), string PsnDisplayName = default(string), string XboxDisplayName = default(string), string FbDisplayName = default(string), bool? ShowActivity = default(bool?), string Locale = default(string), bool? LocaleInheritDefault = default(bool?), long? LastBanReportId = default(long?), bool? ShowGroupMessaging = default(bool?), string ProfilePicturePath = default(string), string ProfilePictureWidePath = default(string), string ProfileThemeName = default(string), string UserTitleDisplay = default(string), string StatusText = default(string), DateTime? StatusDate = default(DateTime?), DateTime? ProfileBanExpire = default(DateTime?), string BlizzardDisplayName = default(string))
         {
-            this.MembershipId = membershipId;
-            this.UniqueName = uniqueName;
-            this.NormalizedName = normalizedName;
-            this.DisplayName = displayName;
-            this.ProfilePicture = profilePicture;
-            this.ProfileTheme = profileTheme;
-            this.UserTitle = userTitle;
-            this.SuccessMessageFlags = successMessageFlags;
-            this.IsDeleted = isDeleted;
-            this.About = about;
-            this.FirstAccess = firstAccess;
-            this.LastUpdate = lastUpdate;
-            this.LegacyPortalUID = legacyPortalUID;
-            this.Context = context;
-            this.PsnDisplayName = psnDisplayName;
-            this.XboxDisplayName = xboxDisplayName;
-            this.FbDisplayName = fbDisplayName;
-            this.ShowActivity = showActivity;
-            this.Locale = locale;
-            this.LocaleInheritDefault = localeInheritDefault;
-            this.LastBanReportId = lastBanReportId;
-            this.ShowGroupMessaging = showGroupMessaging;
-            this.ProfilePicturePath = profilePicturePath;
-            this.ProfilePictureWidePath = profilePictureWidePath;
-            this.ProfileThemeName = profileThemeName;
-            this.UserTitleDisplay = userTitleDisplay;
-            this.StatusText = statusText;
-            this.StatusDate = statusDate;
-            this.ProfileBanExpire = profileBanExpire;
-            this.BlizzardDisplayName = blizzardDisplayName;
+            this.MembershipId = MembershipId;
+            this.UniqueName = UniqueName;
+            this.NormalizedName = NormalizedName;
+            this.DisplayName = DisplayName;
+            this.ProfilePicture = ProfilePicture;
+            this.ProfileTheme = ProfileTheme;
+            this.UserTitle = UserTitle;
+            this.SuccessMessageFlags = SuccessMessageFlags;
+            this.IsDeleted = IsDeleted;
+            this.About = About;
+            this.FirstAccess = FirstAccess;
+            this.LastUpdate = LastUpdate;
+            this.LegacyPortalUID = LegacyPortalUID;
+            this.Context = Context;
+            this.PsnDisplayName = PsnDisplayName;
+            this.XboxDisplayName = XboxDisplayName;
+            this.FbDisplayName = FbDisplayName;
+            this.ShowActivity = ShowActivity;
+            this.Locale = Locale;
+            this.LocaleInheritDefault = LocaleInheritDefault;
+            this.LastBanReportId = LastBanReportId;
+            this.ShowGroupMessaging = ShowGroupMessaging;
+            this.ProfilePicturePath = ProfilePicturePath;
+            this.ProfilePictureWidePath = ProfilePictureWidePath;
+            this.ProfileThemeName = ProfileThemeName;
+            this.UserTitleDisplay = UserTitleDisplay;
+            this.StatusText = StatusText;
+            this.StatusDate = StatusDate;
+            this.ProfileBanExpire = ProfileBanExpire;
+            this.BlizzardDisplayName = BlizzardDisplayName;
         }
         
         /// <summary>
@@ -323,7 +323,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

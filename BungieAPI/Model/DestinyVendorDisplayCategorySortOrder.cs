@@ -28,23 +28,21 @@ namespace BungieAPI.Model
     /// Display categories can have custom sort orders. These are the possible options.
     /// </summary>
     /// <value>Display categories can have custom sort orders. These are the possible options.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyVendorDisplayCategorySortOrder
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// Display categories can have custom sort orders. These are the possible options.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Default,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2
+		/// <summary>
+		/// Display categories can have custom sort orders. These are the possible options.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        SortByTier
     }
 
 }

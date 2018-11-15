@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyChallengesDestinyChallengeStatus" /> class.
         /// </summary>
-        /// <param name="objective">The progress - including completion status - of the active challenge..</param>
-        public DestinyChallengesDestinyChallengeStatus(Object objective = default(Object))
+        /// <param name="Objective">The progress - including completion status - of the active challenge..</param>
+        public DestinyChallengesDestinyChallengeStatus(DestinyQuestsDestinyObjectiveProgress Objective = default(DestinyQuestsDestinyObjectiveProgress))
         {
-            this.Objective = objective;
+            this.Objective = Objective;
         }
         
         /// <summary>
@@ -44,7 +44,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The progress - including completion status - of the active challenge.</value>
         [DataMember(Name="objective", EmitDefaultValue=false)]
-        public Object Objective { get; set; }
+        public DestinyQuestsDestinyObjectiveProgress Objective { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

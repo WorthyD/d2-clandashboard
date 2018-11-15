@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesItemsDestinyItemObjectivesComponent" /> class.
         /// </summary>
-        /// <param name="objectives">If the item has a hard association with objectives, your progress on them will be defined here.   Objectives are our standard way to describe a series of tasks that have to be completed for a reward..</param>
-        /// <param name="flavorObjective">I may regret naming it this way - but this represents when an item has an objective that doesn&#39;t serve a beneficial purpose, but rather is used for \&quot;flavor\&quot; or additional information. For instance, when Emblems track specific stats, those stats are represented as Objectives on the item..</param>
-        /// <param name="dateCompleted">If we have any information on when these objectives were completed, this will be the date of that completion. This won&#39;t be on many items, but could be interesting for some items that do store this information..</param>
-        public DestinyEntitiesItemsDestinyItemObjectivesComponent(List<DestinyQuestsDestinyObjectiveProgress> objectives = default(List<DestinyQuestsDestinyObjectiveProgress>), Object flavorObjective = default(Object), DateTime? dateCompleted = default(DateTime?))
+        /// <param name="Objectives">If the item has a hard association with objectives, your progress on them will be defined here.   Objectives are our standard way to describe a series of tasks that have to be completed for a reward..</param>
+        /// <param name="FlavorObjective">I may regret naming it this way - but this represents when an item has an objective that doesn&#39;t serve a beneficial purpose, but rather is used for \&quot;flavor\&quot; or additional information. For instance, when Emblems track specific stats, those stats are represented as Objectives on the item..</param>
+        /// <param name="DateCompleted">If we have any information on when these objectives were completed, this will be the date of that completion. This won&#39;t be on many items, but could be interesting for some items that do store this information..</param>
+        public DestinyEntitiesItemsDestinyItemObjectivesComponent(List<DestinyQuestsDestinyObjectiveProgress> Objectives = default(List<DestinyQuestsDestinyObjectiveProgress>), DestinyQuestsDestinyObjectiveProgress FlavorObjective = default(DestinyQuestsDestinyObjectiveProgress), DateTime? DateCompleted = default(DateTime?))
         {
-            this.Objectives = objectives;
-            this.FlavorObjective = flavorObjective;
-            this.DateCompleted = dateCompleted;
+            this.Objectives = Objectives;
+            this.FlavorObjective = FlavorObjective;
+            this.DateCompleted = DateCompleted;
         }
         
         /// <summary>
@@ -55,7 +55,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>I may regret naming it this way - but this represents when an item has an objective that doesn&#39;t serve a beneficial purpose, but rather is used for \&quot;flavor\&quot; or additional information. For instance, when Emblems track specific stats, those stats are represented as Objectives on the item.</value>
         [DataMember(Name="flavorObjective", EmitDefaultValue=false)]
-        public Object FlavorObjective { get; set; }
+        public DestinyQuestsDestinyObjectiveProgress FlavorObjective { get; set; }
 
         /// <summary>
         /// If we have any information on when these objectives were completed, this will be the date of that completion. This won&#39;t be on many items, but could be interesting for some items that do store this information.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

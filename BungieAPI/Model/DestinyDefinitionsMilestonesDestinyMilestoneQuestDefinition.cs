@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneQuestDefinition" /> class.
         /// </summary>
-        /// <param name="questItemHash">The item representing this Milestone quest. Use this hash to look up the DestinyInventoryItemDefinition for the quest to find its steps and human readable data..</param>
-        /// <param name="displayProperties">The individual quests may have different definitions from the overall milestone: if there&#39;s a specific active quest, use these displayProperties instead of that of the overall DestinyMilestoneDefinition..</param>
-        /// <param name="overrideImage">If populated, this image can be shown instead of the generic milestone&#39;s image when this quest is live, or it can be used to show a background image for the quest itself that differs from that of the Activity or the Milestone..</param>
-        /// <param name="questRewards">The rewards you will get for completing this quest, as best as we could extract them from our data. Sometimes, it&#39;ll be a decent amount of data. Sometimes, it&#39;s going to be sucky. Sorry..</param>
-        /// <param name="activities">The full set of all possible \&quot;conceptual activities\&quot; that are related to this Milestone. Tiers or alternative modes of play within these conceptual activities will be defined as sub-entities. Keyed by the Conceptual Activity Hash. Use the key to look up DestinyActivityDefinition..</param>
-        /// <param name="destinationHash">Sometimes, a Milestone&#39;s quest is related to an entire Destination rather than a specific activity. In that situation, this will be the hash of that Destination. Hotspots are currently the only Milestones that expose this data, but that does not preclude this data from being returned for other Milestones in the future..</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneQuestDefinition(int? questItemHash = default(int?), Object displayProperties = default(Object), string overrideImage = default(string), Object questRewards = default(Object), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneActivityDefinition> activities = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneActivityDefinition>), int? destinationHash = default(int?))
+        /// <param name="QuestItemHash">The item representing this Milestone quest. Use this hash to look up the DestinyInventoryItemDefinition for the quest to find its steps and human readable data..</param>
+        /// <param name="DisplayProperties">The individual quests may have different definitions from the overall milestone: if there&#39;s a specific active quest, use these displayProperties instead of that of the overall DestinyMilestoneDefinition..</param>
+        /// <param name="OverrideImage">If populated, this image can be shown instead of the generic milestone&#39;s image when this quest is live, or it can be used to show a background image for the quest itself that differs from that of the Activity or the Milestone..</param>
+        /// <param name="QuestRewards">The rewards you will get for completing this quest, as best as we could extract them from our data. Sometimes, it&#39;ll be a decent amount of data. Sometimes, it&#39;s going to be sucky. Sorry..</param>
+        /// <param name="Activities">The full set of all possible \&quot;conceptual activities\&quot; that are related to this Milestone. Tiers or alternative modes of play within these conceptual activities will be defined as sub-entities. Keyed by the Conceptual Activity Hash. Use the key to look up DestinyActivityDefinition..</param>
+        /// <param name="DestinationHash">Sometimes, a Milestone&#39;s quest is related to an entire Destination rather than a specific activity. In that situation, this will be the hash of that Destination. Hotspots are currently the only Milestones that expose this data, but that does not preclude this data from being returned for other Milestones in the future..</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneQuestDefinition(uint? QuestItemHash = default(uint?), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string OverrideImage = default(string), DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardsDefinition QuestRewards = default(DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardsDefinition), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneActivityDefinition> Activities = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneActivityDefinition>), uint? DestinationHash = default(uint?))
         {
-            this.QuestItemHash = questItemHash;
-            this.DisplayProperties = displayProperties;
-            this.OverrideImage = overrideImage;
-            this.QuestRewards = questRewards;
-            this.Activities = activities;
-            this.DestinationHash = destinationHash;
+            this.QuestItemHash = QuestItemHash;
+            this.DisplayProperties = DisplayProperties;
+            this.OverrideImage = OverrideImage;
+            this.QuestRewards = QuestRewards;
+            this.Activities = Activities;
+            this.DestinationHash = DestinationHash;
         }
         
         /// <summary>
@@ -54,14 +54,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The item representing this Milestone quest. Use this hash to look up the DestinyInventoryItemDefinition for the quest to find its steps and human readable data.</value>
         [DataMember(Name="questItemHash", EmitDefaultValue=false)]
-        public int? QuestItemHash { get; set; }
+        public uint? QuestItemHash { get; set; }
 
         /// <summary>
         /// The individual quests may have different definitions from the overall milestone: if there&#39;s a specific active quest, use these displayProperties instead of that of the overall DestinyMilestoneDefinition.
         /// </summary>
         /// <value>The individual quests may have different definitions from the overall milestone: if there&#39;s a specific active quest, use these displayProperties instead of that of the overall DestinyMilestoneDefinition.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// If populated, this image can be shown instead of the generic milestone&#39;s image when this quest is live, or it can be used to show a background image for the quest itself that differs from that of the Activity or the Milestone.
@@ -75,7 +75,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The rewards you will get for completing this quest, as best as we could extract them from our data. Sometimes, it&#39;ll be a decent amount of data. Sometimes, it&#39;s going to be sucky. Sorry.</value>
         [DataMember(Name="questRewards", EmitDefaultValue=false)]
-        public Object QuestRewards { get; set; }
+        public DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardsDefinition QuestRewards { get; set; }
 
         /// <summary>
         /// The full set of all possible \&quot;conceptual activities\&quot; that are related to this Milestone. Tiers or alternative modes of play within these conceptual activities will be defined as sub-entities. Keyed by the Conceptual Activity Hash. Use the key to look up DestinyActivityDefinition.
@@ -89,7 +89,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Sometimes, a Milestone&#39;s quest is related to an entire Destination rather than a specific activity. In that situation, this will be the hash of that Destination. Hotspots are currently the only Milestones that expose this data, but that does not preclude this data from being returned for other Milestones in the future.</value>
         [DataMember(Name="destinationHash", EmitDefaultValue=false)]
-        public int? DestinationHash { get; set; }
+        public uint? DestinationHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,7 +113,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

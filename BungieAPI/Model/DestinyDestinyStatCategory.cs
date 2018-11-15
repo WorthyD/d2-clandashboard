@@ -28,35 +28,33 @@ namespace BungieAPI.Model
     /// At last, stats have categories. Use this for whatever purpose you might wish.
     /// </summary>
     /// <value>At last, stats have categories. Use this for whatever purpose you might wish.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyStatCategory
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// At last, stats have categories. Use this for whatever purpose you might wish.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Gameplay,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// At last, stats have categories. Use this for whatever purpose you might wish.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Weapon,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// At last, stats have categories. Use this for whatever purpose you might wish.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Defense,
         
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        NUMBER_3 = 4
+		/// <summary>
+		/// At last, stats have categories. Use this for whatever purpose you might wish.
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Primary
     }
 
 }

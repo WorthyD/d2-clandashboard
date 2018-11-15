@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyPublicMilestoneChallenge" /> class.
         /// </summary>
-        /// <param name="objectiveHash">The objective for the Challenge, which should have human-readable data about what needs to be done to accomplish the objective. Use this hash to look up the DestinyObjectiveDefinition..</param>
-        /// <param name="activityHash">IF the Objective is related to a specific Activity, this will be that activity&#39;s hash. Use it to look up the DestinyActivityDefinition for additional data to show..</param>
-        public DestinyMilestonesDestinyPublicMilestoneChallenge(int? objectiveHash = default(int?), int? activityHash = default(int?))
+        /// <param name="ObjectiveHash">The objective for the Challenge, which should have human-readable data about what needs to be done to accomplish the objective. Use this hash to look up the DestinyObjectiveDefinition..</param>
+        /// <param name="ActivityHash">IF the Objective is related to a specific Activity, this will be that activity&#39;s hash. Use it to look up the DestinyActivityDefinition for additional data to show..</param>
+        public DestinyMilestonesDestinyPublicMilestoneChallenge(uint? ObjectiveHash = default(uint?), uint? ActivityHash = default(uint?))
         {
-            this.ObjectiveHash = objectiveHash;
-            this.ActivityHash = activityHash;
+            this.ObjectiveHash = ObjectiveHash;
+            this.ActivityHash = ActivityHash;
         }
         
         /// <summary>
@@ -46,14 +46,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The objective for the Challenge, which should have human-readable data about what needs to be done to accomplish the objective. Use this hash to look up the DestinyObjectiveDefinition.</value>
         [DataMember(Name="objectiveHash", EmitDefaultValue=false)]
-        public int? ObjectiveHash { get; set; }
+        public uint? ObjectiveHash { get; set; }
 
         /// <summary>
         /// IF the Objective is related to a specific Activity, this will be that activity&#39;s hash. Use it to look up the DestinyActivityDefinition for additional data to show.
         /// </summary>
         /// <value>IF the Objective is related to a specific Activity, this will be that activity&#39;s hash. Use it to look up the DestinyActivityDefinition for additional data to show.</value>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

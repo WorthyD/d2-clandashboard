@@ -33,28 +33,28 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDestinyTalentNode" /> class.
         /// </summary>
-        /// <param name="nodeIndex">The index of the Talent Node being referred to (an index into DestinyTalentGridDefinition.nodes[]). CONTENT VERSION DEPENDENT..</param>
-        /// <param name="nodeHash">The hash of the Talent Node being referred to (in DestinyTalentGridDefinition.nodes). Deceptively CONTENT VERSION DEPENDENT. We have no guarantee of the hash&#39;s immutability between content versions..</param>
-        /// <param name="state">An DestinyTalentNodeState enum value indicating the node&#39;s state: whether it can be activated or swapped, and why not if neither can be performed..</param>
-        /// <param name="isActivated">If true, the node is activated: it&#39;s current step then provides its benefits..</param>
-        /// <param name="stepIndex">The currently relevant Step for the node. It is this step that has rendering data for the node and the benefits that are provided if the node is activated. (the actual rules for benefits provided are extremely complicated in theory, but with how Talent Grids are being used in Destiny 2 you don&#39;t have to worry about a lot of those old Destiny 1 rules.) This is an index into: DestinyTalentGridDefinition.nodes[nodeIndex].steps[stepIndex].</param>
-        /// <param name="materialsToUpgrade">If the node has material requirements to be activated, this is the list of those requirements..</param>
-        /// <param name="activationGridLevel">The progression level required on the Talent Grid in order to be able to activate this talent node. Talent Grids have their own Progression - similar to Character Level, but in this case it is experience related to the item itself..</param>
-        /// <param name="progressPercent">If you want to show a progress bar or circle for how close this talent node is to being activate-able, this is the percentage to show. It follows the node&#39;s underlying rules about when the progress bar should first show up, and when it should be filled..</param>
-        /// <param name="hidden">Whether or not the talent node is actually visible in the game&#39;s UI. Whether you want to show it in your own UI is up to you! I&#39;m not gonna tell you who to sock it to..</param>
-        /// <param name="nodeStatsBlock">This property has some history. A talent grid can provide stats on both the item it&#39;s related to and the character equipping the item. This returns data about those stat bonuses..</param>
-        public DestinyDestinyTalentNode(int? nodeIndex = default(int?), int? nodeHash = default(int?), Object state = default(Object), bool? isActivated = default(bool?), int? stepIndex = default(int?), List<DestinyDefinitionsDestinyMaterialRequirement> materialsToUpgrade = default(List<DestinyDefinitionsDestinyMaterialRequirement>), int? activationGridLevel = default(int?), float? progressPercent = default(float?), bool? hidden = default(bool?), Object nodeStatsBlock = default(Object))
+        /// <param name="NodeIndex">The index of the Talent Node being referred to (an index into DestinyTalentGridDefinition.nodes[]). CONTENT VERSION DEPENDENT..</param>
+        /// <param name="NodeHash">The hash of the Talent Node being referred to (in DestinyTalentGridDefinition.nodes). Deceptively CONTENT VERSION DEPENDENT. We have no guarantee of the hash&#39;s immutability between content versions..</param>
+        /// <param name="State">An DestinyTalentNodeState enum value indicating the node&#39;s state: whether it can be activated or swapped, and why not if neither can be performed..</param>
+        /// <param name="IsActivated">If true, the node is activated: it&#39;s current step then provides its benefits..</param>
+        /// <param name="StepIndex">The currently relevant Step for the node. It is this step that has rendering data for the node and the benefits that are provided if the node is activated. (the actual rules for benefits provided are extremely complicated in theory, but with how Talent Grids are being used in Destiny 2 you don&#39;t have to worry about a lot of those old Destiny 1 rules.) This is an index into: DestinyTalentGridDefinition.nodes[nodeIndex].steps[stepIndex].</param>
+        /// <param name="MaterialsToUpgrade">If the node has material requirements to be activated, this is the list of those requirements..</param>
+        /// <param name="ActivationGridLevel">The progression level required on the Talent Grid in order to be able to activate this talent node. Talent Grids have their own Progression - similar to Character Level, but in this case it is experience related to the item itself..</param>
+        /// <param name="ProgressPercent">If you want to show a progress bar or circle for how close this talent node is to being activate-able, this is the percentage to show. It follows the node&#39;s underlying rules about when the progress bar should first show up, and when it should be filled..</param>
+        /// <param name="Hidden">Whether or not the talent node is actually visible in the game&#39;s UI. Whether you want to show it in your own UI is up to you! I&#39;m not gonna tell you who to sock it to..</param>
+        /// <param name="NodeStatsBlock">This property has some history. A talent grid can provide stats on both the item it&#39;s related to and the character equipping the item. This returns data about those stat bonuses..</param>
+        public DestinyDestinyTalentNode(int? NodeIndex = default(int?), uint? NodeHash = default(uint?), DestinyDestinyTalentNodeState State = default(DestinyDestinyTalentNodeState), bool? IsActivated = default(bool?), int? StepIndex = default(int?), List<DestinyDefinitionsDestinyMaterialRequirement> MaterialsToUpgrade = default(List<DestinyDefinitionsDestinyMaterialRequirement>), int? ActivationGridLevel = default(int?), float? ProgressPercent = default(float?), bool? Hidden = default(bool?), DestinyDestinyTalentNodeStatBlock NodeStatsBlock = default(DestinyDestinyTalentNodeStatBlock))
         {
-            this.NodeIndex = nodeIndex;
-            this.NodeHash = nodeHash;
-            this.State = state;
-            this.IsActivated = isActivated;
-            this.StepIndex = stepIndex;
-            this.MaterialsToUpgrade = materialsToUpgrade;
-            this.ActivationGridLevel = activationGridLevel;
-            this.ProgressPercent = progressPercent;
-            this.Hidden = hidden;
-            this.NodeStatsBlock = nodeStatsBlock;
+            this.NodeIndex = NodeIndex;
+            this.NodeHash = NodeHash;
+            this.State = State;
+            this.IsActivated = IsActivated;
+            this.StepIndex = StepIndex;
+            this.MaterialsToUpgrade = MaterialsToUpgrade;
+            this.ActivationGridLevel = ActivationGridLevel;
+            this.ProgressPercent = ProgressPercent;
+            this.Hidden = Hidden;
+            this.NodeStatsBlock = NodeStatsBlock;
         }
         
         /// <summary>
@@ -69,14 +69,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash of the Talent Node being referred to (in DestinyTalentGridDefinition.nodes). Deceptively CONTENT VERSION DEPENDENT. We have no guarantee of the hash&#39;s immutability between content versions.</value>
         [DataMember(Name="nodeHash", EmitDefaultValue=false)]
-        public int? NodeHash { get; set; }
+        public uint? NodeHash { get; set; }
 
         /// <summary>
         /// An DestinyTalentNodeState enum value indicating the node&#39;s state: whether it can be activated or swapped, and why not if neither can be performed.
         /// </summary>
         /// <value>An DestinyTalentNodeState enum value indicating the node&#39;s state: whether it can be activated or swapped, and why not if neither can be performed.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public Object State { get; set; }
+        public DestinyDestinyTalentNodeState State { get; set; }
 
         /// <summary>
         /// If true, the node is activated: it&#39;s current step then provides its benefits.
@@ -125,7 +125,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>This property has some history. A talent grid can provide stats on both the item it&#39;s related to and the character equipping the item. This returns data about those stat bonuses.</value>
         [DataMember(Name="nodeStatsBlock", EmitDefaultValue=false)]
-        public Object NodeStatsBlock { get; set; }
+        public DestinyDestinyTalentNodeStatBlock NodeStatsBlock { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -153,7 +153,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

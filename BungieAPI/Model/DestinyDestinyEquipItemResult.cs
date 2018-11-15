@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDestinyEquipItemResult" /> class.
         /// </summary>
-        /// <param name="itemInstanceId">The instance ID of the item in question (all items that can be equipped must, but definition, be Instanced and thus have an Instance ID that you can use to refer to them).</param>
-        /// <param name="equipStatus">A PlatformErrorCodes enum indicating whether it succeeded, and if it failed why..</param>
-        public DestinyDestinyEquipItemResult(long? itemInstanceId = default(long?), Object equipStatus = default(Object))
+        /// <param name="ItemInstanceId">The instance ID of the item in question (all items that can be equipped must, but definition, be Instanced and thus have an Instance ID that you can use to refer to them).</param>
+        /// <param name="EquipStatus">A PlatformErrorCodes enum indicating whether it succeeded, and if it failed why..</param>
+        public DestinyDestinyEquipItemResult(long? ItemInstanceId = default(long?), ExceptionsPlatformErrorCodes EquipStatus = default(ExceptionsPlatformErrorCodes))
         {
-            this.ItemInstanceId = itemInstanceId;
-            this.EquipStatus = equipStatus;
+            this.ItemInstanceId = ItemInstanceId;
+            this.EquipStatus = EquipStatus;
         }
         
         /// <summary>
@@ -53,7 +53,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A PlatformErrorCodes enum indicating whether it succeeded, and if it failed why.</value>
         [DataMember(Name="equipStatus", EmitDefaultValue=false)]
-        public Object EquipStatus { get; set; }
+        public ExceptionsPlatformErrorCodes EquipStatus { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupOptionalConversationAddRequest" /> class.
         /// </summary>
-        /// <param name="chatName">chatName.</param>
-        /// <param name="chatSecurity">chatSecurity.</param>
-        public GroupsV2GroupOptionalConversationAddRequest(string chatName = default(string), GroupsV2ChatSecuritySetting chatSecurity = default(GroupsV2ChatSecuritySetting))
+        /// <param name="ChatName">ChatName.</param>
+        /// <param name="ChatSecurity">ChatSecurity.</param>
+        public GroupsV2GroupOptionalConversationAddRequest(string ChatName = default(string), GroupsV2ChatSecuritySetting ChatSecurity = default(GroupsV2ChatSecuritySetting))
         {
-            this.ChatName = chatName;
-            this.ChatSecurity = chatSecurity;
+            this.ChatName = ChatName;
+            this.ChatSecurity = ChatSecurity;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

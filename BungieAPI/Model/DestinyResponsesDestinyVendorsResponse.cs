@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyResponsesDestinyVendorsResponse" /> class.
         /// </summary>
-        /// <param name="vendorGroups">For Vendors being returned, this will give you the information you need to group them and order them in the same way that the Bungie Companion app performs grouping. It will automatically be returned if you request the Vendors component.  COMPONENT TYPE: Vendors.</param>
-        /// <param name="vendors">The base properties of the vendor. These are keyed by the Vendor Hash, so you will get one Vendor Component per vendor returned.  COMPONENT TYPE: Vendors.</param>
-        /// <param name="categories">Categories that the vendor has available, and references to the sales therein. These are keyed by the Vendor Hash, so you will get one Categories Component per vendor returned.  COMPONENT TYPE: VendorCategories.</param>
-        /// <param name="sales">Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so you will get one Sale Item Set Component per vendor returned.  Note that within the Sale Item Set component, the sales are themselves keyed by the vendorSaleIndex, so you can relate it to the corrent sale item definition within the Vendor&#39;s definition.  COMPONENT TYPE: VendorSales.</param>
-        /// <param name="itemComponents">The set of item detail components, one set of item components per Vendor. These are keyed by the Vendor Hash, so you will get one Item Component Set per vendor returned.  The components contained inside are themselves keyed by the vendorSaleIndex, and will have whatever item-level components you requested (Sockets, Stats, Instance data etc...) per item being sold by the vendor..</param>
-        /// <param name="currencyLookups">A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups.</param>
-        public DestinyResponsesDestinyVendorsResponse(Object vendorGroups = default(Object), Object vendors = default(Object), Object categories = default(Object), Object sales = default(Object), Dictionary<string, DestinyItemComponentSetOfint32> itemComponents = default(Dictionary<string, DestinyItemComponentSetOfint32>), Object currencyLookups = default(Object))
+        /// <param name="VendorGroups">For Vendors being returned, this will give you the information you need to group them and order them in the same way that the Bungie Companion app performs grouping. It will automatically be returned if you request the Vendors component.  COMPONENT TYPE: Vendors.</param>
+        /// <param name="Vendors">The base properties of the vendor. These are keyed by the Vendor Hash, so you will get one Vendor Component per vendor returned.  COMPONENT TYPE: Vendors.</param>
+        /// <param name="Categories">Categories that the vendor has available, and references to the sales therein. These are keyed by the Vendor Hash, so you will get one Categories Component per vendor returned.  COMPONENT TYPE: VendorCategories.</param>
+        /// <param name="Sales">Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so you will get one Sale Item Set Component per vendor returned.  Note that within the Sale Item Set component, the sales are themselves keyed by the vendorSaleIndex, so you can relate it to the corrent sale item definition within the Vendor&#39;s definition.  COMPONENT TYPE: VendorSales.</param>
+        /// <param name="ItemComponents">The set of item detail components, one set of item components per Vendor. These are keyed by the Vendor Hash, so you will get one Item Component Set per vendor returned.  The components contained inside are themselves keyed by the vendorSaleIndex, and will have whatever item-level components you requested (Sockets, Stats, Instance data etc...) per item being sold by the vendor..</param>
+        /// <param name="CurrencyLookups">A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups.</param>
+        public DestinyResponsesDestinyVendorsResponse(SingleComponentResponseOfDestinyVendorGroupComponent VendorGroups = default(SingleComponentResponseOfDestinyVendorGroupComponent), DictionaryComponentResponseOfuint32AndDestinyVendorComponent Vendors = default(DictionaryComponentResponseOfuint32AndDestinyVendorComponent), DictionaryComponentResponseOfuint32AndDestinyVendorCategoriesComponent Categories = default(DictionaryComponentResponseOfuint32AndDestinyVendorCategoriesComponent), DictionaryComponentResponseOfuint32AndDestinyVendorSaleItemSetComponent Sales = default(DictionaryComponentResponseOfuint32AndDestinyVendorSaleItemSetComponent), Dictionary<string, DestinyItemComponentSetOfint32> ItemComponents = default(Dictionary<string, DestinyItemComponentSetOfint32>), SingleComponentResponseOfDestinyCurrenciesComponent CurrencyLookups = default(SingleComponentResponseOfDestinyCurrenciesComponent))
         {
-            this.VendorGroups = vendorGroups;
-            this.Vendors = vendors;
-            this.Categories = categories;
-            this.Sales = sales;
-            this.ItemComponents = itemComponents;
-            this.CurrencyLookups = currencyLookups;
+            this.VendorGroups = VendorGroups;
+            this.Vendors = Vendors;
+            this.Categories = Categories;
+            this.Sales = Sales;
+            this.ItemComponents = ItemComponents;
+            this.CurrencyLookups = CurrencyLookups;
         }
         
         /// <summary>
@@ -54,28 +54,28 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>For Vendors being returned, this will give you the information you need to group them and order them in the same way that the Bungie Companion app performs grouping. It will automatically be returned if you request the Vendors component.  COMPONENT TYPE: Vendors</value>
         [DataMember(Name="vendorGroups", EmitDefaultValue=false)]
-        public Object VendorGroups { get; set; }
+        public SingleComponentResponseOfDestinyVendorGroupComponent VendorGroups { get; set; }
 
         /// <summary>
         /// The base properties of the vendor. These are keyed by the Vendor Hash, so you will get one Vendor Component per vendor returned.  COMPONENT TYPE: Vendors
         /// </summary>
         /// <value>The base properties of the vendor. These are keyed by the Vendor Hash, so you will get one Vendor Component per vendor returned.  COMPONENT TYPE: Vendors</value>
         [DataMember(Name="vendors", EmitDefaultValue=false)]
-        public Object Vendors { get; set; }
+        public DictionaryComponentResponseOfuint32AndDestinyVendorComponent Vendors { get; set; }
 
         /// <summary>
         /// Categories that the vendor has available, and references to the sales therein. These are keyed by the Vendor Hash, so you will get one Categories Component per vendor returned.  COMPONENT TYPE: VendorCategories
         /// </summary>
         /// <value>Categories that the vendor has available, and references to the sales therein. These are keyed by the Vendor Hash, so you will get one Categories Component per vendor returned.  COMPONENT TYPE: VendorCategories</value>
         [DataMember(Name="categories", EmitDefaultValue=false)]
-        public Object Categories { get; set; }
+        public DictionaryComponentResponseOfuint32AndDestinyVendorCategoriesComponent Categories { get; set; }
 
         /// <summary>
         /// Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so you will get one Sale Item Set Component per vendor returned.  Note that within the Sale Item Set component, the sales are themselves keyed by the vendorSaleIndex, so you can relate it to the corrent sale item definition within the Vendor&#39;s definition.  COMPONENT TYPE: VendorSales
         /// </summary>
         /// <value>Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so you will get one Sale Item Set Component per vendor returned.  Note that within the Sale Item Set component, the sales are themselves keyed by the vendorSaleIndex, so you can relate it to the corrent sale item definition within the Vendor&#39;s definition.  COMPONENT TYPE: VendorSales</value>
         [DataMember(Name="sales", EmitDefaultValue=false)]
-        public Object Sales { get; set; }
+        public DictionaryComponentResponseOfuint32AndDestinyVendorSaleItemSetComponent Sales { get; set; }
 
         /// <summary>
         /// The set of item detail components, one set of item components per Vendor. These are keyed by the Vendor Hash, so you will get one Item Component Set per vendor returned.  The components contained inside are themselves keyed by the vendorSaleIndex, and will have whatever item-level components you requested (Sockets, Stats, Instance data etc...) per item being sold by the vendor.
@@ -89,7 +89,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups</value>
         [DataMember(Name="currencyLookups", EmitDefaultValue=false)]
-        public Object CurrencyLookups { get; set; }
+        public SingleComponentResponseOfDestinyCurrenciesComponent CurrencyLookups { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,7 +113,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

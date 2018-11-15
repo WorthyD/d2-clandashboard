@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyFactionDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="progressionHash">The hash identifier for the DestinyProgressionDefinition that indicates the character&#39;s relationship with this faction in terms of experience and levels..</param>
-        /// <param name="tokenValues">The faction token item hashes, and their respective progression values..</param>
-        /// <param name="rewardItemHash">The faction reward item hash, usually an engram..</param>
-        /// <param name="rewardVendorHash">The faction reward vendor hash, used for faction engram previews..</param>
-        /// <param name="vendors">List of vendors that are associated with this faction. The last vendor that passes the unlock flag checks is the one that should be shown..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyFactionDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), int? progressionHash = default(int?), Dictionary<string, int?> tokenValues = default(Dictionary<string, int?>), int? rewardItemHash = default(int?), int? rewardVendorHash = default(int?), List<DestinyDefinitionsDestinyFactionVendorDefinition> vendors = default(List<DestinyDefinitionsDestinyFactionVendorDefinition>), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="ProgressionHash">The hash identifier for the DestinyProgressionDefinition that indicates the character&#39;s relationship with this faction in terms of experience and levels..</param>
+        /// <param name="TokenValues">The faction token item hashes, and their respective progression values..</param>
+        /// <param name="RewardItemHash">The faction reward item hash, usually an engram..</param>
+        /// <param name="RewardVendorHash">The faction reward vendor hash, used for faction engram previews..</param>
+        /// <param name="Vendors">List of vendors that are associated with this faction. The last vendor that passes the unlock flag checks is the one that should be shown..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyFactionDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), uint? ProgressionHash = default(uint?), Dictionary<string, uint?> TokenValues = default(Dictionary<string, uint?>), uint? RewardItemHash = default(uint?), uint? RewardVendorHash = default(uint?), List<DestinyDefinitionsDestinyFactionVendorDefinition> Vendors = default(List<DestinyDefinitionsDestinyFactionVendorDefinition>), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.ProgressionHash = progressionHash;
-            this.TokenValues = tokenValues;
-            this.RewardItemHash = rewardItemHash;
-            this.RewardVendorHash = rewardVendorHash;
-            this.Vendors = vendors;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.ProgressionHash = ProgressionHash;
+            this.TokenValues = TokenValues;
+            this.RewardItemHash = RewardItemHash;
+            this.RewardVendorHash = RewardVendorHash;
+            this.Vendors = Vendors;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -66,28 +66,28 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the DestinyProgressionDefinition that indicates the character&#39;s relationship with this faction in terms of experience and levels.</value>
         [DataMember(Name="progressionHash", EmitDefaultValue=false)]
-        public int? ProgressionHash { get; set; }
+        public uint? ProgressionHash { get; set; }
 
         /// <summary>
         /// The faction token item hashes, and their respective progression values.
         /// </summary>
         /// <value>The faction token item hashes, and their respective progression values.</value>
         [DataMember(Name="tokenValues", EmitDefaultValue=false)]
-        public Dictionary<string, int?> TokenValues { get; set; }
+        public Dictionary<string, uint?> TokenValues { get; set; }
 
         /// <summary>
         /// The faction reward item hash, usually an engram.
         /// </summary>
         /// <value>The faction reward item hash, usually an engram.</value>
         [DataMember(Name="rewardItemHash", EmitDefaultValue=false)]
-        public int? RewardItemHash { get; set; }
+        public uint? RewardItemHash { get; set; }
 
         /// <summary>
         /// The faction reward vendor hash, used for faction engram previews.
         /// </summary>
         /// <value>The faction reward vendor hash, used for faction engram previews.</value>
         [DataMember(Name="rewardVendorHash", EmitDefaultValue=false)]
-        public int? RewardVendorHash { get; set; }
+        public uint? RewardVendorHash { get; set; }
 
         /// <summary>
         /// List of vendors that are associated with this faction. The last vendor that passes the unlock flag checks is the one that should be shown.
@@ -101,7 +101,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -142,7 +142,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

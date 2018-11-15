@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDirectorDestinyActivityGraphNodeStateEntry" /> class.
         /// </summary>
-        /// <param name="state">state.</param>
-        public DestinyDefinitionsDirectorDestinyActivityGraphNodeStateEntry(DestinyDestinyGraphNodeState state = default(DestinyDestinyGraphNodeState))
+        /// <param name="State">State.</param>
+        public DestinyDefinitionsDirectorDestinyActivityGraphNodeStateEntry(DestinyDestinyGraphNodeState State = default(DestinyDestinyGraphNodeState))
         {
-            this.State = state;
+            this.State = State;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

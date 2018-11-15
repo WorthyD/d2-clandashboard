@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyBubbleDefinition" /> class.
         /// </summary>
-        /// <param name="hash">The identifier for the bubble: only guaranteed to be unique within the Destination..</param>
-        /// <param name="displayProperties">The display properties of this bubble, so you don&#39;t have to look them up in a separate list anymore..</param>
-        public DestinyDefinitionsDestinyBubbleDefinition(int? hash = default(int?), Object displayProperties = default(Object))
+        /// <param name="Hash">The identifier for the bubble: only guaranteed to be unique within the Destination..</param>
+        /// <param name="DisplayProperties">The display properties of this bubble, so you don&#39;t have to look them up in a separate list anymore..</param>
+        public DestinyDefinitionsDestinyBubbleDefinition(uint? Hash = default(uint?), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition))
         {
-            this.Hash = hash;
-            this.DisplayProperties = displayProperties;
+            this.Hash = Hash;
+            this.DisplayProperties = DisplayProperties;
         }
         
         /// <summary>
@@ -46,14 +46,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The identifier for the bubble: only guaranteed to be unique within the Destination.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The display properties of this bubble, so you don&#39;t have to look them up in a separate list anymore.
         /// </summary>
         /// <value>The display properties of this bubble, so you don&#39;t have to look them up in a separate list anymore.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

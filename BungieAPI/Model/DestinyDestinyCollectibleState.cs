@@ -28,59 +28,58 @@ namespace BungieAPI.Model
     /// A Flags Enumeration where each bit represents a different state that the Collectible can be in. A collectible can be in any number of these states, and you can choose to use or ignore any or all of them when making your own UI that shows Collectible info. Our displays are going to honor them, but we&#39;re also the kind of people who only pretend to inhale before quickly passing it to the left. So, you know, do what you got to do.
     /// </summary>
     /// <value>A Flags Enumeration where each bit represents a different state that the Collectible can be in. A collectible can be in any number of these states, and you can choose to use or ignore any or all of them when making your own UI that shows Collectible info. Our displays are going to honor them, but we&#39;re also the kind of people who only pretend to inhale before quickly passing it to the left. So, you know, do what you got to do.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyCollectibleState
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// A Flags Enumeration where each bit represents a different state that the Collectible can be in. A collectible can be in any number of these states, and you can choose to use or ignore any or all of them when making your own UI that shows Collectible info. Our displays are going to honor them, but we&#39;re also the kind of people who only pretend to inhale before quickly passing it to the left. So, you know, do what you got to do.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// If this flag is set, you have not yet obtained this collectible.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        NotAcquired,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// If this flag is set, the item is &quot;obscured&quot; to you: you can/should use the alternate item hash found in DestinyCollectibleDefinition.stateInfo.obscuredOverrideItemHash when displaying this collectible instead of the default display info.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Obscured,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 4,
+		/// <summary>
+		/// If this flag is set, the collectible should not be shown to the user.
+//But, I mean do what you want: I&#39;m not your mom. It&#39;s much more likely that I&#39;m your Dad - wait, I promised your mom that I wouldn&#39;t tell you. Don&#39;t tell her that I told you.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        Invisible,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 5,
+		/// <summary>
+		/// If this flag is set, the collectible requires payment for creating an instance of the item, and you are lacking in currency. Bring the benjamins next time. Or spinmetal. Whatever.
+		/// </summary>
+		[EnumMember(Value = "8")]
+        CannotAffordMaterialRequirements,
         
-        /// <summary>
-        /// Enum NUMBER_16 for value: 16
-        /// </summary>
-        [EnumMember(Value = "16")]
-        NUMBER_16 = 6,
+		/// <summary>
+		/// If this flag is set, you can&#39;t pull this item out of your collection because there&#39;s no room left in your inventory.
+		/// </summary>
+		[EnumMember(Value = "16")]
+        InventorySpaceUnavailable,
         
-        /// <summary>
-        /// Enum NUMBER_32 for value: 32
-        /// </summary>
-        [EnumMember(Value = "32")]
-        NUMBER_32 = 7,
+		/// <summary>
+		/// If this flag is set, you already have one of these items and can&#39;t have a second one.
+		/// </summary>
+		[EnumMember(Value = "32")]
+        UniquenessViolation,
         
-        /// <summary>
-        /// Enum NUMBER_64 for value: 64
-        /// </summary>
-        [EnumMember(Value = "64")]
-        NUMBER_64 = 8
+		/// <summary>
+		/// If this flag is set, the ability to pull this item out of your collection has been disabled.
+		/// </summary>
+		[EnumMember(Value = "64")]
+        PurchaseDisabled
     }
 
 }

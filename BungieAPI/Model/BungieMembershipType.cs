@@ -25,86 +25,54 @@ using SwaggerDateConverter = BungieAPI.Client.SwaggerDateConverter;
 namespace BungieAPI.Model
 {
     /// <summary>
-    /// BungieMembershipType
+    /// The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.
     /// </summary>
-    [DataContract]
-    public partial class BungieMembershipType : List<BungieMembershipType>,  IEquatable<BungieMembershipType>, IValidatableObject
+    /// <value>The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.</value>
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum BungieMembershipType
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BungieMembershipType" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        public BungieMembershipType() : base()
-        {
-        }
         
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            var sb = new StringBuilder();
-            sb.Append("class BungieMembershipType {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-  
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
-        }
-
-        /// <summary>
-        /// Returns true if objects are equal
-        /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
-        {
-            return this.Equals(input as BungieMembershipType);
-        }
-
-        /// <summary>
-        /// Returns true if BungieMembershipType instances are equal
-        /// </summary>
-        /// <param name="input">Instance of BungieMembershipType to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(BungieMembershipType input)
-        {
-            if (input == null)
-                return false;
-
-            return base.Equals(input);
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = base.GetHashCode();
-                return hashCode;
-            }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+		/// <summary>
+		/// The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
+        
+		/// <summary>
+		/// The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        TigerXbox,
+        
+		/// <summary>
+		/// The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        TigerPsn,
+        
+		/// <summary>
+		/// The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        TigerBlizzard,
+        
+		/// <summary>
+		/// The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.
+		/// </summary>
+		[EnumMember(Value = "10")]
+        TigerDemon,
+        
+		/// <summary>
+		/// The types of membership the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.MembershipType.
+		/// </summary>
+		[EnumMember(Value = "254")]
+        BungieNext,
+        
+		/// <summary>
+		/// &quot;All&quot; is only valid for searching capabilities: you need to pass the actual matching BungieMembershipType for any query where you pass a known membershipId.
+		/// </summary>
+		[EnumMember(Value = "-1")]
+        All
     }
 
 }

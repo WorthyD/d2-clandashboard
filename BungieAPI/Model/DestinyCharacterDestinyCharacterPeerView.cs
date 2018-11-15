@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyCharacterDestinyCharacterPeerView" /> class.
         /// </summary>
-        /// <param name="equipment">equipment.</param>
-        public DestinyCharacterDestinyCharacterPeerView(List<DestinyCharacterDestinyItemPeerView> equipment = default(List<DestinyCharacterDestinyItemPeerView>))
+        /// <param name="Equipment">Equipment.</param>
+        public DestinyCharacterDestinyCharacterPeerView(List<DestinyCharacterDestinyItemPeerView> Equipment = default(List<DestinyCharacterDestinyItemPeerView>))
         {
-            this.Equipment = equipment;
+            this.Equipment = Equipment;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

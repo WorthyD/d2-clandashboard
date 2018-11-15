@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyResponsesDestinyItemResponse" /> class.
         /// </summary>
-        /// <param name="characterId">If the item is on a character, this will return the ID of the character that is holding the item..</param>
-        /// <param name="item">Common data for the item relevant to its non-instanced properties.  COMPONENT TYPE: ItemCommonData.</param>
-        /// <param name="instance">Basic instance data for the item.  COMPONENT TYPE: ItemInstances.</param>
-        /// <param name="objectives">Information specifically about the item&#39;s objectives.  COMPONENT TYPE: ItemObjectives.</param>
-        /// <param name="perks">Information specifically about the perks currently active on the item.  COMPONENT TYPE: ItemPerks.</param>
-        /// <param name="renderData">Information about how to render the item in 3D.  COMPONENT TYPE: ItemRenderData.</param>
-        /// <param name="stats">Information about the computed stats of the item: power, defense, etc...  COMPONENT TYPE: ItemStats.</param>
-        /// <param name="talentGrid">Information about the talent grid attached to the item. Talent nodes can provide a variety of benefits and abilities, and in Destiny 2 are used almost exclusively for the character&#39;s \&quot;Builds\&quot;.  COMPONENT TYPE: ItemTalentGrids.</param>
-        /// <param name="sockets">Information about the sockets of the item: which are currently active, what potential sockets you could have and the stats/abilities/perks you can gain from them.  COMPONENT TYPE: ItemSockets.</param>
-        public DestinyResponsesDestinyItemResponse(long? characterId = default(long?), Object item = default(Object), Object instance = default(Object), Object objectives = default(Object), Object perks = default(Object), Object renderData = default(Object), Object stats = default(Object), Object talentGrid = default(Object), Object sockets = default(Object))
+        /// <param name="CharacterId">If the item is on a character, this will return the ID of the character that is holding the item..</param>
+        /// <param name="Item">Common data for the item relevant to its non-instanced properties.  COMPONENT TYPE: ItemCommonData.</param>
+        /// <param name="Instance">Basic instance data for the item.  COMPONENT TYPE: ItemInstances.</param>
+        /// <param name="Objectives">Information specifically about the item&#39;s objectives.  COMPONENT TYPE: ItemObjectives.</param>
+        /// <param name="Perks">Information specifically about the perks currently active on the item.  COMPONENT TYPE: ItemPerks.</param>
+        /// <param name="RenderData">Information about how to render the item in 3D.  COMPONENT TYPE: ItemRenderData.</param>
+        /// <param name="Stats">Information about the computed stats of the item: power, defense, etc...  COMPONENT TYPE: ItemStats.</param>
+        /// <param name="TalentGrid">Information about the talent grid attached to the item. Talent nodes can provide a variety of benefits and abilities, and in Destiny 2 are used almost exclusively for the character&#39;s \&quot;Builds\&quot;.  COMPONENT TYPE: ItemTalentGrids.</param>
+        /// <param name="Sockets">Information about the sockets of the item: which are currently active, what potential sockets you could have and the stats/abilities/perks you can gain from them.  COMPONENT TYPE: ItemSockets.</param>
+        public DestinyResponsesDestinyItemResponse(long? CharacterId = default(long?), SingleComponentResponseOfDestinyItemComponent Item = default(SingleComponentResponseOfDestinyItemComponent), SingleComponentResponseOfDestinyItemInstanceComponent Instance = default(SingleComponentResponseOfDestinyItemInstanceComponent), SingleComponentResponseOfDestinyItemObjectivesComponent Objectives = default(SingleComponentResponseOfDestinyItemObjectivesComponent), SingleComponentResponseOfDestinyItemPerksComponent Perks = default(SingleComponentResponseOfDestinyItemPerksComponent), SingleComponentResponseOfDestinyItemRenderComponent RenderData = default(SingleComponentResponseOfDestinyItemRenderComponent), SingleComponentResponseOfDestinyItemStatsComponent Stats = default(SingleComponentResponseOfDestinyItemStatsComponent), SingleComponentResponseOfDestinyItemTalentGridComponent TalentGrid = default(SingleComponentResponseOfDestinyItemTalentGridComponent), SingleComponentResponseOfDestinyItemSocketsComponent Sockets = default(SingleComponentResponseOfDestinyItemSocketsComponent))
         {
-            this.CharacterId = characterId;
-            this.Item = item;
-            this.Instance = instance;
-            this.Objectives = objectives;
-            this.Perks = perks;
-            this.RenderData = renderData;
-            this.Stats = stats;
-            this.TalentGrid = talentGrid;
-            this.Sockets = sockets;
+            this.CharacterId = CharacterId;
+            this.Item = Item;
+            this.Instance = Instance;
+            this.Objectives = Objectives;
+            this.Perks = Perks;
+            this.RenderData = RenderData;
+            this.Stats = Stats;
+            this.TalentGrid = TalentGrid;
+            this.Sockets = Sockets;
         }
         
         /// <summary>
@@ -67,56 +67,56 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Common data for the item relevant to its non-instanced properties.  COMPONENT TYPE: ItemCommonData</value>
         [DataMember(Name="item", EmitDefaultValue=false)]
-        public Object Item { get; set; }
+        public SingleComponentResponseOfDestinyItemComponent Item { get; set; }
 
         /// <summary>
         /// Basic instance data for the item.  COMPONENT TYPE: ItemInstances
         /// </summary>
         /// <value>Basic instance data for the item.  COMPONENT TYPE: ItemInstances</value>
         [DataMember(Name="instance", EmitDefaultValue=false)]
-        public Object Instance { get; set; }
+        public SingleComponentResponseOfDestinyItemInstanceComponent Instance { get; set; }
 
         /// <summary>
         /// Information specifically about the item&#39;s objectives.  COMPONENT TYPE: ItemObjectives
         /// </summary>
         /// <value>Information specifically about the item&#39;s objectives.  COMPONENT TYPE: ItemObjectives</value>
         [DataMember(Name="objectives", EmitDefaultValue=false)]
-        public Object Objectives { get; set; }
+        public SingleComponentResponseOfDestinyItemObjectivesComponent Objectives { get; set; }
 
         /// <summary>
         /// Information specifically about the perks currently active on the item.  COMPONENT TYPE: ItemPerks
         /// </summary>
         /// <value>Information specifically about the perks currently active on the item.  COMPONENT TYPE: ItemPerks</value>
         [DataMember(Name="perks", EmitDefaultValue=false)]
-        public Object Perks { get; set; }
+        public SingleComponentResponseOfDestinyItemPerksComponent Perks { get; set; }
 
         /// <summary>
         /// Information about how to render the item in 3D.  COMPONENT TYPE: ItemRenderData
         /// </summary>
         /// <value>Information about how to render the item in 3D.  COMPONENT TYPE: ItemRenderData</value>
         [DataMember(Name="renderData", EmitDefaultValue=false)]
-        public Object RenderData { get; set; }
+        public SingleComponentResponseOfDestinyItemRenderComponent RenderData { get; set; }
 
         /// <summary>
         /// Information about the computed stats of the item: power, defense, etc...  COMPONENT TYPE: ItemStats
         /// </summary>
         /// <value>Information about the computed stats of the item: power, defense, etc...  COMPONENT TYPE: ItemStats</value>
         [DataMember(Name="stats", EmitDefaultValue=false)]
-        public Object Stats { get; set; }
+        public SingleComponentResponseOfDestinyItemStatsComponent Stats { get; set; }
 
         /// <summary>
         /// Information about the talent grid attached to the item. Talent nodes can provide a variety of benefits and abilities, and in Destiny 2 are used almost exclusively for the character&#39;s \&quot;Builds\&quot;.  COMPONENT TYPE: ItemTalentGrids
         /// </summary>
         /// <value>Information about the talent grid attached to the item. Talent nodes can provide a variety of benefits and abilities, and in Destiny 2 are used almost exclusively for the character&#39;s \&quot;Builds\&quot;.  COMPONENT TYPE: ItemTalentGrids</value>
         [DataMember(Name="talentGrid", EmitDefaultValue=false)]
-        public Object TalentGrid { get; set; }
+        public SingleComponentResponseOfDestinyItemTalentGridComponent TalentGrid { get; set; }
 
         /// <summary>
         /// Information about the sockets of the item: which are currently active, what potential sockets you could have and the stats/abilities/perks you can gain from them.  COMPONENT TYPE: ItemSockets
         /// </summary>
         /// <value>Information about the sockets of the item: which are currently active, what potential sockets you could have and the stats/abilities/perks you can gain from them.  COMPONENT TYPE: ItemSockets</value>
         [DataMember(Name="sockets", EmitDefaultValue=false)]
-        public Object Sockets { get; set; }
+        public SingleComponentResponseOfDestinyItemSocketsComponent Sockets { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -143,7 +143,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

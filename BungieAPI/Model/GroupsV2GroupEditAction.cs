@@ -31,28 +31,101 @@ namespace BungieAPI.Model
     public partial class GroupsV2GroupEditAction :  IEquatable<GroupsV2GroupEditAction>, IValidatableObject
     {
         /// <summary>
-        /// Defines MembershipOption
+        /// Gets or Sets MembershipOption
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public enum MembershipOptionEnum
         {
             
             /// <summary>
-            /// Enum NUMBER_0 for value: 0
+            /// Enum Reviewed for 0
             /// </summary>
-            
-            NUMBER_0 = 0,
+            [EnumMember(Value = "0")]
+            Reviewed = 0,
             
             /// <summary>
-            /// Enum NUMBER_1 for value: 1
+            /// Enum Open for 1
             /// </summary>
-            
-            NUMBER_1 = 1,
+            [EnumMember(Value = "1")]
+            Open = 1,
             
             /// <summary>
-            /// Enum NUMBER_2 for value: 2
+            /// Enum Closed for 2
             /// </summary>
+            [EnumMember(Value = "2")]
+            Closed = 2
+        }
+
+        /// <summary>
+        /// Gets or Sets ChatSecurity
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ChatSecurityEnum
+        {
             
-            NUMBER_2 = 2
+            /// <summary>
+            /// Enum Group for 0
+            /// </summary>
+            [EnumMember(Value = "0")]
+            Group = 0,
+            
+            /// <summary>
+            /// Enum Admins for 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            Admins = 1
+        }
+
+        /// <summary>
+        /// Gets or Sets Homepage
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum HomepageEnum
+        {
+            
+            /// <summary>
+            /// Enum Wall for 0
+            /// </summary>
+            [EnumMember(Value = "0")]
+            Wall = 0,
+            
+            /// <summary>
+            /// Enum Forum for 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            Forum = 1,
+            
+            /// <summary>
+            /// Enum AllianceForum for 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            AllianceForum = 2
+        }
+
+        /// <summary>
+        /// Gets or Sets DefaultPublicity
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DefaultPublicityEnum
+        {
+            
+            /// <summary>
+            /// Enum Public for 0
+            /// </summary>
+            [EnumMember(Value = "0")]
+            Public = 0,
+            
+            /// <summary>
+            /// Enum Alliance for 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            Alliance = 1,
+            
+            /// <summary>
+            /// Enum Private for 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            Private = 2
         }
 
         /// <summary>
@@ -61,84 +134,15 @@ namespace BungieAPI.Model
         [DataMember(Name="membershipOption", EmitDefaultValue=false)]
         public MembershipOptionEnum? MembershipOption { get; set; }
         /// <summary>
-        /// Defines ChatSecurity
-        /// </summary>
-        public enum ChatSecurityEnum
-        {
-            
-            /// <summary>
-            /// Enum NUMBER_0 for value: 0
-            /// </summary>
-            
-            NUMBER_0 = 0,
-            
-            /// <summary>
-            /// Enum NUMBER_1 for value: 1
-            /// </summary>
-            
-            NUMBER_1 = 1
-        }
-
-        /// <summary>
         /// Gets or Sets ChatSecurity
         /// </summary>
         [DataMember(Name="chatSecurity", EmitDefaultValue=false)]
         public ChatSecurityEnum? ChatSecurity { get; set; }
         /// <summary>
-        /// Defines Homepage
-        /// </summary>
-        public enum HomepageEnum
-        {
-            
-            /// <summary>
-            /// Enum NUMBER_0 for value: 0
-            /// </summary>
-            
-            NUMBER_0 = 0,
-            
-            /// <summary>
-            /// Enum NUMBER_1 for value: 1
-            /// </summary>
-            
-            NUMBER_1 = 1,
-            
-            /// <summary>
-            /// Enum NUMBER_2 for value: 2
-            /// </summary>
-            
-            NUMBER_2 = 2
-        }
-
-        /// <summary>
         /// Gets or Sets Homepage
         /// </summary>
         [DataMember(Name="homepage", EmitDefaultValue=false)]
         public HomepageEnum? Homepage { get; set; }
-        /// <summary>
-        /// Defines DefaultPublicity
-        /// </summary>
-        public enum DefaultPublicityEnum
-        {
-            
-            /// <summary>
-            /// Enum NUMBER_0 for value: 0
-            /// </summary>
-            
-            NUMBER_0 = 0,
-            
-            /// <summary>
-            /// Enum NUMBER_1 for value: 1
-            /// </summary>
-            
-            NUMBER_1 = 1,
-            
-            /// <summary>
-            /// Enum NUMBER_2 for value: 2
-            /// </summary>
-            
-            NUMBER_2 = 2
-        }
-
         /// <summary>
         /// Gets or Sets DefaultPublicity
         /// </summary>
@@ -147,40 +151,40 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupEditAction" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="about">about.</param>
-        /// <param name="motto">motto.</param>
-        /// <param name="theme">theme.</param>
-        /// <param name="avatarImageIndex">avatarImageIndex.</param>
-        /// <param name="tags">tags.</param>
-        /// <param name="isPublic">isPublic.</param>
-        /// <param name="membershipOption">membershipOption.</param>
-        /// <param name="isPublicTopicAdminOnly">isPublicTopicAdminOnly.</param>
-        /// <param name="allowChat">allowChat.</param>
-        /// <param name="chatSecurity">chatSecurity.</param>
-        /// <param name="callsign">callsign.</param>
-        /// <param name="locale">locale.</param>
-        /// <param name="homepage">homepage.</param>
-        /// <param name="enableInvitationMessagingForAdmins">enableInvitationMessagingForAdmins.</param>
-        /// <param name="defaultPublicity">defaultPublicity.</param>
-        public GroupsV2GroupEditAction(string name = default(string), string about = default(string), string motto = default(string), string theme = default(string), int? avatarImageIndex = default(int?), string tags = default(string), bool? isPublic = default(bool?), MembershipOptionEnum? membershipOption = default(MembershipOptionEnum?), bool? isPublicTopicAdminOnly = default(bool?), bool? allowChat = default(bool?), ChatSecurityEnum? chatSecurity = default(ChatSecurityEnum?), string callsign = default(string), string locale = default(string), HomepageEnum? homepage = default(HomepageEnum?), bool? enableInvitationMessagingForAdmins = default(bool?), DefaultPublicityEnum? defaultPublicity = default(DefaultPublicityEnum?))
+        /// <param name="Name">Name.</param>
+        /// <param name="About">About.</param>
+        /// <param name="Motto">Motto.</param>
+        /// <param name="Theme">Theme.</param>
+        /// <param name="AvatarImageIndex">AvatarImageIndex.</param>
+        /// <param name="Tags">Tags.</param>
+        /// <param name="IsPublic">IsPublic.</param>
+        /// <param name="MembershipOption">MembershipOption.</param>
+        /// <param name="IsPublicTopicAdminOnly">IsPublicTopicAdminOnly.</param>
+        /// <param name="AllowChat">AllowChat.</param>
+        /// <param name="ChatSecurity">ChatSecurity.</param>
+        /// <param name="Callsign">Callsign.</param>
+        /// <param name="Locale">Locale.</param>
+        /// <param name="Homepage">Homepage.</param>
+        /// <param name="EnableInvitationMessagingForAdmins">EnableInvitationMessagingForAdmins.</param>
+        /// <param name="DefaultPublicity">DefaultPublicity.</param>
+        public GroupsV2GroupEditAction(string Name = default(string), string About = default(string), string Motto = default(string), string Theme = default(string), int? AvatarImageIndex = default(int?), string Tags = default(string), bool? IsPublic = default(bool?), MembershipOptionEnum? MembershipOption = default(MembershipOptionEnum?), bool? IsPublicTopicAdminOnly = default(bool?), bool? AllowChat = default(bool?), ChatSecurityEnum? ChatSecurity = default(ChatSecurityEnum?), string Callsign = default(string), string Locale = default(string), HomepageEnum? Homepage = default(HomepageEnum?), bool? EnableInvitationMessagingForAdmins = default(bool?), DefaultPublicityEnum? DefaultPublicity = default(DefaultPublicityEnum?))
         {
-            this.Name = name;
-            this.About = about;
-            this.Motto = motto;
-            this.Theme = theme;
-            this.AvatarImageIndex = avatarImageIndex;
-            this.Tags = tags;
-            this.IsPublic = isPublic;
-            this.MembershipOption = membershipOption;
-            this.IsPublicTopicAdminOnly = isPublicTopicAdminOnly;
-            this.AllowChat = allowChat;
-            this.ChatSecurity = chatSecurity;
-            this.Callsign = callsign;
-            this.Locale = locale;
-            this.Homepage = homepage;
-            this.EnableInvitationMessagingForAdmins = enableInvitationMessagingForAdmins;
-            this.DefaultPublicity = defaultPublicity;
+            this.Name = Name;
+            this.About = About;
+            this.Motto = Motto;
+            this.Theme = Theme;
+            this.AvatarImageIndex = AvatarImageIndex;
+            this.Tags = Tags;
+            this.IsPublic = IsPublic;
+            this.MembershipOption = MembershipOption;
+            this.IsPublicTopicAdminOnly = IsPublicTopicAdminOnly;
+            this.AllowChat = AllowChat;
+            this.ChatSecurity = ChatSecurity;
+            this.Callsign = Callsign;
+            this.Locale = Locale;
+            this.Homepage = Homepage;
+            this.EnableInvitationMessagingForAdmins = EnableInvitationMessagingForAdmins;
+            this.DefaultPublicity = DefaultPublicity;
         }
         
         /// <summary>
@@ -291,7 +295,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

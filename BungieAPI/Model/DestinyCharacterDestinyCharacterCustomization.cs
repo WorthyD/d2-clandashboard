@@ -33,81 +33,81 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyCharacterDestinyCharacterCustomization" /> class.
         /// </summary>
-        /// <param name="personality">personality.</param>
-        /// <param name="face">face.</param>
-        /// <param name="skinColor">skinColor.</param>
-        /// <param name="lipColor">lipColor.</param>
-        /// <param name="eyeColor">eyeColor.</param>
-        /// <param name="hairColors">hairColors.</param>
-        /// <param name="featureColors">featureColors.</param>
-        /// <param name="decalColor">decalColor.</param>
-        /// <param name="wearHelmet">wearHelmet.</param>
-        /// <param name="hairIndex">hairIndex.</param>
-        /// <param name="featureIndex">featureIndex.</param>
-        /// <param name="decalIndex">decalIndex.</param>
-        public DestinyCharacterDestinyCharacterCustomization(int? personality = default(int?), int? face = default(int?), int? skinColor = default(int?), int? lipColor = default(int?), int? eyeColor = default(int?), List<int?> hairColors = default(List<int?>), List<int?> featureColors = default(List<int?>), int? decalColor = default(int?), bool? wearHelmet = default(bool?), int? hairIndex = default(int?), int? featureIndex = default(int?), int? decalIndex = default(int?))
+        /// <param name="Personality">Personality.</param>
+        /// <param name="Face">Face.</param>
+        /// <param name="SkinColor">SkinColor.</param>
+        /// <param name="LipColor">LipColor.</param>
+        /// <param name="EyeColor">EyeColor.</param>
+        /// <param name="HairColors">HairColors.</param>
+        /// <param name="FeatureColors">FeatureColors.</param>
+        /// <param name="DecalColor">DecalColor.</param>
+        /// <param name="WearHelmet">WearHelmet.</param>
+        /// <param name="HairIndex">HairIndex.</param>
+        /// <param name="FeatureIndex">FeatureIndex.</param>
+        /// <param name="DecalIndex">DecalIndex.</param>
+        public DestinyCharacterDestinyCharacterCustomization(uint? Personality = default(uint?), uint? Face = default(uint?), uint? SkinColor = default(uint?), uint? LipColor = default(uint?), uint? EyeColor = default(uint?), List<uint?> HairColors = default(List<uint?>), List<uint?> FeatureColors = default(List<uint?>), uint? DecalColor = default(uint?), bool? WearHelmet = default(bool?), int? HairIndex = default(int?), int? FeatureIndex = default(int?), int? DecalIndex = default(int?))
         {
-            this.Personality = personality;
-            this.Face = face;
-            this.SkinColor = skinColor;
-            this.LipColor = lipColor;
-            this.EyeColor = eyeColor;
-            this.HairColors = hairColors;
-            this.FeatureColors = featureColors;
-            this.DecalColor = decalColor;
-            this.WearHelmet = wearHelmet;
-            this.HairIndex = hairIndex;
-            this.FeatureIndex = featureIndex;
-            this.DecalIndex = decalIndex;
+            this.Personality = Personality;
+            this.Face = Face;
+            this.SkinColor = SkinColor;
+            this.LipColor = LipColor;
+            this.EyeColor = EyeColor;
+            this.HairColors = HairColors;
+            this.FeatureColors = FeatureColors;
+            this.DecalColor = DecalColor;
+            this.WearHelmet = WearHelmet;
+            this.HairIndex = HairIndex;
+            this.FeatureIndex = FeatureIndex;
+            this.DecalIndex = DecalIndex;
         }
         
         /// <summary>
         /// Gets or Sets Personality
         /// </summary>
         [DataMember(Name="personality", EmitDefaultValue=false)]
-        public int? Personality { get; set; }
+        public uint? Personality { get; set; }
 
         /// <summary>
         /// Gets or Sets Face
         /// </summary>
         [DataMember(Name="face", EmitDefaultValue=false)]
-        public int? Face { get; set; }
+        public uint? Face { get; set; }
 
         /// <summary>
         /// Gets or Sets SkinColor
         /// </summary>
         [DataMember(Name="skinColor", EmitDefaultValue=false)]
-        public int? SkinColor { get; set; }
+        public uint? SkinColor { get; set; }
 
         /// <summary>
         /// Gets or Sets LipColor
         /// </summary>
         [DataMember(Name="lipColor", EmitDefaultValue=false)]
-        public int? LipColor { get; set; }
+        public uint? LipColor { get; set; }
 
         /// <summary>
         /// Gets or Sets EyeColor
         /// </summary>
         [DataMember(Name="eyeColor", EmitDefaultValue=false)]
-        public int? EyeColor { get; set; }
+        public uint? EyeColor { get; set; }
 
         /// <summary>
         /// Gets or Sets HairColors
         /// </summary>
         [DataMember(Name="hairColors", EmitDefaultValue=false)]
-        public List<int?> HairColors { get; set; }
+        public List<uint?> HairColors { get; set; }
 
         /// <summary>
         /// Gets or Sets FeatureColors
         /// </summary>
         [DataMember(Name="featureColors", EmitDefaultValue=false)]
-        public List<int?> FeatureColors { get; set; }
+        public List<uint?> FeatureColors { get; set; }
 
         /// <summary>
         /// Gets or Sets DecalColor
         /// </summary>
         [DataMember(Name="decalColor", EmitDefaultValue=false)]
-        public int? DecalColor { get; set; }
+        public uint? DecalColor { get; set; }
 
         /// <summary>
         /// Gets or Sets WearHelmet
@@ -161,7 +161,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

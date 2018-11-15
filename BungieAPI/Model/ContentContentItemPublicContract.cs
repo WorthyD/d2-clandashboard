@@ -33,38 +33,38 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentContentItemPublicContract" /> class.
         /// </summary>
-        /// <param name="contentId">contentId.</param>
-        /// <param name="cType">cType.</param>
-        /// <param name="cmsPath">cmsPath.</param>
-        /// <param name="creationDate">creationDate.</param>
-        /// <param name="modifyDate">modifyDate.</param>
-        /// <param name="allowComments">allowComments.</param>
-        /// <param name="hasAgeGate">hasAgeGate.</param>
-        /// <param name="minimumAge">minimumAge.</param>
-        /// <param name="ratingImagePath">ratingImagePath.</param>
-        /// <param name="author">author.</param>
-        /// <param name="autoEnglishPropertyFallback">autoEnglishPropertyFallback.</param>
-        /// <param name="properties">Firehose content is really a collection of metadata and \&quot;properties\&quot;, which are the potentially-but-not-strictly localizable data that comprises the meat of whatever content is being shown.  As Cole Porter would have crooned, \&quot;Anything Goes\&quot; with Firehose properties. They are most often strings, but they can theoretically be anything. They are JSON encoded, and could be JSON structures, simple strings, numbers etc... The Content Type of the item (cType) will describe the properties, and thus how they ought to be deserialized..</param>
-        /// <param name="representations">representations.</param>
-        /// <param name="tags">tags.</param>
-        /// <param name="commentSummary">commentSummary.</param>
-        public ContentContentItemPublicContract(long? contentId = default(long?), string cType = default(string), string cmsPath = default(string), DateTime? creationDate = default(DateTime?), DateTime? modifyDate = default(DateTime?), bool? allowComments = default(bool?), bool? hasAgeGate = default(bool?), int? minimumAge = default(int?), string ratingImagePath = default(string), UserGeneralUser author = default(UserGeneralUser), bool? autoEnglishPropertyFallback = default(bool?), Dictionary<string, Object> properties = default(Dictionary<string, Object>), List<ContentContentRepresentation> representations = default(List<ContentContentRepresentation>), List<string> tags = default(List<string>), ContentCommentSummary commentSummary = default(ContentCommentSummary))
+        /// <param name="ContentId">ContentId.</param>
+        /// <param name="CType">CType.</param>
+        /// <param name="CmsPath">CmsPath.</param>
+        /// <param name="CreationDate">CreationDate.</param>
+        /// <param name="ModifyDate">ModifyDate.</param>
+        /// <param name="AllowComments">AllowComments.</param>
+        /// <param name="HasAgeGate">HasAgeGate.</param>
+        /// <param name="MinimumAge">MinimumAge.</param>
+        /// <param name="RatingImagePath">RatingImagePath.</param>
+        /// <param name="Author">Author.</param>
+        /// <param name="AutoEnglishPropertyFallback">AutoEnglishPropertyFallback.</param>
+        /// <param name="Properties">Firehose content is really a collection of metadata and \&quot;properties\&quot;, which are the potentially-but-not-strictly localizable data that comprises the meat of whatever content is being shown.  As Cole Porter would have crooned, \&quot;Anything Goes\&quot; with Firehose properties. They are most often strings, but they can theoretically be anything. They are JSON encoded, and could be JSON structures, simple strings, numbers etc... The Content Type of the item (cType) will describe the properties, and thus how they ought to be deserialized..</param>
+        /// <param name="Representations">Representations.</param>
+        /// <param name="Tags">Tags.</param>
+        /// <param name="CommentSummary">CommentSummary.</param>
+        public ContentContentItemPublicContract(long? ContentId = default(long?), string CType = default(string), string CmsPath = default(string), DateTime? CreationDate = default(DateTime?), DateTime? ModifyDate = default(DateTime?), bool? AllowComments = default(bool?), bool? HasAgeGate = default(bool?), int? MinimumAge = default(int?), string RatingImagePath = default(string), UserGeneralUser Author = default(UserGeneralUser), bool? AutoEnglishPropertyFallback = default(bool?), Dictionary<string, Object> Properties = default(Dictionary<string, Object>), List<ContentContentRepresentation> Representations = default(List<ContentContentRepresentation>), List<string> Tags = default(List<string>), ContentCommentSummary CommentSummary = default(ContentCommentSummary))
         {
-            this.ContentId = contentId;
-            this.CType = cType;
-            this.CmsPath = cmsPath;
-            this.CreationDate = creationDate;
-            this.ModifyDate = modifyDate;
-            this.AllowComments = allowComments;
-            this.HasAgeGate = hasAgeGate;
-            this.MinimumAge = minimumAge;
-            this.RatingImagePath = ratingImagePath;
-            this.Author = author;
-            this.AutoEnglishPropertyFallback = autoEnglishPropertyFallback;
-            this.Properties = properties;
-            this.Representations = representations;
-            this.Tags = tags;
-            this.CommentSummary = commentSummary;
+            this.ContentId = ContentId;
+            this.CType = CType;
+            this.CmsPath = CmsPath;
+            this.CreationDate = CreationDate;
+            this.ModifyDate = ModifyDate;
+            this.AllowComments = AllowComments;
+            this.HasAgeGate = HasAgeGate;
+            this.MinimumAge = MinimumAge;
+            this.RatingImagePath = RatingImagePath;
+            this.Author = Author;
+            this.AutoEnglishPropertyFallback = AutoEnglishPropertyFallback;
+            this.Properties = Properties;
+            this.Representations = Representations;
+            this.Tags = Tags;
+            this.CommentSummary = CommentSummary;
         }
         
         /// <summary>
@@ -189,7 +189,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

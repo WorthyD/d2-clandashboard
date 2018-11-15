@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserUserMembershipData" /> class.
         /// </summary>
-        /// <param name="destinyMemberships">this allows you to see destiny memberships that are visible and linked to this account (regardless of whether or not they have characters on the world server).</param>
-        /// <param name="bungieNetUser">bungieNetUser.</param>
-        public UserUserMembershipData(List<UserUserInfoCard> destinyMemberships = default(List<UserUserInfoCard>), UserGeneralUser bungieNetUser = default(UserGeneralUser))
+        /// <param name="DestinyMemberships">this allows you to see destiny memberships that are visible and linked to this account (regardless of whether or not they have characters on the world server).</param>
+        /// <param name="BungieNetUser">BungieNetUser.</param>
+        public UserUserMembershipData(List<UserUserInfoCard> DestinyMemberships = default(List<UserUserInfoCard>), UserGeneralUser BungieNetUser = default(UserGeneralUser))
         {
-            this.DestinyMemberships = destinyMemberships;
-            this.BungieNetUser = bungieNetUser;
+            this.DestinyMemberships = DestinyMemberships;
+            this.BungieNetUser = BungieNetUser;
         }
         
         /// <summary>
@@ -72,7 +72,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

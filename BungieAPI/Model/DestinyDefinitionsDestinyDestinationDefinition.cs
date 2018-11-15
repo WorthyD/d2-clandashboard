@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyDestinationDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="placeHash">The place that \&quot;owns\&quot; this Destination. Use this hash to look up the DestinyPlaceDefinition..</param>
-        /// <param name="defaultFreeroamActivityHash">If this Destination has a default Free-Roam activity, this is the hash for that Activity. Use it to look up the DestinyActivityDefintion..</param>
-        /// <param name="activityGraphEntries">If the Destination has default Activity Graphs (i.e. \&quot;Map\&quot;) that should be shown in the director, this is the list of those Graphs. At most, only one should be active at any given time for a Destination: these would represent, for example, different variants on a Map if the Destination is changing on a macro level based on game state..</param>
-        /// <param name="bubbleSettings">A Destination may have many \&quot;Bubbles\&quot; zones with human readable properties.  We don&#39;t get as much info as I&#39;d like about them - I&#39;d love to return info like where on the map they are located - but at least this gives you the name of those bubbles. bubbleSettings and bubbles both have the identical number of entries, and you should match up their indexes to provide matching bubble and bubbleSettings data.  DEPRECATED - Just use bubbles, it now has this data..</param>
-        /// <param name="bubbles">This provides the unique identifiers for every bubble in the destination (only guaranteed unique within the destination), and any intrinsic properties of the bubble.  bubbleSettings and bubbles both have the identical number of entries, and you should match up their indexes to provide matching bubble and bubbleSettings data..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyDestinationDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), int? placeHash = default(int?), int? defaultFreeroamActivityHash = default(int?), List<DestinyDefinitionsDestinyActivityGraphListEntryDefinition> activityGraphEntries = default(List<DestinyDefinitionsDestinyActivityGraphListEntryDefinition>), List<DestinyDefinitionsDestinyDestinationBubbleSettingDefinition> bubbleSettings = default(List<DestinyDefinitionsDestinyDestinationBubbleSettingDefinition>), List<DestinyDefinitionsDestinyBubbleDefinition> bubbles = default(List<DestinyDefinitionsDestinyBubbleDefinition>), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="PlaceHash">The place that \&quot;owns\&quot; this Destination. Use this hash to look up the DestinyPlaceDefinition..</param>
+        /// <param name="DefaultFreeroamActivityHash">If this Destination has a default Free-Roam activity, this is the hash for that Activity. Use it to look up the DestinyActivityDefintion..</param>
+        /// <param name="ActivityGraphEntries">If the Destination has default Activity Graphs (i.e. \&quot;Map\&quot;) that should be shown in the director, this is the list of those Graphs. At most, only one should be active at any given time for a Destination: these would represent, for example, different variants on a Map if the Destination is changing on a macro level based on game state..</param>
+        /// <param name="BubbleSettings">A Destination may have many \&quot;Bubbles\&quot; zones with human readable properties.  We don&#39;t get as much info as I&#39;d like about them - I&#39;d love to return info like where on the map they are located - but at least this gives you the name of those bubbles. bubbleSettings and bubbles both have the identical number of entries, and you should match up their indexes to provide matching bubble and bubbleSettings data.  DEPRECATED - Just use bubbles, it now has this data..</param>
+        /// <param name="Bubbles">This provides the unique identifiers for every bubble in the destination (only guaranteed unique within the destination), and any intrinsic properties of the bubble.  bubbleSettings and bubbles both have the identical number of entries, and you should match up their indexes to provide matching bubble and bubbleSettings data..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyDestinationDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), uint? PlaceHash = default(uint?), uint? DefaultFreeroamActivityHash = default(uint?), List<DestinyDefinitionsDestinyActivityGraphListEntryDefinition> ActivityGraphEntries = default(List<DestinyDefinitionsDestinyActivityGraphListEntryDefinition>), List<DestinyDefinitionsDestinyDestinationBubbleSettingDefinition> BubbleSettings = default(List<DestinyDefinitionsDestinyDestinationBubbleSettingDefinition>), List<DestinyDefinitionsDestinyBubbleDefinition> Bubbles = default(List<DestinyDefinitionsDestinyBubbleDefinition>), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.PlaceHash = placeHash;
-            this.DefaultFreeroamActivityHash = defaultFreeroamActivityHash;
-            this.ActivityGraphEntries = activityGraphEntries;
-            this.BubbleSettings = bubbleSettings;
-            this.Bubbles = bubbles;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.PlaceHash = PlaceHash;
+            this.DefaultFreeroamActivityHash = DefaultFreeroamActivityHash;
+            this.ActivityGraphEntries = ActivityGraphEntries;
+            this.BubbleSettings = BubbleSettings;
+            this.Bubbles = Bubbles;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -66,14 +66,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The place that \&quot;owns\&quot; this Destination. Use this hash to look up the DestinyPlaceDefinition.</value>
         [DataMember(Name="placeHash", EmitDefaultValue=false)]
-        public int? PlaceHash { get; set; }
+        public uint? PlaceHash { get; set; }
 
         /// <summary>
         /// If this Destination has a default Free-Roam activity, this is the hash for that Activity. Use it to look up the DestinyActivityDefintion.
         /// </summary>
         /// <value>If this Destination has a default Free-Roam activity, this is the hash for that Activity. Use it to look up the DestinyActivityDefintion.</value>
         [DataMember(Name="defaultFreeroamActivityHash", EmitDefaultValue=false)]
-        public int? DefaultFreeroamActivityHash { get; set; }
+        public uint? DefaultFreeroamActivityHash { get; set; }
 
         /// <summary>
         /// If the Destination has default Activity Graphs (i.e. \&quot;Map\&quot;) that should be shown in the director, this is the list of those Graphs. At most, only one should be active at any given time for a Destination: these would represent, for example, different variants on a Map if the Destination is changing on a macro level based on game state.
@@ -101,7 +101,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -142,7 +142,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

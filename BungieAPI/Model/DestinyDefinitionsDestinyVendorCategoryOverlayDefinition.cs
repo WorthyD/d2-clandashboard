@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyVendorCategoryOverlayDefinition" /> class.
         /// </summary>
-        /// <param name="choiceDescription">choiceDescription.</param>
-        /// <param name="description">description.</param>
-        /// <param name="icon">icon.</param>
-        /// <param name="title">title.</param>
-        /// <param name="currencyItemHash">If this overlay has a currency item that it features, this is said featured item..</param>
-        public DestinyDefinitionsDestinyVendorCategoryOverlayDefinition(string choiceDescription = default(string), string description = default(string), string icon = default(string), string title = default(string), int? currencyItemHash = default(int?))
+        /// <param name="ChoiceDescription">ChoiceDescription.</param>
+        /// <param name="Description">Description.</param>
+        /// <param name="Icon">Icon.</param>
+        /// <param name="Title">Title.</param>
+        /// <param name="CurrencyItemHash">If this overlay has a currency item that it features, this is said featured item..</param>
+        public DestinyDefinitionsDestinyVendorCategoryOverlayDefinition(string ChoiceDescription = default(string), string Description = default(string), string Icon = default(string), string Title = default(string), uint? CurrencyItemHash = default(uint?))
         {
-            this.ChoiceDescription = choiceDescription;
-            this.Description = description;
-            this.Icon = icon;
-            this.Title = title;
-            this.CurrencyItemHash = currencyItemHash;
+            this.ChoiceDescription = ChoiceDescription;
+            this.Description = Description;
+            this.Icon = Icon;
+            this.Title = Title;
+            this.CurrencyItemHash = CurrencyItemHash;
         }
         
         /// <summary>
@@ -76,7 +76,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If this overlay has a currency item that it features, this is said featured item.</value>
         [DataMember(Name="currencyItemHash", EmitDefaultValue=false)]
-        public int? CurrencyItemHash { get; set; }
+        public uint? CurrencyItemHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,7 +99,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

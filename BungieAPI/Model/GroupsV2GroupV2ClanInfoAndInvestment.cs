@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupV2ClanInfoAndInvestment" /> class.
         /// </summary>
-        /// <param name="d2ClanProgressions">d2ClanProgressions.</param>
-        /// <param name="clanCallsign">clanCallsign.</param>
-        /// <param name="clanBannerData">clanBannerData.</param>
-        public GroupsV2GroupV2ClanInfoAndInvestment(Dictionary<string, DestinyDestinyProgression> d2ClanProgressions = default(Dictionary<string, DestinyDestinyProgression>), string clanCallsign = default(string), GroupsV2ClanBanner clanBannerData = default(GroupsV2ClanBanner))
+        /// <param name="D2ClanProgressions">D2ClanProgressions.</param>
+        /// <param name="ClanCallsign">ClanCallsign.</param>
+        /// <param name="ClanBannerData">ClanBannerData.</param>
+        public GroupsV2GroupV2ClanInfoAndInvestment(Dictionary<string, DestinyDestinyProgression> D2ClanProgressions = default(Dictionary<string, DestinyDestinyProgression>), string ClanCallsign = default(string), GroupsV2ClanBanner ClanBannerData = default(GroupsV2ClanBanner))
         {
-            this.D2ClanProgressions = d2ClanProgressions;
-            this.ClanCallsign = clanCallsign;
-            this.ClanBannerData = clanBannerData;
+            this.D2ClanProgressions = D2ClanProgressions;
+            this.ClanCallsign = ClanCallsign;
+            this.ClanBannerData = ClanBannerData;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

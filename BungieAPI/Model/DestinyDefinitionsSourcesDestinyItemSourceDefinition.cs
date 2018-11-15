@@ -33,22 +33,22 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsSourcesDestinyItemSourceDefinition" /> class.
         /// </summary>
-        /// <param name="level">The level at which the item spawns. Essentially the Primary Key for this source data: there will be multiple of these source entries per item that has source data, grouped by the level at which the item spawns..</param>
-        /// <param name="minQuality">The minimum Quality at which the item spawns for this level. Examine DestinyInventoryItemDefinition for more information about what Quality means. Just don&#39;t ask Phaedrus about it, he&#39;ll never stop talking and you&#39;ll have to write a book about it..</param>
-        /// <param name="maxQuality">The maximum quality at which the item spawns for this level..</param>
-        /// <param name="minLevelRequired">The minimum Character Level required for equipping the item when the item spawns at the item level defined on this DestinyItemSourceDefinition, as far as we saw in our processing..</param>
-        /// <param name="maxLevelRequired">The maximum Character Level required for equipping the item when the item spawns at the item level defined on this DestinyItemSourceDefinition, as far as we saw in our processing..</param>
-        /// <param name="computedStats">The stats computed for this level/quality range..</param>
-        /// <param name="sourceHashes">The DestinyRewardSourceDefinitions found that can spawn the item at this level..</param>
-        public DestinyDefinitionsSourcesDestinyItemSourceDefinition(int? level = default(int?), int? minQuality = default(int?), int? maxQuality = default(int?), int? minLevelRequired = default(int?), int? maxLevelRequired = default(int?), Dictionary<string, DestinyDefinitionsDestinyInventoryItemStatDefinition> computedStats = default(Dictionary<string, DestinyDefinitionsDestinyInventoryItemStatDefinition>), List<int?> sourceHashes = default(List<int?>))
+        /// <param name="Level">The level at which the item spawns. Essentially the Primary Key for this source data: there will be multiple of these source entries per item that has source data, grouped by the level at which the item spawns..</param>
+        /// <param name="MinQuality">The minimum Quality at which the item spawns for this level. Examine DestinyInventoryItemDefinition for more information about what Quality means. Just don&#39;t ask Phaedrus about it, he&#39;ll never stop talking and you&#39;ll have to write a book about it..</param>
+        /// <param name="MaxQuality">The maximum quality at which the item spawns for this level..</param>
+        /// <param name="MinLevelRequired">The minimum Character Level required for equipping the item when the item spawns at the item level defined on this DestinyItemSourceDefinition, as far as we saw in our processing..</param>
+        /// <param name="MaxLevelRequired">The maximum Character Level required for equipping the item when the item spawns at the item level defined on this DestinyItemSourceDefinition, as far as we saw in our processing..</param>
+        /// <param name="ComputedStats">The stats computed for this level/quality range..</param>
+        /// <param name="SourceHashes">The DestinyRewardSourceDefinitions found that can spawn the item at this level..</param>
+        public DestinyDefinitionsSourcesDestinyItemSourceDefinition(int? Level = default(int?), int? MinQuality = default(int?), int? MaxQuality = default(int?), int? MinLevelRequired = default(int?), int? MaxLevelRequired = default(int?), Dictionary<string, DestinyDefinitionsDestinyInventoryItemStatDefinition> ComputedStats = default(Dictionary<string, DestinyDefinitionsDestinyInventoryItemStatDefinition>), List<uint?> SourceHashes = default(List<uint?>))
         {
-            this.Level = level;
-            this.MinQuality = minQuality;
-            this.MaxQuality = maxQuality;
-            this.MinLevelRequired = minLevelRequired;
-            this.MaxLevelRequired = maxLevelRequired;
-            this.ComputedStats = computedStats;
-            this.SourceHashes = sourceHashes;
+            this.Level = Level;
+            this.MinQuality = MinQuality;
+            this.MaxQuality = MaxQuality;
+            this.MinLevelRequired = MinLevelRequired;
+            this.MaxLevelRequired = MaxLevelRequired;
+            this.ComputedStats = ComputedStats;
+            this.SourceHashes = SourceHashes;
         }
         
         /// <summary>
@@ -98,7 +98,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The DestinyRewardSourceDefinitions found that can spawn the item at this level.</value>
         [DataMember(Name="sourceHashes", EmitDefaultValue=false)]
-        public List<int?> SourceHashes { get; set; }
+        public List<uint?> SourceHashes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -123,7 +123,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

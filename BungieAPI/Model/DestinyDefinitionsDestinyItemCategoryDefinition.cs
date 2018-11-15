@@ -33,42 +33,42 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemCategoryDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="visible">If True, this category should be visible in UI. Sometimes we make categories that we don&#39;t think are interesting externally. It&#39;s up to you if you want to skip on showing them..</param>
-        /// <param name="deprecated">If True, this category has been deprecated: it may have no items left, or there may be only legacy items that remain in it which are no longer relevant to the game..</param>
-        /// <param name="shortTitle">A shortened version of the title. The reason why we have this is because the Armory in German had titles that were too long to display in our UI, so these were localized abbreviated versions of those categories. The property still exists today, even though the Armory doesn&#39;t exist for D2... yet..</param>
-        /// <param name="itemTypeRegex">The janky regular expression we used against the item type to try and discern whether the item belongs to this category..</param>
-        /// <param name="plugCategoryIdentifier">If the item is a plug, this is the identifier we expect to find associated with it if it is in this category..</param>
-        /// <param name="itemTypeRegexNot">If the item type matches this janky regex, it does *not* belong to this category..</param>
-        /// <param name="originBucketIdentifier">If the item belongs to this bucket, it does belong to this category..</param>
-        /// <param name="grantDestinyItemType">If an item belongs to this category, it will also receive this item type. This is now how DestinyItemType is populated for items: it used to be an even jankier process, but that&#39;s a story that requires more alcohol..</param>
-        /// <param name="grantDestinySubType">If an item belongs to this category, it will also receive this subtype enum value.  I know what you&#39;re thinking - what if it belongs to multiple categories that provide sub-types?  The last one processed wins, as is the case with all of these \&quot;grant\&quot; enums. Now you can see one reason why we moved away from these enums... but they&#39;re so convenient when they work, aren&#39;t they?.</param>
-        /// <param name="grantDestinyClass">If an item belongs to this category, it will also get this class restriction enum value.  See the other \&quot;grant\&quot;-prefixed properties on this definition for my color commentary..</param>
-        /// <param name="groupedCategoryHashes">If this category is a \&quot;parent\&quot; category of other categories, those children will have their hashes listed in rendering order here, and can be looked up using these hashes against DestinyItemCategoryDefinition.  In this way, you can build up a visual hierarchy of item categories. That&#39;s what we did, and you can do it too. I believe in you. Yes, you, Carl.  (I hope someone named Carl reads this someday).</param>
-        /// <param name="parentCategoryHashes">All item category hashes of \&quot;parent\&quot; categories: categories that contain this as a child through the hierarchy of groupedCategoryHashes. It&#39;s a bit redundant, but having this child-centric list speeds up some calculations..</param>
-        /// <param name="groupCategoryOnly">If true, this category is only used for grouping, and should not be evaluated with its own checks. Rather, the item only has this category if it has one of its child categories..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyItemCategoryDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), bool? visible = default(bool?), bool? deprecated = default(bool?), string shortTitle = default(string), string itemTypeRegex = default(string), string plugCategoryIdentifier = default(string), string itemTypeRegexNot = default(string), string originBucketIdentifier = default(string), Object grantDestinyItemType = default(Object), Object grantDestinySubType = default(Object), Object grantDestinyClass = default(Object), List<int?> groupedCategoryHashes = default(List<int?>), List<int?> parentCategoryHashes = default(List<int?>), bool? groupCategoryOnly = default(bool?), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="Visible">If True, this category should be visible in UI. Sometimes we make categories that we don&#39;t think are interesting externally. It&#39;s up to you if you want to skip on showing them..</param>
+        /// <param name="Deprecated">If True, this category has been deprecated: it may have no items left, or there may be only legacy items that remain in it which are no longer relevant to the game..</param>
+        /// <param name="ShortTitle">A shortened version of the title. The reason why we have this is because the Armory in German had titles that were too long to display in our UI, so these were localized abbreviated versions of those categories. The property still exists today, even though the Armory doesn&#39;t exist for D2... yet..</param>
+        /// <param name="ItemTypeRegex">The janky regular expression we used against the item type to try and discern whether the item belongs to this category..</param>
+        /// <param name="PlugCategoryIdentifier">If the item is a plug, this is the identifier we expect to find associated with it if it is in this category..</param>
+        /// <param name="ItemTypeRegexNot">If the item type matches this janky regex, it does *not* belong to this category..</param>
+        /// <param name="OriginBucketIdentifier">If the item belongs to this bucket, it does belong to this category..</param>
+        /// <param name="GrantDestinyItemType">If an item belongs to this category, it will also receive this item type. This is now how DestinyItemType is populated for items: it used to be an even jankier process, but that&#39;s a story that requires more alcohol..</param>
+        /// <param name="GrantDestinySubType">If an item belongs to this category, it will also receive this subtype enum value.  I know what you&#39;re thinking - what if it belongs to multiple categories that provide sub-types?  The last one processed wins, as is the case with all of these \&quot;grant\&quot; enums. Now you can see one reason why we moved away from these enums... but they&#39;re so convenient when they work, aren&#39;t they?.</param>
+        /// <param name="GrantDestinyClass">If an item belongs to this category, it will also get this class restriction enum value.  See the other \&quot;grant\&quot;-prefixed properties on this definition for my color commentary..</param>
+        /// <param name="GroupedCategoryHashes">If this category is a \&quot;parent\&quot; category of other categories, those children will have their hashes listed in rendering order here, and can be looked up using these hashes against DestinyItemCategoryDefinition.  In this way, you can build up a visual hierarchy of item categories. That&#39;s what we did, and you can do it too. I believe in you. Yes, you, Carl.  (I hope someone named Carl reads this someday).</param>
+        /// <param name="ParentCategoryHashes">All item category hashes of \&quot;parent\&quot; categories: categories that contain this as a child through the hierarchy of groupedCategoryHashes. It&#39;s a bit redundant, but having this child-centric list speeds up some calculations..</param>
+        /// <param name="GroupCategoryOnly">If true, this category is only used for grouping, and should not be evaluated with its own checks. Rather, the item only has this category if it has one of its child categories..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyItemCategoryDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), bool? Visible = default(bool?), bool? Deprecated = default(bool?), string ShortTitle = default(string), string ItemTypeRegex = default(string), string PlugCategoryIdentifier = default(string), string ItemTypeRegexNot = default(string), string OriginBucketIdentifier = default(string), DestinyDestinyItemType GrantDestinyItemType = default(DestinyDestinyItemType), DestinyDestinyItemSubType GrantDestinySubType = default(DestinyDestinyItemSubType), DestinyDestinyClass GrantDestinyClass = default(DestinyDestinyClass), List<uint?> GroupedCategoryHashes = default(List<uint?>), List<uint?> ParentCategoryHashes = default(List<uint?>), bool? GroupCategoryOnly = default(bool?), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.Visible = visible;
-            this.Deprecated = deprecated;
-            this.ShortTitle = shortTitle;
-            this.ItemTypeRegex = itemTypeRegex;
-            this.PlugCategoryIdentifier = plugCategoryIdentifier;
-            this.ItemTypeRegexNot = itemTypeRegexNot;
-            this.OriginBucketIdentifier = originBucketIdentifier;
-            this.GrantDestinyItemType = grantDestinyItemType;
-            this.GrantDestinySubType = grantDestinySubType;
-            this.GrantDestinyClass = grantDestinyClass;
-            this.GroupedCategoryHashes = groupedCategoryHashes;
-            this.ParentCategoryHashes = parentCategoryHashes;
-            this.GroupCategoryOnly = groupCategoryOnly;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.Visible = Visible;
+            this.Deprecated = Deprecated;
+            this.ShortTitle = ShortTitle;
+            this.ItemTypeRegex = ItemTypeRegex;
+            this.PlugCategoryIdentifier = PlugCategoryIdentifier;
+            this.ItemTypeRegexNot = ItemTypeRegexNot;
+            this.OriginBucketIdentifier = OriginBucketIdentifier;
+            this.GrantDestinyItemType = GrantDestinyItemType;
+            this.GrantDestinySubType = GrantDestinySubType;
+            this.GrantDestinyClass = GrantDestinyClass;
+            this.GroupedCategoryHashes = GroupedCategoryHashes;
+            this.ParentCategoryHashes = ParentCategoryHashes;
+            this.GroupCategoryOnly = GroupCategoryOnly;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -131,35 +131,35 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If an item belongs to this category, it will also receive this item type. This is now how DestinyItemType is populated for items: it used to be an even jankier process, but that&#39;s a story that requires more alcohol.</value>
         [DataMember(Name="grantDestinyItemType", EmitDefaultValue=false)]
-        public Object GrantDestinyItemType { get; set; }
+        public DestinyDestinyItemType GrantDestinyItemType { get; set; }
 
         /// <summary>
         /// If an item belongs to this category, it will also receive this subtype enum value.  I know what you&#39;re thinking - what if it belongs to multiple categories that provide sub-types?  The last one processed wins, as is the case with all of these \&quot;grant\&quot; enums. Now you can see one reason why we moved away from these enums... but they&#39;re so convenient when they work, aren&#39;t they?
         /// </summary>
         /// <value>If an item belongs to this category, it will also receive this subtype enum value.  I know what you&#39;re thinking - what if it belongs to multiple categories that provide sub-types?  The last one processed wins, as is the case with all of these \&quot;grant\&quot; enums. Now you can see one reason why we moved away from these enums... but they&#39;re so convenient when they work, aren&#39;t they?</value>
         [DataMember(Name="grantDestinySubType", EmitDefaultValue=false)]
-        public Object GrantDestinySubType { get; set; }
+        public DestinyDestinyItemSubType GrantDestinySubType { get; set; }
 
         /// <summary>
         /// If an item belongs to this category, it will also get this class restriction enum value.  See the other \&quot;grant\&quot;-prefixed properties on this definition for my color commentary.
         /// </summary>
         /// <value>If an item belongs to this category, it will also get this class restriction enum value.  See the other \&quot;grant\&quot;-prefixed properties on this definition for my color commentary.</value>
         [DataMember(Name="grantDestinyClass", EmitDefaultValue=false)]
-        public Object GrantDestinyClass { get; set; }
+        public DestinyDestinyClass GrantDestinyClass { get; set; }
 
         /// <summary>
         /// If this category is a \&quot;parent\&quot; category of other categories, those children will have their hashes listed in rendering order here, and can be looked up using these hashes against DestinyItemCategoryDefinition.  In this way, you can build up a visual hierarchy of item categories. That&#39;s what we did, and you can do it too. I believe in you. Yes, you, Carl.  (I hope someone named Carl reads this someday)
         /// </summary>
         /// <value>If this category is a \&quot;parent\&quot; category of other categories, those children will have their hashes listed in rendering order here, and can be looked up using these hashes against DestinyItemCategoryDefinition.  In this way, you can build up a visual hierarchy of item categories. That&#39;s what we did, and you can do it too. I believe in you. Yes, you, Carl.  (I hope someone named Carl reads this someday)</value>
         [DataMember(Name="groupedCategoryHashes", EmitDefaultValue=false)]
-        public List<int?> GroupedCategoryHashes { get; set; }
+        public List<uint?> GroupedCategoryHashes { get; set; }
 
         /// <summary>
         /// All item category hashes of \&quot;parent\&quot; categories: categories that contain this as a child through the hierarchy of groupedCategoryHashes. It&#39;s a bit redundant, but having this child-centric list speeds up some calculations.
         /// </summary>
         /// <value>All item category hashes of \&quot;parent\&quot; categories: categories that contain this as a child through the hierarchy of groupedCategoryHashes. It&#39;s a bit redundant, but having this child-centric list speeds up some calculations.</value>
         [DataMember(Name="parentCategoryHashes", EmitDefaultValue=false)]
-        public List<int?> ParentCategoryHashes { get; set; }
+        public List<uint?> ParentCategoryHashes { get; set; }
 
         /// <summary>
         /// If true, this category is only used for grouping, and should not be evaluated with its own checks. Rather, the item only has this category if it has one of its child categories.
@@ -173,7 +173,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -222,7 +222,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

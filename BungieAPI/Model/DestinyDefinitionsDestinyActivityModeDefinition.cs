@@ -33,36 +33,36 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyActivityModeDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="pgcrImage">If this activity mode has a related PGCR image, this will be the path to said image..</param>
-        /// <param name="modeType">The Enumeration value for this Activity Mode. Pass this identifier into Stats endpoints to get aggregate stats for this mode..</param>
-        /// <param name="activityModeCategory">The type of play being performed in broad terms (PVP, PVE).</param>
-        /// <param name="isTeamBased">If True, this mode has oppositional teams fighting against each other rather than \&quot;Free-For-All\&quot; or Co-operative modes of play.  Note that Aggregate modes are never marked as team based, even if they happen to be team based at the moment. At any time, an aggregate whose subordinates are only team based could be changed so that one or more aren&#39;t team based, and then this boolean won&#39;t make much sense (the aggregation would become \&quot;sometimes team based\&quot;). Let&#39;s not deal with that right now..</param>
-        /// <param name="isAggregateMode">If true, this mode is an aggregation of other, more specific modes rather than being a mode in itself. This includes modes that group Features/Events rather than Gameplay, such as Trials of The Nine: Trials of the Nine being an Event that is interesting to see aggregate data for, but when you play the activities within Trials of the Nine they are more specific activity modes such as Clash..</param>
-        /// <param name="parentHashes">The hash identifiers of the DestinyActivityModeDefinitions that represent all of the \&quot;parent\&quot; modes for this mode. For instance, the Nightfall Mode is also a member of AllStrikes and AllPvE..</param>
-        /// <param name="friendlyName">A Friendly identifier you can use for referring to this Activity Mode. We really only used this in our URLs, so... you know, take that for whatever it&#39;s worth..</param>
-        /// <param name="activityModeMappings">If this exists, the mode has specific Activities (referred to by the Key) that should instead map to other Activity Modes when they are played. This was useful in D1 for Private Matches, where we wanted to have Private Matches as an activity mode while still referring to the specific mode being played..</param>
-        /// <param name="display">If FALSE, we want to ignore this type when we&#39;re showing activity modes in BNet UI. It will still be returned in case 3rd parties want to use it for any purpose..</param>
-        /// <param name="order">The relative ordering of activity modes..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyActivityModeDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string pgcrImage = default(string), Object modeType = default(Object), Object activityModeCategory = default(Object), bool? isTeamBased = default(bool?), bool? isAggregateMode = default(bool?), List<int?> parentHashes = default(List<int?>), string friendlyName = default(string), Dictionary<string, DestinyHistoricalStatsDefinitionsDestinyActivityModeType> activityModeMappings = default(Dictionary<string, DestinyHistoricalStatsDefinitionsDestinyActivityModeType>), bool? display = default(bool?), int? order = default(int?), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="PgcrImage">If this activity mode has a related PGCR image, this will be the path to said image..</param>
+        /// <param name="ModeType">The Enumeration value for this Activity Mode. Pass this identifier into Stats endpoints to get aggregate stats for this mode..</param>
+        /// <param name="ActivityModeCategory">The type of play being performed in broad terms (PVP, PVE).</param>
+        /// <param name="IsTeamBased">If True, this mode has oppositional teams fighting against each other rather than \&quot;Free-For-All\&quot; or Co-operative modes of play.  Note that Aggregate modes are never marked as team based, even if they happen to be team based at the moment. At any time, an aggregate whose subordinates are only team based could be changed so that one or more aren&#39;t team based, and then this boolean won&#39;t make much sense (the aggregation would become \&quot;sometimes team based\&quot;). Let&#39;s not deal with that right now..</param>
+        /// <param name="IsAggregateMode">If true, this mode is an aggregation of other, more specific modes rather than being a mode in itself. This includes modes that group Features/Events rather than Gameplay, such as Trials of The Nine: Trials of the Nine being an Event that is interesting to see aggregate data for, but when you play the activities within Trials of the Nine they are more specific activity modes such as Clash..</param>
+        /// <param name="ParentHashes">The hash identifiers of the DestinyActivityModeDefinitions that represent all of the \&quot;parent\&quot; modes for this mode. For instance, the Nightfall Mode is also a member of AllStrikes and AllPvE..</param>
+        /// <param name="FriendlyName">A Friendly identifier you can use for referring to this Activity Mode. We really only used this in our URLs, so... you know, take that for whatever it&#39;s worth..</param>
+        /// <param name="ActivityModeMappings">If this exists, the mode has specific Activities (referred to by the Key) that should instead map to other Activity Modes when they are played. This was useful in D1 for Private Matches, where we wanted to have Private Matches as an activity mode while still referring to the specific mode being played..</param>
+        /// <param name="Display">If FALSE, we want to ignore this type when we&#39;re showing activity modes in BNet UI. It will still be returned in case 3rd parties want to use it for any purpose..</param>
+        /// <param name="Order">The relative ordering of activity modes..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyActivityModeDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string PgcrImage = default(string), DestinyHistoricalStatsDefinitionsDestinyActivityModeType ModeType = default(DestinyHistoricalStatsDefinitionsDestinyActivityModeType), DestinyDestinyActivityModeCategory ActivityModeCategory = default(DestinyDestinyActivityModeCategory), bool? IsTeamBased = default(bool?), bool? IsAggregateMode = default(bool?), List<uint?> ParentHashes = default(List<uint?>), string FriendlyName = default(string), Dictionary<string, DestinyHistoricalStatsDefinitionsDestinyActivityModeType> ActivityModeMappings = default(Dictionary<string, DestinyHistoricalStatsDefinitionsDestinyActivityModeType>), bool? Display = default(bool?), int? Order = default(int?), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.PgcrImage = pgcrImage;
-            this.ModeType = modeType;
-            this.ActivityModeCategory = activityModeCategory;
-            this.IsTeamBased = isTeamBased;
-            this.IsAggregateMode = isAggregateMode;
-            this.ParentHashes = parentHashes;
-            this.FriendlyName = friendlyName;
-            this.ActivityModeMappings = activityModeMappings;
-            this.Display = display;
-            this.Order = order;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.PgcrImage = PgcrImage;
+            this.ModeType = ModeType;
+            this.ActivityModeCategory = ActivityModeCategory;
+            this.IsTeamBased = IsTeamBased;
+            this.IsAggregateMode = IsAggregateMode;
+            this.ParentHashes = ParentHashes;
+            this.FriendlyName = FriendlyName;
+            this.ActivityModeMappings = ActivityModeMappings;
+            this.Display = Display;
+            this.Order = Order;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -83,14 +83,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The Enumeration value for this Activity Mode. Pass this identifier into Stats endpoints to get aggregate stats for this mode.</value>
         [DataMember(Name="modeType", EmitDefaultValue=false)]
-        public Object ModeType { get; set; }
+        public DestinyHistoricalStatsDefinitionsDestinyActivityModeType ModeType { get; set; }
 
         /// <summary>
         /// The type of play being performed in broad terms (PVP, PVE)
         /// </summary>
         /// <value>The type of play being performed in broad terms (PVP, PVE)</value>
         [DataMember(Name="activityModeCategory", EmitDefaultValue=false)]
-        public Object ActivityModeCategory { get; set; }
+        public DestinyDestinyActivityModeCategory ActivityModeCategory { get; set; }
 
         /// <summary>
         /// If True, this mode has oppositional teams fighting against each other rather than \&quot;Free-For-All\&quot; or Co-operative modes of play.  Note that Aggregate modes are never marked as team based, even if they happen to be team based at the moment. At any time, an aggregate whose subordinates are only team based could be changed so that one or more aren&#39;t team based, and then this boolean won&#39;t make much sense (the aggregation would become \&quot;sometimes team based\&quot;). Let&#39;s not deal with that right now.
@@ -111,7 +111,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifiers of the DestinyActivityModeDefinitions that represent all of the \&quot;parent\&quot; modes for this mode. For instance, the Nightfall Mode is also a member of AllStrikes and AllPvE.</value>
         [DataMember(Name="parentHashes", EmitDefaultValue=false)]
-        public List<int?> ParentHashes { get; set; }
+        public List<uint?> ParentHashes { get; set; }
 
         /// <summary>
         /// A Friendly identifier you can use for referring to this Activity Mode. We really only used this in our URLs, so... you know, take that for whatever it&#39;s worth.
@@ -146,7 +146,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -192,7 +192,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

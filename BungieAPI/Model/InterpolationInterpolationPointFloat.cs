@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InterpolationInterpolationPointFloat" /> class.
         /// </summary>
-        /// <param name="value">value.</param>
-        /// <param name="weight">weight.</param>
-        public InterpolationInterpolationPointFloat(float? value = default(float?), float? weight = default(float?))
+        /// <param name="Value">Value.</param>
+        /// <param name="Weight">Weight.</param>
+        public InterpolationInterpolationPointFloat(float? Value = default(float?), float? Weight = default(float?))
         {
-            this.Value = value;
-            this.Weight = weight;
+            this.Value = Value;
+            this.Weight = Weight;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

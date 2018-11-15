@@ -33,25 +33,25 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDirectorDestinyActivityGraphConnectionDefinition" /> class.
         /// </summary>
-        /// <param name="sourceNodeHash">sourceNodeHash.</param>
-        /// <param name="destNodeHash">destNodeHash.</param>
-        public DestinyDefinitionsDirectorDestinyActivityGraphConnectionDefinition(int? sourceNodeHash = default(int?), int? destNodeHash = default(int?))
+        /// <param name="SourceNodeHash">SourceNodeHash.</param>
+        /// <param name="DestNodeHash">DestNodeHash.</param>
+        public DestinyDefinitionsDirectorDestinyActivityGraphConnectionDefinition(uint? SourceNodeHash = default(uint?), uint? DestNodeHash = default(uint?))
         {
-            this.SourceNodeHash = sourceNodeHash;
-            this.DestNodeHash = destNodeHash;
+            this.SourceNodeHash = SourceNodeHash;
+            this.DestNodeHash = DestNodeHash;
         }
         
         /// <summary>
         /// Gets or Sets SourceNodeHash
         /// </summary>
         [DataMember(Name="sourceNodeHash", EmitDefaultValue=false)]
-        public int? SourceNodeHash { get; set; }
+        public uint? SourceNodeHash { get; set; }
 
         /// <summary>
         /// Gets or Sets DestNodeHash
         /// </summary>
         [DataMember(Name="destNodeHash", EmitDefaultValue=false)]
-        public int? DestNodeHash { get; set; }
+        public uint? DestNodeHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

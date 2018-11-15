@@ -33,52 +33,52 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesCharactersDestinyCharacterComponent" /> class.
         /// </summary>
-        /// <param name="membershipId">Every Destiny Profile has a membershipId. This is provided on the character as well for convenience..</param>
-        /// <param name="membershipType">membershipType tells you the platform on which the character plays. Examine the BungieMembershipType enumeration for possible values..</param>
-        /// <param name="characterId">The unique identifier for the character..</param>
-        /// <param name="dateLastPlayed">The last date that the user played Destiny..</param>
-        /// <param name="minutesPlayedThisSession">If the user is currently playing, this is how long they&#39;ve been playing..</param>
-        /// <param name="minutesPlayedTotal">If this value is 525,600, then they played Destiny for a year. Or they&#39;re a very dedicated Rent fan. Note that this includes idle time, not just time spent actually in activities shooting things..</param>
-        /// <param name="light">The user&#39;s calculated \&quot;Light Level\&quot;. Light level is an indicator of your power that mostly matters in the end game, once you&#39;ve reached the maximum character level: it&#39;s a level that&#39;s dependent on the average Attack/Defense power of your items..</param>
-        /// <param name="stats">Your character&#39;s stats, such as Agility, Resilience, etc... *not* historical stats.  You&#39;ll have to call a different endpoint for those..</param>
-        /// <param name="raceHash">Use this hash to look up the character&#39;s DestinyRaceDefinition..</param>
-        /// <param name="genderHash">Use this hash to look up the character&#39;s DestinyGenderDefinition..</param>
-        /// <param name="classHash">Use this hash to look up the character&#39;s DestinyClassDefinition..</param>
-        /// <param name="raceType">Mostly for historical purposes at this point, this is an enumeration for the character&#39;s race.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove..</param>
-        /// <param name="classType">Mostly for historical purposes at this point, this is an enumeration for the character&#39;s class.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove..</param>
-        /// <param name="genderType">Mostly for historical purposes at this point, this is an enumeration for the character&#39;s Gender.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove. And yeah, it&#39;s an enumeration and not a boolean. Fight me..</param>
-        /// <param name="emblemPath">A shortcut path to the user&#39;s currently equipped emblem image. If you&#39;re just showing summary info for a user, this is more convenient than examining their equipped emblem and looking up the definition..</param>
-        /// <param name="emblemBackgroundPath">A shortcut path to the user&#39;s currently equipped emblem background image. If you&#39;re just showing summary info for a user, this is more convenient than examining their equipped emblem and looking up the definition..</param>
-        /// <param name="emblemHash">The hash of the currently equipped emblem for the user. Can be used to look up the DestinyInventoryItemDefinition..</param>
-        /// <param name="emblemColor">A shortcut for getting the background color of the user&#39;s currently equipped emblem without having to do a DestinyInventoryItemDefinition lookup..</param>
-        /// <param name="levelProgression">The progression that indicates your character&#39;s level. Not their light level, but their character level: you know, the thing you max out a couple hours in and then ignore for the sake of light level..</param>
-        /// <param name="baseCharacterLevel">The \&quot;base\&quot; level of your character, not accounting for any light level..</param>
-        /// <param name="percentToNextLevel">A number between 0 and 100, indicating the whole and fractional % remaining to get to the next character level..</param>
-        /// <param name="titleRecordHash">If this Character has a title assigned to it, this is the identifier of the DestinyRecordDefinition that has that title information..</param>
-        public DestinyEntitiesCharactersDestinyCharacterComponent(long? membershipId = default(long?), Object membershipType = default(Object), long? characterId = default(long?), DateTime? dateLastPlayed = default(DateTime?), long? minutesPlayedThisSession = default(long?), long? minutesPlayedTotal = default(long?), int? light = default(int?), Dictionary<string, int?> stats = default(Dictionary<string, int?>), int? raceHash = default(int?), int? genderHash = default(int?), int? classHash = default(int?), Object raceType = default(Object), Object classType = default(Object), Object genderType = default(Object), string emblemPath = default(string), string emblemBackgroundPath = default(string), int? emblemHash = default(int?), Object emblemColor = default(Object), Object levelProgression = default(Object), int? baseCharacterLevel = default(int?), float? percentToNextLevel = default(float?), int? titleRecordHash = default(int?))
+        /// <param name="MembershipId">Every Destiny Profile has a membershipId. This is provided on the character as well for convenience..</param>
+        /// <param name="MembershipType">membershipType tells you the platform on which the character plays. Examine the BungieMembershipType enumeration for possible values..</param>
+        /// <param name="CharacterId">The unique identifier for the character..</param>
+        /// <param name="DateLastPlayed">The last date that the user played Destiny..</param>
+        /// <param name="MinutesPlayedThisSession">If the user is currently playing, this is how long they&#39;ve been playing..</param>
+        /// <param name="MinutesPlayedTotal">If this value is 525,600, then they played Destiny for a year. Or they&#39;re a very dedicated Rent fan. Note that this includes idle time, not just time spent actually in activities shooting things..</param>
+        /// <param name="Light">The user&#39;s calculated \&quot;Light Level\&quot;. Light level is an indicator of your power that mostly matters in the end game, once you&#39;ve reached the maximum character level: it&#39;s a level that&#39;s dependent on the average Attack/Defense power of your items..</param>
+        /// <param name="Stats">Your character&#39;s stats, such as Agility, Resilience, etc... *not* historical stats.  You&#39;ll have to call a different endpoint for those..</param>
+        /// <param name="RaceHash">Use this hash to look up the character&#39;s DestinyRaceDefinition..</param>
+        /// <param name="GenderHash">Use this hash to look up the character&#39;s DestinyGenderDefinition..</param>
+        /// <param name="ClassHash">Use this hash to look up the character&#39;s DestinyClassDefinition..</param>
+        /// <param name="RaceType">Mostly for historical purposes at this point, this is an enumeration for the character&#39;s race.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove..</param>
+        /// <param name="ClassType">Mostly for historical purposes at this point, this is an enumeration for the character&#39;s class.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove..</param>
+        /// <param name="GenderType">Mostly for historical purposes at this point, this is an enumeration for the character&#39;s Gender.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove. And yeah, it&#39;s an enumeration and not a boolean. Fight me..</param>
+        /// <param name="EmblemPath">A shortcut path to the user&#39;s currently equipped emblem image. If you&#39;re just showing summary info for a user, this is more convenient than examining their equipped emblem and looking up the definition..</param>
+        /// <param name="EmblemBackgroundPath">A shortcut path to the user&#39;s currently equipped emblem background image. If you&#39;re just showing summary info for a user, this is more convenient than examining their equipped emblem and looking up the definition..</param>
+        /// <param name="EmblemHash">The hash of the currently equipped emblem for the user. Can be used to look up the DestinyInventoryItemDefinition..</param>
+        /// <param name="EmblemColor">A shortcut for getting the background color of the user&#39;s currently equipped emblem without having to do a DestinyInventoryItemDefinition lookup..</param>
+        /// <param name="LevelProgression">The progression that indicates your character&#39;s level. Not their light level, but their character level: you know, the thing you max out a couple hours in and then ignore for the sake of light level..</param>
+        /// <param name="BaseCharacterLevel">The \&quot;base\&quot; level of your character, not accounting for any light level..</param>
+        /// <param name="PercentToNextLevel">A number between 0 and 100, indicating the whole and fractional % remaining to get to the next character level..</param>
+        /// <param name="TitleRecordHash">If this Character has a title assigned to it, this is the identifier of the DestinyRecordDefinition that has that title information..</param>
+        public DestinyEntitiesCharactersDestinyCharacterComponent(long? MembershipId = default(long?), BungieMembershipType MembershipType = default(BungieMembershipType), long? CharacterId = default(long?), DateTime? DateLastPlayed = default(DateTime?), long? MinutesPlayedThisSession = default(long?), long? MinutesPlayedTotal = default(long?), int? Light = default(int?), Dictionary<string, int?> Stats = default(Dictionary<string, int?>), uint? RaceHash = default(uint?), uint? GenderHash = default(uint?), uint? ClassHash = default(uint?), DestinyDestinyRace RaceType = default(DestinyDestinyRace), DestinyDestinyClass ClassType = default(DestinyDestinyClass), DestinyDestinyGender GenderType = default(DestinyDestinyGender), string EmblemPath = default(string), string EmblemBackgroundPath = default(string), uint? EmblemHash = default(uint?), DestinyMiscDestinyColor EmblemColor = default(DestinyMiscDestinyColor), DestinyDestinyProgression LevelProgression = default(DestinyDestinyProgression), int? BaseCharacterLevel = default(int?), float? PercentToNextLevel = default(float?), uint? TitleRecordHash = default(uint?))
         {
-            this.MembershipId = membershipId;
-            this.MembershipType = membershipType;
-            this.CharacterId = characterId;
-            this.DateLastPlayed = dateLastPlayed;
-            this.MinutesPlayedThisSession = minutesPlayedThisSession;
-            this.MinutesPlayedTotal = minutesPlayedTotal;
-            this.Light = light;
-            this.Stats = stats;
-            this.RaceHash = raceHash;
-            this.GenderHash = genderHash;
-            this.ClassHash = classHash;
-            this.RaceType = raceType;
-            this.ClassType = classType;
-            this.GenderType = genderType;
-            this.EmblemPath = emblemPath;
-            this.EmblemBackgroundPath = emblemBackgroundPath;
-            this.EmblemHash = emblemHash;
-            this.EmblemColor = emblemColor;
-            this.LevelProgression = levelProgression;
-            this.BaseCharacterLevel = baseCharacterLevel;
-            this.PercentToNextLevel = percentToNextLevel;
-            this.TitleRecordHash = titleRecordHash;
+            this.MembershipId = MembershipId;
+            this.MembershipType = MembershipType;
+            this.CharacterId = CharacterId;
+            this.DateLastPlayed = DateLastPlayed;
+            this.MinutesPlayedThisSession = MinutesPlayedThisSession;
+            this.MinutesPlayedTotal = MinutesPlayedTotal;
+            this.Light = Light;
+            this.Stats = Stats;
+            this.RaceHash = RaceHash;
+            this.GenderHash = GenderHash;
+            this.ClassHash = ClassHash;
+            this.RaceType = RaceType;
+            this.ClassType = ClassType;
+            this.GenderType = GenderType;
+            this.EmblemPath = EmblemPath;
+            this.EmblemBackgroundPath = EmblemBackgroundPath;
+            this.EmblemHash = EmblemHash;
+            this.EmblemColor = EmblemColor;
+            this.LevelProgression = LevelProgression;
+            this.BaseCharacterLevel = BaseCharacterLevel;
+            this.PercentToNextLevel = PercentToNextLevel;
+            this.TitleRecordHash = TitleRecordHash;
         }
         
         /// <summary>
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>membershipType tells you the platform on which the character plays. Examine the BungieMembershipType enumeration for possible values.</value>
         [DataMember(Name="membershipType", EmitDefaultValue=false)]
-        public Object MembershipType { get; set; }
+        public BungieMembershipType MembershipType { get; set; }
 
         /// <summary>
         /// The unique identifier for the character.
@@ -142,42 +142,42 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Use this hash to look up the character&#39;s DestinyRaceDefinition.</value>
         [DataMember(Name="raceHash", EmitDefaultValue=false)]
-        public int? RaceHash { get; set; }
+        public uint? RaceHash { get; set; }
 
         /// <summary>
         /// Use this hash to look up the character&#39;s DestinyGenderDefinition.
         /// </summary>
         /// <value>Use this hash to look up the character&#39;s DestinyGenderDefinition.</value>
         [DataMember(Name="genderHash", EmitDefaultValue=false)]
-        public int? GenderHash { get; set; }
+        public uint? GenderHash { get; set; }
 
         /// <summary>
         /// Use this hash to look up the character&#39;s DestinyClassDefinition.
         /// </summary>
         /// <value>Use this hash to look up the character&#39;s DestinyClassDefinition.</value>
         [DataMember(Name="classHash", EmitDefaultValue=false)]
-        public int? ClassHash { get; set; }
+        public uint? ClassHash { get; set; }
 
         /// <summary>
         /// Mostly for historical purposes at this point, this is an enumeration for the character&#39;s race.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove.
         /// </summary>
         /// <value>Mostly for historical purposes at this point, this is an enumeration for the character&#39;s race.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove.</value>
         [DataMember(Name="raceType", EmitDefaultValue=false)]
-        public Object RaceType { get; set; }
+        public DestinyDestinyRace RaceType { get; set; }
 
         /// <summary>
         /// Mostly for historical purposes at this point, this is an enumeration for the character&#39;s class.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove.
         /// </summary>
         /// <value>Mostly for historical purposes at this point, this is an enumeration for the character&#39;s class.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove.</value>
         [DataMember(Name="classType", EmitDefaultValue=false)]
-        public Object ClassType { get; set; }
+        public DestinyDestinyClass ClassType { get; set; }
 
         /// <summary>
         /// Mostly for historical purposes at this point, this is an enumeration for the character&#39;s Gender.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove. And yeah, it&#39;s an enumeration and not a boolean. Fight me.
         /// </summary>
         /// <value>Mostly for historical purposes at this point, this is an enumeration for the character&#39;s Gender.  It&#39;ll be preferable in the general case to look up the related definition: but for some people this was too convenient to remove. And yeah, it&#39;s an enumeration and not a boolean. Fight me.</value>
         [DataMember(Name="genderType", EmitDefaultValue=false)]
-        public Object GenderType { get; set; }
+        public DestinyDestinyGender GenderType { get; set; }
 
         /// <summary>
         /// A shortcut path to the user&#39;s currently equipped emblem image. If you&#39;re just showing summary info for a user, this is more convenient than examining their equipped emblem and looking up the definition.
@@ -198,21 +198,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash of the currently equipped emblem for the user. Can be used to look up the DestinyInventoryItemDefinition.</value>
         [DataMember(Name="emblemHash", EmitDefaultValue=false)]
-        public int? EmblemHash { get; set; }
+        public uint? EmblemHash { get; set; }
 
         /// <summary>
         /// A shortcut for getting the background color of the user&#39;s currently equipped emblem without having to do a DestinyInventoryItemDefinition lookup.
         /// </summary>
         /// <value>A shortcut for getting the background color of the user&#39;s currently equipped emblem without having to do a DestinyInventoryItemDefinition lookup.</value>
         [DataMember(Name="emblemColor", EmitDefaultValue=false)]
-        public Object EmblemColor { get; set; }
+        public DestinyMiscDestinyColor EmblemColor { get; set; }
 
         /// <summary>
         /// The progression that indicates your character&#39;s level. Not their light level, but their character level: you know, the thing you max out a couple hours in and then ignore for the sake of light level.
         /// </summary>
         /// <value>The progression that indicates your character&#39;s level. Not their light level, but their character level: you know, the thing you max out a couple hours in and then ignore for the sake of light level.</value>
         [DataMember(Name="levelProgression", EmitDefaultValue=false)]
-        public Object LevelProgression { get; set; }
+        public DestinyDestinyProgression LevelProgression { get; set; }
 
         /// <summary>
         /// The \&quot;base\&quot; level of your character, not accounting for any light level.
@@ -233,7 +233,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If this Character has a title assigned to it, this is the identifier of the DestinyRecordDefinition that has that title information.</value>
         [DataMember(Name="titleRecordHash", EmitDefaultValue=false)]
-        public int? TitleRecordHash { get; set; }
+        public uint? TitleRecordHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -273,7 +273,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

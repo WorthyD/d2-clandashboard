@@ -28,23 +28,21 @@ namespace BungieAPI.Model
     /// If the plug has a specific custom style, this enumeration will represent that style/those styles.
     /// </summary>
     /// <value>If the plug has a specific custom style, this enumeration will represent that style/those styles.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyPlugUiStyles
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// If the plug has a specific custom style, this enumeration will represent that style/those styles.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2
+		/// <summary>
+		/// If the plug has a specific custom style, this enumeration will represent that style/those styles.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Masterwork
     }
 
 }

@@ -27,29 +27,27 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines Destiny.HistoricalStats.Definitions.DestinyStatsMergeMethod
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyHistoricalStatsDefinitionsDestinyStatsMergeMethod
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// When collapsing multiple instances of the stat together, add the values.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Add,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// When collapsing multiple instances of the stat together, take the lower value.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Min,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3
+		/// <summary>
+		/// When collapsing multiple instances of the stat together, take the higher value.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Max
     }
 
 }

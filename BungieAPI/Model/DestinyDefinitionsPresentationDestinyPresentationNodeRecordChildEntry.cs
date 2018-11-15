@@ -33,17 +33,17 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsPresentationDestinyPresentationNodeRecordChildEntry" /> class.
         /// </summary>
-        /// <param name="recordHash">recordHash.</param>
-        public DestinyDefinitionsPresentationDestinyPresentationNodeRecordChildEntry(int? recordHash = default(int?))
+        /// <param name="RecordHash">RecordHash.</param>
+        public DestinyDefinitionsPresentationDestinyPresentationNodeRecordChildEntry(uint? RecordHash = default(uint?))
         {
-            this.RecordHash = recordHash;
+            this.RecordHash = RecordHash;
         }
         
         /// <summary>
         /// Gets or Sets RecordHash
         /// </summary>
         [DataMember(Name="recordHash", EmitDefaultValue=false)]
-        public int? RecordHash { get; set; }
+        public uint? RecordHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

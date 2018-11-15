@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyConfigDestinyManifest" /> class.
         /// </summary>
-        /// <param name="version">version.</param>
-        /// <param name="mobileAssetContentPath">mobileAssetContentPath.</param>
-        /// <param name="mobileGearAssetDataBases">mobileGearAssetDataBases.</param>
-        /// <param name="mobileWorldContentPaths">mobileWorldContentPaths.</param>
-        /// <param name="mobileClanBannerDatabasePath">mobileClanBannerDatabasePath.</param>
-        /// <param name="mobileGearCDN">mobileGearCDN.</param>
-        public DestinyConfigDestinyManifest(string version = default(string), string mobileAssetContentPath = default(string), List<DestinyConfigGearAssetDataBaseDefinition> mobileGearAssetDataBases = default(List<DestinyConfigGearAssetDataBaseDefinition>), Dictionary<string, string> mobileWorldContentPaths = default(Dictionary<string, string>), string mobileClanBannerDatabasePath = default(string), Dictionary<string, string> mobileGearCDN = default(Dictionary<string, string>))
+        /// <param name="Version">Version.</param>
+        /// <param name="MobileAssetContentPath">MobileAssetContentPath.</param>
+        /// <param name="MobileGearAssetDataBases">MobileGearAssetDataBases.</param>
+        /// <param name="MobileWorldContentPaths">MobileWorldContentPaths.</param>
+        /// <param name="MobileClanBannerDatabasePath">MobileClanBannerDatabasePath.</param>
+        /// <param name="MobileGearCDN">MobileGearCDN.</param>
+        public DestinyConfigDestinyManifest(string Version = default(string), string MobileAssetContentPath = default(string), List<DestinyConfigGearAssetDataBaseDefinition> MobileGearAssetDataBases = default(List<DestinyConfigGearAssetDataBaseDefinition>), Dictionary<string, string> MobileWorldContentPaths = default(Dictionary<string, string>), string MobileClanBannerDatabasePath = default(string), Dictionary<string, string> MobileGearCDN = default(Dictionary<string, string>))
         {
-            this.Version = version;
-            this.MobileAssetContentPath = mobileAssetContentPath;
-            this.MobileGearAssetDataBases = mobileGearAssetDataBases;
-            this.MobileWorldContentPaths = mobileWorldContentPaths;
-            this.MobileClanBannerDatabasePath = mobileClanBannerDatabasePath;
-            this.MobileGearCDN = mobileGearCDN;
+            this.Version = Version;
+            this.MobileAssetContentPath = MobileAssetContentPath;
+            this.MobileGearAssetDataBases = MobileGearAssetDataBases;
+            this.MobileWorldContentPaths = MobileWorldContentPaths;
+            this.MobileClanBannerDatabasePath = MobileClanBannerDatabasePath;
+            this.MobileGearCDN = MobileGearCDN;
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

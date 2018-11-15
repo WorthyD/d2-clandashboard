@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesItemsDestinyItemPerksComponent" /> class.
         /// </summary>
-        /// <param name="perks">The list of perks to display in an item tooltip - and whether or not they have been activated..</param>
-        public DestinyEntitiesItemsDestinyItemPerksComponent(List<DestinyPerksDestinyPerkReference> perks = default(List<DestinyPerksDestinyPerkReference>))
+        /// <param name="Perks">The list of perks to display in an item tooltip - and whether or not they have been activated..</param>
+        public DestinyEntitiesItemsDestinyItemPerksComponent(List<DestinyPerksDestinyPerkReference> Perks = default(List<DestinyPerksDestinyPerkReference>))
         {
-            this.Perks = perks;
+            this.Perks = Perks;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

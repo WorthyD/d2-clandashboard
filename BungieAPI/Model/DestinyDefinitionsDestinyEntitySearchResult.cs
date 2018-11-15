@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyEntitySearchResult" /> class.
         /// </summary>
-        /// <param name="suggestedWords">A list of suggested words that might make for better search results, based on the text searched for..</param>
-        /// <param name="results">The items found that are matches/near matches for the searched-for term, sorted by something vaguely resembling \&quot;relevance\&quot;. Hopefully this will get better in the future..</param>
-        public DestinyDefinitionsDestinyEntitySearchResult(List<string> suggestedWords = default(List<string>), Object results = default(Object))
+        /// <param name="SuggestedWords">A list of suggested words that might make for better search results, based on the text searched for..</param>
+        /// <param name="Results">The items found that are matches/near matches for the searched-for term, sorted by something vaguely resembling \&quot;relevance\&quot;. Hopefully this will get better in the future..</param>
+        public DestinyDefinitionsDestinyEntitySearchResult(List<string> SuggestedWords = default(List<string>), SearchResultOfDestinyEntitySearchResultItem Results = default(SearchResultOfDestinyEntitySearchResultItem))
         {
-            this.SuggestedWords = suggestedWords;
-            this.Results = results;
+            this.SuggestedWords = SuggestedWords;
+            this.Results = Results;
         }
         
         /// <summary>
@@ -53,7 +53,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The items found that are matches/near matches for the searched-for term, sorted by something vaguely resembling \&quot;relevance\&quot;. Hopefully this will get better in the future.</value>
         [DataMember(Name="results", EmitDefaultValue=false)]
-        public Object Results { get; set; }
+        public SearchResultOfDestinyEntitySearchResultItem Results { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

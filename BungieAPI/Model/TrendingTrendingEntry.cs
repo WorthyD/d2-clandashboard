@@ -33,38 +33,38 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TrendingTrendingEntry" /> class.
         /// </summary>
-        /// <param name="weight">The weighted score of this trending item..</param>
-        /// <param name="isFeatured">isFeatured.</param>
-        /// <param name="identifier">We don&#39;t know whether the identifier will be a string, a uint, or a long... so we&#39;re going to cast it all to a string. But either way, we need any trending item created to have a single unique identifier for its type..</param>
-        /// <param name="entityType">An enum - unfortunately - dictating all of the possible kinds of trending items that you might get in your result set, in case you want to do custom rendering or call to get the details of the item..</param>
-        /// <param name="displayName">The localized \&quot;display name/article title/&#39;primary localized identifier&#39;\&quot; of the entity..</param>
-        /// <param name="tagline">If the entity has a localized tagline/subtitle/motto/whatever, that is found here..</param>
-        /// <param name="image">image.</param>
-        /// <param name="startDate">startDate.</param>
-        /// <param name="endDate">endDate.</param>
-        /// <param name="link">link.</param>
-        /// <param name="webmVideo">If this is populated, the entry has a related WebM video to show. I am 100% certain I am going to regret putting this directly on TrendingEntry, but it will work so yolo.</param>
-        /// <param name="mp4Video">If this is populated, the entry has a related MP4 video to show. I am 100% certain I am going to regret putting this directly on TrendingEntry, but it will work so yolo.</param>
-        /// <param name="featureImage">If isFeatured, this image will be populated with whatever the featured image is. Note that this will likely be a very large image, so don&#39;t use it all the time..</param>
-        /// <param name="items">If the item is of entityType TrendingEntryType.Container, it may have items - also Trending Entries - contained within it. This is the ordered list of those to display under the Container&#39;s header..</param>
-        /// <param name="creationDate">If the entry has a date at which it was created, this is that date..</param>
-        public TrendingTrendingEntry(double? weight = default(double?), bool? isFeatured = default(bool?), string identifier = default(string), Object entityType = default(Object), string displayName = default(string), string tagline = default(string), string image = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), string link = default(string), string webmVideo = default(string), string mp4Video = default(string), string featureImage = default(string), List<TrendingTrendingEntry> items = default(List<TrendingTrendingEntry>), DateTime? creationDate = default(DateTime?))
+        /// <param name="Weight">The weighted score of this trending item..</param>
+        /// <param name="IsFeatured">IsFeatured.</param>
+        /// <param name="Identifier">We don&#39;t know whether the identifier will be a string, a uint, or a long... so we&#39;re going to cast it all to a string. But either way, we need any trending item created to have a single unique identifier for its type..</param>
+        /// <param name="EntityType">An enum - unfortunately - dictating all of the possible kinds of trending items that you might get in your result set, in case you want to do custom rendering or call to get the details of the item..</param>
+        /// <param name="DisplayName">The localized \&quot;display name/article title/&#39;primary localized identifier&#39;\&quot; of the entity..</param>
+        /// <param name="Tagline">If the entity has a localized tagline/subtitle/motto/whatever, that is found here..</param>
+        /// <param name="Image">Image.</param>
+        /// <param name="StartDate">StartDate.</param>
+        /// <param name="EndDate">EndDate.</param>
+        /// <param name="Link">Link.</param>
+        /// <param name="WebmVideo">If this is populated, the entry has a related WebM video to show. I am 100% certain I am going to regret putting this directly on TrendingEntry, but it will work so yolo.</param>
+        /// <param name="Mp4Video">If this is populated, the entry has a related MP4 video to show. I am 100% certain I am going to regret putting this directly on TrendingEntry, but it will work so yolo.</param>
+        /// <param name="FeatureImage">If isFeatured, this image will be populated with whatever the featured image is. Note that this will likely be a very large image, so don&#39;t use it all the time..</param>
+        /// <param name="Items">If the item is of entityType TrendingEntryType.Container, it may have items - also Trending Entries - contained within it. This is the ordered list of those to display under the Container&#39;s header..</param>
+        /// <param name="CreationDate">If the entry has a date at which it was created, this is that date..</param>
+        public TrendingTrendingEntry(double? Weight = default(double?), bool? IsFeatured = default(bool?), string Identifier = default(string), TrendingTrendingEntryType EntityType = default(TrendingTrendingEntryType), string DisplayName = default(string), string Tagline = default(string), string Image = default(string), DateTime? StartDate = default(DateTime?), DateTime? EndDate = default(DateTime?), string Link = default(string), string WebmVideo = default(string), string Mp4Video = default(string), string FeatureImage = default(string), List<TrendingTrendingEntry> Items = default(List<TrendingTrendingEntry>), DateTime? CreationDate = default(DateTime?))
         {
-            this.Weight = weight;
-            this.IsFeatured = isFeatured;
-            this.Identifier = identifier;
-            this.EntityType = entityType;
-            this.DisplayName = displayName;
-            this.Tagline = tagline;
-            this.Image = image;
-            this.StartDate = startDate;
-            this.EndDate = endDate;
-            this.Link = link;
-            this.WebmVideo = webmVideo;
-            this.Mp4Video = mp4Video;
-            this.FeatureImage = featureImage;
-            this.Items = items;
-            this.CreationDate = creationDate;
+            this.Weight = Weight;
+            this.IsFeatured = IsFeatured;
+            this.Identifier = Identifier;
+            this.EntityType = EntityType;
+            this.DisplayName = DisplayName;
+            this.Tagline = Tagline;
+            this.Image = Image;
+            this.StartDate = StartDate;
+            this.EndDate = EndDate;
+            this.Link = Link;
+            this.WebmVideo = WebmVideo;
+            this.Mp4Video = Mp4Video;
+            this.FeatureImage = FeatureImage;
+            this.Items = Items;
+            this.CreationDate = CreationDate;
         }
         
         /// <summary>
@@ -92,7 +92,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>An enum - unfortunately - dictating all of the possible kinds of trending items that you might get in your result set, in case you want to do custom rendering or call to get the details of the item.</value>
         [DataMember(Name="entityType", EmitDefaultValue=false)]
-        public Object EntityType { get; set; }
+        public TrendingTrendingEntryType EntityType { get; set; }
 
         /// <summary>
         /// The localized \&quot;display name/article title/&#39;primary localized identifier&#39;\&quot; of the entity.
@@ -198,7 +198,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

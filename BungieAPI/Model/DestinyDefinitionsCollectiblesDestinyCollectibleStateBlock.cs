@@ -33,19 +33,19 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsCollectiblesDestinyCollectibleStateBlock" /> class.
         /// </summary>
-        /// <param name="obscuredOverrideItemHash">obscuredOverrideItemHash.</param>
-        /// <param name="requirements">requirements.</param>
-        public DestinyDefinitionsCollectiblesDestinyCollectibleStateBlock(int? obscuredOverrideItemHash = default(int?), DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock requirements = default(DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock))
+        /// <param name="ObscuredOverrideItemHash">ObscuredOverrideItemHash.</param>
+        /// <param name="Requirements">Requirements.</param>
+        public DestinyDefinitionsCollectiblesDestinyCollectibleStateBlock(uint? ObscuredOverrideItemHash = default(uint?), DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock Requirements = default(DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock))
         {
-            this.ObscuredOverrideItemHash = obscuredOverrideItemHash;
-            this.Requirements = requirements;
+            this.ObscuredOverrideItemHash = ObscuredOverrideItemHash;
+            this.Requirements = Requirements;
         }
         
         /// <summary>
         /// Gets or Sets ObscuredOverrideItemHash
         /// </summary>
         [DataMember(Name="obscuredOverrideItemHash", EmitDefaultValue=false)]
-        public int? ObscuredOverrideItemHash { get; set; }
+        public uint? ObscuredOverrideItemHash { get; set; }
 
         /// <summary>
         /// Gets or Sets Requirements
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

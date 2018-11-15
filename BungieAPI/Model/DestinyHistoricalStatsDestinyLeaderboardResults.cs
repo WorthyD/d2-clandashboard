@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyLeaderboardResults" /> class.
         /// </summary>
-        /// <param name="focusMembershipId">Indicate the membership ID of the account that is the focal point of the provided leaderboards..</param>
-        /// <param name="focusCharacterId">Indicate the character ID of the character that is the focal point of the provided leaderboards. May be null, in which case any character from the focus membership can appear in the provided leaderboards..</param>
-        public DestinyHistoricalStatsDestinyLeaderboardResults(long? focusMembershipId = default(long?), long? focusCharacterId = default(long?)) : base()
+        /// <param name="FocusMembershipId">Indicate the membership ID of the account that is the focal point of the provided leaderboards..</param>
+        /// <param name="FocusCharacterId">Indicate the character ID of the character that is the focal point of the provided leaderboards. May be null, in which case any character from the focus membership can appear in the provided leaderboards..</param>
+        public DestinyHistoricalStatsDestinyLeaderboardResults(long? FocusMembershipId = default(long?), long? FocusCharacterId = default(long?)) : base()
         {
-            this.FocusMembershipId = focusMembershipId;
-            this.FocusCharacterId = focusCharacterId;
+            this.FocusMembershipId = FocusMembershipId;
+            this.FocusCharacterId = FocusCharacterId;
         }
         
         /// <summary>
@@ -136,7 +136,6 @@ namespace BungieAPI.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            //foreach(var x in BaseValidate(validationContext)) yield return x;
             yield break;
         }
     }

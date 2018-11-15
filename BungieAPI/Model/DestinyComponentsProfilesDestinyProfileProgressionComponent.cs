@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsProfilesDestinyProfileProgressionComponent" /> class.
         /// </summary>
-        /// <param name="checklists">The set of checklists that can be examined on a profile-wide basis, keyed by the hash identifier of the Checklist (DestinyChecklistDefinition)  For each checklist returned, its value is itself a Dictionary keyed by the checklist&#39;s hash identifier with the value being a boolean indicating if it&#39;s been discovered yet..</param>
-        public DestinyComponentsProfilesDestinyProfileProgressionComponent(Dictionary<string, Dictionary<string, bool?>> checklists = default(Dictionary<string, Dictionary<string, bool?>>))
+        /// <param name="Checklists">The set of checklists that can be examined on a profile-wide basis, keyed by the hash identifier of the Checklist (DestinyChecklistDefinition)  For each checklist returned, its value is itself a Dictionary keyed by the checklist&#39;s hash identifier with the value being a boolean indicating if it&#39;s been discovered yet..</param>
+        public DestinyComponentsProfilesDestinyProfileProgressionComponent(Dictionary<string, Dictionary<string, bool?>> Checklists = default(Dictionary<string, Dictionary<string, bool?>>))
         {
-            this.Checklists = checklists;
+            this.Checklists = Checklists;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

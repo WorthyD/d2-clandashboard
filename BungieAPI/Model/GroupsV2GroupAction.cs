@@ -33,44 +33,44 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupAction" /> class.
         /// </summary>
-        /// <param name="groupType">Type of group, either Bungie.net hosted group, or a game services hosted clan..</param>
-        /// <param name="name">name.</param>
-        /// <param name="about">about.</param>
-        /// <param name="motto">motto.</param>
-        /// <param name="theme">theme.</param>
-        /// <param name="avatarImageIndex">avatarImageIndex.</param>
-        /// <param name="tags">tags.</param>
-        /// <param name="isPublic">isPublic.</param>
-        /// <param name="membershipOption">membershipOption.</param>
-        /// <param name="isPublicTopicAdminOnly">isPublicTopicAdminOnly.</param>
-        /// <param name="isDefaultPostPublic">isDefaultPostPublic.</param>
-        /// <param name="allowChat">allowChat.</param>
-        /// <param name="isDefaultPostAlliance">isDefaultPostAlliance.</param>
-        /// <param name="chatSecurity">chatSecurity.</param>
-        /// <param name="callsign">callsign.</param>
-        /// <param name="locale">locale.</param>
-        /// <param name="homepage">homepage.</param>
-        /// <param name="platformMembershipType">When operation needs a platform specific account ID for the present user, use this property. In particular, groupType of Clan requires this value to be set..</param>
-        public GroupsV2GroupAction(Object groupType = default(Object), string name = default(string), string about = default(string), string motto = default(string), string theme = default(string), int? avatarImageIndex = default(int?), string tags = default(string), bool? isPublic = default(bool?), GroupsV2MembershipOption membershipOption = default(GroupsV2MembershipOption), bool? isPublicTopicAdminOnly = default(bool?), bool? isDefaultPostPublic = default(bool?), bool? allowChat = default(bool?), bool? isDefaultPostAlliance = default(bool?), GroupsV2ChatSecuritySetting chatSecurity = default(GroupsV2ChatSecuritySetting), string callsign = default(string), string locale = default(string), GroupsV2GroupHomepage homepage = default(GroupsV2GroupHomepage), Object platformMembershipType = default(Object))
+        /// <param name="GroupType">Type of group, either Bungie.net hosted group, or a game services hosted clan..</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="About">About.</param>
+        /// <param name="Motto">Motto.</param>
+        /// <param name="Theme">Theme.</param>
+        /// <param name="AvatarImageIndex">AvatarImageIndex.</param>
+        /// <param name="Tags">Tags.</param>
+        /// <param name="IsPublic">IsPublic.</param>
+        /// <param name="MembershipOption">MembershipOption.</param>
+        /// <param name="IsPublicTopicAdminOnly">IsPublicTopicAdminOnly.</param>
+        /// <param name="IsDefaultPostPublic">IsDefaultPostPublic.</param>
+        /// <param name="AllowChat">AllowChat.</param>
+        /// <param name="IsDefaultPostAlliance">IsDefaultPostAlliance.</param>
+        /// <param name="ChatSecurity">ChatSecurity.</param>
+        /// <param name="Callsign">Callsign.</param>
+        /// <param name="Locale">Locale.</param>
+        /// <param name="Homepage">Homepage.</param>
+        /// <param name="PlatformMembershipType">When operation needs a platform specific account ID for the present user, use this property. In particular, groupType of Clan requires this value to be set..</param>
+        public GroupsV2GroupAction(GroupsV2GroupType GroupType = default(GroupsV2GroupType), string Name = default(string), string About = default(string), string Motto = default(string), string Theme = default(string), int? AvatarImageIndex = default(int?), string Tags = default(string), bool? IsPublic = default(bool?), GroupsV2MembershipOption MembershipOption = default(GroupsV2MembershipOption), bool? IsPublicTopicAdminOnly = default(bool?), bool? IsDefaultPostPublic = default(bool?), bool? AllowChat = default(bool?), bool? IsDefaultPostAlliance = default(bool?), GroupsV2ChatSecuritySetting ChatSecurity = default(GroupsV2ChatSecuritySetting), string Callsign = default(string), string Locale = default(string), GroupsV2GroupHomepage Homepage = default(GroupsV2GroupHomepage), BungieMembershipType PlatformMembershipType = default(BungieMembershipType))
         {
-            this.GroupType = groupType;
-            this.Name = name;
-            this.About = about;
-            this.Motto = motto;
-            this.Theme = theme;
-            this.AvatarImageIndex = avatarImageIndex;
-            this.Tags = tags;
-            this.IsPublic = isPublic;
-            this.MembershipOption = membershipOption;
-            this.IsPublicTopicAdminOnly = isPublicTopicAdminOnly;
-            this.IsDefaultPostPublic = isDefaultPostPublic;
-            this.AllowChat = allowChat;
-            this.IsDefaultPostAlliance = isDefaultPostAlliance;
-            this.ChatSecurity = chatSecurity;
-            this.Callsign = callsign;
-            this.Locale = locale;
-            this.Homepage = homepage;
-            this.PlatformMembershipType = platformMembershipType;
+            this.GroupType = GroupType;
+            this.Name = Name;
+            this.About = About;
+            this.Motto = Motto;
+            this.Theme = Theme;
+            this.AvatarImageIndex = AvatarImageIndex;
+            this.Tags = Tags;
+            this.IsPublic = IsPublic;
+            this.MembershipOption = MembershipOption;
+            this.IsPublicTopicAdminOnly = IsPublicTopicAdminOnly;
+            this.IsDefaultPostPublic = IsDefaultPostPublic;
+            this.AllowChat = AllowChat;
+            this.IsDefaultPostAlliance = IsDefaultPostAlliance;
+            this.ChatSecurity = ChatSecurity;
+            this.Callsign = Callsign;
+            this.Locale = Locale;
+            this.Homepage = Homepage;
+            this.PlatformMembershipType = PlatformMembershipType;
         }
         
         /// <summary>
@@ -78,7 +78,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Type of group, either Bungie.net hosted group, or a game services hosted clan.</value>
         [DataMember(Name="groupType", EmitDefaultValue=false)]
-        public Object GroupType { get; set; }
+        public GroupsV2GroupType GroupType { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -181,7 +181,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>When operation needs a platform specific account ID for the present user, use this property. In particular, groupType of Clan requires this value to be set.</value>
         [DataMember(Name="platformMembershipType", EmitDefaultValue=false)]
-        public Object PlatformMembershipType { get; set; }
+        public BungieMembershipType PlatformMembershipType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -217,7 +217,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

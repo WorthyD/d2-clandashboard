@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyObjectivePerkEntryDefinition" /> class.
         /// </summary>
-        /// <param name="perkHash">The hash identifier of the DestinySandboxPerkDefinition that will be applied to the character..</param>
-        /// <param name="style">An enumeration indicating whether it will be applied as long as the Objective is active, when it&#39;s completed, or until it&#39;s completed..</param>
-        public DestinyDefinitionsDestinyObjectivePerkEntryDefinition(int? perkHash = default(int?), Object style = default(Object))
+        /// <param name="PerkHash">The hash identifier of the DestinySandboxPerkDefinition that will be applied to the character..</param>
+        /// <param name="Style">An enumeration indicating whether it will be applied as long as the Objective is active, when it&#39;s completed, or until it&#39;s completed..</param>
+        public DestinyDefinitionsDestinyObjectivePerkEntryDefinition(uint? PerkHash = default(uint?), DestinyDestinyObjectiveGrantStyle Style = default(DestinyDestinyObjectiveGrantStyle))
         {
-            this.PerkHash = perkHash;
-            this.Style = style;
+            this.PerkHash = PerkHash;
+            this.Style = Style;
         }
         
         /// <summary>
@@ -46,14 +46,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the DestinySandboxPerkDefinition that will be applied to the character.</value>
         [DataMember(Name="perkHash", EmitDefaultValue=false)]
-        public int? PerkHash { get; set; }
+        public uint? PerkHash { get; set; }
 
         /// <summary>
         /// An enumeration indicating whether it will be applied as long as the Objective is active, when it&#39;s completed, or until it&#39;s completed.
         /// </summary>
         /// <value>An enumeration indicating whether it will be applied as long as the Objective is active, when it&#39;s completed, or until it&#39;s completed.</value>
         [DataMember(Name="style", EmitDefaultValue=false)]
-        public Object Style { get; set; }
+        public DestinyDestinyObjectiveGrantStyle Style { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,36 +33,36 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemActionBlockDefinition" /> class.
         /// </summary>
-        /// <param name="verbName">Localized text for the verb of the action being performed..</param>
-        /// <param name="verbDescription">Localized text describing the action being performed..</param>
-        /// <param name="isPositive">The content has this property, however it&#39;s not entirely clear how it is used..</param>
-        /// <param name="overlayScreenName">If the action has an overlay screen associated with it, this is the name of that screen. Unfortunately, we cannot return the screen&#39;s data itself..</param>
-        /// <param name="overlayIcon">The icon associated with the overlay screen for the action, if any..</param>
-        /// <param name="requiredCooldownSeconds">The number of seconds to delay before allowing this action to be performed again..</param>
-        /// <param name="requiredItems">If the action requires other items to exist or be destroyed, this is the list of those items and requirements..</param>
-        /// <param name="progressionRewards">If performing this action earns you Progression, this is the list of progressions and values granted for those progressions by performing this action..</param>
-        /// <param name="actionTypeLabel">The internal identifier for the action..</param>
-        /// <param name="requiredLocation">Theoretically, an item could have a localized string for a hint about the location in which the action should be performed. In practice, no items yet have this property..</param>
-        /// <param name="requiredCooldownHash">The identifier hash for the Cooldown associated with this action. We have not pulled this data yet for you to have more data to use for cooldowns..</param>
-        /// <param name="deleteOnAction">If true, the item is deleted when the action completes..</param>
-        /// <param name="consumeEntireStack">If true, the entire stack is deleted when the action completes..</param>
-        /// <param name="useOnAcquire">If true, this action will be performed as soon as you earn this item. Some rewards work this way, providing you a single item to pick up from a reward-granting vendor in-game and then immediately consuming itself to provide you multiple items..</param>
-        public DestinyDefinitionsDestinyItemActionBlockDefinition(string verbName = default(string), string verbDescription = default(string), bool? isPositive = default(bool?), string overlayScreenName = default(string), string overlayIcon = default(string), int? requiredCooldownSeconds = default(int?), List<DestinyDefinitionsDestinyItemActionRequiredItemDefinition> requiredItems = default(List<DestinyDefinitionsDestinyItemActionRequiredItemDefinition>), List<DestinyDefinitionsDestinyProgressionRewardDefinition> progressionRewards = default(List<DestinyDefinitionsDestinyProgressionRewardDefinition>), string actionTypeLabel = default(string), string requiredLocation = default(string), int? requiredCooldownHash = default(int?), bool? deleteOnAction = default(bool?), bool? consumeEntireStack = default(bool?), bool? useOnAcquire = default(bool?))
+        /// <param name="VerbName">Localized text for the verb of the action being performed..</param>
+        /// <param name="VerbDescription">Localized text describing the action being performed..</param>
+        /// <param name="IsPositive">The content has this property, however it&#39;s not entirely clear how it is used..</param>
+        /// <param name="OverlayScreenName">If the action has an overlay screen associated with it, this is the name of that screen. Unfortunately, we cannot return the screen&#39;s data itself..</param>
+        /// <param name="OverlayIcon">The icon associated with the overlay screen for the action, if any..</param>
+        /// <param name="RequiredCooldownSeconds">The number of seconds to delay before allowing this action to be performed again..</param>
+        /// <param name="RequiredItems">If the action requires other items to exist or be destroyed, this is the list of those items and requirements..</param>
+        /// <param name="ProgressionRewards">If performing this action earns you Progression, this is the list of progressions and values granted for those progressions by performing this action..</param>
+        /// <param name="ActionTypeLabel">The internal identifier for the action..</param>
+        /// <param name="RequiredLocation">Theoretically, an item could have a localized string for a hint about the location in which the action should be performed. In practice, no items yet have this property..</param>
+        /// <param name="RequiredCooldownHash">The identifier hash for the Cooldown associated with this action. We have not pulled this data yet for you to have more data to use for cooldowns..</param>
+        /// <param name="DeleteOnAction">If true, the item is deleted when the action completes..</param>
+        /// <param name="ConsumeEntireStack">If true, the entire stack is deleted when the action completes..</param>
+        /// <param name="UseOnAcquire">If true, this action will be performed as soon as you earn this item. Some rewards work this way, providing you a single item to pick up from a reward-granting vendor in-game and then immediately consuming itself to provide you multiple items..</param>
+        public DestinyDefinitionsDestinyItemActionBlockDefinition(string VerbName = default(string), string VerbDescription = default(string), bool? IsPositive = default(bool?), string OverlayScreenName = default(string), string OverlayIcon = default(string), int? RequiredCooldownSeconds = default(int?), List<DestinyDefinitionsDestinyItemActionRequiredItemDefinition> RequiredItems = default(List<DestinyDefinitionsDestinyItemActionRequiredItemDefinition>), List<DestinyDefinitionsDestinyProgressionRewardDefinition> ProgressionRewards = default(List<DestinyDefinitionsDestinyProgressionRewardDefinition>), string ActionTypeLabel = default(string), string RequiredLocation = default(string), uint? RequiredCooldownHash = default(uint?), bool? DeleteOnAction = default(bool?), bool? ConsumeEntireStack = default(bool?), bool? UseOnAcquire = default(bool?))
         {
-            this.VerbName = verbName;
-            this.VerbDescription = verbDescription;
-            this.IsPositive = isPositive;
-            this.OverlayScreenName = overlayScreenName;
-            this.OverlayIcon = overlayIcon;
-            this.RequiredCooldownSeconds = requiredCooldownSeconds;
-            this.RequiredItems = requiredItems;
-            this.ProgressionRewards = progressionRewards;
-            this.ActionTypeLabel = actionTypeLabel;
-            this.RequiredLocation = requiredLocation;
-            this.RequiredCooldownHash = requiredCooldownHash;
-            this.DeleteOnAction = deleteOnAction;
-            this.ConsumeEntireStack = consumeEntireStack;
-            this.UseOnAcquire = useOnAcquire;
+            this.VerbName = VerbName;
+            this.VerbDescription = VerbDescription;
+            this.IsPositive = IsPositive;
+            this.OverlayScreenName = OverlayScreenName;
+            this.OverlayIcon = OverlayIcon;
+            this.RequiredCooldownSeconds = RequiredCooldownSeconds;
+            this.RequiredItems = RequiredItems;
+            this.ProgressionRewards = ProgressionRewards;
+            this.ActionTypeLabel = ActionTypeLabel;
+            this.RequiredLocation = RequiredLocation;
+            this.RequiredCooldownHash = RequiredCooldownHash;
+            this.DeleteOnAction = DeleteOnAction;
+            this.ConsumeEntireStack = ConsumeEntireStack;
+            this.UseOnAcquire = UseOnAcquire;
         }
         
         /// <summary>
@@ -140,7 +140,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The identifier hash for the Cooldown associated with this action. We have not pulled this data yet for you to have more data to use for cooldowns.</value>
         [DataMember(Name="requiredCooldownHash", EmitDefaultValue=false)]
-        public int? RequiredCooldownHash { get; set; }
+        public uint? RequiredCooldownHash { get; set; }
 
         /// <summary>
         /// If true, the item is deleted when the action completes.
@@ -193,7 +193,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

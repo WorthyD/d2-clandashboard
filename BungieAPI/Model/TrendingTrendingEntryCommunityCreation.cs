@@ -33,22 +33,22 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TrendingTrendingEntryCommunityCreation" /> class.
         /// </summary>
-        /// <param name="media">media.</param>
-        /// <param name="title">title.</param>
-        /// <param name="author">author.</param>
-        /// <param name="authorMembershipId">authorMembershipId.</param>
-        /// <param name="postId">postId.</param>
-        /// <param name="body">body.</param>
-        /// <param name="upvotes">upvotes.</param>
-        public TrendingTrendingEntryCommunityCreation(string media = default(string), string title = default(string), string author = default(string), long? authorMembershipId = default(long?), long? postId = default(long?), string body = default(string), int? upvotes = default(int?))
+        /// <param name="Media">Media.</param>
+        /// <param name="Title">Title.</param>
+        /// <param name="Author">Author.</param>
+        /// <param name="AuthorMembershipId">AuthorMembershipId.</param>
+        /// <param name="PostId">PostId.</param>
+        /// <param name="Body">Body.</param>
+        /// <param name="Upvotes">Upvotes.</param>
+        public TrendingTrendingEntryCommunityCreation(string Media = default(string), string Title = default(string), string Author = default(string), long? AuthorMembershipId = default(long?), long? PostId = default(long?), string Body = default(string), int? Upvotes = default(int?))
         {
-            this.Media = media;
-            this.Title = title;
-            this.Author = author;
-            this.AuthorMembershipId = authorMembershipId;
-            this.PostId = postId;
-            this.Body = body;
-            this.Upvotes = upvotes;
+            this.Media = Media;
+            this.Title = Title;
+            this.Author = Author;
+            this.AuthorMembershipId = AuthorMembershipId;
+            this.PostId = PostId;
+            this.Body = Body;
+            this.Upvotes = Upvotes;
         }
         
         /// <summary>
@@ -116,7 +116,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

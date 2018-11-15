@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemIntrinsicSocketEntryDefinition" /> class.
         /// </summary>
-        /// <param name="plugItemHash">Indicates the plug that is intrinsically inserted into this socket..</param>
-        /// <param name="socketTypeHash">Indicates the type of this intrinsic socket..</param>
-        /// <param name="defaultVisible">If true, then this socket is visible in the item&#39;s \&quot;default\&quot; state. If you have an instance, you should always check the runtime state, as that can override this visibility setting: but if you&#39;re looking at the item on a conceptual level, this property can be useful for hiding data such as legacy sockets - which remain defined on items for infrastructure purposes, but can be confusing for users to see..</param>
-        public DestinyDefinitionsDestinyItemIntrinsicSocketEntryDefinition(int? plugItemHash = default(int?), int? socketTypeHash = default(int?), bool? defaultVisible = default(bool?))
+        /// <param name="PlugItemHash">Indicates the plug that is intrinsically inserted into this socket..</param>
+        /// <param name="SocketTypeHash">Indicates the type of this intrinsic socket..</param>
+        /// <param name="DefaultVisible">If true, then this socket is visible in the item&#39;s \&quot;default\&quot; state. If you have an instance, you should always check the runtime state, as that can override this visibility setting: but if you&#39;re looking at the item on a conceptual level, this property can be useful for hiding data such as legacy sockets - which remain defined on items for infrastructure purposes, but can be confusing for users to see..</param>
+        public DestinyDefinitionsDestinyItemIntrinsicSocketEntryDefinition(uint? PlugItemHash = default(uint?), uint? SocketTypeHash = default(uint?), bool? DefaultVisible = default(bool?))
         {
-            this.PlugItemHash = plugItemHash;
-            this.SocketTypeHash = socketTypeHash;
-            this.DefaultVisible = defaultVisible;
+            this.PlugItemHash = PlugItemHash;
+            this.SocketTypeHash = SocketTypeHash;
+            this.DefaultVisible = DefaultVisible;
         }
         
         /// <summary>
@@ -48,14 +48,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Indicates the plug that is intrinsically inserted into this socket.</value>
         [DataMember(Name="plugItemHash", EmitDefaultValue=false)]
-        public int? PlugItemHash { get; set; }
+        public uint? PlugItemHash { get; set; }
 
         /// <summary>
         /// Indicates the type of this intrinsic socket.
         /// </summary>
         /// <value>Indicates the type of this intrinsic socket.</value>
         [DataMember(Name="socketTypeHash", EmitDefaultValue=false)]
-        public int? SocketTypeHash { get; set; }
+        public uint? SocketTypeHash { get; set; }
 
         /// <summary>
         /// If true, then this socket is visible in the item&#39;s \&quot;default\&quot; state. If you have an instance, you should always check the runtime state, as that can override this visibility setting: but if you&#39;re looking at the item on a conceptual level, this property can be useful for hiding data such as legacy sockets - which remain defined on items for infrastructure purposes, but can be confusing for users to see.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

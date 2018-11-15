@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDestinyItemQuantity" /> class.
         /// </summary>
-        /// <param name="itemHash">The hash identifier for the item in question. Use it to look up the item&#39;s DestinyInventoryItemDefinition..</param>
-        /// <param name="itemInstanceId">If this quantity is referring to a specific instance of an item, this will have the item&#39;s instance ID. Normally, this will be null..</param>
-        /// <param name="quantity">The amount of the item needed/available depending on the context of where DestinyItemQuantity is being used..</param>
-        public DestinyDestinyItemQuantity(int? itemHash = default(int?), long? itemInstanceId = default(long?), int? quantity = default(int?))
+        /// <param name="ItemHash">The hash identifier for the item in question. Use it to look up the item&#39;s DestinyInventoryItemDefinition..</param>
+        /// <param name="ItemInstanceId">If this quantity is referring to a specific instance of an item, this will have the item&#39;s instance ID. Normally, this will be null..</param>
+        /// <param name="Quantity">The amount of the item needed/available depending on the context of where DestinyItemQuantity is being used..</param>
+        public DestinyDestinyItemQuantity(uint? ItemHash = default(uint?), long? ItemInstanceId = default(long?), int? Quantity = default(int?))
         {
-            this.ItemHash = itemHash;
-            this.ItemInstanceId = itemInstanceId;
-            this.Quantity = quantity;
+            this.ItemHash = ItemHash;
+            this.ItemInstanceId = ItemInstanceId;
+            this.Quantity = Quantity;
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the item in question. Use it to look up the item&#39;s DestinyInventoryItemDefinition.</value>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// If this quantity is referring to a specific instance of an item, this will have the item&#39;s instance ID. Normally, this will be null.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

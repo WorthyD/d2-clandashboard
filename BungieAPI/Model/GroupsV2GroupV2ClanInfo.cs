@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupV2ClanInfo" /> class.
         /// </summary>
-        /// <param name="clanCallsign">clanCallsign.</param>
-        /// <param name="clanBannerData">clanBannerData.</param>
-        public GroupsV2GroupV2ClanInfo(string clanCallsign = default(string), GroupsV2ClanBanner clanBannerData = default(GroupsV2ClanBanner))
+        /// <param name="ClanCallsign">ClanCallsign.</param>
+        /// <param name="ClanBannerData">ClanBannerData.</param>
+        public GroupsV2GroupV2ClanInfo(string ClanCallsign = default(string), GroupsV2ClanBanner ClanBannerData = default(GroupsV2ClanBanner))
         {
-            this.ClanCallsign = clanCallsign;
-            this.ClanBannerData = clanBannerData;
+            this.ClanCallsign = ClanCallsign;
+            this.ClanBannerData = ClanBannerData;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

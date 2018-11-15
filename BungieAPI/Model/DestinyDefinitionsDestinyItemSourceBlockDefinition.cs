@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemSourceBlockDefinition" /> class.
         /// </summary>
-        /// <param name="sourceHashes">The list of hash identifiers for Reward Sources that hint where the item can be found (DestinyRewardSourceDefinition)..</param>
-        /// <param name="sources">A collection of details about the stats that were computed for the ways we found that the item could be spawned..</param>
-        /// <param name="exclusive">If we found that this item is exclusive to a specific platform, this will be set to the BungieMembershipType enumeration that matches that platform..</param>
-        public DestinyDefinitionsDestinyItemSourceBlockDefinition(List<int?> sourceHashes = default(List<int?>), List<DestinyDefinitionsSourcesDestinyItemSourceDefinition> sources = default(List<DestinyDefinitionsSourcesDestinyItemSourceDefinition>), Object exclusive = default(Object))
+        /// <param name="SourceHashes">The list of hash identifiers for Reward Sources that hint where the item can be found (DestinyRewardSourceDefinition)..</param>
+        /// <param name="Sources">A collection of details about the stats that were computed for the ways we found that the item could be spawned..</param>
+        /// <param name="Exclusive">If we found that this item is exclusive to a specific platform, this will be set to the BungieMembershipType enumeration that matches that platform..</param>
+        public DestinyDefinitionsDestinyItemSourceBlockDefinition(List<uint?> SourceHashes = default(List<uint?>), List<DestinyDefinitionsSourcesDestinyItemSourceDefinition> Sources = default(List<DestinyDefinitionsSourcesDestinyItemSourceDefinition>), BungieMembershipType Exclusive = default(BungieMembershipType))
         {
-            this.SourceHashes = sourceHashes;
-            this.Sources = sources;
-            this.Exclusive = exclusive;
+            this.SourceHashes = SourceHashes;
+            this.Sources = Sources;
+            this.Exclusive = Exclusive;
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The list of hash identifiers for Reward Sources that hint where the item can be found (DestinyRewardSourceDefinition).</value>
         [DataMember(Name="sourceHashes", EmitDefaultValue=false)]
-        public List<int?> SourceHashes { get; set; }
+        public List<uint?> SourceHashes { get; set; }
 
         /// <summary>
         /// A collection of details about the stats that were computed for the ways we found that the item could be spawned.
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If we found that this item is exclusive to a specific platform, this will be set to the BungieMembershipType enumeration that matches that platform.</value>
         [DataMember(Name="exclusive", EmitDefaultValue=false)]
-        public Object Exclusive { get; set; }
+        public BungieMembershipType Exclusive { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

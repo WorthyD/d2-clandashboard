@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="QueriesPagedQuery" /> class.
         /// </summary>
-        /// <param name="itemsPerPage">itemsPerPage.</param>
-        /// <param name="currentPage">currentPage.</param>
-        /// <param name="requestContinuationToken">requestContinuationToken.</param>
-        public QueriesPagedQuery(int? itemsPerPage = default(int?), int? currentPage = default(int?), string requestContinuationToken = default(string))
+        /// <param name="ItemsPerPage">ItemsPerPage.</param>
+        /// <param name="CurrentPage">CurrentPage.</param>
+        /// <param name="RequestContinuationToken">RequestContinuationToken.</param>
+        public QueriesPagedQuery(int? ItemsPerPage = default(int?), int? CurrentPage = default(int?), string RequestContinuationToken = default(string))
         {
-            this.ItemsPerPage = itemsPerPage;
-            this.CurrentPage = currentPage;
-            this.RequestContinuationToken = requestContinuationToken;
+            this.ItemsPerPage = ItemsPerPage;
+            this.CurrentPage = CurrentPage;
+            this.RequestContinuationToken = RequestContinuationToken;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

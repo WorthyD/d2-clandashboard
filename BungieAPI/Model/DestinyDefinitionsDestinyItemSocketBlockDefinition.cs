@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemSocketBlockDefinition" /> class.
         /// </summary>
-        /// <param name="detail">This was supposed to be a string that would give per-item details about sockets. In practice, it turns out that all this ever has is the localized word \&quot;details\&quot;. ... that&#39;s lame, but perhaps it will become something cool in the future..</param>
-        /// <param name="socketEntries">Each non-intrinsic (or mutable) socket on an item is defined here. Check inside for more info..</param>
-        /// <param name="intrinsicSockets">Each intrinsic (or immutable/permanent) socket on an item is defined here, along with the plug that is permanently affixed to the socket..</param>
-        /// <param name="socketCategories">A convenience property, that refers to the sockets in the \&quot;sockets\&quot; property, pre-grouped by category and ordered in the manner that they should be grouped in the UI. You could form this yourself with the existing data, but why would you want to? Enjoy life man..</param>
-        public DestinyDefinitionsDestinyItemSocketBlockDefinition(string detail = default(string), List<DestinyDefinitionsDestinyItemSocketEntryDefinition> socketEntries = default(List<DestinyDefinitionsDestinyItemSocketEntryDefinition>), List<DestinyDefinitionsDestinyItemIntrinsicSocketEntryDefinition> intrinsicSockets = default(List<DestinyDefinitionsDestinyItemIntrinsicSocketEntryDefinition>), List<DestinyDefinitionsDestinyItemSocketCategoryDefinition> socketCategories = default(List<DestinyDefinitionsDestinyItemSocketCategoryDefinition>))
+        /// <param name="Detail">This was supposed to be a string that would give per-item details about sockets. In practice, it turns out that all this ever has is the localized word \&quot;details\&quot;. ... that&#39;s lame, but perhaps it will become something cool in the future..</param>
+        /// <param name="SocketEntries">Each non-intrinsic (or mutable) socket on an item is defined here. Check inside for more info..</param>
+        /// <param name="IntrinsicSockets">Each intrinsic (or immutable/permanent) socket on an item is defined here, along with the plug that is permanently affixed to the socket..</param>
+        /// <param name="SocketCategories">A convenience property, that refers to the sockets in the \&quot;sockets\&quot; property, pre-grouped by category and ordered in the manner that they should be grouped in the UI. You could form this yourself with the existing data, but why would you want to? Enjoy life man..</param>
+        public DestinyDefinitionsDestinyItemSocketBlockDefinition(string Detail = default(string), List<DestinyDefinitionsDestinyItemSocketEntryDefinition> SocketEntries = default(List<DestinyDefinitionsDestinyItemSocketEntryDefinition>), List<DestinyDefinitionsDestinyItemIntrinsicSocketEntryDefinition> IntrinsicSockets = default(List<DestinyDefinitionsDestinyItemIntrinsicSocketEntryDefinition>), List<DestinyDefinitionsDestinyItemSocketCategoryDefinition> SocketCategories = default(List<DestinyDefinitionsDestinyItemSocketCategoryDefinition>))
         {
-            this.Detail = detail;
-            this.SocketEntries = socketEntries;
-            this.IntrinsicSockets = intrinsicSockets;
-            this.SocketCategories = socketCategories;
+            this.Detail = Detail;
+            this.SocketEntries = SocketEntries;
+            this.IntrinsicSockets = IntrinsicSockets;
+            this.SocketCategories = SocketCategories;
         }
         
         /// <summary>
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,42 +33,42 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyNodeStepDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">These are the display properties actually used to render the Talent Node. The currently active step&#39;s displayProperties are shown..</param>
-        /// <param name="stepIndex">The index of this step in the list of Steps on the Talent Node.  Unfortunately, this is the closest thing we have to an identifier for the Step: steps are not provided a content version agnostic identifier. This means that, when you are dealing with talent nodes, you will need to first ensure that you have the latest version of content..</param>
-        /// <param name="nodeStepHash">The hash of this node step. Unfortunately, while it can be used to uniquely identify the step within a node, it is also content version dependent and should not be relied on without ensuring you have the latest vesion of content..</param>
-        /// <param name="interactionDescription">If you can interact with this node in some way, this is the localized description of that interaction..</param>
-        /// <param name="damageType">An enum representing a damage type granted by activating this step, if any..</param>
-        /// <param name="damageTypeHash">If the step provides a damage type, this will be the hash identifier used to look up the damage type&#39;s DestinyDamageTypeDefinition..</param>
-        /// <param name="activationRequirement">If the step has requirements for activation (they almost always do, if nothing else than for the Talent Grid&#39;s Progression to have reached a certain level), they will be defined here..</param>
-        /// <param name="canActivateNextStep">There was a time when talent nodes could be activated multiple times, and the effects of subsequent Steps would be compounded on each other, essentially \&quot;upgrading\&quot; the node. We have moved away from this, but theoretically the capability still exists.  I continue to return this in case it is used in the future: if true and this step is the current step in the node, you are allowed to activate the node a second time to receive the benefits of the next step in the node, which will then become the active step..</param>
-        /// <param name="nextStepIndex">The stepIndex of the next step in the talent node, or -1 if this is the last step or if the next step to be chosen is random.  This doesn&#39;t really matter anymore unless canActivateNextStep begins to be used again..</param>
-        /// <param name="isNextStepRandom">If true, the next step to be chosen is random, and if you&#39;re allowed to activate the next step. (if canActivateNextStep &#x3D; true).</param>
-        /// <param name="perkHashes">The list of hash identifiers for Perks (DestinySandboxPerkDefinition) that are applied when this step is active. Perks provide a variety of benefits and modifications - examine DestinySandboxPerkDefinition to learn more..</param>
-        /// <param name="startProgressionBarAtProgress">When the Talent Grid&#39;s progression reaches this value, the circular \&quot;progress bar\&quot; that surrounds the talent node should be shown.  This also indicates the lower bound of said progress bar, with the upper bound being the progress required to reach activationRequirement.gridLevel. (at some point I should precalculate the upper bound and put it in the definition to save people time).</param>
-        /// <param name="statHashes">When the step provides stat benefits on the item or character, this is the list of hash identifiers for stats (DestinyStatDefinition) that are provided..</param>
-        /// <param name="affectsQuality">If this is true, the step affects the item&#39;s Quality in some way. See DestinyInventoryItemDefinition for more information about the meaning of Quality. I already made a joke about Zen and the Art of Motorcycle Maintenance elsewhere in the documentation, so I will avoid doing it again. Oops too late.</param>
-        /// <param name="stepGroups">In Destiny 1, the Armory&#39;s Perk Filtering was driven by a concept of TalentNodeStepGroups: categorizations of talent nodes based on their functionality. While the Armory isn&#39;t a BNet-facing thing for now, and the new Armory will need to account for Sockets rather than Talent Nodes, this categorization capability feels useful enough to still keep around..</param>
-        /// <param name="affectsLevel">If true, this step can affect the level of the item. See DestinyInventoryItemDefintion for more information about item levels and their effect on stats..</param>
-        /// <param name="socketReplacements">If this step is activated, this will be a list of information used to replace socket items with new Plugs. See DestinyInventoryItemDefinition for more information about sockets and plugs..</param>
-        public DestinyDefinitionsDestinyNodeStepDefinition(Object displayProperties = default(Object), int? stepIndex = default(int?), int? nodeStepHash = default(int?), string interactionDescription = default(string), Object damageType = default(Object), int? damageTypeHash = default(int?), Object activationRequirement = default(Object), bool? canActivateNextStep = default(bool?), int? nextStepIndex = default(int?), bool? isNextStepRandom = default(bool?), List<int?> perkHashes = default(List<int?>), int? startProgressionBarAtProgress = default(int?), List<int?> statHashes = default(List<int?>), bool? affectsQuality = default(bool?), Object stepGroups = default(Object), bool? affectsLevel = default(bool?), List<DestinyDefinitionsDestinyNodeSocketReplaceResponse> socketReplacements = default(List<DestinyDefinitionsDestinyNodeSocketReplaceResponse>))
+        /// <param name="DisplayProperties">These are the display properties actually used to render the Talent Node. The currently active step&#39;s displayProperties are shown..</param>
+        /// <param name="StepIndex">The index of this step in the list of Steps on the Talent Node.  Unfortunately, this is the closest thing we have to an identifier for the Step: steps are not provided a content version agnostic identifier. This means that, when you are dealing with talent nodes, you will need to first ensure that you have the latest version of content..</param>
+        /// <param name="NodeStepHash">The hash of this node step. Unfortunately, while it can be used to uniquely identify the step within a node, it is also content version dependent and should not be relied on without ensuring you have the latest vesion of content..</param>
+        /// <param name="InteractionDescription">If you can interact with this node in some way, this is the localized description of that interaction..</param>
+        /// <param name="DamageType">An enum representing a damage type granted by activating this step, if any..</param>
+        /// <param name="DamageTypeHash">If the step provides a damage type, this will be the hash identifier used to look up the damage type&#39;s DestinyDamageTypeDefinition..</param>
+        /// <param name="ActivationRequirement">If the step has requirements for activation (they almost always do, if nothing else than for the Talent Grid&#39;s Progression to have reached a certain level), they will be defined here..</param>
+        /// <param name="CanActivateNextStep">There was a time when talent nodes could be activated multiple times, and the effects of subsequent Steps would be compounded on each other, essentially \&quot;upgrading\&quot; the node. We have moved away from this, but theoretically the capability still exists.  I continue to return this in case it is used in the future: if true and this step is the current step in the node, you are allowed to activate the node a second time to receive the benefits of the next step in the node, which will then become the active step..</param>
+        /// <param name="NextStepIndex">The stepIndex of the next step in the talent node, or -1 if this is the last step or if the next step to be chosen is random.  This doesn&#39;t really matter anymore unless canActivateNextStep begins to be used again..</param>
+        /// <param name="IsNextStepRandom">If true, the next step to be chosen is random, and if you&#39;re allowed to activate the next step. (if canActivateNextStep &#x3D; true).</param>
+        /// <param name="PerkHashes">The list of hash identifiers for Perks (DestinySandboxPerkDefinition) that are applied when this step is active. Perks provide a variety of benefits and modifications - examine DestinySandboxPerkDefinition to learn more..</param>
+        /// <param name="StartProgressionBarAtProgress">When the Talent Grid&#39;s progression reaches this value, the circular \&quot;progress bar\&quot; that surrounds the talent node should be shown.  This also indicates the lower bound of said progress bar, with the upper bound being the progress required to reach activationRequirement.gridLevel. (at some point I should precalculate the upper bound and put it in the definition to save people time).</param>
+        /// <param name="StatHashes">When the step provides stat benefits on the item or character, this is the list of hash identifiers for stats (DestinyStatDefinition) that are provided..</param>
+        /// <param name="AffectsQuality">If this is true, the step affects the item&#39;s Quality in some way. See DestinyInventoryItemDefinition for more information about the meaning of Quality. I already made a joke about Zen and the Art of Motorcycle Maintenance elsewhere in the documentation, so I will avoid doing it again. Oops too late.</param>
+        /// <param name="StepGroups">In Destiny 1, the Armory&#39;s Perk Filtering was driven by a concept of TalentNodeStepGroups: categorizations of talent nodes based on their functionality. While the Armory isn&#39;t a BNet-facing thing for now, and the new Armory will need to account for Sockets rather than Talent Nodes, this categorization capability feels useful enough to still keep around..</param>
+        /// <param name="AffectsLevel">If true, this step can affect the level of the item. See DestinyInventoryItemDefintion for more information about item levels and their effect on stats..</param>
+        /// <param name="SocketReplacements">If this step is activated, this will be a list of information used to replace socket items with new Plugs. See DestinyInventoryItemDefinition for more information about sockets and plugs..</param>
+        public DestinyDefinitionsDestinyNodeStepDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), int? StepIndex = default(int?), uint? NodeStepHash = default(uint?), string InteractionDescription = default(string), DestinyDamageType DamageType = default(DestinyDamageType), uint? DamageTypeHash = default(uint?), DestinyDefinitionsDestinyNodeActivationRequirement ActivationRequirement = default(DestinyDefinitionsDestinyNodeActivationRequirement), bool? CanActivateNextStep = default(bool?), int? NextStepIndex = default(int?), bool? IsNextStepRandom = default(bool?), List<uint?> PerkHashes = default(List<uint?>), int? StartProgressionBarAtProgress = default(int?), List<uint?> StatHashes = default(List<uint?>), bool? AffectsQuality = default(bool?), DestinyDefinitionsDestinyTalentNodeStepGroups StepGroups = default(DestinyDefinitionsDestinyTalentNodeStepGroups), bool? AffectsLevel = default(bool?), List<DestinyDefinitionsDestinyNodeSocketReplaceResponse> SocketReplacements = default(List<DestinyDefinitionsDestinyNodeSocketReplaceResponse>))
         {
-            this.DisplayProperties = displayProperties;
-            this.StepIndex = stepIndex;
-            this.NodeStepHash = nodeStepHash;
-            this.InteractionDescription = interactionDescription;
-            this.DamageType = damageType;
-            this.DamageTypeHash = damageTypeHash;
-            this.ActivationRequirement = activationRequirement;
-            this.CanActivateNextStep = canActivateNextStep;
-            this.NextStepIndex = nextStepIndex;
-            this.IsNextStepRandom = isNextStepRandom;
-            this.PerkHashes = perkHashes;
-            this.StartProgressionBarAtProgress = startProgressionBarAtProgress;
-            this.StatHashes = statHashes;
-            this.AffectsQuality = affectsQuality;
-            this.StepGroups = stepGroups;
-            this.AffectsLevel = affectsLevel;
-            this.SocketReplacements = socketReplacements;
+            this.DisplayProperties = DisplayProperties;
+            this.StepIndex = StepIndex;
+            this.NodeStepHash = NodeStepHash;
+            this.InteractionDescription = InteractionDescription;
+            this.DamageType = DamageType;
+            this.DamageTypeHash = DamageTypeHash;
+            this.ActivationRequirement = ActivationRequirement;
+            this.CanActivateNextStep = CanActivateNextStep;
+            this.NextStepIndex = NextStepIndex;
+            this.IsNextStepRandom = IsNextStepRandom;
+            this.PerkHashes = PerkHashes;
+            this.StartProgressionBarAtProgress = StartProgressionBarAtProgress;
+            this.StatHashes = StatHashes;
+            this.AffectsQuality = AffectsQuality;
+            this.StepGroups = StepGroups;
+            this.AffectsLevel = AffectsLevel;
+            this.SocketReplacements = SocketReplacements;
         }
         
         /// <summary>
@@ -76,7 +76,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>These are the display properties actually used to render the Talent Node. The currently active step&#39;s displayProperties are shown.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// The index of this step in the list of Steps on the Talent Node.  Unfortunately, this is the closest thing we have to an identifier for the Step: steps are not provided a content version agnostic identifier. This means that, when you are dealing with talent nodes, you will need to first ensure that you have the latest version of content.
@@ -90,7 +90,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash of this node step. Unfortunately, while it can be used to uniquely identify the step within a node, it is also content version dependent and should not be relied on without ensuring you have the latest vesion of content.</value>
         [DataMember(Name="nodeStepHash", EmitDefaultValue=false)]
-        public int? NodeStepHash { get; set; }
+        public uint? NodeStepHash { get; set; }
 
         /// <summary>
         /// If you can interact with this node in some way, this is the localized description of that interaction.
@@ -104,21 +104,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>An enum representing a damage type granted by activating this step, if any.</value>
         [DataMember(Name="damageType", EmitDefaultValue=false)]
-        public Object DamageType { get; set; }
+        public DestinyDamageType DamageType { get; set; }
 
         /// <summary>
         /// If the step provides a damage type, this will be the hash identifier used to look up the damage type&#39;s DestinyDamageTypeDefinition.
         /// </summary>
         /// <value>If the step provides a damage type, this will be the hash identifier used to look up the damage type&#39;s DestinyDamageTypeDefinition.</value>
         [DataMember(Name="damageTypeHash", EmitDefaultValue=false)]
-        public int? DamageTypeHash { get; set; }
+        public uint? DamageTypeHash { get; set; }
 
         /// <summary>
         /// If the step has requirements for activation (they almost always do, if nothing else than for the Talent Grid&#39;s Progression to have reached a certain level), they will be defined here.
         /// </summary>
         /// <value>If the step has requirements for activation (they almost always do, if nothing else than for the Talent Grid&#39;s Progression to have reached a certain level), they will be defined here.</value>
         [DataMember(Name="activationRequirement", EmitDefaultValue=false)]
-        public Object ActivationRequirement { get; set; }
+        public DestinyDefinitionsDestinyNodeActivationRequirement ActivationRequirement { get; set; }
 
         /// <summary>
         /// There was a time when talent nodes could be activated multiple times, and the effects of subsequent Steps would be compounded on each other, essentially \&quot;upgrading\&quot; the node. We have moved away from this, but theoretically the capability still exists.  I continue to return this in case it is used in the future: if true and this step is the current step in the node, you are allowed to activate the node a second time to receive the benefits of the next step in the node, which will then become the active step.
@@ -146,7 +146,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The list of hash identifiers for Perks (DestinySandboxPerkDefinition) that are applied when this step is active. Perks provide a variety of benefits and modifications - examine DestinySandboxPerkDefinition to learn more.</value>
         [DataMember(Name="perkHashes", EmitDefaultValue=false)]
-        public List<int?> PerkHashes { get; set; }
+        public List<uint?> PerkHashes { get; set; }
 
         /// <summary>
         /// When the Talent Grid&#39;s progression reaches this value, the circular \&quot;progress bar\&quot; that surrounds the talent node should be shown.  This also indicates the lower bound of said progress bar, with the upper bound being the progress required to reach activationRequirement.gridLevel. (at some point I should precalculate the upper bound and put it in the definition to save people time)
@@ -160,7 +160,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>When the step provides stat benefits on the item or character, this is the list of hash identifiers for stats (DestinyStatDefinition) that are provided.</value>
         [DataMember(Name="statHashes", EmitDefaultValue=false)]
-        public List<int?> StatHashes { get; set; }
+        public List<uint?> StatHashes { get; set; }
 
         /// <summary>
         /// If this is true, the step affects the item&#39;s Quality in some way. See DestinyInventoryItemDefinition for more information about the meaning of Quality. I already made a joke about Zen and the Art of Motorcycle Maintenance elsewhere in the documentation, so I will avoid doing it again. Oops too late
@@ -174,7 +174,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>In Destiny 1, the Armory&#39;s Perk Filtering was driven by a concept of TalentNodeStepGroups: categorizations of talent nodes based on their functionality. While the Armory isn&#39;t a BNet-facing thing for now, and the new Armory will need to account for Sockets rather than Talent Nodes, this categorization capability feels useful enough to still keep around.</value>
         [DataMember(Name="stepGroups", EmitDefaultValue=false)]
-        public Object StepGroups { get; set; }
+        public DestinyDefinitionsDestinyTalentNodeStepGroups StepGroups { get; set; }
 
         /// <summary>
         /// If true, this step can affect the level of the item. See DestinyInventoryItemDefintion for more information about item levels and their effect on stats.
@@ -223,7 +223,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

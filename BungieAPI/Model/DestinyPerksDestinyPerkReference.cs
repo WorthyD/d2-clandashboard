@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyPerksDestinyPerkReference" /> class.
         /// </summary>
-        /// <param name="perkHash">The hash identifier for the perk, which can be used to look up DestinySandboxPerkDefinition if it exists. Be warned, perks frequently do not have user-viewable information. You should examine whether you actually found a name/description in the perk&#39;s definition before you show it to the user..</param>
-        /// <param name="iconPath">The icon for the perk..</param>
-        /// <param name="isActive">Whether this perk is currently active. (We may return perks that you have not actually activated yet: these represent perks that you should show in the item&#39;s tooltip, but that the user has not yet activated.).</param>
-        /// <param name="visible">Some perks provide benefits, but aren&#39;t visible in the UI. This value will let you know if this is perk should be shown in your UI..</param>
-        public DestinyPerksDestinyPerkReference(int? perkHash = default(int?), string iconPath = default(string), bool? isActive = default(bool?), bool? visible = default(bool?))
+        /// <param name="PerkHash">The hash identifier for the perk, which can be used to look up DestinySandboxPerkDefinition if it exists. Be warned, perks frequently do not have user-viewable information. You should examine whether you actually found a name/description in the perk&#39;s definition before you show it to the user..</param>
+        /// <param name="IconPath">The icon for the perk..</param>
+        /// <param name="IsActive">Whether this perk is currently active. (We may return perks that you have not actually activated yet: these represent perks that you should show in the item&#39;s tooltip, but that the user has not yet activated.).</param>
+        /// <param name="Visible">Some perks provide benefits, but aren&#39;t visible in the UI. This value will let you know if this is perk should be shown in your UI..</param>
+        public DestinyPerksDestinyPerkReference(uint? PerkHash = default(uint?), string IconPath = default(string), bool? IsActive = default(bool?), bool? Visible = default(bool?))
         {
-            this.PerkHash = perkHash;
-            this.IconPath = iconPath;
-            this.IsActive = isActive;
-            this.Visible = visible;
+            this.PerkHash = PerkHash;
+            this.IconPath = IconPath;
+            this.IsActive = IsActive;
+            this.Visible = Visible;
         }
         
         /// <summary>
@@ -50,7 +50,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the perk, which can be used to look up DestinySandboxPerkDefinition if it exists. Be warned, perks frequently do not have user-viewable information. You should examine whether you actually found a name/description in the perk&#39;s definition before you show it to the user.</value>
         [DataMember(Name="perkHash", EmitDefaultValue=false)]
-        public int? PerkHash { get; set; }
+        public uint? PerkHash { get; set; }
 
         /// <summary>
         /// The icon for the perk.
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

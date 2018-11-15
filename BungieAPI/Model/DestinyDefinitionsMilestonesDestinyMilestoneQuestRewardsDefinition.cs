@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardsDefinition" /> class.
         /// </summary>
-        /// <param name="items">The items that represent your reward for completing the quest.  Be warned, these could be \&quot;dummy\&quot; items: items that are only used to render a good-looking in-game tooltip, but aren&#39;t the actual items themselves.  For instance, when experience is given there&#39;s often a dummy item representing \&quot;experience\&quot;, with quantity being the amount of experience you got. We don&#39;t have a programmatic association between those and whatever Progression is actually getting that experience... yet..</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardsDefinition(List<DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardItem> items = default(List<DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardItem>))
+        /// <param name="Items">The items that represent your reward for completing the quest.  Be warned, these could be \&quot;dummy\&quot; items: items that are only used to render a good-looking in-game tooltip, but aren&#39;t the actual items themselves.  For instance, when experience is given there&#39;s often a dummy item representing \&quot;experience\&quot;, with quantity being the amount of experience you got. We don&#39;t have a programmatic association between those and whatever Progression is actually getting that experience... yet..</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardsDefinition(List<DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardItem> Items = default(List<DestinyDefinitionsMilestonesDestinyMilestoneQuestRewardItem>))
         {
-            this.Items = items;
+            this.Items = Items;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

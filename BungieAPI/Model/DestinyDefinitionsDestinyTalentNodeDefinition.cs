@@ -33,46 +33,46 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyTalentNodeDefinition" /> class.
         /// </summary>
-        /// <param name="nodeIndex">The index into the DestinyTalentGridDefinition&#39;s \&quot;nodes\&quot; property where this node is located. Used to uniquely identify the node within the Talent Grid. Note that this is content version dependent: make sure you have the latest version of content before trying to use these properties..</param>
-        /// <param name="nodeHash">The hash identifier for the node, which unfortunately is also content version dependent but can be (and ideally, should be) used instead of the nodeIndex to uniquely identify the node.  The two exist side-by-side for backcompat reasons due to the Great Talent Node Restructuring of Destiny 1, and I ran out of time to remove one of them and standardize on the other. Sorry!.</param>
-        /// <param name="row">The visual \&quot;row\&quot; where the node should be shown in the UI. If negative, then the node is hidden..</param>
-        /// <param name="column">The visual \&quot;column\&quot; where the node should be shown in the UI. If negative, the node is hidden..</param>
-        /// <param name="prerequisiteNodeIndexes">Indexes into the DestinyTalentGridDefinition.nodes property for any nodes that must be activated before this one is allowed to be activated.  I would have liked to change this to hashes for Destiny 2, but we have run out of time..</param>
-        /// <param name="binaryPairNodeIndex">At one point, Talent Nodes supported the idea of \&quot;Binary Pairs\&quot;: nodes that overlapped each other visually, and where activating one deactivated the other. They ended up not being used, mostly because Exclusive Sets are *almost* a superset of this concept, but the potential for it to be used still exists in theory.  If this is ever used, this will be the index into the DestinyTalentGridDefinition.nodes property for the node that is the binary pair match to this node. Activating one deactivates the other..</param>
-        /// <param name="autoUnlocks">If true, this node will automatically unlock when the Talent Grid&#39;s level reaches the required level of the current step of this node..</param>
-        /// <param name="lastStepRepeats">At one point, Nodes were going to be able to be activated multiple times, changing the current step and potentially piling on multiple effects from the previously activated steps. This property would indicate if the last step could be activated multiple times.   This is not currently used, but it isn&#39;t out of the question that this could end up being used again in a theoretical future..</param>
-        /// <param name="isRandom">If this is true, the node&#39;s step is determined randomly rather than the first step being chosen..</param>
-        /// <param name="randomActivationRequirement">At one point, you were going to be able to repurchase talent nodes that had random steps, to \&quot;re-roll\&quot; the current step of the node (and thus change the properties of your item). This was to be the activation requirement for performing that re-roll.  The system still exists to do this, as far as I know, so it may yet come back around!.</param>
-        /// <param name="isRandomRepurchasable">If this is true, the node can be \&quot;re-rolled\&quot; to acquire a different random current step. This is not used, but still exists for a theoretical future of talent grids..</param>
-        /// <param name="steps">At this point, \&quot;steps\&quot; have been obfuscated into conceptual entities, aggregating the underlying notions of \&quot;properties\&quot; and \&quot;true steps\&quot;.  If you need to know a step as it truly exists - such as when recreating Node logic when processing Vendor data - you&#39;ll have to use the \&quot;realSteps\&quot; property below..</param>
-        /// <param name="exclusiveWithNodeHashes">The nodeHash values for nodes that are in an Exclusive Set with this node.  See DestinyTalentGridDefinition.exclusiveSets for more info about exclusive sets.  Again, note that these are nodeHashes and *not* nodeIndexes..</param>
-        /// <param name="randomStartProgressionBarAtProgression">If the node&#39;s step is randomly selected, this is the amount of the Talent Grid&#39;s progression experience at which the progression bar for the node should be shown..</param>
-        /// <param name="layoutIdentifier">A string identifier for a custom visual layout to apply to this talent node. Unfortunately, we do not have any data for rendering these custom layouts. It will be up to you to interpret these strings and change your UI if you want to have custom UI matching these layouts..</param>
-        /// <param name="groupHash">As of Destiny 2, nodes can exist as part of \&quot;Exclusive Groups\&quot;. These differ from exclusive sets in that, within the group, many nodes can be activated. But the act of activating any node in the group will cause \&quot;opposing\&quot; nodes (nodes in groups that are not allowed to be activated at the same time as this group) to deactivate.  See DestinyTalentExclusiveGroup for more information on the details. This is an identifier for this node&#39;s group, if it is part of one..</param>
-        /// <param name="loreHash">Talent nodes can be associated with a piece of Lore, generally rendered in a tooltip. This is the hash identifier of the lore element to show, if there is one to be show..</param>
-        /// <param name="nodeStyleIdentifier">Comes from the talent grid node style: this identifier should be used to determine how to render the node in the UI..</param>
-        /// <param name="ignoreForCompletion">Comes from the talent grid node style: if true, then this node should be ignored for determining whether the grid is complete..</param>
-        public DestinyDefinitionsDestinyTalentNodeDefinition(int? nodeIndex = default(int?), int? nodeHash = default(int?), int? row = default(int?), int? column = default(int?), List<int?> prerequisiteNodeIndexes = default(List<int?>), int? binaryPairNodeIndex = default(int?), bool? autoUnlocks = default(bool?), bool? lastStepRepeats = default(bool?), bool? isRandom = default(bool?), Object randomActivationRequirement = default(Object), bool? isRandomRepurchasable = default(bool?), List<DestinyDefinitionsDestinyNodeStepDefinition> steps = default(List<DestinyDefinitionsDestinyNodeStepDefinition>), List<int?> exclusiveWithNodeHashes = default(List<int?>), int? randomStartProgressionBarAtProgression = default(int?), string layoutIdentifier = default(string), int? groupHash = default(int?), int? loreHash = default(int?), string nodeStyleIdentifier = default(string), bool? ignoreForCompletion = default(bool?))
+        /// <param name="NodeIndex">The index into the DestinyTalentGridDefinition&#39;s \&quot;nodes\&quot; property where this node is located. Used to uniquely identify the node within the Talent Grid. Note that this is content version dependent: make sure you have the latest version of content before trying to use these properties..</param>
+        /// <param name="NodeHash">The hash identifier for the node, which unfortunately is also content version dependent but can be (and ideally, should be) used instead of the nodeIndex to uniquely identify the node.  The two exist side-by-side for backcompat reasons due to the Great Talent Node Restructuring of Destiny 1, and I ran out of time to remove one of them and standardize on the other. Sorry!.</param>
+        /// <param name="Row">The visual \&quot;row\&quot; where the node should be shown in the UI. If negative, then the node is hidden..</param>
+        /// <param name="Column">The visual \&quot;column\&quot; where the node should be shown in the UI. If negative, the node is hidden..</param>
+        /// <param name="PrerequisiteNodeIndexes">Indexes into the DestinyTalentGridDefinition.nodes property for any nodes that must be activated before this one is allowed to be activated.  I would have liked to change this to hashes for Destiny 2, but we have run out of time..</param>
+        /// <param name="BinaryPairNodeIndex">At one point, Talent Nodes supported the idea of \&quot;Binary Pairs\&quot;: nodes that overlapped each other visually, and where activating one deactivated the other. They ended up not being used, mostly because Exclusive Sets are *almost* a superset of this concept, but the potential for it to be used still exists in theory.  If this is ever used, this will be the index into the DestinyTalentGridDefinition.nodes property for the node that is the binary pair match to this node. Activating one deactivates the other..</param>
+        /// <param name="AutoUnlocks">If true, this node will automatically unlock when the Talent Grid&#39;s level reaches the required level of the current step of this node..</param>
+        /// <param name="LastStepRepeats">At one point, Nodes were going to be able to be activated multiple times, changing the current step and potentially piling on multiple effects from the previously activated steps. This property would indicate if the last step could be activated multiple times.   This is not currently used, but it isn&#39;t out of the question that this could end up being used again in a theoretical future..</param>
+        /// <param name="IsRandom">If this is true, the node&#39;s step is determined randomly rather than the first step being chosen..</param>
+        /// <param name="RandomActivationRequirement">At one point, you were going to be able to repurchase talent nodes that had random steps, to \&quot;re-roll\&quot; the current step of the node (and thus change the properties of your item). This was to be the activation requirement for performing that re-roll.  The system still exists to do this, as far as I know, so it may yet come back around!.</param>
+        /// <param name="IsRandomRepurchasable">If this is true, the node can be \&quot;re-rolled\&quot; to acquire a different random current step. This is not used, but still exists for a theoretical future of talent grids..</param>
+        /// <param name="Steps">At this point, \&quot;steps\&quot; have been obfuscated into conceptual entities, aggregating the underlying notions of \&quot;properties\&quot; and \&quot;true steps\&quot;.  If you need to know a step as it truly exists - such as when recreating Node logic when processing Vendor data - you&#39;ll have to use the \&quot;realSteps\&quot; property below..</param>
+        /// <param name="ExclusiveWithNodeHashes">The nodeHash values for nodes that are in an Exclusive Set with this node.  See DestinyTalentGridDefinition.exclusiveSets for more info about exclusive sets.  Again, note that these are nodeHashes and *not* nodeIndexes..</param>
+        /// <param name="RandomStartProgressionBarAtProgression">If the node&#39;s step is randomly selected, this is the amount of the Talent Grid&#39;s progression experience at which the progression bar for the node should be shown..</param>
+        /// <param name="LayoutIdentifier">A string identifier for a custom visual layout to apply to this talent node. Unfortunately, we do not have any data for rendering these custom layouts. It will be up to you to interpret these strings and change your UI if you want to have custom UI matching these layouts..</param>
+        /// <param name="GroupHash">As of Destiny 2, nodes can exist as part of \&quot;Exclusive Groups\&quot;. These differ from exclusive sets in that, within the group, many nodes can be activated. But the act of activating any node in the group will cause \&quot;opposing\&quot; nodes (nodes in groups that are not allowed to be activated at the same time as this group) to deactivate.  See DestinyTalentExclusiveGroup for more information on the details. This is an identifier for this node&#39;s group, if it is part of one..</param>
+        /// <param name="LoreHash">Talent nodes can be associated with a piece of Lore, generally rendered in a tooltip. This is the hash identifier of the lore element to show, if there is one to be show..</param>
+        /// <param name="NodeStyleIdentifier">Comes from the talent grid node style: this identifier should be used to determine how to render the node in the UI..</param>
+        /// <param name="IgnoreForCompletion">Comes from the talent grid node style: if true, then this node should be ignored for determining whether the grid is complete..</param>
+        public DestinyDefinitionsDestinyTalentNodeDefinition(int? NodeIndex = default(int?), uint? NodeHash = default(uint?), int? Row = default(int?), int? Column = default(int?), List<int?> PrerequisiteNodeIndexes = default(List<int?>), int? BinaryPairNodeIndex = default(int?), bool? AutoUnlocks = default(bool?), bool? LastStepRepeats = default(bool?), bool? IsRandom = default(bool?), DestinyDefinitionsDestinyNodeActivationRequirement RandomActivationRequirement = default(DestinyDefinitionsDestinyNodeActivationRequirement), bool? IsRandomRepurchasable = default(bool?), List<DestinyDefinitionsDestinyNodeStepDefinition> Steps = default(List<DestinyDefinitionsDestinyNodeStepDefinition>), List<uint?> ExclusiveWithNodeHashes = default(List<uint?>), int? RandomStartProgressionBarAtProgression = default(int?), string LayoutIdentifier = default(string), uint? GroupHash = default(uint?), uint? LoreHash = default(uint?), string NodeStyleIdentifier = default(string), bool? IgnoreForCompletion = default(bool?))
         {
-            this.NodeIndex = nodeIndex;
-            this.NodeHash = nodeHash;
-            this.Row = row;
-            this.Column = column;
-            this.PrerequisiteNodeIndexes = prerequisiteNodeIndexes;
-            this.BinaryPairNodeIndex = binaryPairNodeIndex;
-            this.AutoUnlocks = autoUnlocks;
-            this.LastStepRepeats = lastStepRepeats;
-            this.IsRandom = isRandom;
-            this.RandomActivationRequirement = randomActivationRequirement;
-            this.IsRandomRepurchasable = isRandomRepurchasable;
-            this.Steps = steps;
-            this.ExclusiveWithNodeHashes = exclusiveWithNodeHashes;
-            this.RandomStartProgressionBarAtProgression = randomStartProgressionBarAtProgression;
-            this.LayoutIdentifier = layoutIdentifier;
-            this.GroupHash = groupHash;
-            this.LoreHash = loreHash;
-            this.NodeStyleIdentifier = nodeStyleIdentifier;
-            this.IgnoreForCompletion = ignoreForCompletion;
+            this.NodeIndex = NodeIndex;
+            this.NodeHash = NodeHash;
+            this.Row = Row;
+            this.Column = Column;
+            this.PrerequisiteNodeIndexes = PrerequisiteNodeIndexes;
+            this.BinaryPairNodeIndex = BinaryPairNodeIndex;
+            this.AutoUnlocks = AutoUnlocks;
+            this.LastStepRepeats = LastStepRepeats;
+            this.IsRandom = IsRandom;
+            this.RandomActivationRequirement = RandomActivationRequirement;
+            this.IsRandomRepurchasable = IsRandomRepurchasable;
+            this.Steps = Steps;
+            this.ExclusiveWithNodeHashes = ExclusiveWithNodeHashes;
+            this.RandomStartProgressionBarAtProgression = RandomStartProgressionBarAtProgression;
+            this.LayoutIdentifier = LayoutIdentifier;
+            this.GroupHash = GroupHash;
+            this.LoreHash = LoreHash;
+            this.NodeStyleIdentifier = NodeStyleIdentifier;
+            this.IgnoreForCompletion = IgnoreForCompletion;
         }
         
         /// <summary>
@@ -87,7 +87,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the node, which unfortunately is also content version dependent but can be (and ideally, should be) used instead of the nodeIndex to uniquely identify the node.  The two exist side-by-side for backcompat reasons due to the Great Talent Node Restructuring of Destiny 1, and I ran out of time to remove one of them and standardize on the other. Sorry!</value>
         [DataMember(Name="nodeHash", EmitDefaultValue=false)]
-        public int? NodeHash { get; set; }
+        public uint? NodeHash { get; set; }
 
         /// <summary>
         /// The visual \&quot;row\&quot; where the node should be shown in the UI. If negative, then the node is hidden.
@@ -143,7 +143,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>At one point, you were going to be able to repurchase talent nodes that had random steps, to \&quot;re-roll\&quot; the current step of the node (and thus change the properties of your item). This was to be the activation requirement for performing that re-roll.  The system still exists to do this, as far as I know, so it may yet come back around!</value>
         [DataMember(Name="randomActivationRequirement", EmitDefaultValue=false)]
-        public Object RandomActivationRequirement { get; set; }
+        public DestinyDefinitionsDestinyNodeActivationRequirement RandomActivationRequirement { get; set; }
 
         /// <summary>
         /// If this is true, the node can be \&quot;re-rolled\&quot; to acquire a different random current step. This is not used, but still exists for a theoretical future of talent grids.
@@ -164,7 +164,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The nodeHash values for nodes that are in an Exclusive Set with this node.  See DestinyTalentGridDefinition.exclusiveSets for more info about exclusive sets.  Again, note that these are nodeHashes and *not* nodeIndexes.</value>
         [DataMember(Name="exclusiveWithNodeHashes", EmitDefaultValue=false)]
-        public List<int?> ExclusiveWithNodeHashes { get; set; }
+        public List<uint?> ExclusiveWithNodeHashes { get; set; }
 
         /// <summary>
         /// If the node&#39;s step is randomly selected, this is the amount of the Talent Grid&#39;s progression experience at which the progression bar for the node should be shown.
@@ -185,14 +185,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>As of Destiny 2, nodes can exist as part of \&quot;Exclusive Groups\&quot;. These differ from exclusive sets in that, within the group, many nodes can be activated. But the act of activating any node in the group will cause \&quot;opposing\&quot; nodes (nodes in groups that are not allowed to be activated at the same time as this group) to deactivate.  See DestinyTalentExclusiveGroup for more information on the details. This is an identifier for this node&#39;s group, if it is part of one.</value>
         [DataMember(Name="groupHash", EmitDefaultValue=false)]
-        public int? GroupHash { get; set; }
+        public uint? GroupHash { get; set; }
 
         /// <summary>
         /// Talent nodes can be associated with a piece of Lore, generally rendered in a tooltip. This is the hash identifier of the lore element to show, if there is one to be show.
         /// </summary>
         /// <value>Talent nodes can be associated with a piece of Lore, generally rendered in a tooltip. This is the hash identifier of the lore element to show, if there is one to be show.</value>
         [DataMember(Name="loreHash", EmitDefaultValue=false)]
-        public int? LoreHash { get; set; }
+        public uint? LoreHash { get; set; }
 
         /// <summary>
         /// Comes from the talent grid node style: this identifier should be used to determine how to render the node in the UI.
@@ -243,7 +243,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemTalentGridBlockDefinition" /> class.
         /// </summary>
-        /// <param name="talentGridHash">The hash identifier of the DestinyTalentGridDefinition attached to this item..</param>
-        /// <param name="itemDetailString">This is meant to be a subtitle for looking at the talent grid. In practice, somewhat frustratingly, this always merely says the localized word for \&quot;Details\&quot;. Great. Maybe it&#39;ll have more if talent grids ever get used for more than builds and subclasses again..</param>
-        /// <param name="buildName">A shortcut string identifier for the \&quot;build\&quot; in question, if this talent grid has an associated build. Doesn&#39;t map to anything we can expose at the moment..</param>
-        /// <param name="hudDamageType">If the talent grid implies a damage type, this is the enum value for that damage type..</param>
-        /// <param name="hudIcon">If the talent grid has a special icon that&#39;s shown in the game UI (like builds, funny that), this is the identifier for that icon. Sadly, we don&#39;t actually get that icon right now. I&#39;ll be looking to replace this with a path to the actual icon itself..</param>
-        public DestinyDefinitionsDestinyItemTalentGridBlockDefinition(int? talentGridHash = default(int?), string itemDetailString = default(string), string buildName = default(string), Object hudDamageType = default(Object), string hudIcon = default(string))
+        /// <param name="TalentGridHash">The hash identifier of the DestinyTalentGridDefinition attached to this item..</param>
+        /// <param name="ItemDetailString">This is meant to be a subtitle for looking at the talent grid. In practice, somewhat frustratingly, this always merely says the localized word for \&quot;Details\&quot;. Great. Maybe it&#39;ll have more if talent grids ever get used for more than builds and subclasses again..</param>
+        /// <param name="BuildName">A shortcut string identifier for the \&quot;build\&quot; in question, if this talent grid has an associated build. Doesn&#39;t map to anything we can expose at the moment..</param>
+        /// <param name="HudDamageType">If the talent grid implies a damage type, this is the enum value for that damage type..</param>
+        /// <param name="HudIcon">If the talent grid has a special icon that&#39;s shown in the game UI (like builds, funny that), this is the identifier for that icon. Sadly, we don&#39;t actually get that icon right now. I&#39;ll be looking to replace this with a path to the actual icon itself..</param>
+        public DestinyDefinitionsDestinyItemTalentGridBlockDefinition(uint? TalentGridHash = default(uint?), string ItemDetailString = default(string), string BuildName = default(string), DestinyDamageType HudDamageType = default(DestinyDamageType), string HudIcon = default(string))
         {
-            this.TalentGridHash = talentGridHash;
-            this.ItemDetailString = itemDetailString;
-            this.BuildName = buildName;
-            this.HudDamageType = hudDamageType;
-            this.HudIcon = hudIcon;
+            this.TalentGridHash = TalentGridHash;
+            this.ItemDetailString = ItemDetailString;
+            this.BuildName = BuildName;
+            this.HudDamageType = HudDamageType;
+            this.HudIcon = HudIcon;
         }
         
         /// <summary>
@@ -52,7 +52,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier of the DestinyTalentGridDefinition attached to this item.</value>
         [DataMember(Name="talentGridHash", EmitDefaultValue=false)]
-        public int? TalentGridHash { get; set; }
+        public uint? TalentGridHash { get; set; }
 
         /// <summary>
         /// This is meant to be a subtitle for looking at the talent grid. In practice, somewhat frustratingly, this always merely says the localized word for \&quot;Details\&quot;. Great. Maybe it&#39;ll have more if talent grids ever get used for more than builds and subclasses again.
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the talent grid implies a damage type, this is the enum value for that damage type.</value>
         [DataMember(Name="hudDamageType", EmitDefaultValue=false)]
-        public Object HudDamageType { get; set; }
+        public DestinyDamageType HudDamageType { get; set; }
 
         /// <summary>
         /// If the talent grid has a special icon that&#39;s shown in the game UI (like builds, funny that), this is the identifier for that icon. Sadly, we don&#39;t actually get that icon right now. I&#39;ll be looking to replace this with a path to the actual icon itself.
@@ -103,7 +103,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsRecordsDestinyRecordTitleBlock" /> class.
         /// </summary>
-        /// <param name="hasTitle">hasTitle.</param>
-        /// <param name="titlesByGender">titlesByGender.</param>
-        public DestinyDefinitionsRecordsDestinyRecordTitleBlock(bool? hasTitle = default(bool?), Dictionary<string, string> titlesByGender = default(Dictionary<string, string>))
+        /// <param name="HasTitle">HasTitle.</param>
+        /// <param name="TitlesByGender">TitlesByGender.</param>
+        public DestinyDefinitionsRecordsDestinyRecordTitleBlock(bool? HasTitle = default(bool?), Dictionary<string, string> TitlesByGender = default(Dictionary<string, string>))
         {
-            this.HasTitle = hasTitle;
-            this.TitlesByGender = titlesByGender;
+            this.HasTitle = HasTitle;
+            this.TitlesByGender = TitlesByGender;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

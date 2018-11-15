@@ -33,40 +33,40 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsItemsDestinyItemPlugDefinition" /> class.
         /// </summary>
-        /// <param name="insertionRules">The rules around when this plug can be inserted into a socket, aside from the socket&#39;s individual restrictions.  The live data DestinyItemPlugComponent.insertFailIndexes will be an index into this array, so you can pull out the failure strings appropriate for the user..</param>
-        /// <param name="plugCategoryIdentifier">The string identifier for the plug&#39;s category. Use the socket&#39;s DestinySocketTypeDefinition.plugWhitelist to determine whether this plug can be inserted into the socket..</param>
-        /// <param name="plugCategoryHash">The hash for the plugCategoryIdentifier. You can use this instead if you wish: I put both in the definition for debugging purposes..</param>
-        /// <param name="onActionRecreateSelf">If you successfully socket the item, this will determine whether or not you get \&quot;refunded\&quot; on the plug..</param>
-        /// <param name="insertionMaterialRequirementHash">If inserting this plug requires materials, this is the hash identifier for looking up the DestinyMaterialRequirementSetDefinition for those requirements..</param>
-        /// <param name="previewItemOverrideHash">In the game, if you&#39;re inspecting a plug item directly, this will be the item shown with the plug attached. Look up the DestinyInventoryItemDefinition for this hash for the item..</param>
-        /// <param name="enabledMaterialRequirementHash">It&#39;s not enough for the plug to be inserted. It has to be enabled as well. For it to be enabled, it may require materials. This is the hash identifier for the DestinyMaterialRequirementSetDefinition for those requirements, if there is one..</param>
-        /// <param name="enabledRules">The rules around whether the plug, once inserted, is enabled and providing its benefits.  The live data DestinyItemPlugComponent.enableFailIndexes will be an index into this array, so you can pull out the failure strings appropriate for the user..</param>
-        /// <param name="uiPlugLabel">Plugs can have arbitrary, UI-defined identifiers that the UI designers use to determine the style applied to plugs. Unfortunately, we have neither a definitive list of these labels nor advance warning of when new labels might be applied or how that relates to how they get rendered. If you want to, you can refer to known labels to change your own styles: but know that new ones can be created arbitrarily, and we have no way of associating the labels with any specific UI style guidance... you&#39;ll have to piece that together on your end. Or do what we do, and just show plugs more generically, without specialized styles..</param>
-        /// <param name="plugStyle">plugStyle.</param>
-        /// <param name="isPseudoPlug">If TRUE, the plug doesn&#39;t actually convey any benefit: it only exists to show information in the UI..</param>
-        /// <param name="plugAvailability">Indicates the rules about when this plug can be used. See the PlugAvailabilityMode enumeration for more information!.</param>
-        /// <param name="alternateUiPlugLabel">If the plug meets certain state requirements, it may have an alternative label applied to it. This is the alternative label that will be applied in such a situation..</param>
-        /// <param name="alternatePlugStyle">The alternate plug of the plug: only applies when the item is in states that only the server can know about and control, unfortunately. See AlternateUiPlugLabel for the related label info..</param>
-        /// <param name="isDummyPlug">If TRUE, this plug is used for UI display purposes only, and doesn&#39;t have any interesting effects of its own..</param>
-        /// <param name="parentItemOverride">Do you ever get the feeling that a system has become so overburdened by edge cases that it probably should have become some other system entirely? So do I!  In totally unrelated news, Plugs can now override properties of their parent items. This is some of the relevant definition data for those overrides.  If this is populated, it will have the override data to be applied when this plug is applied to an item..</param>
-        public DestinyDefinitionsItemsDestinyItemPlugDefinition(List<DestinyDefinitionsItemsDestinyPlugRuleDefinition> insertionRules = default(List<DestinyDefinitionsItemsDestinyPlugRuleDefinition>), string plugCategoryIdentifier = default(string), int? plugCategoryHash = default(int?), bool? onActionRecreateSelf = default(bool?), int? insertionMaterialRequirementHash = default(int?), int? previewItemOverrideHash = default(int?), int? enabledMaterialRequirementHash = default(int?), List<DestinyDefinitionsItemsDestinyPlugRuleDefinition> enabledRules = default(List<DestinyDefinitionsItemsDestinyPlugRuleDefinition>), string uiPlugLabel = default(string), DestinyPlugUiStyles plugStyle = default(DestinyPlugUiStyles), bool? isPseudoPlug = default(bool?), Object plugAvailability = default(Object), string alternateUiPlugLabel = default(string), Object alternatePlugStyle = default(Object), bool? isDummyPlug = default(bool?), Object parentItemOverride = default(Object))
+        /// <param name="InsertionRules">The rules around when this plug can be inserted into a socket, aside from the socket&#39;s individual restrictions.  The live data DestinyItemPlugComponent.insertFailIndexes will be an index into this array, so you can pull out the failure strings appropriate for the user..</param>
+        /// <param name="PlugCategoryIdentifier">The string identifier for the plug&#39;s category. Use the socket&#39;s DestinySocketTypeDefinition.plugWhitelist to determine whether this plug can be inserted into the socket..</param>
+        /// <param name="PlugCategoryHash">The hash for the plugCategoryIdentifier. You can use this instead if you wish: I put both in the definition for debugging purposes..</param>
+        /// <param name="OnActionRecreateSelf">If you successfully socket the item, this will determine whether or not you get \&quot;refunded\&quot; on the plug..</param>
+        /// <param name="InsertionMaterialRequirementHash">If inserting this plug requires materials, this is the hash identifier for looking up the DestinyMaterialRequirementSetDefinition for those requirements..</param>
+        /// <param name="PreviewItemOverrideHash">In the game, if you&#39;re inspecting a plug item directly, this will be the item shown with the plug attached. Look up the DestinyInventoryItemDefinition for this hash for the item..</param>
+        /// <param name="EnabledMaterialRequirementHash">It&#39;s not enough for the plug to be inserted. It has to be enabled as well. For it to be enabled, it may require materials. This is the hash identifier for the DestinyMaterialRequirementSetDefinition for those requirements, if there is one..</param>
+        /// <param name="EnabledRules">The rules around whether the plug, once inserted, is enabled and providing its benefits.  The live data DestinyItemPlugComponent.enableFailIndexes will be an index into this array, so you can pull out the failure strings appropriate for the user..</param>
+        /// <param name="UiPlugLabel">Plugs can have arbitrary, UI-defined identifiers that the UI designers use to determine the style applied to plugs. Unfortunately, we have neither a definitive list of these labels nor advance warning of when new labels might be applied or how that relates to how they get rendered. If you want to, you can refer to known labels to change your own styles: but know that new ones can be created arbitrarily, and we have no way of associating the labels with any specific UI style guidance... you&#39;ll have to piece that together on your end. Or do what we do, and just show plugs more generically, without specialized styles..</param>
+        /// <param name="PlugStyle">PlugStyle.</param>
+        /// <param name="IsPseudoPlug">If TRUE, the plug doesn&#39;t actually convey any benefit: it only exists to show information in the UI..</param>
+        /// <param name="PlugAvailability">Indicates the rules about when this plug can be used. See the PlugAvailabilityMode enumeration for more information!.</param>
+        /// <param name="AlternateUiPlugLabel">If the plug meets certain state requirements, it may have an alternative label applied to it. This is the alternative label that will be applied in such a situation..</param>
+        /// <param name="AlternatePlugStyle">The alternate plug of the plug: only applies when the item is in states that only the server can know about and control, unfortunately. See AlternateUiPlugLabel for the related label info..</param>
+        /// <param name="IsDummyPlug">If TRUE, this plug is used for UI display purposes only, and doesn&#39;t have any interesting effects of its own..</param>
+        /// <param name="ParentItemOverride">Do you ever get the feeling that a system has become so overburdened by edge cases that it probably should have become some other system entirely? So do I!  In totally unrelated news, Plugs can now override properties of their parent items. This is some of the relevant definition data for those overrides.  If this is populated, it will have the override data to be applied when this plug is applied to an item..</param>
+        public DestinyDefinitionsItemsDestinyItemPlugDefinition(List<DestinyDefinitionsItemsDestinyPlugRuleDefinition> InsertionRules = default(List<DestinyDefinitionsItemsDestinyPlugRuleDefinition>), string PlugCategoryIdentifier = default(string), uint? PlugCategoryHash = default(uint?), bool? OnActionRecreateSelf = default(bool?), uint? InsertionMaterialRequirementHash = default(uint?), uint? PreviewItemOverrideHash = default(uint?), uint? EnabledMaterialRequirementHash = default(uint?), List<DestinyDefinitionsItemsDestinyPlugRuleDefinition> EnabledRules = default(List<DestinyDefinitionsItemsDestinyPlugRuleDefinition>), string UiPlugLabel = default(string), DestinyPlugUiStyles PlugStyle = default(DestinyPlugUiStyles), bool? IsPseudoPlug = default(bool?), DestinyPlugAvailabilityMode PlugAvailability = default(DestinyPlugAvailabilityMode), string AlternateUiPlugLabel = default(string), DestinyPlugUiStyles AlternatePlugStyle = default(DestinyPlugUiStyles), bool? IsDummyPlug = default(bool?), DestinyDefinitionsItemsDestinyParentItemOverride ParentItemOverride = default(DestinyDefinitionsItemsDestinyParentItemOverride))
         {
-            this.InsertionRules = insertionRules;
-            this.PlugCategoryIdentifier = plugCategoryIdentifier;
-            this.PlugCategoryHash = plugCategoryHash;
-            this.OnActionRecreateSelf = onActionRecreateSelf;
-            this.InsertionMaterialRequirementHash = insertionMaterialRequirementHash;
-            this.PreviewItemOverrideHash = previewItemOverrideHash;
-            this.EnabledMaterialRequirementHash = enabledMaterialRequirementHash;
-            this.EnabledRules = enabledRules;
-            this.UiPlugLabel = uiPlugLabel;
-            this.PlugStyle = plugStyle;
-            this.IsPseudoPlug = isPseudoPlug;
-            this.PlugAvailability = plugAvailability;
-            this.AlternateUiPlugLabel = alternateUiPlugLabel;
-            this.AlternatePlugStyle = alternatePlugStyle;
-            this.IsDummyPlug = isDummyPlug;
-            this.ParentItemOverride = parentItemOverride;
+            this.InsertionRules = InsertionRules;
+            this.PlugCategoryIdentifier = PlugCategoryIdentifier;
+            this.PlugCategoryHash = PlugCategoryHash;
+            this.OnActionRecreateSelf = OnActionRecreateSelf;
+            this.InsertionMaterialRequirementHash = InsertionMaterialRequirementHash;
+            this.PreviewItemOverrideHash = PreviewItemOverrideHash;
+            this.EnabledMaterialRequirementHash = EnabledMaterialRequirementHash;
+            this.EnabledRules = EnabledRules;
+            this.UiPlugLabel = UiPlugLabel;
+            this.PlugStyle = PlugStyle;
+            this.IsPseudoPlug = IsPseudoPlug;
+            this.PlugAvailability = PlugAvailability;
+            this.AlternateUiPlugLabel = AlternateUiPlugLabel;
+            this.AlternatePlugStyle = AlternatePlugStyle;
+            this.IsDummyPlug = IsDummyPlug;
+            this.ParentItemOverride = ParentItemOverride;
         }
         
         /// <summary>
@@ -88,7 +88,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash for the plugCategoryIdentifier. You can use this instead if you wish: I put both in the definition for debugging purposes.</value>
         [DataMember(Name="plugCategoryHash", EmitDefaultValue=false)]
-        public int? PlugCategoryHash { get; set; }
+        public uint? PlugCategoryHash { get; set; }
 
         /// <summary>
         /// If you successfully socket the item, this will determine whether or not you get \&quot;refunded\&quot; on the plug.
@@ -102,21 +102,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If inserting this plug requires materials, this is the hash identifier for looking up the DestinyMaterialRequirementSetDefinition for those requirements.</value>
         [DataMember(Name="insertionMaterialRequirementHash", EmitDefaultValue=false)]
-        public int? InsertionMaterialRequirementHash { get; set; }
+        public uint? InsertionMaterialRequirementHash { get; set; }
 
         /// <summary>
         /// In the game, if you&#39;re inspecting a plug item directly, this will be the item shown with the plug attached. Look up the DestinyInventoryItemDefinition for this hash for the item.
         /// </summary>
         /// <value>In the game, if you&#39;re inspecting a plug item directly, this will be the item shown with the plug attached. Look up the DestinyInventoryItemDefinition for this hash for the item.</value>
         [DataMember(Name="previewItemOverrideHash", EmitDefaultValue=false)]
-        public int? PreviewItemOverrideHash { get; set; }
+        public uint? PreviewItemOverrideHash { get; set; }
 
         /// <summary>
         /// It&#39;s not enough for the plug to be inserted. It has to be enabled as well. For it to be enabled, it may require materials. This is the hash identifier for the DestinyMaterialRequirementSetDefinition for those requirements, if there is one.
         /// </summary>
         /// <value>It&#39;s not enough for the plug to be inserted. It has to be enabled as well. For it to be enabled, it may require materials. This is the hash identifier for the DestinyMaterialRequirementSetDefinition for those requirements, if there is one.</value>
         [DataMember(Name="enabledMaterialRequirementHash", EmitDefaultValue=false)]
-        public int? EnabledMaterialRequirementHash { get; set; }
+        public uint? EnabledMaterialRequirementHash { get; set; }
 
         /// <summary>
         /// The rules around whether the plug, once inserted, is enabled and providing its benefits.  The live data DestinyItemPlugComponent.enableFailIndexes will be an index into this array, so you can pull out the failure strings appropriate for the user.
@@ -150,7 +150,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Indicates the rules about when this plug can be used. See the PlugAvailabilityMode enumeration for more information!</value>
         [DataMember(Name="plugAvailability", EmitDefaultValue=false)]
-        public Object PlugAvailability { get; set; }
+        public DestinyPlugAvailabilityMode PlugAvailability { get; set; }
 
         /// <summary>
         /// If the plug meets certain state requirements, it may have an alternative label applied to it. This is the alternative label that will be applied in such a situation.
@@ -164,7 +164,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The alternate plug of the plug: only applies when the item is in states that only the server can know about and control, unfortunately. See AlternateUiPlugLabel for the related label info.</value>
         [DataMember(Name="alternatePlugStyle", EmitDefaultValue=false)]
-        public Object AlternatePlugStyle { get; set; }
+        public DestinyPlugUiStyles AlternatePlugStyle { get; set; }
 
         /// <summary>
         /// If TRUE, this plug is used for UI display purposes only, and doesn&#39;t have any interesting effects of its own.
@@ -178,7 +178,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Do you ever get the feeling that a system has become so overburdened by edge cases that it probably should have become some other system entirely? So do I!  In totally unrelated news, Plugs can now override properties of their parent items. This is some of the relevant definition data for those overrides.  If this is populated, it will have the override data to be applied when this plug is applied to an item.</value>
         [DataMember(Name="parentItemOverride", EmitDefaultValue=false)]
-        public Object ParentItemOverride { get; set; }
+        public DestinyDefinitionsItemsDestinyParentItemOverride ParentItemOverride { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -212,7 +212,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,48 +33,48 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="image">A custom image someone made just for the milestone. Isn&#39;t that special?.</param>
-        /// <param name="milestoneType">An enumeration listing one of the possible types of milestones. Check out the DestinyMilestoneType enum for more info!.</param>
-        /// <param name="recruitable">If True, then the Milestone has been integrated with BNet&#39;s recruiting feature..</param>
-        /// <param name="friendlyName">If the milestone has a friendly identifier for association with other features - such as Recruiting - that identifier can be found here. This is \&quot;friendly\&quot; in that it looks better in a URL than whatever the identifier for the Milestone actually is..</param>
-        /// <param name="showInExplorer">If TRUE, this entry should be returned in the list of milestones for the \&quot;Explore Destiny\&quot; (i.e. new BNet homepage) features of Bungie.net (as long as the underlying event is active) Note that this is a property specifically used by BNet and the companion app for the \&quot;Live Events\&quot; feature of the front page/welcome view: it&#39;s not a reflection of what you see in-game..</param>
-        /// <param name="showInMilestones">Determines whether we&#39;ll show this Milestone in the user&#39;s personal Milestones list..</param>
-        /// <param name="explorePrioritizesActivityImage">If TRUE, \&quot;Explore Destiny\&quot; (the front page of BNet and the companion app) prioritize using the activity image over any overriding Quest or Milestone image provided. This unfortunate hack is brought to you by Trials of The Nine..</param>
-        /// <param name="hasPredictableDates">A shortcut for clients - and the server - to understand whether we can predict the start and end dates for this event. In practice, there are multiple ways that an event could have predictable date ranges, but not all events will be able to be predicted via any mechanism (for instance, events that are manually triggered on and off).</param>
-        /// <param name="quests">The full set of possible Quests that give the overview of the Milestone event/activity in question. Only one of these can be active at a time for a given Conceptual Milestone, but many of them may be \&quot;available\&quot; for the user to choose from. (for instance, with Milestones you can choose from the three available Quests, but only one can be active at a time) Keyed by the quest item.  As of Forsaken (~September 2018), Quest-style Milestones are being removed for many types of activities. There will likely be further revisions to the Milestone concept in the future..</param>
-        /// <param name="rewards">If this milestone can provide rewards, this will define the categories into which the individual reward entries are placed.  This is keyed by the Category&#39;s hash, which is only guaranteed to be unique within a given Milestone..</param>
-        /// <param name="vendorsDisplayTitle">If you&#39;re going to show Vendors for the Milestone, you can use this as a localized \&quot;header\&quot; for the section where you show that vendor data. It&#39;ll provide a more context-relevant clue about what the vendor&#39;s role is in the Milestone..</param>
-        /// <param name="vendors">Sometimes, milestones will have rewards provided by Vendors. This definition gives the information needed to understand which vendors are relevant, the order in which they should be returned if order matters, and the conditions under which the Vendor is relevant to the user..</param>
-        /// <param name="values">Sometimes, milestones will have arbitrary values associated with them that are of interest to us or to third party developers. This is the collection of those values&#39; definitions, keyed by the identifier of the value and providing useful definition information such as localizable names and descriptions for the value..</param>
-        /// <param name="isInGameMilestone">Some milestones are explicit objectives that you can see and interact with in the game. Some milestones are more conceptual, built by BNet to help advise you on activities and events that happen in-game but that aren&#39;t explicitly shown in game as Milestones. If this is TRUE, you can see this as a milestone in the game. If this is FALSE, it&#39;s an event or activity you can participate in, but you won&#39;t see it as a Milestone in the game&#39;s UI..</param>
-        /// <param name="activities">A Milestone can now be represented by one or more activities directly (without a backing Quest), and that activity can have many challenges, modifiers, and related to it..</param>
-        /// <param name="defaultOrder">defaultOrder.</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string image = default(string), Object milestoneType = default(Object), bool? recruitable = default(bool?), string friendlyName = default(string), bool? showInExplorer = default(bool?), bool? showInMilestones = default(bool?), bool? explorePrioritizesActivityImage = default(bool?), bool? hasPredictableDates = default(bool?), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneQuestDefinition> quests = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneQuestDefinition>), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneRewardCategoryDefinition> rewards = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneRewardCategoryDefinition>), string vendorsDisplayTitle = default(string), List<DestinyDefinitionsMilestonesDestinyMilestoneVendorDefinition> vendors = default(List<DestinyDefinitionsMilestonesDestinyMilestoneVendorDefinition>), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneValueDefinition> values = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneValueDefinition>), bool? isInGameMilestone = default(bool?), List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityDefinition> activities = default(List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityDefinition>), int? defaultOrder = default(int?), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="Image">A custom image someone made just for the milestone. Isn&#39;t that special?.</param>
+        /// <param name="MilestoneType">An enumeration listing one of the possible types of milestones. Check out the DestinyMilestoneType enum for more info!.</param>
+        /// <param name="Recruitable">If True, then the Milestone has been integrated with BNet&#39;s recruiting feature..</param>
+        /// <param name="FriendlyName">If the milestone has a friendly identifier for association with other features - such as Recruiting - that identifier can be found here. This is \&quot;friendly\&quot; in that it looks better in a URL than whatever the identifier for the Milestone actually is..</param>
+        /// <param name="ShowInExplorer">If TRUE, this entry should be returned in the list of milestones for the \&quot;Explore Destiny\&quot; (i.e. new BNet homepage) features of Bungie.net (as long as the underlying event is active) Note that this is a property specifically used by BNet and the companion app for the \&quot;Live Events\&quot; feature of the front page/welcome view: it&#39;s not a reflection of what you see in-game..</param>
+        /// <param name="ShowInMilestones">Determines whether we&#39;ll show this Milestone in the user&#39;s personal Milestones list..</param>
+        /// <param name="ExplorePrioritizesActivityImage">If TRUE, \&quot;Explore Destiny\&quot; (the front page of BNet and the companion app) prioritize using the activity image over any overriding Quest or Milestone image provided. This unfortunate hack is brought to you by Trials of The Nine..</param>
+        /// <param name="HasPredictableDates">A shortcut for clients - and the server - to understand whether we can predict the start and end dates for this event. In practice, there are multiple ways that an event could have predictable date ranges, but not all events will be able to be predicted via any mechanism (for instance, events that are manually triggered on and off).</param>
+        /// <param name="Quests">The full set of possible Quests that give the overview of the Milestone event/activity in question. Only one of these can be active at a time for a given Conceptual Milestone, but many of them may be \&quot;available\&quot; for the user to choose from. (for instance, with Milestones you can choose from the three available Quests, but only one can be active at a time) Keyed by the quest item.  As of Forsaken (~September 2018), Quest-style Milestones are being removed for many types of activities. There will likely be further revisions to the Milestone concept in the future..</param>
+        /// <param name="Rewards">If this milestone can provide rewards, this will define the categories into which the individual reward entries are placed.  This is keyed by the Category&#39;s hash, which is only guaranteed to be unique within a given Milestone..</param>
+        /// <param name="VendorsDisplayTitle">If you&#39;re going to show Vendors for the Milestone, you can use this as a localized \&quot;header\&quot; for the section where you show that vendor data. It&#39;ll provide a more context-relevant clue about what the vendor&#39;s role is in the Milestone..</param>
+        /// <param name="Vendors">Sometimes, milestones will have rewards provided by Vendors. This definition gives the information needed to understand which vendors are relevant, the order in which they should be returned if order matters, and the conditions under which the Vendor is relevant to the user..</param>
+        /// <param name="Values">Sometimes, milestones will have arbitrary values associated with them that are of interest to us or to third party developers. This is the collection of those values&#39; definitions, keyed by the identifier of the value and providing useful definition information such as localizable names and descriptions for the value..</param>
+        /// <param name="IsInGameMilestone">Some milestones are explicit objectives that you can see and interact with in the game. Some milestones are more conceptual, built by BNet to help advise you on activities and events that happen in-game but that aren&#39;t explicitly shown in game as Milestones. If this is TRUE, you can see this as a milestone in the game. If this is FALSE, it&#39;s an event or activity you can participate in, but you won&#39;t see it as a Milestone in the game&#39;s UI..</param>
+        /// <param name="Activities">A Milestone can now be represented by one or more activities directly (without a backing Quest), and that activity can have many challenges, modifiers, and related to it..</param>
+        /// <param name="DefaultOrder">DefaultOrder.</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string Image = default(string), DestinyDefinitionsMilestonesDestinyMilestoneType MilestoneType = default(DestinyDefinitionsMilestonesDestinyMilestoneType), bool? Recruitable = default(bool?), string FriendlyName = default(string), bool? ShowInExplorer = default(bool?), bool? ShowInMilestones = default(bool?), bool? ExplorePrioritizesActivityImage = default(bool?), bool? HasPredictableDates = default(bool?), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneQuestDefinition> Quests = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneQuestDefinition>), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneRewardCategoryDefinition> Rewards = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneRewardCategoryDefinition>), string VendorsDisplayTitle = default(string), List<DestinyDefinitionsMilestonesDestinyMilestoneVendorDefinition> Vendors = default(List<DestinyDefinitionsMilestonesDestinyMilestoneVendorDefinition>), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneValueDefinition> Values = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneValueDefinition>), bool? IsInGameMilestone = default(bool?), List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityDefinition> Activities = default(List<DestinyDefinitionsMilestonesDestinyMilestoneChallengeActivityDefinition>), int? DefaultOrder = default(int?), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.Image = image;
-            this.MilestoneType = milestoneType;
-            this.Recruitable = recruitable;
-            this.FriendlyName = friendlyName;
-            this.ShowInExplorer = showInExplorer;
-            this.ShowInMilestones = showInMilestones;
-            this.ExplorePrioritizesActivityImage = explorePrioritizesActivityImage;
-            this.HasPredictableDates = hasPredictableDates;
-            this.Quests = quests;
-            this.Rewards = rewards;
-            this.VendorsDisplayTitle = vendorsDisplayTitle;
-            this.Vendors = vendors;
-            this.Values = values;
-            this.IsInGameMilestone = isInGameMilestone;
-            this.Activities = activities;
-            this.DefaultOrder = defaultOrder;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.Image = Image;
+            this.MilestoneType = MilestoneType;
+            this.Recruitable = Recruitable;
+            this.FriendlyName = FriendlyName;
+            this.ShowInExplorer = ShowInExplorer;
+            this.ShowInMilestones = ShowInMilestones;
+            this.ExplorePrioritizesActivityImage = ExplorePrioritizesActivityImage;
+            this.HasPredictableDates = HasPredictableDates;
+            this.Quests = Quests;
+            this.Rewards = Rewards;
+            this.VendorsDisplayTitle = VendorsDisplayTitle;
+            this.Vendors = Vendors;
+            this.Values = Values;
+            this.IsInGameMilestone = IsInGameMilestone;
+            this.Activities = Activities;
+            this.DefaultOrder = DefaultOrder;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -95,7 +95,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>An enumeration listing one of the possible types of milestones. Check out the DestinyMilestoneType enum for more info!</value>
         [DataMember(Name="milestoneType", EmitDefaultValue=false)]
-        public Object MilestoneType { get; set; }
+        public DestinyDefinitionsMilestonesDestinyMilestoneType MilestoneType { get; set; }
 
         /// <summary>
         /// If True, then the Milestone has been integrated with BNet&#39;s recruiting feature.
@@ -199,7 +199,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -251,7 +251,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

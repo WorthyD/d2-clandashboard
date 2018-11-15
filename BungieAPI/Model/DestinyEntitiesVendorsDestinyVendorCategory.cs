@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesVendorsDestinyVendorCategory" /> class.
         /// </summary>
-        /// <param name="displayCategoryIndex">An index into the DestinyVendorDefinition.displayCategories property, so you can grab the display data for this category..</param>
-        /// <param name="itemIndexes">An ordered list of indexes into items being sold in this category (DestinyVendorDefinition.itemList) which will contain more information about the items being sold themselves. Can also be used to index into DestinyVendorSaleItemComponent data, if you asked for that data to be returned..</param>
-        public DestinyEntitiesVendorsDestinyVendorCategory(int? displayCategoryIndex = default(int?), List<int?> itemIndexes = default(List<int?>))
+        /// <param name="DisplayCategoryIndex">An index into the DestinyVendorDefinition.displayCategories property, so you can grab the display data for this category..</param>
+        /// <param name="ItemIndexes">An ordered list of indexes into items being sold in this category (DestinyVendorDefinition.itemList) which will contain more information about the items being sold themselves. Can also be used to index into DestinyVendorSaleItemComponent data, if you asked for that data to be returned..</param>
+        public DestinyEntitiesVendorsDestinyVendorCategory(int? DisplayCategoryIndex = default(int?), List<int?> ItemIndexes = default(List<int?>))
         {
-            this.DisplayCategoryIndex = displayCategoryIndex;
-            this.ItemIndexes = itemIndexes;
+            this.DisplayCategoryIndex = DisplayCategoryIndex;
+            this.ItemIndexes = ItemIndexes;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

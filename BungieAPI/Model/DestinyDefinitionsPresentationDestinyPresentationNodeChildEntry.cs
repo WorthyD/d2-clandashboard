@@ -33,17 +33,17 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsPresentationDestinyPresentationNodeChildEntry" /> class.
         /// </summary>
-        /// <param name="presentationNodeHash">presentationNodeHash.</param>
-        public DestinyDefinitionsPresentationDestinyPresentationNodeChildEntry(int? presentationNodeHash = default(int?))
+        /// <param name="PresentationNodeHash">PresentationNodeHash.</param>
+        public DestinyDefinitionsPresentationDestinyPresentationNodeChildEntry(uint? PresentationNodeHash = default(uint?))
         {
-            this.PresentationNodeHash = presentationNodeHash;
+            this.PresentationNodeHash = PresentationNodeHash;
         }
         
         /// <summary>
         /// Gets or Sets PresentationNodeHash
         /// </summary>
         [DataMember(Name="presentationNodeHash", EmitDefaultValue=false)]
-        public int? PresentationNodeHash { get; set; }
+        public uint? PresentationNodeHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

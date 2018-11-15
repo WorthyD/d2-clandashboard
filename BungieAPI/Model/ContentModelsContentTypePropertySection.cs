@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentModelsContentTypePropertySection" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="readableName">readableName.</param>
-        /// <param name="collapsed">collapsed.</param>
-        public ContentModelsContentTypePropertySection(string name = default(string), string readableName = default(string), bool? collapsed = default(bool?))
+        /// <param name="Name">Name.</param>
+        /// <param name="ReadableName">ReadableName.</param>
+        /// <param name="Collapsed">Collapsed.</param>
+        public ContentModelsContentTypePropertySection(string Name = default(string), string ReadableName = default(string), bool? Collapsed = default(bool?))
         {
-            this.Name = name;
-            this.ReadableName = readableName;
-            this.Collapsed = collapsed;
+            this.Name = Name;
+            this.ReadableName = ReadableName;
+            this.Collapsed = Collapsed;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,19 +33,19 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TrendingTrendingEntryDestinyActivity" /> class.
         /// </summary>
-        /// <param name="activityHash">activityHash.</param>
-        /// <param name="status">status.</param>
-        public TrendingTrendingEntryDestinyActivity(int? activityHash = default(int?), DestinyActivitiesDestinyPublicActivityStatus status = default(DestinyActivitiesDestinyPublicActivityStatus))
+        /// <param name="ActivityHash">ActivityHash.</param>
+        /// <param name="Status">Status.</param>
+        public TrendingTrendingEntryDestinyActivity(uint? ActivityHash = default(uint?), DestinyActivitiesDestinyPublicActivityStatus Status = default(DestinyActivitiesDestinyPublicActivityStatus))
         {
-            this.ActivityHash = activityHash;
-            this.Status = status;
+            this.ActivityHash = ActivityHash;
+            this.Status = Status;
         }
         
         /// <summary>
         /// Gets or Sets ActivityHash
         /// </summary>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

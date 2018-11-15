@@ -33,22 +33,22 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FireteamFireteamMember" /> class.
         /// </summary>
-        /// <param name="destinyUserInfo">destinyUserInfo.</param>
-        /// <param name="bungieNetUserInfo">bungieNetUserInfo.</param>
-        /// <param name="characterId">characterId.</param>
-        /// <param name="dateJoined">dateJoined.</param>
-        /// <param name="hasMicrophone">hasMicrophone.</param>
-        /// <param name="lastPlatformInviteAttemptDate">lastPlatformInviteAttemptDate.</param>
-        /// <param name="lastPlatformInviteAttemptResult">lastPlatformInviteAttemptResult.</param>
-        public FireteamFireteamMember(UserUserInfoCard destinyUserInfo = default(UserUserInfoCard), UserUserInfoCard bungieNetUserInfo = default(UserUserInfoCard), long? characterId = default(long?), DateTime? dateJoined = default(DateTime?), bool? hasMicrophone = default(bool?), DateTime? lastPlatformInviteAttemptDate = default(DateTime?), FireteamFireteamPlatformInviteResult lastPlatformInviteAttemptResult = default(FireteamFireteamPlatformInviteResult))
+        /// <param name="DestinyUserInfo">DestinyUserInfo.</param>
+        /// <param name="BungieNetUserInfo">BungieNetUserInfo.</param>
+        /// <param name="CharacterId">CharacterId.</param>
+        /// <param name="DateJoined">DateJoined.</param>
+        /// <param name="HasMicrophone">HasMicrophone.</param>
+        /// <param name="LastPlatformInviteAttemptDate">LastPlatformInviteAttemptDate.</param>
+        /// <param name="LastPlatformInviteAttemptResult">LastPlatformInviteAttemptResult.</param>
+        public FireteamFireteamMember(UserUserInfoCard DestinyUserInfo = default(UserUserInfoCard), UserUserInfoCard BungieNetUserInfo = default(UserUserInfoCard), long? CharacterId = default(long?), DateTime? DateJoined = default(DateTime?), bool? HasMicrophone = default(bool?), DateTime? LastPlatformInviteAttemptDate = default(DateTime?), FireteamFireteamPlatformInviteResult LastPlatformInviteAttemptResult = default(FireteamFireteamPlatformInviteResult))
         {
-            this.DestinyUserInfo = destinyUserInfo;
-            this.BungieNetUserInfo = bungieNetUserInfo;
-            this.CharacterId = characterId;
-            this.DateJoined = dateJoined;
-            this.HasMicrophone = hasMicrophone;
-            this.LastPlatformInviteAttemptDate = lastPlatformInviteAttemptDate;
-            this.LastPlatformInviteAttemptResult = lastPlatformInviteAttemptResult;
+            this.DestinyUserInfo = DestinyUserInfo;
+            this.BungieNetUserInfo = BungieNetUserInfo;
+            this.CharacterId = CharacterId;
+            this.DateJoined = DateJoined;
+            this.HasMicrophone = HasMicrophone;
+            this.LastPlatformInviteAttemptDate = LastPlatformInviteAttemptDate;
+            this.LastPlatformInviteAttemptResult = LastPlatformInviteAttemptResult;
         }
         
         /// <summary>
@@ -116,7 +116,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

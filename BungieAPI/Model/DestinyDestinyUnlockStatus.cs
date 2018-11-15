@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDestinyUnlockStatus" /> class.
         /// </summary>
-        /// <param name="unlockHash">The hash identifier for the Unlock Flag. Use to lookup DestinyUnlockDefinition for static data. Not all unlocks have human readable data - in fact, most don&#39;t. But when they do, it can be very useful to show. Even if they don&#39;t have human readable data, you might be able to infer the meaning of an unlock flag with a bit of experimentation....</param>
-        /// <param name="isSet">Whether the unlock flag is set..</param>
-        public DestinyDestinyUnlockStatus(int? unlockHash = default(int?), bool? isSet = default(bool?))
+        /// <param name="UnlockHash">The hash identifier for the Unlock Flag. Use to lookup DestinyUnlockDefinition for static data. Not all unlocks have human readable data - in fact, most don&#39;t. But when they do, it can be very useful to show. Even if they don&#39;t have human readable data, you might be able to infer the meaning of an unlock flag with a bit of experimentation....</param>
+        /// <param name="IsSet">Whether the unlock flag is set..</param>
+        public DestinyDestinyUnlockStatus(uint? UnlockHash = default(uint?), bool? IsSet = default(bool?))
         {
-            this.UnlockHash = unlockHash;
-            this.IsSet = isSet;
+            this.UnlockHash = UnlockHash;
+            this.IsSet = IsSet;
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the Unlock Flag. Use to lookup DestinyUnlockDefinition for static data. Not all unlocks have human readable data - in fact, most don&#39;t. But when they do, it can be very useful to show. Even if they don&#39;t have human readable data, you might be able to infer the meaning of an unlock flag with a bit of experimentation...</value>
         [DataMember(Name="unlockHash", EmitDefaultValue=false)]
-        public int? UnlockHash { get; set; }
+        public uint? UnlockHash { get; set; }
 
         /// <summary>
         /// Whether the unlock flag is set.
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemSocketCategoryDefinition" /> class.
         /// </summary>
-        /// <param name="socketCategoryHash">The hash for the Socket Category: a quick way to go get the header display information for the category. Use it to look up DestinySocketCategoryDefinition info..</param>
-        /// <param name="socketIndexes">Use these indexes to look up the sockets in the \&quot;sockets.socketEntries\&quot; property on the item definition. These are the indexes under the category, in game-rendered order..</param>
-        public DestinyDefinitionsDestinyItemSocketCategoryDefinition(int? socketCategoryHash = default(int?), List<int?> socketIndexes = default(List<int?>))
+        /// <param name="SocketCategoryHash">The hash for the Socket Category: a quick way to go get the header display information for the category. Use it to look up DestinySocketCategoryDefinition info..</param>
+        /// <param name="SocketIndexes">Use these indexes to look up the sockets in the \&quot;sockets.socketEntries\&quot; property on the item definition. These are the indexes under the category, in game-rendered order..</param>
+        public DestinyDefinitionsDestinyItemSocketCategoryDefinition(uint? SocketCategoryHash = default(uint?), List<int?> SocketIndexes = default(List<int?>))
         {
-            this.SocketCategoryHash = socketCategoryHash;
-            this.SocketIndexes = socketIndexes;
+            this.SocketCategoryHash = SocketCategoryHash;
+            this.SocketIndexes = SocketIndexes;
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash for the Socket Category: a quick way to go get the header display information for the category. Use it to look up DestinySocketCategoryDefinition info.</value>
         [DataMember(Name="socketCategoryHash", EmitDefaultValue=false)]
-        public int? SocketCategoryHash { get; set; }
+        public uint? SocketCategoryHash { get; set; }
 
         /// <summary>
         /// Use these indexes to look up the sockets in the \&quot;sockets.socketEntries\&quot; property on the item definition. These are the indexes under the category, in game-rendered order.
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

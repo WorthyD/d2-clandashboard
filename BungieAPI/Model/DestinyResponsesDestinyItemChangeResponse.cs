@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyResponsesDestinyItemChangeResponse" /> class.
         /// </summary>
-        /// <param name="item">item.</param>
-        /// <param name="addedInventoryItems">Items that appeared in the inventory possibly as a result of an action..</param>
-        /// <param name="removedInventoryItems">Items that disappeared from the inventory possibly as a result of an action..</param>
-        public DestinyResponsesDestinyItemChangeResponse(DestinyResponsesDestinyItemResponse item = default(DestinyResponsesDestinyItemResponse), List<DestinyEntitiesItemsDestinyItemComponent> addedInventoryItems = default(List<DestinyEntitiesItemsDestinyItemComponent>), List<DestinyEntitiesItemsDestinyItemComponent> removedInventoryItems = default(List<DestinyEntitiesItemsDestinyItemComponent>))
+        /// <param name="Item">Item.</param>
+        /// <param name="AddedInventoryItems">Items that appeared in the inventory possibly as a result of an action..</param>
+        /// <param name="RemovedInventoryItems">Items that disappeared from the inventory possibly as a result of an action..</param>
+        public DestinyResponsesDestinyItemChangeResponse(DestinyResponsesDestinyItemResponse Item = default(DestinyResponsesDestinyItemResponse), List<DestinyEntitiesItemsDestinyItemComponent> AddedInventoryItems = default(List<DestinyEntitiesItemsDestinyItemComponent>), List<DestinyEntitiesItemsDestinyItemComponent> RemovedInventoryItems = default(List<DestinyEntitiesItemsDestinyItemComponent>))
         {
-            this.Item = item;
-            this.AddedInventoryItems = addedInventoryItems;
-            this.RemovedInventoryItems = removedInventoryItems;
+            this.Item = Item;
+            this.AddedInventoryItems = AddedInventoryItems;
+            this.RemovedInventoryItems = RemovedInventoryItems;
         }
         
         /// <summary>
@@ -82,7 +82,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

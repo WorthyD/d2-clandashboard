@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemCreationEntryLevelDefinition" /> class.
         /// </summary>
-        /// <param name="level">level.</param>
-        public DestinyDefinitionsDestinyItemCreationEntryLevelDefinition(int? level = default(int?))
+        /// <param name="Level">Level.</param>
+        public DestinyDefinitionsDestinyItemCreationEntryLevelDefinition(int? Level = default(int?))
         {
-            this.Level = level;
+            this.Level = Level;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

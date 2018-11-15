@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyRequestsActionsDestinyInsertPlugsActionRequest" /> class.
         /// </summary>
-        /// <param name="actionToken">Action token provided by the AwaGetActionToken API call..</param>
-        /// <param name="itemInstanceId">The instance ID of the item having a plug inserted. Only instanced items can have sockets..</param>
-        /// <param name="plug">The plugs being inserted..</param>
-        /// <param name="characterId">characterId.</param>
-        /// <param name="membershipType">membershipType.</param>
-        public DestinyRequestsActionsDestinyInsertPlugsActionRequest(string actionToken = default(string), long? itemInstanceId = default(long?), Object plug = default(Object), long? characterId = default(long?), BungieMembershipType membershipType = default(BungieMembershipType))
+        /// <param name="ActionToken">Action token provided by the AwaGetActionToken API call..</param>
+        /// <param name="ItemInstanceId">The instance ID of the item having a plug inserted. Only instanced items can have sockets..</param>
+        /// <param name="Plug">The plugs being inserted..</param>
+        /// <param name="CharacterId">CharacterId.</param>
+        /// <param name="MembershipType">MembershipType.</param>
+        public DestinyRequestsActionsDestinyInsertPlugsActionRequest(string ActionToken = default(string), long? ItemInstanceId = default(long?), DestinyRequestsActionsDestinyInsertPlugsRequestEntry Plug = default(DestinyRequestsActionsDestinyInsertPlugsRequestEntry), long? CharacterId = default(long?), BungieMembershipType MembershipType = default(BungieMembershipType))
         {
-            this.ActionToken = actionToken;
-            this.ItemInstanceId = itemInstanceId;
-            this.Plug = plug;
-            this.CharacterId = characterId;
-            this.MembershipType = membershipType;
+            this.ActionToken = ActionToken;
+            this.ItemInstanceId = ItemInstanceId;
+            this.Plug = Plug;
+            this.CharacterId = CharacterId;
+            this.MembershipType = MembershipType;
         }
         
         /// <summary>
@@ -66,7 +66,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The plugs being inserted.</value>
         [DataMember(Name="plug", EmitDefaultValue=false)]
-        public Object Plug { get; set; }
+        public DestinyRequestsActionsDestinyInsertPlugsRequestEntry Plug { get; set; }
 
         /// <summary>
         /// Gets or Sets CharacterId
@@ -101,7 +101,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

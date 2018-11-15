@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupApplicationListRequest" /> class.
         /// </summary>
-        /// <param name="memberships">memberships.</param>
-        /// <param name="message">message.</param>
-        public GroupsV2GroupApplicationListRequest(List<UserUserMembership> memberships = default(List<UserUserMembership>), string message = default(string))
+        /// <param name="Memberships">Memberships.</param>
+        /// <param name="Message">Message.</param>
+        public GroupsV2GroupApplicationListRequest(List<UserUserMembership> Memberships = default(List<UserUserMembership>), string Message = default(string))
         {
-            this.Memberships = memberships;
-            this.Message = message;
+            this.Memberships = Memberships;
+            this.Message = Message;
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

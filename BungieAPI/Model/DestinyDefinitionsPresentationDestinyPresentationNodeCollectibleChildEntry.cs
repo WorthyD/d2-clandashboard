@@ -33,17 +33,17 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsPresentationDestinyPresentationNodeCollectibleChildEntry" /> class.
         /// </summary>
-        /// <param name="collectibleHash">collectibleHash.</param>
-        public DestinyDefinitionsPresentationDestinyPresentationNodeCollectibleChildEntry(int? collectibleHash = default(int?))
+        /// <param name="CollectibleHash">CollectibleHash.</param>
+        public DestinyDefinitionsPresentationDestinyPresentationNodeCollectibleChildEntry(uint? CollectibleHash = default(uint?))
         {
-            this.CollectibleHash = collectibleHash;
+            this.CollectibleHash = CollectibleHash;
         }
         
         /// <summary>
         /// Gets or Sets CollectibleHash
         /// </summary>
         [DataMember(Name="collectibleHash", EmitDefaultValue=false)]
-        public int? CollectibleHash { get; set; }
+        public uint? CollectibleHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

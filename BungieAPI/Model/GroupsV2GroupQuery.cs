@@ -31,34 +31,35 @@ namespace BungieAPI.Model
     public partial class GroupsV2GroupQuery :  IEquatable<GroupsV2GroupQuery>, IValidatableObject
     {
         /// <summary>
-        /// Defines GroupMemberCountFilter
+        /// Gets or Sets GroupMemberCountFilter
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public enum GroupMemberCountFilterEnum
         {
             
             /// <summary>
-            /// Enum NUMBER_0 for value: 0
+            /// Enum All for 0
             /// </summary>
-            
-            NUMBER_0 = 0,
+            [EnumMember(Value = "0")]
+            All = 0,
             
             /// <summary>
-            /// Enum NUMBER_1 for value: 1
+            /// Enum OneToTen for 1
             /// </summary>
-            
-            NUMBER_1 = 1,
+            [EnumMember(Value = "1")]
+            OneToTen = 1,
             
             /// <summary>
-            /// Enum NUMBER_2 for value: 2
+            /// Enum ElevenToOneHundred for 2
             /// </summary>
-            
-            NUMBER_2 = 2,
+            [EnumMember(Value = "2")]
+            ElevenToOneHundred = 2,
             
             /// <summary>
-            /// Enum NUMBER_3 for value: 3
+            /// Enum GreaterThanOneHundred for 3
             /// </summary>
-            
-            NUMBER_3 = 3
+            [EnumMember(Value = "3")]
+            GreaterThanOneHundred = 3
         }
 
         /// <summary>
@@ -69,28 +70,28 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupQuery" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="groupType">groupType.</param>
-        /// <param name="creationDate">creationDate.</param>
-        /// <param name="sortBy">sortBy.</param>
-        /// <param name="groupMemberCountFilter">groupMemberCountFilter.</param>
-        /// <param name="localeFilter">localeFilter.</param>
-        /// <param name="tagText">tagText.</param>
-        /// <param name="itemsPerPage">itemsPerPage.</param>
-        /// <param name="currentPage">currentPage.</param>
-        /// <param name="requestContinuationToken">requestContinuationToken.</param>
-        public GroupsV2GroupQuery(string name = default(string), GroupsV2GroupType groupType = default(GroupsV2GroupType), GroupsV2GroupDateRange creationDate = default(GroupsV2GroupDateRange), GroupsV2GroupSortBy sortBy = default(GroupsV2GroupSortBy), GroupMemberCountFilterEnum? groupMemberCountFilter = default(GroupMemberCountFilterEnum?), string localeFilter = default(string), string tagText = default(string), int? itemsPerPage = default(int?), int? currentPage = default(int?), string requestContinuationToken = default(string))
+        /// <param name="Name">Name.</param>
+        /// <param name="GroupType">GroupType.</param>
+        /// <param name="CreationDate">CreationDate.</param>
+        /// <param name="SortBy">SortBy.</param>
+        /// <param name="GroupMemberCountFilter">GroupMemberCountFilter.</param>
+        /// <param name="LocaleFilter">LocaleFilter.</param>
+        /// <param name="TagText">TagText.</param>
+        /// <param name="ItemsPerPage">ItemsPerPage.</param>
+        /// <param name="CurrentPage">CurrentPage.</param>
+        /// <param name="RequestContinuationToken">RequestContinuationToken.</param>
+        public GroupsV2GroupQuery(string Name = default(string), GroupsV2GroupType GroupType = default(GroupsV2GroupType), GroupsV2GroupDateRange CreationDate = default(GroupsV2GroupDateRange), GroupsV2GroupSortBy SortBy = default(GroupsV2GroupSortBy), GroupMemberCountFilterEnum? GroupMemberCountFilter = default(GroupMemberCountFilterEnum?), string LocaleFilter = default(string), string TagText = default(string), int? ItemsPerPage = default(int?), int? CurrentPage = default(int?), string RequestContinuationToken = default(string))
         {
-            this.Name = name;
-            this.GroupType = groupType;
-            this.CreationDate = creationDate;
-            this.SortBy = sortBy;
-            this.GroupMemberCountFilter = groupMemberCountFilter;
-            this.LocaleFilter = localeFilter;
-            this.TagText = tagText;
-            this.ItemsPerPage = itemsPerPage;
-            this.CurrentPage = currentPage;
-            this.RequestContinuationToken = requestContinuationToken;
+            this.Name = Name;
+            this.GroupType = GroupType;
+            this.CreationDate = CreationDate;
+            this.SortBy = SortBy;
+            this.GroupMemberCountFilter = GroupMemberCountFilter;
+            this.LocaleFilter = LocaleFilter;
+            this.TagText = TagText;
+            this.ItemsPerPage = ItemsPerPage;
+            this.CurrentPage = CurrentPage;
+            this.RequestContinuationToken = RequestContinuationToken;
         }
         
         /// <summary>
@@ -174,7 +175,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

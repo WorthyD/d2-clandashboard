@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsRecordsDestinyProfileRecordsComponent" /> class.
         /// </summary>
-        /// <param name="score">Your \&quot;Triumphs\&quot; score..</param>
-        /// <param name="trackedRecordHash">If this profile is tracking a record, this is the hash identifier of the record it is tracking..</param>
-        /// <param name="records">records.</param>
-        public DestinyComponentsRecordsDestinyProfileRecordsComponent(int? score = default(int?), int? trackedRecordHash = default(int?), Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent> records = default(Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent>))
+        /// <param name="Score">Your \&quot;Triumphs\&quot; score..</param>
+        /// <param name="TrackedRecordHash">If this profile is tracking a record, this is the hash identifier of the record it is tracking..</param>
+        /// <param name="Records">Records.</param>
+        public DestinyComponentsRecordsDestinyProfileRecordsComponent(int? Score = default(int?), uint? TrackedRecordHash = default(uint?), Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent> Records = default(Dictionary<string, DestinyComponentsRecordsDestinyRecordComponent>))
         {
-            this.Score = score;
-            this.TrackedRecordHash = trackedRecordHash;
-            this.Records = records;
+            this.Score = Score;
+            this.TrackedRecordHash = TrackedRecordHash;
+            this.Records = Records;
         }
         
         /// <summary>
@@ -55,7 +55,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If this profile is tracking a record, this is the hash identifier of the record it is tracking.</value>
         [DataMember(Name="trackedRecordHash", EmitDefaultValue=false)]
-        public int? TrackedRecordHash { get; set; }
+        public uint? TrackedRecordHash { get; set; }
 
         /// <summary>
         /// Gets or Sets Records
@@ -82,7 +82,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

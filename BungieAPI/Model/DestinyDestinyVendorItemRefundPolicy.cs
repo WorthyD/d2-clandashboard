@@ -28,29 +28,27 @@ namespace BungieAPI.Model
     /// The action that happens when the user attempts to refund an item.
     /// </summary>
     /// <value>The action that happens when the user attempts to refund an item.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyVendorItemRefundPolicy
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// The action that happens when the user attempts to refund an item.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        NotRefundable,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// The action that happens when the user attempts to refund an item.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        DeletesItem,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3
+		/// <summary>
+		/// The action that happens when the user attempts to refund an item.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        RevokesLicense
     }
 
 }

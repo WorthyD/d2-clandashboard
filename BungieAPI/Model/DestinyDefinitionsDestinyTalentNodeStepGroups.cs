@@ -33,18 +33,18 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyTalentNodeStepGroups" /> class.
         /// </summary>
-        /// <param name="weaponPerformance">weaponPerformance.</param>
-        /// <param name="impactEffects">impactEffects.</param>
-        /// <param name="guardianAttributes">guardianAttributes.</param>
-        /// <param name="lightAbilities">lightAbilities.</param>
-        /// <param name="damageTypes">damageTypes.</param>
-        public DestinyDefinitionsDestinyTalentNodeStepGroups(DestinyDefinitionsDestinyTalentNodeStepWeaponPerformances weaponPerformance = default(DestinyDefinitionsDestinyTalentNodeStepWeaponPerformances), DestinyDefinitionsDestinyTalentNodeStepImpactEffects impactEffects = default(DestinyDefinitionsDestinyTalentNodeStepImpactEffects), DestinyDefinitionsDestinyTalentNodeStepGuardianAttributes guardianAttributes = default(DestinyDefinitionsDestinyTalentNodeStepGuardianAttributes), DestinyDefinitionsDestinyTalentNodeStepLightAbilities lightAbilities = default(DestinyDefinitionsDestinyTalentNodeStepLightAbilities), DestinyDefinitionsDestinyTalentNodeStepDamageTypes damageTypes = default(DestinyDefinitionsDestinyTalentNodeStepDamageTypes))
+        /// <param name="WeaponPerformance">WeaponPerformance.</param>
+        /// <param name="ImpactEffects">ImpactEffects.</param>
+        /// <param name="GuardianAttributes">GuardianAttributes.</param>
+        /// <param name="LightAbilities">LightAbilities.</param>
+        /// <param name="DamageTypes">DamageTypes.</param>
+        public DestinyDefinitionsDestinyTalentNodeStepGroups(DestinyDefinitionsDestinyTalentNodeStepWeaponPerformances WeaponPerformance = default(DestinyDefinitionsDestinyTalentNodeStepWeaponPerformances), DestinyDefinitionsDestinyTalentNodeStepImpactEffects ImpactEffects = default(DestinyDefinitionsDestinyTalentNodeStepImpactEffects), DestinyDefinitionsDestinyTalentNodeStepGuardianAttributes GuardianAttributes = default(DestinyDefinitionsDestinyTalentNodeStepGuardianAttributes), DestinyDefinitionsDestinyTalentNodeStepLightAbilities LightAbilities = default(DestinyDefinitionsDestinyTalentNodeStepLightAbilities), DestinyDefinitionsDestinyTalentNodeStepDamageTypes DamageTypes = default(DestinyDefinitionsDestinyTalentNodeStepDamageTypes))
         {
-            this.WeaponPerformance = weaponPerformance;
-            this.ImpactEffects = impactEffects;
-            this.GuardianAttributes = guardianAttributes;
-            this.LightAbilities = lightAbilities;
-            this.DamageTypes = damageTypes;
+            this.WeaponPerformance = WeaponPerformance;
+            this.ImpactEffects = ImpactEffects;
+            this.GuardianAttributes = GuardianAttributes;
+            this.LightAbilities = LightAbilities;
+            this.DamageTypes = DamageTypes;
         }
         
         /// <summary>
@@ -98,7 +98,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

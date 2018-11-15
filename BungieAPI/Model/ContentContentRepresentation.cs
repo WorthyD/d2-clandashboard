@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentContentRepresentation" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="path">path.</param>
-        /// <param name="validationString">validationString.</param>
-        public ContentContentRepresentation(string name = default(string), string path = default(string), string validationString = default(string))
+        /// <param name="Name">Name.</param>
+        /// <param name="Path">Path.</param>
+        /// <param name="ValidationString">ValidationString.</param>
+        public ContentContentRepresentation(string Name = default(string), string Path = default(string), string ValidationString = default(string))
         {
-            this.Name = name;
-            this.Path = path;
-            this.ValidationString = validationString;
+            this.Name = Name;
+            this.Path = Path;
+            this.ValidationString = ValidationString;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

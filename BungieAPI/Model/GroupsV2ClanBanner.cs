@@ -33,65 +33,65 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2ClanBanner" /> class.
         /// </summary>
-        /// <param name="decalId">decalId.</param>
-        /// <param name="decalColorId">decalColorId.</param>
-        /// <param name="decalBackgroundColorId">decalBackgroundColorId.</param>
-        /// <param name="gonfalonId">gonfalonId.</param>
-        /// <param name="gonfalonColorId">gonfalonColorId.</param>
-        /// <param name="gonfalonDetailId">gonfalonDetailId.</param>
-        /// <param name="gonfalonDetailColorId">gonfalonDetailColorId.</param>
-        public GroupsV2ClanBanner(int? decalId = default(int?), int? decalColorId = default(int?), int? decalBackgroundColorId = default(int?), int? gonfalonId = default(int?), int? gonfalonColorId = default(int?), int? gonfalonDetailId = default(int?), int? gonfalonDetailColorId = default(int?))
+        /// <param name="DecalId">DecalId.</param>
+        /// <param name="DecalColorId">DecalColorId.</param>
+        /// <param name="DecalBackgroundColorId">DecalBackgroundColorId.</param>
+        /// <param name="GonfalonId">GonfalonId.</param>
+        /// <param name="GonfalonColorId">GonfalonColorId.</param>
+        /// <param name="GonfalonDetailId">GonfalonDetailId.</param>
+        /// <param name="GonfalonDetailColorId">GonfalonDetailColorId.</param>
+        public GroupsV2ClanBanner(uint? DecalId = default(uint?), uint? DecalColorId = default(uint?), uint? DecalBackgroundColorId = default(uint?), uint? GonfalonId = default(uint?), uint? GonfalonColorId = default(uint?), uint? GonfalonDetailId = default(uint?), uint? GonfalonDetailColorId = default(uint?))
         {
-            this.DecalId = decalId;
-            this.DecalColorId = decalColorId;
-            this.DecalBackgroundColorId = decalBackgroundColorId;
-            this.GonfalonId = gonfalonId;
-            this.GonfalonColorId = gonfalonColorId;
-            this.GonfalonDetailId = gonfalonDetailId;
-            this.GonfalonDetailColorId = gonfalonDetailColorId;
+            this.DecalId = DecalId;
+            this.DecalColorId = DecalColorId;
+            this.DecalBackgroundColorId = DecalBackgroundColorId;
+            this.GonfalonId = GonfalonId;
+            this.GonfalonColorId = GonfalonColorId;
+            this.GonfalonDetailId = GonfalonDetailId;
+            this.GonfalonDetailColorId = GonfalonDetailColorId;
         }
         
         /// <summary>
         /// Gets or Sets DecalId
         /// </summary>
         [DataMember(Name="decalId", EmitDefaultValue=false)]
-        public int? DecalId { get; set; }
+        public uint? DecalId { get; set; }
 
         /// <summary>
         /// Gets or Sets DecalColorId
         /// </summary>
         [DataMember(Name="decalColorId", EmitDefaultValue=false)]
-        public int? DecalColorId { get; set; }
+        public uint? DecalColorId { get; set; }
 
         /// <summary>
         /// Gets or Sets DecalBackgroundColorId
         /// </summary>
         [DataMember(Name="decalBackgroundColorId", EmitDefaultValue=false)]
-        public int? DecalBackgroundColorId { get; set; }
+        public uint? DecalBackgroundColorId { get; set; }
 
         /// <summary>
         /// Gets or Sets GonfalonId
         /// </summary>
         [DataMember(Name="gonfalonId", EmitDefaultValue=false)]
-        public int? GonfalonId { get; set; }
+        public uint? GonfalonId { get; set; }
 
         /// <summary>
         /// Gets or Sets GonfalonColorId
         /// </summary>
         [DataMember(Name="gonfalonColorId", EmitDefaultValue=false)]
-        public int? GonfalonColorId { get; set; }
+        public uint? GonfalonColorId { get; set; }
 
         /// <summary>
         /// Gets or Sets GonfalonDetailId
         /// </summary>
         [DataMember(Name="gonfalonDetailId", EmitDefaultValue=false)]
-        public int? GonfalonDetailId { get; set; }
+        public uint? GonfalonDetailId { get; set; }
 
         /// <summary>
         /// Gets or Sets GonfalonDetailColorId
         /// </summary>
         [DataMember(Name="gonfalonDetailColorId", EmitDefaultValue=false)]
-        public int? GonfalonDetailColorId { get; set; }
+        public uint? GonfalonDetailColorId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -116,7 +116,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

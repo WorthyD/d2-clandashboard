@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyComponentsCollectiblesDestinyCollectiblesComponent" /> class.
         /// </summary>
-        /// <param name="collectibles">collectibles.</param>
-        public DestinyComponentsCollectiblesDestinyCollectiblesComponent(Dictionary<string, DestinyComponentsCollectiblesDestinyCollectibleComponent> collectibles = default(Dictionary<string, DestinyComponentsCollectiblesDestinyCollectibleComponent>))
+        /// <param name="Collectibles">Collectibles.</param>
+        public DestinyComponentsCollectiblesDestinyCollectiblesComponent(Dictionary<string, DestinyComponentsCollectiblesDestinyCollectibleComponent> Collectibles = default(Dictionary<string, DestinyComponentsCollectiblesDestinyCollectibleComponent>))
         {
-            this.Collectibles = collectibles;
+            this.Collectibles = Collectibles;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

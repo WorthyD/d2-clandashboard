@@ -33,22 +33,22 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyItemTranslationBlockDefinition" /> class.
         /// </summary>
-        /// <param name="weaponPatternIdentifier">weaponPatternIdentifier.</param>
-        /// <param name="weaponPatternHash">weaponPatternHash.</param>
-        /// <param name="defaultDyes">defaultDyes.</param>
-        /// <param name="lockedDyes">lockedDyes.</param>
-        /// <param name="customDyes">customDyes.</param>
-        /// <param name="arrangements">arrangements.</param>
-        /// <param name="hasGeometry">hasGeometry.</param>
-        public DestinyDefinitionsDestinyItemTranslationBlockDefinition(string weaponPatternIdentifier = default(string), int? weaponPatternHash = default(int?), List<DestinyDyeReference> defaultDyes = default(List<DestinyDyeReference>), List<DestinyDyeReference> lockedDyes = default(List<DestinyDyeReference>), List<DestinyDyeReference> customDyes = default(List<DestinyDyeReference>), List<DestinyDefinitionsDestinyGearArtArrangementReference> arrangements = default(List<DestinyDefinitionsDestinyGearArtArrangementReference>), bool? hasGeometry = default(bool?))
+        /// <param name="WeaponPatternIdentifier">WeaponPatternIdentifier.</param>
+        /// <param name="WeaponPatternHash">WeaponPatternHash.</param>
+        /// <param name="DefaultDyes">DefaultDyes.</param>
+        /// <param name="LockedDyes">LockedDyes.</param>
+        /// <param name="CustomDyes">CustomDyes.</param>
+        /// <param name="Arrangements">Arrangements.</param>
+        /// <param name="HasGeometry">HasGeometry.</param>
+        public DestinyDefinitionsDestinyItemTranslationBlockDefinition(string WeaponPatternIdentifier = default(string), uint? WeaponPatternHash = default(uint?), List<DestinyDyeReference> DefaultDyes = default(List<DestinyDyeReference>), List<DestinyDyeReference> LockedDyes = default(List<DestinyDyeReference>), List<DestinyDyeReference> CustomDyes = default(List<DestinyDyeReference>), List<DestinyDefinitionsDestinyGearArtArrangementReference> Arrangements = default(List<DestinyDefinitionsDestinyGearArtArrangementReference>), bool? HasGeometry = default(bool?))
         {
-            this.WeaponPatternIdentifier = weaponPatternIdentifier;
-            this.WeaponPatternHash = weaponPatternHash;
-            this.DefaultDyes = defaultDyes;
-            this.LockedDyes = lockedDyes;
-            this.CustomDyes = customDyes;
-            this.Arrangements = arrangements;
-            this.HasGeometry = hasGeometry;
+            this.WeaponPatternIdentifier = WeaponPatternIdentifier;
+            this.WeaponPatternHash = WeaponPatternHash;
+            this.DefaultDyes = DefaultDyes;
+            this.LockedDyes = LockedDyes;
+            this.CustomDyes = CustomDyes;
+            this.Arrangements = Arrangements;
+            this.HasGeometry = HasGeometry;
         }
         
         /// <summary>
@@ -61,7 +61,7 @@ namespace BungieAPI.Model
         /// Gets or Sets WeaponPatternHash
         /// </summary>
         [DataMember(Name="weaponPatternHash", EmitDefaultValue=false)]
-        public int? WeaponPatternHash { get; set; }
+        public uint? WeaponPatternHash { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultDyes
@@ -116,7 +116,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,24 +33,24 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyMilestonesDestinyPublicMilestone" /> class.
         /// </summary>
-        /// <param name="milestoneHash">The hash identifier for the milestone. Use it to look up the DestinyMilestoneDefinition for static data about the Milestone..</param>
-        /// <param name="availableQuests">A milestone not need have even a single quest, but if there are active quests they will be returned here..</param>
-        /// <param name="activities">activities.</param>
-        /// <param name="vendorHashes">Sometimes milestones - or activities active in milestones - will have relevant vendors. These are the vendors that are currently relevant.  Deprecated, already, for the sake of the new \&quot;vendors\&quot; property that has more data. What was I thinking..</param>
-        /// <param name="vendors">This is why we can&#39;t have nice things. This is the ordered list of vendors to be shown that relate to this milestone, potentially along with other interesting data..</param>
-        /// <param name="startDate">If known, this is the date when the Milestone started/became active..</param>
-        /// <param name="endDate">If known, this is the date when the Milestone will expire/recycle/end..</param>
-        /// <param name="order">Used for ordering milestones in a display to match how we order them in BNet. May pull from static data, or possibly in the future from dynamic information..</param>
-        public DestinyMilestonesDestinyPublicMilestone(int? milestoneHash = default(int?), List<DestinyMilestonesDestinyPublicMilestoneQuest> availableQuests = default(List<DestinyMilestonesDestinyPublicMilestoneQuest>), List<DestinyMilestonesDestinyPublicMilestoneChallengeActivity> activities = default(List<DestinyMilestonesDestinyPublicMilestoneChallengeActivity>), List<int?> vendorHashes = default(List<int?>), List<DestinyMilestonesDestinyPublicMilestoneVendor> vendors = default(List<DestinyMilestonesDestinyPublicMilestoneVendor>), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), int? order = default(int?))
+        /// <param name="MilestoneHash">The hash identifier for the milestone. Use it to look up the DestinyMilestoneDefinition for static data about the Milestone..</param>
+        /// <param name="AvailableQuests">A milestone not need have even a single quest, but if there are active quests they will be returned here..</param>
+        /// <param name="Activities">Activities.</param>
+        /// <param name="VendorHashes">Sometimes milestones - or activities active in milestones - will have relevant vendors. These are the vendors that are currently relevant.  Deprecated, already, for the sake of the new \&quot;vendors\&quot; property that has more data. What was I thinking..</param>
+        /// <param name="Vendors">This is why we can&#39;t have nice things. This is the ordered list of vendors to be shown that relate to this milestone, potentially along with other interesting data..</param>
+        /// <param name="StartDate">If known, this is the date when the Milestone started/became active..</param>
+        /// <param name="EndDate">If known, this is the date when the Milestone will expire/recycle/end..</param>
+        /// <param name="Order">Used for ordering milestones in a display to match how we order them in BNet. May pull from static data, or possibly in the future from dynamic information..</param>
+        public DestinyMilestonesDestinyPublicMilestone(uint? MilestoneHash = default(uint?), List<DestinyMilestonesDestinyPublicMilestoneQuest> AvailableQuests = default(List<DestinyMilestonesDestinyPublicMilestoneQuest>), List<DestinyMilestonesDestinyPublicMilestoneChallengeActivity> Activities = default(List<DestinyMilestonesDestinyPublicMilestoneChallengeActivity>), List<uint?> VendorHashes = default(List<uint?>), List<DestinyMilestonesDestinyPublicMilestoneVendor> Vendors = default(List<DestinyMilestonesDestinyPublicMilestoneVendor>), DateTime? StartDate = default(DateTime?), DateTime? EndDate = default(DateTime?), int? Order = default(int?))
         {
-            this.MilestoneHash = milestoneHash;
-            this.AvailableQuests = availableQuests;
-            this.Activities = activities;
-            this.VendorHashes = vendorHashes;
-            this.Vendors = vendors;
-            this.StartDate = startDate;
-            this.EndDate = endDate;
-            this.Order = order;
+            this.MilestoneHash = MilestoneHash;
+            this.AvailableQuests = AvailableQuests;
+            this.Activities = Activities;
+            this.VendorHashes = VendorHashes;
+            this.Vendors = Vendors;
+            this.StartDate = StartDate;
+            this.EndDate = EndDate;
+            this.Order = Order;
         }
         
         /// <summary>
@@ -58,7 +58,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash identifier for the milestone. Use it to look up the DestinyMilestoneDefinition for static data about the Milestone.</value>
         [DataMember(Name="milestoneHash", EmitDefaultValue=false)]
-        public int? MilestoneHash { get; set; }
+        public uint? MilestoneHash { get; set; }
 
         /// <summary>
         /// A milestone not need have even a single quest, but if there are active quests they will be returned here.
@@ -78,7 +78,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Sometimes milestones - or activities active in milestones - will have relevant vendors. These are the vendors that are currently relevant.  Deprecated, already, for the sake of the new \&quot;vendors\&quot; property that has more data. What was I thinking.</value>
         [DataMember(Name="vendorHashes", EmitDefaultValue=false)]
-        public List<int?> VendorHashes { get; set; }
+        public List<uint?> VendorHashes { get; set; }
 
         /// <summary>
         /// This is why we can&#39;t have nice things. This is the ordered list of vendors to be shown that relate to this milestone, potentially along with other interesting data.
@@ -132,7 +132,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesInventoryDestinyInventoryComponent" /> class.
         /// </summary>
-        /// <param name="items">The items in this inventory. If you care to bucket them, use the item&#39;s bucketHash property to group them..</param>
-        public DestinyEntitiesInventoryDestinyInventoryComponent(List<DestinyEntitiesItemsDestinyItemComponent> items = default(List<DestinyEntitiesItemsDestinyItemComponent>))
+        /// <param name="Items">The items in this inventory. If you care to bucket them, use the item&#39;s bucketHash property to group them..</param>
+        public DestinyEntitiesInventoryDestinyInventoryComponent(List<DestinyEntitiesItemsDestinyItemComponent> Items = default(List<DestinyEntitiesItemsDestinyItemComponent>))
         {
-            this.Items = items;
+            this.Items = Items;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

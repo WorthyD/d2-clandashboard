@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyDestinationBubbleSettingDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        public DestinyDefinitionsDestinyDestinationBubbleSettingDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        public DestinyDefinitionsDestinyDestinationBubbleSettingDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition))
         {
-            this.DisplayProperties = displayProperties;
+            this.DisplayProperties = DisplayProperties;
         }
         
         /// <summary>
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesVendorsDestinyVendorCategoriesComponent" /> class.
         /// </summary>
-        /// <param name="categories">The list of categories for items that the vendor sells, in rendering order.  These categories each point to a \&quot;display category\&quot; in the displayCategories property of the DestinyVendorDefinition, as opposed to the other categories..</param>
-        public DestinyEntitiesVendorsDestinyVendorCategoriesComponent(List<DestinyEntitiesVendorsDestinyVendorCategory> categories = default(List<DestinyEntitiesVendorsDestinyVendorCategory>))
+        /// <param name="Categories">The list of categories for items that the vendor sells, in rendering order.  These categories each point to a \&quot;display category\&quot; in the displayCategories property of the DestinyVendorDefinition, as opposed to the other categories..</param>
+        public DestinyEntitiesVendorsDestinyVendorCategoriesComponent(List<DestinyEntitiesVendorsDestinyVendorCategory> Categories = default(List<DestinyEntitiesVendorsDestinyVendorCategory>))
         {
-            this.Categories = categories;
+            this.Categories = Categories;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

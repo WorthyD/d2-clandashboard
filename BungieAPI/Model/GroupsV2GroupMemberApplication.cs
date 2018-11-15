@@ -33,26 +33,26 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupMemberApplication" /> class.
         /// </summary>
-        /// <param name="groupId">groupId.</param>
-        /// <param name="creationDate">creationDate.</param>
-        /// <param name="resolveState">resolveState.</param>
-        /// <param name="resolveDate">resolveDate.</param>
-        /// <param name="resolvedByMembershipId">resolvedByMembershipId.</param>
-        /// <param name="requestMessage">requestMessage.</param>
-        /// <param name="resolveMessage">resolveMessage.</param>
-        /// <param name="destinyUserInfo">destinyUserInfo.</param>
-        /// <param name="bungieNetUserInfo">bungieNetUserInfo.</param>
-        public GroupsV2GroupMemberApplication(long? groupId = default(long?), DateTime? creationDate = default(DateTime?), GroupsV2GroupApplicationResolveState resolveState = default(GroupsV2GroupApplicationResolveState), DateTime? resolveDate = default(DateTime?), long? resolvedByMembershipId = default(long?), string requestMessage = default(string), string resolveMessage = default(string), UserUserInfoCard destinyUserInfo = default(UserUserInfoCard), UserUserInfoCard bungieNetUserInfo = default(UserUserInfoCard))
+        /// <param name="GroupId">GroupId.</param>
+        /// <param name="CreationDate">CreationDate.</param>
+        /// <param name="ResolveState">ResolveState.</param>
+        /// <param name="ResolveDate">ResolveDate.</param>
+        /// <param name="ResolvedByMembershipId">ResolvedByMembershipId.</param>
+        /// <param name="RequestMessage">RequestMessage.</param>
+        /// <param name="ResolveMessage">ResolveMessage.</param>
+        /// <param name="DestinyUserInfo">DestinyUserInfo.</param>
+        /// <param name="BungieNetUserInfo">BungieNetUserInfo.</param>
+        public GroupsV2GroupMemberApplication(long? GroupId = default(long?), DateTime? CreationDate = default(DateTime?), GroupsV2GroupApplicationResolveState ResolveState = default(GroupsV2GroupApplicationResolveState), DateTime? ResolveDate = default(DateTime?), long? ResolvedByMembershipId = default(long?), string RequestMessage = default(string), string ResolveMessage = default(string), UserUserInfoCard DestinyUserInfo = default(UserUserInfoCard), UserUserInfoCard BungieNetUserInfo = default(UserUserInfoCard))
         {
-            this.GroupId = groupId;
-            this.CreationDate = creationDate;
-            this.ResolveState = resolveState;
-            this.ResolveDate = resolveDate;
-            this.ResolvedByMembershipId = resolvedByMembershipId;
-            this.RequestMessage = requestMessage;
-            this.ResolveMessage = resolveMessage;
-            this.DestinyUserInfo = destinyUserInfo;
-            this.BungieNetUserInfo = bungieNetUserInfo;
+            this.GroupId = GroupId;
+            this.CreationDate = CreationDate;
+            this.ResolveState = ResolveState;
+            this.ResolveDate = ResolveDate;
+            this.ResolvedByMembershipId = ResolvedByMembershipId;
+            this.RequestMessage = RequestMessage;
+            this.ResolveMessage = ResolveMessage;
+            this.DestinyUserInfo = DestinyUserInfo;
+            this.BungieNetUserInfo = BungieNetUserInfo;
         }
         
         /// <summary>
@@ -134,7 +134,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

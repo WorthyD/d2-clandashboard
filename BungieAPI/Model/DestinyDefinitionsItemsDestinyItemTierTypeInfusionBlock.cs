@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsItemsDestinyItemTierTypeInfusionBlock" /> class.
         /// </summary>
-        /// <param name="baseQualityTransferRatio">The default portion of quality that will transfer from the infuser to the infusee item. (InfuserQuality - InfuseeQuality) * baseQualityTransferRatio &#x3D; base quality transferred..</param>
-        /// <param name="minimumQualityIncrement">As long as InfuserQuality &gt; InfuseeQuality, the amount of quality bestowed is guaranteed to be at least this value, even if the transferRatio would dictate that it should be less. The total amount of quality that ends up in the Infusee cannot exceed the Infuser&#39;s quality however (for instance, if you infuse a 300 item with a 301 item and the minimum quality increment is 10, the infused item will not end up with 310 quality).</param>
-        public DestinyDefinitionsItemsDestinyItemTierTypeInfusionBlock(float? baseQualityTransferRatio = default(float?), int? minimumQualityIncrement = default(int?))
+        /// <param name="BaseQualityTransferRatio">The default portion of quality that will transfer from the infuser to the infusee item. (InfuserQuality - InfuseeQuality) * baseQualityTransferRatio &#x3D; base quality transferred..</param>
+        /// <param name="MinimumQualityIncrement">As long as InfuserQuality &gt; InfuseeQuality, the amount of quality bestowed is guaranteed to be at least this value, even if the transferRatio would dictate that it should be less. The total amount of quality that ends up in the Infusee cannot exceed the Infuser&#39;s quality however (for instance, if you infuse a 300 item with a 301 item and the minimum quality increment is 10, the infused item will not end up with 310 quality).</param>
+        public DestinyDefinitionsItemsDestinyItemTierTypeInfusionBlock(float? BaseQualityTransferRatio = default(float?), int? MinimumQualityIncrement = default(int?))
         {
-            this.BaseQualityTransferRatio = baseQualityTransferRatio;
-            this.MinimumQualityIncrement = minimumQualityIncrement;
+            this.BaseQualityTransferRatio = BaseQualityTransferRatio;
+            this.MinimumQualityIncrement = MinimumQualityIncrement;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

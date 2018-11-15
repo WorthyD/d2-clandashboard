@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyPostGameCarnageReportExtendedData" /> class.
         /// </summary>
-        /// <param name="weapons">List of weapons and their perspective values..</param>
-        /// <param name="values">Collection of stats for the player in this activity..</param>
-        public DestinyHistoricalStatsDestinyPostGameCarnageReportExtendedData(List<DestinyHistoricalStatsDestinyHistoricalWeaponStats> weapons = default(List<DestinyHistoricalStatsDestinyHistoricalWeaponStats>), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> values = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>))
+        /// <param name="Weapons">List of weapons and their perspective values..</param>
+        /// <param name="Values">Collection of stats for the player in this activity..</param>
+        public DestinyHistoricalStatsDestinyPostGameCarnageReportExtendedData(List<DestinyHistoricalStatsDestinyHistoricalWeaponStats> Weapons = default(List<DestinyHistoricalStatsDestinyHistoricalWeaponStats>), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> Values = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>))
         {
-            this.Weapons = weapons;
-            this.Values = values;
+            this.Weapons = Weapons;
+            this.Values = Values;
         }
         
         /// <summary>
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

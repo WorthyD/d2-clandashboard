@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyPostGameCarnageReportEntry" /> class.
         /// </summary>
-        /// <param name="standing">Standing of the player.</param>
-        /// <param name="score">Score of the player if available.</param>
-        /// <param name="player">Identity details of the player.</param>
-        /// <param name="characterId">ID of the player&#39;s character used in the activity..</param>
-        /// <param name="values">Collection of stats for the player in this activity..</param>
-        /// <param name="extended">Extended data extracted from the activity blob..</param>
-        public DestinyHistoricalStatsDestinyPostGameCarnageReportEntry(int? standing = default(int?), Object score = default(Object), Object player = default(Object), long? characterId = default(long?), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> values = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>), Object extended = default(Object))
+        /// <param name="Standing">Standing of the player.</param>
+        /// <param name="Score">Score of the player if available.</param>
+        /// <param name="Player">Identity details of the player.</param>
+        /// <param name="CharacterId">ID of the player&#39;s character used in the activity..</param>
+        /// <param name="Values">Collection of stats for the player in this activity..</param>
+        /// <param name="Extended">Extended data extracted from the activity blob..</param>
+        public DestinyHistoricalStatsDestinyPostGameCarnageReportEntry(int? Standing = default(int?), DestinyHistoricalStatsDestinyHistoricalStatsValue Score = default(DestinyHistoricalStatsDestinyHistoricalStatsValue), DestinyHistoricalStatsDestinyPlayer Player = default(DestinyHistoricalStatsDestinyPlayer), long? CharacterId = default(long?), Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue> Values = default(Dictionary<string, DestinyHistoricalStatsDestinyHistoricalStatsValue>), DestinyHistoricalStatsDestinyPostGameCarnageReportExtendedData Extended = default(DestinyHistoricalStatsDestinyPostGameCarnageReportExtendedData))
         {
-            this.Standing = standing;
-            this.Score = score;
-            this.Player = player;
-            this.CharacterId = characterId;
-            this.Values = values;
-            this.Extended = extended;
+            this.Standing = Standing;
+            this.Score = Score;
+            this.Player = Player;
+            this.CharacterId = CharacterId;
+            this.Values = Values;
+            this.Extended = Extended;
         }
         
         /// <summary>
@@ -61,14 +61,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Score of the player if available</value>
         [DataMember(Name="score", EmitDefaultValue=false)]
-        public Object Score { get; set; }
+        public DestinyHistoricalStatsDestinyHistoricalStatsValue Score { get; set; }
 
         /// <summary>
         /// Identity details of the player
         /// </summary>
         /// <value>Identity details of the player</value>
         [DataMember(Name="player", EmitDefaultValue=false)]
-        public Object Player { get; set; }
+        public DestinyHistoricalStatsDestinyPlayer Player { get; set; }
 
         /// <summary>
         /// ID of the player&#39;s character used in the activity.
@@ -89,7 +89,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Extended data extracted from the activity blob.</value>
         [DataMember(Name="extended", EmitDefaultValue=false)]
-        public Object Extended { get; set; }
+        public DestinyHistoricalStatsDestinyPostGameCarnageReportExtendedData Extended { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,7 +113,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

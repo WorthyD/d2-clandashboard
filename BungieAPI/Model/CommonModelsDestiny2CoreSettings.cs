@@ -33,49 +33,49 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CommonModelsDestiny2CoreSettings" /> class.
         /// </summary>
-        /// <param name="collectionRootNode">collectionRootNode.</param>
-        /// <param name="badgesRootNode">badgesRootNode.</param>
-        /// <param name="recordsRootNode">recordsRootNode.</param>
-        /// <param name="medalsRootNode">medalsRootNode.</param>
-        /// <param name="undiscoveredCollectibleImage">undiscoveredCollectibleImage.</param>
-        /// <param name="ammoTypeHeavyIcon">ammoTypeHeavyIcon.</param>
-        /// <param name="ammoTypeSpecialIcon">ammoTypeSpecialIcon.</param>
-        /// <param name="ammoTypePrimaryIcon">ammoTypePrimaryIcon.</param>
-        public CommonModelsDestiny2CoreSettings(int? collectionRootNode = default(int?), int? badgesRootNode = default(int?), int? recordsRootNode = default(int?), int? medalsRootNode = default(int?), string undiscoveredCollectibleImage = default(string), string ammoTypeHeavyIcon = default(string), string ammoTypeSpecialIcon = default(string), string ammoTypePrimaryIcon = default(string))
+        /// <param name="CollectionRootNode">CollectionRootNode.</param>
+        /// <param name="BadgesRootNode">BadgesRootNode.</param>
+        /// <param name="RecordsRootNode">RecordsRootNode.</param>
+        /// <param name="MedalsRootNode">MedalsRootNode.</param>
+        /// <param name="UndiscoveredCollectibleImage">UndiscoveredCollectibleImage.</param>
+        /// <param name="AmmoTypeHeavyIcon">AmmoTypeHeavyIcon.</param>
+        /// <param name="AmmoTypeSpecialIcon">AmmoTypeSpecialIcon.</param>
+        /// <param name="AmmoTypePrimaryIcon">AmmoTypePrimaryIcon.</param>
+        public CommonModelsDestiny2CoreSettings(uint? CollectionRootNode = default(uint?), uint? BadgesRootNode = default(uint?), uint? RecordsRootNode = default(uint?), uint? MedalsRootNode = default(uint?), string UndiscoveredCollectibleImage = default(string), string AmmoTypeHeavyIcon = default(string), string AmmoTypeSpecialIcon = default(string), string AmmoTypePrimaryIcon = default(string))
         {
-            this.CollectionRootNode = collectionRootNode;
-            this.BadgesRootNode = badgesRootNode;
-            this.RecordsRootNode = recordsRootNode;
-            this.MedalsRootNode = medalsRootNode;
-            this.UndiscoveredCollectibleImage = undiscoveredCollectibleImage;
-            this.AmmoTypeHeavyIcon = ammoTypeHeavyIcon;
-            this.AmmoTypeSpecialIcon = ammoTypeSpecialIcon;
-            this.AmmoTypePrimaryIcon = ammoTypePrimaryIcon;
+            this.CollectionRootNode = CollectionRootNode;
+            this.BadgesRootNode = BadgesRootNode;
+            this.RecordsRootNode = RecordsRootNode;
+            this.MedalsRootNode = MedalsRootNode;
+            this.UndiscoveredCollectibleImage = UndiscoveredCollectibleImage;
+            this.AmmoTypeHeavyIcon = AmmoTypeHeavyIcon;
+            this.AmmoTypeSpecialIcon = AmmoTypeSpecialIcon;
+            this.AmmoTypePrimaryIcon = AmmoTypePrimaryIcon;
         }
         
         /// <summary>
         /// Gets or Sets CollectionRootNode
         /// </summary>
         [DataMember(Name="collectionRootNode", EmitDefaultValue=false)]
-        public int? CollectionRootNode { get; set; }
+        public uint? CollectionRootNode { get; set; }
 
         /// <summary>
         /// Gets or Sets BadgesRootNode
         /// </summary>
         [DataMember(Name="badgesRootNode", EmitDefaultValue=false)]
-        public int? BadgesRootNode { get; set; }
+        public uint? BadgesRootNode { get; set; }
 
         /// <summary>
         /// Gets or Sets RecordsRootNode
         /// </summary>
         [DataMember(Name="recordsRootNode", EmitDefaultValue=false)]
-        public int? RecordsRootNode { get; set; }
+        public uint? RecordsRootNode { get; set; }
 
         /// <summary>
         /// Gets or Sets MedalsRootNode
         /// </summary>
         [DataMember(Name="medalsRootNode", EmitDefaultValue=false)]
-        public int? MedalsRootNode { get; set; }
+        public uint? MedalsRootNode { get; set; }
 
         /// <summary>
         /// Gets or Sets UndiscoveredCollectibleImage
@@ -125,7 +125,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -33,30 +33,30 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyPlayer" /> class.
         /// </summary>
-        /// <param name="destinyUserInfo">Details about the player as they are known in game (platform display name, Destiny emblem).</param>
-        /// <param name="characterClass">Class of the character if applicable and available..</param>
-        /// <param name="classHash">classHash.</param>
-        /// <param name="raceHash">raceHash.</param>
-        /// <param name="genderHash">genderHash.</param>
-        /// <param name="characterLevel">Level of the character if available. Zero if it is not available..</param>
-        /// <param name="lightLevel">Light Level of the character if available. Zero if it is not available..</param>
-        /// <param name="bungieNetUserInfo">Details about the player as they are known on BungieNet. This will be undefined if the player has marked their credential private, or does not have a BungieNet account..</param>
-        /// <param name="clanName">Current clan name for the player. This value may be null or an empty string if the user does not have a clan..</param>
-        /// <param name="clanTag">Current clan tag for the player. This value may be null or an empty string if the user does not have a clan..</param>
-        /// <param name="emblemHash">If we know the emblem&#39;s hash, this can be used to look up the player&#39;s emblem at the time of a match when receiving PGCR data, or otherwise their currently equipped emblem (if we are able to obtain it)..</param>
-        public DestinyHistoricalStatsDestinyPlayer(Object destinyUserInfo = default(Object), string characterClass = default(string), int? classHash = default(int?), int? raceHash = default(int?), int? genderHash = default(int?), int? characterLevel = default(int?), int? lightLevel = default(int?), Object bungieNetUserInfo = default(Object), string clanName = default(string), string clanTag = default(string), int? emblemHash = default(int?))
+        /// <param name="DestinyUserInfo">Details about the player as they are known in game (platform display name, Destiny emblem).</param>
+        /// <param name="CharacterClass">Class of the character if applicable and available..</param>
+        /// <param name="ClassHash">ClassHash.</param>
+        /// <param name="RaceHash">RaceHash.</param>
+        /// <param name="GenderHash">GenderHash.</param>
+        /// <param name="CharacterLevel">Level of the character if available. Zero if it is not available..</param>
+        /// <param name="LightLevel">Light Level of the character if available. Zero if it is not available..</param>
+        /// <param name="BungieNetUserInfo">Details about the player as they are known on BungieNet. This will be undefined if the player has marked their credential private, or does not have a BungieNet account..</param>
+        /// <param name="ClanName">Current clan name for the player. This value may be null or an empty string if the user does not have a clan..</param>
+        /// <param name="ClanTag">Current clan tag for the player. This value may be null or an empty string if the user does not have a clan..</param>
+        /// <param name="EmblemHash">If we know the emblem&#39;s hash, this can be used to look up the player&#39;s emblem at the time of a match when receiving PGCR data, or otherwise their currently equipped emblem (if we are able to obtain it)..</param>
+        public DestinyHistoricalStatsDestinyPlayer(UserUserInfoCard DestinyUserInfo = default(UserUserInfoCard), string CharacterClass = default(string), uint? ClassHash = default(uint?), uint? RaceHash = default(uint?), uint? GenderHash = default(uint?), int? CharacterLevel = default(int?), int? LightLevel = default(int?), UserUserInfoCard BungieNetUserInfo = default(UserUserInfoCard), string ClanName = default(string), string ClanTag = default(string), uint? EmblemHash = default(uint?))
         {
-            this.DestinyUserInfo = destinyUserInfo;
-            this.CharacterClass = characterClass;
-            this.ClassHash = classHash;
-            this.RaceHash = raceHash;
-            this.GenderHash = genderHash;
-            this.CharacterLevel = characterLevel;
-            this.LightLevel = lightLevel;
-            this.BungieNetUserInfo = bungieNetUserInfo;
-            this.ClanName = clanName;
-            this.ClanTag = clanTag;
-            this.EmblemHash = emblemHash;
+            this.DestinyUserInfo = DestinyUserInfo;
+            this.CharacterClass = CharacterClass;
+            this.ClassHash = ClassHash;
+            this.RaceHash = RaceHash;
+            this.GenderHash = GenderHash;
+            this.CharacterLevel = CharacterLevel;
+            this.LightLevel = LightLevel;
+            this.BungieNetUserInfo = BungieNetUserInfo;
+            this.ClanName = ClanName;
+            this.ClanTag = ClanTag;
+            this.EmblemHash = EmblemHash;
         }
         
         /// <summary>
@@ -64,7 +64,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Details about the player as they are known in game (platform display name, Destiny emblem)</value>
         [DataMember(Name="destinyUserInfo", EmitDefaultValue=false)]
-        public Object DestinyUserInfo { get; set; }
+        public UserUserInfoCard DestinyUserInfo { get; set; }
 
         /// <summary>
         /// Class of the character if applicable and available.
@@ -77,19 +77,19 @@ namespace BungieAPI.Model
         /// Gets or Sets ClassHash
         /// </summary>
         [DataMember(Name="classHash", EmitDefaultValue=false)]
-        public int? ClassHash { get; set; }
+        public uint? ClassHash { get; set; }
 
         /// <summary>
         /// Gets or Sets RaceHash
         /// </summary>
         [DataMember(Name="raceHash", EmitDefaultValue=false)]
-        public int? RaceHash { get; set; }
+        public uint? RaceHash { get; set; }
 
         /// <summary>
         /// Gets or Sets GenderHash
         /// </summary>
         [DataMember(Name="genderHash", EmitDefaultValue=false)]
-        public int? GenderHash { get; set; }
+        public uint? GenderHash { get; set; }
 
         /// <summary>
         /// Level of the character if available. Zero if it is not available.
@@ -110,7 +110,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Details about the player as they are known on BungieNet. This will be undefined if the player has marked their credential private, or does not have a BungieNet account.</value>
         [DataMember(Name="bungieNetUserInfo", EmitDefaultValue=false)]
-        public Object BungieNetUserInfo { get; set; }
+        public UserUserInfoCard BungieNetUserInfo { get; set; }
 
         /// <summary>
         /// Current clan name for the player. This value may be null or an empty string if the user does not have a clan.
@@ -131,7 +131,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If we know the emblem&#39;s hash, this can be used to look up the player&#39;s emblem at the time of a match when receiving PGCR data, or otherwise their currently equipped emblem (if we are able to obtain it).</value>
         [DataMember(Name="emblemHash", EmitDefaultValue=false)]
-        public int? EmblemHash { get; set; }
+        public uint? EmblemHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,7 +160,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

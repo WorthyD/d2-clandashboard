@@ -33,30 +33,30 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsCollectiblesDestinyCollectibleDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="scope">Indicates whether this Collectible&#39;s state is determined on a per-character or on an account-wide basis..</param>
-        /// <param name="sourceString">A human readable string for a hint about how to acquire the item..</param>
-        /// <param name="sourceHash">This is a hash identifier we are building on the BNet side in an attempt to let people group collectibles by similar sources.  I can&#39;t promise that it&#39;s going to be 100% accurate, but if the designers were consistent in assigning the same source strings to items with the same sources, it *ought to* be. No promises though.  This hash also doesn&#39;t relate to an actual definition, just to note: we&#39;ve got nothing useful other than the source string for this data..</param>
-        /// <param name="itemHash">itemHash.</param>
-        /// <param name="acquisitionInfo">acquisitionInfo.</param>
-        /// <param name="stateInfo">stateInfo.</param>
-        /// <param name="presentationInfo">presentationInfo.</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsCollectiblesDestinyCollectibleDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), Object scope = default(Object), string sourceString = default(string), int? sourceHash = default(int?), int? itemHash = default(int?), DestinyDefinitionsCollectiblesDestinyCollectibleAcquisitionBlock acquisitionInfo = default(DestinyDefinitionsCollectiblesDestinyCollectibleAcquisitionBlock), DestinyDefinitionsCollectiblesDestinyCollectibleStateBlock stateInfo = default(DestinyDefinitionsCollectiblesDestinyCollectibleStateBlock), DestinyDefinitionsPresentationDestinyPresentationChildBlock presentationInfo = default(DestinyDefinitionsPresentationDestinyPresentationChildBlock), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="Scope">Indicates whether this Collectible&#39;s state is determined on a per-character or on an account-wide basis..</param>
+        /// <param name="SourceString">A human readable string for a hint about how to acquire the item..</param>
+        /// <param name="SourceHash">This is a hash identifier we are building on the BNet side in an attempt to let people group collectibles by similar sources.  I can&#39;t promise that it&#39;s going to be 100% accurate, but if the designers were consistent in assigning the same source strings to items with the same sources, it *ought to* be. No promises though.  This hash also doesn&#39;t relate to an actual definition, just to note: we&#39;ve got nothing useful other than the source string for this data..</param>
+        /// <param name="ItemHash">ItemHash.</param>
+        /// <param name="AcquisitionInfo">AcquisitionInfo.</param>
+        /// <param name="StateInfo">StateInfo.</param>
+        /// <param name="PresentationInfo">PresentationInfo.</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsCollectiblesDestinyCollectibleDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), DestinyDestinyScope Scope = default(DestinyDestinyScope), string SourceString = default(string), uint? SourceHash = default(uint?), uint? ItemHash = default(uint?), DestinyDefinitionsCollectiblesDestinyCollectibleAcquisitionBlock AcquisitionInfo = default(DestinyDefinitionsCollectiblesDestinyCollectibleAcquisitionBlock), DestinyDefinitionsCollectiblesDestinyCollectibleStateBlock StateInfo = default(DestinyDefinitionsCollectiblesDestinyCollectibleStateBlock), DestinyDefinitionsPresentationDestinyPresentationChildBlock PresentationInfo = default(DestinyDefinitionsPresentationDestinyPresentationChildBlock), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.Scope = scope;
-            this.SourceString = sourceString;
-            this.SourceHash = sourceHash;
-            this.ItemHash = itemHash;
-            this.AcquisitionInfo = acquisitionInfo;
-            this.StateInfo = stateInfo;
-            this.PresentationInfo = presentationInfo;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.Scope = Scope;
+            this.SourceString = SourceString;
+            this.SourceHash = SourceHash;
+            this.ItemHash = ItemHash;
+            this.AcquisitionInfo = AcquisitionInfo;
+            this.StateInfo = StateInfo;
+            this.PresentationInfo = PresentationInfo;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -70,7 +70,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Indicates whether this Collectible&#39;s state is determined on a per-character or on an account-wide basis.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Object Scope { get; set; }
+        public DestinyDestinyScope Scope { get; set; }
 
         /// <summary>
         /// A human readable string for a hint about how to acquire the item.
@@ -84,13 +84,13 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>This is a hash identifier we are building on the BNet side in an attempt to let people group collectibles by similar sources.  I can&#39;t promise that it&#39;s going to be 100% accurate, but if the designers were consistent in assigning the same source strings to items with the same sources, it *ought to* be. No promises though.  This hash also doesn&#39;t relate to an actual definition, just to note: we&#39;ve got nothing useful other than the source string for this data.</value>
         [DataMember(Name="sourceHash", EmitDefaultValue=false)]
-        public int? SourceHash { get; set; }
+        public uint? SourceHash { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemHash
         /// </summary>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// Gets or Sets AcquisitionInfo
@@ -115,7 +115,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -158,7 +158,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

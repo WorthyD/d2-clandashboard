@@ -27,35 +27,33 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines GlobalAlertLevel
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum GlobalAlertLevel
     {
         
-        /// <summary>
-        /// Enum _0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        _0 = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "0")]
+        Unknown,
         
-        /// <summary>
-        /// Enum _1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        _1 = 2,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "1")]
+        Blue,
         
-        /// <summary>
-        /// Enum _2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        _2 = 3,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "2")]
+        Yellow,
         
-        /// <summary>
-        /// Enum _3 for value: 3
-        /// </summary>
-        [EnumMember(Value = "3")]
-        _3 = 4
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "3")]
+        Red
     }
 
 }

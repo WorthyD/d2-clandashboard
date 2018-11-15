@@ -28,35 +28,33 @@ namespace BungieAPI.Model
     /// Whether you can transfer an item, and why not if you can&#39;t.
     /// </summary>
     /// <value>Whether you can transfer an item, and why not if you can&#39;t.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyTransferStatuses
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// The item can be transferred.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        CanTransfer,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// You can&#39;t transfer the item because it is equipped on a character.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        ItemIsEquipped,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// The item is defined as not transferrable in its DestinyInventoryItemDefinition.nonTransferrable property.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        NotTransferrable,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 4
+		/// <summary>
+		/// You could transfer the item, but the place you&#39;re trying to put it has run out of room! Check your remaining Vault and/or character space.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        NoRoomInDestination
     }
 
 }

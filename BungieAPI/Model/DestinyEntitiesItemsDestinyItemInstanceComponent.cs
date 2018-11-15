@@ -33,28 +33,28 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesItemsDestinyItemInstanceComponent" /> class.
         /// </summary>
-        /// <param name="damageType">If the item has a damage type, this is the item&#39;s current damage type..</param>
-        /// <param name="damageTypeHash">The current damage type&#39;s hash, so you can look up localized info and icons for it..</param>
-        /// <param name="primaryStat">The item stat that we consider to be \&quot;primary\&quot; for the item. For instance, this would be \&quot;Attack\&quot; for Weapons or \&quot;Defense\&quot; for armor..</param>
-        /// <param name="itemLevel">The Item&#39;s \&quot;Level\&quot; has the most significant bearing on its stats, such as Light and Power..</param>
-        /// <param name="quality">The \&quot;Quality\&quot; of the item has a lesser - but still impactful - bearing on stats like Light and Power..</param>
-        /// <param name="isEquipped">Is the item currently equipped on the given character?.</param>
-        /// <param name="canEquip">If this is an equippable item, you can check it here. There are permanent as well as transitory reasons why an item might not be able to be equipped: check cannotEquipReason for details..</param>
-        /// <param name="equipRequiredLevel">If the item cannot be equipped until you reach a certain level, that level will be reflected here..</param>
-        /// <param name="unlockHashesRequiredToEquip">Sometimes, there are limitations to equipping that are represented by character-level flags called \&quot;unlocks\&quot;.  This is a list of flags that they need in order to equip the item that the character has not met. Use these to look up the descriptions to show in your UI by looking up the relevant DestinyUnlockDefinitions for the hashes..</param>
-        /// <param name="cannotEquipReason">If you cannot equip the item, this is a flags enum that enumerates all of the reasons why you couldn&#39;t equip the item. You may need to refine your UI further by using unlockHashesRequiredToEquip and equipRequiredLevel..</param>
-        public DestinyEntitiesItemsDestinyItemInstanceComponent(Object damageType = default(Object), int? damageTypeHash = default(int?), Object primaryStat = default(Object), int? itemLevel = default(int?), int? quality = default(int?), bool? isEquipped = default(bool?), bool? canEquip = default(bool?), int? equipRequiredLevel = default(int?), List<int?> unlockHashesRequiredToEquip = default(List<int?>), Object cannotEquipReason = default(Object))
+        /// <param name="DamageType">If the item has a damage type, this is the item&#39;s current damage type..</param>
+        /// <param name="DamageTypeHash">The current damage type&#39;s hash, so you can look up localized info and icons for it..</param>
+        /// <param name="PrimaryStat">The item stat that we consider to be \&quot;primary\&quot; for the item. For instance, this would be \&quot;Attack\&quot; for Weapons or \&quot;Defense\&quot; for armor..</param>
+        /// <param name="ItemLevel">The Item&#39;s \&quot;Level\&quot; has the most significant bearing on its stats, such as Light and Power..</param>
+        /// <param name="Quality">The \&quot;Quality\&quot; of the item has a lesser - but still impactful - bearing on stats like Light and Power..</param>
+        /// <param name="IsEquipped">Is the item currently equipped on the given character?.</param>
+        /// <param name="CanEquip">If this is an equippable item, you can check it here. There are permanent as well as transitory reasons why an item might not be able to be equipped: check cannotEquipReason for details..</param>
+        /// <param name="EquipRequiredLevel">If the item cannot be equipped until you reach a certain level, that level will be reflected here..</param>
+        /// <param name="UnlockHashesRequiredToEquip">Sometimes, there are limitations to equipping that are represented by character-level flags called \&quot;unlocks\&quot;.  This is a list of flags that they need in order to equip the item that the character has not met. Use these to look up the descriptions to show in your UI by looking up the relevant DestinyUnlockDefinitions for the hashes..</param>
+        /// <param name="CannotEquipReason">If you cannot equip the item, this is a flags enum that enumerates all of the reasons why you couldn&#39;t equip the item. You may need to refine your UI further by using unlockHashesRequiredToEquip and equipRequiredLevel..</param>
+        public DestinyEntitiesItemsDestinyItemInstanceComponent(DestinyDamageType DamageType = default(DestinyDamageType), uint? DamageTypeHash = default(uint?), DestinyDestinyStat PrimaryStat = default(DestinyDestinyStat), int? ItemLevel = default(int?), int? Quality = default(int?), bool? IsEquipped = default(bool?), bool? CanEquip = default(bool?), int? EquipRequiredLevel = default(int?), List<uint?> UnlockHashesRequiredToEquip = default(List<uint?>), DestinyEquipFailureReason CannotEquipReason = default(DestinyEquipFailureReason))
         {
-            this.DamageType = damageType;
-            this.DamageTypeHash = damageTypeHash;
-            this.PrimaryStat = primaryStat;
-            this.ItemLevel = itemLevel;
-            this.Quality = quality;
-            this.IsEquipped = isEquipped;
-            this.CanEquip = canEquip;
-            this.EquipRequiredLevel = equipRequiredLevel;
-            this.UnlockHashesRequiredToEquip = unlockHashesRequiredToEquip;
-            this.CannotEquipReason = cannotEquipReason;
+            this.DamageType = DamageType;
+            this.DamageTypeHash = DamageTypeHash;
+            this.PrimaryStat = PrimaryStat;
+            this.ItemLevel = ItemLevel;
+            this.Quality = Quality;
+            this.IsEquipped = IsEquipped;
+            this.CanEquip = CanEquip;
+            this.EquipRequiredLevel = EquipRequiredLevel;
+            this.UnlockHashesRequiredToEquip = UnlockHashesRequiredToEquip;
+            this.CannotEquipReason = CannotEquipReason;
         }
         
         /// <summary>
@@ -62,21 +62,21 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If the item has a damage type, this is the item&#39;s current damage type.</value>
         [DataMember(Name="damageType", EmitDefaultValue=false)]
-        public Object DamageType { get; set; }
+        public DestinyDamageType DamageType { get; set; }
 
         /// <summary>
         /// The current damage type&#39;s hash, so you can look up localized info and icons for it.
         /// </summary>
         /// <value>The current damage type&#39;s hash, so you can look up localized info and icons for it.</value>
         [DataMember(Name="damageTypeHash", EmitDefaultValue=false)]
-        public int? DamageTypeHash { get; set; }
+        public uint? DamageTypeHash { get; set; }
 
         /// <summary>
         /// The item stat that we consider to be \&quot;primary\&quot; for the item. For instance, this would be \&quot;Attack\&quot; for Weapons or \&quot;Defense\&quot; for armor.
         /// </summary>
         /// <value>The item stat that we consider to be \&quot;primary\&quot; for the item. For instance, this would be \&quot;Attack\&quot; for Weapons or \&quot;Defense\&quot; for armor.</value>
         [DataMember(Name="primaryStat", EmitDefaultValue=false)]
-        public Object PrimaryStat { get; set; }
+        public DestinyDestinyStat PrimaryStat { get; set; }
 
         /// <summary>
         /// The Item&#39;s \&quot;Level\&quot; has the most significant bearing on its stats, such as Light and Power.
@@ -118,14 +118,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Sometimes, there are limitations to equipping that are represented by character-level flags called \&quot;unlocks\&quot;.  This is a list of flags that they need in order to equip the item that the character has not met. Use these to look up the descriptions to show in your UI by looking up the relevant DestinyUnlockDefinitions for the hashes.</value>
         [DataMember(Name="unlockHashesRequiredToEquip", EmitDefaultValue=false)]
-        public List<int?> UnlockHashesRequiredToEquip { get; set; }
+        public List<uint?> UnlockHashesRequiredToEquip { get; set; }
 
         /// <summary>
         /// If you cannot equip the item, this is a flags enum that enumerates all of the reasons why you couldn&#39;t equip the item. You may need to refine your UI further by using unlockHashesRequiredToEquip and equipRequiredLevel.
         /// </summary>
         /// <value>If you cannot equip the item, this is a flags enum that enumerates all of the reasons why you couldn&#39;t equip the item. You may need to refine your UI further by using unlockHashesRequiredToEquip and equipRequiredLevel.</value>
         [DataMember(Name="cannotEquipReason", EmitDefaultValue=false)]
-        public Object CannotEquipReason { get; set; }
+        public DestinyEquipFailureReason CannotEquipReason { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -153,7 +153,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

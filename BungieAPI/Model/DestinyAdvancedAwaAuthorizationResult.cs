@@ -33,24 +33,24 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyAdvancedAwaAuthorizationResult" /> class.
         /// </summary>
-        /// <param name="userSelection">Indication of how the user responded to the request. If the value is \&quot;Approved\&quot; the actionToken will contain the token that can be presented when performing the advanced write action..</param>
-        /// <param name="responseReason">responseReason.</param>
-        /// <param name="developerNote">Message to the app developer to help understand the response..</param>
-        /// <param name="actionToken">Credential used to prove the user authorized an advanced write action..</param>
-        /// <param name="maximumNumberOfUses">This token may be used to perform the requested action this number of times, at a maximum. If this value is 0, then there is no limit..</param>
-        /// <param name="validUntil">Time, UTC, when token expires..</param>
-        /// <param name="type">Advanced Write Action Type from the permission request..</param>
-        /// <param name="membershipType">MembershipType from the permission request..</param>
-        public DestinyAdvancedAwaAuthorizationResult(Object userSelection = default(Object), DestinyAdvancedAwaResponseReason responseReason = default(DestinyAdvancedAwaResponseReason), string developerNote = default(string), string actionToken = default(string), int? maximumNumberOfUses = default(int?), DateTime? validUntil = default(DateTime?), Object type = default(Object), Object membershipType = default(Object))
+        /// <param name="UserSelection">Indication of how the user responded to the request. If the value is \&quot;Approved\&quot; the actionToken will contain the token that can be presented when performing the advanced write action..</param>
+        /// <param name="ResponseReason">ResponseReason.</param>
+        /// <param name="DeveloperNote">Message to the app developer to help understand the response..</param>
+        /// <param name="ActionToken">Credential used to prove the user authorized an advanced write action..</param>
+        /// <param name="MaximumNumberOfUses">This token may be used to perform the requested action this number of times, at a maximum. If this value is 0, then there is no limit..</param>
+        /// <param name="ValidUntil">Time, UTC, when token expires..</param>
+        /// <param name="Type">Advanced Write Action Type from the permission request..</param>
+        /// <param name="MembershipType">MembershipType from the permission request..</param>
+        public DestinyAdvancedAwaAuthorizationResult(DestinyAdvancedAwaUserSelection UserSelection = default(DestinyAdvancedAwaUserSelection), DestinyAdvancedAwaResponseReason ResponseReason = default(DestinyAdvancedAwaResponseReason), string DeveloperNote = default(string), string ActionToken = default(string), int? MaximumNumberOfUses = default(int?), DateTime? ValidUntil = default(DateTime?), DestinyAdvancedAwaType Type = default(DestinyAdvancedAwaType), BungieMembershipType MembershipType = default(BungieMembershipType))
         {
-            this.UserSelection = userSelection;
-            this.ResponseReason = responseReason;
-            this.DeveloperNote = developerNote;
-            this.ActionToken = actionToken;
-            this.MaximumNumberOfUses = maximumNumberOfUses;
-            this.ValidUntil = validUntil;
-            this.Type = type;
-            this.MembershipType = membershipType;
+            this.UserSelection = UserSelection;
+            this.ResponseReason = ResponseReason;
+            this.DeveloperNote = DeveloperNote;
+            this.ActionToken = ActionToken;
+            this.MaximumNumberOfUses = MaximumNumberOfUses;
+            this.ValidUntil = ValidUntil;
+            this.Type = Type;
+            this.MembershipType = MembershipType;
         }
         
         /// <summary>
@@ -58,7 +58,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Indication of how the user responded to the request. If the value is \&quot;Approved\&quot; the actionToken will contain the token that can be presented when performing the advanced write action.</value>
         [DataMember(Name="userSelection", EmitDefaultValue=false)]
-        public Object UserSelection { get; set; }
+        public DestinyAdvancedAwaUserSelection UserSelection { get; set; }
 
         /// <summary>
         /// Gets or Sets ResponseReason
@@ -99,14 +99,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Advanced Write Action Type from the permission request.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public Object Type { get; set; }
+        public DestinyAdvancedAwaType Type { get; set; }
 
         /// <summary>
         /// MembershipType from the permission request.
         /// </summary>
         /// <value>MembershipType from the permission request.</value>
         [DataMember(Name="membershipType", EmitDefaultValue=false)]
-        public Object MembershipType { get; set; }
+        public BungieMembershipType MembershipType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -132,7 +132,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

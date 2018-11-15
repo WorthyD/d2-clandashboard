@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyInventoryItemStatDefinition" /> class.
         /// </summary>
-        /// <param name="statHash">The hash for the DestinyStatDefinition representing this stat..</param>
-        /// <param name="value">This value represents the stat value assuming the minimum possible roll but accounting for any mandatory bonuses that should be applied to the stat on item creation.  In Destiny 1, this was different from the \&quot;minimum\&quot; value because there were certain conditions where an item could be theoretically lower level/value than the initial roll.   In Destiny 2, this is not possible unless Talent Grids begin to be used again for these purposes or some other system change occurs... thus in practice, value and minimum should be the same in Destiny 2. Good riddance..</param>
-        /// <param name="minimum">The minimum possible value for this stat that we think the item can roll..</param>
-        /// <param name="maximum">The maximum possible value for this stat that we think the item can roll.  WARNING: In Destiny 1, this field was calculated using the potential stat rolls on the item&#39;s talent grid. In Destiny 2, items no longer have meaningful talent grids and instead have sockets: but the calculation of this field was never altered to adapt to this change. As such, this field should be considered deprecated until we can address this oversight..</param>
-        public DestinyDefinitionsDestinyInventoryItemStatDefinition(int? statHash = default(int?), int? value = default(int?), int? minimum = default(int?), int? maximum = default(int?))
+        /// <param name="StatHash">The hash for the DestinyStatDefinition representing this stat..</param>
+        /// <param name="Value">This value represents the stat value assuming the minimum possible roll but accounting for any mandatory bonuses that should be applied to the stat on item creation.  In Destiny 1, this was different from the \&quot;minimum\&quot; value because there were certain conditions where an item could be theoretically lower level/value than the initial roll.   In Destiny 2, this is not possible unless Talent Grids begin to be used again for these purposes or some other system change occurs... thus in practice, value and minimum should be the same in Destiny 2. Good riddance..</param>
+        /// <param name="Minimum">The minimum possible value for this stat that we think the item can roll..</param>
+        /// <param name="Maximum">The maximum possible value for this stat that we think the item can roll.  WARNING: In Destiny 1, this field was calculated using the potential stat rolls on the item&#39;s talent grid. In Destiny 2, items no longer have meaningful talent grids and instead have sockets: but the calculation of this field was never altered to adapt to this change. As such, this field should be considered deprecated until we can address this oversight..</param>
+        public DestinyDefinitionsDestinyInventoryItemStatDefinition(uint? StatHash = default(uint?), int? Value = default(int?), int? Minimum = default(int?), int? Maximum = default(int?))
         {
-            this.StatHash = statHash;
-            this.Value = value;
-            this.Minimum = minimum;
-            this.Maximum = maximum;
+            this.StatHash = StatHash;
+            this.Value = Value;
+            this.Minimum = Minimum;
+            this.Maximum = Maximum;
         }
         
         /// <summary>
@@ -50,7 +50,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The hash for the DestinyStatDefinition representing this stat.</value>
         [DataMember(Name="statHash", EmitDefaultValue=false)]
-        public int? StatHash { get; set; }
+        public uint? StatHash { get; set; }
 
         /// <summary>
         /// This value represents the stat value assuming the minimum possible roll but accounting for any mandatory bonuses that should be applied to the stat on item creation.  In Destiny 1, this was different from the \&quot;minimum\&quot; value because there were certain conditions where an item could be theoretically lower level/value than the initial roll.   In Destiny 2, this is not possible unless Talent Grids begin to be used again for these purposes or some other system change occurs... thus in practice, value and minimum should be the same in Destiny 2. Good riddance.
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

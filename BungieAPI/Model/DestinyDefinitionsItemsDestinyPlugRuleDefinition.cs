@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsItemsDestinyPlugRuleDefinition" /> class.
         /// </summary>
-        /// <param name="failureMessage">The localized string to show if this rule fails..</param>
-        public DestinyDefinitionsItemsDestinyPlugRuleDefinition(string failureMessage = default(string))
+        /// <param name="FailureMessage">The localized string to show if this rule fails..</param>
+        public DestinyDefinitionsItemsDestinyPlugRuleDefinition(string FailureMessage = default(string))
         {
-            this.FailureMessage = failureMessage;
+            this.FailureMessage = FailureMessage;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

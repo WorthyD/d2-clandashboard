@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDirectorDestinyActivityGraphArtElementDefinition" /> class.
         /// </summary>
-        /// <param name="position">The position on the map of the art element..</param>
-        public DestinyDefinitionsDirectorDestinyActivityGraphArtElementDefinition(Object position = default(Object))
+        /// <param name="Position">The position on the map of the art element..</param>
+        public DestinyDefinitionsDirectorDestinyActivityGraphArtElementDefinition(DestinyDefinitionsCommonDestinyPositionDefinition Position = default(DestinyDefinitionsCommonDestinyPositionDefinition))
         {
-            this.Position = position;
+            this.Position = Position;
         }
         
         /// <summary>
@@ -44,7 +44,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The position on the map of the art element.</value>
         [DataMember(Name="position", EmitDefaultValue=false)]
-        public Object Position { get; set; }
+        public DestinyDefinitionsCommonDestinyPositionDefinition Position { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

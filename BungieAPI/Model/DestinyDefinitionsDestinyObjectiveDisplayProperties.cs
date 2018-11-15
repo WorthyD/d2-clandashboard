@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyObjectiveDisplayProperties" /> class.
         /// </summary>
-        /// <param name="activityHash">The activity associated with this objective in the context of this item, if any..</param>
-        /// <param name="displayOnItemPreviewScreen">If true, the game shows this objective on item preview screens..</param>
-        public DestinyDefinitionsDestinyObjectiveDisplayProperties(int? activityHash = default(int?), bool? displayOnItemPreviewScreen = default(bool?))
+        /// <param name="ActivityHash">The activity associated with this objective in the context of this item, if any..</param>
+        /// <param name="DisplayOnItemPreviewScreen">If true, the game shows this objective on item preview screens..</param>
+        public DestinyDefinitionsDestinyObjectiveDisplayProperties(uint? ActivityHash = default(uint?), bool? DisplayOnItemPreviewScreen = default(bool?))
         {
-            this.ActivityHash = activityHash;
-            this.DisplayOnItemPreviewScreen = displayOnItemPreviewScreen;
+            this.ActivityHash = ActivityHash;
+            this.DisplayOnItemPreviewScreen = DisplayOnItemPreviewScreen;
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The activity associated with this objective in the context of this item, if any.</value>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// If true, the game shows this objective on item preview screens.
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

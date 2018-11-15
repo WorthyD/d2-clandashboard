@@ -33,16 +33,16 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyEntitiesProfilesDestinyProfileComponent" /> class.
         /// </summary>
-        /// <param name="userInfo">If you need to render the Profile (their platform name, icon, etc...) somewhere, this property contains that information..</param>
-        /// <param name="dateLastPlayed">The last time the user played with any character on this Profile..</param>
-        /// <param name="versionsOwned">If you want to know what expansions they own, this will contain that data..</param>
-        /// <param name="characterIds">A list of the character IDs, for further querying on your part..</param>
-        public DestinyEntitiesProfilesDestinyProfileComponent(Object userInfo = default(Object), DateTime? dateLastPlayed = default(DateTime?), Object versionsOwned = default(Object), List<long?> characterIds = default(List<long?>))
+        /// <param name="UserInfo">If you need to render the Profile (their platform name, icon, etc...) somewhere, this property contains that information..</param>
+        /// <param name="DateLastPlayed">The last time the user played with any character on this Profile..</param>
+        /// <param name="VersionsOwned">If you want to know what expansions they own, this will contain that data..</param>
+        /// <param name="CharacterIds">A list of the character IDs, for further querying on your part..</param>
+        public DestinyEntitiesProfilesDestinyProfileComponent(UserUserInfoCard UserInfo = default(UserUserInfoCard), DateTime? DateLastPlayed = default(DateTime?), DestinyDestinyGameVersions VersionsOwned = default(DestinyDestinyGameVersions), List<long?> CharacterIds = default(List<long?>))
         {
-            this.UserInfo = userInfo;
-            this.DateLastPlayed = dateLastPlayed;
-            this.VersionsOwned = versionsOwned;
-            this.CharacterIds = characterIds;
+            this.UserInfo = UserInfo;
+            this.DateLastPlayed = DateLastPlayed;
+            this.VersionsOwned = VersionsOwned;
+            this.CharacterIds = CharacterIds;
         }
         
         /// <summary>
@@ -50,7 +50,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If you need to render the Profile (their platform name, icon, etc...) somewhere, this property contains that information.</value>
         [DataMember(Name="userInfo", EmitDefaultValue=false)]
-        public Object UserInfo { get; set; }
+        public UserUserInfoCard UserInfo { get; set; }
 
         /// <summary>
         /// The last time the user played with any character on this Profile.
@@ -64,7 +64,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If you want to know what expansions they own, this will contain that data.</value>
         [DataMember(Name="versionsOwned", EmitDefaultValue=false)]
-        public Object VersionsOwned { get; set; }
+        public DestinyDestinyGameVersions VersionsOwned { get; set; }
 
         /// <summary>
         /// A list of the character IDs, for further querying on your part.
@@ -93,7 +93,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

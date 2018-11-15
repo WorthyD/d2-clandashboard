@@ -33,56 +33,56 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyResponsesDestinyProfileResponse" /> class.
         /// </summary>
-        /// <param name="vendorReceipts">Recent, refundable purchases you have made from vendors. When will you use it? Couldn&#39;t say...  COMPONENT TYPE: VendorReceipts.</param>
-        /// <param name="profileInventory">The profile-level inventory of the Destiny Profile.  COMPONENT TYPE: ProfileInventories.</param>
-        /// <param name="profileCurrencies">The profile-level currencies owned by the Destiny Profile.  COMPONENT TYPE: ProfileCurrencies.</param>
-        /// <param name="profile">The basic information about the Destiny Profile (formerly \&quot;Account\&quot;).  COMPONENT TYPE: Profiles.</param>
-        /// <param name="profileKiosks">Items available from Kiosks that are available Profile-wide (i.e. across all characters)  This component returns information about what Kiosk items are available to you on a *Profile* level. It is theoretically possible for Kiosks to have items gated by specific Character as well. If you ever have those, you will find them on the characterKiosks property.  COMPONENT TYPE: Kiosks.</param>
-        /// <param name="profilePlugSets">When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states that are profile-scoped.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets.</param>
-        /// <param name="profileProgression">When we have progression information - such as Checklists - that may apply profile-wide, it will be returned here rather than in the per-character progression data.  COMPONENT TYPE: ProfileProgression.</param>
-        /// <param name="profilePresentationNodes">COMPONENT TYPE: PresentationNodes.</param>
-        /// <param name="profileRecords">COMPONENT TYPE: Records.</param>
-        /// <param name="profileCollectibles">COMPONENT TYPE: Collectibles.</param>
-        /// <param name="characters">Basic information about each character, keyed by the CharacterId.  COMPONENT TYPE: Characters.</param>
-        /// <param name="characterInventories">The character-level non-equipped inventory items, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterInventories.</param>
-        /// <param name="characterProgressions">Character-level progression data, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterProgressions.</param>
-        /// <param name="characterRenderData">Character rendering data - a minimal set of info needed to render a character in 3D - keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterRenderData.</param>
-        /// <param name="characterActivities">Character activity data - the activities available to this character and its status, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterActivities.</param>
-        /// <param name="characterEquipment">The character&#39;s equipped items, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterEquipment.</param>
-        /// <param name="characterKiosks">Items available from Kiosks that are available to a specific character as opposed to the account as a whole. It must be combined with data from the profileKiosks property to get a full picture of the character&#39;s available items to check out of a kiosk.  This component returns information about what Kiosk items are available to you on a *Character* level. Usually, kiosk items will be earned for the entire Profile (all characters) at once. To find those, look in the profileKiosks property.  COMPONENT TYPE: Kiosks.</param>
-        /// <param name="characterPlugSets">When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states, per character, that are character-scoped.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets.</param>
-        /// <param name="characterUninstancedItemComponents">Do you ever get the feeling that a system was designed *too* flexibly? That it can be used in so many different ways that you end up being unable to provide an easy to use abstraction for the mess that&#39;s happening under the surface?  Let&#39;s talk about character-specific data that might be related to items without instances. These two statements are totally unrelated, I promise.  At some point during D2, it was decided that items - such as Bounties - could be given to characters and *not* have instance data, but that *could* display and even use relevant state information on your account and character.  Up to now, any item that had meaningful dependencies on character or account state had to be instanced, and thus \&quot;itemComponents\&quot; was all that you needed: it was keyed by item&#39;s instance IDs and provided the stateful information you needed inside.  Unfortunately, we don&#39;t live in such a magical world anymore. This is information held on a per-character basis about non-instanced items that the characters have in their inventory - or that reference character-specific state information even if it&#39;s in Account-level inventory - and the values related to that item&#39;s state in relation to the given character.  To give a concrete example, look at a Moments of Triumph bounty. They exist in a character&#39;s inventory, and show/care about a character&#39;s progression toward completing the bounty. But the bounty itself is a non-instanced item, like a mod or a currency. This returns that data for the characters who have the bounty in their inventory.  I&#39;m not crying, you&#39;re crying Okay we&#39;re both crying but it&#39;s going to be okay I promise Actually I shouldn&#39;t promise that, I don&#39;t know if it&#39;s going to be okay.</param>
-        /// <param name="characterPresentationNodes">COMPONENT TYPE: PresentationNodes.</param>
-        /// <param name="characterRecords">COMPONENT TYPE: Records.</param>
-        /// <param name="characterCollectibles">COMPONENT TYPE: Collectibles.</param>
-        /// <param name="itemComponents">Information about instanced items across all returned characters, keyed by the item&#39;s instance ID.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.].</param>
-        /// <param name="characterCurrencyLookups">A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups.</param>
-        public DestinyResponsesDestinyProfileResponse(Object vendorReceipts = default(Object), Object profileInventory = default(Object), Object profileCurrencies = default(Object), Object profile = default(Object), Object profileKiosks = default(Object), Object profilePlugSets = default(Object), Object profileProgression = default(Object), Object profilePresentationNodes = default(Object), Object profileRecords = default(Object), Object profileCollectibles = default(Object), Object characters = default(Object), Object characterInventories = default(Object), Object characterProgressions = default(Object), Object characterRenderData = default(Object), Object characterActivities = default(Object), Object characterEquipment = default(Object), Object characterKiosks = default(Object), Object characterPlugSets = default(Object), Dictionary<string, DestinyBaseItemComponentSetOfuint32> characterUninstancedItemComponents = default(Dictionary<string, DestinyBaseItemComponentSetOfuint32>), Object characterPresentationNodes = default(Object), Object characterRecords = default(Object), Object characterCollectibles = default(Object), Object itemComponents = default(Object), Object characterCurrencyLookups = default(Object))
+        /// <param name="VendorReceipts">Recent, refundable purchases you have made from vendors. When will you use it? Couldn&#39;t say...  COMPONENT TYPE: VendorReceipts.</param>
+        /// <param name="ProfileInventory">The profile-level inventory of the Destiny Profile.  COMPONENT TYPE: ProfileInventories.</param>
+        /// <param name="ProfileCurrencies">The profile-level currencies owned by the Destiny Profile.  COMPONENT TYPE: ProfileCurrencies.</param>
+        /// <param name="Profile">The basic information about the Destiny Profile (formerly \&quot;Account\&quot;).  COMPONENT TYPE: Profiles.</param>
+        /// <param name="ProfileKiosks">Items available from Kiosks that are available Profile-wide (i.e. across all characters)  This component returns information about what Kiosk items are available to you on a *Profile* level. It is theoretically possible for Kiosks to have items gated by specific Character as well. If you ever have those, you will find them on the characterKiosks property.  COMPONENT TYPE: Kiosks.</param>
+        /// <param name="ProfilePlugSets">When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states that are profile-scoped.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets.</param>
+        /// <param name="ProfileProgression">When we have progression information - such as Checklists - that may apply profile-wide, it will be returned here rather than in the per-character progression data.  COMPONENT TYPE: ProfileProgression.</param>
+        /// <param name="ProfilePresentationNodes">COMPONENT TYPE: PresentationNodes.</param>
+        /// <param name="ProfileRecords">COMPONENT TYPE: Records.</param>
+        /// <param name="ProfileCollectibles">COMPONENT TYPE: Collectibles.</param>
+        /// <param name="Characters">Basic information about each character, keyed by the CharacterId.  COMPONENT TYPE: Characters.</param>
+        /// <param name="CharacterInventories">The character-level non-equipped inventory items, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterInventories.</param>
+        /// <param name="CharacterProgressions">Character-level progression data, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterProgressions.</param>
+        /// <param name="CharacterRenderData">Character rendering data - a minimal set of info needed to render a character in 3D - keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterRenderData.</param>
+        /// <param name="CharacterActivities">Character activity data - the activities available to this character and its status, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterActivities.</param>
+        /// <param name="CharacterEquipment">The character&#39;s equipped items, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterEquipment.</param>
+        /// <param name="CharacterKiosks">Items available from Kiosks that are available to a specific character as opposed to the account as a whole. It must be combined with data from the profileKiosks property to get a full picture of the character&#39;s available items to check out of a kiosk.  This component returns information about what Kiosk items are available to you on a *Character* level. Usually, kiosk items will be earned for the entire Profile (all characters) at once. To find those, look in the profileKiosks property.  COMPONENT TYPE: Kiosks.</param>
+        /// <param name="CharacterPlugSets">When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states, per character, that are character-scoped.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets.</param>
+        /// <param name="CharacterUninstancedItemComponents">Do you ever get the feeling that a system was designed *too* flexibly? That it can be used in so many different ways that you end up being unable to provide an easy to use abstraction for the mess that&#39;s happening under the surface?  Let&#39;s talk about character-specific data that might be related to items without instances. These two statements are totally unrelated, I promise.  At some point during D2, it was decided that items - such as Bounties - could be given to characters and *not* have instance data, but that *could* display and even use relevant state information on your account and character.  Up to now, any item that had meaningful dependencies on character or account state had to be instanced, and thus \&quot;itemComponents\&quot; was all that you needed: it was keyed by item&#39;s instance IDs and provided the stateful information you needed inside.  Unfortunately, we don&#39;t live in such a magical world anymore. This is information held on a per-character basis about non-instanced items that the characters have in their inventory - or that reference character-specific state information even if it&#39;s in Account-level inventory - and the values related to that item&#39;s state in relation to the given character.  To give a concrete example, look at a Moments of Triumph bounty. They exist in a character&#39;s inventory, and show/care about a character&#39;s progression toward completing the bounty. But the bounty itself is a non-instanced item, like a mod or a currency. This returns that data for the characters who have the bounty in their inventory.  I&#39;m not crying, you&#39;re crying Okay we&#39;re both crying but it&#39;s going to be okay I promise Actually I shouldn&#39;t promise that, I don&#39;t know if it&#39;s going to be okay.</param>
+        /// <param name="CharacterPresentationNodes">COMPONENT TYPE: PresentationNodes.</param>
+        /// <param name="CharacterRecords">COMPONENT TYPE: Records.</param>
+        /// <param name="CharacterCollectibles">COMPONENT TYPE: Collectibles.</param>
+        /// <param name="ItemComponents">Information about instanced items across all returned characters, keyed by the item&#39;s instance ID.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.].</param>
+        /// <param name="CharacterCurrencyLookups">A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups.</param>
+        public DestinyResponsesDestinyProfileResponse(SingleComponentResponseOfDestinyVendorReceiptsComponent VendorReceipts = default(SingleComponentResponseOfDestinyVendorReceiptsComponent), SingleComponentResponseOfDestinyInventoryComponent ProfileInventory = default(SingleComponentResponseOfDestinyInventoryComponent), SingleComponentResponseOfDestinyInventoryComponent ProfileCurrencies = default(SingleComponentResponseOfDestinyInventoryComponent), SingleComponentResponseOfDestinyProfileComponent Profile = default(SingleComponentResponseOfDestinyProfileComponent), SingleComponentResponseOfDestinyKiosksComponent ProfileKiosks = default(SingleComponentResponseOfDestinyKiosksComponent), SingleComponentResponseOfDestinyPlugSetsComponent ProfilePlugSets = default(SingleComponentResponseOfDestinyPlugSetsComponent), SingleComponentResponseOfDestinyProfileProgressionComponent ProfileProgression = default(SingleComponentResponseOfDestinyProfileProgressionComponent), SingleComponentResponseOfDestinyPresentationNodesComponent ProfilePresentationNodes = default(SingleComponentResponseOfDestinyPresentationNodesComponent), SingleComponentResponseOfDestinyProfileRecordsComponent ProfileRecords = default(SingleComponentResponseOfDestinyProfileRecordsComponent), SingleComponentResponseOfDestinyProfileCollectiblesComponent ProfileCollectibles = default(SingleComponentResponseOfDestinyProfileCollectiblesComponent), DictionaryComponentResponseOfint64AndDestinyCharacterComponent Characters = default(DictionaryComponentResponseOfint64AndDestinyCharacterComponent), DictionaryComponentResponseOfint64AndDestinyInventoryComponent CharacterInventories = default(DictionaryComponentResponseOfint64AndDestinyInventoryComponent), DictionaryComponentResponseOfint64AndDestinyCharacterProgressionComponent CharacterProgressions = default(DictionaryComponentResponseOfint64AndDestinyCharacterProgressionComponent), DictionaryComponentResponseOfint64AndDestinyCharacterRenderComponent CharacterRenderData = default(DictionaryComponentResponseOfint64AndDestinyCharacterRenderComponent), DictionaryComponentResponseOfint64AndDestinyCharacterActivitiesComponent CharacterActivities = default(DictionaryComponentResponseOfint64AndDestinyCharacterActivitiesComponent), DictionaryComponentResponseOfint64AndDestinyInventoryComponent CharacterEquipment = default(DictionaryComponentResponseOfint64AndDestinyInventoryComponent), DictionaryComponentResponseOfint64AndDestinyKiosksComponent CharacterKiosks = default(DictionaryComponentResponseOfint64AndDestinyKiosksComponent), DictionaryComponentResponseOfint64AndDestinyPlugSetsComponent CharacterPlugSets = default(DictionaryComponentResponseOfint64AndDestinyPlugSetsComponent), Dictionary<string, DestinyBaseItemComponentSetOfuint32> CharacterUninstancedItemComponents = default(Dictionary<string, DestinyBaseItemComponentSetOfuint32>), DictionaryComponentResponseOfint64AndDestinyPresentationNodesComponent CharacterPresentationNodes = default(DictionaryComponentResponseOfint64AndDestinyPresentationNodesComponent), DictionaryComponentResponseOfint64AndDestinyCharacterRecordsComponent CharacterRecords = default(DictionaryComponentResponseOfint64AndDestinyCharacterRecordsComponent), DictionaryComponentResponseOfint64AndDestinyCollectiblesComponent CharacterCollectibles = default(DictionaryComponentResponseOfint64AndDestinyCollectiblesComponent), DestinyItemComponentSetOfint64 ItemComponents = default(DestinyItemComponentSetOfint64), DictionaryComponentResponseOfint64AndDestinyCurrenciesComponent CharacterCurrencyLookups = default(DictionaryComponentResponseOfint64AndDestinyCurrenciesComponent))
         {
-            this.VendorReceipts = vendorReceipts;
-            this.ProfileInventory = profileInventory;
-            this.ProfileCurrencies = profileCurrencies;
-            this.Profile = profile;
-            this.ProfileKiosks = profileKiosks;
-            this.ProfilePlugSets = profilePlugSets;
-            this.ProfileProgression = profileProgression;
-            this.ProfilePresentationNodes = profilePresentationNodes;
-            this.ProfileRecords = profileRecords;
-            this.ProfileCollectibles = profileCollectibles;
-            this.Characters = characters;
-            this.CharacterInventories = characterInventories;
-            this.CharacterProgressions = characterProgressions;
-            this.CharacterRenderData = characterRenderData;
-            this.CharacterActivities = characterActivities;
-            this.CharacterEquipment = characterEquipment;
-            this.CharacterKiosks = characterKiosks;
-            this.CharacterPlugSets = characterPlugSets;
-            this.CharacterUninstancedItemComponents = characterUninstancedItemComponents;
-            this.CharacterPresentationNodes = characterPresentationNodes;
-            this.CharacterRecords = characterRecords;
-            this.CharacterCollectibles = characterCollectibles;
-            this.ItemComponents = itemComponents;
-            this.CharacterCurrencyLookups = characterCurrencyLookups;
+            this.VendorReceipts = VendorReceipts;
+            this.ProfileInventory = ProfileInventory;
+            this.ProfileCurrencies = ProfileCurrencies;
+            this.Profile = Profile;
+            this.ProfileKiosks = ProfileKiosks;
+            this.ProfilePlugSets = ProfilePlugSets;
+            this.ProfileProgression = ProfileProgression;
+            this.ProfilePresentationNodes = ProfilePresentationNodes;
+            this.ProfileRecords = ProfileRecords;
+            this.ProfileCollectibles = ProfileCollectibles;
+            this.Characters = Characters;
+            this.CharacterInventories = CharacterInventories;
+            this.CharacterProgressions = CharacterProgressions;
+            this.CharacterRenderData = CharacterRenderData;
+            this.CharacterActivities = CharacterActivities;
+            this.CharacterEquipment = CharacterEquipment;
+            this.CharacterKiosks = CharacterKiosks;
+            this.CharacterPlugSets = CharacterPlugSets;
+            this.CharacterUninstancedItemComponents = CharacterUninstancedItemComponents;
+            this.CharacterPresentationNodes = CharacterPresentationNodes;
+            this.CharacterRecords = CharacterRecords;
+            this.CharacterCollectibles = CharacterCollectibles;
+            this.ItemComponents = ItemComponents;
+            this.CharacterCurrencyLookups = CharacterCurrencyLookups;
         }
         
         /// <summary>
@@ -90,126 +90,126 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Recent, refundable purchases you have made from vendors. When will you use it? Couldn&#39;t say...  COMPONENT TYPE: VendorReceipts</value>
         [DataMember(Name="vendorReceipts", EmitDefaultValue=false)]
-        public Object VendorReceipts { get; set; }
+        public SingleComponentResponseOfDestinyVendorReceiptsComponent VendorReceipts { get; set; }
 
         /// <summary>
         /// The profile-level inventory of the Destiny Profile.  COMPONENT TYPE: ProfileInventories
         /// </summary>
         /// <value>The profile-level inventory of the Destiny Profile.  COMPONENT TYPE: ProfileInventories</value>
         [DataMember(Name="profileInventory", EmitDefaultValue=false)]
-        public Object ProfileInventory { get; set; }
+        public SingleComponentResponseOfDestinyInventoryComponent ProfileInventory { get; set; }
 
         /// <summary>
         /// The profile-level currencies owned by the Destiny Profile.  COMPONENT TYPE: ProfileCurrencies
         /// </summary>
         /// <value>The profile-level currencies owned by the Destiny Profile.  COMPONENT TYPE: ProfileCurrencies</value>
         [DataMember(Name="profileCurrencies", EmitDefaultValue=false)]
-        public Object ProfileCurrencies { get; set; }
+        public SingleComponentResponseOfDestinyInventoryComponent ProfileCurrencies { get; set; }
 
         /// <summary>
         /// The basic information about the Destiny Profile (formerly \&quot;Account\&quot;).  COMPONENT TYPE: Profiles
         /// </summary>
         /// <value>The basic information about the Destiny Profile (formerly \&quot;Account\&quot;).  COMPONENT TYPE: Profiles</value>
         [DataMember(Name="profile", EmitDefaultValue=false)]
-        public Object Profile { get; set; }
+        public SingleComponentResponseOfDestinyProfileComponent Profile { get; set; }
 
         /// <summary>
         /// Items available from Kiosks that are available Profile-wide (i.e. across all characters)  This component returns information about what Kiosk items are available to you on a *Profile* level. It is theoretically possible for Kiosks to have items gated by specific Character as well. If you ever have those, you will find them on the characterKiosks property.  COMPONENT TYPE: Kiosks
         /// </summary>
         /// <value>Items available from Kiosks that are available Profile-wide (i.e. across all characters)  This component returns information about what Kiosk items are available to you on a *Profile* level. It is theoretically possible for Kiosks to have items gated by specific Character as well. If you ever have those, you will find them on the characterKiosks property.  COMPONENT TYPE: Kiosks</value>
         [DataMember(Name="profileKiosks", EmitDefaultValue=false)]
-        public Object ProfileKiosks { get; set; }
+        public SingleComponentResponseOfDestinyKiosksComponent ProfileKiosks { get; set; }
 
         /// <summary>
         /// When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states that are profile-scoped.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets
         /// </summary>
         /// <value>When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states that are profile-scoped.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets</value>
         [DataMember(Name="profilePlugSets", EmitDefaultValue=false)]
-        public Object ProfilePlugSets { get; set; }
+        public SingleComponentResponseOfDestinyPlugSetsComponent ProfilePlugSets { get; set; }
 
         /// <summary>
         /// When we have progression information - such as Checklists - that may apply profile-wide, it will be returned here rather than in the per-character progression data.  COMPONENT TYPE: ProfileProgression
         /// </summary>
         /// <value>When we have progression information - such as Checklists - that may apply profile-wide, it will be returned here rather than in the per-character progression data.  COMPONENT TYPE: ProfileProgression</value>
         [DataMember(Name="profileProgression", EmitDefaultValue=false)]
-        public Object ProfileProgression { get; set; }
+        public SingleComponentResponseOfDestinyProfileProgressionComponent ProfileProgression { get; set; }
 
         /// <summary>
         /// COMPONENT TYPE: PresentationNodes
         /// </summary>
         /// <value>COMPONENT TYPE: PresentationNodes</value>
         [DataMember(Name="profilePresentationNodes", EmitDefaultValue=false)]
-        public Object ProfilePresentationNodes { get; set; }
+        public SingleComponentResponseOfDestinyPresentationNodesComponent ProfilePresentationNodes { get; set; }
 
         /// <summary>
         /// COMPONENT TYPE: Records
         /// </summary>
         /// <value>COMPONENT TYPE: Records</value>
         [DataMember(Name="profileRecords", EmitDefaultValue=false)]
-        public Object ProfileRecords { get; set; }
+        public SingleComponentResponseOfDestinyProfileRecordsComponent ProfileRecords { get; set; }
 
         /// <summary>
         /// COMPONENT TYPE: Collectibles
         /// </summary>
         /// <value>COMPONENT TYPE: Collectibles</value>
         [DataMember(Name="profileCollectibles", EmitDefaultValue=false)]
-        public Object ProfileCollectibles { get; set; }
+        public SingleComponentResponseOfDestinyProfileCollectiblesComponent ProfileCollectibles { get; set; }
 
         /// <summary>
         /// Basic information about each character, keyed by the CharacterId.  COMPONENT TYPE: Characters
         /// </summary>
         /// <value>Basic information about each character, keyed by the CharacterId.  COMPONENT TYPE: Characters</value>
         [DataMember(Name="characters", EmitDefaultValue=false)]
-        public Object Characters { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyCharacterComponent Characters { get; set; }
 
         /// <summary>
         /// The character-level non-equipped inventory items, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterInventories
         /// </summary>
         /// <value>The character-level non-equipped inventory items, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterInventories</value>
         [DataMember(Name="characterInventories", EmitDefaultValue=false)]
-        public Object CharacterInventories { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyInventoryComponent CharacterInventories { get; set; }
 
         /// <summary>
         /// Character-level progression data, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterProgressions
         /// </summary>
         /// <value>Character-level progression data, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterProgressions</value>
         [DataMember(Name="characterProgressions", EmitDefaultValue=false)]
-        public Object CharacterProgressions { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyCharacterProgressionComponent CharacterProgressions { get; set; }
 
         /// <summary>
         /// Character rendering data - a minimal set of info needed to render a character in 3D - keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterRenderData
         /// </summary>
         /// <value>Character rendering data - a minimal set of info needed to render a character in 3D - keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterRenderData</value>
         [DataMember(Name="characterRenderData", EmitDefaultValue=false)]
-        public Object CharacterRenderData { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyCharacterRenderComponent CharacterRenderData { get; set; }
 
         /// <summary>
         /// Character activity data - the activities available to this character and its status, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterActivities
         /// </summary>
         /// <value>Character activity data - the activities available to this character and its status, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterActivities</value>
         [DataMember(Name="characterActivities", EmitDefaultValue=false)]
-        public Object CharacterActivities { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyCharacterActivitiesComponent CharacterActivities { get; set; }
 
         /// <summary>
         /// The character&#39;s equipped items, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterEquipment
         /// </summary>
         /// <value>The character&#39;s equipped items, keyed by the Character&#39;s Id.  COMPONENT TYPE: CharacterEquipment</value>
         [DataMember(Name="characterEquipment", EmitDefaultValue=false)]
-        public Object CharacterEquipment { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyInventoryComponent CharacterEquipment { get; set; }
 
         /// <summary>
         /// Items available from Kiosks that are available to a specific character as opposed to the account as a whole. It must be combined with data from the profileKiosks property to get a full picture of the character&#39;s available items to check out of a kiosk.  This component returns information about what Kiosk items are available to you on a *Character* level. Usually, kiosk items will be earned for the entire Profile (all characters) at once. To find those, look in the profileKiosks property.  COMPONENT TYPE: Kiosks
         /// </summary>
         /// <value>Items available from Kiosks that are available to a specific character as opposed to the account as a whole. It must be combined with data from the profileKiosks property to get a full picture of the character&#39;s available items to check out of a kiosk.  This component returns information about what Kiosk items are available to you on a *Character* level. Usually, kiosk items will be earned for the entire Profile (all characters) at once. To find those, look in the profileKiosks property.  COMPONENT TYPE: Kiosks</value>
         [DataMember(Name="characterKiosks", EmitDefaultValue=false)]
-        public Object CharacterKiosks { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyKiosksComponent CharacterKiosks { get; set; }
 
         /// <summary>
         /// When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states, per character, that are character-scoped.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets
         /// </summary>
         /// <value>When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states, per character, that are character-scoped.  This comes back with ItemSockets, as it is needed for a complete picture of the sockets on requested items.  COMPONENT TYPE: ItemSockets</value>
         [DataMember(Name="characterPlugSets", EmitDefaultValue=false)]
-        public Object CharacterPlugSets { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyPlugSetsComponent CharacterPlugSets { get; set; }
 
         /// <summary>
         /// Do you ever get the feeling that a system was designed *too* flexibly? That it can be used in so many different ways that you end up being unable to provide an easy to use abstraction for the mess that&#39;s happening under the surface?  Let&#39;s talk about character-specific data that might be related to items without instances. These two statements are totally unrelated, I promise.  At some point during D2, it was decided that items - such as Bounties - could be given to characters and *not* have instance data, but that *could* display and even use relevant state information on your account and character.  Up to now, any item that had meaningful dependencies on character or account state had to be instanced, and thus \&quot;itemComponents\&quot; was all that you needed: it was keyed by item&#39;s instance IDs and provided the stateful information you needed inside.  Unfortunately, we don&#39;t live in such a magical world anymore. This is information held on a per-character basis about non-instanced items that the characters have in their inventory - or that reference character-specific state information even if it&#39;s in Account-level inventory - and the values related to that item&#39;s state in relation to the given character.  To give a concrete example, look at a Moments of Triumph bounty. They exist in a character&#39;s inventory, and show/care about a character&#39;s progression toward completing the bounty. But the bounty itself is a non-instanced item, like a mod or a currency. This returns that data for the characters who have the bounty in their inventory.  I&#39;m not crying, you&#39;re crying Okay we&#39;re both crying but it&#39;s going to be okay I promise Actually I shouldn&#39;t promise that, I don&#39;t know if it&#39;s going to be okay
@@ -223,35 +223,35 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>COMPONENT TYPE: PresentationNodes</value>
         [DataMember(Name="characterPresentationNodes", EmitDefaultValue=false)]
-        public Object CharacterPresentationNodes { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyPresentationNodesComponent CharacterPresentationNodes { get; set; }
 
         /// <summary>
         /// COMPONENT TYPE: Records
         /// </summary>
         /// <value>COMPONENT TYPE: Records</value>
         [DataMember(Name="characterRecords", EmitDefaultValue=false)]
-        public Object CharacterRecords { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyCharacterRecordsComponent CharacterRecords { get; set; }
 
         /// <summary>
         /// COMPONENT TYPE: Collectibles
         /// </summary>
         /// <value>COMPONENT TYPE: Collectibles</value>
         [DataMember(Name="characterCollectibles", EmitDefaultValue=false)]
-        public Object CharacterCollectibles { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyCollectiblesComponent CharacterCollectibles { get; set; }
 
         /// <summary>
         /// Information about instanced items across all returned characters, keyed by the item&#39;s instance ID.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
         /// </summary>
         /// <value>Information about instanced items across all returned characters, keyed by the item&#39;s instance ID.  COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]</value>
         [DataMember(Name="itemComponents", EmitDefaultValue=false)]
-        public Object ItemComponents { get; set; }
+        public DestinyItemComponentSetOfint64 ItemComponents { get; set; }
 
         /// <summary>
         /// A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups
         /// </summary>
         /// <value>A \&quot;lookup\&quot; convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.  COMPONENT TYPE: CurrencyLookups</value>
         [DataMember(Name="characterCurrencyLookups", EmitDefaultValue=false)]
-        public Object CharacterCurrencyLookups { get; set; }
+        public DictionaryComponentResponseOfint64AndDestinyCurrenciesComponent CharacterCurrencyLookups { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -293,7 +293,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

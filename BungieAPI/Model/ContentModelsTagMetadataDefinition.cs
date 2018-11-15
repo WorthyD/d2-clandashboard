@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentModelsTagMetadataDefinition" /> class.
         /// </summary>
-        /// <param name="description">description.</param>
-        /// <param name="order">order.</param>
-        /// <param name="items">items.</param>
-        /// <param name="datatype">datatype.</param>
-        /// <param name="name">name.</param>
-        /// <param name="isRequired">isRequired.</param>
-        public ContentModelsTagMetadataDefinition(string description = default(string), int? order = default(int?), List<ContentModelsTagMetadataItem> items = default(List<ContentModelsTagMetadataItem>), string datatype = default(string), string name = default(string), bool? isRequired = default(bool?))
+        /// <param name="Description">Description.</param>
+        /// <param name="Order">Order.</param>
+        /// <param name="Items">Items.</param>
+        /// <param name="Datatype">Datatype.</param>
+        /// <param name="Name">Name.</param>
+        /// <param name="IsRequired">IsRequired.</param>
+        public ContentModelsTagMetadataDefinition(string Description = default(string), int? Order = default(int?), List<ContentModelsTagMetadataItem> Items = default(List<ContentModelsTagMetadataItem>), string Datatype = default(string), string Name = default(string), bool? IsRequired = default(bool?))
         {
-            this.Description = description;
-            this.Order = order;
-            this.Items = items;
-            this.Datatype = datatype;
-            this.Name = name;
-            this.IsRequired = isRequired;
+            this.Description = Description;
+            this.Order = Order;
+            this.Items = Items;
+            this.Datatype = Datatype;
+            this.Name = Name;
+            this.IsRequired = IsRequired;
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

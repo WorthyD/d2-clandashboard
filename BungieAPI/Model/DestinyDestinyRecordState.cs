@@ -28,59 +28,57 @@ namespace BungieAPI.Model
     /// A Flags enumeration where each bit represents a possible state that a Record/Triumph can be in.
     /// </summary>
     /// <value>A Flags enumeration where each bit represents a possible state that a Record/Triumph can be in.</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyDestinyRecordState
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// If there are no flags set, the record is in a state where it *could* be redeemed, but it has not been yet.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// If this is set, the completed record has been redeemed.
+		/// </summary>
+		[EnumMember(Value = "1")]
+        RecordRedeemed,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// If this is set, there&#39;s a reward available from this Record but it&#39;s unavailable for redemption.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        RewardUnavailable,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 4,
+		/// <summary>
+		/// If this is set, the objective for this Record has not yet been completed.
+		/// </summary>
+		[EnumMember(Value = "4")]
+        ObjectiveNotCompleted,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 5,
+		/// <summary>
+		/// If this is set, the game recommends that you replace the display text of this Record with DestinyRecordDefinition.stateInfo.obscuredString.
+		/// </summary>
+		[EnumMember(Value = "8")]
+        Obscured,
         
-        /// <summary>
-        /// Enum NUMBER_16 for value: 16
-        /// </summary>
-        [EnumMember(Value = "16")]
-        NUMBER_16 = 6,
+		/// <summary>
+		/// If this is set, the game recommends that you not show this record. Do what you will with this recommendation.
+		/// </summary>
+		[EnumMember(Value = "16")]
+        Invisible,
         
-        /// <summary>
-        /// Enum NUMBER_32 for value: 32
-        /// </summary>
-        [EnumMember(Value = "32")]
-        NUMBER_32 = 7,
+		/// <summary>
+		/// If this is set, you can&#39;t complete this record because you lack some permission that&#39;s required to complete it.
+		/// </summary>
+		[EnumMember(Value = "32")]
+        EntitlementUnowned,
         
-        /// <summary>
-        /// Enum NUMBER_64 for value: 64
-        /// </summary>
-        [EnumMember(Value = "64")]
-        NUMBER_64 = 8
+		/// <summary>
+		/// If this is set, the record has a title (check DestinyRecordDefinition for title info) and you can equip it.
+		/// </summary>
+		[EnumMember(Value = "64")]
+        CanEquipTitle
     }
 
 }

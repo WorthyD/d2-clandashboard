@@ -33,28 +33,28 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsChecklistsDestinyChecklistEntryDefinition" /> class.
         /// </summary>
-        /// <param name="hash">The identifier for this Checklist entry. Guaranteed unique only within this Checklist Definition, and not globally/for all checklists..</param>
-        /// <param name="displayProperties">Even if no other associations exist, we will give you *something* for display properties. In cases where we have no associated entities, it may be as simple as a numerical identifier..</param>
-        /// <param name="destinationHash">destinationHash.</param>
-        /// <param name="locationHash">locationHash.</param>
-        /// <param name="bubbleHash">Note that a Bubble&#39;s hash doesn&#39;t uniquely identify a \&quot;top level\&quot; entity in Destiny. Only the combination of location and bubble can uniquely identify a place in the world of Destiny: so if bubbleHash is populated, locationHash must too be populated for it to have any meaning.  You can use this property if it is populated to look up the DestinyLocationDefinition&#39;s associated .locationReleases[].activityBubbleName property..</param>
-        /// <param name="activityHash">activityHash.</param>
-        /// <param name="itemHash">itemHash.</param>
-        /// <param name="vendorHash">vendorHash.</param>
-        /// <param name="vendorInteractionIndex">vendorInteractionIndex.</param>
-        /// <param name="scope">The scope at which this specific entry can be computed..</param>
-        public DestinyDefinitionsChecklistsDestinyChecklistEntryDefinition(int? hash = default(int?), Object displayProperties = default(Object), int? destinationHash = default(int?), int? locationHash = default(int?), int? bubbleHash = default(int?), int? activityHash = default(int?), int? itemHash = default(int?), int? vendorHash = default(int?), int? vendorInteractionIndex = default(int?), Object scope = default(Object))
+        /// <param name="Hash">The identifier for this Checklist entry. Guaranteed unique only within this Checklist Definition, and not globally/for all checklists..</param>
+        /// <param name="DisplayProperties">Even if no other associations exist, we will give you *something* for display properties. In cases where we have no associated entities, it may be as simple as a numerical identifier..</param>
+        /// <param name="DestinationHash">DestinationHash.</param>
+        /// <param name="LocationHash">LocationHash.</param>
+        /// <param name="BubbleHash">Note that a Bubble&#39;s hash doesn&#39;t uniquely identify a \&quot;top level\&quot; entity in Destiny. Only the combination of location and bubble can uniquely identify a place in the world of Destiny: so if bubbleHash is populated, locationHash must too be populated for it to have any meaning.  You can use this property if it is populated to look up the DestinyLocationDefinition&#39;s associated .locationReleases[].activityBubbleName property..</param>
+        /// <param name="ActivityHash">ActivityHash.</param>
+        /// <param name="ItemHash">ItemHash.</param>
+        /// <param name="VendorHash">VendorHash.</param>
+        /// <param name="VendorInteractionIndex">VendorInteractionIndex.</param>
+        /// <param name="Scope">The scope at which this specific entry can be computed..</param>
+        public DestinyDefinitionsChecklistsDestinyChecklistEntryDefinition(uint? Hash = default(uint?), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), uint? DestinationHash = default(uint?), uint? LocationHash = default(uint?), uint? BubbleHash = default(uint?), uint? ActivityHash = default(uint?), uint? ItemHash = default(uint?), uint? VendorHash = default(uint?), int? VendorInteractionIndex = default(int?), DestinyDestinyScope Scope = default(DestinyDestinyScope))
         {
-            this.Hash = hash;
-            this.DisplayProperties = displayProperties;
-            this.DestinationHash = destinationHash;
-            this.LocationHash = locationHash;
-            this.BubbleHash = bubbleHash;
-            this.ActivityHash = activityHash;
-            this.ItemHash = itemHash;
-            this.VendorHash = vendorHash;
-            this.VendorInteractionIndex = vendorInteractionIndex;
-            this.Scope = scope;
+            this.Hash = Hash;
+            this.DisplayProperties = DisplayProperties;
+            this.DestinationHash = DestinationHash;
+            this.LocationHash = LocationHash;
+            this.BubbleHash = BubbleHash;
+            this.ActivityHash = ActivityHash;
+            this.ItemHash = ItemHash;
+            this.VendorHash = VendorHash;
+            this.VendorInteractionIndex = VendorInteractionIndex;
+            this.Scope = Scope;
         }
         
         /// <summary>
@@ -62,51 +62,51 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The identifier for this Checklist entry. Guaranteed unique only within this Checklist Definition, and not globally/for all checklists.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// Even if no other associations exist, we will give you *something* for display properties. In cases where we have no associated entities, it may be as simple as a numerical identifier.
         /// </summary>
         /// <value>Even if no other associations exist, we will give you *something* for display properties. In cases where we have no associated entities, it may be as simple as a numerical identifier.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// Gets or Sets DestinationHash
         /// </summary>
         [DataMember(Name="destinationHash", EmitDefaultValue=false)]
-        public int? DestinationHash { get; set; }
+        public uint? DestinationHash { get; set; }
 
         /// <summary>
         /// Gets or Sets LocationHash
         /// </summary>
         [DataMember(Name="locationHash", EmitDefaultValue=false)]
-        public int? LocationHash { get; set; }
+        public uint? LocationHash { get; set; }
 
         /// <summary>
         /// Note that a Bubble&#39;s hash doesn&#39;t uniquely identify a \&quot;top level\&quot; entity in Destiny. Only the combination of location and bubble can uniquely identify a place in the world of Destiny: so if bubbleHash is populated, locationHash must too be populated for it to have any meaning.  You can use this property if it is populated to look up the DestinyLocationDefinition&#39;s associated .locationReleases[].activityBubbleName property.
         /// </summary>
         /// <value>Note that a Bubble&#39;s hash doesn&#39;t uniquely identify a \&quot;top level\&quot; entity in Destiny. Only the combination of location and bubble can uniquely identify a place in the world of Destiny: so if bubbleHash is populated, locationHash must too be populated for it to have any meaning.  You can use this property if it is populated to look up the DestinyLocationDefinition&#39;s associated .locationReleases[].activityBubbleName property.</value>
         [DataMember(Name="bubbleHash", EmitDefaultValue=false)]
-        public int? BubbleHash { get; set; }
+        public uint? BubbleHash { get; set; }
 
         /// <summary>
         /// Gets or Sets ActivityHash
         /// </summary>
         [DataMember(Name="activityHash", EmitDefaultValue=false)]
-        public int? ActivityHash { get; set; }
+        public uint? ActivityHash { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemHash
         /// </summary>
         [DataMember(Name="itemHash", EmitDefaultValue=false)]
-        public int? ItemHash { get; set; }
+        public uint? ItemHash { get; set; }
 
         /// <summary>
         /// Gets or Sets VendorHash
         /// </summary>
         [DataMember(Name="vendorHash", EmitDefaultValue=false)]
-        public int? VendorHash { get; set; }
+        public uint? VendorHash { get; set; }
 
         /// <summary>
         /// Gets or Sets VendorInteractionIndex
@@ -119,7 +119,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The scope at which this specific entry can be computed.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Object Scope { get; set; }
+        public DestinyDestinyScope Scope { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -147,7 +147,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

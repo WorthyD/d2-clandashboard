@@ -34,26 +34,72 @@ namespace BungieAPI.Model
         /// Minimum Member Level allowed to host guided games  Always Allowed: Founder, Acting Founder, Admin  Allowed Overrides: None, Member, Beginner  Default is Member for clans, None for groups, although this means nothing for groups.
         /// </summary>
         /// <value>Minimum Member Level allowed to host guided games  Always Allowed: Founder, Acting Founder, Admin  Allowed Overrides: None, Member, Beginner  Default is Member for clans, None for groups, although this means nothing for groups.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
         public enum HostGuidedGamePermissionOverrideEnum
         {
             
             /// <summary>
-            /// Enum NUMBER_0 for value: 0
+            /// Enum None for 0
             /// </summary>
-            
-            NUMBER_0 = 0,
+            [EnumMember(Value = "0")]
+            None = 0,
             
             /// <summary>
-            /// Enum NUMBER_1 for value: 1
+            /// Enum Beginner for 1
             /// </summary>
-            
-            NUMBER_1 = 1,
+            [EnumMember(Value = "1")]
+            Beginner = 1,
             
             /// <summary>
-            /// Enum NUMBER_2 for value: 2
+            /// Enum Member for 2
             /// </summary>
+            [EnumMember(Value = "2")]
+            Member = 2
+        }
+
+        /// <summary>
+        /// Level to join a member at when accepting an invite, application, or joining an open clan  Default is Beginner.
+        /// </summary>
+        /// <value>Level to join a member at when accepting an invite, application, or joining an open clan  Default is Beginner.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum JoinLevelEnum
+        {
             
-            NUMBER_2 = 2
+            /// <summary>
+            /// Enum None for 0
+            /// </summary>
+            [EnumMember(Value = "0")]
+            None = 0,
+            
+            /// <summary>
+            /// Enum Beginner for 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            Beginner = 1,
+            
+            /// <summary>
+            /// Enum Member for 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            Member = 2,
+            
+            /// <summary>
+            /// Enum Admin for 3
+            /// </summary>
+            [EnumMember(Value = "3")]
+            Admin = 3,
+            
+            /// <summary>
+            /// Enum ActingFounder for 4
+            /// </summary>
+            [EnumMember(Value = "4")]
+            ActingFounder = 4,
+            
+            /// <summary>
+            /// Enum Founder for 5
+            /// </summary>
+            [EnumMember(Value = "5")]
+            Founder = 5
         }
 
         /// <summary>
@@ -66,67 +112,23 @@ namespace BungieAPI.Model
         /// Level to join a member at when accepting an invite, application, or joining an open clan  Default is Beginner.
         /// </summary>
         /// <value>Level to join a member at when accepting an invite, application, or joining an open clan  Default is Beginner.</value>
-        public enum JoinLevelEnum
-        {
-            
-            /// <summary>
-            /// Enum NUMBER_0 for value: 0
-            /// </summary>
-            
-            NUMBER_0 = 0,
-            
-            /// <summary>
-            /// Enum NUMBER_1 for value: 1
-            /// </summary>
-            
-            NUMBER_1 = 1,
-            
-            /// <summary>
-            /// Enum NUMBER_2 for value: 2
-            /// </summary>
-            
-            NUMBER_2 = 2,
-            
-            /// <summary>
-            /// Enum NUMBER_3 for value: 3
-            /// </summary>
-            
-            NUMBER_3 = 3,
-            
-            /// <summary>
-            /// Enum NUMBER_4 for value: 4
-            /// </summary>
-            
-            NUMBER_4 = 4,
-            
-            /// <summary>
-            /// Enum NUMBER_5 for value: 5
-            /// </summary>
-            
-            NUMBER_5 = 5
-        }
-
-        /// <summary>
-        /// Level to join a member at when accepting an invite, application, or joining an open clan  Default is Beginner.
-        /// </summary>
-        /// <value>Level to join a member at when accepting an invite, application, or joining an open clan  Default is Beginner.</value>
         [DataMember(Name="JoinLevel", EmitDefaultValue=false)]
         public JoinLevelEnum? JoinLevel { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupsV2GroupOptionsEditAction" /> class.
         /// </summary>
-        /// <param name="invitePermissionOverride">Minimum Member Level allowed to invite new members to group  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
-        /// <param name="updateCulturePermissionOverride">Minimum Member Level allowed to update group culture  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
-        /// <param name="hostGuidedGamePermissionOverride">Minimum Member Level allowed to host guided games  Always Allowed: Founder, Acting Founder, Admin  Allowed Overrides: None, Member, Beginner  Default is Member for clans, None for groups, although this means nothing for groups..</param>
-        /// <param name="updateBannerPermissionOverride">Minimum Member Level allowed to update banner  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
-        /// <param name="joinLevel">Level to join a member at when accepting an invite, application, or joining an open clan  Default is Beginner..</param>
-        public GroupsV2GroupOptionsEditAction(bool? invitePermissionOverride = default(bool?), bool? updateCulturePermissionOverride = default(bool?), HostGuidedGamePermissionOverrideEnum? hostGuidedGamePermissionOverride = default(HostGuidedGamePermissionOverrideEnum?), bool? updateBannerPermissionOverride = default(bool?), JoinLevelEnum? joinLevel = default(JoinLevelEnum?))
+        /// <param name="InvitePermissionOverride">Minimum Member Level allowed to invite new members to group  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
+        /// <param name="UpdateCulturePermissionOverride">Minimum Member Level allowed to update group culture  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
+        /// <param name="HostGuidedGamePermissionOverride">Minimum Member Level allowed to host guided games  Always Allowed: Founder, Acting Founder, Admin  Allowed Overrides: None, Member, Beginner  Default is Member for clans, None for groups, although this means nothing for groups..</param>
+        /// <param name="UpdateBannerPermissionOverride">Minimum Member Level allowed to update banner  Always Allowed: Founder, Acting Founder  True means admins have this power, false means they don&#39;t  Default is false for clans, true for groups..</param>
+        /// <param name="JoinLevel">Level to join a member at when accepting an invite, application, or joining an open clan  Default is Beginner..</param>
+        public GroupsV2GroupOptionsEditAction(bool? InvitePermissionOverride = default(bool?), bool? UpdateCulturePermissionOverride = default(bool?), HostGuidedGamePermissionOverrideEnum? HostGuidedGamePermissionOverride = default(HostGuidedGamePermissionOverrideEnum?), bool? UpdateBannerPermissionOverride = default(bool?), JoinLevelEnum? JoinLevel = default(JoinLevelEnum?))
         {
-            this.InvitePermissionOverride = invitePermissionOverride;
-            this.UpdateCulturePermissionOverride = updateCulturePermissionOverride;
-            this.HostGuidedGamePermissionOverride = hostGuidedGamePermissionOverride;
-            this.UpdateBannerPermissionOverride = updateBannerPermissionOverride;
-            this.JoinLevel = joinLevel;
+            this.InvitePermissionOverride = InvitePermissionOverride;
+            this.UpdateCulturePermissionOverride = UpdateCulturePermissionOverride;
+            this.HostGuidedGamePermissionOverride = HostGuidedGamePermissionOverride;
+            this.UpdateBannerPermissionOverride = UpdateBannerPermissionOverride;
+            this.JoinLevel = JoinLevel;
         }
         
         /// <summary>
@@ -173,7 +175,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

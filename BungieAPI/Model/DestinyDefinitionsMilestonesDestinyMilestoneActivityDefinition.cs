@@ -33,12 +33,12 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneActivityDefinition" /> class.
         /// </summary>
-        /// <param name="conceptualActivityHash">The \&quot;Conceptual\&quot; activity hash. Basically, we picked the lowest level activity and are treating it as the canonical definition of the activity for rendering purposes.  If you care about the specific difficulty modes and variations, use the activities under \&quot;Variants\&quot;..</param>
-        /// <param name="variants">A milestone-referenced activity can have many variants, such as Tiers or alternative modes of play.  Even if there is only a single variant, the details for these are represented within as a variant definition.  It is assumed that, if this DestinyMilestoneActivityDefinition is active, then all variants should be active.  If a Milestone could ever split the variants&#39; active status conditionally, they should all have their own DestinyMilestoneActivityDefinition instead! The potential duplication will be worth it for the obviousness of processing and use..</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneActivityDefinition(int? conceptualActivityHash = default(int?), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneActivityVariantDefinition> variants = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneActivityVariantDefinition>))
+        /// <param name="ConceptualActivityHash">The \&quot;Conceptual\&quot; activity hash. Basically, we picked the lowest level activity and are treating it as the canonical definition of the activity for rendering purposes.  If you care about the specific difficulty modes and variations, use the activities under \&quot;Variants\&quot;..</param>
+        /// <param name="Variants">A milestone-referenced activity can have many variants, such as Tiers or alternative modes of play.  Even if there is only a single variant, the details for these are represented within as a variant definition.  It is assumed that, if this DestinyMilestoneActivityDefinition is active, then all variants should be active.  If a Milestone could ever split the variants&#39; active status conditionally, they should all have their own DestinyMilestoneActivityDefinition instead! The potential duplication will be worth it for the obviousness of processing and use..</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneActivityDefinition(uint? ConceptualActivityHash = default(uint?), Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneActivityVariantDefinition> Variants = default(Dictionary<string, DestinyDefinitionsMilestonesDestinyMilestoneActivityVariantDefinition>))
         {
-            this.ConceptualActivityHash = conceptualActivityHash;
-            this.Variants = variants;
+            this.ConceptualActivityHash = ConceptualActivityHash;
+            this.Variants = Variants;
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The \&quot;Conceptual\&quot; activity hash. Basically, we picked the lowest level activity and are treating it as the canonical definition of the activity for rendering purposes.  If you care about the specific difficulty modes and variations, use the activities under \&quot;Variants\&quot;.</value>
         [DataMember(Name="conceptualActivityHash", EmitDefaultValue=false)]
-        public int? ConceptualActivityHash { get; set; }
+        public uint? ConceptualActivityHash { get; set; }
 
         /// <summary>
         /// A milestone-referenced activity can have many variants, such as Tiers or alternative modes of play.  Even if there is only a single variant, the details for these are represented within as a variant definition.  It is assumed that, if this DestinyMilestoneActivityDefinition is active, then all variants should be active.  If a Milestone could ever split the variants&#39; active status conditionally, they should all have their own DestinyMilestoneActivityDefinition instead! The potential duplication will be worth it for the obviousness of processing and use.
@@ -73,7 +73,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

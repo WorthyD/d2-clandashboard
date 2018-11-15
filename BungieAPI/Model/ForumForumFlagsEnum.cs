@@ -27,65 +27,63 @@ namespace BungieAPI.Model
     /// <summary>
     /// Defines Forum.ForumFlagsEnum
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum ForumForumFlagsEnum
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "1")]
+        BungieStaffPost,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "2")]
+        ForumNinjaPost,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 4,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "4")]
+        ForumMentorPost,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 5,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "8")]
+        TopicBungieStaffPosted,
         
-        /// <summary>
-        /// Enum NUMBER_16 for value: 16
-        /// </summary>
-        [EnumMember(Value = "16")]
-        NUMBER_16 = 6,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "16")]
+        TopicBungieVolunteerPosted,
         
-        /// <summary>
-        /// Enum NUMBER_32 for value: 32
-        /// </summary>
-        [EnumMember(Value = "32")]
-        NUMBER_32 = 7,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "32")]
+        QuestionAnsweredByBungie,
         
-        /// <summary>
-        /// Enum NUMBER_64 for value: 64
-        /// </summary>
-        [EnumMember(Value = "64")]
-        NUMBER_64 = 8,
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "64")]
+        QuestionAnsweredByNinja,
         
-        /// <summary>
-        /// Enum NUMBER_128 for value: 128
-        /// </summary>
-        [EnumMember(Value = "128")]
-        NUMBER_128 = 9
+		/// <summary>
+		/// 
+		/// </summary>
+		[EnumMember(Value = "128")]
+        CommunityContent
     }
 
 }

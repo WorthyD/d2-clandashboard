@@ -33,22 +33,22 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsChecklistsDestinyChecklistDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="viewActionString">A localized string prompting you to view the checklist..</param>
-        /// <param name="scope">Indicates whether you will find this checklist on the Profile or Character components..</param>
-        /// <param name="entries">The individual checklist items. Gotta catch &#39;em all..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsChecklistsDestinyChecklistDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string viewActionString = default(string), Object scope = default(Object), List<DestinyDefinitionsChecklistsDestinyChecklistEntryDefinition> entries = default(List<DestinyDefinitionsChecklistsDestinyChecklistEntryDefinition>), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="ViewActionString">A localized string prompting you to view the checklist..</param>
+        /// <param name="Scope">Indicates whether you will find this checklist on the Profile or Character components..</param>
+        /// <param name="Entries">The individual checklist items. Gotta catch &#39;em all..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsChecklistsDestinyChecklistDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), string ViewActionString = default(string), DestinyDestinyScope Scope = default(DestinyDestinyScope), List<DestinyDefinitionsChecklistsDestinyChecklistEntryDefinition> Entries = default(List<DestinyDefinitionsChecklistsDestinyChecklistEntryDefinition>), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.ViewActionString = viewActionString;
-            this.Scope = scope;
-            this.Entries = entries;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.ViewActionString = ViewActionString;
+            this.Scope = Scope;
+            this.Entries = Entries;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -69,7 +69,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Indicates whether you will find this checklist on the Profile or Character components.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Object Scope { get; set; }
+        public DestinyDestinyScope Scope { get; set; }
 
         /// <summary>
         /// The individual checklist items. Gotta catch &#39;em all.
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -122,7 +122,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

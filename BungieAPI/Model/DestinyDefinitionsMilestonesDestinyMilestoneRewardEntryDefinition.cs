@@ -33,20 +33,20 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsMilestonesDestinyMilestoneRewardEntryDefinition" /> class.
         /// </summary>
-        /// <param name="rewardEntryHash">The identifier for this reward entry. Runtime data will refer to reward entries by this hash. Only guaranteed unique within the specific Milestone..</param>
-        /// <param name="rewardEntryIdentifier">The string identifier, if you care about it. Only guaranteed unique within the specific Milestone..</param>
-        /// <param name="items">The items you will get as rewards, and how much of it you&#39;ll get..</param>
-        /// <param name="vendorHash">If this reward is redeemed at a Vendor, this is the hash of the Vendor to go to in order to redeem the reward. Use this hash to look up the DestinyVendorDefinition..</param>
-        /// <param name="displayProperties">For us to bother returning this info, we should be able to return some kind of information about why these rewards are grouped together. This is ideally that information. Look at how confident I am that this will always remain true..</param>
-        /// <param name="order">If you want to follow BNet&#39;s ordering of these rewards, use this number within a given category to order the rewards. Yeah, I know. I feel dirty too..</param>
-        public DestinyDefinitionsMilestonesDestinyMilestoneRewardEntryDefinition(int? rewardEntryHash = default(int?), string rewardEntryIdentifier = default(string), List<DestinyDestinyItemQuantity> items = default(List<DestinyDestinyItemQuantity>), int? vendorHash = default(int?), Object displayProperties = default(Object), int? order = default(int?))
+        /// <param name="RewardEntryHash">The identifier for this reward entry. Runtime data will refer to reward entries by this hash. Only guaranteed unique within the specific Milestone..</param>
+        /// <param name="RewardEntryIdentifier">The string identifier, if you care about it. Only guaranteed unique within the specific Milestone..</param>
+        /// <param name="Items">The items you will get as rewards, and how much of it you&#39;ll get..</param>
+        /// <param name="VendorHash">If this reward is redeemed at a Vendor, this is the hash of the Vendor to go to in order to redeem the reward. Use this hash to look up the DestinyVendorDefinition..</param>
+        /// <param name="DisplayProperties">For us to bother returning this info, we should be able to return some kind of information about why these rewards are grouped together. This is ideally that information. Look at how confident I am that this will always remain true..</param>
+        /// <param name="Order">If you want to follow BNet&#39;s ordering of these rewards, use this number within a given category to order the rewards. Yeah, I know. I feel dirty too..</param>
+        public DestinyDefinitionsMilestonesDestinyMilestoneRewardEntryDefinition(uint? RewardEntryHash = default(uint?), string RewardEntryIdentifier = default(string), List<DestinyDestinyItemQuantity> Items = default(List<DestinyDestinyItemQuantity>), uint? VendorHash = default(uint?), DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), int? Order = default(int?))
         {
-            this.RewardEntryHash = rewardEntryHash;
-            this.RewardEntryIdentifier = rewardEntryIdentifier;
-            this.Items = items;
-            this.VendorHash = vendorHash;
-            this.DisplayProperties = displayProperties;
-            this.Order = order;
+            this.RewardEntryHash = RewardEntryHash;
+            this.RewardEntryIdentifier = RewardEntryIdentifier;
+            this.Items = Items;
+            this.VendorHash = VendorHash;
+            this.DisplayProperties = DisplayProperties;
+            this.Order = Order;
         }
         
         /// <summary>
@@ -54,7 +54,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The identifier for this reward entry. Runtime data will refer to reward entries by this hash. Only guaranteed unique within the specific Milestone.</value>
         [DataMember(Name="rewardEntryHash", EmitDefaultValue=false)]
-        public int? RewardEntryHash { get; set; }
+        public uint? RewardEntryHash { get; set; }
 
         /// <summary>
         /// The string identifier, if you care about it. Only guaranteed unique within the specific Milestone.
@@ -75,14 +75,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>If this reward is redeemed at a Vendor, this is the hash of the Vendor to go to in order to redeem the reward. Use this hash to look up the DestinyVendorDefinition.</value>
         [DataMember(Name="vendorHash", EmitDefaultValue=false)]
-        public int? VendorHash { get; set; }
+        public uint? VendorHash { get; set; }
 
         /// <summary>
         /// For us to bother returning this info, we should be able to return some kind of information about why these rewards are grouped together. This is ideally that information. Look at how confident I am that this will always remain true.
         /// </summary>
         /// <value>For us to bother returning this info, we should be able to return some kind of information about why these rewards are grouped together. This is ideally that information. Look at how confident I am that this will always remain true.</value>
         [DataMember(Name="displayProperties", EmitDefaultValue=false)]
-        public Object DisplayProperties { get; set; }
+        public DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
         /// <summary>
         /// If you want to follow BNet&#39;s ordering of these rewards, use this number within a given category to order the rewards. Yeah, I know. I feel dirty too.
@@ -113,7 +113,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

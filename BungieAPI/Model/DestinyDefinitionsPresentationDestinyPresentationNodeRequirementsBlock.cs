@@ -33,10 +33,10 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock" /> class.
         /// </summary>
-        /// <param name="entitlementUnavailableMessage">If this node is not accessible due to Entitlements (for instance, you don&#39;t own the required game expansion), this is the message to show..</param>
-        public DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock(string entitlementUnavailableMessage = default(string))
+        /// <param name="EntitlementUnavailableMessage">If this node is not accessible due to Entitlements (for instance, you don&#39;t own the required game expansion), this is the message to show..</param>
+        public DestinyDefinitionsPresentationDestinyPresentationNodeRequirementsBlock(string EntitlementUnavailableMessage = default(string))
         {
-            this.EntitlementUnavailableMessage = entitlementUnavailableMessage;
+            this.EntitlementUnavailableMessage = EntitlementUnavailableMessage;
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

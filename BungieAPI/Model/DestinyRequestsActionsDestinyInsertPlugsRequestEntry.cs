@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyRequestsActionsDestinyInsertPlugsRequestEntry" /> class.
         /// </summary>
-        /// <param name="socketIndex">The index into the socket array, which identifies the specific socket being operated on. We also need to know the socketArrayType in order to uniquely identify the socket.  Don&#39;t point to or try to insert a plug into an infusion socket. It won&#39;t work..</param>
-        /// <param name="socketArrayType">This property, combined with the socketIndex, tells us which socket we are referring to (since operations can be performed on both Intrinsic and \&quot;default\&quot; sockets, and they occupy different arrays in the Inventory Item Definition). I know, I know. Don&#39;t give me that look..</param>
-        /// <param name="plugItemHash">Plugs are never instanced (except in infusion). So with the hash alone, we should be able to: 1) Infer whether the player actually needs to have the item, or if it&#39;s a reusable plug 2) Perform any operation needed to use the Plug, including removing the plug item and running reward sheets..</param>
-        public DestinyRequestsActionsDestinyInsertPlugsRequestEntry(int? socketIndex = default(int?), Object socketArrayType = default(Object), int? plugItemHash = default(int?))
+        /// <param name="SocketIndex">The index into the socket array, which identifies the specific socket being operated on. We also need to know the socketArrayType in order to uniquely identify the socket.  Don&#39;t point to or try to insert a plug into an infusion socket. It won&#39;t work..</param>
+        /// <param name="SocketArrayType">This property, combined with the socketIndex, tells us which socket we are referring to (since operations can be performed on both Intrinsic and \&quot;default\&quot; sockets, and they occupy different arrays in the Inventory Item Definition). I know, I know. Don&#39;t give me that look..</param>
+        /// <param name="PlugItemHash">Plugs are never instanced (except in infusion). So with the hash alone, we should be able to: 1) Infer whether the player actually needs to have the item, or if it&#39;s a reusable plug 2) Perform any operation needed to use the Plug, including removing the plug item and running reward sheets..</param>
+        public DestinyRequestsActionsDestinyInsertPlugsRequestEntry(int? SocketIndex = default(int?), DestinyRequestsActionsDestinySocketArrayType SocketArrayType = default(DestinyRequestsActionsDestinySocketArrayType), uint? PlugItemHash = default(uint?))
         {
-            this.SocketIndex = socketIndex;
-            this.SocketArrayType = socketArrayType;
-            this.PlugItemHash = plugItemHash;
+            this.SocketIndex = SocketIndex;
+            this.SocketArrayType = SocketArrayType;
+            this.PlugItemHash = PlugItemHash;
         }
         
         /// <summary>
@@ -55,14 +55,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>This property, combined with the socketIndex, tells us which socket we are referring to (since operations can be performed on both Intrinsic and \&quot;default\&quot; sockets, and they occupy different arrays in the Inventory Item Definition). I know, I know. Don&#39;t give me that look.</value>
         [DataMember(Name="socketArrayType", EmitDefaultValue=false)]
-        public Object SocketArrayType { get; set; }
+        public DestinyRequestsActionsDestinySocketArrayType SocketArrayType { get; set; }
 
         /// <summary>
         /// Plugs are never instanced (except in infusion). So with the hash alone, we should be able to: 1) Infer whether the player actually needs to have the item, or if it&#39;s a reusable plug 2) Perform any operation needed to use the Plug, including removing the plug item and running reward sheets.
         /// </summary>
         /// <value>Plugs are never instanced (except in infusion). So with the hash alone, we should be able to: 1) Infer whether the player actually needs to have the item, or if it&#39;s a reusable plug 2) Perform any operation needed to use the Plug, including removing the plug item and running reward sheets.</value>
         [DataMember(Name="plugItemHash", EmitDefaultValue=false)]
-        public int? PlugItemHash { get; set; }
+        public uint? PlugItemHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

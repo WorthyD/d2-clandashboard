@@ -33,24 +33,24 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyDefinitionsDestinyEquipmentSlotDefinition" /> class.
         /// </summary>
-        /// <param name="displayProperties">displayProperties.</param>
-        /// <param name="equipmentCategoryHash">These technically point to \&quot;Equipment Category Definitions\&quot;. But don&#39;t get excited. There&#39;s nothing of significant value in those definitions, so I didn&#39;t bother to expose them. You can use the hash here to group equipment slots by common functionality, which serves the same purpose as if we had the Equipment Category definitions exposed..</param>
-        /// <param name="bucketTypeHash">The inventory bucket that owns this equipment slot..</param>
-        /// <param name="applyCustomArtDyes">If True, equipped items should have their custom art dyes applied when rendering the item. Otherwise, custom art dyes on an item should be ignored if the item is equipped in this slot..</param>
-        /// <param name="artDyeChannels">The Art Dye Channels that apply to this equipment slot..</param>
-        /// <param name="hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
-        /// <param name="index">The index of the entity as it was found in the investment tables..</param>
-        /// <param name="redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
-        public DestinyDefinitionsDestinyEquipmentSlotDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition displayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), int? equipmentCategoryHash = default(int?), int? bucketTypeHash = default(int?), bool? applyCustomArtDyes = default(bool?), List<DestinyDefinitionsDestinyArtDyeReference> artDyeChannels = default(List<DestinyDefinitionsDestinyArtDyeReference>), int? hash = default(int?), int? index = default(int?), bool? redacted = default(bool?))
+        /// <param name="DisplayProperties">DisplayProperties.</param>
+        /// <param name="EquipmentCategoryHash">These technically point to \&quot;Equipment Category Definitions\&quot;. But don&#39;t get excited. There&#39;s nothing of significant value in those definitions, so I didn&#39;t bother to expose them. You can use the hash here to group equipment slots by common functionality, which serves the same purpose as if we had the Equipment Category definitions exposed..</param>
+        /// <param name="BucketTypeHash">The inventory bucket that owns this equipment slot..</param>
+        /// <param name="ApplyCustomArtDyes">If True, equipped items should have their custom art dyes applied when rendering the item. Otherwise, custom art dyes on an item should be ignored if the item is equipped in this slot..</param>
+        /// <param name="ArtDyeChannels">The Art Dye Channels that apply to this equipment slot..</param>
+        /// <param name="Hash">The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to..</param>
+        /// <param name="Index">The index of the entity as it was found in the investment tables..</param>
+        /// <param name="Redacted">If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!.</param>
+        public DestinyDefinitionsDestinyEquipmentSlotDefinition(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition DisplayProperties = default(DestinyDefinitionsCommonDestinyDisplayPropertiesDefinition), uint? EquipmentCategoryHash = default(uint?), uint? BucketTypeHash = default(uint?), bool? ApplyCustomArtDyes = default(bool?), List<DestinyDefinitionsDestinyArtDyeReference> ArtDyeChannels = default(List<DestinyDefinitionsDestinyArtDyeReference>), uint? Hash = default(uint?), int? Index = default(int?), bool? Redacted = default(bool?))
         {
-            this.DisplayProperties = displayProperties;
-            this.EquipmentCategoryHash = equipmentCategoryHash;
-            this.BucketTypeHash = bucketTypeHash;
-            this.ApplyCustomArtDyes = applyCustomArtDyes;
-            this.ArtDyeChannels = artDyeChannels;
-            this.Hash = hash;
-            this.Index = index;
-            this.Redacted = redacted;
+            this.DisplayProperties = DisplayProperties;
+            this.EquipmentCategoryHash = EquipmentCategoryHash;
+            this.BucketTypeHash = BucketTypeHash;
+            this.ApplyCustomArtDyes = ApplyCustomArtDyes;
+            this.ArtDyeChannels = ArtDyeChannels;
+            this.Hash = Hash;
+            this.Index = Index;
+            this.Redacted = Redacted;
         }
         
         /// <summary>
@@ -64,14 +64,14 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>These technically point to \&quot;Equipment Category Definitions\&quot;. But don&#39;t get excited. There&#39;s nothing of significant value in those definitions, so I didn&#39;t bother to expose them. You can use the hash here to group equipment slots by common functionality, which serves the same purpose as if we had the Equipment Category definitions exposed.</value>
         [DataMember(Name="equipmentCategoryHash", EmitDefaultValue=false)]
-        public int? EquipmentCategoryHash { get; set; }
+        public uint? EquipmentCategoryHash { get; set; }
 
         /// <summary>
         /// The inventory bucket that owns this equipment slot.
         /// </summary>
         /// <value>The inventory bucket that owns this equipment slot.</value>
         [DataMember(Name="bucketTypeHash", EmitDefaultValue=false)]
-        public int? BucketTypeHash { get; set; }
+        public uint? BucketTypeHash { get; set; }
 
         /// <summary>
         /// If True, equipped items should have their custom art dyes applied when rendering the item. Otherwise, custom art dyes on an item should be ignored if the item is equipped in this slot.
@@ -92,7 +92,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.  When entities refer to each other in Destiny content, it is this hash that they are referring to.</value>
         [DataMember(Name="hash", EmitDefaultValue=false)]
-        public int? Hash { get; set; }
+        public uint? Hash { get; set; }
 
         /// <summary>
         /// The index of the entity as it was found in the investment tables.
@@ -132,7 +132,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

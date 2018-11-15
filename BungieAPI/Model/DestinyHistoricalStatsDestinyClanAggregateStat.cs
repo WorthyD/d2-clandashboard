@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DestinyHistoricalStatsDestinyClanAggregateStat" /> class.
         /// </summary>
-        /// <param name="mode">The id of the mode of stats (allPvp, allPvE, etc).</param>
-        /// <param name="statId">The id of the stat.</param>
-        /// <param name="value">Value of the stat for this player.</param>
-        public DestinyHistoricalStatsDestinyClanAggregateStat(Object mode = default(Object), string statId = default(string), Object value = default(Object))
+        /// <param name="Mode">The id of the mode of stats (allPvp, allPvE, etc).</param>
+        /// <param name="StatId">The id of the stat.</param>
+        /// <param name="Value">Value of the stat for this player.</param>
+        public DestinyHistoricalStatsDestinyClanAggregateStat(DestinyHistoricalStatsDefinitionsDestinyActivityModeType Mode = default(DestinyHistoricalStatsDefinitionsDestinyActivityModeType), string StatId = default(string), DestinyHistoricalStatsDestinyHistoricalStatsValue Value = default(DestinyHistoricalStatsDestinyHistoricalStatsValue))
         {
-            this.Mode = mode;
-            this.StatId = statId;
-            this.Value = value;
+            this.Mode = Mode;
+            this.StatId = StatId;
+            this.Value = Value;
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>The id of the mode of stats (allPvp, allPvE, etc)</value>
         [DataMember(Name="mode", EmitDefaultValue=false)]
-        public Object Mode { get; set; }
+        public DestinyHistoricalStatsDefinitionsDestinyActivityModeType Mode { get; set; }
 
         /// <summary>
         /// The id of the stat
@@ -62,7 +62,7 @@ namespace BungieAPI.Model
         /// </summary>
         /// <value>Value of the stat for this player</value>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public Object Value { get; set; }
+        public DestinyHistoricalStatsDestinyHistoricalStatsValue Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,7 +83,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

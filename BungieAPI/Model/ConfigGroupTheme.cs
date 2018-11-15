@@ -33,14 +33,14 @@ namespace BungieAPI.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfigGroupTheme" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="folder">folder.</param>
-        /// <param name="description">description.</param>
-        public ConfigGroupTheme(string name = default(string), string folder = default(string), string description = default(string))
+        /// <param name="Name">Name.</param>
+        /// <param name="Folder">Folder.</param>
+        /// <param name="Description">Description.</param>
+        public ConfigGroupTheme(string Name = default(string), string Folder = default(string), string Description = default(string))
         {
-            this.Name = name;
-            this.Folder = folder;
-            this.Description = description;
+            this.Name = Name;
+            this.Folder = Folder;
+            this.Description = Description;
         }
         
         /// <summary>
@@ -80,7 +80,7 @@ namespace BungieAPI.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

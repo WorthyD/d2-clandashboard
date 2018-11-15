@@ -28,47 +28,45 @@ namespace BungieAPI.Model
     /// The reasons why an item cannot be equipped, if any. Many flags can be set, or \&quot;None\&quot; if
     /// </summary>
     /// <value>The reasons why an item cannot be equipped, if any. Many flags can be set, or \&quot;None\&quot; if</value>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum DestinyEquipFailureReason
     {
         
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        [EnumMember(Value = "0")]
-        NUMBER_0 = 1,
+		/// <summary>
+		/// The item is/was able to be equipped.
+		/// </summary>
+		[EnumMember(Value = "0")]
+        None,
         
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        [EnumMember(Value = "1")]
-        NUMBER_1 = 2,
+		/// <summary>
+		/// This is not the kind of item that can be equipped. Did you try equipping Glimmer or something?
+		/// </summary>
+		[EnumMember(Value = "1")]
+        ItemUnequippable,
         
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        [EnumMember(Value = "2")]
-        NUMBER_2 = 3,
+		/// <summary>
+		/// This item is part of a &quot;unique set&quot;, and you can&#39;t have more than one item of that same set type equipped at once. For instance, if you already have an Exotic Weapon equipped, you can&#39;t equip a second one in another weapon slot.
+		/// </summary>
+		[EnumMember(Value = "2")]
+        ItemUniqueEquipRestricted,
         
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        [EnumMember(Value = "4")]
-        NUMBER_4 = 4,
+		/// <summary>
+		/// This item has state-based gating that prevents it from being equipped in certain circumstances. For instance, an item might be for Warlocks only and you&#39;re a Titan, or it might require you to have beaten some special quest that you haven&#39;t beaten yet. Use the additional failure data passed on the item itself to get more information about what the specific failure case was (See DestinyInventoryItemDefinition and DestinyItemInstanceComponent)
+		/// </summary>
+		[EnumMember(Value = "4")]
+        ItemFailedUnlockCheck,
         
-        /// <summary>
-        /// Enum NUMBER_8 for value: 8
-        /// </summary>
-        [EnumMember(Value = "8")]
-        NUMBER_8 = 5,
+		/// <summary>
+		/// This item requires you to have reached a specific character level in order to equip it, and you haven&#39;t reached that level yet.
+		/// </summary>
+		[EnumMember(Value = "8")]
+        ItemFailedLevelCheck,
         
-        /// <summary>
-        /// Enum NUMBER_16 for value: 16
-        /// </summary>
-        [EnumMember(Value = "16")]
-        NUMBER_16 = 6
+		/// <summary>
+		/// This item can&#39;t be equipped on the character requested, because it must be in that character&#39;s inventory first. Transfer the item to the character you want to equip it before you attempt to equip it.
+		/// </summary>
+		[EnumMember(Value = "16")]
+        ItemNotOnCharacter
     }
 
 }
