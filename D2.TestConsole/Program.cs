@@ -23,10 +23,10 @@ namespace D2.TestConsole
                 //BungieAPI.Api.Destiny2Api destiny2Api = new BungieAPI.Api.Destiny2Api();
                 //destiny2Api.Destiny2GetClanAggregateStats();
                 BungieAPI.Client.Configuration configuration = new BungieAPI.Client.Configuration();
-                //configuration.AddApiKey("X-API-Key", "ebe6e29e62be48f98959ebd0a90974ef");
-                //configuration.ApiKey = "ebe6e29e62be48f98959ebd0a90974ef";
-                //configuration.AddApiKey("X-API-Key", "ebe6e29e62be48f98959ebd0a90974ef");
-                configuration.DefaultHeader.Add("X-API-Key", "ebe6e29e62be48f98959ebd0a90974ef");
+                //configuration.AddApiKey("X-API-Key", "");
+                //configuration.ApiKey = "";
+                //configuration.AddApiKey("X-API-Key", "");
+                configuration.DefaultHeader.Add("X-API-Key", "");
                 var apiInstance = new GroupV2Api(configuration);
                 var groupId = 2916512;
                 var x = apiInstance.GroupV2GetGroup(groupId);
