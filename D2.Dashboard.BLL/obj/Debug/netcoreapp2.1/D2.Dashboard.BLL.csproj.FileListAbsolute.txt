@@ -16,3 +16,9 @@ C:\dev\projects\903-d2dashboard\D2.Dashboard.BLL\obj\Debug\netcoreapp2.1\D2.Dash
 C:\dev\projects\903-d2dashboard\D2.Dashboard.BLL\bin\Debug\netcoreapp2.1\BungieAPI.dll
 C:\dev\projects\903-d2dashboard\D2.Dashboard.BLL\bin\Debug\netcoreapp2.1\BungieAPI.pdb
 C:\dev\projects\903-d2dashboard\D2.Dashboard.BLL\obj\Debug\netcoreapp2.1\D2.Dashboard.BLL.csproj.CopyComplete
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\bin\Debug\netcoreapp2.1\D2.Dashboard.BLL.pdb
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\bin\Debug\netcoreapp2.1\BungieAPI.dll
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\bin\Debug\netcoreapp2.1\BungieAPI.pdb
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\obj\Debug\netcoreapp2.1\D2.Dashboard.BLL.csproj.CopyComplete
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\obj\Debug\netcoreapp2.1\D2.Dashboard.BLL.dll
+G:\Dev\d2-clandashboard\D2.Dashboard.BLL\obj\Debug\netcoreapp2.1\D2.Dashboard.BLL.pdb

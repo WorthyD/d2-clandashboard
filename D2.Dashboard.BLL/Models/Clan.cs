@@ -21,6 +21,8 @@ namespace D2.Dashboard.BLL.Models
         public string Theme { get; set; }
         public string BannerPath { get; set; }
         public string AvatarPath { get; set; }
+
+        public ClanInfo ClanInfo { get; set; }
     }
 }
 

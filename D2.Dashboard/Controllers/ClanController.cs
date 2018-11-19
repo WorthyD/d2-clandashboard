@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using D2.Dashboard.Core.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,12 +12,20 @@ namespace D2.Dashboard.Controllers
     [ApiController]
     public class ClanController : ControllerBase
     {
-        [HttpGet("[action]")]
-        public string Stuff()
-        {
 
-            new D2.Dashboard.BLL.Providers.ClanProvider().GetClan(1);
-            return "testing";
+        private readonly ClanService _clanService;
+        public ClanController(ClanService cs)
+        {
+            this._clanService = cs;
+
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> Stuff()
+        {
+            return Ok(await this._clanService.GetClan(2916512));
+
+            //new D2.Dashboard.BLL.Providers.ClanProvider().GetClan(1);
         }
     }
 }

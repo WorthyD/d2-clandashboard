@@ -25,7 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\D2.Dashboard.BLL\D2.Dashboard.BLL.csproj" />
+    <ProjectReference Include="..\D2.Dashboard.Core\D2.Dashboard.Core.csproj" />
+    <ProjectReference Include="..\src\D2.Dashboard.Infrastructure\D2.Dashboard.Infrastructure.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

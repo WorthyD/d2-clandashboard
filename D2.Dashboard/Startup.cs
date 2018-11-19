@@ -1,3 +1,6 @@
+using D2.Dashboard.Core.Interfaces;
+using D2.Dashboard.Core.Services;
+using D2.Dashboard.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -21,6 +24,10 @@ namespace D2.Dashboard
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //services.AddScoped<IBungieClanService, BungieClanService>()
+            services.AddSingleton<IBungieClanService>(new BungieClanService(""));
+            services.AddScoped<ClanService>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
