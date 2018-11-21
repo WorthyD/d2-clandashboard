@@ -1,21 +1,23 @@
+import {Injectable, OnInit} from '@angular/core';
 import { ClanInfo } from './clan-info';
 
-export interface Clan {
-  GroupId: number;
-  Name: string;
-  GroupType: number;
-  MembershipIdCreated: number;
-  CreationDate: Date | string;
-  ModificationDate: Date | string;
-  About: string;
-  MemberCount: number;
-  IsPublic: boolean;
-  IsPublicTopicAdminOnly: boolean;
-  Motto: string;
-  Locale: string;
-  Theme: string;
-  BannerPath: string;
-  AvatarPath: string;
+@Injectable()
+export class Clan {
+  groupId: number;
+  name: string;
+  groupType: number;
+  membershipIdCreated: number;
+  creationDate: Date | string;
+  modificationDate: Date | string;
+  about: string;
+  memberCount: number;
+  isPublic: boolean;
+  isPublicTopicAdminOnly: boolean;
+  motto: string;
+  locale: string;
+  theme: string;
+  bannerPath: string;
+  avatarPath: string;
 
-  ClanInfo: ClanInfo;
+  clanInfo: ClanInfo;
 }

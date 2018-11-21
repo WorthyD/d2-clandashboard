@@ -26,7 +26,7 @@ namespace D2.Dashboard
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             //services.AddScoped<IBungieClanService, BungieClanService>()
-            services.AddSingleton<IBungieClanService>(new BungieClanService(""));
+            services.AddSingleton<IBungieClanService>(new BungieClanService("ebe6e29e62be48f98959ebd0a90974ef"));
             services.AddScoped<ClanService>();
 
             // In production, the Angular files will be served from this directory
