@@ -1,14 +1,18 @@
-export interface ClanProgression {
-  ProgressionHash: number;
-  DailyProgress: number;
-  DailyLimit: number;
-  WeeklyProgress: number;
-  WeeklyLimit: number;
-  CurrentProgress: number;
-  Level: number;
-  LevelCap: number;
-  StepIndex: number;
-  ProgressToNextLevel: number;
-  NextLevelAt: number;
+import {Injectable, OnInit} from '@angular/core';
+@Injectable({
+  providedIn: 'root'
+})
+export class ClanProgression {
+  progressionHash: number;
+  dailyProgress: number;
+  dailyLimit: number;
+  weeklyProgress: number;
+  weeklyLimit: number;
+  currentProgress: number;
+  level: number;
+  levelCap: number;
+  stepIndex: number;
+  progressToNextLevel: number;
+  nextLevelAt: number;
 
 }

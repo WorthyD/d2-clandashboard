@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { HttpClientModule } from '@angular/common/http';
+
+import { ClanModule } from './clan/clan.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,9 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    ClanModule
   ],
   providers: [],
   bootstrap: [AppComponent]

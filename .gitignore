@@ -25,7 +25,9 @@ bin/
 Bin/
 obj/
 Obj/
-
+*/Obj/*
+*/obj/*
+*/.vs
 # Visual Studio 2015 cache/options directory
 .vs/
 
@@ -231,3 +233,4 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/.vs/D2.Dashboard/v15/Server/sqlite3/storage.ide
