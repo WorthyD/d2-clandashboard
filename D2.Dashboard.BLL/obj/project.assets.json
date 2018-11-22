@@ -801,11 +801,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\Projects\\903-d2dashboard\\D2.Dashboard.BLL\\D2.Dashboard.BLL.csproj",
+      "projectUniqueName": "C:\\dev\\projects\\903-d2dashboard\\D2.Dashboard.BLL\\D2.Dashboard.BLL.csproj",
       "projectName": "D2.Dashboard.BLL",
-      "projectPath": "C:\\Dev\\Projects\\903-d2dashboard\\D2.Dashboard.BLL\\D2.Dashboard.BLL.csproj",
+      "projectPath": "C:\\dev\\projects\\903-d2dashboard\\D2.Dashboard.BLL\\D2.Dashboard.BLL.csproj",
       "packagesPath": "C:\\Users\\daniel.worthy\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\Projects\\903-d2dashboard\\D2.Dashboard.BLL\\obj\\",
+      "outputPath": "C:\\dev\\projects\\903-d2dashboard\\D2.Dashboard.BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -824,8 +824,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Dev\\Projects\\903-d2dashboard\\BungieAPI\\BungieAPI.csproj": {
-              "projectPath": "C:\\Dev\\Projects\\903-d2dashboard\\BungieAPI\\BungieAPI.csproj"
+            "C:\\dev\\projects\\903-d2dashboard\\BungieAPI\\BungieAPI.csproj": {
+              "projectPath": "C:\\dev\\projects\\903-d2dashboard\\BungieAPI\\BungieAPI.csproj"
             }
           }
         }
