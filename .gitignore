@@ -25,7 +25,9 @@ bin/
 Bin/
 obj/
 Obj/
-
+*/Obj/*
+*/obj/*
+*/.vs
 # Visual Studio 2015 cache/options directory
 .vs/
 
