@@ -13,12 +13,14 @@ namespace D2.Dashboard.Infrastructure.Services
     public class BungieClanService : BaseBungieService, IBungieClanService
     {
         private readonly BungieAPI.Api.GroupV2Api _groupAPI;
+        private readonly IRepository _repository;
+
         public BungieClanService(string apiKey) : base(apiKey)
         {
             var config = new BungieAPI.Client.Configuration();
             config.DefaultHeader.Add("X-API-Key", apiKey);
             this._groupAPI = new BungieAPI.Api.GroupV2Api(config);
-         
+
         }
 
 
@@ -52,6 +54,7 @@ namespace D2.Dashboard.Infrastructure.Services
             clan.Theme = cd.Theme;
 
             clan.ClanInfo = ConvertClanInfo(cd.ClanInfo);
+            clan.Id = clan.GroupId;
 
             return clan;
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace D2.Dashboard.Core.Entities
 {
-    public class Clan
+    public class Clan : BaseEntity
     {
         public long GroupId { get; set; }
         public string Name { get; set; }
@@ -23,6 +23,10 @@ namespace D2.Dashboard.Core.Entities
         public string AvatarPath { get; set; }
 
         public ClanInfo ClanInfo { get; set; }
+        public string ClanInfoJSON { get; set; }
+
+
+
     }
 }
 

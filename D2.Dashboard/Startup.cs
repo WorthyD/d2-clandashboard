@@ -1,13 +1,17 @@
+using AutoMapper;
 using D2.Dashboard.Core.Interfaces;
 using D2.Dashboard.Core.Services;
+using D2.Dashboard.Infrastructure.Data;
 using D2.Dashboard.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace D2.Dashboard
 {
@@ -24,15 +28,49 @@ namespace D2.Dashboard
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            // Configurations
+            var config = Configuration.GetSection("BungieAPI");
+
+            services.AddDbContext<Infrastructure.Data.AppDbContext>(options =>
+                  options.UseSqlite("Data Source=destiny.db"));
+
+            //Infrastructure.Data.AppDbContext
+            //Mapper.Initialize(cfg =>
+            //{
+            //    //sat_dal.Startup.RegisterMaps();
+            //    //cfg.AddProfile(new WebMappingProfile());  // mapping between Web view model and BLL service model
+            //    //cfg.AddProfile(new BLLMappingProfile());  // mapping between API model and service model
+            //    cfg.AddProfile(new sat_dal.DalMappingProfile());
+            //});
+            var mapConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new Core.MappingProfile());
+            });
+            var mapper = mapConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             //services.AddScoped<IBungieClanService, BungieClanService>()
-            services.AddSingleton<IBungieClanService>(new BungieClanService("ebe6e29e62be48f98959ebd0a90974ef"));
+            services.AddSingleton<IBungieClanService>(new BungieClanService(config["ApiKey"]));
             services.AddScoped<ClanService>();
+            services.AddScoped(typeof(IRepository), typeof(EfRepository));
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
+            });
+
+            //Adding Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "My API",
+                    Description = "My First ASP.NET Core Web API",
+                    TermsOfService = "None",
+                    Contact = new Contact() { Name = "", Email = "", Url = "" }
+                });
             });
         }
 
@@ -58,6 +96,12 @@ namespace D2.Dashboard
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
             app.UseSpa(spa =>

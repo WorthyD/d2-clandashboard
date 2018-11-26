@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D2.Dashboard", "D2.Dashboard\D2.Dashboard.csproj", "{D213B7FF-3E95-4120-BBBC-2AB45C3C4EE5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D2.Dashboard.BLL", "D2.Dashboard.BLL\D2.Dashboard.BLL.csproj", "{231CE22F-7B2D-481A-AD0D-F93FFFFE762F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BungieAPI", "BungieAPI\BungieAPI.csproj", "{24A5EFE5-7755-4221-B586-6ADD2C1FE7B2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8C1386A9-2479-4A2E-A50A-6024B579F514}"
@@ -18,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D2.TestConsole", "D2.TestCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D2.Dashboard.Core", "D2.Dashboard.Core\D2.Dashboard.Core.csproj", "{0F80CC12-C3D2-4AE2-A8B4-9E01F1F92C8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D2.Dashboard.Infrastructure", "src\D2.Dashboard.Infrastructure\D2.Dashboard.Infrastructure.csproj", "{391495FA-E59F-41E4-A764-B1B899A1CDFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D2.Dashboard.Infrastructure", "src\D2.Dashboard.Infrastructure\D2.Dashboard.Infrastructure.csproj", "{391495FA-E59F-41E4-A764-B1B899A1CDFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,10 +28,6 @@ Global
 		{D213B7FF-3E95-4120-BBBC-2AB45C3C4EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D213B7FF-3E95-4120-BBBC-2AB45C3C4EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D213B7FF-3E95-4120-BBBC-2AB45C3C4EE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{231CE22F-7B2D-481A-AD0D-F93FFFFE762F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{231CE22F-7B2D-481A-AD0D-F93FFFFE762F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{231CE22F-7B2D-481A-AD0D-F93FFFFE762F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{231CE22F-7B2D-481A-AD0D-F93FFFFE762F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{24A5EFE5-7755-4221-B586-6ADD2C1FE7B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{24A5EFE5-7755-4221-B586-6ADD2C1FE7B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24A5EFE5-7755-4221-B586-6ADD2C1FE7B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
