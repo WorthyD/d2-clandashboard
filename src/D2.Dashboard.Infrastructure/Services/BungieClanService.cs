@@ -33,7 +33,29 @@ namespace D2.Dashboard.Infrastructure.Services
             return clan;
         }
 
+        public async Task GetClanMembers(long clanId)
+        {
+            var clanMemberResponse = await this._groupAPI.GroupV2GetMembersOfGroupAsync(1, clanId);
+            var clanMembers = ConvertClanMemberResponse(clanMemberResponse);
 
+        }
+
+
+
+        private List<ClanMember> ConvertClanMemberResponse(InlineResponse20025 resp)
+        {
+
+
+            foreach (var r in resp.Response.Results)
+            {
+
+            }
+
+            return null;
+        }
+
+
+        // Todo: Automapper
         private Clan ConvertClanResponse(InlineResponse20022 resp)
         {
             var clan = new Clan();
