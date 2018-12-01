@@ -43,6 +43,7 @@ namespace D2.Dashboard.Core.Services
             return clan;
         }
 
+
         private async Task<Clan> CreateClan(long clanId)
         {
             var clan = await this._bungieClanService.GetClan(clanId);
