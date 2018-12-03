@@ -4,14 +4,11 @@ using System.Text;
 
 namespace D2.Dashboard.Core.Entities
 {
-    public class ClanMemberProfile
+    public class ClanMemberProfile : BaseEntity 
     {
-        /*
-         * 100 component
-         * lastPlayed 
-         * 
-        Triumph Score
+        public DateTime LastPlayed { get; set; }
+        public long TriumpScore { get; set; }
 
-         */
+        public virtual ClanMember Member { get; set; }
     }
 }

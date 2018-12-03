@@ -13,5 +13,8 @@ namespace D2.Dashboard.Core.Entities
         public string DestinyDisplayName { get; set; }
         public string BungieIconPath { get; set; }
 
+        public ClanMemberProfile Profile { get; set; }
+        public ClanMemberStats Stats { get; set; }
+
     }
 }

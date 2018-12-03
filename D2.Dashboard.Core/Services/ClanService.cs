@@ -68,7 +68,8 @@ namespace D2.Dashboard.Core.Services
             {
                 // throw exception
             }
-            //TODO Use automapper
+
+
             this._mapper.Map(clan, c);
             c.ClanInfoJSON = JsonConvert.SerializeObject(clan.ClanInfo);
             c.LastUpdate = DateTime.Now;
