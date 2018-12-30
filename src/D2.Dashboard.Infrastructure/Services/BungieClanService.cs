@@ -45,9 +45,11 @@ namespace D2.Dashboard.Infrastructure.Services
         private List<ClanMember> ConvertClanMemberResponse(InlineResponse20025 resp)
         {
 
-
+            List<ClanMember> clanMembers = new List<ClanMember>();
             foreach (var r in resp.Response.Results)
             {
+                //clanMembers.Add();
+
 
             }
 
