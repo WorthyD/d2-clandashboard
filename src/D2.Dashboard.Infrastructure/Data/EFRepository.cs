@@ -5,29 +5,64 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace D2.Dashboard.Infrastructure.Data
 {
-    public class EfRepository : IRepository
+    public class EfRepository<T> : IRepository<T>, IAsyncRepository<T> where T : BaseEntity
     {
-        private readonly AppDbContext _dbContext;
+        protected readonly AppDbContext _dbContext;
 
         public EfRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public T GetById<T>(long id) where T : BaseEntity
+        public virtual T GetById(long id)
         {
-            return _dbContext.Set<T>().SingleOrDefault(e => e.Id == id);
+            return _dbContext.Set<T>().Find(id);
         }
 
-        public List<T> List<T>() where T : BaseEntity
+        public T GetSingleBySpec(ISpecification<T> spec)
         {
-            return _dbContext.Set<T>().ToList();
+            return List(spec).FirstOrDefault();
         }
 
-        public T Add<T>(T entity) where T : BaseEntity
+        public virtual async Task<T> GetByIdAsync(int id)
+        {
+            return await _dbContext.Set<T>().FindAsync(id);
+        }
+
+        public IEnumerable<T> ListAll()
+        {
+            return _dbContext.Set<T>().AsEnumerable();
+        }
+
+        public async Task<IReadOnlyList<T>> ListAllAsync()
+        {
+            return await _dbContext.Set<T>().ToListAsync();
+        }
+
+        public IEnumerable<T> List(ISpecification<T> spec)
+        {
+            return ApplySpecification(spec).AsEnumerable();
+        }
+        public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).ToListAsync();
+        }
+
+        public int Count(ISpecification<T> spec)
+        {
+            return ApplySpecification(spec).Count();
+        }
+
+        public async Task<int> CountAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).CountAsync();
+        }
+
+        public T Add(T entity)
         {
             _dbContext.Set<T>().Add(entity);
             _dbContext.SaveChanges();
@@ -35,16 +70,41 @@ namespace D2.Dashboard.Infrastructure.Data
             return entity;
         }
 
-        public void Delete<T>(T entity) where T : BaseEntity
+        public async Task<T> AddAsync(T entity)
+        {
+            _dbContext.Set<T>().Add(entity);
+            await _dbContext.SaveChangesAsync();
+
+            return entity;
+        }
+
+        public void Update(T entity)
+        {
+            _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbContext.SaveChanges();
+        }
+
+        public async Task UpdateAsync(T entity)
+        {
+            _dbContext.Entry(entity).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public void Delete(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
             _dbContext.SaveChanges();
         }
 
-        public void Update<T>(T entity) where T : BaseEntity
+        public async Task DeleteAsync(T entity)
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            _dbContext.SaveChanges();
+            _dbContext.Set<T>().Remove(entity);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        private IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        {
+            return SpecificationEvaluator<T>.GetQuery(_dbContext.Set<T>().AsQueryable(), spec);
         }
     }
 }
