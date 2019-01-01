@@ -50,9 +50,10 @@ namespace D2.Dashboard
             services.AddSingleton(mapper);
 
             //services.AddScoped<IBungieClanService, BungieClanService>()
-            services.AddSingleton<IBungieClanService>(new BungieClanService(config["ApiKey"]));
+            services.AddSingleton<IBungieClanService>(new BungieClanService(config["ApiKey"], mapper));
             services.AddScoped<ClanService>();
-            services.AddScoped(typeof(IRepository), typeof(EfRepository));
+            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            //services.AddScoped(typeof(IRepository), typeof(EfRepository));
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

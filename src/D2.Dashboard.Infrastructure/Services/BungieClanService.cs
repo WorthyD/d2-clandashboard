@@ -7,20 +7,23 @@ using D2.Dashboard.Core.Entities;
 using D2.Dashboard.Core.Interfaces;
 
 using D2.Dashboard.Core.Extensions;
+using AutoMapper;
 
 namespace D2.Dashboard.Infrastructure.Services
 {
     public class BungieClanService : BaseBungieService, IBungieClanService
     {
         private readonly BungieAPI.Api.GroupV2Api _groupAPI;
-        private readonly IRepository _repository;
+        private readonly IRepository<Clan> _repository;
+        private readonly IMapper _mapper;
 
-        public BungieClanService(string apiKey) : base(apiKey)
+        public BungieClanService(string apiKey, IMapper mapper) : base(apiKey)
         {
             var config = new BungieAPI.Client.Configuration();
             config.DefaultHeader.Add("X-API-Key", apiKey);
             this._groupAPI = new BungieAPI.Api.GroupV2Api(config);
 
+            this._mapper = mapper;
         }
 
 
@@ -33,25 +36,23 @@ namespace D2.Dashboard.Infrastructure.Services
             return clan;
         }
 
-        public async Task GetClanMembers(long clanId)
+        public async Task<List<ClanMember>> GetClanMembers(long clanId)
         {
             var clanMemberResponse = await this._groupAPI.GroupV2GetMembersOfGroupAsync(1, clanId);
             var clanMembers = ConvertClanMemberResponse(clanMemberResponse);
-
+            return clanMembers;
         }
 
 
 
         private List<ClanMember> ConvertClanMemberResponse(InlineResponse20025 resp)
         {
-
-
+            List<ClanMember> clanMembers = new List<ClanMember>();
             foreach (var r in resp.Response.Results)
             {
-
+                clanMembers.Add(this._mapper.Map<ClanMember>(r));
             }
-
-            return null;
+            return clanMembers;
         }
 
 

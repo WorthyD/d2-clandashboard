@@ -15,10 +15,10 @@ namespace D2.Dashboard.Core.Services
     {
         private readonly IBungieClanService _bungieClanService;
 
-        private readonly IRepository _repository;
+        private readonly IRepository<Clan> _repository;
         private readonly IMapper _mapper;
 
-        public ClanService(IBungieClanService bungieSrvc, IRepository repository,  IMapper mapper)
+        public ClanService(IBungieClanService bungieSrvc, IRepository<Clan>  repository,  IMapper mapper)
         {
             this._bungieClanService = bungieSrvc;
             this._repository = repository;
@@ -28,7 +28,8 @@ namespace D2.Dashboard.Core.Services
         public async Task<Clan> GetClan(long clanId)
         {
             // todo:  determine where we retrieve clan from. Cache, DB or service.
-            var clan = this._repository.GetById<Clan>(clanId);
+            //var clan = this._repository.GetById<Clan>(clanId);
+            var clan = this._repository.GetById(clanId);
 
             if (clan == null)
             {
@@ -43,6 +44,11 @@ namespace D2.Dashboard.Core.Services
             return clan;
         }
 
+        public async Task<List<ClanMember>> GetClanMembers(long clanId)
+        {
+            //var clanMembers = this._repository.List<ClanMember>()
+            return null;
+        }
 
         private async Task<Clan> CreateClan(long clanId)
         {
@@ -56,7 +62,7 @@ namespace D2.Dashboard.Core.Services
             clan.ClanInfoJSON = JsonConvert.SerializeObject(clan.ClanInfo);
             clan.LastUpdate = DateTime.Now;
 
-            this._repository.Add<Clan>(clan);
+            this._repository.Add(clan);
 
             return clan;
         }
@@ -74,7 +80,7 @@ namespace D2.Dashboard.Core.Services
             c.ClanInfoJSON = JsonConvert.SerializeObject(clan.ClanInfo);
             c.LastUpdate = DateTime.Now;
 
-            this._repository.Update<Clan>(c);
+            this._repository.Update(c);
 
             return c;
         }
