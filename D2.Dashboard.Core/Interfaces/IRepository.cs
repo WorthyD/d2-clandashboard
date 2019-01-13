@@ -20,6 +20,7 @@ namespace D2.Dashboard.Core.Interfaces
         IEnumerable<T> ListAll();
         IEnumerable<T> List(ISpecification<T> spec);
         T Add(T entity);
+        IEnumerable<T> AddRange(IEnumerable<T> entity);
         void Update(T entity);
         void Delete(T entity);
         int Count(ISpecification<T> spec);

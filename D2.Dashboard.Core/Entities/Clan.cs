@@ -22,6 +22,8 @@ namespace D2.Dashboard.Core.Entities
         public string BannerPath { get; set; }
         public string AvatarPath { get; set; }
 
+        public DateTime LastMemberUpdate { get; set; }
+
         public ClanInfo ClanInfo { get; set; }
         public string ClanInfoJSON { get; set; }
 

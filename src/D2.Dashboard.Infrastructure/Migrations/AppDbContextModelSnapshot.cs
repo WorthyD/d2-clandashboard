@@ -38,6 +38,8 @@ namespace D2.Dashboard.Infrastructure.Migrations
 
                     b.Property<bool>("IsPublicTopicAdminOnly");
 
+                    b.Property<DateTime>("LastMemberUpdate");
+
                     b.Property<DateTime>("LastUpdate");
 
                     b.Property<string>("Locale");
@@ -57,6 +59,99 @@ namespace D2.Dashboard.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clans");
+                });
+
+            modelBuilder.Entity("D2.Dashboard.Core.Entities.ClanMember", b =>
+                {
+                    b.Property<long>("Id");
+
+                    b.Property<string>("BungieIconPath");
+
+                    b.Property<string>("DestinyDisplayName");
+
+                    b.Property<long>("DestinyMembershipId");
+
+                    b.Property<int>("DestinyMembershiptType");
+
+                    b.Property<long>("GroupId");
+
+                    b.Property<DateTime>("LastUpdate");
+
+                    b.Property<int>("MemberType");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ClanMembers");
+                });
+
+            modelBuilder.Entity("D2.Dashboard.Core.Entities.ClanMemberProfile", b =>
+                {
+                    b.Property<long>("Id");
+
+                    b.Property<DateTime>("LastPlayed");
+
+                    b.Property<DateTime>("LastUpdate");
+
+                    b.Property<long>("TriumpScore");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ClanMemberProfiles");
+                });
+
+            modelBuilder.Entity("D2.Dashboard.Core.Entities.ClanMemberStats", b =>
+                {
+                    b.Property<long>("Id");
+
+                    b.Property<int>("AdventuresCompleted");
+
+                    b.Property<int>("AllParticipantsTimePlayed");
+
+                    b.Property<int>("HeroicPublicEventsCompleted");
+
+                    b.Property<int>("HighestLightLevel");
+
+                    b.Property<DateTime>("LastUpdate");
+
+                    b.Property<int>("PublicEventsCompleted");
+
+                    b.Property<double>("PvEEfficiency");
+
+                    b.Property<int>("PvEKills");
+
+                    b.Property<int>("PvEPrecisionKills");
+
+                    b.Property<long>("PvESecondsPlayed");
+
+                    b.Property<int>("PvPActivitiesEntered");
+
+                    b.Property<int>("PvPActivitiesWon");
+
+                    b.Property<int>("PvPEfficiency");
+
+                    b.Property<long>("PvPSecondsPlayed");
+
+                    b.Property<long>("SecondsPlayed");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ClanMemberStats");
+                });
+
+            modelBuilder.Entity("D2.Dashboard.Core.Entities.ClanMemberProfile", b =>
+                {
+                    b.HasOne("D2.Dashboard.Core.Entities.ClanMember", "Member")
+                        .WithOne("Profile")
+                        .HasForeignKey("D2.Dashboard.Core.Entities.ClanMemberProfile", "Id")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("D2.Dashboard.Core.Entities.ClanMemberStats", b =>
+                {
+                    b.HasOne("D2.Dashboard.Core.Entities.ClanMember", "Member")
+                        .WithOne("Stats")
+                        .HasForeignKey("D2.Dashboard.Core.Entities.ClanMemberStats", "Id")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -11,5 +11,11 @@ namespace D2.Dashboard.Core.Extensions
         {
             return c.LastUpdate < DateTime.Now.AddDays(-1);
         }
+
+        public static bool IsMemberDBCacheExpired(this Clan c)
+        {
+            return c.LastMemberUpdate < DateTime.Now.AddDays(-1);
+        }
+
     }
 }

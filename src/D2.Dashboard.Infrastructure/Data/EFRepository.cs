@@ -70,6 +70,15 @@ namespace D2.Dashboard.Infrastructure.Data
             return entity;
         }
 
+        public IEnumerable<T> AddRange(IEnumerable<T> entity)
+        {
+            _dbContext.Set<T>().AddRange(entity);
+            _dbContext.SaveChanges();
+
+            return entity;
+        }
+
+
         public async Task<T> AddAsync(T entity)
         {
             _dbContext.Set<T>().Add(entity);
