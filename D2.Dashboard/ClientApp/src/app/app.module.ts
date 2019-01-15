@@ -8,12 +8,16 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ClanModule } from './clan/clan.module';
+import { MemberListComponent } from './components/member-list/member-list.component';
+import { ClanComponent } from './shared/services/clan/clan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    MemberListComponent,
+    ClanComponent
   ],
   imports: [
     BrowserModule,

@@ -45,6 +45,7 @@ namespace D2.Dashboard
             var mapConfig = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new Core.MappingProfile());
+                cfg.AddProfile(new Infrastructure.MappingProfile());
             });
             var mapper = mapConfig.CreateMapper();
             services.AddSingleton(mapper);

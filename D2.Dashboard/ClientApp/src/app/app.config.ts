@@ -14,7 +14,8 @@ export class AppConfig {
   }
   urls = {
     baseUrl: './',
-    clan: 'api/clan/get',
+    clan: 'api/clan/',
+    clanMembers: 'api/clan/members/',
     url: (name, parm1?, parm2?, parm3?) => {
       let url = this.urls.baseUrl + this.urls[name];
       if (parm1) {

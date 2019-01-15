@@ -20,14 +20,14 @@ namespace D2.Dashboard.Controllers
 
         }
 
-        [HttpGet("[action]/{clanId}")]
+        [HttpGet("/{clanId}")]
         public async Task<IActionResult> Get(long clanId)
         {
             return Ok(await this._clanService.GetClan(clanId));
             //new D2.Dashboard.BLL.Providers.ClanProvider().GetClan(1);
         }
 
-        [HttpGet("[action]/{clanId}/members")]
+        [HttpGet("members/{clanId}")]
         public async Task<IActionResult> GetMembers(long clanId)
         {
             //return Ok(await this._clanService.GetClan(clanId));

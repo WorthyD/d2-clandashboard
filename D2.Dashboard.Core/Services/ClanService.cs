@@ -117,7 +117,7 @@ namespace D2.Dashboard.Core.Services
             {
                 // throw
             }
-
+            
             clanMembers.ForEach(x => x.LastUpdate = DateTime.Now);
             //TODO: Look into member swapping clans etc.
             this._memberRepository.AddRange(clanMembers);
