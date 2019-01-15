@@ -19,4 +19,11 @@ export class ClanService {
         map(clan => this.clan = clan)
       );
   }
+  getClanMembers(clanId: number): Observable<any> {
+    return this.http.get<Clan>(this.config.urls.url('clan', clanId))
+      .pipe(
+        map(clan => this.clan = clan)
+      );
+  }
+
 }
