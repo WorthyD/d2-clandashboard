@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ClanModule } from './clan/clan.module';
 import { MemberListComponent } from './components/member-list/member-list.component';
 import { ClanComponent } from './shared/services/clan/clan.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ClanComponent } from './shared/services/clan/clan.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ClanModule
+    ClanModule,
+    StoreModule.forRoot(reducers, { metaReducers })
   ],
   providers: [],
   bootstrap: [AppComponent]
