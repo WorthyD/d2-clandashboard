@@ -14,7 +14,7 @@ namespace D2.Dashboard.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085");
 
             modelBuilder.Entity("D2.Dashboard.Core.Entities.Clan", b =>
                 {
@@ -61,11 +61,13 @@ namespace D2.Dashboard.Infrastructure.Migrations
                     b.ToTable("Clans");
                 });
 
-            modelBuilder.Entity("D2.Dashboard.Core.Entities.ClanMember", b =>
+            modelBuilder.Entity("D2.Dashboard.Core.Entities.Player", b =>
                 {
                     b.Property<long>("Id");
 
                     b.Property<string>("BungieIconPath");
+
+                    b.Property<long?>("ClanId");
 
                     b.Property<string>("DestinyDisplayName");
 
@@ -73,18 +75,18 @@ namespace D2.Dashboard.Infrastructure.Migrations
 
                     b.Property<int>("DestinyMembershiptType");
 
-                    b.Property<long>("GroupId");
-
                     b.Property<DateTime>("LastUpdate");
 
                     b.Property<int>("MemberType");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ClanMembers");
+                    b.HasIndex("ClanId");
+
+                    b.ToTable("Player");
                 });
 
-            modelBuilder.Entity("D2.Dashboard.Core.Entities.ClanMemberProfile", b =>
+            modelBuilder.Entity("D2.Dashboard.Core.Entities.PlayerProfile", b =>
                 {
                     b.Property<long>("Id");
 
@@ -96,10 +98,10 @@ namespace D2.Dashboard.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ClanMemberProfiles");
+                    b.ToTable("PlayerProfile");
                 });
 
-            modelBuilder.Entity("D2.Dashboard.Core.Entities.ClanMemberStats", b =>
+            modelBuilder.Entity("D2.Dashboard.Core.Entities.PlayerStats", b =>
                 {
                     b.Property<long>("Id");
 
@@ -135,22 +137,29 @@ namespace D2.Dashboard.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ClanMemberStats");
+                    b.ToTable("PlayerStats");
                 });
 
-            modelBuilder.Entity("D2.Dashboard.Core.Entities.ClanMemberProfile", b =>
+            modelBuilder.Entity("D2.Dashboard.Core.Entities.Player", b =>
                 {
-                    b.HasOne("D2.Dashboard.Core.Entities.ClanMember", "Member")
+                    b.HasOne("D2.Dashboard.Core.Entities.Clan", "Clan")
+                        .WithMany("ClanPlayers")
+                        .HasForeignKey("ClanId");
+                });
+
+            modelBuilder.Entity("D2.Dashboard.Core.Entities.PlayerProfile", b =>
+                {
+                    b.HasOne("D2.Dashboard.Core.Entities.Player", "Player")
                         .WithOne("Profile")
-                        .HasForeignKey("D2.Dashboard.Core.Entities.ClanMemberProfile", "Id")
+                        .HasForeignKey("D2.Dashboard.Core.Entities.PlayerProfile", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("D2.Dashboard.Core.Entities.ClanMemberStats", b =>
+            modelBuilder.Entity("D2.Dashboard.Core.Entities.PlayerStats", b =>
                 {
-                    b.HasOne("D2.Dashboard.Core.Entities.ClanMember", "Member")
+                    b.HasOne("D2.Dashboard.Core.Entities.Player", "Player")
                         .WithOne("Stats")
-                        .HasForeignKey("D2.Dashboard.Core.Entities.ClanMemberStats", "Id")
+                        .HasForeignKey("D2.Dashboard.Core.Entities.PlayerStats", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

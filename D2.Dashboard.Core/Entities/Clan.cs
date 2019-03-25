@@ -27,6 +27,8 @@ namespace D2.Dashboard.Core.Entities
         public ClanInfo ClanInfo { get; set; }
         public string ClanInfoJSON { get; set; }
 
+        public ICollection<Player> ClanPlayers { get; set; }
+
 
 
     }

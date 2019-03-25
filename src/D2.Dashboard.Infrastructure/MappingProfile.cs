@@ -11,7 +11,7 @@ namespace D2.Dashboard.Infrastructure
     {
         public MappingProfile()
         {
-            CreateMap<GroupsV2GroupMember, ClanMember>()
+            CreateMap<GroupsV2GroupMember, Player>()
                 .ForMember(c => c.Id, g => g.MapFrom(x => x.DestinyUserInfo.MembershipId))
                 .ForMember(c => c.BungieIconPath, g => g.MapFrom(x => x.BungieNetUserInfo.IconPath))
                 .ForMember(c => c.DestinyDisplayName, g => g.MapFrom(x => x.DestinyUserInfo.DisplayName))

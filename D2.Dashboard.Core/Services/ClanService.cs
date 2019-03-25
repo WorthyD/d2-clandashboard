@@ -18,10 +18,10 @@ namespace D2.Dashboard.Core.Services
         private readonly IBungieClanService _bungieClanService;
 
         private readonly IRepository<Clan> _repository;
-        private readonly IRepository<ClanMember> _memberRepository;
+        private readonly IRepository<Player> _memberRepository;
         private readonly IMapper _mapper;
 
-        public ClanService(IBungieClanService bungieSrvc, IRepository<Clan> repository, IRepository<ClanMember> memberRepository, IMapper mapper)
+        public ClanService(IBungieClanService bungieSrvc, IRepository<Clan> repository, IRepository<Player> memberRepository, IMapper mapper)
         {
             this._bungieClanService = bungieSrvc;
             this._repository = repository;
@@ -48,7 +48,7 @@ namespace D2.Dashboard.Core.Services
             return clan;
         }
 
-        public async Task<List<ClanMember>> GetClanMembers(long clanId)
+        public async Task<List<Player>> GetClanMembers(long clanId)
         {
             //var clanMembers = this._repository.List<ClanMember>()
 
@@ -110,7 +110,7 @@ namespace D2.Dashboard.Core.Services
         }
 
 
-        private async Task<List<ClanMember>> CreateClanMembers(long clanId)
+        private async Task<List<Player>> CreateClanMembers(long clanId)
         {
             var clanMembers = await this._bungieClanService.GetClanMembers(clanId);
             if (clanMembers == null)

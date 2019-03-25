@@ -10,9 +10,11 @@ namespace D2.Dashboard.Infrastructure.Data
     {
 
         public DbSet<Clan> Clans { get; set; }
-        public DbSet<ClanMember> ClanMembers { get; set; }
-        public DbSet<ClanMemberStats> ClanMemberStats { get; set; }
-        public DbSet<ClanMemberProfile> ClanMemberProfiles { get; set; }
+      //  public DbSet<ClanMember> ClanMembers { get; set; }
+
+        public DbSet<Player> Player { get; set; }
+        public DbSet<PlayerStats> PlayerStats { get; set; }
+        public DbSet<PlayerProfile> PlayerProfile { get; set; }
 
         public AppDbContext(DbContextOptions options): base(options)
         {
@@ -30,15 +32,22 @@ namespace D2.Dashboard.Infrastructure.Data
             builder.Entity<Clan>().HasKey(c => new { c.Id });
             builder.Entity<Clan>().Property(c => c.Id).IsRequired().ValueGeneratedNever();
             builder.Entity<Clan>().Ignore(c => c.ClanInfo);
+            builder.Entity<Clan>().HasMany(c => c.ClanPlayers).WithOne(i => i.Clan);
 
-            builder.Entity<ClanMember>().HasKey(c => new { c.Id });
-            builder.Entity<ClanMember>().Property(c => c.Id).IsRequired().ValueGeneratedNever();
-            builder.Entity<ClanMember>().HasOne(c => c.Stats).WithOne(i => i.Member).HasForeignKey<ClanMemberStats>(s => s.Id);
-            builder.Entity<ClanMember>().HasOne(c => c.Profile).WithOne(i => i.Member).HasForeignKey<ClanMemberProfile>(s => s.Id);
+            //builder.Entity<ClanMember>().HasKey(c => new { c.ProfileId, c.GroupId });
+            //builder.Entity<ClanMember>().HasOne(c => c.Clan).WithOne(x => x.pr)
 
-            builder.Entity<ClanMemberStats>().HasKey(c => new { c.Id });
 
-            builder.Entity<ClanMemberProfile>().HasKey(c => new { c.Id });
+
+            builder.Entity<Player>().HasKey(c => new { c.Id });
+            builder.Entity<Player>().Property(c => c.Id).IsRequired().ValueGeneratedNever();
+            builder.Entity<Player>().HasOne(c => c.Stats).WithOne(i => i.Player).HasForeignKey<PlayerStats>(s => s.Id);
+            builder.Entity<Player>().HasOne(c => c.Profile).WithOne(i => i.Player).HasForeignKey<PlayerProfile>(s => s.Id);
+            //builder.Entity<Player>().HasOne(c => c.Clan).WithOne(i => i.ClanPlayers).HasForeignKey<PlayerProfile>(s => s.Id);
+
+            builder.Entity<PlayerStats>().HasKey(c => new { c.Id });
+
+            builder.Entity<PlayerProfile>().HasKey(c => new { c.Id });
             
             //builder.Entity<ClanMember>().HasOne(c => c.Stats).WithOne().HasForeignKey(m => m.)
         }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace D2.Dashboard.Core.Specifications
 {
-    public class ClanMemberSpecification : BaseSpecification<ClanMember>
+    public class ClanMemberSpecification : BaseSpecification<Player>
     {
-        public ClanMemberSpecification(long clanId) : base(x => x.GroupId == clanId)
+        public ClanMemberSpecification(long clanId) : base(x => x.Clan.Id == clanId)
         {
 
         }

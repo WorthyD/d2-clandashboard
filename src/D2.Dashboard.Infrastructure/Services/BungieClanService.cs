@@ -36,7 +36,7 @@ namespace D2.Dashboard.Infrastructure.Services
             return clan;
         }
 
-        public async Task<List<ClanMember>> GetClanMembers(long clanId)
+        public async Task<List<Player>> GetClanMembers(long clanId)
         {
             var clanMemberResponse = await this._groupAPI.GroupV2GetMembersOfGroupAsync(1, clanId);
             var clanMembers = ConvertClanMemberResponse(clanMemberResponse);
@@ -45,12 +45,12 @@ namespace D2.Dashboard.Infrastructure.Services
 
 
 
-        private List<ClanMember> ConvertClanMemberResponse(InlineResponse20025 resp)
+        private List<Player> ConvertClanMemberResponse(InlineResponse20025 resp)
         {
-            List<ClanMember> clanMembers = new List<ClanMember>();
+            List<Player> clanMembers = new List<Player>();
             foreach (var r in resp.Response.Results)
             {
-                clanMembers.Add(this._mapper.Map<ClanMember>(r));
+                clanMembers.Add(this._mapper.Map<Player>(r));
             }
             return clanMembers;
         }
@@ -111,6 +111,11 @@ namespace D2.Dashboard.Infrastructure.Services
                 WeeklyLimit = prog.WeeklyLimit.ZeroIfNull(),
                 WeeklyProgress = prog.WeeklyProgress.ZeroIfNull()
             };
+        }
+
+        Task<List<Player>> IBungieClanService.GetClanMembers(long clanId)
+        {
+            throw new NotImplementedException();
         }
     }
 
