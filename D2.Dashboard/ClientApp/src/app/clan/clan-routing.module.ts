@@ -8,8 +8,9 @@ const routes: Routes = [
   { path: ':id', component: ClanDetailsComponent, },
 ];
 
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class ClanRoutingModule { }

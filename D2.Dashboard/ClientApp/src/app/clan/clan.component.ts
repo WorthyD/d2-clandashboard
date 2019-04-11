@@ -11,9 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 export class ClanComponent implements OnInit {
 
   //clan: Clan = new Clan();
-  constructor(private route: ActivatedRoute, private clanService: ClanService) { }
+  constructor() { }
 
   ngOnInit() {
+    console.log('starting');
+
     // const id = this.route.snapshot.params['id'];
     // this.clanService.getClan(id)
     //   .subscribe(result => {

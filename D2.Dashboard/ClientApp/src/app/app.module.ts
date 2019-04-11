@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ClanModule } from './clan/clan.module';
 import { MemberListComponent } from './components/member-list/member-list.component';
-import { ClanComponent } from './shared/services/clan/clan.component';
+//import { ClanComponent } from './shared/services/clan/clan.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 
@@ -19,7 +19,7 @@ import { reducers, metaReducers } from './reducers';
     HomeComponent,
     NavMenuComponent,
     MemberListComponent,
-    ClanComponent
+ //   ClanComponent
   ],
   imports: [
     BrowserModule,
