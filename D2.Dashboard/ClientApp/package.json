@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "mock-server": "json-server --watch server/db.json -d 1000 --port 3005 --routes server/routes.json"
+    "mock-server": "json-server --watch server/db.json -d 1000 --port 3005 --routes server/routes.json",
+    "swagger-gen": "openapi-generator generate -g typescript-angular -o out -i https://raw.githubusercontent.com/Bungie-net/api/master/openapi-2.json"
   },
   "private": true,
   "dependencies": {
