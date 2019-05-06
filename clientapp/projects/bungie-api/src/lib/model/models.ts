@@ -349,7 +349,7 @@ export * from './destinyHistoricalStatsDestinyHistoricalWeaponStats';
 export * from './destinyHistoricalStatsDestinyHistoricalWeaponStatsData';
 export * from './destinyHistoricalStatsDestinyLeaderboard';
 export * from './destinyHistoricalStatsDestinyLeaderboardEntry';
-export * from './destinyHistoricalStatsDestinyLeaderboardResults';
+// export * from './destinyHistoricalStatsDestinyLeaderboardResults';
 export * from './destinyHistoricalStatsDestinyPlayer';
 export * from './destinyHistoricalStatsDestinyPostGameCarnageReportData';
 export * from './destinyHistoricalStatsDestinyPostGameCarnageReportEntry';
