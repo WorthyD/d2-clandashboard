@@ -76,7 +76,7 @@ export class GroupV2Service {
 
 
     /**
-     * 
+     *
      * An administrative method to allow the founder of a group or clan to give up their position to another admin permanently.
      * @param founderIdNew The new founder for this group. Must already be a group admin.
      * @param groupId The target group id.
@@ -125,7 +125,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Add a new optional conversation/chat channel. Requires admin permissions to the group.
      * @param groupId Group ID of the group to edit.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -174,7 +174,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Approve all of the pending users for the given group.
      * @param groupId ID of the group.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -223,7 +223,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Approve the given membershipId to join the group/clan as long as they have applied.
      * @param groupId ID of the group.
      * @param membershipId The membership id being approved.
@@ -280,7 +280,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Approve all of the pending users for the given group.
      * @param groupId ID of the group.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -329,7 +329,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Bans the requested member from the requested group for the specified period of time.
      * @param groupId Group ID that has the member to ban.
      * @param membershipId Membership ID of the member to ban from the group.
@@ -386,7 +386,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Deny all of the pending users for the given group.
      * @param groupId ID of the group.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -435,7 +435,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Deny all of the pending users for the given group that match the passed-in .
      * @param groupId ID of the group.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -484,7 +484,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Edit an existing group&#39;s clan banner. You must have suitable permissions in the group to perform this operation. All fields are required.
      * @param groupId Group ID of the group to edit.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -533,7 +533,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Edit group options only available to a founder. You must have suitable permissions in the group to perform this operation.
      * @param groupId Group ID of the group to edit.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -582,7 +582,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Edit an existing group. You must have suitable permissions in the group to perform this operation. This latest revision will only edit the fields you pass in - pass null for properties you want to leave unaltered.
      * @param groupId Group ID of the group to edit.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -631,7 +631,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Edit the membership type of a given member. You must have suitable permissions in the group to perform this operation.
      * @param groupId ID of the group to which the member belongs.
      * @param membershipId Membership ID to modify.
@@ -692,7 +692,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Edit the settings of an optional conversation/chat channel. Requires admin permissions to the group.
      * @param conversationId Conversation Id of the channel being edited.
      * @param groupId Group ID of the group to edit.
@@ -745,7 +745,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Get the list of members in a given group who are of admin level or higher.
      * @param currentpage Page number (starting with 1). Each page has a fixed size of 50 items per page.
      * @param groupId The ID of the group.
@@ -789,7 +789,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Returns a list of all available group avatars for the signed-in user.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -825,7 +825,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Returns a list of all available group themes.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -861,7 +861,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Get the list of banned members in a given group. Only accessible to group Admins and above. Not applicable to all groups. Check group features.
      * @param currentpage Page number (starting with 1). Each page has a fixed size of 50 entries.
      * @param groupId Group ID whose banned members you are fetching
@@ -913,7 +913,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Get information about a specific group of the given ID.
      * @param groupId Requested group&#39;s id.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -937,10 +937,13 @@ export class GroupV2Service {
         if (httpHeaderAcceptSelected !== undefined) {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
+        headers = headers.set('X-API-Key', '12345');
 
         // to determine the Content-Type header
         const consumes: string[] = [
         ];
+        console.log(this.configuration);
+        console.log(headers);
 
         return this.httpClient.get<InlineResponse20019>(`${this.configuration.basePath}/GroupV2/${encodeURIComponent(String(groupId))}/`,
             {
@@ -953,7 +956,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Get information about a specific group with the given name and type.
      * @param groupName Exact name of the group to find.
      * @param groupType Type of group to find.
@@ -997,7 +1000,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Get information about a specific group with the given name and type. The POST version.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1034,7 +1037,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Gets a list of available optional conversation channels and their settings.
      * @param groupId Requested group&#39;s id.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -1074,7 +1077,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Get information about the groups that a given member has joined.
      * @param filter Filter apply to list of joined groups.
      * @param groupType Type of group the supplied member founded.
@@ -1126,7 +1129,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Get the list of users who have been invited into the group.
      * @param currentpage Page number (starting with 1). Each page has a fixed size of 50 items per page.
      * @param groupId ID of the group.
@@ -1178,7 +1181,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Get the list of members in a given group.
      * @param currentpage Page number (starting with 1). Each page has a fixed size of 50 items per page.
      * @param groupId The ID of the group.
@@ -1233,7 +1236,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Get the list of users who are awaiting a decision on their application to join a given group. Modified to include application info.
      * @param currentpage Page number (starting with 1). Each page has a fixed size of 50 items per page.
      * @param groupId ID of the group.
@@ -1285,7 +1288,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Get information about the groups that a given member has applied to or been invited to.
      * @param filter Filter apply to list of potential joined groups.
      * @param groupType Type of group the supplied member applied.
@@ -1337,7 +1340,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Gets groups recommended for you based on the groups to whom those you follow belong.
      * @param createDateRange Requested range in which to pull recommended groups
      * @param groupType Type of groups requested
@@ -1390,7 +1393,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Gets the state of the user&#39;s clan invite preferences for a particular membership type - true if they wish to be invited to clans, false otherwise.
      * @param mType The Destiny membership type of the account we wish to access settings.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -1438,7 +1441,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Search for Groups.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -1475,7 +1478,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Invite a user to join this group.
      * @param groupId ID of the group you would like to join.
      * @param membershipId Membership id of the account being invited.
@@ -1532,7 +1535,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Cancels a pending invitation to join a group.
      * @param groupId ID of the group you would like to join.
      * @param membershipId Membership id of the account being cancelled.
@@ -1589,7 +1592,7 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Kick a member from the given group, forcing them to reapply if they wish to re-join the group. You must have suitable permissions in the group to perform this operation.
      * @param groupId Group ID to kick the user from.
      * @param membershipId Membership ID to kick.
@@ -1646,9 +1649,9 @@ export class GroupV2Service {
     }
 
     /**
-     * 
+     *
      * Unbans the requested member, allowing them to re-apply for membership.
-     * @param groupId 
+     * @param groupId
      * @param membershipId Membership ID of the member to unban from the group
      * @param membershipType Membership type of the provided membership ID.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.

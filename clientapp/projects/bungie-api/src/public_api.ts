@@ -9,3 +9,4 @@ export * from './lib/bungie-api.module';
 */
 export * from './lib/api.module';
 export * from './lib/model/models';
+export * from './lib/configuration';

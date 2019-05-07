@@ -7,8 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ClanModule } from './clan/clan.module';
 
-import { ApiModule } from 'bungie-api';
-import { GroupV2Service, Configuration, ConfigurationParameters } from 'projects/bungie-api/src/lib';
+import { ApiModule, Configuration, ConfigurationParameters} from 'bungie-api';
+import { GroupV2Service,  } from 'projects/bungie-api/src/lib';
 
 export function apiConfigFactory (): Configuration  {
   const params: ConfigurationParameters = {
