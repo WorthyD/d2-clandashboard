@@ -14,6 +14,6 @@ export class ClanDetailComponent implements OnInit {
 
   ngOnInit() {
 
-    this.clan = this.gs.groupV2GetGroup(2916512);
+    this.clan = this.gs.groupV2GetGroup(2073131);
   }
 }

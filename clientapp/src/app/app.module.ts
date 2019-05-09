@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ClanModule } from './clan/clan.module';
 
 import { ApiModule, Configuration, ConfigurationParameters} from 'bungie-api';
 import { GroupV2Service,  } from 'projects/bungie-api/src/lib';
+import { ApiKeyInterceptor } from './core/apikey.interceptor';
 
 export function apiConfigFactory (): Configuration  {
   const params: ConfigurationParameters = {
@@ -28,7 +29,11 @@ export function apiConfigFactory (): Configuration  {
     HttpClientModule,
     ClanModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: ApiKeyInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -937,13 +937,10 @@ export class GroupV2Service {
         if (httpHeaderAcceptSelected !== undefined) {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
-        headers = headers.set('X-API-Key', '12345');
 
         // to determine the Content-Type header
         const consumes: string[] = [
         ];
-        console.log(this.configuration);
-        console.log(headers);
 
         return this.httpClient.get<InlineResponse20019>(`${this.configuration.basePath}/GroupV2/${encodeURIComponent(String(groupId))}/`,
             {
