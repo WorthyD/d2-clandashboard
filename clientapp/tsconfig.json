@@ -22,11 +22,17 @@
       "bungie-api": [
         "projects/bungie-api/src/public_api"
       ],
-     "test-mod": [
+      "test-mod": [
         "dist/test-mod"
       ],
       "test-mod/*": [
         "dist/test-mod/*"
+      ],
+      "bungie-parse": [
+        "dist/bungie-parse"
+      ],
+      "bungie-parse/*": [
+        "dist/bungie-parse/*"
       ]
     }
   }

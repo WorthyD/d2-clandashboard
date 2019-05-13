@@ -9,11 +9,11 @@ import { GroupV2Service } from 'projects/bungie-api/src/lib';
   styleUrls: ['./clan-detail.component.scss']
 })
 export class ClanDetailComponent implements OnInit {
-  clan;
+  clan$;
   constructor(private gs: GroupV2Service) {}
 
   ngOnInit() {
 
-    this.clan = this.gs.groupV2GetGroup(2073131);
+    this.clan$ = this.gs.groupV2GetGroup(2073131);
   }
 }
