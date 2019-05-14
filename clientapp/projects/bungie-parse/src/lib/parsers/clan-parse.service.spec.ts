@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BungieParseService } from './bungie-parse.service';
+import { ClanParseService } from './clan-parse.service';
 
-describe('BungieParseService', () => {
+describe('ClanParseService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: BungieParseService = TestBed.get(BungieParseService);
+    const service: ClanParseService = TestBed.get(ClanParseService);
     expect(service).toBeTruthy();
   });
 });
