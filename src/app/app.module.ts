@@ -7,20 +7,19 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ClanModule } from './clan/clan.module';
 
-import { ApiModule, Configuration, ConfigurationParameters} from 'bungie-api';
-import { GroupV2Service,  } from 'projects/bungie-api/src/lib';
+import { ApiModule, Configuration, ConfigurationParameters } from 'bungie-api';
+import { GroupV2Service } from 'projects/bungie-api/src/lib';
 import { ApiKeyInterceptor } from './core/apikey.interceptor';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
+//import { reducers, metaReducers } from './reducers';
+import { RootStoreModule } from './root-store/root-store.module';
 
-export function apiConfigFactory (): Configuration  {
+export function apiConfigFactory(): Configuration {
   const params: ConfigurationParameters = {
-    apiKeys: {'X-API-Key':'1233'}
+    apiKeys: { 'X-API-Key': '1233' }
   };
   return new Configuration(params);
 }
-
-
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,13 +29,16 @@ export function apiConfigFactory (): Configuration  {
     ApiModule.forRoot(apiConfigFactory),
     HttpClientModule,
     ClanModule,
-    StoreModule.forRoot(reducers, { metaReducers })
+    RootStoreModule
+    //   StoreModule.forRoot(reducers, { metaReducers })
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: ApiKeyInterceptor,
-    multi: true,
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiKeyInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
