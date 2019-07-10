@@ -5,8 +5,6 @@ import { ClanSearchComponent } from './clan-search/clan-search.component';
 
 @NgModule({
   declarations: [ClanDetailComponent, ClanSearchComponent],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule]
 })
-export class ClanModule { }
+export class ClanModule {}

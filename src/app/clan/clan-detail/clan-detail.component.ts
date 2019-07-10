@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 //import { GroupV2Service } from 'bungie-api';
 import { GroupV2Service } from 'projects/bungie-api/src/lib';
 
+import { Clan } from 'bungie-parse';
+
 @Component({
   selector: 'app-clan-detail',
   templateUrl: './clan-detail.component.html',
@@ -13,7 +15,6 @@ export class ClanDetailComponent implements OnInit {
   constructor(private gs: GroupV2Service) {}
 
   ngOnInit() {
-
     this.clan$ = this.gs.groupV2GetGroup(2073131);
   }
 }
