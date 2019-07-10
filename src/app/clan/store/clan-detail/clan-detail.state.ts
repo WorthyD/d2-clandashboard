@@ -11,3 +11,6 @@ export const initialState: ClanDetailState = {
   loaded: false,
   loading: false
 };
+// https://github.com/UltimateAngular/ngrx-store-effects-app
+
+// https://github.com/IntertechInc/ngrx-tutorial
