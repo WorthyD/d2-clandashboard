@@ -2,12 +2,25 @@ import { Action } from '@ngrx/store';
 
 import { Clan } from 'bungie-parse';
 
-export const LOAD_CLANS = ``;
-export const LOAD_CLANS_FAIL = ``;
-export const LOAD_CLANS_SUCCESS = ``;
+const base = '[Clan_Details] - ';
 
+export const LOAD_CLAN = `${base} Load Clans`;
+export const LOAD_CLAN_FAIL = `${base} Load Clans Fail`;
+export const LOAD_CLAN_SUCCESS = `${base} Load Clans Success`;
 
+export class LoadClan {
+  readonly type = LOAD_CLAN;
+  constructor(public payload: number) {}
+}
 
-export const ADD_CLAN = ``;
-export const ADD_CLAN_FAIL = ``;
-export const ADD_CLAN_SUCCESS = ``;
+export class LoadClanFail {
+  readonly type = LOAD_CLAN_FAIL;
+  constructor(public payload: any) {}
+}
+
+export class LoadClanSuccess {
+  readonly type = LOAD_CLAN_SUCCESS;
+  constructor(public payload: any) {}
+}
+
+export type Actions = LoadClan | LoadClanFail | LoadClanSuccess;
