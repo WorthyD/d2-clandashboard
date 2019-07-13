@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { BungieParseComponent } from './bungie-parse.component';
+// import { BungieParseComponent } from './bungie-parse.component';
 
 @NgModule({
-  declarations: [BungieParseComponent],
-  imports: [
-  ],
-  exports: [BungieParseComponent]
+    declarations: [],
+    imports: [],
+    exports: []
 })
-export class BungieParseModule { }
+export class BungieParseModule {}

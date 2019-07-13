@@ -1,46 +1,28 @@
-import { Params, RouterStateSnapshot } from '@angular/router';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+// import { ActivatedRouteSnapshot, Params, RouterStateSnapshot } from '@angular/router';
+// import * as routerStore from '@ngrx/router-store';
 
-import {
-  StoreRouterConnectingModule,
-  routerReducer,
-  RouterReducerState,
-  RouterStateSerializer
-} from '@ngrx/router-store';
-import { Injectable } from '@angular/core';
+// export interface IRouterStateUrl {
+//     url: string;
+//     queryParams: Params;
+//     params: Params;
+// }
 
-export interface RouterStateUrl {
-  url: string;
-  params: Params;
-  queryParams: Params;
-}
+// export interface State {
+//     routerReducer: routerStore.RouterReducerState<IRouterStateUrl>;
+// }
 
-// Reducer selectors
-export const selectReducerState = createFeatureSelector<
-  RouterReducerState<RouterStateUrl>
->('router');
-export const getRouterInfo = createSelector(
-  selectReducerState,
-  state => state.state
-);
+// export class CustomSerializer implements routerStore.RouterStateSerializer<IRouterStateUrl> {
+//     serialize(routerState: RouterStateSnapshot): IRouterStateUrl {
+//         const { url } = routerState;
+//         const { queryParams } = routerState.root;
 
-@Injectable()
-export class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
-  serialize(routerState: RouterStateSnapshot): RouterStateUrl {
-    let route = routerState.root;
+//         let state: ActivatedRouteSnapshot = routerState.root;
+//         while (state.firstChild) {
+//             state = state.firstChild;
+//         }
 
-    while (route.firstChild) {
-      route = route.firstChild;
-    }
+//         const { params } = state;
 
-    const {
-      url,
-      root: { queryParams }
-    } = routerState;
-    const { params } = route;
-
-    // Only return an object including the URL, params and query params
-    // instead of the entire snapshot
-    return { url, params, queryParams };
-  }
-}
+//         return { url, queryParams, params };
+//     }
+// }

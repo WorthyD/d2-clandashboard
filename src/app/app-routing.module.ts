@@ -5,7 +5,7 @@ import { ClanDetailComponent } from './clan/clan-detail/clan-detail.component';
 import { ClanSearchComponent } from './clan/clan-search/clan-search.component';
 
 const routes: Routes = [
-  { path: ':id', component: ClanDetailComponent },
+  { path: ':clanId', component: ClanDetailComponent },
   { path: '', component: ClanSearchComponent },
 ];
 

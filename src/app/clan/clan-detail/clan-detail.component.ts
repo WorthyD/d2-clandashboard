@@ -1,20 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 
-//import { GroupV2Service } from 'bungie-api';
+// import { GroupV2Service } from 'bungie-api';
 import { GroupV2Service } from 'projects/bungie-api/src/lib';
+import * as clanDetailSelectors from '../store/clan-detail/clan-detail.selectors';
+import * as clanDetailStore from '../store/clan-detail/clan-detail.state';
 
 import { Clan } from 'bungie-parse';
+import { Store } from '@ngrx/store';
 
 @Component({
-  selector: 'app-clan-detail',
-  templateUrl: './clan-detail.component.html',
-  styleUrls: ['./clan-detail.component.scss']
+    selector: 'app-clan-detail',
+    templateUrl: './clan-detail.component.html',
+    styleUrls: ['./clan-detail.component.scss']
 })
 export class ClanDetailComponent implements OnInit {
-  clan$;
-  constructor(private gs: GroupV2Service) {}
+    clan$;
 
-  ngOnInit() {
-    this.clan$ = this.gs.groupV2GetGroup(2073131);
-  }
+
+    constructor(private gs: GroupV2Service, private store: Store<clanDetailStore.ClanDetailState>) {}
+
+    ngOnInit() {
+
+
+        this.clan$ = this.store.select(clanDetailSelectors.getSelectedClanDetail);
+
+        // this.clan$ = this.gs.groupV2GetGroup(2073131);
+    }
 }
