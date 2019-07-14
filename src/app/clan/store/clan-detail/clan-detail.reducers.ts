@@ -8,6 +8,7 @@ export function ClanDetailReducer(
 ): clanState.ClanDetailState {
     switch (action.type) {
         case clanActions.LOAD_CLAN: {
+            console.log('loading detail');
             return {
                 ...state,
                 loading: true

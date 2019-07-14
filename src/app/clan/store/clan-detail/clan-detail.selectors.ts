@@ -22,8 +22,6 @@ export const getSelectedClanDetail = createSelector(
 //    rootState.selectReducerState,
     (entities, router): Clan => {
         // return router.state && entities[router.state.params.clanId];
-        // return router.state && entities[router.state.params.clanId];
-        console.log(router.state.params.clanId);
-        return null;
+         return router.state && entities[router.state.params.clanId];
     }
 );

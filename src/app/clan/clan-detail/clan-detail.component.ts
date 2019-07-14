@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { GroupV2Service } from 'projects/bungie-api/src/lib';
 import * as clanDetailSelectors from '../store/clan-detail/clan-detail.selectors';
 import * as clanDetailStore from '../store/clan-detail/clan-detail.state';
+import * as clanDetailActions from '../store/clan-detail/clan-detail.actions';
 
 import { Clan } from 'bungie-parse';
 import { Store } from '@ngrx/store';
@@ -14,16 +15,16 @@ import { Store } from '@ngrx/store';
     styleUrls: ['./clan-detail.component.scss']
 })
 export class ClanDetailComponent implements OnInit {
-    clan$;
 
+    clan$ = this.store.select(clanDetailSelectors.getSelectedClanDetail);
 
     constructor(private gs: GroupV2Service, private store: Store<clanDetailStore.ClanDetailState>) {}
 
     ngOnInit() {
 
-
-        this.clan$ = this.store.select(clanDetailSelectors.getSelectedClanDetail);
+        console.log('subbing');
 
         // this.clan$ = this.gs.groupV2GetGroup(2073131);
+        this.store.dispatch(new clanDetailActions.LoadClan(2073131));
     }
 }
