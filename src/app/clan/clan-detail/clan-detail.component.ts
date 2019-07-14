@@ -6,6 +6,8 @@ import * as clanDetailSelectors from '../store/clan-detail/clan-detail.selectors
 import * as clanDetailStore from '../store/clan-detail/clan-detail.state';
 import * as clanDetailActions from '../store/clan-detail/clan-detail.actions';
 
+import * as routerStore from '../../root-store/router/
+
 import { Clan } from 'bungie-parse';
 import { Store } from '@ngrx/store';
 
@@ -18,7 +20,7 @@ export class ClanDetailComponent implements OnInit {
 
     clan$ = this.store.select(clanDetailSelectors.getSelectedClanDetail);
 
-    constructor(private gs: GroupV2Service, private store: Store<clanDetailStore.ClanDetailState>) {}
+    constructor(private gs: GroupV2Service, private store: Store<clanDetailStore.ClanDetailState>, private rStore:Store<RouterStateUrl>) {}
 
     ngOnInit() {
 
