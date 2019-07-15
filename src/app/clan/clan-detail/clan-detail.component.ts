@@ -6,7 +6,7 @@ import * as clanDetailSelectors from '../store/clan-detail/clan-detail.selectors
 import * as clanDetailStore from '../store/clan-detail/clan-detail.state';
 import * as clanDetailActions from '../store/clan-detail/clan-detail.actions';
 
-import * as routerStore from '../../root-store/router/
+import * as routerStore from '../../root-store/router/router.selectors';
 
 import { Clan } from 'bungie-parse';
 import { Store } from '@ngrx/store';
@@ -17,13 +17,15 @@ import { Store } from '@ngrx/store';
     styleUrls: ['./clan-detail.component.scss']
 })
 export class ClanDetailComponent implements OnInit {
-
     clan$ = this.store.select(clanDetailSelectors.getSelectedClanDetail);
 
-    constructor(private gs: GroupV2Service, private store: Store<clanDetailStore.ClanDetailState>, private rStore:Store<RouterStateUrl>) {}
+    constructor(
+        private gs: GroupV2Service,
+        private store: Store<clanDetailStore.ClanDetailState>,
+        private rStore: Store<routerStore.State>
+    ) {}
 
     ngOnInit() {
-
         console.log('subbing');
 
         // this.clan$ = this.gs.groupV2GetGroup(2073131);

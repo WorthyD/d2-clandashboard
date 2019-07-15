@@ -16,12 +16,27 @@ export const getClanDetailEntities = createSelector(
     s => s.entities
 );
 
+export const getClanDetailById = (clanId: number) =>
+    createSelector(
+        getClanDetailEntities,
+        //    rootState.selectReducerState,
+        (entities): Clan => {
+            // return router.state && entities[router.state.params.clanId];
+            return entities[clanId];
+        }
+    );
+
+/*
+export const clientById = (clientId: number) =>
+    createSelector(clientState, (state: IClientState) => FromEntity(state.data).find(x => x.id === clientId));
+    */
+
 export const getSelectedClanDetail = createSelector(
     getClanDetailEntities,
     routerState.selectRouter,
-//    rootState.selectReducerState,
+    //    rootState.selectReducerState,
     (entities, router): Clan => {
         // return router.state && entities[router.state.params.clanId];
-         return router.state && entities[router.state.params.clanId];
+        return router.state && entities[router.state.params.clanId];
     }
 );
