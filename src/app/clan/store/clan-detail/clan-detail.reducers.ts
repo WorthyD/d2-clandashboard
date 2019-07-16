@@ -6,23 +6,10 @@ export function ClanDetailReducer(
     state = clanState.initialState,
     action: clanActions.Actions
 ): clanState.ClanDetailState {
+        console.log(action.type);
     switch (action.type) {
         case clanActions.LOAD_CLAN: {
-            console.log('loading detail');
-            return {
-                ...state,
-                loading: true
-            };
-        }
-
-        case clanActions.LOAD_CLAN_FAIL: {
-            return {
-                ...state,
-                loading: false
-            };
-        }
-
-        case clanActions.LOAD_CLAN_SUCCESS: {
+            console.log('loading clan');
             const clan: Clan = action.payload;
             const entities = {
                 ...state.entities,
@@ -33,7 +20,27 @@ export function ClanDetailReducer(
                 ...state,
                 entities
             };
-        }
+       }
+
+        // case clanActions.LOAD_CLAN_FAIL: {
+        //     return {
+        //         ...state,
+        //         loading: false
+        //     };
+        // }
+
+        // case clanActions.LOAD_CLAN_SUCCESS: {
+        //     const clan: Clan = action.payload;
+        //     const entities = {
+        //         ...state.entities,
+        //         [clan.groupId]: clan
+        //     };
+
+        //     return {
+        //         ...state,
+        //         entities
+        //     };
+        // }
     }
     return state;
 }

@@ -31,10 +31,7 @@
       ],
       "test-mod/*": [
         "dist/test-mod/*"
-      ],
-      "bungie-parse/*": [
-        "dist/bungie-parse/*"
       ]
-    }
+   }
   }
 }

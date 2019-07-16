@@ -29,6 +29,6 @@ export class ClanDetailComponent implements OnInit {
         console.log('subbing');
 
         // this.clan$ = this.gs.groupV2GetGroup(2073131);
-        this.store.dispatch(new clanDetailActions.LoadClan(2073131));
+        //this.store.dispatch(new clanDetailActions.LoadClan(2073131));
     }
 }
