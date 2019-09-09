@@ -17,7 +17,7 @@ import { Store } from '@ngrx/store';
     styleUrls: ['./clan-detail.component.scss']
 })
 export class ClanDetailComponent implements OnInit {
-    clan$ = this.store.select(clanDetailSelectors.getSelectedClanDetail);
+    // clan$ = this.store.select(clanDetailSelectors.getSelectedClanDetail);
 
     constructor(
         private gs: GroupV2Service,
