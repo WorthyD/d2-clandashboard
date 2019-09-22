@@ -9,7 +9,7 @@ const routes: Routes = [
     {
         path: ':id',
         component: ClanDetailComponent,
-        canActivate: [ClanDetailGuard]
+ //       canActivate: [ClanDetailGuard]
     },
     { path: '', component: ClanSearchComponent }
 ];

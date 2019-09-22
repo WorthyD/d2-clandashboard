@@ -23,49 +23,49 @@ export class ClanDetailGuard implements CanActivate {
     ) {}
 
     canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-        // return of(true | false)
-        return this.hasClan(route.params['id']);
+         return of(true)
+        // return this.hasClan(route.params['id']);
     }
 
-    hasInStore(id: number) {
-        return this.store.pipe(
-            select(clanDetailSelectors.getClanDetailEntities),
-            map(entities => !!entities[id]),
-            take(1)
-        );
-    }
+    // hasInStore(id: number) {
+    //     return this.store.pipe(
+    //         select(clanDetailSelectors.getClanDetailEntities),
+    //         map(entities => !!entities[id]),
+    //         take(1)
+    //     );
+    // }
 
-    hasInApi(id: number): Observable<boolean> {
-        // Finish here. Need to get back to actual work
-        // https://github.com/ngrx/platform/blob/master/projects/example-app/src/app/books/guards/book-exists.guard.ts
-        // https://ultimatecourses.com/blog/preloading-ngrx-store-route-guards
+    // hasInApi(id: number): Observable<boolean> {
+    //     // Finish here. Need to get back to actual work
+    //     // https://github.com/ngrx/platform/blob/master/projects/example-app/src/app/books/guards/book-exists.guard.ts
+    //     // https://ultimatecourses.com/blog/preloading-ngrx-store-route-guards
 
-        return this.gs.groupV2GetGroup(id).pipe(
-            map(clanDetail => {
-                return new clanDetailActions.LoadClan(this.clanParser.parseClan(clanDetail.Response.detail));
-            }),
-            tap(action => {
-                return this.store.dispatch(action);
-            }),
-            map(clan => !!clan),
-            catchError((e) => {
-                console.log(e);
-                // clan not found
-                // this.router.navigate(['/404'])
-                return of(false);
-            })
-        );
-    }
+    //     return this.gs.groupV2GetGroup(id).pipe(
+    //         map(clanDetail => {
+    //             return new clanDetailActions.LoadClan(this.clanParser.parseClan(clanDetail.Response.detail));
+    //         }),
+    //         tap(action => {
+    //             return this.store.dispatch(action);
+    //         }),
+    //         map(clan => !!clan),
+    //         catchError((e) => {
+    //             console.log(e);
+    //             // clan not found
+    //             // this.router.navigate(['/404'])
+    //             return of(false);
+    //         })
+    //     );
+    // }
 
-    hasClan(id: number): Observable<boolean> {
-        return this.hasInStore(id).pipe(
-            switchMap(inStore => {
-                console.log('has in store');
-                if (inStore) {
-                    return of(inStore);
-                }
-                return this.hasInApi(id);
-            })
-        );
-    }
+    // hasClan(id: number): Observable<boolean> {
+    //     return this.hasInStore(id).pipe(
+    //         switchMap(inStore => {
+    //             console.log('has in store');
+    //             if (inStore) {
+    //                 return of(inStore);
+    //             }
+    //             return this.hasInApi(id);
+    //         })
+    //     );
+    // }
 }

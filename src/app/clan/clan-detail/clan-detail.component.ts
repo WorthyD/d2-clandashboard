@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { Event, NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 
 // import { GroupV2Service } from 'bungie-api';
 import { GroupV2Service } from 'projects/bungie-api/src/lib';
@@ -10,25 +12,40 @@ import * as routerStore from '../../root-store/router/router.selectors';
 
 import { Clan } from 'bungie-parse';
 import { Store } from '@ngrx/store';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { filter, map, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-clan-detail',
     templateUrl: './clan-detail.component.html',
     styleUrls: ['./clan-detail.component.scss']
 })
-export class ClanDetailComponent implements OnInit {
-    // clan$ = this.store.select(clanDetailSelectors.getSelectedClanDetail);
-
+export class ClanDetailComponent implements OnInit, OnDestroy {
     constructor(
-        private gs: GroupV2Service,
+        private activatedRoute: ActivatedRoute,
         private store: Store<clanDetailStore.ClanDetailState>,
         private rStore: Store<routerStore.State>
-    ) {}
+    ) {
+        this.clanId
+            .pipe(takeUntil(this.destroyed))
+            .subscribe(r => this.loadClan(r));
+    }
+
+    private clanId = this.activatedRoute.params.pipe(
+        map(x => x.id, distinctUntilChanged())
+    );
+
+    private destroyed = new Subject();
 
     ngOnInit() {
-        console.log('subbing');
+    }
 
-        // this.clan$ = this.gs.groupV2GetGroup(2073131);
-        //this.store.dispatch(new clanDetailActions.LoadClan(2073131));
+    ngOnDestroy() {
+        this.destroyed.next();
+        this.destroyed.complete();
+    }
+
+    loadClan(clanId) {
+        this.store.dispatch(clanDetailActions.loadClan({ clanId: clanId }));
     }
 }
