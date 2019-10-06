@@ -15,7 +15,7 @@ import { CustomSerializer } from './router/custom-route-serializer';
         // StoreModule.forRoot({
         //   router: routerReducer,
         // }),
-        // EffectsModule.forRoot([]),
+         EffectsModule.forRoot([]),
         StoreModule.forRoot(reducers),
         StoreRouterConnectingModule.forRoot({
             serializer: CustomSerializer
