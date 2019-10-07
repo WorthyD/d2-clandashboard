@@ -1,37 +1,31 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "downlevelIteration": true,
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "paths": {
-      "bungie-api": [
-        "projects/bungie-api/src/public_api"
-      ],
-      "bungie-parse": [
-        "projects/bungie-parse/src/public_api"
-      ],
-      "test-mod": [
-        "dist/test-mod"
-      ],
-      "test-mod/*": [
-        "dist/test-mod/*"
-      ]
-   }
-  }
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "downlevelIteration": true,
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2018",
+            "dom"
+        ],
+        "paths": {
+            "bungie-api": [
+                "projects/bungie-api/src/public_api"
+            ],
+           "bungie-models": [
+                "projects/bungie-models/src/public-api"
+            ]
+        }
+    }
 }

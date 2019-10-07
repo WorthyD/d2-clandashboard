@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Clan } from 'bungie-parse';
+import { ClanDetails } from 'bungie-models';
 
 const base = '[Clan_Details] - ';
 
@@ -14,7 +14,7 @@ export const loadClan = createAction(
 );
 export const loadClanSuccess = createAction(
     `${base} Load Clan Success`,
-    props<{ clanDetails: Clan }>()
+    props<{ clanDetails: ClanDetails }>()
 );
 export const loadClanFailure = createAction(
     `${base} Load Clan Failure`,

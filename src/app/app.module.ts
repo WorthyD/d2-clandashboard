@@ -8,10 +8,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ClanModule } from './clan/clan.module';
 
 import { ApiModule, Configuration, ConfigurationParameters } from 'bungie-api';
-import { GroupV2Service } from 'projects/bungie-api/src/lib';
+// import { GroupV2Service } from 'projects/bungie-api/src/lib';
 import { ApiKeyInterceptor } from './core/apikey.interceptor';
 import { StoreModule } from '@ngrx/store';
-//import { reducers, metaReducers } from './reducers';
+// import { reducers, metaReducers } from './reducers';
 import { RootStoreModule } from './root-store/root-store.module';
 
 export function apiConfigFactory(): Configuration {

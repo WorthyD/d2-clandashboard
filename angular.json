@@ -22,6 +22,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
+            "aot": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -196,6 +197,41 @@
             "tsConfig": [
               "projects/bungie-parse/tsconfig.lib.json",
               "projects/bungie-parse/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "bungie-models": {
+      "projectType": "library",
+      "root": "projects/bungie-models",
+      "sourceRoot": "projects/bungie-models/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/bungie-models/tsconfig.lib.json",
+            "project": "projects/bungie-models/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bungie-models/src/test.ts",
+            "tsConfig": "projects/bungie-models/tsconfig.spec.json",
+            "karmaConfig": "projects/bungie-models/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bungie-models/tsconfig.lib.json",
+              "projects/bungie-models/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ClanDetailComponent } from './clan-detail/clan-detail.component';
 import { ClanSearchComponent } from './clan-search/clan-search.component';
-import { ClanDetailGuard } from './clan-detail/clan-detail.guard';
+// import { ClanDetailGuard } from './clan-detail/clan-detail.guard';
 
 const routes: Routes = [
     {

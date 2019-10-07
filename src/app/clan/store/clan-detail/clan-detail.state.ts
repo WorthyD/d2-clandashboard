@@ -1,7 +1,7 @@
-import { Clan } from 'bungie-parse';
+import {ClanDetails} from 'bungie-models';
 
 export interface ClanDetailState {
-    clan: Clan;
+    clan: ClanDetails;
     loaded: boolean;
     loading: boolean;
 }
