@@ -2,12 +2,15 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Event, NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 
-import { ClanDetails } from 'bungie-models';
+import { ClanDetails, ClanMember } from 'bungie-models';
 // import { GroupV2Service } from 'bungie-api';
 // import { GroupV2Service } from 'projects/bungie-api/src/lib';
 import * as clanDetailSelectors from '../store/clan-detail/clan-detail.selectors';
 import * as clanDetailStore from '../store/clan-detail/clan-detail.state';
 import * as clanDetailActions from '../store/clan-detail/clan-detail.actions';
+
+import * as clanMemberSelectors from '../store/clan-members/clan-members.selectors';
+import * as clanMemberActions from '../store/clan-members/clan-members.actions';
 
 import * as routerStore from '../../root-store/router/router.selectors';
 import {} from 'bungie-models';
@@ -40,6 +43,9 @@ export class ClanDetailComponent implements OnInit, OnDestroy {
     clanDetails$: Observable<ClanDetails> = this.store.pipe(
         select(clanDetailSelectors.getClanDetail)
     );
+    clanMembers$: Observable<ClanMember[]> = this.store.pipe(
+        select(clanMemberSelectors.getAllMembers)
+    );
 
     private destroyed = new Subject();
 
@@ -52,5 +58,6 @@ export class ClanDetailComponent implements OnInit, OnDestroy {
 
     loadClan(clanId) {
         this.store.dispatch(clanDetailActions.loadClan({ clanId: clanId }));
+        this.store.dispatch(clanMemberActions.loadClanMembers({ clanId: clanId }));
     }
 }

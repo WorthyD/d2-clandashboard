@@ -1,16 +1,19 @@
 // import {ClanDetails} from 'bungie-models';
+import { ClanMember } from 'bungie-models';
 
-// export interface ClanDetailState {
-//     clan: ClanDetails;
-//     loaded: boolean;
-//     loading: boolean;
-// }
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-// export const initialState: ClanDetailState = {
-//     clan: null,
-//     loaded: false,
-//     loading: false
-// };
-// // https://github.com/UltimateAngular/ngrx-store-effects-app
+export interface ClanMemberState extends EntityState<ClanMember> {
+    loaded: boolean;
+    loading: boolean;
+}
 
-// // https://github.com/IntertechInc/ngrx-tutorial
+export const ClanMemberAdapter: EntityAdapter<ClanMember> = createEntityAdapter<ClanMember>({
+    selectId: (cm: ClanMember) => cm.bungieNetUserInfo.membershipId,
+    sortComparer: false
+});
+
+export const ClanMemberInitialState: ClanMemberState = ClanMemberAdapter.getInitialState({
+    loaded: false,
+    loading: false
+});

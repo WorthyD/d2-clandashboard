@@ -1,17 +1,14 @@
-// import { createReducer, on } from '@ngrx/store';
-// import * as clanState from './clan-detail.state';
-// import * as clanActions from './clan-detail.actions';
+import { createReducer, on } from '@ngrx/store';
+import * as clanMemberState from './clan-members.state';
+import * as clanMemberActions from './clan-members.actions';
 
-// export const ClanDetailReducer = createReducer(
-//     clanState.initialState,
-//     on(clanActions.loadClan, state => ({
-//         ...state,
-//         loading: true
-//     })),
-//     on(clanActions.loadClanSuccess, (state, { clanDetails }) => ({
-//         ...state,
-//         clan: clanDetails,
-//         loaded: true,
-//         loading: false
-//     }))
-// );
+export const ClanMemberReducer = createReducer(
+    clanMemberState.ClanMemberInitialState,
+    on(clanMemberActions.loadClanMembers, state => ({
+        ...state,
+        loading: true
+    })),
+    on(clanMemberActions.loadClanMembersSuccess, (state, { clanMembers }) => {
+        return clanMemberState.ClanMemberAdapter.addAll(clanMembers, { ...state, loaded: true, loading: false });
+   })
+);
