@@ -14,3 +14,4 @@ export * from './lib/model/models';
 export * from './lib/configuration';
 
 export * from './lib/api/groupV2.service';
+export * from './lib/api/destiny2.service';

@@ -6,7 +6,7 @@ import { empty, of } from 'rxjs';
 
 //import * as clanDetailActions from './clan-detail.actions';
 import * as clanMemberActions from './clan-members.actions';
-import { GroupV2Service } from 'bungie-api';
+import { Destiny2Service } from 'bungie-api';
 
 import { ClanParseService } from '../../../parser/parsers/clan-parse.service';
 
@@ -24,7 +24,7 @@ export class ClanMemberEffects {
     constructor(
         private actions$: Actions,
         private store: Store<any>,
-        private groupService: GroupV2Service,
+        private d2Service: Destiny2Service,
         private parser: ClanParseService
     ) {}
 

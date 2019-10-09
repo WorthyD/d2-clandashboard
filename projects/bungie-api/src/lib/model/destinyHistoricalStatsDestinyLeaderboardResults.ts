@@ -9,12 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { { [key: string]: DestinyHistoricalStatsDestinyLeaderboard; } } from './keyStringDestinyHistoricalStatsDestinyLeaderboard';
+import { DestinyHistoricalStatsDestinyLeaderboard } from './destinyHistoricalStatsDestinyLeaderboard';
 
-
-export interface DestinyHistoricalStatsDestinyLeaderboardResults { 
-  [key: string]: { [key: string]: DestinyHistoricalStatsDestinyLeaderboard; } | any;
-
+export interface DestinyHistoricalStatsDestinyLeaderboardResults {
+    [key: string]:
+        | { [key: string]: DestinyHistoricalStatsDestinyLeaderboard }
+        | any;
 
     /**
      * Indicate the membership ID of the account that is the focal point of the provided leaderboards.
@@ -25,4 +25,3 @@ export interface DestinyHistoricalStatsDestinyLeaderboardResults {
      */
     focusCharacterId?: number;
 }
-
