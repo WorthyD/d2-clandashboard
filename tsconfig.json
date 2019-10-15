@@ -23,8 +23,11 @@
             "bungie-api": [
                 "projects/bungie-api/src/public_api"
             ],
-           "bungie-models": [
+            "bungie-models": [
                 "projects/bungie-models/src/public-api"
+            ],
+            "@destiny/components": [
+                "projects/components/src/public-api"
             ]
         }
     }

@@ -45,7 +45,6 @@ export class MemberProfileEffects {
                 //      return memberProfileActions.loadMemberProfileSuccess({memberProfile: null});
                 //  })
                 mergeMap(url => {
-                    console.log('=>Fetch data from url', url);
                     //                   return of(url);
                     return this.d2Service
                         .destiny2GetProfile(

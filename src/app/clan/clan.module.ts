@@ -10,7 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 // mport { BungieParseModule } from 'bungie-parse';
 
 @NgModule({
-    declarations: [ClanDetailComponent, ClanSearchComponent],
+    declarations: [ClanDetailComponent, ClanSearchComponent ],
     imports: [
         CommonModule,
         ClanRoutingModule,

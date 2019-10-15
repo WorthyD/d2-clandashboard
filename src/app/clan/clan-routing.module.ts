@@ -9,7 +9,13 @@ const routes: Routes = [
     {
         path: ':id',
         component: ClanDetailComponent,
- //       canActivate: [ClanDetailGuard]
+        children: [
+            {
+                path: 'roster',
+                loadChildren:
+                    './clan-roster/clan-roster.module#ClanRosterModule'
+            }
+        ]
     },
     { path: '', component: ClanSearchComponent }
 ];

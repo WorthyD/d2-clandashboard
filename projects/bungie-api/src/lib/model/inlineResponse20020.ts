@@ -12,8 +12,8 @@
 import { GroupsV2GroupResponse } from './groupsV2GroupResponse';
 
 
-export interface InlineResponse20020 { 
-    response?: GroupsV2GroupResponse;
+export interface InlineResponse20020 {
+    Response?: GroupsV2GroupResponse;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;
