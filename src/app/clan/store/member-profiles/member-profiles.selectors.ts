@@ -2,7 +2,7 @@
  import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { getClanState } from '../clan-state.state';
-import * as clanMemberState from './clan-members.state';
+import * as memberProfileState from './member-profiles.state';
 
 // // import * as rootState from '../../../root-store/router/router.reducer';
 // import * as routerState from '../../../root-store/router/router.selectors';
@@ -18,14 +18,14 @@ import * as clanMemberState from './clan-members.state';
 //     s => s.clan
 // );
 
-export const getClanMemberEntityState = createSelector(
+export const getMemberProfileEntityState = createSelector(
     getClanState,
-    state => state.clanMembers
+    state => state.memberProfiles
 );
 
 export const {
     selectIds: getMemberIds,
-    selectEntities: getClanMemberEntities,
+    selectEntities: getMemberProfileEntities,
     selectAll: getAllMembers,
     selectTotal: getTotalMembers
-} = clanMemberState.ClanMemberAdapter.getSelectors(getClanMemberEntityState);
+} = memberProfileState.MemberProfileAdapter.getSelectors(getMemberProfileEntityState);

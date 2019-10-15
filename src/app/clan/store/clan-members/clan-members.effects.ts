@@ -6,6 +6,7 @@ import { empty, of } from 'rxjs';
 
 //import * as clanDetailActions from './clan-detail.actions';
 import * as clanMemberActions from './clan-members.actions';
+import * as memberProfileActions from '../member-profiles/member-profiles.actions';
 import { GroupV2Service } from 'bungie-api';
 
 import { ClanParseService } from '../../../parser/parsers/clan-parse.service';
@@ -35,12 +36,15 @@ export class ClanMemberEffects {
                 return this.groupService
                     .groupV2GetMembersOfGroup(1, clanId)
                     .pipe(
-                        map(result => {
-                            return clanMemberActions.loadClanMembersSuccess({
+                        switchMap(result => [
+                            clanMemberActions.loadClanMembersSuccess({
                                 //clanDetails: result.Response.detail
                                 clanMembers: result.Response.results
-                            });
-                        }),
+                            }),
+                            memberProfileActions.loadMemberProfiles({
+                                clanMembers: result.Response.results
+                            })
+                        ]),
                         catchError(error => {
                             return of(
                                 clanMemberActions.loadClanMemberFailure({

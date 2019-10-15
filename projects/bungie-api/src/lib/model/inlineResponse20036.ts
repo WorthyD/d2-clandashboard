@@ -12,8 +12,8 @@
 import { DestinyResponsesDestinyProfileResponse } from './destinyResponsesDestinyProfileResponse';
 
 
-export interface InlineResponse20036 { 
-    response?: DestinyResponsesDestinyProfileResponse;
+export interface InlineResponse20036 {
+    Response?: DestinyResponsesDestinyProfileResponse;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

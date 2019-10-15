@@ -12,8 +12,8 @@
 import { SearchResultOfGroupMember } from './searchResultOfGroupMember';
 
 
-export interface InlineResponse20023 { 
-    response?: SearchResultOfGroupMember;
+export interface InlineResponse20023 {
+    Response?: SearchResultOfGroupMember;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

@@ -9,7 +9,7 @@ import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 import { ClanDetailEffects } from './clan-detail/clan-detail.effects';
 import { ClanMemberEffects } from './clan-members/clan-members.effects';
 
-//import {ClanMemberEffects} from './member-profiles/member-profiles.effects';
+import {MemberProfileEffects} from './member-profiles/member-profiles.effects';
 import * as memberProfileState from './member-profiles/member-profiles.state';
 import * as memberProfileReducer from './member-profiles/member-profiles.reducers';
 
@@ -27,4 +27,4 @@ export const reducers: ActionReducerMap<ClanState> = {
 
 export const getClanState = createFeatureSelector<ClanState>('clans');
 
-export const ClanEffects = [ClanDetailEffects, ClanMemberEffects];
+export const ClanEffects = [ClanDetailEffects, ClanMemberEffects, MemberProfileEffects];
