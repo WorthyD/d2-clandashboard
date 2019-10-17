@@ -6,15 +6,18 @@ import * as clanState from './store/clan-state.state';
 import { StoreModule } from '@ngrx/store';
 import { ClanRoutingModule } from './clan-routing.module';
 import { EffectsModule } from '@ngrx/effects';
+import { ClanRosterModule } from './clan-roster/clan-roster.module';
+import { ClanComponent } from './clan.component';
 
 // mport { BungieParseModule } from 'bungie-parse';
 
 @NgModule({
-    declarations: [ClanDetailComponent, ClanSearchComponent ],
+    declarations: [ClanDetailComponent, ClanSearchComponent, ClanComponent],
     imports: [
         CommonModule,
         ClanRoutingModule,
-//         BungieParseModule,
+        // ClanRosterModule,
+        //         BungieParseModule,
         StoreModule.forFeature('clans', clanState.reducers),
         EffectsModule.forFeature(clanState.ClanEffects)
     ]

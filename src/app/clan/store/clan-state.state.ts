@@ -27,5 +27,5 @@ export const reducers: ActionReducerMap<ClanState> = {
 
 export const getClanState = createFeatureSelector<ClanState>('clans');
 
-// export const ClanEffects = [ClanDetailEffects, ClanMemberEffects, MemberProfileEffects];
-export const ClanEffects = [ClanDetailEffects, ClanMemberEffects];
+ export const ClanEffects = [ClanDetailEffects, ClanMemberEffects, MemberProfileEffects];
+// export const ClanEffects = [ClanDetailEffects, ClanMemberEffects];

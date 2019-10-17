@@ -1,2 +1,7 @@
 <p>clan-roster-list-view works!</p>
-<lib-clan-roster-list-view></lib-clan-roster-list-view>
+
+<div *ngFor="let member of members">
+    {{member.member.bungieNetUserInfo.displayName}}
+    -
+    {{member?.profile?.profile.data.dateLastPlayed}}
+</div>

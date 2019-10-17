@@ -17,6 +17,7 @@ export class ClanRosterRoutingModule {}
 
 @NgModule({
     declarations: [ClanRosterComponent],
-    imports: [CommonModule, ClanRosterListViewModule, ClanRosterRoutingModule]
+    imports: [CommonModule, ClanRosterListViewModule, ClanRosterRoutingModule],
+    exports: [ClanRosterComponent]
 })
 export class ClanRosterModule {}

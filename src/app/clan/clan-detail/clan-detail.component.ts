@@ -29,22 +29,16 @@ export class ClanDetailComponent implements OnInit, OnDestroy {
     constructor(
         private activatedRoute: ActivatedRoute,
         private store: Store<clanDetailStore.ClanDetailState>,
-        private rStore: Store<routerStore.State>
     ) {
-        this.clanId
-            .pipe(takeUntil(this.destroyed))
-            .subscribe(r => this.loadClan(r));
+
     }
 
-    private clanId = this.activatedRoute.params.pipe(
-        map(x => x.id, distinctUntilChanged())
-    );
+    // private clanId = this.activatedRoute.params.pipe(
+    //     map(x => x.id, distinctUntilChanged())
+    // );
 
     clanDetails$: Observable<ClanDetails> = this.store.pipe(
         select(clanDetailSelectors.getClanDetail)
-    );
-    clanMembers$: Observable<ClanMember[]> = this.store.pipe(
-        select(clanMemberSelectors.getAllMembers)
     );
 
     private destroyed = new Subject();
@@ -56,8 +50,5 @@ export class ClanDetailComponent implements OnInit, OnDestroy {
         this.destroyed.complete();
     }
 
-    loadClan(clanId) {
-        this.store.dispatch(clanDetailActions.loadClan({ clanId: clanId }));
-        this.store.dispatch(clanMemberActions.loadClanMembers({ clanId: clanId }));
-    }
+
 }
