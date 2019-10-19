@@ -14,31 +14,33 @@ import { StoreModule } from '@ngrx/store';
 // import { reducers, metaReducers } from './reducers';
 import { RootStoreModule } from './root-store/root-store.module';
 
+import { ClanSearchComponent } from './clan-search/clan-search.component';
+
 export function apiConfigFactory(): Configuration {
-  const params: ConfigurationParameters = {
-    apiKeys: { 'X-API-Key': '1233' }
-  };
-  return new Configuration(params);
+    const params: ConfigurationParameters = {
+        apiKeys: { 'X-API-Key': '1233' }
+    };
+    return new Configuration(params);
 }
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ApiModule.forRoot(apiConfigFactory),
-    HttpClientModule,
-    ClanModule,
-    RootStoreModule
-    //   StoreModule.forRoot(reducers, { metaReducers })
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ApiKeyInterceptor,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent, ClanSearchComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ApiModule.forRoot(apiConfigFactory),
+        HttpClientModule,
+        ClanModule,
+        RootStoreModule
+        //   StoreModule.forRoot(reducers, { metaReducers })
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ApiKeyInterceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

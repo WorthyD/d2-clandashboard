@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ClanSearchComponent } from './clan/clan-search/clan-search.component';
+import { ClanSearchComponent } from './clan-search/clan-search.component';
 
 const routes: Routes = [
   { path: '', component: ClanSearchComponent },
