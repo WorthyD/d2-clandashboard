@@ -20,3 +20,21 @@ export const loadClanFailure = createAction(
     `${base} Load Clan Failure`,
     props<{ error: any }>()
 );
+
+export const loadClanFromAPI = createAction(
+    `${base} Load Clan API`,
+    props<{ clanId: number }>()
+);
+export const loadClanFromAPISuccess = createAction(
+    `${base} Load Clan API Success`,
+    props<{ clanDetails: ClanDetails }>()
+);
+export const loadClanFromAPIFailure = createAction(
+    `${base} Load Clan API Failure`,
+    props<{ error: any }>()
+);
+
+export const checkClanCache = createAction(
+    `${base} Check Clan Cache`,
+    props<{ clanId: number }>()
+);
