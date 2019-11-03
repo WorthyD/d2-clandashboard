@@ -31,7 +31,7 @@ export class ClanDetailEffects {
         private groupService: GroupV2Service,
         private parser: ClanParseService,
         private clanDB: ClanDatabase,
-        private updater: Updater
+//         private updater: Updater
     ) {}
 
     loadDetails$ = createEffect(() =>
@@ -43,9 +43,15 @@ export class ClanDetailEffects {
                     .CacheDetails.pipe(
                         take(1),
                         map(clanDetails => {
-                            return clanDetailActions.loadClanSuccess({
-                                clanDetails: clanDetails[0]
-                            });
+                            if (clanDetails[0]) {
+                                return clanDetailActions.loadClanSuccess({
+                                    clanDetails: clanDetails[0]
+                                });
+                            } else {
+                                return clanDetailActions.loadClanFromAPI({
+                                    clanId
+                                });
+                            }
                         })
                     );
             })
@@ -57,7 +63,7 @@ export class ClanDetailEffects {
             this.actions$.pipe(
                 ofType(clanDetailActions.loadClan),
                 tap(({ clanId }) => {
-                    this.updater
+                    //this.updater
                     //     return this.clanDB
                     //         .getValues(clanId.toString())
                     //         .CacheDetails.pipe(
@@ -75,7 +81,7 @@ export class ClanDetailEffects {
     );
     loadFromAPI$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(clanDetailActions.loadClan),
+            ofType(clanDetailActions.loadClanFromAPI),
             switchMap(({ clanId }) => {
                 return this.groupService.groupV2GetGroup(clanId).pipe(
                     map(result => {

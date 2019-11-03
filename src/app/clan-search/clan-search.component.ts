@@ -29,6 +29,7 @@ export class ClanSearchComponent implements OnInit {
 
     load(clanId: number) {
         const clanResult: LoadClanResult = {
+            id: 0,
             clanDetails: {}
         };
 

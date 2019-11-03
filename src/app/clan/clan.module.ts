@@ -18,7 +18,7 @@ import { ClanComponent } from './clan.component';
         ClanRoutingModule,
         // ClanRosterModule,
         //         BungieParseModule,
-        StoreModule.forFeature('clans', clanState.reducers),
+        StoreModule.forFeature('clan', clanState.reducers),
         EffectsModule.forFeature(clanState.ClanEffects)
     ]
 })

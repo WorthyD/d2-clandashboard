@@ -8,6 +8,8 @@ import * as clanDetailSelectors from './store/clan-detail/clan-detail.selectors'
 import * as clanDetailStore from './store/clan-detail/clan-detail.state';
 import * as clanDetailActions from './store/clan-detail/clan-detail.actions';
 
+import * as clanIdActions from './store/clan-id/clan-id.action';
+
 import * as clanMemberSelectors from './store/clan-members/clan-members.selectors';
 import * as clanMemberActions from './store/clan-members/clan-members.actions';
 
@@ -56,9 +58,10 @@ export class ClanComponent implements OnInit, OnDestroy {
     }
 
     loadClan(clanId) {
+        this.store.dispatch(clanIdActions.setClanId({clanId: clanId}));
         this.store.dispatch(clanDetailActions.loadClan({ clanId: clanId }));
-        this.store.dispatch(
-            clanMemberActions.loadClanMembers({ clanId: clanId })
-        );
+        // this.store.dispatch(
+        //     clanMemberActions.loadClanMembers({ clanId: clanId })
+        // );
     }
 }
