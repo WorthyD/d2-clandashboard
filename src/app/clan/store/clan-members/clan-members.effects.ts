@@ -4,7 +4,6 @@ import { Actions, Effect, ofType, createEffect } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { empty, of } from 'rxjs';
 
-//import * as clanDetailActions from './clan-detail.actions';
 import * as clanMemberActions from './clan-members.actions';
 import * as memberProfileActions from '../member-profiles/member-profiles.actions';
 import { GroupV2Service } from 'bungie-api';

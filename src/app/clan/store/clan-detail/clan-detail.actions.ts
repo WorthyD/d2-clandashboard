@@ -21,6 +21,13 @@ export const loadClanFailure = createAction(
     props<{ error: any }>()
 );
 
+
+export const updateClanFromAPI = createAction(
+    `${base} updateClanFromAPI`,
+    props<{ clanDetails: ClanDetails }>()
+);
+
+
 export const loadClanFromAPI = createAction(
     `${base} Load Clan API`,
     props<{ clanId: number }>()

@@ -8,6 +8,9 @@ import * as clanDetailSelectors from './store/clan-detail/clan-detail.selectors'
 import * as clanDetailStore from './store/clan-detail/clan-detail.state';
 import * as clanDetailActions from './store/clan-detail/clan-detail.actions';
 
+import * as clanCacheActions from './store/clan-cache/clan-cache.actions';
+import * as clanCacheSelectors from './store/clan-cache/clan-cache.selectors';
+
 import * as clanIdActions from './store/clan-id/clan-id.action';
 
 import * as clanMemberSelectors from './store/clan-members/clan-members.selectors';
@@ -19,7 +22,7 @@ import {} from 'bungie-models';
 // import { Clan } from 'bungie-parse';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subject, Subscription } from 'rxjs';
-import { filter, map, distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { filter, map, distinctUntilChanged, takeUntil, take } from 'rxjs/operators';
 
 @Component({
     selector: 'app-clan',
@@ -58,8 +61,28 @@ export class ClanComponent implements OnInit, OnDestroy {
     }
 
     loadClan(clanId) {
-        this.store.dispatch(clanIdActions.setClanId({clanId: clanId}));
-        this.store.dispatch(clanDetailActions.loadClan({ clanId: clanId }));
+        // if valid clan load the rest
+        this.store.dispatch(
+            clanCacheActions.initializeCache({ clanId: clanId })
+        );
+
+        this.store
+            .select(clanCacheSelectors.isCacheLoaded)
+            .pipe(
+                filter(loaded => !!loaded),
+                take(1)
+            )
+            .subscribe(x => {
+                this.store.dispatch(
+                    clanIdActions.setClanId({ clanId: clanId })
+                );
+
+                this.store.dispatch(
+                    clanDetailActions.loadClan({ clanId: clanId })
+                );
+            });
+
+            // Todo: re enable later
         // this.store.dispatch(
         //     clanMemberActions.loadClanMembers({ clanId: clanId })
         // );

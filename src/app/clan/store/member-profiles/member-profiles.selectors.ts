@@ -1,7 +1,7 @@
 // import { ClanDetailState } from './clan-detail.state';
  import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { getClanState } from '../clan-state.state';
+import { getClanState } from '../clan-state.selector';
 import * as memberProfileState from './member-profiles.state';
 
 // // import * as rootState from '../../../root-store/router/router.reducer';

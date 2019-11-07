@@ -2,7 +2,9 @@ import { ClanCacheDetails } from '../../models/ClanCacheDetails';
 
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-export interface CacheDetailState extends EntityState<ClanCacheDetails> {}
+export interface CacheDetailState extends EntityState<ClanCacheDetails> {
+    loaded: boolean;
+}
 
 export const ClanCacheDetailsAdapter: EntityAdapter<
     ClanCacheDetails
@@ -11,6 +13,8 @@ export const ClanCacheDetailsAdapter: EntityAdapter<
     sortComparer: false
 });
 
-export const ClandCachdeDetailsInitialState: CacheDetailState = ClanCacheDetailsAdapter.getInitialState(
-    {}
+export const ClanCachedDetailsInitialState: CacheDetailState = ClanCacheDetailsAdapter.getInitialState(
+    {
+        loaded: false
+    }
 );

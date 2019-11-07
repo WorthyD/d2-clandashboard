@@ -8,6 +8,7 @@ import { ClanRoutingModule } from './clan-routing.module';
 import { EffectsModule } from '@ngrx/effects';
 import { ClanRosterModule } from './clan-roster/clan-roster.module';
 import { ClanComponent } from './clan.component';
+import { Updater } from './services/updater';
 
 // mport { BungieParseModule } from 'bungie-parse';
 
@@ -20,6 +21,7 @@ import { ClanComponent } from './clan.component';
         //         BungieParseModule,
         StoreModule.forFeature('clan', clanState.reducers),
         EffectsModule.forFeature(clanState.ClanEffects)
-    ]
+    ],
+    providers: [Updater]
 })
 export class ClanModule {}
