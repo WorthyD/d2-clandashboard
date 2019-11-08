@@ -22,7 +22,13 @@ import {} from 'bungie-models';
 // import { Clan } from 'bungie-parse';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subject, Subscription } from 'rxjs';
-import { filter, map, distinctUntilChanged, takeUntil, take } from 'rxjs/operators';
+import {
+    filter,
+    map,
+    distinctUntilChanged,
+    takeUntil,
+    take
+} from 'rxjs/operators';
 
 @Component({
     selector: 'app-clan',
@@ -80,11 +86,9 @@ export class ClanComponent implements OnInit, OnDestroy {
                 this.store.dispatch(
                     clanDetailActions.loadClan({ clanId: clanId })
                 );
+                this.store.dispatch(
+                    clanMemberActions.loadClanMembers({ clanId: clanId })
+                );
             });
-
-            // Todo: re enable later
-        // this.store.dispatch(
-        //     clanMemberActions.loadClanMembers({ clanId: clanId })
-        // );
     }
 }

@@ -70,7 +70,6 @@ export class ClanDetailEffects {
         { dispatch: false }
     );
 
-    // TODO: Wire up reducer
     syncDetails$ = createEffect(
         () =>
             this.actions$.pipe(
@@ -80,7 +79,12 @@ export class ClanDetailEffects {
                 ),
                 tap(([action, clanId]) => {
                     console.log('updating from api');
-                    this.clanDB.update(clanId.toString(), 'ClanDetails', [action.clanDetails]);
+                    this.clanDB.update(clanId.toString(), 'ClanDetails', [
+                        {
+                            id: action.clanDetails.groupId,
+                            clanDetails: action.clanDetails
+                        }
+                    ]);
                 })
             ),
 

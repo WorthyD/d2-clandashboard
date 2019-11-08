@@ -11,6 +11,7 @@ import { GroupV2Service } from 'bungie-api';
 import * as cacheSelectors from '../store/clan-cache/clan-cache.selectors';
 import * as cacheActions from '../store/clan-cache/clan-cache.actions';
 import * as clanDetailActions from '../store/clan-detail/clan-detail.actions';
+import { ClanDetails } from 'bungie-models';
 
 export type UpdateState = 'can-update' | 'updating' | 'updated';
 
@@ -43,11 +44,14 @@ export class Updater {
                     .groupV2GetGroup(clanId)
                     .pipe(take(1))
                     .subscribe(x => {
+
+                        console.log('updating object');
                         this.store.dispatch(
                             clanDetailActions.updateClanFromAPI({
                                 clanDetails: x.Response.detail
                             })
                         );
+                        console.log('Updating cache');
                         this.store.dispatch(cacheActions.updateCache({cache: {id:'clanDetails', lastUpdated: new Date()}}));
                     });
             }
