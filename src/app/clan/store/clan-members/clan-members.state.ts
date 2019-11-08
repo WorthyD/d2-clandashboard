@@ -9,7 +9,7 @@ export interface ClanMemberState extends EntityState<ClanMember> {
 }
 
 export const ClanMemberAdapter: EntityAdapter<ClanMember> = createEntityAdapter<ClanMember>({
-    selectId: (cm: ClanMember) => cm.bungieNetUserInfo.membershipId,
+    selectId: (cm: ClanMember) => cm.destinyUserInfo.membershipId,
     sortComparer: false
 });
 

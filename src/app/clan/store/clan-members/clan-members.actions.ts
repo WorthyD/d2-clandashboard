@@ -12,7 +12,17 @@ export const loadClanMembersSuccess = createAction(
     `${base} Load Clan Members Success`,
     props<{ clanMembers: ClanMember[] }>()
 );
+
+export const loadClanMembersFromAPI = createAction(
+    `${base} Load Clan Members FromAPI`,
+    props<{ clanMembers: ClanMember[] }>()
+);
+
+export const loadClanMembersEmpty= createAction(
+    `${base} Load Clan Members Empty`
+);
 export const loadClanMemberFailure = createAction(
     `${base} Load Clan Members Failure`,
     props<{ error: any }>()
 );
+

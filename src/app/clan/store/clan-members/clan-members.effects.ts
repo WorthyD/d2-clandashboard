@@ -8,7 +8,9 @@ import * as clanMemberActions from './clan-members.actions';
 import * as memberProfileActions from '../member-profiles/member-profiles.actions';
 import { GroupV2Service } from 'bungie-api';
 
+import * as clanIdSelectors from '../clan-id/clan-id.selector';
 import { ClanParseService } from '../../../parser/parsers/clan-parse.service';
+import { ClanMember } from 'bungie-models';
 
 import { ClanDatabase } from '../../../services/ClanDatabase';
 import { Updater } from '../../services/updater';
@@ -20,7 +22,9 @@ import {
     take,
     distinctUntilChanged,
     first,
-    filter
+    filter,
+    tap,
+    withLatestFrom
 } from 'rxjs/operators';
 
 @Injectable()
@@ -43,9 +47,15 @@ export class ClanMemberEffects {
                     .ClanMembers.pipe(
                         take(1),
                         map(clanMembers => {
-                            return clanMemberActions.loadClanMembersSuccess({
-                                clanMembers
-                            });
+                            if (clanMembers.length > 0) {
+                                return clanMemberActions.loadClanMembersSuccess(
+                                    {
+                                        clanMembers
+                                    }
+                                );
+                            } else {
+                                return clanMemberActions.loadClanMembersEmpty();
+                            }
                         })
                     );
                 // return this.groupService
@@ -71,5 +81,39 @@ export class ClanMemberEffects {
                 //     );
             })
         )
+    );
+
+    updateMembers$ = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(clanMemberActions.loadClanMembers),
+                tap(({ clanId }) => {
+                    this.updater.update('clanMembers', clanId);
+                })
+            ),
+        { dispatch: false }
+    );
+
+    syncMembers = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(clanMemberActions.loadClanMembersFromAPI),
+                withLatestFrom(
+                    this.store.select(clanIdSelectors.getClanIdState)
+                ),
+                tap(([action, clanId]) => {
+                    console.log('updating from api');
+                    const members: ClanMember[] = action.clanMembers;
+                    console.log(members);
+
+                    members.forEach(x => {
+                        console.log(x);
+                        x.id = x.destinyUserInfo.membershipId;
+                    });
+
+                    this.clanDB.update(clanId.toString(), 'ClanMembers', members);
+                })
+            ),
+        { dispatch: false }
     );
 }

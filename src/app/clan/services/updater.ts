@@ -10,12 +10,14 @@ import { GroupV2Service } from 'bungie-api';
 
 import * as cacheSelectors from '../store/clan-cache/clan-cache.selectors';
 import * as cacheActions from '../store/clan-cache/clan-cache.actions';
-import * as clanDetailActions from '../store/clan-detail/clan-detail.actions';
 import { ClanDetails } from 'bungie-models';
+
+import * as clanDetailActions from '../store/clan-detail/clan-detail.actions';
+import * as clanMemberActions from '../store/clan-members/clan-members.actions';
 
 export type UpdateState = 'can-update' | 'updating' | 'updated';
 
-export type UpdatableType = 'clanDetails';
+export type UpdatableType = 'clanDetails' | 'clanMembers' | 'memberProfiles';
 
 export type UpdaterState = {
     [key in UpdatableType]: UpdateState;
@@ -28,7 +30,9 @@ export class Updater {
         private groupService: GroupV2Service
     ) {}
     state = new BehaviorSubject<UpdaterState>({
-        clanDetails: 'can-update'
+        clanDetails: 'can-update',
+        clanMembers: 'can-update',
+        memberProfiles: 'can-update'
     });
 
     private updateClanDetails(clanId: number) {
@@ -41,27 +45,66 @@ export class Updater {
             // Todo: add logic to only periodically update
             if (!cacheDetails) {
                 this.groupService
+                    .groupV2GetMembersOfGroup(1,clanId)
+                    .pipe(take(1))
+                    .subscribe(x => {
+                        this.store.dispatch(
+                            clanMemberActions.loadClanMembersFromAPI({
+                                clanMembers: x.Response.results
+                            })
+                        );
+                        this.store.dispatch(
+                            cacheActions.updateCache({
+                                cache: {
+                                    id: 'clanMembers',
+                                    lastUpdated: new Date()
+                                }
+                            })
+                        );
+                    });
+            }
+        });
+    }
+
+    private updateClanMembers(clanId: number) {
+        const cacheDetails$ = this.store.pipe(
+            select(cacheSelectors.cacheById('clanMembers'))
+        );
+
+        cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
+            console.log(cacheDetails);
+            // Todo: add logic to only periodically update
+            if (!cacheDetails) {
+                this.groupService
                     .groupV2GetGroup(clanId)
                     .pipe(take(1))
                     .subscribe(x => {
-
-                        console.log('updating object');
                         this.store.dispatch(
                             clanDetailActions.updateClanFromAPI({
                                 clanDetails: x.Response.detail
                             })
                         );
-                        console.log('Updating cache');
-                        this.store.dispatch(cacheActions.updateCache({cache: {id:'clanDetails', lastUpdated: new Date()}}));
+                        this.store.dispatch(
+                            cacheActions.updateCache({
+                                cache: {
+                                    id: 'clanMembers',
+                                    lastUpdated: new Date()
+                                }
+                            })
+                        );
                     });
             }
         });
+
+
     }
 
     update(type: UpdatableType, clanId: number) {
         switch (type) {
             case 'clanDetails':
                 return this.updateClanDetails(clanId);
+            case 'clanMembers':
+                return this.updateClanMembers(clanId);
             default:
                 return null;
         }

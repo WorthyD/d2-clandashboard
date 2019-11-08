@@ -8,6 +8,9 @@ export const ClanMemberReducer = createReducer(
         ...state,
         loading: true
     })),
+    on(clanMemberActions.loadClanMembersFromAPI, (state, { clanMembers }) => {
+        return clanMemberState.ClanMemberAdapter.addAll(clanMembers, { ...state, loaded: true, loading: false });
+    }),
     on(clanMemberActions.loadClanMembersSuccess, (state, { clanMembers }) => {
         return clanMemberState.ClanMemberAdapter.addAll(clanMembers, { ...state, loaded: true, loading: false });
    })
