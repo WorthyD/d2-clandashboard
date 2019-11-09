@@ -16,6 +16,8 @@ import * as clanIdActions from './store/clan-id/clan-id.action';
 import * as clanMemberSelectors from './store/clan-members/clan-members.selectors';
 import * as clanMemberActions from './store/clan-members/clan-members.actions';
 
+import * as memberProfileActions from './store/member-profiles/member-profiles.actions';
+
 import * as routerStore from '../root-store/router/router.selectors';
 import {} from 'bungie-models';
 
@@ -82,13 +84,16 @@ export class ClanComponent implements OnInit, OnDestroy {
                 this.store.dispatch(
                     clanIdActions.setClanId({ clanId: clanId })
                 );
-
                 this.store.dispatch(
                     clanDetailActions.loadClan({ clanId: clanId })
                 );
                 this.store.dispatch(
                     clanMemberActions.loadClanMembers({ clanId: clanId })
                 );
+                // this.store.dispatch(
+                //     // memb.loadClanMembers({ clanId: clanId })
+                //     memberProfileActions.loadMemberProfiles({ clanId: clanId })
+                // );
             });
     }
 }

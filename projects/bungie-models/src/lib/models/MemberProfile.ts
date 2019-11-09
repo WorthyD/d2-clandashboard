@@ -1,3 +1,5 @@
 import { DestinyResponsesDestinyProfileResponse } from 'bungie-api';
 
-export interface MemberProfile extends DestinyResponsesDestinyProfileResponse {}
+export interface MemberProfile extends DestinyResponsesDestinyProfileResponse {
+    id?: number;
+}

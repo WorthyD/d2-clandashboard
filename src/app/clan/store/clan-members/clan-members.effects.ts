@@ -94,7 +94,7 @@ export class ClanMemberEffects {
         { dispatch: false }
     );
 
-    syncMembers = createEffect(
+    syncMembers$ = createEffect(
         () =>
             this.actions$.pipe(
                 ofType(clanMemberActions.loadClanMembersFromAPI),
@@ -107,7 +107,6 @@ export class ClanMemberEffects {
                     console.log(members);
 
                     members.forEach(x => {
-                        console.log(x);
                         x.id = x.destinyUserInfo.membershipId;
                     });
 

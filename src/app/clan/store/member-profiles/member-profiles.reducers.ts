@@ -8,8 +8,22 @@ export const MemberProfileReducer = createReducer(
         ...state,
         loading: true
     })),
-    on(MemberProfileActions.loadMemberProfileSuccess, (state, { memberProfile }) => {
-
-        return MemberProfileState.MemberProfileAdapter.upsertOne(memberProfile, { ...state, loaded: true, loading: false });
-   })
+    on(
+        MemberProfileActions.loadMemberProfileSuccess,
+        (state, { memberProfiles }) => {
+            return MemberProfileState.MemberProfileAdapter.addAll(
+                memberProfiles,
+                { ...state, loaded: true, loading: false }
+            );
+        }
+    ),
+    on(
+        MemberProfileActions.loadMemberProfilesFromAPI,
+        (state, { memberProfiles }) => {
+            return MemberProfileState.MemberProfileAdapter.addAll(
+                memberProfiles,
+                { ...state, loaded: true, loading: false }
+            );
+        }
+    )
 );

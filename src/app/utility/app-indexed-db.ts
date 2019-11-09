@@ -4,12 +4,13 @@ import { ReplaySubject, Subject } from 'rxjs';
 const DB_VERSION = 1;
 
 // TODO: Use enum
-export type StoreId = 'CacheDetails' | 'ClanDetails' | 'ClanMembers';
+export type StoreId = 'CacheDetails' | 'ClanDetails' | 'ClanMembers' | 'MemberProfiles';
 
 export const STORE_IDS: StoreId[] = [
     'CacheDetails',
     'ClanDetails',
-    'ClanMembers'
+    'ClanMembers',
+    'MemberProfiles'
 ];
 
 export class AppIndexedDb {

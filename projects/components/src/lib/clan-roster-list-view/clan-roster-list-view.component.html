@@ -1,7 +1,11 @@
 <p>clan-roster-list-view works!</p>
 
 <div *ngFor="let member of members">
-    {{member.member.bungieNetUserInfo.displayName}}
+    {{member.member.destinyUserInfo.membershipId}}
+    -
+    {{member.member.destinyUserInfo.displayName}}
+     -
+    {{member.member.bungieNetUserInfo?.displayName}}
     -
     {{member?.profile?.profile.data.dateLastPlayed}}
 </div>

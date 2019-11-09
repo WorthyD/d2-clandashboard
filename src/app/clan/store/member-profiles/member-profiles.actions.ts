@@ -1,16 +1,26 @@
 import { createAction, props } from '@ngrx/store';
 
-import { ClanMember, MemberProfile } from 'bungie-models';
+import {  MemberProfile } from 'bungie-models';
 
 const base = '[MemberProfiles] - ';
 
 export const loadMemberProfiles = createAction(
     `${base} Load MemberProfiles`,
-    props<{ clanMembers: ClanMember[] }>()
+    props<{ clanId: number }>()
 );
+
+export const loadMemberProfilesEmpty = createAction(
+    `${base} Load MemberProfilesEmpty`
+);
+
+export const loadMemberProfilesFromAPI = createAction(
+    `${base} Load MemberProfiles From API`,
+    props<{ memberProfiles: MemberProfile[] }>()
+);
+
 export const loadMemberProfileSuccess = createAction(
     `${base} Load Clan Members Success`,
-    props<{ memberProfile: MemberProfile }>()
+    props<{ memberProfiles: MemberProfile[] }>()
 );
 export const loadClanMemberFailure = createAction(
     `${base} Load Clan Members Failure`,
