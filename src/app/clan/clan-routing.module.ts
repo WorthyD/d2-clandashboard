@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClanDetailComponent } from './clan-detail/clan-detail.component';
 // import { ClanSearchComponent } from './clan-search/clan-search.component';
 // import { ClanDetailGuard } from './clan-detail/clan-detail.guard';
-import {ClanComponent} from './clan.component';
+import { ClanComponent } from './clan.component';
 
 const routes: Routes = [
     {
@@ -19,10 +19,15 @@ const routes: Routes = [
                 path: 'roster',
                 loadChildren:
                     './clan-roster/clan-roster.module#ClanRosterModule'
+            },
+            {
+                path: 'member-details/:memberId',
+                loadChildren:
+                    './member-details/member-details.module#MemberDetailsModule'
             }
         ]
-    }///,
-  //  { path: '', component: ClanSearchComponent }
+    } ///,
+    //  { path: '', component: ClanSearchComponent }
 ];
 
 @NgModule({

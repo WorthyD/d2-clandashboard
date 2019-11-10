@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { BehaviorSubject, combineLatest, Observable, of, from } from 'rxjs';
 
-import moment from 'moment';
+import * as moment from 'moment';
 
 import { ClanState } from '../store/clan-state.state';
 import { ClanDatabase } from 'src/app/services/ClanDatabase';
@@ -51,12 +51,8 @@ export class Updater {
         );
 
         cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
-            // Todo: add logic to only periodically update
-            const  xpDate = new Date(new Date().setHours(new Date().getHours() - 3));
-            console.log(new Date(xpDate));
-            console.log(new Date());
-            console.log(moment().add(-1, 'hours'));
-            if (!cacheDetails) {
+            const xpDate = moment().add(-1, 'hours');
+            if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
                 this.setTypeState('clanMembers', 'updating');
                 this.groupService
                     .groupV2GetMembersOfGroup(1, clanId)
@@ -90,8 +86,8 @@ export class Updater {
         );
 
         cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
-            // Todo: add logic to only periodically update
-            if (!cacheDetails) {
+            const xpDate = moment().add(-1, 'hours');
+            if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
                 this.setTypeState('clanDetails', 'updating');
                 this.groupService
                     .groupV2GetGroup(clanId)
@@ -120,13 +116,14 @@ export class Updater {
     }
 
     private updateMemberProfiles(clanId: number) {
-        console.log('updating member Pforiles');
         const cacheDetails$ = this.store.pipe(
             select(cacheSelectors.cacheById('memberProfiles'))
         );
 
         cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
-            if (!cacheDetails) {
+            const xpDate = moment().add(-1, 'hours');
+            if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
+
                 this.setTypeState('memberProfiles', 'updating');
                 const clanMembers$ = this.store.pipe(
                     select(clanMemberSelectors.getAllMembers)

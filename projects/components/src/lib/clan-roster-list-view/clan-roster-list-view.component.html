@@ -1,11 +1,34 @@
-<p>clan-roster-list-view works!</p>
+<table>
+    <tr >
+        <th>
+            membershipId
+        </th>
+        <th>
+            displayName
+        </th>
+        <th>
+            displayName
+        </th>
+        <th>
+            dateLastPlayed
+        </th>
+    </tr>
 
-<div *ngFor="let member of members">
-    {{member.member.destinyUserInfo.membershipId}}
-    -
-    {{member.member.destinyUserInfo.displayName}}
-     -
-    {{member.member.bungieNetUserInfo?.displayName}}
-    -
-    {{member?.profile?.profile.data.dateLastPlayed}}
-</div>
+    <tr *ngFor="let member of members">
+        <td>
+            {{member.member.destinyUserInfo.membershipId}}
+        </td>
+        <td>
+            {{member.member.destinyUserInfo.displayName}}
+        </td>
+        <td>
+            {{member.member.bungieNetUserInfo?.displayName}}
+        </td>
+        <td>
+            {{member?.profile?.profile.data.dateLastPlayed}}
+        </td>
+        <td>
+            <button (click)="memberClick(member)">View</button>
+        </td>
+    </tr>
+</table>

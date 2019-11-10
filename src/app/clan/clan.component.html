@@ -1,7 +1,4 @@
 <h1>Clan Detail</h1>
-<code>
-    {{(clanDetails$ | async) | json}}
-</code>
 <div *ngIf="clanDetails$ | async as clanDetails">
     <h1>{{clanDetails.name}}</h1>
 </div>

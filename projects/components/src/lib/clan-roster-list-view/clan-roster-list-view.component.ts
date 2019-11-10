@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { MemberProfile, ClanMember } from 'bungie-models';
 
@@ -14,7 +14,13 @@ export interface ClanMemberListItem {
 })
 export class ClanRosterListViewComponent implements OnInit {
     @Input() members: ClanMemberListItem[];
+
+    @Output() viewMember = new EventEmitter<number>();
     constructor() {}
 
     ngOnInit() {}
+
+    memberClick(m: ClanMemberListItem) {
+        this.viewMember.emit(m.member.destinyUserInfo.membershipId);
+    }
 }

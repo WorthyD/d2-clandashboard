@@ -90,10 +90,9 @@ export class ClanComponent implements OnInit, OnDestroy {
                 this.store.dispatch(
                     clanMemberActions.loadClanMembers({ clanId: clanId })
                 );
-                // this.store.dispatch(
-                //     // memb.loadClanMembers({ clanId: clanId })
-                //     memberProfileActions.loadMemberProfiles({ clanId: clanId })
-                // );
+                this.store.dispatch(
+                    memberProfileActions.loadMemberProfiles({ clanId: clanId })
+                );
             });
     }
 }

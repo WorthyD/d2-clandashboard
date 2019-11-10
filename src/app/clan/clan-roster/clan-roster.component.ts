@@ -9,6 +9,7 @@ import {
 import { getMemberProfileEntities } from '../store/member-profiles/member-profiles.selectors';
 
 import { ClanMemberListItem } from '@destiny/components';
+import { Router, ActivatedRoute } from '@angular/router';
 
 const clanMembers = createSelector(
     getAllMembers,
@@ -31,11 +32,21 @@ const clanMembers = createSelector(
     styleUrls: ['./clan-roster.component.scss']
 })
 export class ClanRosterComponent implements OnInit {
-    constructor(private store: Store<any>) {}
+    constructor(
+        private store: Store<any>,
+        private router: Router,
+        private route: ActivatedRoute
+    ) {}
 
     members$: Observable<ClanMemberListItem[]> = this.store.pipe(
         select(clanMembers)
     );
 
     ngOnInit() {}
+    viewMember(memberId: number) {
+        console.log(memberId);
+        this.router.navigate(['../../member-details', memberId], {
+            relativeTo: this.route
+        });
+    }
 }
