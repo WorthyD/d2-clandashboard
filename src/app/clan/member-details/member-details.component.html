@@ -1,1 +1,13 @@
-<p>member-details works!</p>
+<div *ngIf="member$ | async as member">
+    <h2>{{member.destinyUserInfo.displayName}}</h2>
+</div>
+
+<div *ngIf="profile$ | async as profile">
+    <h2>{{profile.profile.data.dateLastPlayed}}</h2>
+
+</div>
+
+<div>
+    todo: Load in character information from profile response?
+    todo: Load first page of each character activity
+</div>
