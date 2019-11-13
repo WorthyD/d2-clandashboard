@@ -35,9 +35,9 @@ export class Updater {
         private groupService: GroupV2Service,
         private d2Service: Destiny2Service
     ) {
-        this.state.subscribe(x => {
-            console.log(x);
-        });
+        //this.state.subscribe(x => {
+            // console.log(x);
+        //});
     }
     state = new BehaviorSubject<UpdaterState>({
         clanDetails: 'can-update',
@@ -140,7 +140,10 @@ export class Updater {
                                 .destiny2GetProfile(
                                     member.destinyUserInfo.membershipId,
                                     member.destinyUserInfo.membershipType,
-                                    [100]
+                                    [100, 200]    /// 100 - profile, 200 - characters
+                                    // -  900 records? 104 - Profile progression
+                                    // 202 --  Character progression 204 character activities
+                                    // 800 collectibles
                                 )
                                 .pipe(
                                     map(memberProfileResponse => {
