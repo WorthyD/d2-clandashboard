@@ -4,9 +4,15 @@ import { ClanMember, MemberActivityStat } from 'bungie-models';
 
 const base = '[MemberActivities] - ';
 
+export const loadMembersActivities = createAction(
+    `${base} Load MembersActivities`,
+    props<{ clanId: number }>()
+);
+
+
 export const loadMemberActivities = createAction(
     `${base} Load MemberActivities`,
-    props<{ clanId: number; member: ClanMember }>()
+    props<{ member: ClanMember }>()
 );
 
 export const loadMemberActivitiesEmpty = createAction(
@@ -18,9 +24,9 @@ export const loadMemberActivitiesFromAPI = createAction(
     props<{ memberActivities: MemberActivityStats }>()
 );
 
-export const loadMemberActivitiesuccess = createAction(
+export const loadMemberActivitiesSuccess = createAction(
     `${base} Load Clan Members Success`,
-    props<{ memberActivities: MemberActivityStats }>()
+    props<{ memberActivities: MemberActivityStats[] }>()
 );
 export const loadClanMemberFailure = createAction(
     `${base} Load Clan Members Failure`,

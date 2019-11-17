@@ -8,13 +8,14 @@ import { empty, of, from } from 'rxjs';
 // import * as clanMemberActions from './clan-members.actions';
 
 import { ClanDatabase } from '../../../services/ClanDatabase';
-import { Updater } from '../../services/updater';
+import { MemberUpdater } from '../../services/memberUpdater';
 
-import { MemberProfile } from 'bungie-models';
+// import { MemberProfile } from 'bungie-models';
+import { MemberActivityStats } from '../member-activities/member-activities.state';
 
 // import * as memberProfileActions from './member-profiles.actions';
 import * as memberActivityActions from './member-activities.actions';
-import * as clanMemberActions from '../clan-members/clan-members.actions';
+// import * as clanMemberActions from '../clan-members/clan-members.actions';
 
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
 
@@ -40,29 +41,31 @@ export class MemberProfileEffects {
         // private d2Service: Destiny2Service,
         // private parser: ClanParseService,
         private clanDB: ClanDatabase,
-        private updater: Updater
+        private updater: MemberUpdater
     ) {}
 
     // loadMemberProfiles$ = createEffect(() =>
 
     loadProfiles$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(memberActivityActions.loadMemberActivities),
-            switchMap(({ clanId, member }) => {
-                return this.clanDB.getValues(clanId.toString()).MemberActivities.pipe(
-                    take(1),
-                    map(memberActivities => {
-                        if (memberProfiles.length > 0) {
-                            this.updater.update('memberProfiles', clanId);
+            ofType(memberActivityActions.loadMembersActivities),
+            switchMap(({ clanId }) => {
+                return this.clanDB
+                    .getValues(clanId.toString())
+                    .MemberActivities.pipe(
+                        take(1),
+                        map(memberActivities => {
+                            if (memberActivities.length > 0) {
+                                // this.updater.update('memberProfiles', clanId);
 
-                            return memberActivityActions.loadMemberActivitiesuccess(
-                                { memberProfiles }
-                            );
-                        } else {
-                            return memberActivityActions.loadMemberProfilesEmpty();
-                        }
-                    })
-                );
+                                return memberActivityActions.loadMemberActivitiesSuccess(
+                                    { memberActivities }
+                                );
+                            } else {
+                                return memberActivityActions.loadMemberActivitiesEmpty();
+                            }
+                        })
+                    );
             })
         )
     );
@@ -70,15 +73,12 @@ export class MemberProfileEffects {
     updateMembers$ = createEffect(
         () =>
             this.actions$.pipe(
-                ofType(
-                    clanMemberActions.loadClanMembersFromAPI,
-                    clanMemberActions.loadClanMembersSuccess
-                ),
+                ofType(memberActivityActions.loadMemberActivities),
                 withLatestFrom(
                     this.store.select(clanIdSelectors.getClanIdState)
                 ),
                 tap(([action, clanId]) => {
-                    this.updater.update('memberProfiles', clanId);
+                    // this.updater.update('memberProfiles', clanId);
                 })
             ),
         { dispatch: false }
@@ -87,22 +87,19 @@ export class MemberProfileEffects {
     syncMemberProfiles$ = createEffect(
         () =>
             this.actions$.pipe(
-                ofType(memberProfileActions.loadMemberProfilesFromAPI),
+                ofType(memberActivityActions.loadMemberActivitiesFromAPI),
                 withLatestFrom(
                     this.store.select(clanIdSelectors.getClanIdState)
                 ),
                 tap(([action, clanId]) => {
-                    const memberProfiles: MemberProfile[] =
-                        action.memberProfiles;
+                    const memberActivities: MemberActivityStats =
+                        action.memberActivities;
 
-                    if (memberProfiles) {
-                        memberProfiles.forEach(x => {
-                            x.id = x.profile.data.userInfo.membershipId;
-                        });
+                    if (memberActivities) {
                         this.clanDB.update(
                             clanId.toString(),
-                            'MemberProfiles',
-                            memberProfiles
+                            'MemberActivities',
+                            [memberActivities]
                         );
                     }
                 })
