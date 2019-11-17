@@ -12,8 +12,8 @@
 import { DestinyHistoricalStatsDestinyActivityHistoryResults } from './destinyHistoricalStatsDestinyActivityHistoryResults';
 
 
-export interface InlineResponse20053 { 
-    response?: DestinyHistoricalStatsDestinyActivityHistoryResults;
+export interface InlineResponse20053 {
+    Response?: DestinyHistoricalStatsDestinyActivityHistoryResults;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;
