@@ -15,6 +15,7 @@ import * as clanIdActions from './store/clan-id/clan-id.action';
 
 import * as clanMemberSelectors from './store/clan-members/clan-members.selectors';
 import * as clanMemberActions from './store/clan-members/clan-members.actions';
+import * as memberActivityActions from './store/member-activities/member-activities.actions';
 
 import * as memberProfileActions from './store/member-profiles/member-profiles.actions';
 
@@ -92,6 +93,11 @@ export class ClanComponent implements OnInit, OnDestroy {
                 );
                 this.store.dispatch(
                     memberProfileActions.loadMemberProfiles({ clanId: clanId })
+                );
+                this.store.dispatch(
+                    memberActivityActions.loadClanMembersActivities({
+                        clanId: clanId
+                    })
                 );
             });
     }

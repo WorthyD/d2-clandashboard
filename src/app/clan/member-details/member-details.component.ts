@@ -1,14 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
+import { distinctUntilChanged, map, takeUntil, take, filter } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 
-import { ClanMember, MemberProfile } from 'bungie-models';
+import { ClanMember, MemberProfile, MemberActivityStat } from 'bungie-models';
 
 import { Observable, Subject, Subscription } from 'rxjs';
 
 import * as clanMemberSelectors from '../store/clan-members/clan-members.selectors';
 import * as memberProfileSelectors from '../store/member-profiles/member-profiles.selectors';
+
+import * as memberActivitySelectors from '../store/member-activities/member-activities.selectors';
+import * as memberActivityActions from '../store/member-activities/member-activities.actions';
 
 @Component({
     selector: 'app-member-details',
@@ -31,6 +34,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 
     member$: Observable<ClanMember>;
     profile$: Observable<MemberProfile>;
+    activities$: Observable<MemberActivityStat[]>;
 
     private destroyed = new Subject();
 
@@ -43,6 +47,20 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
         this.profile$ = this.store.pipe(
             select(memberProfileSelectors.getClanMemberById(memberId))
         );
+
+        this.activities$ = this.store.pipe(
+            select(memberActivitySelectors.getClanMemberActivities(memberId))
+        );
+
+        this.profile$.pipe(
+            filter(loaded => !!loaded),
+            take(1)
+            ).subscribe(x => {
+            console.log(x);
+            this.store.dispatch(
+                memberActivityActions.loadMemberActivities({ member: x })
+            );
+        });
     }
 
     ngOnDestroy() {

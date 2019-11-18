@@ -55,7 +55,8 @@ export class MemberUpdater {
                             .destiny2GetActivityHistory(
                                 characterId,
                                 memberId,
-                                memberType
+                                memberType,
+                                250
                             )
                             .pipe(
                                 map(response => {

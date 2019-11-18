@@ -34,7 +34,7 @@ import {
 } from 'rxjs/operators';
 
 @Injectable()
-export class MemberProfileEffects {
+export class MemberStatEffects {
     constructor(
         private actions$: Actions,
         private store: Store<any>,
@@ -44,11 +44,10 @@ export class MemberProfileEffects {
         private updater: MemberUpdater
     ) {}
 
-    // loadMemberProfiles$ = createEffect(() =>
 
-    loadProfiles$ = createEffect(() =>
+    loadMemberActivities$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(memberActivityActions.loadMembersActivities),
+            ofType(memberActivityActions.loadClanMembersActivities),
             switchMap(({ clanId }) => {
                 return this.clanDB
                     .getValues(clanId.toString())
@@ -56,7 +55,6 @@ export class MemberProfileEffects {
                         take(1),
                         map(memberActivities => {
                             if (memberActivities.length > 0) {
-                                // this.updater.update('memberProfiles', clanId);
 
                                 return memberActivityActions.loadMemberActivitiesSuccess(
                                     { memberActivities }
@@ -78,7 +76,7 @@ export class MemberProfileEffects {
                     this.store.select(clanIdSelectors.getClanIdState)
                 ),
                 tap(([action, clanId]) => {
-                    // this.updater.update('memberProfiles', clanId);
+                     this.updater.update('memberActivities', clanId, action.member);
                 })
             ),
         { dispatch: false }

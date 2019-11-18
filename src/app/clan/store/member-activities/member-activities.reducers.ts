@@ -10,9 +10,9 @@ export const MemberProfileReducer = createReducer(
         loading: true
     })),
     on(
-        MemberActivityActions.loadMemberActivitiesuccess,
+        MemberActivityActions.loadMemberActivitiesSuccess,
         (state, { memberActivities }) => {
-            return MemberActivityState.MemberActivityStatAdapter.upsertOne(
+            return MemberActivityState.MemberActivityStatAdapter.addAll(
                 memberActivities,
                 { ...state, loaded: true, loading: false }
             );

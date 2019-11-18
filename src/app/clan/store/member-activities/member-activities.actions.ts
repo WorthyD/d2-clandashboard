@@ -1,18 +1,18 @@
 import { createAction, props } from '@ngrx/store';
 import { MemberActivityStats } from './member-activities.state';
-import { ClanMember, MemberActivityStat } from 'bungie-models';
+import { MemberProfile, MemberActivityStat } from 'bungie-models';
 
 const base = '[MemberActivities] - ';
 
-export const loadMembersActivities = createAction(
-    `${base} Load MembersActivities`,
+export const loadClanMembersActivities = createAction(
+    `${base} Load Clan MembersActivities`,
     props<{ clanId: number }>()
 );
 
 
 export const loadMemberActivities = createAction(
     `${base} Load MemberActivities`,
-    props<{ member: ClanMember }>()
+    props<{ member: MemberProfile }>()
 );
 
 export const loadMemberActivitiesEmpty = createAction(
