@@ -1,8 +1,11 @@
 import {Injectable} from '@angular/core';
 import {AppIndexedDb, StoreId} from '../utility/app-indexed-db';
 
-@Injectable({providedIn: 'root'})
-export class ClanDatabase {
+@Injectable({
+  providedIn: 'root'
+})
+export class ManifestDatabaseService {
+
   private database: AppIndexedDb;
 
   getValues(repository: string) {

@@ -8,7 +8,9 @@
 </div>
 <div *ngIf="activities$ | async as activities">
     <div *ngFor="let activity of activities">
-        {{activity | json}}
+        <h3>{{activity.period}} | {{activity.activityDetails.mode}} |{{activity.values.completed.basic.value}} </h3>
+        {{activity.values.completed | json}}
+        <hr>
     </div>
 
 </div>

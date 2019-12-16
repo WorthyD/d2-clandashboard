@@ -19,7 +19,7 @@ export const getRecentClanMemberActivities = memberId =>
             return null;
         }
 
-        return activities.sort((a, b) => a.period.getTime() - b.period.getTime()).slice(0, 10);
+        return activities.sort((a, b) => new Date(a.period).getTime() - new Date(b.period).getTime()).slice(0, 10);
     });
 
 @Component({

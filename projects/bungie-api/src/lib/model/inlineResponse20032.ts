@@ -12,8 +12,8 @@
 import { DestinyConfigDestinyManifest } from './destinyConfigDestinyManifest';
 
 
-export interface InlineResponse20032 { 
-    response?: DestinyConfigDestinyManifest;
+export interface InlineResponse20032 {
+    Response?: DestinyConfigDestinyManifest;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

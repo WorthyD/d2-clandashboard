@@ -3,9 +3,9 @@ import { MemberActivityStat } from 'bungie-models';
 
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-export interface MemberActivityStats{
+export interface MemberActivityStats {
     id: number;
-    activities: MemberActivityStat[]
+    activities: MemberActivityStat[];
 }
 
 export interface MemberActivityStatState extends EntityState<MemberActivityStats> {
