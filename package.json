@@ -61,13 +61,5 @@
         "tslib": "^1.9.0",
         "tslint": "~5.11.0",
         "typescript": "~3.4.5"
-    },
-    "browser": {
-        "http": false,
-        "https": false,
-        "net": false,
-        "path": false,
-        "stream": false,
-        "tls": false
     }
 }

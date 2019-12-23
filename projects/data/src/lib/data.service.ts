@@ -6,6 +6,7 @@ import zip from 'file-loader!@destiny-item-manager/zip.js/WebContent/zip.js'; //
 import inflate from 'file-loader!@destiny-item-manager/zip.js/WebContent/inflate.js'; // eslint-disable-line
 import zipWorker from 'file-loader!@destiny-item-manager/zip.js/WebContent/z-worker.js'; // eslint-disable-line
 */
+import { zip, inflate, zipWorker } from '@destiny-item-manager/zip.js';
 
 import { catchError, map, switchMap, tap, distinctUntilChanged, first, take, filter, withLatestFrom } from 'rxjs/operators';
 
@@ -57,21 +58,22 @@ export class DataService {
             .then(db => {
                 this.logger.info('Opened database as SQLite DB object');
 
-                const tablesToRequest =
-                    tablesNames || db.exec(`SELECT name FROM sqlite_master WHERE type='table';`)[0].values.map(a => a[0]);
+                // const tablesToRequest =
+                //     tablesNames || db.exec(`SELECT name FROM sqlite_master WHERE type='table';`)[0].values.map(a => a[0]);
 
-                this.logger.info('Extracting tables from definitions database', tablesToRequest);
+                // this.logger.info('Extracting tables from definitions database', tablesToRequest);
 
-                const allData = tablesToRequest.reduce((acc, tableName) => {
-                    this.logger.info('Getting all records for', tableName);
+                // const allData = tablesToRequest.reduce((acc, tableName) => {
+                //     this.logger.info('Getting all records for', tableName);
 
-                    return {
-                        ...acc,
-                        [tableName]: getAllRecords(db, tableName)
-                    };
-                }, {});
+                //     return {
+                //         ...acc,
+                //         [tableName]: getAllRecords(db, tableName)
+                //     };
+                // }, {});
+                return null;
 
-                return allData;
+                //return allData;
             })
             .catch(err => {
                 //TODO: Fix memory issue with SQLLib or more gracefully handle failure
