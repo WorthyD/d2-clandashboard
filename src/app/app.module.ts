@@ -15,7 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import { RootStoreModule } from './root-store/root-store.module';
 
 import { ClanSearchComponent } from './clan-search/clan-search.component';
-
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 export function apiConfigFactory(): Configuration {
     const params: ConfigurationParameters = {
         apiKeys: { 'X-API-Key': '1233' }
@@ -31,7 +31,13 @@ export function apiConfigFactory(): Configuration {
         ApiModule.forRoot(apiConfigFactory),
         HttpClientModule,
         ClanModule,
-        RootStoreModule
+        RootStoreModule,
+        LoggerModule.forRoot({
+            // serverLoggingUrl: '/api/logs',
+            level: NgxLoggerLevel.TRACE,
+            serverLogLevel: NgxLoggerLevel.ERROR,
+            disableConsoleLogging: false
+          })
         //   StoreModule.forRoot(reducers, { metaReducers })
     ],
     providers: [
