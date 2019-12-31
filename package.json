@@ -8,6 +8,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
+        "postinsta": "node patch-webpack.js",
         "swagger-gen": "openapi-generator generate -g typescript-angular -o projects/bungie-api/src/lib -i https://raw.githubusercontent.com/Bungie-net/api/master/openapi-2.json --skip-validate-spec"
     },
     "private": true,
@@ -26,7 +27,9 @@
         "@ngrx/router-store": "^8.0.1",
         "@ngrx/store": "^8.0.1",
         "@ngrx/store-devtools": "^8.0.1",
+        "browserify-cipher": "^1.0.1",
         "core-js": "^2.5.4",
+        "crypto-browserify": "^3.12.0",
         "file-loader": "^5.0.2",
         "idb": "^4.0.5",
         "moment": "^2.24.0",

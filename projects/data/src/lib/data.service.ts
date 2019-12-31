@@ -14,7 +14,7 @@ import { Destiny2Service } from 'bungie-api';
 import { ManifestDatabaseService } from './services/manifest-database.service';
 import { NGXLogger } from 'ngx-logger';
 
-import { requireDatabase, getAllRecords } from './database';
+// import { requireDatabase, getAllRecords } from './database';
 import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpRequest } from '@angular/common/http';
 
 const DOWNLOADING = 'downloading manifest';
@@ -35,71 +35,85 @@ export class DataService {
         private http: HttpClient
     ) {}
     requireDatabasePromise;
+
     private getManifest(language: string) {
         return this.d2service.destiny2GetDestinyManifest().pipe(
             map(response => {
                 this.logger.info('done');
                 this.logger.info(response);
-                return response.Response.mobileWorldContentPaths[language];
+                return response.Response.jsonWorldContentPaths[language];
             })
         );
     }
 
     private allDataFromRemote(dbPath, tablesNames, progressCb) {
-        if (!this.requireDatabasePromise) {
-            this.requireDatabasePromise = requireDatabase();
-        }
-        return Promise.all([this.requireDatabasePromise, this.loadDefinitions(dbPath, progressCb)])
-            .then(([SQLLib, databaseBlob]) => {
-                progressCb({ status: STATUS_EXTRACTING_TABLES });
-                this.logger.info('Loaded both SQL library and definitions database');
-                return this.openDBFromBlob(SQLLib, databaseBlob);
-            })
-            .then(db => {
-                this.logger.info('Opened database as SQLite DB object');
+        this.logger.info(dbPath);
+        // if (!this.requireDatabasePromise) {
+        //     this.requireDatabasePromise = null; /// requireDatabase();
+        // }
+        // return null;
 
-                // const tablesToRequest =
-                //     tablesNames || db.exec(`SELECT name FROM sqlite_master WHERE type='table';`)[0].values.map(a => a[0]);
+        return this.requestDefinitionsArchive(dbPath);
 
-                // this.logger.info('Extracting tables from definitions database', tablesToRequest);
+        // return definitions.
 
-                // const allData = tablesToRequest.reduce((acc, tableName) => {
-                //     this.logger.info('Getting all records for', tableName);
+        // return Promise.all([this.loadDefinitions(dbPath, progressCb)])
+        //     .then(([databaseBlob]) => {
+        //         if (progressCb) {
+        //             progressCb({ status: STATUS_EXTRACTING_TABLES });
+        //         }
+        //         this.logger.info('Loaded both SQL library and definitions database');
+        //         console.log(databaseBlob);
+        //         //return this.openDBFromBlob(null, databaseBlob);
+        //         return this.openDBFromBlob(
+        //     })
+        //     .then(db => {
+        //         this.logger.info(db);
+        //         this.logger.info('Opened database as SQLite DB object');
 
-                //     return {
-                //         ...acc,
-                //         [tableName]: getAllRecords(db, tableName)
-                //     };
-                // }, {});
-                return null;
+        //         // const tablesToRequest =
+        //         //     tablesNames || db.exec(`SELECT name FROM sqlite_master WHERE type='table';`)[0].values.map(a => a[0]);
 
-                //return allData;
-            })
-            .catch(err => {
-                //TODO: Fix memory issue with SQLLib or more gracefully handle failure
-                window.location.reload();
-                //without throwing an error the data becomes corrupted
-                throw err;
-            });
+        //         // this.logger.info('Extracting tables from definitions database', tablesToRequest);
+
+        //         // const allData = tablesToRequest.reduce((acc, tableName) => {
+        //         //     this.logger.info('Getting all records for', tableName);
+
+        //         //     return {
+        //         //         ...acc,
+        //         //         [tableName]: getAllRecords(db, tableName)
+        //         //     };
+        //         // }, {});
+        //         return null;
+
+        //         //return allData;
+        //     })
+        //     .catch(err => {
+        //         //TODO: Fix memory issue with SQLLib or more gracefully handle failure
+        //         window.location.reload();
+        //         //without throwing an error the data becomes corrupted
+        //         throw err;
+        //     });
     }
-    loadDefinitions(dbPath, progressCb) {
-        return this.requestDefinitionsArchive(dbPath)
-            .pipe(
-                take(1),
-                map(data => {
-                    this.logger.info('Successfully downloaded definitions archive');
-                    progressCb({ status: STATUS_UNZIPPING });
-                    return this.unzipManifest(data);
-                })
-            )
-            .pipe(
-                take(1),
-                map(manifestBlob => {
-                    this.logger.info('Successfully unzipped definitions archive');
-                    return manifestBlob;
-                })
-            );
-    }
+    // loadDefinitions(dbPath, progressCb) {
+    //     this.logger.info('Load Defininitions', dbPath);
+    //     return this.requestDefinitionsArchive(dbPath)
+    //         .pipe(
+    //             take(1),
+    //             map(data => {
+    //                 this.logger.info('Successfully downloaded definitions archive');
+    //                 progressCb({ status: STATUS_UNZIPPING });
+    //                 return this.unzipManifest(data);
+    //             })
+    //         )
+    //         .pipe(
+    //             take(1),
+    //             map(manifestBlob => {
+    //                 this.logger.info('Successfully unzipped definitions archive');
+    //                 return manifestBlob;
+    //             })
+    //         );
+    // }
 
     onDownloadProgress(progress) {
         const perc = Math.round((progress.loaded / progress.total) * 100);
@@ -108,39 +122,57 @@ export class DataService {
     requestDefinitionsArchive(dbPath) {
         this.logger.info('Requesting fresh definitions archive', { dbPath });
 
-        return this.db.getValues('stuff').manifestBlob.pipe(
+        return this.db.getValues('manifest').manifestBlob.pipe(
             take(1),
             map(cachedValue => {
+                this.logger.info('got manifest', cachedValue);
+                // dbPath = '/common/destiny2_content/sqlite/en/world_sql_content_d470daec6f7a006faeec4a1b921c3b61.content';
+                /*
                 if (cachedValue) {
                     this.logger.info('Archive was already cached, returning that');
                     return null;
                     //return cachedValue.data;
                 }
-                const req = new HttpRequest('GET', `https://www.bungie.net${dbPath}`, {
-                    reportProgress: true
-                });
+                */
 
-                return this.http.request(req).subscribe(event => {
-                    // Via this API, you get access to the raw event stream.
-                    // Look for upload progress events.
-                    if (event.type === HttpEventType.UploadProgress) {
-                        // This is an upload progress event. Compute and show the % done:
-                        const percentDone = Math.round((100 * event.loaded) / event.total);
-                        console.log(`File is ${percentDone}% uploaded.`);
-                    } else if (event instanceof HttpResponse) {
-                        console.log('File is completely uploaded!');
-                    }
-                });
-                // return this.http
-                //     .request(`https://www.bungie.net${dbPath}`, {
-                //         reportProgress: true //this.onDownloadProgress,
-                //     })
-                //     .toPromise()
-                //     .then(resp => {
+                // return this.http.request(req).subscribe(event => {
+                //     // Via this API, you get access to the raw event stream.
+                //     // Look for upload progress events.
+                //     if (event.type === HttpEventType.UploadProgress) {
+                //         // This is an upload progress event. Compute and show the % done:
+                //         const percentDone = Math.round((100 * event.loaded) / event.total);
+                //         console.log(`File is ${percentDone}% uploaded.`);
+                //     } else if (event instanceof HttpResponse) {
+                //         console.log('File is completely uploaded!');
                 //         this.logger.info('Finished downloading definitions archive, storing it in db');
-                //         db.manifestBlob.put({ key: dbPath, data: resp.data });
-                //         return resp.data;
-                //     });
+                //         this.db.update('', '',
+
+                //     }
+                // });
+                return this.http
+                    .get(`https://www.bungie.net${dbPath}`, { responseType: 'blob' })
+                    .pipe(take(1))
+                    .subscribe(resp => {
+                        console.log(resp);
+                        // this.db.update('manifest', 'allData', resp);
+                    });
+                // .then( resp =>{
+                //     console.log(resp);
+                // });
+
+                // pipe(
+                //     map(resp => {
+                //         console.log('done');
+                //         console.log(resp);
+                //     }))
+                // .toPromise()
+                // .then(resp => {
+                //     this.logger.info('Finished downloading definitions archive, storing it in db');
+                //     this.db.removeAll('manifest', 'allData');
+                //     this.db.update('manifest',  'allData', resp.data)
+                //     // db.manifestBlob.put({ key: dbPath, data: resp.data });
+                //     return resp.data;
+                // });
 
                 //   return axios(`https://www.bungie.net${dbPath}`, {
                 //     responseType: "blob",
@@ -153,51 +185,51 @@ export class DataService {
             })
         );
     }
-    openDBFromBlob(SQLLib, blob) {
-        const url = window.URL.createObjectURL(blob);
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.responseType = 'arraybuffer';
-            xhr.onload = function(e) {
-                const uInt8Array = new Uint8Array(this.response);
-                resolve(new SQLLib.Database(uInt8Array));
-            };
-            xhr.send();
-        });
-    }
-    unzipManifest(blob) {
-        this.logger.info('Unzipping definitions archive');
+    // openDBFromBlob(SQLLib, blob) {
+    //     const url = window.URL.createObjectURL(blob);
+    //     return new Promise((resolve, reject) => {
+    //         const xhr = new XMLHttpRequest();
+    //         xhr.open('GET', url, true);
+    //         xhr.responseType = 'arraybuffer';
+    //         xhr.onload = function(e) {
+    //             const uInt8Array = new Uint8Array(this.response);
+    //             resolve(new SQLLib.Database(uInt8Array));
+    //         };
+    //         xhr.send();
+    //     });
+    // }
+    // unzipManifest(blob) {
+    //     this.logger.info('Unzipping definitions archive');
 
-        return new Promise((resolve, reject) => {
-            zip.useWebWorkers = true;
-            zip.workerScripts = { inflater: [zipWorker, inflate] };
+    //     return new Promise((resolve, reject) => {
+    //         zip.useWebWorkers = true;
+    //         zip.workerScripts = { inflater: [zipWorker, inflate] };
 
-            zip.createReader(
-                new zip.BlobReader(blob),
-                zipReader => {
-                    // get all entries from the zip
-                    zipReader.getEntries(entries => {
-                        if (!entries.length) {
-                            this.logger.info('Zip archive is empty. Something went wrong');
-                            const err = new Error('Definitions archive is empty');
-                            return reject(err);
-                        }
+    //         zip.createReader(
+    //             new zip.BlobReader(blob),
+    //             zipReader => {
+    //                 // get all entries from the zip
+    //                 zipReader.getEntries(entries => {
+    //                     if (!entries.length) {
+    //                         this.logger.info('Zip archive is empty. Something went wrong');
+    //                         const err = new Error('Definitions archive is empty');
+    //                         return reject(err);
+    //                     }
 
-                        this.logger.info('Found', entries.length, 'entries within definitions archive');
-                        this.logger.info('Loading first file...', entries[0].filename);
+    //                     this.logger.info('Found', entries.length, 'entries within definitions archive');
+    //                     this.logger.info('Loading first file...', entries[0].filename);
 
-                        entries[0].getData(new zip.BlobWriter(), blob => {
-                            resolve(blob);
-                        });
-                    });
-                },
-                error => {
-                    reject(error);
-                }
-            );
-        });
-    }
+    //                     entries[0].getData(new zip.BlobWriter(), blob => {
+    //                         resolve(blob);
+    //                     });
+    //                 });
+    //             },
+    //             error => {
+    //                 reject(error);
+    //             }
+    //         );
+    //     });
+    // }
     private getEventMessage(event: HttpEvent<any>, file: File) {
         switch (event.type) {
             case HttpEventType.Sent:
@@ -220,25 +252,30 @@ export class DataService {
         this.logger.info('getting more manifest');
         return this.db.getValues('manifest').allData.pipe(
             switchMap(x => {
-                this.logger.info('getting stuff');
+                this.logger.info('getting stuff', x);
                 // Logic
 
                 return this.getManifest(language).pipe(
-                    map(path => {
+                    switchMap(path => {
                         if (progressCallback) {
                             progressCallback({ status: DOWNLOADING });
                         }
+                        this.logger.info(path);
 
-                        return this.allDataFromRemote(path, null, progressCallback).then(definitions => {
-                            //  this.logger.info('Successfully got requested definitions');
+                        return this.allDataFromRemote(path, null, progressCallback).pipe(
+                            map(definitions => {
+                                console.log('manifest done');
+                                console.log(definitions);
+                                //  this.logger.info('Successfully got requested definitions');
 
-                            const key = [VERSION, path].join(':');
-                            //this.db.allData.put({ key, data: definitions });
+                                const key = [VERSION, path].join(':');
+                                //this.db.allData.put({ key, data: definitions });
 
-                            //cleanUpPreviousVersions(path, key);
+                                //cleanUpPreviousVersions(path, key);
 
-                            //dataCb(null, { done: true, definitions });
-                        });
+                                //dataCb(null, { done: true, definitions });
+                            })
+                        );
                     })
                 );
             })
