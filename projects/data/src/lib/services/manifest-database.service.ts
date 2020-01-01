@@ -13,11 +13,7 @@ export class ManifestDatabaseService {
   }
 
   update(repository: string, type: StoreId, entities: any[]): Promise<void> {
-    //   console.group('Updating db');
-    //   console.log(repository);
-    //   console.log(type);
-    //   console.log(entities);
-    //   console.groupEnd();
+
 
     return this.getDatabase(repository).updateValues(entities, type);
   }

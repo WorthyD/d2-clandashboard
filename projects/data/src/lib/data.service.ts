@@ -149,13 +149,55 @@ export class DataService {
 
                 //     }
                 // });
-                return this.http
-                    .get(`https://www.bungie.net${dbPath}`, { responseType: 'blob' })
-                    .pipe(take(1))
-                    .subscribe(resp => {
-                        console.log(resp);
-                        // this.db.update('manifest', 'allData', resp);
-                    });
+
+                // return this.http
+                //     .get(`https://www.bungie.net${dbPath}`, { responseType: 'blob' })
+                //     .pipe(take(1))
+                //     .subscribe(resp => {
+                //         console.log(resp);
+                //         // this.db.update('manifest', 'allData', resp);
+                //     });
+
+                return fetch(`https://www.bungie.net${dbPath}`).then(x => {
+                    x.json()
+                        .then(y => {
+                            console.log(y);
+                            const versionKey = `${VERSION}:${dbPath}`;
+
+                            const prunedTables = this.pruneTables(y, [
+                                'DestinyChecklistDefinition',
+                                'DestinyObjectiveDefinition',
+                                'DestinyStatDefinition',
+                                'DestinyVendorDefinition',
+                                'DestinyInventoryItemDefinition',
+                                'DestinyClassDefinition',
+                                'DestinySandboxPerkDefinition',
+                                'DestinyEnergyTypeDefinition',
+                                'DestinyCollectibleDefinition',
+                                'DestinyPresentationNodeDefinition',
+                                'DestinyRecordDefinition',
+                                'DestinyActivityModeDefinition',
+                                'DestinyPlaceDefinition',
+                                'DestinyFactionDefinition'
+                            ]);
+
+                            this.db
+                                .update('manifest', 'allData', [{ id: versionKey, data: prunedTables }])
+                                .then(z => {
+                                    console.log('success');
+                                    console.log(z);
+                                })
+                                .catch(err => {
+                                    console.log('error');
+                                    console.log(err);
+                                });
+                        })
+                        .catch(e => {
+                            console.log('error');
+                            console.error(e);
+                        }); // this.db.update('manifest', 'allData', x.json());
+                });
+
                 // .then( resp =>{
                 //     console.log(resp);
                 // });
@@ -230,6 +272,20 @@ export class DataService {
     //         );
     //     });
     // }
+
+    private pruneTables(obj, keys) {
+        if (!keys.length) {
+            return obj;
+        }
+
+        return keys.reduce((acc, key) => {
+            return {
+                ...acc,
+                [key]: obj[key]
+            };
+        }, {});
+    }
+
     private getEventMessage(event: HttpEvent<any>, file: File) {
         switch (event.type) {
             case HttpEventType.Sent:
