@@ -11,6 +11,25 @@ export class AppComponent {
     title = 'destiny-dashboard';
     constructor(private data: DataService) {
         console.log('load manifest');
-        data.loadManifestData('en', null, null).subscribe(x => {});
+        const tables = [
+            'DestinyChecklistDefinition',
+            'DestinyObjectiveDefinition',
+            'DestinyStatDefinition',
+            'DestinyVendorDefinition',
+            'DestinyInventoryItemDefinition',
+            'DestinyClassDefinition',
+            'DestinySandboxPerkDefinition',
+            'DestinyEnergyTypeDefinition',
+            'DestinyCollectibleDefinition',
+            'DestinyPresentationNodeDefinition',
+            'DestinyRecordDefinition',
+            'DestinyActivityModeDefinition',
+            'DestinyPlaceDefinition',
+            'DestinyFactionDefinition'
+        ];
+        data.loadManifestData('en', tables, null, null).subscribe(x => {
+            console.log('we got it');
+            console.log(x);
+        });
     }
 }

@@ -44,7 +44,7 @@ export class AppIndexedDb {
         return this.db.then(db => {
             const transaction = db.transaction(collectionId, 'readwrite');
             const store = transaction.objectStore(collectionId);
-            values.forEach(v => store.put(v).then(x => console.log(x)).catch(err => console.error(err)));
+            values.forEach(v => store.put(v));
             return transaction.done;
         });
     }
