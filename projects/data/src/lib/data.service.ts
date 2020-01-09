@@ -121,16 +121,9 @@ export class DataService {
                             map(definitions => {
                                 console.log('manifest done');
                                 console.log(definitions);
-                                //  this.logger.info('Successfully got requested definitions');
 
-                                const key = [VERSION, path].join(':');
                                 return definitions;
-                                //this.db.allData.put({ key, data: definitions });
-
-                                //cleanUpPreviousVersions(path, key);
-
-                                //dataCb(null, { done: true, definitions });
-                            })
+                           })
                         );
                     })
                 );
