@@ -26,6 +26,10 @@
             "bungie-models": [
                 "projects/bungie-models/src/public-api"
             ],
+            "bungie-models/definitions": [
+                "projects/bungie-models/src/models/definitions/public-api"
+            ],
+
             "@destiny/components": [
                 "projects/components/src/public-api"
             ],

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs';
 import { catchError, map, switchMap, tap, distinctUntilChanged, first, take, filter, withLatestFrom } from 'rxjs/operators';
 
 import { Destiny2Service } from 'bungie-api';
@@ -8,6 +9,7 @@ import { NGXLogger } from 'ngx-logger';
 
 // import { requireDatabase, getAllRecords } from './database';
 import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpRequest } from '@angular/common/http';
+import { CachedManifest } from './models/CachedManifest';
 
 const DOWNLOADING = 'downloading manifest';
 export const STATUS_EXTRACTING_TABLES = 'extracting tables';
@@ -48,8 +50,8 @@ export class DataService {
     private getManifest(language: string) {
         return this.d2service.destiny2GetDestinyManifest().pipe(
             map(response => {
-                this.logger.info('done');
-                this.logger.info(response);
+                //this.logger.info('done');
+                //this.logger.info(response);
                 return response.Response.jsonWorldContentPaths[language];
             })
         );
@@ -78,22 +80,24 @@ export class DataService {
 
         return this.db.getValues('manifest').allData.pipe(
             take(1),
-            map(cachedValue => {
+            switchMap(cachedValue => {
                 const versionKey = `${VERSION}:${dbPath}`;
                 this.logger.info('got manifest', cachedValue);
 
-                if (cachedValue) {
-                    this.logger.info('Archive was already cached, returning that');
+                if (cachedValue && cachedValue.length > 0) {
+                    this.logger.info('Archive was already cached, returning that', cachedValue);
                     return cachedValue;
                 }
 
                 return fetch(`https://www.bungie.net${dbPath}`).then(x => {
-                    x.json().then(y => {
+                    return x.json().then(y => {
+                        this.logger.info('Manifest Received', y);
                         const prunedTables = this.pruneTables(y, tableNames);
-                        this.db.update('manifest', 'allData', [{ id: versionKey, data: prunedTables }]);
+                        const dbObject = { id: versionKey, data: prunedTables };
+                        this.db.update('manifest', 'allData', [dbObject]);
                         // TODO: Clean up old DB
 
-                        return prunedTables;
+                        return dbObject;
                     });
                 });
             })
@@ -103,7 +107,7 @@ export class DataService {
         const perc = Math.round((progress.loaded / progress.total) * 100);
         this.logger.log(`Definitions archive download progress ${perc}% . `);
     }
-    public loadManifestData(language: string = 'en', tableNames, progressCallback, completeCallback) {
+    public loadManifestData(language: string = 'en', tableNames, progressCallback, completeCallback): Observable<CachedManifest> {
         this.logger.info('getting more manifest');
         return this.db.getValues('manifest').allData.pipe(
             switchMap(x => {
@@ -123,7 +127,7 @@ export class DataService {
                                 console.log(definitions);
 
                                 return definitions;
-                           })
+                            })
                         );
                     })
                 );

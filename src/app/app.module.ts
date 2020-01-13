@@ -16,6 +16,8 @@ import { RootStoreModule } from './root-store/root-store.module';
 
 import { ClanSearchComponent } from './clan-search/clan-search.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { DefinitionsModule } from '@destiny/data';
+
 export function apiConfigFactory(): Configuration {
     const params: ConfigurationParameters = {
         apiKeys: { 'X-API-Key': '1233' }
@@ -37,7 +39,8 @@ export function apiConfigFactory(): Configuration {
             level: NgxLoggerLevel.TRACE,
             serverLogLevel: NgxLoggerLevel.ERROR,
             disableConsoleLogging: false
-          })
+        }),
+        DefinitionsModule
         //   StoreModule.forRoot(reducers, { metaReducers })
     ],
     providers: [

@@ -6,14 +6,35 @@
     <h2>{{profile.profile.data.dateLastPlayed}}</h2>
 
 </div>
-<div *ngIf="activities$ | async as activities">
+<!-- <div *ngIf="activities$ | async as activities">
     <div *ngFor="let activity of activities">
         <h3>{{activity.period}} | {{activity.activityDetails.mode}} |{{activity.values.completed.basic.value}} </h3>
         {{activity.values.completed | json}}
         <hr>
     </div>
 
+</div> -->
+
+<div *ngIf="activityDetails$ | async as activityDetails">
+    <div *ngFor="let activity of activityDetails">
+        <h3>{{activity.playerActivity.period}} {{activity.playerActivity.values.completed.basic.value}} </h3>
+        <h2>{{activity.activity.displayProperties.name}} </h2>
+        <hr>
+    </div>
+
 </div>
+
+
+
+<div>
+    <pre>
+        <code>
+    {{(activityDetails$ | async)?.activity | json}}
+</code>
+</pre>
+
+</div>
+
 
 <div>
     todo: Load in character information from profile response?
