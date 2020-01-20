@@ -4,7 +4,7 @@ import { distinctUntilChanged, map, takeUntil, take, filter } from 'rxjs/operato
 import { Store, select, createSelector } from '@ngrx/store';
 
 import { ClanMember, MemberProfile, MemberActivityStat, ActivityModeDefinition } from 'bungie-models';
-import { ActivitiesService } from '@destiny/data';
+import { ActivitiesService, ActivityModeService } from '@destiny/data';
 // import { ActivityModeDefinition } from 'bungie-models/definitions';
 
 import { Observable, Subject, Subscription, combineLatest } from 'rxjs';
@@ -30,7 +30,12 @@ export const getRecentClanMemberActivities = memberId =>
     styleUrls: ['./member-details.component.scss']
 })
 export class MemberDetailsComponent implements OnInit, OnDestroy {
-    constructor(private activatedRoute: ActivatedRoute, private store: Store<any>, private activityService: ActivitiesService) {
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private store: Store<any>,
+        private activityModeService: ActivityModeService,
+        private activityService: ActivitiesService
+    ) {
         this.memberId.pipe(takeUntil(this.destroyed)).subscribe(r => this.loadMemberDetails(r));
     }
 
@@ -40,6 +45,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
     profile$: Observable<MemberProfile>;
     playerActivities$: Observable<MemberActivityStat[]>;
     activityModeDefinitions$: Observable<any>;
+    activityDefinitions$: Observable<any>;
 
     activityDetails$: Observable<any[]>;
 
@@ -52,25 +58,38 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
         this.profile$ = this.store.pipe(select(memberProfileSelectors.getClanMemberById(memberId)));
 
         this.playerActivities$ = this.store.pipe(select(getRecentClanMemberActivities(memberId)));
-        this.activityModeDefinitions$ = this.activityService.getDefinitions();
+        this.activityModeDefinitions$ = this.activityModeService.getDefinitions();
+        this.activityDefinitions$ = this.activityService.getDefinitions();
 
-        this.activityDetails$ = combineLatest(this.playerActivities$, this.activityModeDefinitions$, (pActivities, pDefinitions) => {
-            console.log(pActivities);
-            console.log(pDefinitions);
-            if (pActivities && pDefinitions) {
-                const defArray = Object.keys(pDefinitions.definitions).map(id => pDefinitions.definitions[id]);
+        this.activityDetails$ = combineLatest(
+            this.playerActivities$,
+            this.activityModeDefinitions$,
+            this.activityDefinitions$,
+            (pActivities, pDefinitions, activityDefinitions) => {
+                if (pActivities && pDefinitions && activityDefinitions) {
+                    const defArray = Object.keys(pDefinitions.definitions).map(id => pDefinitions.definitions[id]);
+                    const activityArray = Object.keys(activityDefinitions.definitions).map(id => activityDefinitions.definitions[id]);
+                    //console.log(activityArray.find(y => y.hash === '3143798436'));
+                    // console.log(activityArray);
+                    console.log(activityDefinitions[3143798436]);
+                    console.log(pActivities);
 
-                return pActivities.map(x => {
-                    return {
-                        playerActivity: x,
-                        activity: defArray.find(y => {
-                            return y.modeType === x.activityDetails.mode;
-                        })
-                    };
-                });
+                    return pActivities.map(x => {
+                        return {
+                            playerActivity: x,
+                            activity: activityArray.find(y => {
+                                // y.referenceId === y.
+                                return false;
+                            }),
+                            activityMode: defArray.find(y => {
+                                return y.modeType === x.activityDetails.mode;
+                            })
+                        };
+                    });
+                }
+                return [];
             }
-            return [];
-        });
+        );
         // Object.keys(obj).forEach(function(k, i) {
         //     if (i >= 100 && i < 300) {
         //         console.log(obj[k]);

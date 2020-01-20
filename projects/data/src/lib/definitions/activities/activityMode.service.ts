@@ -13,8 +13,8 @@ import { ActivityModeModel } from '../models/ActivityModeModel';
 @Injectable({
     providedIn: 'root'
 })
-export class ActivitiesService extends BaseDefinitionsService {
-    definitionModeKey = 'activites';
+export class ActivityModeService extends BaseDefinitionsService {
+    definitionModeKey = 'activityModes';
 
     constructor(private pStore: Store<DefinitionModelState>) {
         super(pStore);
@@ -25,6 +25,7 @@ export class ActivitiesService extends BaseDefinitionsService {
     }
 
     getDefinitions(): Observable<ActivityModeModel> {
-        return this.pStore.select(definitionSelectors.cacheById(this.definitionModeKey));
+
+        return this.getDefinitionsFromState(this.definitionModeKey);
     }
 }

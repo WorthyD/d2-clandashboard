@@ -18,7 +18,7 @@
 <div *ngIf="activityDetails$ | async as activityDetails">
     <div *ngFor="let activity of activityDetails">
         <h3>{{activity.playerActivity.period}} {{activity.playerActivity.values.completed.basic.value}} </h3>
-        <h2>{{activity.activity.displayProperties.name}} </h2>
+        <h2>{{activity.activityMode.displayProperties.name}} </h2>
         <hr>
     </div>
 

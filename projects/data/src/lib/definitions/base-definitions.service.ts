@@ -4,6 +4,10 @@ import { DefinitionModelState } from './store/definitions.state';
 import { initializeCache } from './store/definitions.actions';
 import { DefinitionModel } from './models/definitionModel';
 
+import * as definitionSelectors from './store/definitions.selectors';
+
+import { Observable } from 'rxjs';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -12,5 +16,9 @@ export class BaseDefinitionsService {
 
     addDefinitionsToState(definitionModel: DefinitionModel) {
         this.store.dispatch(initializeCache({ definitions: definitionModel }));
+    }
+
+    getDefinitionsFromState(key: string): Observable<any> {
+        return this.store.select(definitionSelectors.cacheById(key));
     }
 }
