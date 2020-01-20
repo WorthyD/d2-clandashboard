@@ -14,13 +14,21 @@
     </div>
 
 </div> -->
+<div *ngIf="activityDetails2$ | async as activityDetails2">
+    <pre><code>
+    {{activityDetails2 | json}}
+</code></pre>
+</div>
 
 <div *ngIf="activityDetails$ | async as activityDetails">
-    <div *ngFor="let activity of activityDetails">
-        <h3>{{activity.playerActivity.period}} {{activity.playerActivity.values.completed.basic.value}} </h3>
-        <h2>{{activity.activityMode.displayProperties.name}} </h2>
-        <hr>
-    </div>
+    <table>
+        <tr *ngFor="let activity of activityDetails">
+            <td>{{activity.playerActivity.period}} {{activity.playerActivity.values.completed.basic.value}} </td>
+            <td>{{activity.activityTypes}} </td>
+            <td>{{activity.activityMode.displayProperties.name}} </td>
+            <td>{{activity.activity?.displayProperties?.name}} </td>
+        </tr>
+    </table>
 
 </div>
 

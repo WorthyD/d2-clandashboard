@@ -21,7 +21,7 @@ export const getRecentClanMemberActivities = memberId =>
             return null;
         }
 
-        return activities.sort((a, b) => new Date(a.period).getTime() - new Date(b.period).getTime()).slice(0, 10);
+        return activities.sort((a, b) => new Date(b.period).getTime() - new Date(a.period).getTime()).slice(0, 250);
     });
 
 @Component({
@@ -48,6 +48,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
     activityDefinitions$: Observable<any>;
 
     activityDetails$: Observable<any[]>;
+    activityDetails2$: Observable<any[]>;
 
     private destroyed = new Subject();
 
@@ -68,19 +69,21 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
             (pActivities, pDefinitions, activityDefinitions) => {
                 if (pActivities && pDefinitions && activityDefinitions) {
                     const defArray = Object.keys(pDefinitions.definitions).map(id => pDefinitions.definitions[id]);
-                    const activityArray = Object.keys(activityDefinitions.definitions).map(id => activityDefinitions.definitions[id]);
-                    //console.log(activityArray.find(y => y.hash === '3143798436'));
-                    // console.log(activityArray);
-                    console.log(activityDefinitions[3143798436]);
+//                    console.log(defArray.find(y => y.modeType === 6));
+ //                   console.log(defArray.find(y => y.modeType === 7));
+
                     console.log(pActivities);
 
                     return pActivities.map(x => {
                         return {
                             playerActivity: x,
-                            activity: activityArray.find(y => {
-                                // y.referenceId === y.
-                                return false;
-                            }),
+                            activity: activityDefinitions.definitions[x.activityDetails.referenceId],
+                            activityTypes: x.activityDetails.modes.map(
+                                z =>
+                                    defArray.find(y => {
+                                        return y.modeType === z;
+                                    }).displayProperties.name
+                            ),
                             activityMode: defArray.find(y => {
                                 return y.modeType === x.activityDetails.mode;
                             })
@@ -90,6 +93,62 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
                 return [];
             }
         );
+
+
+        this.activityDetails2$ = combineLatest(
+            this.playerActivities$,
+            this.activityModeDefinitions$,
+            this.activityDefinitions$,
+            (pActivities, pDefinitions, activityDefinitions) => {
+                if (pActivities && pDefinitions && activityDefinitions) {
+                    const defArray = Object.keys(pDefinitions.definitions).map(id => pDefinitions.definitions[id]);
+                    const modeIDs = pActivities.map(x => {
+                        return x.activityDetails.mode;
+                    });
+                    console.log(modeIDs);
+                    const uniqueIds = [...new Set(modeIDs)];
+                    console.log(uniqueIds);
+                    console.log(pActivities);
+
+                    const stuff = uniqueIds.map(y => {
+                        const activities = pActivities.filter(z => {
+                            return (z.activityDetails.mode = y);
+                        });
+
+                        console.log(activities);
+                        return {
+                            mode: y,
+                            modeName: defArray.find(z => {
+                                return z.modeType === y;
+                            }).displayProperties.name,
+                            // total: activities.reduce((prev, cur) => {
+                            //     return prev + cur.values.activityDurationSeconds.basic.value;
+                            // }, 0)
+                        };
+                    });
+                    return stuff;
+
+                    // return pActivities.map(x => {
+                    //     return {
+                    //         playerActivity: x,
+                    //         activity: activityDefinitions.definitions[x.activityDetails.referenceId],
+                    //         // activityTypes: x.activityDetails.modes.map(z =>
+                    //         //     defArray.find(y => {
+                    //         //         return y.modeType === z;
+                    //         //     }).displayProperties.name
+                    //         // ),
+                    //         activityMode: defArray.find(y => {
+                    //             return y.modeType === x.activityDetails.mode;
+                    //         })
+                    //     };
+
+                    // });
+                }
+                return [];
+            }
+        );
+
+
         // Object.keys(obj).forEach(function(k, i) {
         //     if (i >= 100 && i < 300) {
         //         console.log(obj[k]);
