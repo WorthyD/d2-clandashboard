@@ -76,6 +76,7 @@ export class MemberStatEffects {
                     this.store.select(clanIdSelectors.getClanIdState)
                 ),
                 tap(([action, clanId]) => {
+                    console.log('loading updated member');
                      this.updater.update('memberActivities', clanId, action.member);
                 })
             ),

@@ -11,6 +11,7 @@ import { take, mergeMap, map } from 'rxjs/operators';
 import * as cacheSelectors from '../store/clan-cache/clan-cache.selectors';
 import * as cacheActions from '../store/clan-cache/clan-cache.actions';
 import * as memberActivityActions from '../store/member-activities/member-activities.actions';
+import { NGXLogger } from 'ngx-logger';
 
 export type UpdateState = 'can-update' | 'updating' | 'updated' | 'up-to-date';
 
@@ -25,6 +26,7 @@ export class MemberUpdater {
     constructor(
         private store: Store<any>,
         private groupService: GroupV2Service,
+        private logger: NGXLogger,
         private d2Service: Destiny2Service
     ) {}
     state = new BehaviorSubject<UpdaterState>({
@@ -35,6 +37,7 @@ export class MemberUpdater {
         const memberId = member.profile.data.userInfo.membershipId;
         const memberType = member.profile.data.userInfo.membershipType;
         const cacheKey = 'memberActivity-' + memberId;
+        this.logger.info('updating memeber activities', memberId);
 
         const cacheDetails$ = this.store.pipe(
             select(cacheSelectors.cacheById(cacheKey))
@@ -45,6 +48,7 @@ export class MemberUpdater {
 
             if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
                 this.setTypeState('memberActivities', 'updating');
+                this.logger.info('Updating Member IDs', memberId);
                 const characterIds = member.profile.data.characterIds;
 
                 let playerActivities = [];
@@ -93,6 +97,7 @@ export class MemberUpdater {
                 );
             } else {
                 this.setTypeState('memberActivities', 'up-to-date');
+                this.logger.info('up to date member info', memberId);
             }
         });
     }

@@ -48,7 +48,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
     activityDefinitions$: Observable<any>;
 
     activityDetails$: Observable<any[]>;
-    activityDetails2$: Observable<any[]>;
+    activityDetailsTwo$: Observable<any[]>;
 
     private destroyed = new Subject();
 
@@ -68,11 +68,12 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
             this.activityDefinitions$,
             (pActivities, pDefinitions, activityDefinitions) => {
                 if (pActivities && pDefinitions && activityDefinitions) {
+                    console.log(pActivities[0].activityDetails.mode);
                     const defArray = Object.keys(pDefinitions.definitions).map(id => pDefinitions.definitions[id]);
-//                    console.log(defArray.find(y => y.modeType === 6));
- //                   console.log(defArray.find(y => y.modeType === 7));
+                    //                    console.log(defArray.find(y => y.modeType === 6));
+                    //                   console.log(defArray.find(y => y.modeType === 7));
 
-                    console.log(pActivities);
+                    //console.log(pActivities);
 
                     return pActivities.map(x => {
                         return {
@@ -94,8 +95,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
             }
         );
 
-
-        this.activityDetails2$ = combineLatest(
+        this.activityDetailsTwo$ = combineLatest(
             this.playerActivities$,
             this.activityModeDefinitions$,
             this.activityDefinitions$,
@@ -105,27 +105,30 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
                     const modeIDs = pActivities.map(x => {
                         return x.activityDetails.mode;
                     });
-                    console.log(modeIDs);
+                    //console.log(modeIDs);
                     const uniqueIds = [...new Set(modeIDs)];
-                    console.log(uniqueIds);
-                    console.log(pActivities);
+                    //console.log(uniqueIds);
 
                     const stuff = uniqueIds.map(y => {
-                        const activities = pActivities.filter(z => {
-                            return (z.activityDetails.mode = y);
+                       const activities = pActivities.filter(z => {
+                            return (z.activityDetails.mode === y);
                         });
 
-                        console.log(activities);
+
+                        //
+                        // console.log(pActivities[0].activityDetails.mode);
+                        //      console.log(activities);
                         return {
                             mode: y,
                             modeName: defArray.find(z => {
                                 return z.modeType === y;
                             }).displayProperties.name,
-                            // total: activities.reduce((prev, cur) => {
-                            //     return prev + cur.values.activityDurationSeconds.basic.value;
-                            // }, 0)
+                            total: activities.reduce((prev, cur) => {
+                                return prev + cur.values.activityDurationSeconds.basic.value;
+                            }, 0)
                         };
                     });
+                    console.log(stuff);
                     return stuff;
 
                     // return pActivities.map(x => {
@@ -148,7 +151,6 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
             }
         );
 
-
         // Object.keys(obj).forEach(function(k, i) {
         //     if (i >= 100 && i < 300) {
         //         console.log(obj[k]);
@@ -160,6 +162,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
                 take(1)
             )
             .subscribe(x => {
+                console.log('loading activities');
                 this.store.dispatch(memberActivityActions.loadMemberActivities({ member: x }));
             });
     }
