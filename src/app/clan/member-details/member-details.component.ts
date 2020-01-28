@@ -115,9 +115,6 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
                         });
 
 
-                        //
-                        // console.log(pActivities[0].activityDetails.mode);
-                        //      console.log(activities);
                         return {
                             mode: y,
                             modeName: defArray.find(z => {
