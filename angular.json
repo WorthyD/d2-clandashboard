@@ -170,41 +170,6 @@
         }
       }
     },
-    "bungie-parse": {
-      "root": "projects/bungie-parse",
-      "sourceRoot": "projects/bungie-parse/src",
-      "projectType": "library",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/bungie-parse/tsconfig.lib.json",
-            "project": "projects/bungie-parse/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/bungie-parse/src/test.ts",
-            "tsConfig": "projects/bungie-parse/tsconfig.spec.json",
-            "karmaConfig": "projects/bungie-parse/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/bungie-parse/tsconfig.lib.json",
-              "projects/bungie-parse/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
     "bungie-models": {
       "projectType": "library",
       "root": "projects/bungie-models",
