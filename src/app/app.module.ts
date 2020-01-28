@@ -17,6 +17,7 @@ import { RootStoreModule } from './root-store/root-store.module';
 import { ClanSearchComponent } from './clan-search/clan-search.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { DefinitionsModule } from '@destiny/data';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function apiConfigFactory(): Configuration {
     const params: ConfigurationParameters = {
@@ -40,7 +41,8 @@ export function apiConfigFactory(): Configuration {
             serverLogLevel: NgxLoggerLevel.ERROR,
             disableConsoleLogging: false
         }),
-        DefinitionsModule
+        DefinitionsModule,
+        BrowserAnimationsModule
         //   StoreModule.forRoot(reducers, { metaReducers })
     ],
     providers: [
