@@ -20,10 +20,7 @@ interface LoadClanResult {
 export class ClanSearchComponent implements OnInit {
     loadSubscription: Subscription;
 
-    constructor(
-        private groupService: GroupV2Service,
-        private clanDB: ClanDatabase
-    ) {}
+    constructor(private groupService: GroupV2Service, private clanDB: ClanDatabase) {}
 
     ngOnInit() {}
 
@@ -33,17 +30,23 @@ export class ClanSearchComponent implements OnInit {
             clanDetails: {}
         };
 
-        const details = this.groupService.groupV2GetGroup(clanId).pipe(
-            map(result => {
-                clanResult.clanDetails = result.Response.detail;
-            })
-        );
+        //const details = this.groupService.groupV2GetGroup(clanId).pipe(
+        //     map(result => {
+        //         clanResult.clanDetails = result.Response.detail;
+        //     })
+        // );
 
-        this.loadSubscription = details.subscribe(x => {
-            console.log(x);
-            console.log(clanResult);
-            this.persistData(clanResult);
-        });
+        // this.loadSubscription = details.subscribe(x => {
+        //     console.log(x);
+        //     console.log(clanResult);
+        //     this.persistData(clanResult);
+        // });
+        // this.groupService
+        //     .groupV2GroupSearch({ name: 'dod' })
+        //     .pipe(map(result => {}))
+        //     .subscribe(x => {
+        //         console.log(x);
+        //     });
     }
 
     persistData(clanResult: LoadClanResult) {
