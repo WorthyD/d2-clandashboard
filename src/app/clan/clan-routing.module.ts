@@ -18,12 +18,12 @@ const routes: Routes = [
             {
                 path: 'roster',
                 loadChildren:
-                    './clan-roster/clan-roster.module#ClanRosterModule'
+                    () => import('./clan-roster/clan-roster.module').then(m => m.ClanRosterModule)
             },
             {
                 path: 'member-details/:memberId',
                 loadChildren:
-                    './member-details/member-details.module#MemberDetailsModule'
+                    () => import('./member-details/member-details.module').then(m => m.MemberDetailsModule)
             }
         ]
     } ///,
