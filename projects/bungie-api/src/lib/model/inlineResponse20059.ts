@@ -13,7 +13,7 @@ import { DestinyAdvancedAwaInitializeResponse } from './destinyAdvancedAwaInitia
 
 
 export interface InlineResponse20059 { 
-    response?: DestinyAdvancedAwaInitializeResponse;
+    Response?: DestinyAdvancedAwaInitializeResponse;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

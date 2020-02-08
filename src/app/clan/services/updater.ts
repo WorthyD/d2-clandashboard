@@ -9,6 +9,7 @@ import { ClanDatabase } from 'src/app/services/ClanDatabase';
 import { take, mergeMap, map } from 'rxjs/operators';
 
 import { GroupV2Service, Destiny2Service } from 'bungie-api';
+// import {  GetMembersOfGroupResponse } from 'bungie-models';
 
 import * as cacheSelectors from '../store/clan-cache/clan-cache.selectors';
 import * as cacheActions from '../store/clan-cache/clan-cache.actions';
@@ -30,13 +31,9 @@ export type UpdaterState = {
 
 @Injectable()
 export class Updater {
-    constructor(
-        private store: Store<any>,
-        private groupService: GroupV2Service,
-        private d2Service: Destiny2Service
-    ) {
+    constructor(private store: Store<any>, private groupService: GroupV2Service, private d2Service: Destiny2Service) {
         //this.state.subscribe(x => {
-            // console.log(x);
+        // console.log(x);
         //});
     }
     state = new BehaviorSubject<UpdaterState>({
@@ -46,9 +43,7 @@ export class Updater {
     });
 
     private updateClanMembers(clanId: number) {
-        const cacheDetails$ = this.store.pipe(
-            select(cacheSelectors.cacheById('clanMembers'))
-        );
+        const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('clanMembers')));
 
         cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
             const xpDate = moment().add(-1, 'hours');
@@ -57,7 +52,7 @@ export class Updater {
                 this.groupService
                     .groupV2GetMembersOfGroup(1, clanId)
                     .pipe(take(1))
-                    .subscribe(x => {
+                    .subscribe((x) => {
                         this.store.dispatch(
                             clanMemberActions.loadClanMembersFromAPI({
                                 clanMembers: x.Response.results
@@ -81,9 +76,7 @@ export class Updater {
     }
 
     private updateClanDetails(clanId: number) {
-        const cacheDetails$ = this.store.pipe(
-            select(cacheSelectors.cacheById('clanDetails'))
-        );
+        const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('clanDetails')));
 
         cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
             const xpDate = moment().add(-1, 'hours');
@@ -116,18 +109,13 @@ export class Updater {
     }
 
     private updateMemberProfiles(clanId: number) {
-        const cacheDetails$ = this.store.pipe(
-            select(cacheSelectors.cacheById('memberProfiles'))
-        );
+        const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('memberProfiles')));
 
         cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
             const xpDate = moment().add(-1, 'hours');
             if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
-
                 this.setTypeState('memberProfiles', 'updating');
-                const clanMembers$ = this.store.pipe(
-                    select(clanMemberSelectors.getAllMembers)
-                );
+                const clanMembers$ = this.store.pipe(select(clanMemberSelectors.getAllMembers));
                 clanMembers$.pipe(take(1)).subscribe(clanMembers => {
                     // clanMembers = clanMembers.slice(1, 10);
                     // console.log(clanMembers);
@@ -140,7 +128,7 @@ export class Updater {
                                 .destiny2GetProfile(
                                     member.destinyUserInfo.membershipId,
                                     member.destinyUserInfo.membershipType,
-                                    [100, 200]    /// 100 - profile, 200 - characters
+                                    [100, 200] /// 100 - profile, 200 - characters
                                     // -  900 records? 104 - Profile progression
                                     // 202 --  Character progression 204 character activities
                                     // 800 collectibles

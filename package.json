@@ -10,7 +10,7 @@
         "e2e": "ng e2e",
         "storybook": "start-storybook",
         "postinsta": "node patch-webpack.js",
-        "swagger-gen": "openapi-generator generate -g typescript-angular -o projects/bungie-api/src/lib -i https://raw.githubusercontent.com/Bungie-net/api/master/openapi-2.json --skip-validate-spec"
+        "swagger-gen": "openapi-generator generate -g typescript-angular -o projects/bungie-api/src/lib -i https://raw.githubusercontent.com/WorthyD/api/master/openapi-2.json --skip-validate-spec"
     },
     "private": true,
     "dependencies": {
@@ -30,6 +30,7 @@
         "@ngrx/store": "^8.6.0",
         "@ngrx/store-devtools": "^8.6.0",
         "browserify-cipher": "^1.0.1",
+        "bungie-api-ts": "^2.3.0",
         "core-js": "^2.5.4",
         "idb": "^4.0.5",
         "moment": "^2.24.0",
@@ -61,6 +62,7 @@
         "karma-jasmine-html-reporter": "^0.2.2",
         "ng-packagr": "^5.7.1",
         "protractor": "~5.4.0",
+        "replace-in-file": "^5.0.2",
         "ts-node": "~7.0.0",
         "tsickle": "^0.35.0",
         "tslint": "~5.11.0",

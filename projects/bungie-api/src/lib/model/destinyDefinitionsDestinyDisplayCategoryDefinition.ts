@@ -36,11 +36,11 @@ export interface DestinyDefinitionsDestinyDisplayCategoryDefinition {
      */
     sortOrder?: number;
     /**
-     * An indicator of how the category will be displayed in the UI. It's up to you to do something cool or interesting in response to this, or just to treat it as a normal category.
+     * An indicator of how the category will be displayed in the UI. It's up to you to do something cool or interesting in Response to this, or just to treat it as a normal category.
      */
     displayStyleHash?: number;
     /**
-     * An indicator of how the category will be displayed in the UI. It's up to you to do something cool or interesting in response to this, or just to treat it as a normal category.
+     * An indicator of how the category will be displayed in the UI. It's up to you to do something cool or interesting in Response to this, or just to treat it as a normal category.
      */
     displayStyleIdentifier?: string;
 }

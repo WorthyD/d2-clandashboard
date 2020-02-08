@@ -19,19 +19,19 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { DefinitionsModule } from '@destiny/data';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-export function apiConfigFactory(): Configuration {
-    const params: ConfigurationParameters = {
-        apiKeys: { 'X-API-Key': '1233' }
-    };
-    return new Configuration(params);
-}
+// export function apiConfigFactory(): Configuration {
+//     const params: ConfigurationParameters = {
+//         apiKeys: { 'X-API-Key': '1233' }
+//     };
+//     return new Configuration(params);
+// }
 
 @NgModule({
     declarations: [AppComponent, ClanSearchComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ApiModule.forRoot(apiConfigFactory),
+       // ApiModule.forRoot(apiConfigFactory),
         HttpClientModule,
         ClanModule,
         RootStoreModule,

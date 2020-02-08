@@ -13,7 +13,7 @@ import { SearchResultOfFireteamResponse } from './searchResultOfFireteamResponse
 
 
 export interface InlineResponse20067 { 
-    response?: SearchResultOfFireteamResponse;
+    Response?: SearchResultOfFireteamResponse;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

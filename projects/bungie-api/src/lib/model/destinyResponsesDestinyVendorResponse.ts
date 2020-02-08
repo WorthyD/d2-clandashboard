@@ -17,7 +17,7 @@ import { SingleComponentResponseOfDestinyVendorComponent } from './singleCompone
 
 
 /**
- * A response containing all of the components for a vendor.
+ * A Response containing all of the components for a vendor.
  */
 export interface DestinyResponsesDestinyVendorResponse { 
     /**

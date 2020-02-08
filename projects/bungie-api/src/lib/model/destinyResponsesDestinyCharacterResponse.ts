@@ -25,7 +25,7 @@ import { SingleComponentResponseOfDestinyPresentationNodesComponent } from './si
 
 
 /**
- * The response contract for GetDestinyCharacter, with components that can be returned for character and item-level data.
+ * The Response contract for GetDestinyCharacter, with components that can be returned for character and item-level data.
  */
 export interface DestinyResponsesDestinyCharacterResponse { 
     /**

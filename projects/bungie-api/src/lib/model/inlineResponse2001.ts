@@ -13,7 +13,7 @@ import { ApplicationsApplication } from './applicationsApplication';
 
 
 export interface InlineResponse2001 { 
-    response?: Array<ApplicationsApplication>;
+    Response?: Array<ApplicationsApplication>;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

@@ -13,7 +13,7 @@ import { SearchResultOfGroupMember } from './searchResultOfGroupMember';
 
 
 export interface InlineResponse20024 { 
-    response?: SearchResultOfGroupMember;
+    Response?: SearchResultOfGroupMember;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

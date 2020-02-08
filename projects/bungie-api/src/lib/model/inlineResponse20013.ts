@@ -12,7 +12,7 @@
 
 
 export interface InlineResponse20013 { 
-    response?: number;
+    Response?: number;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

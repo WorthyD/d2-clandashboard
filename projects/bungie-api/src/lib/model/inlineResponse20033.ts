@@ -13,7 +13,7 @@ import { DestinyConfigDestinyManifest } from './destinyConfigDestinyManifest';
 
 
 export interface InlineResponse20033 { 
-    response?: DestinyConfigDestinyManifest;
+    Response?: DestinyConfigDestinyManifest;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

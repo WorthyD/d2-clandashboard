@@ -13,7 +13,7 @@ import { ForumPostSearchResponse } from './forumPostSearchResponse';
 
 
 export interface InlineResponse20012 { 
-    response?: ForumPostSearchResponse;
+    Response?: ForumPostSearchResponse;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

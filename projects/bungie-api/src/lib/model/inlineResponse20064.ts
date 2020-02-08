@@ -13,7 +13,7 @@ import { SearchResultOfTrendingEntry } from './searchResultOfTrendingEntry';
 
 
 export interface InlineResponse20064 { 
-    response?: SearchResultOfTrendingEntry;
+    Response?: SearchResultOfTrendingEntry;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

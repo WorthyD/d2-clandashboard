@@ -13,7 +13,7 @@ import { DestinyHistoricalStatsDestinyAggregateActivityResults } from './destiny
 
 
 export interface InlineResponse20056 { 
-    response?: DestinyHistoricalStatsDestinyAggregateActivityResults;
+    Response?: DestinyHistoricalStatsDestinyAggregateActivityResults;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

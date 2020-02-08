@@ -13,7 +13,7 @@ import { GlobalAlert } from './globalAlert';
 
 
 export interface InlineResponse20070 { 
-    response?: Array<GlobalAlert>;
+    Response?: Array<GlobalAlert>;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

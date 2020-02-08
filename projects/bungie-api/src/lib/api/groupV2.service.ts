@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { GroupsV2GroupQuery } from '../model/groupsV2GroupQuery';
 import { InlineResponse20013 } from '../model/inlineResponse20013';
 import { InlineResponse20016 } from '../model/inlineResponse20016';
 import { InlineResponse20017 } from '../model/inlineResponse20017';
@@ -1441,13 +1442,17 @@ export class GroupV2Service {
     /**
      * 
      * Search for Groups.
+     * @param body Created user object
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public groupV2GroupSearch(observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20020>;
-    public groupV2GroupSearch(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20020>>;
-    public groupV2GroupSearch(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20020>>;
-    public groupV2GroupSearch(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public groupV2GroupSearch(body: GroupsV2GroupQuery, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20020>;
+    public groupV2GroupSearch(body: GroupsV2GroupQuery, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20020>>;
+    public groupV2GroupSearch(body: GroupsV2GroupQuery, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20020>>;
+    public groupV2GroupSearch(body: GroupsV2GroupQuery, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling groupV2GroupSearch.');
+        }
 
         let headers = this.defaultHeaders;
 
@@ -1463,9 +1468,13 @@ export class GroupV2Service {
         // to determine the Content-Type header
         const consumes: string[] = [
         ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
 
         return this.httpClient.post<InlineResponse20020>(`${this.configuration.basePath}/GroupV2/Search/`,
-            null,
+            body,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

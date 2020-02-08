@@ -13,7 +13,7 @@ import { EntitiesEntityActionResult } from './entitiesEntityActionResult';
 
 
 export interface InlineResponse20028 { 
-    response?: Array<EntitiesEntityActionResult>;
+    Response?: Array<EntitiesEntityActionResult>;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

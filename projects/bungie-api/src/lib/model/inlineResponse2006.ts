@@ -13,7 +13,7 @@ import { PartnershipsPublicPartnershipDetail } from './partnershipsPublicPartner
 
 
 export interface InlineResponse2006 { 
-    response?: Array<PartnershipsPublicPartnershipDetail>;
+    Response?: Array<PartnershipsPublicPartnershipDetail>;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

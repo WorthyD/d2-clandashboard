@@ -13,7 +13,7 @@ import { DestinyResponsesDestinyCollectibleNodeDetailResponse } from './destinyR
 
 
 export interface InlineResponse20044 { 
-    response?: DestinyResponsesDestinyCollectibleNodeDetailResponse;
+    Response?: DestinyResponsesDestinyCollectibleNodeDetailResponse;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

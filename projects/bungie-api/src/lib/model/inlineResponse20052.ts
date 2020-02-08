@@ -13,7 +13,7 @@ import { DestinyHistoricalStatsDestinyHistoricalStatsByPeriod } from './destinyH
 
 
 export interface InlineResponse20052 { 
-    response?: { [key: string]: DestinyHistoricalStatsDestinyHistoricalStatsByPeriod; };
+    Response?: { [key: string]: DestinyHistoricalStatsDestinyHistoricalStatsByPeriod; };
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

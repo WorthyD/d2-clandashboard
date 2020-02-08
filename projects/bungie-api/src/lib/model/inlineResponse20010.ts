@@ -13,7 +13,7 @@ import { SearchResultOfContentItemPublicContract } from './searchResultOfContent
 
 
 export interface InlineResponse20010 { 
-    response?: SearchResultOfContentItemPublicContract;
+    Response?: SearchResultOfContentItemPublicContract;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

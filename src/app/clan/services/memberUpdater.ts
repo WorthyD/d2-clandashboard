@@ -5,7 +5,7 @@ import { BehaviorSubject, combineLatest, Observable, of, from } from 'rxjs';
 import * as moment from 'moment';
 
 import { GroupV2Service, Destiny2Service } from 'bungie-api';
-import { MemberProfile } from 'bungie-models';
+import { MemberProfile  } from 'bungie-models';
 import { take, mergeMap, map } from 'rxjs/operators';
 
 import * as cacheSelectors from '../store/clan-cache/clan-cache.selectors';
@@ -39,9 +39,7 @@ export class MemberUpdater {
         const cacheKey = 'memberActivity-' + memberId;
         this.logger.info('updating memeber activities', memberId);
 
-        const cacheDetails$ = this.store.pipe(
-            select(cacheSelectors.cacheById(cacheKey))
-        );
+        const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById(cacheKey)));
 
         cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
             const xpDate = moment().add(-1, 'hours');
@@ -55,25 +53,16 @@ export class MemberUpdater {
 
                 const characterActivity = from(characterIds).pipe(
                     mergeMap(characterId => {
-                        return this.d2Service
-                            .destiny2GetActivityHistory(
-                                characterId,
-                                memberId,
-                                memberType,
-                                250
-                            )
-                            .pipe(
-                                map(response => {
-                                    return response.Response;
-                                })
-                            );
+                        return this.d2Service.destiny2GetActivityHistory(characterId, memberId, memberType, 250).pipe(
+                            map((response ) => {
+                                return response.Response;
+                            })
+                        );
                     })
                 );
                 characterActivity.subscribe(
                     result => {
-                        playerActivities = playerActivities.concat(
-                            result.activities
-                        );
+                        playerActivities = playerActivities.concat(result.activities);
                     },
                     err => {},
                     () => {

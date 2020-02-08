@@ -15,7 +15,7 @@ import { UserUserInfoCard } from './userUserInfoCard';
 
 
 /**
- * I know what you seek. You seek linked accounts. Found them, you have.  This contract returns a minimal amount of data about Destiny Accounts that are linked through your Bungie.Net account. We will not return accounts in this response whose
+ * I know what you seek. You seek linked accounts. Found them, you have.  This contract returns a minimal amount of data about Destiny Accounts that are linked through your Bungie.Net account. We will not return accounts in this Response whose
  */
 export interface DestinyResponsesDestinyLinkedProfilesResponse { 
     /**

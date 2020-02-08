@@ -13,7 +13,7 @@ import { CommunityCommunityLiveStatus } from './communityCommunityLiveStatus';
 
 
 export interface InlineResponse20062 { 
-    response?: CommunityCommunityLiveStatus;
+    Response?: CommunityCommunityLiveStatus;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

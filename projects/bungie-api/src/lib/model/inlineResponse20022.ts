@@ -13,7 +13,7 @@ import { GroupsV2GroupOptionalConversation } from './groupsV2GroupOptionalConver
 
 
 export interface InlineResponse20022 { 
-    response?: Array<GroupsV2GroupOptionalConversation>;
+    Response?: Array<GroupsV2GroupOptionalConversation>;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

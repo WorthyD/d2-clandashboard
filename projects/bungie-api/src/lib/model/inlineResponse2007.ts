@@ -13,7 +13,7 @@ import { UserHardLinkedUserMembership } from './userHardLinkedUserMembership';
 
 
 export interface InlineResponse2007 { 
-    response?: UserHardLinkedUserMembership;
+    Response?: UserHardLinkedUserMembership;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

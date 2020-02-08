@@ -13,7 +13,7 @@ import { ApplicationsApiUsage } from './applicationsApiUsage';
 
 
 export interface InlineResponse200 { 
-    response?: ApplicationsApiUsage;
+    Response?: ApplicationsApiUsage;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

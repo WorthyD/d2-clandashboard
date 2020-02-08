@@ -13,7 +13,7 @@ import { ConfigGroupTheme } from './configGroupTheme';
 
 
 export interface InlineResponse20017 { 
-    response?: Array<ConfigGroupTheme>;
+    Response?: Array<ConfigGroupTheme>;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

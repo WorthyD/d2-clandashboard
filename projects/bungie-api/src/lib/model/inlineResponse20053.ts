@@ -13,7 +13,7 @@ import { DestinyHistoricalStatsDestinyHistoricalStatsAccountResult } from './des
 
 
 export interface InlineResponse20053 { 
-    response?: DestinyHistoricalStatsDestinyHistoricalStatsAccountResult;
+    Response?: DestinyHistoricalStatsDestinyHistoricalStatsAccountResult;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

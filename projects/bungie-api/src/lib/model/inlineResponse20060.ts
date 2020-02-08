@@ -13,7 +13,7 @@ import { DestinyAdvancedAwaAuthorizationResult } from './destinyAdvancedAwaAutho
 
 
 export interface InlineResponse20060 { 
-    response?: DestinyAdvancedAwaAuthorizationResult;
+    Response?: DestinyAdvancedAwaAuthorizationResult;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

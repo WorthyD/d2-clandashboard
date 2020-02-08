@@ -13,7 +13,7 @@ import { SearchResultOfCommunityLiveStatus } from './searchResultOfCommunityLive
 
 
 export interface InlineResponse20061 { 
-    response?: SearchResultOfCommunityLiveStatus;
+    Response?: SearchResultOfCommunityLiveStatus;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;

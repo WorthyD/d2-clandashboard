@@ -13,7 +13,7 @@ import { TagsModelsContractsTagResponse } from './tagsModelsContractsTagResponse
 
 
 export interface InlineResponse20014 { 
-    response?: Array<TagsModelsContractsTagResponse>;
+    Response?: Array<TagsModelsContractsTagResponse>;
     message?: string;
     messageData?: { [key: string]: string; };
     errorStatus?: string;
