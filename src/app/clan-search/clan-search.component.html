@@ -1,3 +1,14 @@
-<p>clan-search works!</p>
+<!-- <p>clan-search works!</p>
 <a routerLink="/2073131">DoD PC</a>
-<button (click)="load(2073131)">Load DoD PC</button>
+<button (click)="load(2073131)">Load DoD PC</button> -->
+
+<mat-form-field appearance="outline">
+    <input matInput autofocus #clanInput (keyup.Enter)="open(clanInput.value)" [matAutocomplete]="auto"
+        [formControl]="autocompleteControl" placeholder="Find your clan...">
+    <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="true"
+        (optionSelected)="autocompleteSelected($event)">
+        <mat-option *ngFor="let clan of (autocompleteResult$ | async)" [value]="clan">
+            {{clan.name}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

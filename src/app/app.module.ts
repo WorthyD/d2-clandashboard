@@ -14,10 +14,11 @@ import { StoreModule } from '@ngrx/store';
 // import { reducers, metaReducers } from './reducers';
 import { RootStoreModule } from './root-store/root-store.module';
 
-import { ClanSearchComponent } from './clan-search/clan-search.component';
+// import { ClanSearchComponent } from './clan-search/clan-search.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { DefinitionsModule } from '@destiny/data';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ClanSearchModule } from './clan-search/clan-search.module';
 
 // export function apiConfigFactory(): Configuration {
 //     const params: ConfigurationParameters = {
@@ -27,11 +28,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // }
 
 @NgModule({
-    declarations: [AppComponent, ClanSearchComponent],
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
-       // ApiModule.forRoot(apiConfigFactory),
+        // ApiModule.forRoot(apiConfigFactory),
         HttpClientModule,
         ClanModule,
         RootStoreModule,
@@ -42,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
             disableConsoleLogging: false
         }),
         DefinitionsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        ClanSearchModule
         //   StoreModule.forRoot(reducers, { metaReducers })
     ],
     providers: [
