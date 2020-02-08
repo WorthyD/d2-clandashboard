@@ -11,9 +11,6 @@ interface LoadClanResult {
     id: number;
     clanDetails: ClanDetails;
 }
-import { getProfile, HttpClientConfig } from 'bungie-api-ts/destiny2';
-import { groupSearch } from 'bungie-api-ts/groupv2';
-
 @Component({
     selector: 'app-clan-search',
     templateUrl: './clan-search.component.html',
