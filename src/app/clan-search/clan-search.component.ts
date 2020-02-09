@@ -8,6 +8,10 @@ import { Subscription } from 'rxjs';
 import { ClanDatabase } from '../services/ClanDatabase';
 import { FormControl } from '@angular/forms';
 import { map, sampleTime, shareReplay, switchMap, take, withLatestFrom } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { Router } from '@angular/router';
+
+import { NGXLogger } from 'ngx-logger';
 
 interface LoadClanResult {
     id: number;
@@ -22,7 +26,7 @@ interface LoadClanResult {
 export class ClanSearchComponent implements OnInit {
     loadSubscription: Subscription;
 
-    constructor(private groupService: GroupV2Service, private clanDB: ClanDatabase) {}
+    constructor(private groupService: GroupV2Service, private clanDB: ClanDatabase, private router: Router, private logger: NGXLogger) {}
 
     autocompleteControl = new FormControl('');
 
@@ -62,6 +66,17 @@ export class ClanSearchComponent implements OnInit {
     );
 
     ngOnInit() {}
+
+    /** Navigate to the select location from the autocomplete options. */
+    autocompleteSelected(event: MatAutocompleteSelectedEvent) {
+        this.logger.log('autocompleteSelected', event);
+        this.open(event.option.value);
+    }
+
+    open(group: any) {
+        this.logger.log('opening', group);
+        this.router.navigate(['clan', group.groupId]);
+    }
 
     load(clanId: number) {
         const clanResult: LoadClanResult = {
