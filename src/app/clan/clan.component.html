@@ -1,7 +1,9 @@
-<h1>Clan Detail</h1>
-<div *ngIf="clanDetails$ | async as clanDetails">
-    <h1>{{clanDetails.name}}</h1>
-</div>
+<!-- <mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span *ngIf="clanDetails$ | async as clanDetails">{{clanDetails.name}}</span>
+    </mat-toolbar-row>
+</mat-toolbar> -->
+<lib-navbar [clanDetails]="clanDetails$ | async"></lib-navbar>
 <a routerLink="./">Details</a>
 <a routerLink="roster">Clan Roster</a>
 <router-outlet></router-outlet>

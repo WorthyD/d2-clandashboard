@@ -9,14 +9,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { ClanComponent } from './clan.component';
 import { Updater } from './services/updater';
 import { MemberUpdater } from './services/memberUpdater';
-
-// mport { BungieParseModule } from 'bungie-parse';
+import { NavbarModule } from '@destiny/components';
 
 @NgModule({
     declarations: [ClanDetailComponent, ClanComponent],
     imports: [
         CommonModule,
         ClanRoutingModule,
+        NavbarModule,
         // ClanRosterModule,
         //         BungieParseModule,
         StoreModule.forFeature('clan', clanState.reducers),
