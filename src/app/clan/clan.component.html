@@ -4,6 +4,15 @@
     </mat-toolbar-row>
 </mat-toolbar> -->
 <lib-navbar [clanDetails]="clanDetails$ | async"></lib-navbar>
-<a routerLink="./">Details</a>
-<a routerLink="roster">Clan Roster</a>
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+        <mat-nav-list>
+            <a mat-list-item routerLink="./"> Details </a>
+            <a mat-list-item routerLink="roster"> Roster </a>
+        </mat-nav-list>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

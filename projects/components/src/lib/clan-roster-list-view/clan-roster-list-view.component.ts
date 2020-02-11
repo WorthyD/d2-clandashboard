@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
 import { MemberProfile, ClanMember } from 'bungie-models';
+import { MatSort } from '@angular/material/sort';
 
 export interface ClanMemberListItem {
     member: ClanMember;
@@ -13,9 +14,14 @@ export interface ClanMemberListItem {
     styleUrls: ['./clan-roster-list-view.component.css']
 })
 export class ClanRosterListViewComponent implements OnInit {
+    displayedColumns: string[] = ['memberId', 'displayName', 'displayName2', 'dateLastPlayed', 'controls'];
     @Input() members: ClanMemberListItem[];
 
     @Output() viewMember = new EventEmitter<number>();
+
+    @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+
     constructor() {}
 
     ngOnInit() {}

@@ -10,6 +10,8 @@ import { ClanComponent } from './clan.component';
 import { Updater } from './services/updater';
 import { MemberUpdater } from './services/memberUpdater';
 import { NavbarModule } from '@destiny/components';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
     declarations: [ClanDetailComponent, ClanComponent],
@@ -17,6 +19,8 @@ import { NavbarModule } from '@destiny/components';
         CommonModule,
         ClanRoutingModule,
         NavbarModule,
+        MatListModule,
+        MatSidenavModule,
         // ClanRosterModule,
         //         BungieParseModule,
         StoreModule.forFeature('clan', clanState.reducers),
