@@ -1,5 +1,4 @@
 <!-- <p>clan-search works!</p>
-<a routerLink="/2073131">DoD PC</a>
 <button (click)="load(2073131)">Load DoD PC</button> -->
 <h1>Clan Search</h1>
 <mat-form-field appearance="outline">
@@ -12,3 +11,5 @@
         </mat-option>
     </mat-autocomplete>
 </mat-form-field>
+<hr>
+<a [routerLink]="'./clan/2073131'">DoD PC</a>

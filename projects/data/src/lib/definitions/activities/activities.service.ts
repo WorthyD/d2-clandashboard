@@ -7,14 +7,16 @@ import * as definitionSelectors from '../store/definitions.selectors';
 
 import { ActivityModeDefinition } from 'bungie-models';
 import { Observable } from 'rxjs';
-import { DefinitionModel } from '../models/definitionModel';
+// import { DefinitionModel } from '../models/definitionModel';
 import { ActivityModeModel } from '../models/ActivityModeModel';
+import {ActivityDefinition} from '@destiny/models/definitions';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class ActivitiesService extends BaseDefinitionsService {
-    definitionModeKey = 'activites';
+    definitionModeKey = 'activities';
 
     constructor(private pStore: Store<DefinitionModelState>) {
         super(pStore);
@@ -24,7 +26,8 @@ export class ActivitiesService extends BaseDefinitionsService {
         this.addDefinitionsToState({ id: this.definitionModeKey, definitions: defs });
     }
 
-    getDefinitions(): Observable<ActivityModeModel> {
-        return this.pStore.select(definitionSelectors.cacheById(this.definitionModeKey));
+    getDefinitions(): Observable<ActivityDefinition> {
+        // return this.pStore.select(definitionSelectors.cacheById(this.definitionModeKey));
+        return this.getDefinitionsFromState(this.definitionModeKey);
     }
 }

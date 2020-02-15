@@ -8,14 +8,14 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>
-        <div *ngIf="member$ | async as member">
+        <!-- <div *ngIf="member$ | async as member">
             <h2>{{member.destinyUserInfo.displayName}}</h2>
         </div>
 
         <div *ngIf="profile$ | async as profile">
             <h2>{{profile.profile.data.dateLastPlayed}}</h2>
 
-        </div>
+        </div> -->
         <!-- <div *ngIf="activities$ | async as activities">
     <div *ngFor="let activity of activities">
         <h3>{{activity.period}} | {{activity.activityDetails.mode}} |{{activity.values.completed.basic.value}} </h3>
@@ -29,7 +29,7 @@
     {{activityDetailsTwo | json}}
 </code></pre>
         </div> -->
-        <div *ngIf="activityDetails$ | async as activityDetails">
+        <!-- <div *ngIf="activityDetails$ | async as activityDetails">
             <table>
                 <tr *ngFor="let activity of activityDetails">
                     <td>{{activity.playerActivity.period}} {{activity.playerActivity.values.completed.basic.value}}
@@ -40,11 +40,11 @@
                 </tr>
             </table>
 
-        </div>
+        </div> -->
 
 
 
-        <div>
+        <!-- <div>
             <pre>
         <code>
     {{(activityDetails$ | async)?.activity | json}}
@@ -57,7 +57,7 @@
         <div>
             todo: Load in character information from profile response?
             todo: Load first page of each character activity
-        </div>
+        </div> -->
 
     </mat-sidenav-content>
 </mat-sidenav-container>

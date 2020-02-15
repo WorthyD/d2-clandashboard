@@ -35,6 +35,12 @@
             ],
             "@destiny/data": [
                 "projects/data/src/public-api"
+            ],
+            "@destiny/models/definitions": [
+                "projects/bungie-models/src/lib/models/Definitions/public-api"
+            ],
+            "@destiny/models": [
+                "projects/bungie-models/src/public-api"
             ]
         }
     }

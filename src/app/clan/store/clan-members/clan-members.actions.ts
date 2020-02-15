@@ -26,3 +26,8 @@ export const loadClanMemberFailure = createAction(
     props<{ error: any }>()
 );
 
+
+export const selectClanMember = createAction(
+    `${base} Select Clan Member`,
+    props<{ memberId: number }>()
+);

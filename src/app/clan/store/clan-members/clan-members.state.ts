@@ -6,6 +6,7 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 export interface ClanMemberState extends EntityState<ClanMember> {
     loaded: boolean;
     loading: boolean;
+    selectedMemberId: number;
 }
 
 export const ClanMemberAdapter: EntityAdapter<ClanMember> = createEntityAdapter<ClanMember>({
@@ -15,5 +16,6 @@ export const ClanMemberAdapter: EntityAdapter<ClanMember> = createEntityAdapter<
 
 export const ClanMemberInitialState: ClanMemberState = ClanMemberAdapter.getInitialState({
     loaded: false,
-    loading: false
+    loading: false,
+    selectedMemberId: null
 });

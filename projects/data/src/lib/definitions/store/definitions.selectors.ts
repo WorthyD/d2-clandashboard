@@ -7,7 +7,7 @@ export const {
     selectIds: getDefinitionIds,
     selectEntities: getDefinitionEntities,
     selectAll: getAllDefinitions,
-    selectTotal: getTotaldefinitions
+    selectTotal: getTotalDefinitions
 } = DefinitionModelStateAdapter.getSelectors(getDefinitionState);
 
 export const cacheById = cacheId =>
