@@ -68,23 +68,17 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
             this.activityDefinitions$,
             (pActivities, pDefinitions, activityDefinitions) => {
                 if (pActivities && pDefinitions && activityDefinitions) {
-                    console.log(pActivities[0].activityDetails.mode);
                     const defArray = Object.keys(pDefinitions.definitions).map(id => pDefinitions.definitions[id]);
-                    //                    console.log(defArray.find(y => y.modeType === 6));
-                    //                   console.log(defArray.find(y => y.modeType === 7));
-
-                    //console.log(pActivities);
-
                     return pActivities.map(x => {
                         return {
                             playerActivity: x,
                             activity: activityDefinitions.definitions[x.activityDetails.referenceId],
-                            activityTypes: x.activityDetails.modes.map(
-                                z =>
-                                    defArray.find(y => {
-                                        return y.modeType === z;
-                                    }).displayProperties.name
-                            ),
+                            // activityTypes: x.activityDetails.modes.map(
+                            //     z =>
+                            //         defArray.find(y => {
+                            //             return y.modeType === z;
+                            //         }).displayProperties.name
+                            // ),
                             activityMode: defArray.find(y => {
                                 return y.modeType === x.activityDetails.mode;
                             })
