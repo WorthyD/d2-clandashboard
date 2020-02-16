@@ -57,40 +57,40 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {}
 
-    loadMemberDetails(memberId) {
-        this.member$ = this.store.pipe(select(clanMemberSelectors.getClanMemberById(memberId)));
-        this.profile$ = this.store.pipe(select(memberProfileSelectors.getClanMemberById(memberId)));
+    // loadMemberDetails(memberId) {
+    //     this.member$ = this.store.pipe(select(clanMemberSelectors.getClanMemberById(memberId)));
+    //     this.profile$ = this.store.pipe(select(memberProfileSelectors.getClanMemberById(memberId)));
 
-        this.playerActivities$ = this.store.pipe(select(getRecentClanMemberActivities(memberId)));
-        this.activityModeDefinitions$ = this.activityModeService.getDefinitions();
-        this.activityDefinitions$ = this.activityService.getDefinitions();
+    //     this.playerActivities$ = this.store.pipe(select(getRecentClanMemberActivities(memberId)));
+    //     this.activityModeDefinitions$ = this.activityModeService.getDefinitions();
+    //     this.activityDefinitions$ = this.activityService.getDefinitions();
 
-        this.activityDetails$ = combineLatest(
-            this.playerActivities$,
-            this.activityModeDefinitions$,
-            this.activityDefinitions$,
-            (pActivities, pDefinitions, activityDefinitions) => {
-                if (pActivities && pDefinitions && activityDefinitions) {
-                    const defArray = Object.keys(pDefinitions.definitions).map(id => pDefinitions.definitions[id]);
-                    return pActivities.map(x => {
-                        return {
-                            playerActivity: x,
-                            activity: activityDefinitions.definitions[x.activityDetails.referenceId],
-                            activityTypes: x.activityDetails.modes.map(
-                                z =>
-                                    defArray.find(y => {
-                                        return y.modeType === z;
-                                    }).displayProperties.name
-                            ),
-                            activityMode: defArray.find(y => {
-                                return y.modeType === x.activityDetails.mode;
-                            })
-                        };
-                    });
-                }
-                return [];
-            }
-        );
+    //     this.activityDetails$ = combineLatest(
+    //         this.playerActivities$,
+    //         this.activityModeDefinitions$,
+    //         this.activityDefinitions$,
+    //         (pActivities, pDefinitions, activityDefinitions) => {
+    //             if (pActivities && pDefinitions && activityDefinitions) {
+    //                 const defArray = Object.keys(pDefinitions.definitions).map(id => pDefinitions.definitions[id]);
+    //                 return pActivities.map(x => {
+    //                     return {
+    //                         playerActivity: x,
+    //                         activity: activityDefinitions.definitions[x.activityDetails.referenceId],
+    //                         activityTypes: x.activityDetails.modes.map(
+    //                             z =>
+    //                                 defArray.find(y => {
+    //                                     return y.modeType === z;
+    //                                 }).displayProperties.name
+    //                         ),
+    //                         activityMode: defArray.find(y => {
+    //                             return y.modeType === x.activityDetails.mode;
+    //                         })
+    //                     };
+    //                 });
+    //             }
+    //             return [];
+    //         }
+    //     );
 
         // this.activityDetailsTwo$ = combineLatest(
         //     this.playerActivities$,
@@ -149,16 +149,16 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
         //         console.log(obj[k]);
         //     }
         // });
-        this.profile$
-            .pipe(
-                filter(loaded => !!loaded),
-                take(1)
-            )
-            .subscribe(x => {
-                console.log('loading activities');
-                this.store.dispatch(memberActivityActions.loadMemberActivities({ member: x }));
-            });
-    }
+    //     this.profile$
+    //         .pipe(
+    //             filter(loaded => !!loaded),
+    //             take(1)
+    //         )
+    //         .subscribe(x => {
+    //             console.log('loading activities');
+    //             this.store.dispatch(memberActivityActions.loadMemberActivities({ member: x }));
+    //         });
+    // }
 
     ngOnDestroy() {
         this.destroyed.next();
