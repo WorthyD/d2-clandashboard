@@ -2,6 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { getClanState } from '../clan-state.selector';
 import * as memberActivityStatState from './member-activities.state';
+import { getSelectedClanMemberId } from '../clan-members/clan-members.selectors';
 
 export const getMemberProfileEntityState = createSelector(getClanState, state => state.memberActivities);
 
@@ -21,3 +22,7 @@ export const getClanMemberActivities = memberId =>
     createSelector(getClanMemberById(memberId), activities => {
         return activities && activities.activities;
     });
+
+export const getSelectedClanMemberActivities = createSelector(getSelectedClanMemberId, getMemberProfileEntities, (memberId, entities) => {
+    return memberId && entities[memberId] && entities[memberId].activities;
+});

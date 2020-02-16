@@ -13,6 +13,10 @@ import { DefinitionModel } from '../models/definitionModel';
 // import { ClanMember } from 'bungie-models';
 
 import { ActivityModeDefinition } from '@destiny/models/definitions';
+interface DefinitionActivityModel {
+    id: string;
+    definitions: ActivityModeDefinition[];
+}
 
 @Injectable({
     providedIn: 'root'
@@ -28,7 +32,7 @@ export class ActivityModeService extends BaseDefinitionsService {
         this.addDefinitionsToState({ id: this.definitionModeKey, definitions: defs });
     }
 
-    getDefinitions(): Observable<ActivityModeDefinition> {
+    getDefinitions(): Observable<DefinitionActivityModel> {
         return this.getDefinitionsFromState(this.definitionModeKey);
     }
 }
