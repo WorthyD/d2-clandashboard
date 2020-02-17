@@ -5,7 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { ActivitiesService, ActivityModeService } from '@destiny/data';
 import { Observable, combineLatest } from 'rxjs';
 import { MemberActivityGridItem } from '@destiny/components';
-import {getSelectedClanMemberActivities} from '../../store/member-activities/member-activities.selectors';
+import { getSelectedClanMemberActivities } from '../../store/member-activities/member-activities.selectors';
 @Injectable()
 export class MemberActivityService {
     constructor(
@@ -19,26 +19,19 @@ export class MemberActivityService {
     activityDefinitions$ = this.activityService.getDefinitions();
     playerActivities$ = this.store.pipe(select(getSelectedClanMemberActivities));
 
-
     activityDetails$: Observable<MemberActivityGridItem[]> = combineLatest(
         this.playerActivities$,
         this.activityModeDefinitions$,
         this.activityDefinitions$,
         (pActivities, activityModeDefinitions, activityDefinitions) => {
             if (pActivities && activityModeDefinitions && activityDefinitions) {
-
-               const defArray = Object.keys(activityModeDefinitions.definitions).map(id => activityModeDefinitions.definitions[id]);
+                pActivities = pActivities.slice(0, 25);
+                const defArray = Object.keys(activityModeDefinitions.definitions).map(id => activityModeDefinitions.definitions[id]);
                 return pActivities.map(x => {
                     return {
                         playerActivity: x,
-                        activity: activityDefinitions.definitions[x.activityDetails.referenceId],
-                        activityTypes: x.activityDetails.modes.map(
-                            z =>
-                                defArray.find(y => {
-                                    return y.modeType === z;
-                                }).displayProperties.name
-                        ),
-                        activityMode: defArray.find(y => {
+                        activityDefinition: activityDefinitions.definitions[x.activityDetails.referenceId],
+                        activityModeDefinition: defArray.find(y => {
                             return y.modeType === x.activityDetails.mode;
                         })
                     };
@@ -47,6 +40,4 @@ export class MemberActivityService {
             return [];
         }
     );
-
-
 }
