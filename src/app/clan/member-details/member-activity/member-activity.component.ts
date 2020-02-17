@@ -13,15 +13,13 @@ import { MemberActivityService } from './member-activity.service';
     selector: 'app-member-activity',
     templateUrl: './member-activity.component.html',
     styleUrls: ['./member-activity.component.scss'],
-    providers:[MemberActivityService]
+    providers: [MemberActivityService]
 })
 export class MemberActivityComponent implements OnInit {
     // activityDetails$: Observable<MemberActivityGridItem[]>;
 
     // selectedMember$ = this.store.pipe(select(getSelectedClanMember));
-    constructor(
-       private memberActivityService: MemberActivityService
-    ) {}
+    constructor(public memberActivityService: MemberActivityService) {}
 
     ngOnInit(): void {}
 }

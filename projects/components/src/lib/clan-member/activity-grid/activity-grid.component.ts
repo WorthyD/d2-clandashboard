@@ -13,6 +13,7 @@ export interface MemberActivityGridItem {
     styleUrls: ['./activity-grid.component.scss']
 })
 export class ActivityGridComponent implements OnInit {
+    displayedColumns: string[] = ['icon', 'type', 'didComplete','duration',  'when'];
 
     @Input()
     activityItems: MemberActivityGridItem[];

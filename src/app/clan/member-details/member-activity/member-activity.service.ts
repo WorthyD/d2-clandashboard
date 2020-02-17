@@ -25,7 +25,6 @@ export class MemberActivityService {
         this.activityDefinitions$,
         (pActivities, activityModeDefinitions, activityDefinitions) => {
             if (pActivities && activityModeDefinitions && activityDefinitions) {
-                pActivities = pActivities.slice(0, 25);
                 const defArray = Object.keys(activityModeDefinitions.definitions).map(id => activityModeDefinitions.definitions[id]);
                 return pActivities.map(x => {
                     return {

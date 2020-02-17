@@ -1,17 +1,23 @@
-import { Button } from '@storybook/angular/demo';
+import { moduleMetadata } from '@storybook/angular';
+import { ActivityGridComponent } from './activity-grid.component';
+import { ActivityGridModule } from './activity-grid.module';
+import {MOCK_GRID_ITEMS} from './_MOCK_GRID_ITEMS';
 
-export default { title: 'My Button' }
+export default {
+    title: 'Activity Grid',
+    decorators: [
+        moduleMetadata({
+            imports: [ActivityGridModule]
+        })
+    ]
+};
 
-export const withText = () => ({
-  component: Button,
-  props: {
-    text: 'Hello Button',
-  },
-});
-
-export const withEmoji = () => ({
-  component: Button,
-  props: {
-    text: '😀 😎 👍 💯',
-  },
+export const base = () => ({
+    component: ActivityGridComponent,
+    template: `
+        <lib-activity-grid [activityItems]="activityItems"></lib-activity-grid>
+   `,
+    props: {
+        activityItems: MOCK_GRID_ITEMS
+    }
 });

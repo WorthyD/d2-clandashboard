@@ -1,6 +1,8 @@
-<p>member-activity works!</p>
-<lib-activity-grid></lib-activity-grid>
-<h3>Hello world</h3>
+<!-- <p>member-activity works!</p> -->
+
+<lib-activity-grid [activityItems]="memberActivityService.activityDetails$| async"></lib-activity-grid>
+
+<!-- <h3>Hello world</h3>
 <textarea name="" id="" cols="30" rows="10">
 {{(memberActivityService.activityDetails$ | async) | json}}
-</textarea>
+</textarea> -->
