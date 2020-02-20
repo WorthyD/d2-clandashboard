@@ -1,9 +1,13 @@
-<h1>Clan Detail</h1>
 <div *ngIf="clanDetails$ | async as clanDetails">
     <h1>{{clanDetails.name}}</h1>
     <h3>{{clanDetails.motto}}</h3>
     <h4>Member Count: {{clanDetails.memberCount}}</h4>
     <p>{{clanDetails.about}}</p>
+    <code>
+        <pre>
+            {{clanDetails | json}}
+        </pre>
+    </code>
 </div>
 
 
