@@ -25,7 +25,7 @@ import {
 } from 'rxjs/operators';
 
 @Injectable()
-export class ClanDetailEffects {
+export class ClanRewardEffects {
     constructor(
         private actions$: Actions,
         private store: Store<any>,

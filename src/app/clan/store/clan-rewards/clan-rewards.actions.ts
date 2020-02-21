@@ -2,46 +2,42 @@ import { createAction, props } from '@ngrx/store';
 
 import { ClanDetails } from 'bungie-models';
 
-const base = '[Clan_Details] - ';
+const base = '[Clan_Rewards] - ';
 
-//export const LOAD_CLAN = `${base} Load Clan`;
-// export const LOAD_CLAN_FAIL = `${base} Load Clan Fail`;
-// export const LOAD_CLAN_SUCCESS = `${base} Load Clan Success`;
-
-export const loadClan = createAction(
-    `${base} Load Clan`,
+export const loadRewards = createAction(
+    `${base} Load Rewards`,
     props<{ clanId: number }>()
 );
-export const loadClanSuccess = createAction(
-    `${base} Load Clan Success`,
+export const loadRewardsSuccess = createAction(
+    `${base} Load Reward Success`,
     props<{ clanDetails: ClanDetails }>()
 );
-export const loadClanFailure = createAction(
-    `${base} Load Clan Failure`,
+export const loadReqardsFailure = createAction(
+    `${base} Load Reward Failure`,
     props<{ error: any }>()
 );
 
 
 export const updateClanFromAPI = createAction(
-    `${base} updateClanFromAPI`,
+    `${base} updateRewardsFromAPI`,
     props<{ clanDetails: ClanDetails }>()
 );
 
 
 export const loadClanFromAPI = createAction(
-    `${base} Load Clan API`,
+    `${base} Load Reward API`,
     props<{ clanId: number }>()
 );
 export const loadClanFromAPISuccess = createAction(
-    `${base} Load Clan API Success`,
+    `${base} Load Reward API Success`,
     props<{ clanDetails: ClanDetails }>()
 );
 export const loadClanFromAPIFailure = createAction(
-    `${base} Load Clan API Failure`,
+    `${base} Load Reward API Failure`,
     props<{ error: any }>()
 );
 
 export const checkClanCache = createAction(
-    `${base} Check Clan Cache`,
+    `${base} Check Reward Cache`,
     props<{ clanId: number }>()
 );

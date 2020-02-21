@@ -1,13 +1,13 @@
-import {ClanDetails} from 'bungie-models';
+import {ClanReward} from 'bungie-models';
 
-export interface ClanDetailState {
-    clan: ClanDetails;
+export interface ClanRewardState {
+    clanReward: ClanReward;
     loaded: boolean;
     loading: boolean;
 }
 
-export const initialState: ClanDetailState = {
-    clan: null,
+export const initialState: ClanRewardState = {
+    clanReward: null,
     loaded: false,
     loading: false
 };

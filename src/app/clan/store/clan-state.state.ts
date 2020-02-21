@@ -23,10 +23,15 @@ import * as clanCacheState from './clan-cache/clan-cache.state';
 import * as clanCacheReducer from './clan-cache/clan-cache.reducers';
 import { ClanCacheEffects } from './clan-cache/clan-cache.effects';
 
+import * as clanRewardState from './clan-rewards/clan-rewards.state';
+import * as clanRewardReducer from './clan-rewards/clan-rewards.reducers';
+import { ClanRewardEffects } from './clan-rewards/clan-rewards.effects';
+
 export interface ClanState {
     clanId: number;
     clanDetails: clanDetailState.ClanDetailState;
     clanMembers: clanMemberState.ClanMemberState;
+    clanRewards: clanRewardState.ClanRewardState;
     memberProfiles: memberProfileState.MemberProfileState;
     memberActivities: memberActivityState.MemberActivityStatState;
     clanCache: clanCacheState.CacheDetailState;
@@ -35,6 +40,7 @@ export interface ClanState {
 export const reducers: ActionReducerMap<ClanState> = {
     clanId: ClanIdReducer,
     clanDetails: clanDetailReducers.ClanDetailReducer,
+    clanRewards: clanRewardReducer.ClanRewardReducer,
     clanMembers: clanMemberReducer.ClanMemberReducer,
     memberProfiles: memberProfileReducer.MemberProfileReducer,
     memberActivities: memberActivityReducer.MemberProfileReducer,
@@ -46,6 +52,7 @@ export const ClanEffects = [
     ClanMemberEffects,
     MemberProfileEffects,
     MemberStatEffects,
-    ClanCacheEffects
+    ClanCacheEffects,
+    ClanRewardEffects
 ];
 // export const ClanEffects = [ClanDetailEffects, ClanMemberEffects];
