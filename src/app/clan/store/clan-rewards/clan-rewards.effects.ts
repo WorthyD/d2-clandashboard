@@ -5,14 +5,15 @@ import { Store, select } from '@ngrx/store';
 import { empty, of } from 'rxjs';
 import { take, withLatestFrom } from 'rxjs/operators';
 
-import * as clanDetailActions from './clan-detail.actions';
+//import * as clanDetailActions from './clan-detail.actions';
+import * as clanRewardActions from './clan-rewards.actions';
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
 // import { GroupV2Service } from 'bungie-api';
 
 // import { ClanParseService } from '../../../parser/parsers/clan-parse.service';
 
 import { ClanDatabase } from '../../../services/ClanDatabase';
-import { Updater } from '../../services/updater';
+import { RewardsUpdater } from '../../services/clanRewardsUpdater';
 
 import {
     catchError,
@@ -32,25 +33,25 @@ export class ClanRewardEffects {
         //     private groupService: GroupV2Service,
         //      private parser: ClanParseService,
         private clanDB: ClanDatabase,
-        private updater: Updater
+        private updater: RewardsUpdater
     ) {}
 
-    loadDetails$ = createEffect(() =>
+    loadRewards$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(clanDetailActions.loadClan),
+            ofType(clanRewardActions.loadRewards),
             switchMap(({ clanId }) => {
                 return this.clanDB
                     .getValues(clanId.toString())
-                    .ClanDetails.pipe(
+                    .ClanRewards.pipe(
                         take(1),
-                        map(clanDetails => {
-                            if (clanDetails[0] && clanDetails[0].clanDetails) {
-                                return clanDetailActions.loadClanSuccess({
-                                    clanDetails: clanDetails[0].clanDetails
+                        map(clanRewards => {
+                            if (clanRewards[0] && clanRewards[0]) {
+                                return clanRewardActions.loadRewardsSuccess({
+                                    clanReward: clanRewards[0].clanRewards
                                 });
                             } else {
-                                return clanDetailActions.loadClanSuccess({
-                                    clanDetails: {}
+                                return clanRewardActions.loadRewardsSuccess({
+                                    clanReward: {}
                                 });
                             }
                         })
@@ -62,9 +63,9 @@ export class ClanRewardEffects {
     updateDetails$ = createEffect(
         () =>
             this.actions$.pipe(
-                ofType(clanDetailActions.loadClan),
+                ofType(clanRewardActions.loadRewards),
                 tap(({ clanId }) => {
-                    this.updater.update('clanDetails', clanId);
+                    this.updater.update('clanRewards', clanId);
                 })
             ),
         { dispatch: false }
@@ -73,16 +74,15 @@ export class ClanRewardEffects {
     syncDetails$ = createEffect(
         () =>
             this.actions$.pipe(
-                ofType(clanDetailActions.updateClanFromAPI),
+                ofType(clanRewardActions.loadRewardsFromAPI),
                 withLatestFrom(
                     this.store.select(clanIdSelectors.getClanIdState)
                 ),
                 tap(([action, clanId]) => {
-                    console.log('updating from api');
-                    this.clanDB.update(clanId.toString(), 'ClanDetails', [
+                    this.clanDB.update(clanId.toString(), 'ClanRewards', [
                         {
-                            id: action.clanDetails.groupId,
-                            clanDetails: action.clanDetails
+                            id: clanId,
+                            clanRewards: action.clanReward
                         }
                     ]);
                 })

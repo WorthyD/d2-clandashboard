@@ -46,24 +46,24 @@
 // }
 
 import { createReducer, on } from '@ngrx/store';
-import * as clanState from './clan-detail.state';
-import * as clanActions from './clan-detail.actions';
+import * as clanState from './clan-rewards.state';
+import * as clanActions from './clan-rewards.actions';
 
 export const ClanRewardReducer = createReducer(
     clanState.initialState,
-    on(clanActions.loadClan, state => ({
+    on(clanActions.loadRewards, state => ({
         ...state,
         loading: true
     })),
-    on(clanActions.loadClanSuccess, (state, { clanDetails }) => ({
+    on(clanActions.loadRewardsSuccess, (state, { clanReward }) => ({
         ...state,
-        clan: clanDetails,
+        clanReward: clanReward,
         loaded: true,
         loading: false
     })),
-    on(clanActions.updateClanFromAPI, (state, { clanDetails }) => ({
+    on(clanActions.updateClanFromAPI, (state, { clanReward }) => ({
         ...state,
-        clan: clanDetails,
+        clan: clanReward,
         loaded: true,
         loading: false
     }))

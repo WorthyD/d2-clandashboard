@@ -16,7 +16,7 @@ import * as clanIdActions from './store/clan-id/clan-id.action';
 import * as clanMemberSelectors from './store/clan-members/clan-members.selectors';
 import * as clanMemberActions from './store/clan-members/clan-members.actions';
 import * as memberActivityActions from './store/member-activities/member-activities.actions';
-
+import * as clanRewardActions from './store/clan-rewards/clan-rewards.actions';
 import * as memberProfileActions from './store/member-profiles/member-profiles.actions';
 
 import * as routerStore from '../root-store/router/router.selectors';
@@ -25,7 +25,13 @@ import {} from 'bungie-models';
 // import { Clan } from 'bungie-parse';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subject, Subscription } from 'rxjs';
-import { filter, map, distinctUntilChanged, takeUntil, take } from 'rxjs/operators';
+import {
+    filter,
+    map,
+    distinctUntilChanged,
+    takeUntil,
+    take
+} from 'rxjs/operators';
 
 import { RewardsUpdater } from './services/clanRewardsUpdater';
 
@@ -41,12 +47,18 @@ export class ClanComponent implements OnInit, OnDestroy {
         private rStore: Store<routerStore.State>,
         private clanRewards: RewardsUpdater
     ) {
-        this.clanId.pipe(takeUntil(this.destroyed)).subscribe(r => this.loadClan(r));
+        this.clanId
+            .pipe(takeUntil(this.destroyed))
+            .subscribe(r => this.loadClan(r));
     }
 
-    private clanId = this.activatedRoute.params.pipe(map(x => x.id, distinctUntilChanged()));
+    private clanId = this.activatedRoute.params.pipe(
+        map(x => x.id, distinctUntilChanged())
+    );
 
-    clanDetails$: Observable<ClanDetails> = this.store.pipe(select(clanDetailSelectors.getClanDetail));
+    clanDetails$: Observable<ClanDetails> = this.store.pipe(
+        select(clanDetailSelectors.getClanDetail)
+    );
     // clanMembers$: Observable<ClanMember[]> = this.store.pipe(
     //     select(clanMemberSelectors.getAllMembers)
     // );
@@ -62,7 +74,9 @@ export class ClanComponent implements OnInit, OnDestroy {
 
     loadClan(clanId) {
         // if valid clan load the rest
-        this.store.dispatch(clanCacheActions.initializeCache({ clanId: clanId }));
+        this.store.dispatch(
+            clanCacheActions.initializeCache({ clanId: clanId })
+        );
 
         this.store
             .select(clanCacheSelectors.isCacheLoaded)
@@ -71,12 +85,23 @@ export class ClanComponent implements OnInit, OnDestroy {
                 take(1)
             )
             .subscribe(x => {
-                this.clanRewards.update('clanRewards', clanId);
+                // this.clanRewards.update('clanRewards', clanId);
+                this.store.dispatch(
+                    clanRewardActions.loadRewards({ clanId: clanId })
+                );
 
-                this.store.dispatch(clanIdActions.setClanId({ clanId: clanId }));
-                this.store.dispatch(clanDetailActions.loadClan({ clanId: clanId }));
-                this.store.dispatch(clanMemberActions.loadClanMembers({ clanId: clanId }));
-                this.store.dispatch(memberProfileActions.loadMemberProfiles({ clanId: clanId }));
+                this.store.dispatch(
+                    clanIdActions.setClanId({ clanId: clanId })
+                );
+                this.store.dispatch(
+                    clanDetailActions.loadClan({ clanId: clanId })
+                );
+                this.store.dispatch(
+                    clanMemberActions.loadClanMembers({ clanId: clanId })
+                );
+                this.store.dispatch(
+                    memberProfileActions.loadMemberProfiles({ clanId: clanId })
+                );
                 this.store.dispatch(
                     memberActivityActions.loadClanMembersActivities({
                         clanId: clanId

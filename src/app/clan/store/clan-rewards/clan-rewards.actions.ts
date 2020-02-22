@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { ClanDetails } from 'bungie-models';
+import { ClanReward } from 'bungie-models';
 
 const base = '[Clan_Rewards] - ';
 
@@ -10,7 +10,7 @@ export const loadRewards = createAction(
 );
 export const loadRewardsSuccess = createAction(
     `${base} Load Reward Success`,
-    props<{ clanDetails: ClanDetails }>()
+    props<{ clanReward: ClanReward }>()
 );
 export const loadReqardsFailure = createAction(
     `${base} Load Reward Failure`,
@@ -20,19 +20,19 @@ export const loadReqardsFailure = createAction(
 
 export const updateClanFromAPI = createAction(
     `${base} updateRewardsFromAPI`,
-    props<{ clanDetails: ClanDetails }>()
+    props<{ clanReward: ClanReward }>()
 );
 
 
-export const loadClanFromAPI = createAction(
+export const loadRewardsFromAPI = createAction(
     `${base} Load Reward API`,
-    props<{ clanId: number }>()
+    props<{ clanReward: ClanReward }>()
 );
-export const loadClanFromAPISuccess = createAction(
+export const loadRewardsFromAPISuccess = createAction(
     `${base} Load Reward API Success`,
-    props<{ clanDetails: ClanDetails }>()
+    props<{ clanReward: ClanReward }>()
 );
-export const loadClanFromAPIFailure = createAction(
+export const loadRewardsFromAPIFailure = createAction(
     `${base} Load Reward API Failure`,
     props<{ error: any }>()
 );

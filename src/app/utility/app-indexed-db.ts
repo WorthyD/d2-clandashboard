@@ -8,6 +8,7 @@ export type StoreId =
     | 'CacheDetails'
     | 'ClanDetails'
     | 'ClanMembers'
+    | 'ClanRewards'
     | 'MemberProfiles'
     | 'MemberActivities';
 
@@ -15,6 +16,7 @@ export const STORE_IDS: StoreId[] = [
     'CacheDetails',
     'ClanDetails',
     'ClanMembers',
+    'ClanRewards',
     'MemberProfiles',
     'MemberActivities'
 ];

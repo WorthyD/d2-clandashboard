@@ -8,6 +8,7 @@ import { GroupV2Service, Destiny2Service } from 'bungie-api';
 import { MemberProfile  } from 'bungie-models';
 import { take, mergeMap, map } from 'rxjs/operators';
 
+import * as rewardActions from '../store/clan-rewards/clan-rewards.actions';
 import * as cacheSelectors from '../store/clan-cache/clan-cache.selectors';
 import * as cacheActions from '../store/clan-cache/clan-cache.actions';
 import * as memberActivityActions from '../store/member-activities/member-activities.actions';
@@ -35,34 +36,39 @@ export class RewardsUpdater {
 
     private updateMemberActivities(clanId: number) {
         const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('clanRewards')));
+        this.logger.log('Updating Clan Rewards', clanId);
 
         cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
             const xpDate = moment().add(-1, 'hours');
             if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
                 this.setTypeState('clanRewards', 'updating');
+                this.logger.log('Clan Rewards Updating');
                 this.destiny2Service
                     .destiny2GetClanWeeklyRewardState(clanId)
                     .pipe(take(1))
                     .subscribe((x) => {
-                        console.log(x);
-                        // this.store.dispatch(
-                        //     clanMemberActions.loadClanMembersFromAPI({
-                        //         clanMembers: x.Response.results
-                        //     })
-                        // );
-                        // this.store.dispatch(
-                        //     cacheActions.updateCache({
-                        //         cache: {
-                        //             id: 'clanRewards',
-                        //             lastUpdated: new Date()
-                        //         }
-                        //     })
-                        // );
+                        this.logger.log('Clan Weekly Rewards received', x);
+                        this.store.dispatch(
+                            rewardActions.loadRewardsFromAPI({
+                                clanReward: x.Response
+                            })
+                        );
 
-                        // this.setTypeState('clanRewards', 'updated');
+                        this.store.dispatch(
+                            cacheActions.updateCache({
+                                cache: {
+                                    id: 'clanRewards',
+                                    lastUpdated: new Date()
+                                }
+                            })
+                        );
+
+                         this.setTypeState('clanRewards', 'updated');
+                        this.logger.log('Clan Rewards Updated');
                     });
             } else {
                 this.setTypeState('clanRewards', 'up-to-date');
+                this.logger.log('Clan Rewards up to date');
             }
         });
 
