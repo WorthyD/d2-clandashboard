@@ -26,7 +26,6 @@ export class ClanDetailService {
         this.clanRewardDefinitions$,
         (clanWeekRewards, clanRewardDefinitions) => {
             if (clanWeekRewards && clanRewardDefinitions) {
-                console.log(clanWeekRewards);
                 const rewards = clanWeekRewards.rewards.find(
                     x =>
                         x.rewardCategoryHash ==
@@ -37,9 +36,17 @@ export class ClanDetailService {
 
                 return {
                     title: clanRewardDefinitions.displayProperties.name,
-                    rewards: rewards.map(r => {
-                        return { earned: r.earned };
+                    rewards: rewards.entries.map(r => {
+                        return {
+                            entry: r.earned,
+                            definitions:
+                                clanRewardDefinitions.rewards[
+                                    rewards.rewardCategoryHash
+                                ].
+                        };
                     })
+                    //     return { earned: r.earned };
+                    // })
                 };
             }
             return null;
