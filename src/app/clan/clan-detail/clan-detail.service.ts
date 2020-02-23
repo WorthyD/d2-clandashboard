@@ -14,42 +14,38 @@ export class ClanDetailService {
         private milestoneDefinitionService: MilestoneDefinitionService
     ) {}
 
-    clanRewards$: Observable<ClanReward> = this.store.pipe(
-        select(getClanRewards)
-    );
+    clanRewards$: Observable<ClanReward> = this.store.pipe(select(getClanRewards));
     clanRewardDefinitions$ = this.milestoneDefinitionService.getDefinitionsByHash(
         MilestoneHashes.ClanRewards
     );
 
-    clanWeekRewards$: Observable<any> = combineLatest(
+    clanWeekRewards$: Observable<ClanWeeklyProgressModel> = combineLatest(
         this.clanRewards$,
         this.clanRewardDefinitions$,
         (clanWeekRewards, clanRewardDefinitions) => {
             if (clanWeekRewards && clanRewardDefinitions) {
-                const rewards = clanWeekRewards.rewards.find(
-                    x =>
-                        x.rewardCategoryHash ==
-                        MilestoneHashes.ClanCurrentWeekRewards
+                return this.mapClanRewards(
+                    clanWeekRewards,
+                    clanRewardDefinitions,
+                    MilestoneHashes.ClanCurrentWeekRewards
                 );
-
-                console.log(rewards);
-
-                return {
-                    title: clanRewardDefinitions.displayProperties.name,
-                    rewards: rewards.entries.map(r => {
-                        return {
-                            entry: r.earned,
-                            definitions:
-                                clanRewardDefinitions.rewards[
-                                    rewards.rewardCategoryHash
-                                ].
-                        };
-                    })
-                    //     return { earned: r.earned };
-                    // })
-                };
             }
             return null;
         }
     );
+
+    private mapClanRewards(clanWeekRewards, clanRewardDefinitions, weekHash) {
+        const rewards = clanWeekRewards.rewards.find(x => x.rewardCategoryHash === weekHash);
+        const rewardDefinitions = clanRewardDefinitions.rewards[weekHash];
+
+        return {
+            title: rewardDefinitions.displayProperties.name,
+            rewards: rewards.entries.map(r => {
+                return {
+                    earned: r.earned,
+                    definition: rewardDefinitions.rewardEntries[r.rewardEntryHash]
+                };
+            })
+        };
+    }
 }

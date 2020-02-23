@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { MilestoneRewardDefinition } from 'bungie-models';
+
+export interface ClanWeeklyProgressModel {
+    earned: boolean;
+    definition: MilestoneRewardDefinition;
+}
 
 @Component({
-  selector: 'lib-clan-weekly-progress',
-  templateUrl: './clan-weekly-progress.component.html',
-  styleUrls: ['./clan-weekly-progress.component.scss']
+    selector: 'lib-clan-weekly-progress',
+    templateUrl: './clan-weekly-progress.component.html',
+    styleUrls: ['./clan-weekly-progress.component.scss']
 })
 export class ClanWeeklyProgressComponent implements OnInit {
+    constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {}
 }
