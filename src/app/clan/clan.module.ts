@@ -12,12 +12,14 @@ import { MemberUpdater } from './services/memberUpdater';
 import { NavbarModule } from '@destiny/components';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {RewardsUpdater} from './services/clanRewardsUpdater';
+import { RewardsUpdater } from './services/clanRewardsUpdater';
+import { ClanDetailModule } from './clan-detail/clan-detail.module';
 
 @NgModule({
-    declarations: [ClanDetailComponent, ClanComponent],
+    declarations: [ClanComponent],
     imports: [
         CommonModule,
+        ClanDetailModule,
         ClanRoutingModule,
         NavbarModule,
         MatListModule,

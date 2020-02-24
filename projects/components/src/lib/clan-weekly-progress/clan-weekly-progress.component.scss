@@ -1,9 +1,13 @@
 .rewards {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .reward {
+    min-width: 200px;
     width: 25%;
-    text-align:center;
+    text-align: center;
+    margin-bottom: 0.5rem;
 }
 .engram {
     $engram-height: 100px;
@@ -14,7 +18,7 @@
     $unlocked-color: #9b34eb;
 
     position: relative;
-    margin:0 auto;
+    margin: 0 auto;
     width: 120px;
     height: 100px;
 

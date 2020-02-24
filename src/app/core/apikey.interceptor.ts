@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class ApiKeyInterceptor implements HttpInterceptor {
@@ -9,7 +10,7 @@ export class ApiKeyInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 //     console.log(req);
     // add the header to the cloned request
-    const authReq = req.clone({headers: req.headers.set('x-api-key', 'ebe6e29e62be48f98959ebd0a90974ef')});
+    const authReq = req.clone({headers: req.headers.set('x-api-key', environment.bungieAPI)});
 
     return next.handle(authReq);
   }

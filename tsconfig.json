@@ -33,6 +33,9 @@
             "@destiny/components": [
                 "projects/components/src/public-api"
             ],
+            "@destiny/components/*": [
+                "projects/components/src/*/public-api"
+            ],
             "@destiny/data": [
                 "projects/data/src/public-api"
             ],

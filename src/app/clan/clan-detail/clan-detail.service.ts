@@ -8,7 +8,6 @@ import { ClanReward } from 'bungie-models';
 import { ClanWeeklyProgressModel } from '@destiny/components';
 //import { MilestoneDefinitionService } from '@destiny/data';
 
-
 @Injectable()
 export class ClanDetailService {
     constructor(
@@ -35,7 +34,20 @@ export class ClanDetailService {
             return null;
         }
     );
-
+    clanLastWeekRewards$: Observable<ClanWeeklyProgressModel> = combineLatest(
+        this.clanRewards$,
+        this.clanRewardDefinitions$,
+        (clanWeekRewards, clanRewardDefinitions) => {
+            if (clanWeekRewards && clanRewardDefinitions) {
+                return this.mapClanRewards(
+                    clanWeekRewards,
+                    clanRewardDefinitions,
+                    MilestoneHashes.ClanPastWeekRewards
+                );
+            }
+            return null;
+        }
+    );
     private mapClanRewards(clanWeekRewards, clanRewardDefinitions, weekHash) {
         const rewards = clanWeekRewards.rewards.find(x => x.rewardCategoryHash === weekHash);
         const rewardDefinitions = clanRewardDefinitions.rewards[weekHash];
