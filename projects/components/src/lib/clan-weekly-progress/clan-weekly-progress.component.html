@@ -1,1 +1,24 @@
-<p>clan-weekly-progress works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{clanRewards.title}}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div class="rewards">
+            <div class="reward" *ngFor="let reward of clanRewards.rewards">
+                <div class="engram" [ngClass]="{'unlocked': reward.earned}">
+                    <div class="e-l"></div>
+                    <div class="e-c"></div>
+                    <div class="e-r"></div>
+                    <img class="icon" [src]="'https://bungie.net'+reward.definition.displayProperties.icon" />
+                </div>
+                {{reward.definition.displayProperties.name}}
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+<textarea name="" id="" cols="30" rows="10" style="width:100%; height:400px">
+
+    {{clanRewards | json}}
+
+</textarea>
