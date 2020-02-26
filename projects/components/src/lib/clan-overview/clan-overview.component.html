@@ -1,12 +1,17 @@
 <mat-card>
-    <mat-card-header>
-        <mat-card-title>{{clanDetails.name}}</mat-card-title>
-        <mat-card-subtitle>{{clanDetails.motto}}</mat-card-subtitle>
-    </mat-card-header>
+    <mat-card-title>{{clanDetails.name}}</mat-card-title>
+    <mat-card-subtitle>{{clanDetails.motto}}</mat-card-subtitle>
+    <mat-card-content>
+        <div [innerText]="clanDetails.about"></div>
+        <mat-list>
+            <mat-list-item>
+                <mat-icon matListIcon>people</mat-icon>
+                <h3 matLine>{{clanDetails.memberCount}}</h3>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon matListIcon>date_range</mat-icon>
+                <h3 matLine>{{clanDetails.creationDate | date : 'longDate' }}</h3>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
 </mat-card>
-<div>
-
-    <h4>Member Count: {{clanDetails.memberCount}}</h4>
-    <h4>Founded: {{clanDetails.creationDate}}</h4>
-    <p>{{clanDetails.about}}</p>
-</div>
