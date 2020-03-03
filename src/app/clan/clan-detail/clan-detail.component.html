@@ -1,23 +1,14 @@
 <div class="container-fluid">
-    <div *ngIf="clanDetails$ | async as clanDetails">
-        <!-- <h1>{{clanDetails.name}}</h1>
-        <h3>{{clanDetails.motto}}</h3>
-        <h4>Member Count: {{clanDetails.memberCount}}</h4>
-        <h4>Founded: {{clanDetails.creationDate}}</h4>
-        <p>{{clanDetails.about}}</p>
-        <code>
-        <pre>
-            {{clanDetails | json}}
-        </pre>
-    </code> -->
-    <lib-clan-overview [clanDetails]="clanDetails"></lib-clan-overview>
+    <div class="row">
+        <div *ngIf="clanDetails$ | async as clanDetails" class="col clan-details">
+            <lib-clan-overview [clanDetails]="clanDetails"></lib-clan-overview>
+        </div>
     </div>
-
     <div class="row">
         <div *ngIf="clanDetails.clanWeekRewards$ | async as clanRewards" class="col">
             <lib-clan-weekly-progress [clanRewards]="clanRewards"></lib-clan-weekly-progress>
         </div>
-        <div *ngIf="clanDetails.clanLastWeekRewards$ | async as clanRewards"  class="col">
+        <div *ngIf="clanDetails.clanLastWeekRewards$ | async as clanRewards" class="col">
             <lib-clan-weekly-progress [clanRewards]="clanRewards"></lib-clan-weekly-progress>
         </div>
     </div>

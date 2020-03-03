@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Input,
+    Output,
+    EventEmitter,
+    ViewChild,
+    ChangeDetectionStrategy
+} from '@angular/core';
 
 import { MemberProfile, ClanMember } from 'bungie-models';
 import { MatSort } from '@angular/material/sort';
@@ -13,10 +21,19 @@ export interface ClanMemberListItem {
     selector: 'lib-clan-roster-list-view',
     templateUrl: './clan-roster-list-view.component.html',
     styleUrls: ['./clan-roster-list-view.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClanRosterListViewComponent implements OnInit {
-    displayedColumns: string[] = ['memberId', 'displayName', 'displayName2', 'dateLastPlayed', 'controls'];
+    displayedColumns: string[] = [
+        'memberId',
+        'displayName2',
+        'char1',
+        'char2',
+        'char3',
+        'dateLastPlayed',
+        'joinDate',
+        'controls'
+    ];
     dataSource;
 
     @Input() members: ClanMemberListItem[];

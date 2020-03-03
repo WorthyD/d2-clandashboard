@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+$destiny-dashboard-primary: mat-palette($mat-indigo);
+$destiny-dashboard-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$destiny-dashboard-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$destiny-dashboard-theme: mat-light-theme($destiny-dashboard-primary, $destiny-dashboard-accent, $destiny-dashboard-warn);
