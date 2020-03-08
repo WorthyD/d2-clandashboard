@@ -9,34 +9,32 @@ import { StorybookModule } from '../storybook/storybook.module';
 import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import {registerIcons} from './register-icons';
-
+import { registerIcons } from './register-icons';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'lib-icons',
     template: `
-    <mat-icon svgIcon="titan"></mat-icon>
-
-    `,
+        <!-- <mat-icon svgIcon="titan"></mat-icon> -->
+        <mat-icon
+            svgIcon="thumbs-up"
+            aria-hidden="false"
+            aria-label="Example thumbs up SVG icon"
+        ></mat-icon>
+    `
 })
-export class IconComponent  {
-
-    constructor(
-        iconRegistry: MatIconRegistry,
-        domSanitizer: DomSanitizer,
-
-    ) {
-        registerIcons(iconRegistry, domSanitizer);
+export class IconComponent {
+    constructor(iconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
+        //   registerIcons(iconRegistry, domSanitizer);
     }
-
 }
-
 
 export default {
     title: 'Icons',
     decorators: [
         moduleMetadata({
-            imports: [ StorybookModule, MatIconModule]
+            declarations: [IconComponent],
+            imports: [CommonModule, StorybookModule, MatIconModule]
         })
     ]
 };
@@ -46,6 +44,5 @@ export const base = () => ({
     template: `
     <lib-icons></lib-icons>
    `,
-    props: {
-    }
+    props: {}
 });
