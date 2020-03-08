@@ -7,34 +7,37 @@ import { moduleMetadata } from '@storybook/angular';
 //import { MOCK_WEEKLY_PROGRESS } from './_MOCK_WEEKLY_PROGRESS';
 import { StorybookModule } from '../storybook/storybook.module';
 import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { registerIcons } from './register-icons';
 import { CommonModule } from '@angular/common';
-
+import { HttpClientModule } from '@angular/common/http';
 @Component({
     selector: 'lib-icons',
     template: `
-        <!-- <mat-icon svgIcon="titan"></mat-icon> -->
-        <mat-icon
-            svgIcon="thumbs-up"
-            aria-hidden="false"
-            aria-label="Example thumbs up SVG icon"
-        ></mat-icon>
+         <mat-icon svgIcon="titan"></mat-icon>
+         <mat-icon svgIcon="hunter"></mat-icon>
+         <mat-icon svgIcon="warlock"></mat-icon>
     `
 })
-export class IconComponent {
+class IconComponent {
     constructor(iconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
-        //   registerIcons(iconRegistry, domSanitizer);
+           registerIcons(iconRegistry, domSanitizer);
     }
 }
+
+@NgModule({
+    declarations: [IconComponent],
+    exports: [IconComponent],
+    imports: [CommonModule, MatIconModule, HttpClientModule]
+})
+class NavbarModule {}
 
 export default {
     title: 'Icons',
     decorators: [
         moduleMetadata({
-            declarations: [IconComponent],
-            imports: [CommonModule, StorybookModule, MatIconModule]
+            imports: [NavbarModule, StorybookModule]
         })
     ]
 };
