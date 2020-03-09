@@ -1,36 +1,18 @@
 import { Button } from '@storybook/angular/demo';
 
-// export default { title: 'My Button' }
-
-// export const withText = () => ({
-//   component: Button,
-//   props: {
-//     text: 'Hello Button',
-//   },
-// });
-
-// export const withEmoji = () => ({
-//   component: Button,
-//   props: {
-//     text: '😀 😎 👍 💯',
-//   },
-// });
 import { moduleMetadata } from '@storybook/angular';
 import { ClanRosterListViewModule } from './clan-roster-list-view.module';
 import { ClanRosterListViewComponent } from './clan-roster-list-view.component';
-import {MEMBERS} from './_MOCK_ROSTER_LIST';
-// import { ActivityGridComponent } from './activity-grid.component';
-// import { ActivityGridModule } from './activity-grid.module';
-// import {MOCK_GRID_ITEMS} from './_MOCK_GRID_ITEMS';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MEMBERS } from './_MOCK_ROSTER_LIST';
+import { StorybookService } from '../storybook/storybook.service';
+import { StorybookModule } from '../storybook/storybook.module';
 export default {
     title: 'Member Roster',
     decorators: [
         moduleMetadata({
-            imports: [ClanRosterListViewModule, BrowserAnimationsModule]
+            imports: [StorybookModule, ClanRosterListViewModule ]
         })
-    ]
-};
+    ]};
 
 export const base = () => ({
     component: ClanRosterListViewComponent,

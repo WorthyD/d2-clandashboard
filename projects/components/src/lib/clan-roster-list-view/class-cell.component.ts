@@ -3,8 +3,8 @@ import { MemberProfile, ClanMember } from 'bungie-models';
 @Component({
     selector: 'lib-class-cell',
     template: `
-        {{profile?.characters.data[characterHash].classType}}
-        {{profile?.characters.data[characterHash].light}}
+        <mat-icon [svgIcon]="getIcon()"></mat-icon>
+        {{ (profile?.characters.data)[characterHash].light }}
     `,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -16,4 +16,16 @@ export class ClassCellComponent implements OnInit {
     constructor() {}
 
     ngOnInit(): void {}
+
+    getIcon(): string {
+        const classType = (this.profile?.characters.data)[this.characterHash].classType;
+        switch (classType) {
+            case 0:
+                return 'titan';
+            case 1:
+                return 'hunter';
+            case 2:
+                return 'warlock';
+        }
+    }
 }

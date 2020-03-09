@@ -1,42 +1,39 @@
-
-<table mat-table [dataSource]="members" matSort class="mat-elevation-z8">
-    <ng-container matColumnDef="memberId">
+<table mat-table [dataSource]="sortedData" matSort class="mat-elevation-z8" (matSortChange)="sortData($event)">
+    <!-- <ng-container matColumnDef="memberId">
         <th mat-header-cell *matHeaderCellDef> membershipId </th>
         <td mat-cell *matCellDef="let element">{{element.member.destinyUserInfo.membershipId}} </td>
-    </ng-container>
+    </ng-container> -->
 
     <!-- <ng-container matColumnDef="displayName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> displayName </th>
         <td mat-cell *matCellDef="let element"> {{element.member.bungieNetUserInfo?.displayName}}</td>
     </ng-container> -->
-    <ng-container matColumnDef="char1">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
-        <td mat-cell *matCellDef="let element"><lib-class-cell [characterHash]="element.profile?.profile?.data?.characterIds[0]" [profile]="element.profile"></lib-class-cell>   </td>
-    </ng-container>
-    <ng-container matColumnDef="char2">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
-        <td mat-cell *matCellDef="let element"><lib-class-cell [characterHash]="element.profile?.profile?.data?.characterIds[1]" [profile]="element.profile"></lib-class-cell>   </td>
-    </ng-container>
-    <ng-container matColumnDef="char3">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
-        <td mat-cell *matCellDef="let element"><lib-class-cell [characterHash]="element.profile?.profile?.data?.characterIds[2]" [profile]="element.profile"></lib-class-cell>   </td>
+    <ng-container matColumnDef="characters">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Characters </th>
+        <td mat-cell *matCellDef="let element">
+            <div class="class-cell">
+                <ng-container *ngFor="let char of element.profile?.profile?.data?.characterIds">
+                    <lib-class-cell [characterHash]="char" [profile]="element.profile"></lib-class-cell>
+                </ng-container>
+            </div>
+        </td>
     </ng-container>
 
 
 
 
-    <ng-container matColumnDef="displayName2">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> displayName2 </th>
+    <ng-container matColumnDef="displayName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Display Name </th>
         <td mat-cell *matCellDef="let element">{{element.member.destinyUserInfo.displayName}}</td>
     </ng-container>
 
     <ng-container matColumnDef="dateLastPlayed">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> dateLastPlayed </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Played </th>
         <td mat-cell *matCellDef="let element">{{element.profile?.profile.data.dateLastPlayed  | date: 'short'}}</td>
     </ng-container>
     <ng-container matColumnDef="joinDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>join date  </th>
-        <td mat-cell *matCellDef="let element">{{element.member?.joinDate  | date: 'short'}}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Clan Join Date </th>
+        <td mat-cell *matCellDef="let element">{{element.member?.joinDate  | date: 'shortDate'}}</td>
     </ng-container>
 
     <ng-container matColumnDef="controls">
