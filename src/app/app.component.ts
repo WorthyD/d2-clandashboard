@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 
-import { DataService, MilestoneDefinitionService, ActivitiesService, ActivityModeService } from '@destiny/data';
+import {
+    DataService,
+    MilestoneDefinitionService,
+    ActivitiesService,
+    ActivityModeService
+} from '@destiny/data';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { registerIcons } from 'projects/components/src/lib/icons/register-icons';
 
 @Component({
     selector: 'app-root',
@@ -13,8 +21,11 @@ export class AppComponent {
         private data: DataService,
         private activityService: ActivitiesService,
         private activityModeService: ActivityModeService,
-        private milestoneDefinitionService: MilestoneDefinitionService
+        private milestoneDefinitionService: MilestoneDefinitionService,
+        iconRegistry: MatIconRegistry,
+        domSanitizer: DomSanitizer
     ) {
+        registerIcons(iconRegistry, domSanitizer);
         const tables = [
             //            'DestinyChecklistDefinition',
             //            'DestinyObjectiveDefinition',
@@ -43,7 +54,9 @@ export class AppComponent {
                 }
 
                 if (x.data.DestinyMilestoneDefinition) {
-                    this.milestoneDefinitionService.initializeCache(x.data.DestinyMilestoneDefinition);
+                    this.milestoneDefinitionService.initializeCache(
+                        x.data.DestinyMilestoneDefinition
+                    );
                 }
             }
             //     this.activityService.initializeCache(x.);

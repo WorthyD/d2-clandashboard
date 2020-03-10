@@ -107,6 +107,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/destiny-dashboard",
+            "netlifyToken": "",
+            "siteId": "06e8d381-38ad-44b7-9ab6-11977de47acd"
+          }
         }
       }
     },
@@ -149,13 +157,13 @@
           "options": {
             "tsConfig": "projects/bungie-api/tsconfig.lib.json",
             "project": "projects/bungie-api/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/bungie-api/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -189,13 +197,13 @@
           "options": {
             "tsConfig": "projects/bungie-models/tsconfig.lib.json",
             "project": "projects/bungie-models/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/bungie-models/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -229,13 +237,13 @@
           "options": {
             "tsConfig": "projects/components/tsconfig.lib.json",
             "project": "projects/components/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/components/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -269,13 +277,13 @@
           "options": {
             "tsConfig": "projects/data/tsconfig.lib.json",
             "project": "projects/data/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/data/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {

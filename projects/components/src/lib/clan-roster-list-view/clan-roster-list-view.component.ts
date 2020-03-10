@@ -24,32 +24,33 @@ export interface ClanMemberListItem {
     styleUrls: ['./clan-roster-list-view.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ClanRosterListViewComponent implements OnInit {
-    displayedColumns: string[] = ['displayName', 'characters', 'joinDate', 'dateLastPlayed', 'controls'];
+export class ClanRosterListViewComponent   {
+    displayedColumns: string[] = [
+        'displayName',
+        'characters',
+        'joinDate',
+        'dateLastPlayed',
+        'controls'
+    ];
     sortedData: ClanMemberListItem[];
 
-    @Input() members: ClanMemberListItem[];
+    _members: ClanMemberListItem[];
+
+    @Input()
+    get members(): ClanMemberListItem[] {
+        return this._members;
+    }
+    set members(value) {
+        this._members = value;
+        this.sortedData = value.slice();
+    }
+
 
     @Output() viewMember = new EventEmitter<number>();
 
     @ViewChild(MatSort, { static: true }) sort: MatSort;
 
     constructor() {}
-
-    ngOnInit() {
-        this.sortedData = this.members.slice();
-        // console.log(this.members);
-        // this.dataSource = new MatTableDataSource(this.members);
-        // this.dataSource.sortingDataAccessor = (item, property) => {
-        //     switch (property) {
-        //         case 'dateLastPlayed':
-        //             return item.profile?.profile.data.dateLastPlayed;
-        //         default:
-        //             return item[property];
-        //     }
-        // };
-        // this.dataSource.sort = this.sort;
-    }
 
     sortData(sort: Sort) {
         const data = this.members.slice();
@@ -77,7 +78,7 @@ export class ClanRosterListViewComponent implements OnInit {
 
                 case 'characters':
                     return compare(this.getHighestLight(a), this.getHighestLight(b), isAsc);
-               default:
+                default:
                     return 0;
             }
         });
