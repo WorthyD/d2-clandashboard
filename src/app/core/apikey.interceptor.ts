@@ -8,9 +8,7 @@ export class ApiKeyInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-//     console.log(req);
     // add the header to the cloned request
-    console.log(environment.bungieAPI);
     const authReq = req.clone({headers: req.headers.set('x-api-key', environment.bungieAPI)});
 
     return next.handle(authReq);

@@ -4,22 +4,23 @@ import { CommonModule } from '@angular/common';
 import { MemberDetailsComponent } from './member-details.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-//import { MemberActivityComponent } from './member-activity/member-activity.component';
+// import { MemberDetailsRoutingModule } from './member-details-routing.module';
 
 const routes: Routes = [
     {
-        path: '',
+        path: ':memberId',
         component: MemberDetailsComponent,
         children: [
-            // {
-            //     path: '',
-            //     loadChildren:
-            //     () => import('./member-overview/member-overview.module').then(m => m.MemberOverviewModule)
-            // },
             {
                 path: '',
+                loadChildren:
+                () => import('./member-overview/member-overview.module').then(m => m.MemberOverviewModule)
+            },
+            {
+                path: 'activity',
                 loadChildren: () => import('./member-activity/member-activity.module').then(m => m.MemberActivityModule)
-            }
+            },
+            // { path: '**', redirectTo: '../' }
         ]
     }
 ];
@@ -33,4 +34,3 @@ export class MemberDetailsRoutingModule {}
     exports: [MemberDetailsComponent]
 })
 export class MemberDetailsModule {}
-

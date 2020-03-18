@@ -15,7 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class StorybookModule {
     constructor(iconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
-        console.log('registering');
         registerIcons(iconRegistry, domSanitizer);
     }
 }

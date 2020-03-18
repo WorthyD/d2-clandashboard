@@ -38,8 +38,6 @@ export class MemberStatEffects {
     constructor(
         private actions$: Actions,
         private store: Store<any>,
-        // private d2Service: Destiny2Service,
-        // private parser: ClanParseService,
         private clanDB: ClanDatabase,
         private updater: MemberUpdater
     ) {}
@@ -76,7 +74,6 @@ export class MemberStatEffects {
                     this.store.select(clanIdSelectors.getClanIdState)
                 ),
                 tap(([action, clanId]) => {
-                    console.log('loading updated member');
                      this.updater.update('memberActivities', clanId, action.member);
                 })
             ),
