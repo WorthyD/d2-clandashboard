@@ -12,10 +12,10 @@ const routes: Routes = [
                 loadChildren:
                 () => import('./member-overview/member-overview.module').then(m => m.MemberOverviewModule)
             },
-            // {
-            //     path: 'activity',
-            //     loadChildren: () => import('./member-activity/member-activity.module').then(m => m.MemberActivityModule)
-            // },
+            {
+                path: 'activity',
+                loadChildren: () => import('./member-activity/member-activity.module').then(m => m.MemberActivityModule)
+            },
             // { path: '**', redirectTo: '../' }
         ]
     }
