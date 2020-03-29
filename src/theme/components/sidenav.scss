@@ -1,0 +1,11 @@
+@mixin d2-side-menu-theme($theme) {
+    .mat-nav-list .active-link {
+        background: red;
+    }
+}
+@mixin d2-side-menu-base() {
+}
+
+@include d2-side-menu-theme($destiny-dashboard-theme);
+
+@include d2-side-menu-base();

@@ -6,7 +6,6 @@ import { ClanRewardState } from '../store/clan-rewards/clan-rewards.state';
 import { Observable, combineLatest } from 'rxjs';
 import { ClanReward } from 'bungie-models';
 import { ClanWeeklyProgressModel } from '@destiny/components';
-//import { MilestoneDefinitionService } from '@destiny/data';
 
 @Injectable()
 export class ClanDetailService {

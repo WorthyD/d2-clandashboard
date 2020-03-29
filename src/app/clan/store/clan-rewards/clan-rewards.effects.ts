@@ -40,22 +40,20 @@ export class ClanRewardEffects {
         this.actions$.pipe(
             ofType(clanRewardActions.loadRewards),
             switchMap(({ clanId }) => {
-                return this.clanDB
-                    .getValues(clanId.toString())
-                    .ClanRewards.pipe(
-                        take(1),
-                        map(clanRewards => {
-                            if (clanRewards[0] && clanRewards[0]) {
-                                return clanRewardActions.loadRewardsSuccess({
-                                    clanReward: clanRewards[0].clanRewards
-                                });
-                            } else {
-                                return clanRewardActions.loadRewardsSuccess({
-                                    clanReward: {}
-                                });
-                            }
-                        })
-                    );
+                return this.clanDB.getValues(clanId.toString()).ClanRewards.pipe(
+                    take(1),
+                    map(clanRewards => {
+                        if (clanRewards[0] && clanRewards[0]) {
+                            return clanRewardActions.loadRewardsSuccess({
+                                clanReward: clanRewards[0].clanRewards
+                            });
+                        } else {
+                            return clanRewardActions.loadRewardsSuccess({
+                                clanReward: {}
+                            });
+                        }
+                    })
+                );
             })
         )
     );
@@ -71,44 +69,70 @@ export class ClanRewardEffects {
         { dispatch: false }
     );
 
-    syncDetails$ = createEffect(
-        () =>
-            this.actions$.pipe(
-                ofType(clanRewardActions.loadRewardsFromAPI),
-                withLatestFrom(
-                    this.store.select(clanIdSelectors.getClanIdState)
-                ),
-                tap(([action, clanId]) => {
-                    this.clanDB.update(clanId.toString(), 'ClanRewards', [
-                        {
-                            id: clanId,
-                            clanRewards: action.clanReward
-                        }
-                    ]);
-                })
-            ),
-
-        { dispatch: false }
+    syncDetails$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(clanRewardActions.loadRewardsFromAPI),
+            withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
+            switchMap(([action, clanId]) => {
+                this.clanDB.update(clanId.toString(), 'ClanRewards', [
+                    {
+                        id: clanId,
+                        clanRewards: action.clanReward
+                    }
+                ]);
+                return [
+                    clanRewardActions.loadRewardsSuccess({
+                        clanReward: action.clanReward
+                    })
+                ];
+            })
+        )
     );
-
-    // loadFromAPI$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(clanDetailActions.loadClanFromAPI),
-    //         switchMap(({ clanId }) => {
-    //             return this.groupService.groupV2GetGroup(clanId).pipe(
-    //                 map(result => {
-    //                     return clanDetailActions.loadClanFromAPISuccess({
-    //                         clanDetails: result.Response.detail
+    // syncDetails$ = createEffect(
+    //     () =>
+    //         this.actions$.pipe(
+    //             ofType(clanRewardActions.loadRewardsFromAPI),
+    //             switchMap(action => {
+    //                 return
+    //                     this.store.select(clanIdSelectors.getClanIdState).pipe(
+    //                     take(1),
+    //                     map(clanId => {
+    //                         console.log('updating');
+    //                         this.clanDB.update(clanId.toString(), 'ClanRewards', [
+    //                             {
+    //                                 id: clanId,
+    //                                 clanRewards: action.clanReward
+    //                             }
+    //                         ]);
+    //                         // return clanRewardActions.loadRewardsFromAPISuccess({
+    //                         //     clanReward: action.clanReward
+    //                         // });
     //                     });
-    //                 }),
-    //                 catchError(error => {
-    //                     return of(
-    //                         clanDetailActions.loadClanFromAPIFailure({ error })
     //                     );
-    //                     //         // return of(false);
-    //                 })
-    //             );
-    //         })
-    //     )
+
+    //             })
+    //         )
+
+    //     // ,{ dispatch: false }
+    // );
+    // syncDetails$ = createEffect(
+    //     () =>
+    //         this.actions$.pipe(
+    //             ofType(clanRewardActions.loadRewardsFromAPI),
+    //             withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
+    //             tap(([action, clanId]) => {
+    //                 this.clanDB.update(clanId.toString(), 'ClanRewards', [
+    //                     {
+    //                         id: clanId,
+    //                         clanRewards: action.clanReward
+    //                     }
+    //                 ]);
+    //                  clanRewardActions.loadRewardsSuccess({
+    //                     clanReward: action.clanReward
+    //                 });
+    //             })
+    //         );
+
+    //     // ,{ dispatch: false }
     // );
 }

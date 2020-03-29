@@ -5,7 +5,7 @@ import { BehaviorSubject, combineLatest, Observable, of, from } from 'rxjs';
 import * as moment from 'moment';
 
 import { GroupV2Service, Destiny2Service } from 'bungie-api';
-import { MemberProfile  } from 'bungie-models';
+import { MemberProfile } from 'bungie-models';
 import { take, mergeMap, map } from 'rxjs/operators';
 
 import * as rewardActions from '../store/clan-rewards/clan-rewards.actions';
@@ -46,7 +46,7 @@ export class RewardsUpdater {
                 this.destiny2Service
                     .destiny2GetClanWeeklyRewardState(clanId)
                     .pipe(take(1))
-                    .subscribe((x) => {
+                    .subscribe(x => {
                         this.logger.log('Clan Weekly Rewards received', x);
                         this.store.dispatch(
                             rewardActions.loadRewardsFromAPI({
@@ -63,7 +63,7 @@ export class RewardsUpdater {
                             })
                         );
 
-                         this.setTypeState('clanRewards', 'updated');
+                        this.setTypeState('clanRewards', 'updated');
                         this.logger.log('Clan Rewards Updated');
                     });
             } else {
@@ -71,7 +71,6 @@ export class RewardsUpdater {
                 this.logger.log('Clan Rewards up to date');
             }
         });
-
     }
 
     update(type: UpdatableType, clanId: number) {

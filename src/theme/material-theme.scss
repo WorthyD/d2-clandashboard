@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
-$destiny-dashboard-primary: mat-palette($mat-indigo);
-$destiny-dashboard-accent: mat-palette($mat-pink, A200, A100, A400);
+$destiny-dashboard-primary: mat-palette($mat-blue-grey);
+$destiny-dashboard-accent: mat-palette($mat-grey, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $destiny-dashboard-warn: mat-palette($mat-red);
