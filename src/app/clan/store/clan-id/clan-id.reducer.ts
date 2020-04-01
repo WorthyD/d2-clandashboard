@@ -4,7 +4,6 @@ import * as clanIdActions from './clan-id.action';
 const _ClanIdReducer = createReducer(
     100,
     on(clanIdActions.setClanId, (state, { clanId }) => {
-        // console.log({ clanId });
         return clanId;
     })
 );

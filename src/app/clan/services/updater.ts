@@ -32,10 +32,7 @@ export type UpdaterState = {
 @Injectable()
 export class Updater {
     constructor(private store: Store<any>, private groupService: GroupV2Service, private d2Service: Destiny2Service) {
-        //this.state.subscribe(x => {
-        // console.log(x);
-        //});
-    }
+   }
     state = new BehaviorSubject<UpdaterState>({
         clanDetails: 'can-update',
         clanMembers: 'can-update',
@@ -117,8 +114,6 @@ export class Updater {
                 this.setTypeState('memberProfiles', 'updating');
                 const clanMembers$ = this.store.pipe(select(clanMemberSelectors.getAllMembers));
                 clanMembers$.pipe(take(1)).subscribe(clanMembers => {
-                    // clanMembers = clanMembers.slice(1, 10);
-                    // console.log(clanMembers);
 
                     const savedProfiles = [];
                     // possible concat map

@@ -14,7 +14,7 @@ export const ClanRewardReducer = createReducer(
         loaded: true,
         loading: false
     })),
-    on(clanActions.updateClanFromAPI, (state, { clanReward }) => ({
+    on(clanActions.loadRewardsFromAPISuccess, (state, { clanReward }) => ({
         ...state,
         clan: clanReward,
         loaded: true,

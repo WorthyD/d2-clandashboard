@@ -63,8 +63,8 @@ export class ClanRosterListViewComponent   {
             switch (sort.active) {
                 case 'displayName':
                     return compare(
-                        a.member.destinyUserInfo.displayName,
-                        b.member.destinyUserInfo.displayName,
+                        a.member.destinyUserInfo.displayName.toLowerCase(), // TODO make sure this doesn't break.
+                        b.member.destinyUserInfo.displayName.toLowerCase(),
                         isAsc
                     );
                 case 'dateLastPlayed':

@@ -1,6 +1,7 @@
 @mixin d2-side-menu-theme($theme) {
+    $accent: map-get($theme, accent);
     .mat-nav-list .active-link {
-        background: red;
+        background: mat-color($accent);;
     }
 }
 @mixin d2-side-menu-base() {

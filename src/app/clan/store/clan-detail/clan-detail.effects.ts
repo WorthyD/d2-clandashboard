@@ -78,7 +78,6 @@ export class ClanDetailEffects {
                     this.store.select(clanIdSelectors.getClanIdState)
                 ),
                 tap(([action, clanId]) => {
-                    console.log('updating from api');
                     this.clanDB.update(clanId.toString(), 'ClanDetails', [
                         {
                             id: action.clanDetails.groupId,

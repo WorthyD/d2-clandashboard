@@ -42,7 +42,6 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
         private activityModeService: ActivityModeService,
         private activityService: ActivitiesService
     ) {
-        console.log('member component');
         this.memberId.pipe(takeUntil(this.destroyed)).subscribe(r => {
             store.dispatch(clanMemberActions.selectClanMember({ memberId: r }));
             this.loadMemberDetails(r);

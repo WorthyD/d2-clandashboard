@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberOverviewComponent implements OnInit {
     constructor() {
-        console.log('memeber overview');
     }
 
     ngOnInit(): void {}

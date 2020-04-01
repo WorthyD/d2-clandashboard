@@ -41,8 +41,6 @@ export class ClanSearchComponent implements OnInit {
                 localeFilter: null
             })
         ),
-        //withLatestFrom(this.loadedClans),
-        //map(([clanList, loadedRepos]) => {
         map(clanListResults => {
             const currentQuery = this.autocompleteControl.value;
             const clanList = clanListResults.Response.results;
@@ -50,16 +48,6 @@ export class ClanSearchComponent implements OnInit {
                 return clanList;
             }
 
-            // Hide loaded repose
-
-            // loadedRepos.forEach(loadedRepo => {
-            //     const index = reposList.indexOf(loadedRepo);
-            //     if (index !== -1) {
-            //         reposList.splice(index, 1);
-            //     }
-            // });
-
-            //return [currentQuery].concat(clanList.slice(0, 10));
             return clanList.slice(0, 10);
         }),
         shareReplay(1)
@@ -88,33 +76,11 @@ export class ClanSearchComponent implements OnInit {
             .groupV2GetGroup(clanId)
             .pipe(
                 map(result => {
-                    console.log(result);
                     clanResult.clanDetails = result.Response.detail;
                 })
             )
             .subscribe(x => {
-                console.log(x);
             });
-
-        // this.loadSubscription = details.subscribe(x => {
-        //     console.log(x);
-        //     console.log(clanResult);
-        //     this.persistData(clanResult);
-        // });
-        // this.groupService
-        //     .groupV2GroupSearch({ name: 'dod' })
-        //     .pipe(map(result => {}))
-        //     .subscribe(x => {
-        //         console.log(x);
-        //     });
-        // async function $http(config: HttpClientConfig) {
-        //     // fill in the API key, handle OAuth, etc., then make an HTTP request using the config.
-        //     return fetch(config.url, {headers:{'x-api-key': 'ebe6e29e62be48f98959ebd0a90974ef'} });
-        // }
-
-        // groupSearch($http, { name: 'dod' }).then(x => {
-        //     console.log(x);
-        // });
     }
 
     persistData(clanResult: LoadClanResult) {

@@ -101,9 +101,7 @@ export class ClanMemberEffects {
                     this.store.select(clanIdSelectors.getClanIdState)
                 ),
                 tap(([action, clanId]) => {
-                    console.log('updating from api');
                     const members: ClanMember[] = action.clanMembers;
-                    console.log(members);
 
                     members.forEach(x => {
                         x.id = x.destinyUserInfo.membershipId;

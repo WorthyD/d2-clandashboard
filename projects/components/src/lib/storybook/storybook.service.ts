@@ -7,7 +7,6 @@ import { registerIcons } from '../icons/register-icons';
 export class StorybookService {
 
     constructor(iconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
-        console.log('registering');
         registerIcons(iconRegistry, domSanitizer);
  }
 }

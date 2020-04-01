@@ -1,13 +1,13 @@
 <mat-sidenav-container>
     <mat-sidenav mode="side" opened>
         <mat-nav-list>
-            <a mat-list-item routerLink="./" routerLinkActive="active-link">Player Overview</a>
+            <a mat-list-item routerLink="./" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                true}">Player Overview</a>
             <a mat-list-item routerLink="./activity" routerLinkActive="active-link">Activity</a>
         </mat-nav-list>
 
     </mat-sidenav>
     <mat-sidenav-content>
-        {{memberId  | async}}
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
