@@ -9,5 +9,8 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>
+        <textarea>
+        {{(profile$ | async) | json}}
+</textarea>
     </mat-sidenav-content>
 </mat-sidenav-container>
