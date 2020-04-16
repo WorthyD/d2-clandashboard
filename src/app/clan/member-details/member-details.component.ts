@@ -67,6 +67,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 
     loadMemberDetails(memberId) {
         this.profile$ = this.store.pipe(select(memberProfileSelectors.getClanMemberById(memberId)));
+        this.member$ = this.store.pipe(select(clanMemberSelectors.getClanMemberById(memberId)));
 
         this.profile$
             .pipe(

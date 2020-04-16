@@ -7,15 +7,15 @@ export const MOCK_MEMBER_OVERVIEW: any = {
                 isPublic: true,
                 membershipType: 3,
                 membershipId: '4611686018467238913',
-                displayName: 'WorthyD'
+                displayName: 'WorthyD',
             },
             dateLastPlayed: '2020-04-03T11:11:54Z',
             versionsOwned: 63,
             characterIds: ['2305843009310516628', '2305843009319768855', '2305843009319768858'],
             seasonHashes: [3612906877, 2007338097, 4035491417, 248573323],
-            currentSeasonHash: 4035491417
+            currentSeasonHash: 4035491417,
         },
-        privacy: 1
+        privacy: 1,
     },
     characters: {
         data: {
@@ -34,7 +34,7 @@ export const MOCK_MEMBER_OVERVIEW: any = {
                     '1935470627': 1005,
                     '1943323491': 27,
                     '2996146975': 54,
-                    '4244567218': 32
+                    '4244567218': 32,
                 },
                 raceHash: 898834093,
                 genderHash: 3111576190,
@@ -50,7 +50,7 @@ export const MOCK_MEMBER_OVERVIEW: any = {
                     red: 0,
                     green: 4,
                     blue: 15,
-                    alpha: 255
+                    alpha: 255,
                 },
                 levelProgression: {
                     progressionHash: 1716568313,
@@ -63,11 +63,11 @@ export const MOCK_MEMBER_OVERVIEW: any = {
                     levelCap: 50,
                     stepIndex: 50,
                     progressToNextLevel: 0,
-                    nextLevelAt: 0
+                    nextLevelAt: 0,
                 },
                 baseCharacterLevel: 50,
                 percentToNextLevel: 0,
-                titleRecordHash: 1754983323
+                titleRecordHash: 1754983323,
             },
             '2305843009319768855': {
                 membershipId: '4611686018467238913',
@@ -84,7 +84,7 @@ export const MOCK_MEMBER_OVERVIEW: any = {
                     '1935470627': 987,
                     '1943323491': 27,
                     '2996146975': 51,
-                    '4244567218': 27
+                    '4244567218': 27,
                 },
                 raceHash: 3887404748,
                 genderHash: 3111576190,
@@ -100,7 +100,7 @@ export const MOCK_MEMBER_OVERVIEW: any = {
                     red: 0,
                     green: 4,
                     blue: 15,
-                    alpha: 255
+                    alpha: 255,
                 },
                 levelProgression: {
                     progressionHash: 1716568313,
@@ -113,11 +113,11 @@ export const MOCK_MEMBER_OVERVIEW: any = {
                     levelCap: 50,
                     stepIndex: 50,
                     progressToNextLevel: 0,
-                    nextLevelAt: 0
+                    nextLevelAt: 0,
                 },
                 baseCharacterLevel: 50,
                 percentToNextLevel: 0,
-                titleRecordHash: 2460356851
+                titleRecordHash: 2460356851,
             },
             '2305843009319768858': {
                 membershipId: '4611686018467238913',
@@ -134,7 +134,7 @@ export const MOCK_MEMBER_OVERVIEW: any = {
                     '1935470627': 989,
                     '1943323491': 51,
                     '2996146975': 30,
-                    '4244567218': 28
+                    '4244567218': 28,
                 },
                 raceHash: 2803282938,
                 genderHash: 2204441813,
@@ -150,7 +150,7 @@ export const MOCK_MEMBER_OVERVIEW: any = {
                     red: 0,
                     green: 4,
                     blue: 15,
-                    alpha: 255
+                    alpha: 255,
                 },
                 levelProgression: {
                     progressionHash: 1716568313,
@@ -163,14 +163,43 @@ export const MOCK_MEMBER_OVERVIEW: any = {
                     levelCap: 50,
                     stepIndex: 50,
                     progressToNextLevel: 0,
-                    nextLevelAt: 0
+                    nextLevelAt: 0,
                 },
                 baseCharacterLevel: 50,
                 percentToNextLevel: 0,
-                titleRecordHash: 1693645129
-            }
+                titleRecordHash: 1693645129,
+            },
         },
-        privacy: 1
+        privacy: 1,
     },
-    id: '4611686018467238913'
+    id: '4611686018467238913',
+};
+
+export const MOCK_MEMBER = {
+    memberType: 3,
+    isOnline: false,
+    lastOnlineStatusChange: '1586885711',
+    groupId: '2073131',
+    destinyUserInfo: {
+        LastSeenDisplayName: 'WorthyD',
+        LastSeenDisplayNameType: 3,
+        iconPath: '/img/theme/bungienet/icons/steamLogo.png',
+        crossSaveOverride: 3,
+        applicableMembershipTypes: [1, 2, 3],
+        isPublic: false,
+        membershipType: 3,
+        membershipId: '4611686018467238913',
+        displayName: 'WorthyD',
+    },
+    bungieNetUserInfo: {
+        supplementalDisplayName: 'WorthyD',
+        iconPath: 'https://halo.bungie.net/images/halo3stats/odst/models/buck/buck_0_0_0.png',
+        crossSaveOverride: 0,
+        isPublic: false,
+        membershipType: 254,
+        membershipId: '612698',
+        displayName: 'WorthyD',
+    },
+    joinDate: '2019-09-15T18:11:09Z',
+    id: '4611686018467238913',
 };

@@ -1,1 +1,5 @@
-<p>member-overview works!</p>
+<mat-card>
+    <!-- TODO: is online -->
+    <mat-card-title>{{memberOverview.memberProfile.profile.data.userInfo.displayName}}</mat-card-title>
+    <mat-card-subtitle>Last Online: {{memberOverview.memberProfile.profile.data.dateLastPlayed | date: 'short'}}</mat-card-subtitle>
+</mat-card>

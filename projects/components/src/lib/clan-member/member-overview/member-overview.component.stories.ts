@@ -1,25 +1,23 @@
 import { moduleMetadata } from '@storybook/angular';
-// import { ActivityGridComponent } from './activity-grid.component';
-// import { ActivityGridModule } from './activity-grid.module';
-import {MemberOverviewModule} from './member-overview.module';
-//import {MOCK_GRID_ITEMS} from './_MOCK_GRID_ITEMS';
-import {MOCK_MEMBER_OVERVIEW} from './_MOCK_MEMBER_OVERVIEW';
+import { MemberOverviewModule } from './member-overview.module';
+import { MemberOverviewComponent } from './member-overview.component';
+import { MOCK_MEMBER_OVERVIEW, MOCK_MEMBER } from './_MOCK_MEMBER_OVERVIEW';
 
 export default {
-    title: 'Activity Grid',
+    title: 'Member Overview',
     decorators: [
         moduleMetadata({
-            imports: [MemberOverviewModule]
-        })
-    ]
+            imports: [MemberOverviewModule],
+        }),
+    ],
 };
 
 export const base = () => ({
-    component: ActivityGridComponent,
+    component: MemberOverviewComponent,
     template: `
-        <lib-activity-grid [activityItems]="activityItems"></lib-activity-grid>
+        <lib-member-overview [memberOverview]="member"></lib-member-overview>
    `,
     props: {
-        activityItems: MOCK_MEMBER_OVERVIEW
-    }
+        member: { memberProfile: MOCK_MEMBER_OVERVIEW, clanMember: MOCK_MEMBER },
+    },
 });
