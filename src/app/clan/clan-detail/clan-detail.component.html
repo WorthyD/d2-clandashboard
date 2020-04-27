@@ -1,9 +1,34 @@
-<h1>Clan Detail</h1>
-<div *ngIf="clanDetails$ | async as clanDetails">
-    <h1>{{clanDetails.name}}</h1>
-    <h3>{{clanDetails.motto}}</h3>
-    <h4>Member Count: {{clanDetails.memberCount}}</h4>
-    <p>{{clanDetails.about}}</p>
+<div class="container-fluid">
+    <div class="row">
+        <div *ngIf="clanDetails$ | async as clanDetails" class="col clan-details">
+            <lib-clan-overview [clanDetails]="clanDetails"></lib-clan-overview>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngIf="clanDetails.clanWeekRewards$ | async as clanRewards" class="col">
+            <lib-clan-weekly-progress [clanRewards]="clanRewards"></lib-clan-weekly-progress>
+        </div>
+        <div *ngIf="clanDetails.clanLastWeekRewards$ | async as clanRewards" class="col">
+            <lib-clan-weekly-progress [clanRewards]="clanRewards"></lib-clan-weekly-progress>
+        </div>
+    </div>
+</div>
+
+<!--
+<div *ngIf="clanDetails.clanWeekRewards$ | async as clanRewards" style="height:400px; overflow: scroll">
+    <pre><code>
+    {{clanRewards | json}}
+</code></pre>
 </div>
 
 
+<div *ngIf="clanDetails.clanRewards$ | async as clanRewards" style="height:400px; overflow: scroll">
+    <pre><code>
+    {{clanRewards | json}}
+</code></pre>
+</div>
+<div *ngIf="clanDetails.clanRewardDefinitions$ | async as clanRewardsDef" style="height:400px; overflow: scroll">
+    <pre><code>
+    {{clanRewardsDef | json}}
+</code></pre>
+</div> -->

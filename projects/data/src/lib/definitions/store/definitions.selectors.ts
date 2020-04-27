@@ -1,7 +1,12 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { DefinitionModelState, DefinitionModelStateAdapter } from './definitions.state';
+import {
+    DefinitionModelState,
+    DefinitionModelStateAdapter
+} from './definitions.state';
 
-export const getDefinitionState = createFeatureSelector<DefinitionModelState>('definitions');
+export const getDefinitionState = createFeatureSelector<DefinitionModelState>(
+    'definitions'
+);
 
 export const {
     selectIds: getDefinitionIds,
@@ -13,4 +18,13 @@ export const {
 export const cacheById = cacheId =>
     createSelector(getDefinitionEntities, entities => {
         return cacheId && entities[cacheId];
+    });
+export const cacheByHash = (cacheId, hashId) =>
+    createSelector(getDefinitionEntities, entities => {
+        return (
+            cacheId &&
+            entities[cacheId] &&
+            entities[cacheId].definitions &&
+            entities[cacheId].definitions[hashId]
+        );
     });

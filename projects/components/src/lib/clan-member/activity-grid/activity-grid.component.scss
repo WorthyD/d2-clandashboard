@@ -1,0 +1,21 @@
+.col-completed {
+    text-align: center;
+}
+.col-icon {
+    width: 60px;
+    padding-right:1rem;
+    .bg {
+        background: black;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            display: block;
+            height: 40px;
+            width: 40px;
+        }
+    }
+}

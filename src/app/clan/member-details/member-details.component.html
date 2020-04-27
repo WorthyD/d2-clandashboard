@@ -1,63 +1,16 @@
 <mat-sidenav-container>
     <mat-sidenav mode="side" opened>
         <mat-nav-list>
-            <a mat-list-item routerLink="./" routerLinkActive="active-link">Player Overview</a>
-            <a mat-list-item routerLink="./activity" routerLinkActive="active-link"> Roster 2</a>
+            <a mat-list-item routerLink="./" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                true}">Player Overview</a>
+            <a mat-list-item routerLink="./activity" routerLinkActive="active-link">Activity</a>
         </mat-nav-list>
 
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>
-        <!-- <div *ngIf="member$ | async as member">
-            <h2>{{member.destinyUserInfo.displayName}}</h2>
-        </div>
-
-        <div *ngIf="profile$ | async as profile">
-            <h2>{{profile.profile.data.dateLastPlayed}}</h2>
-
-        </div> -->
-        <!-- <div *ngIf="activities$ | async as activities">
-    <div *ngFor="let activity of activities">
-        <h3>{{activity.period}} | {{activity.activityDetails.mode}} |{{activity.values.completed.basic.value}} </h3>
-        {{activity.values.completed | json}}
-        <hr>
-    </div>
-
-</div> -->
-        <!-- <div *ngIf="activityDetailsTwo$ | async as activityDetailsTwo">
-            <pre><code>
-    {{activityDetailsTwo | json}}
-</code></pre>
-        </div> -->
-        <!-- <div *ngIf="activityDetails$ | async as activityDetails">
-            <table>
-                <tr *ngFor="let activity of activityDetails">
-                    <td>{{activity.playerActivity.period}} {{activity.playerActivity.values.completed.basic.value}}
-                    </td>
-                    <td>{{activity.activityTypes}} </td>
-                    <td>{{activity.activityMode?.displayProperties?.name}} </td>
-                    <td>{{activity.activity?.displayProperties?.name}} </td>
-                </tr>
-            </table>
-
-        </div> -->
-
-
-
-        <!-- <div>
-            <pre>
-        <code>
-    {{(activityDetails$ | async)?.activity | json}}
-</code>
-</pre>
-
-        </div>
-
-
-        <div>
-            todo: Load in character information from profile response?
-            todo: Load first page of each character activity
-        </div> -->
-
+        <textarea>
+        {{(member$ | async) | json}}
+</textarea>
     </mat-sidenav-content>
 </mat-sidenav-container>

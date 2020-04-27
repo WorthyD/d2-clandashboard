@@ -21,7 +21,7 @@ const routes: Routes = [
                     () => import('./clan-roster/clan-roster.module').then(m => m.ClanRosterModule)
             },
             {
-                path: 'member-details/:memberId',
+                path: 'member-details',
                 loadChildren:
                     () => import('./member-details/member-details.module').then(m => m.MemberDetailsModule)
             }

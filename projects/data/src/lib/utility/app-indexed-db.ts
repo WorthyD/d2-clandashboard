@@ -75,9 +75,7 @@ export class AppIndexedDb {
                             keyPath: 'id'
                         });
 
-                        //if (this.name === 'angular/components') {
-                        // initializeDemoConfig(collectionId, objectStore);
-                        // }
+                       
                     }
                 });
             }

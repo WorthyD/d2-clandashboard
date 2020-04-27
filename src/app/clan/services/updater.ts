@@ -31,21 +31,21 @@ export type UpdaterState = {
 
 @Injectable()
 export class Updater {
-    constructor(private store: Store<any>, private groupService: GroupV2Service, private d2Service: Destiny2Service) {
-        //this.state.subscribe(x => {
-        // console.log(x);
-        //});
-    }
+    constructor(
+        private store: Store<any>,
+        private groupService: GroupV2Service,
+        private d2Service: Destiny2Service
+    ) {}
     state = new BehaviorSubject<UpdaterState>({
         clanDetails: 'can-update',
         clanMembers: 'can-update',
-        memberProfiles: 'can-update'
+        memberProfiles: 'can-update',
     });
 
     private updateClanMembers(clanId: number) {
         const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('clanMembers')));
 
-        cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
+        cacheDetails$.pipe(take(1)).subscribe((cacheDetails) => {
             const xpDate = moment().add(-1, 'hours');
             if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
                 this.setTypeState('clanMembers', 'updating');
@@ -55,15 +55,15 @@ export class Updater {
                     .subscribe((x) => {
                         this.store.dispatch(
                             clanMemberActions.loadClanMembersFromAPI({
-                                clanMembers: x.Response.results
+                                clanMembers: x.Response.results,
                             })
                         );
                         this.store.dispatch(
                             cacheActions.updateCache({
                                 cache: {
                                     id: 'clanMembers',
-                                    lastUpdated: new Date()
-                                }
+                                    lastUpdated: new Date(),
+                                },
                             })
                         );
 
@@ -78,25 +78,25 @@ export class Updater {
     private updateClanDetails(clanId: number) {
         const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('clanDetails')));
 
-        cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
+        cacheDetails$.pipe(take(1)).subscribe((cacheDetails) => {
             const xpDate = moment().add(-1, 'hours');
             if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
                 this.setTypeState('clanDetails', 'updating');
                 this.groupService
                     .groupV2GetGroup(clanId)
                     .pipe(take(1))
-                    .subscribe(x => {
+                    .subscribe((x) => {
                         this.store.dispatch(
                             clanDetailActions.updateClanFromAPI({
-                                clanDetails: x.Response.detail
+                                clanDetails: x.Response.detail,
                             })
                         );
                         this.store.dispatch(
                             cacheActions.updateCache({
                                 cache: {
                                     id: 'clanDetails',
-                                    lastUpdated: new Date()
-                                }
+                                    lastUpdated: new Date(),
+                                },
                             })
                         );
 
@@ -111,30 +111,27 @@ export class Updater {
     private updateMemberProfiles(clanId: number) {
         const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('memberProfiles')));
 
-        cacheDetails$.pipe(take(1)).subscribe(cacheDetails => {
+        cacheDetails$.pipe(take(1)).subscribe((cacheDetails) => {
             const xpDate = moment().add(-1, 'hours');
             if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
                 this.setTypeState('memberProfiles', 'updating');
                 const clanMembers$ = this.store.pipe(select(clanMemberSelectors.getAllMembers));
-                clanMembers$.pipe(take(1)).subscribe(clanMembers => {
-                    // clanMembers = clanMembers.slice(1, 10);
-                    // console.log(clanMembers);
-
+                clanMembers$.pipe(take(1)).subscribe((clanMembers) => {
                     const savedProfiles = [];
                     // possible concat map
                     const memberProfiles = from(clanMembers).pipe(
-                        mergeMap(member => {
+                        mergeMap((member) => {
                             return this.d2Service
                                 .destiny2GetProfile(
                                     member.destinyUserInfo.membershipId,
                                     member.destinyUserInfo.membershipType,
-                                    [100, 200] /// 100 - profile, 200 - characters
+                                    [100, 104, 200] /// 100 - profile, 200 - characters
                                     // -  900 records? 104 - Profile progression
                                     // 202 --  Character progression 204 character activities
                                     // 800 collectibles
                                 )
                                 .pipe(
-                                    map(memberProfileResponse => {
+                                    map((memberProfileResponse) => {
                                         return memberProfileResponse.Response;
                                     })
                                 );
@@ -142,22 +139,22 @@ export class Updater {
                     );
 
                     memberProfiles.subscribe(
-                        result => {
+                        (result) => {
                             savedProfiles.push(result);
                         },
-                        err => {},
+                        (err) => {},
                         () => {
                             this.store.dispatch(
                                 memberProfileActions.loadMemberProfilesFromAPI({
-                                    memberProfiles: savedProfiles
+                                    memberProfiles: savedProfiles,
                                 })
                             );
                             this.store.dispatch(
                                 cacheActions.updateCache({
                                     cache: {
                                         id: 'memberProfiles',
-                                        lastUpdated: new Date()
-                                    }
+                                        lastUpdated: new Date(),
+                                    },
                                 })
                             );
 
@@ -184,7 +181,7 @@ export class Updater {
         }
     }
     private setTypeState(type: UpdatableType, typeState: UpdateState) {
-        this.state.pipe(take(1)).subscribe(updaterState => {
+        this.state.pipe(take(1)).subscribe((updaterState) => {
             const newState = { ...updaterState };
             newState[type] = typeState;
             this.state.next(newState);

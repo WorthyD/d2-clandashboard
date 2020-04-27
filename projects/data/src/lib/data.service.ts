@@ -123,8 +123,6 @@ export class DataService {
 
                         return this.allDataFromRemote(path, tableNames, progressCallback).pipe(
                             map(definitions => {
-                                console.log('manifest done');
-                                console.log(definitions);
 
                                 return definitions;
                             })
