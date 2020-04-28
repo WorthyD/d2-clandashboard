@@ -1,6 +1,8 @@
 <!-- <p>member-activity works!</p> -->
-
+{{(memberActivityService.selectedMember$ | async) | json}}
+<hr>
 <lib-activity-grid [activityItems]="memberActivityService.activityDetails$| async"></lib-activity-grid>
+
 
 <!-- <h3>Hello world</h3>
 <textarea name="" id="" cols="30" rows="10">

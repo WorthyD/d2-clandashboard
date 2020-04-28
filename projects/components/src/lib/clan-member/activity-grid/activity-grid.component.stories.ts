@@ -4,7 +4,7 @@ import { ActivityGridModule } from './activity-grid.module';
 import {MOCK_GRID_ITEMS} from './_MOCK_GRID_ITEMS';
 
 export default {
-    title: 'Activity Grid',
+    title: 'Clan Member / Activity Grid',
     decorators: [
         moduleMetadata({
             imports: [ActivityGridModule]

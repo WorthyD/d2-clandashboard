@@ -1,6 +1,6 @@
 import { RaceTypeTextPipe } from './race-type-text.pipe';
 
-fdescribe('RaceTypeTextPipe', () => {
+describe('RaceTypeTextPipe', () => {
   it('create an instance', () => {
     const pipe = new RaceTypeTextPipe();
     expect(pipe).toBeTruthy();

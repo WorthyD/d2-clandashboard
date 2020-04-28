@@ -4,7 +4,7 @@ import { MemberOverviewComponent } from './member-overview.component';
 import { MOCK_MEMBER_OVERVIEW, MOCK_MEMBER } from './_MOCK_MEMBER_OVERVIEW';
 
 export default {
-    title: 'Member Overview',
+    title: 'Clan Member / Member Overview',
     decorators: [
         moduleMetadata({
             imports: [MemberOverviewModule],
