@@ -19,6 +19,7 @@ export const {
 
 export const getClanMemberById = memberId =>
     createSelector(getMemberProfileEntities, entities => {
+        console.log('selecting member');
         return memberId && entities[memberId];
     });
 
