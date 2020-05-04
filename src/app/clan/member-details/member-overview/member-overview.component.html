@@ -1,3 +1,13 @@
-<div *ngIf="memberOverviewService.selectedProfile$ | async as selectedProfile">
-    <lib-member-overview [memberOverview]="selectedProfile"></lib-member-overview>
+<div class="container">
+    <div *ngIf="memberOverviewService.selectedProfile$ | async as selectedProfile" class="row my-3">
+        <div class="col">
+        <lib-member-overview [memberOverview]="selectedProfile"></lib-member-overview>
+</div>
+    </div>
+
+    <div *ngIf="memberOverviewService.selectedCharacters$ | async as selectedCharacters" class="row my-3">
+        <div class="col" *ngFor="let character of selectedCharacters">
+            <lib-character-card [character]="character"></lib-character-card>
+        </div>
+    </div>
 </div>

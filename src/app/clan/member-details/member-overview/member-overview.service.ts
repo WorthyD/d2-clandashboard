@@ -13,25 +13,22 @@ export class MemberOverviewService {
     constructor(
         private memberStore: Store<ClanMemberState>,
         private profileStore: Store<MemberProfileState>
-    ) {
-        console.log('constructor');
-        // this.selectedProfile$.subscribe((x) => {
-        //     console.log(x);
-        // });
-    }
+    ) {}
 
     selectedMember$ = this.memberStore.pipe(select(getSelectedClanMember));
     selectedProfile$ = this.selectedMember$.pipe(
         switchMap((item) => {
-            // if (item && item.id) {
-            //     console.log(item.id);
-                return this.profileStore.pipe(select(getClanMemberById(item?.id)));
-            //}
-            //return of(false);
+            return this.profileStore.pipe(select(getClanMemberById(item?.id)));
         })
     );
 
-    // this.selectedMember$.pipe(map(x =>{
-    //     return this.profileStore.pipe(select(getClanMemberById(x)));
-    // }));
+    selectedCharacters$ = this.selectedProfile$.pipe(
+        map((item) => {
+            console.log('character profiles', item);
+            const charIDs = item?.profile?.data?.characterIds;
+            return charIDs?.map((x) => {
+                return item.characters.data[x];
+            });
+        })
+    );
 }
