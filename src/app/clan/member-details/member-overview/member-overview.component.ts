@@ -20,8 +20,8 @@ export class MemberOverviewComponent implements OnInit {
         public memberOverviewService: MemberOverviewService,
         private memberStore: Store<ClanMemberState>
     ) {}
-    selectedMember;
+    //selectedMember;
     ngOnInit(): void {
-        this.selectedMember = this.memberStore.pipe(select(getSelectedClanMember)); // .subscribe((x) => {
+       // this.selectedMember = this.memberStore.pipe(select(getSelectedClanMember)); // .subscribe((x) => {
     }
 }
