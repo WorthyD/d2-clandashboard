@@ -1,4 +1,6 @@
-<p>clan-season-progress works!</p>
+{{clanProgress.level}} / {{clanProgress.levelCap}}
+<mat-progress-bar mode="determinate" [value]="seasonProgress"></mat-progress-bar>
+{{clanProgress.progressToNextLevel}} / {{clanProgress.nextLevelAt}}
 <!--
     clanInfo.d2ClanProgressions
      "584850370": {
@@ -16,7 +18,7 @@
                     },
                 -->
 
-                <!--
+<!--
                     bungie.net
                     <div class="clan-progression">
 
