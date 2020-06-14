@@ -1,34 +1,31 @@
 <div class="container-fluid">
     <div class="row">
-        <div *ngIf="clanDetails$ | async as clanDetails" class="col clan-details">
+        <div *ngIf="clanDetails$ | async as clanDetails" class="col m-3">
             <lib-clan-overview [clanDetails]="clanDetails"></lib-clan-overview>
+        </div>
+        <div class="col">
+            <div *ngIf="clanDetails.clanWeekRewards$ | async as clanRewards" class="m-3">
+                <lib-clan-weekly-progress [clanRewards]="clanRewards"></lib-clan-weekly-progress>
+            </div>
+            <div *ngIf="clanDetails.clanLastWeekRewards$ | async as clanRewards" class="m-3">
+                <lib-clan-weekly-progress [clanRewards]="clanRewards"></lib-clan-weekly-progress>
+            </div>
         </div>
     </div>
     <div class="row">
-        <div *ngIf="clanDetails.clanWeekRewards$ | async as clanRewards" class="col">
-            <lib-clan-weekly-progress [clanRewards]="clanRewards"></lib-clan-weekly-progress>
+        <div *ngIf="clanDetails.clanSeasonalProgression$ | async as clanProgress" class="col m-3">
+            <lib-clan-season-progress [clanProgress]="clanProgress"></lib-clan-season-progress>
         </div>
-        <div *ngIf="clanDetails.clanLastWeekRewards$ | async as clanRewards" class="col">
-            <lib-clan-weekly-progress [clanRewards]="clanRewards"></lib-clan-weekly-progress>
+    </div>
+    <div class="row">
+        <div class="col m-3">
+            <app-highestpower-members></app-highestpower-members>
+        </div>
+        <div class="col m-3">
+            <app-recently-active-members></app-recently-active-members>
+        </div>
+        <div class="col m-3">
+            <app-inactive-members></app-inactive-members>
         </div>
     </div>
 </div>
-
-<!--
-<div *ngIf="clanDetails.clanWeekRewards$ | async as clanRewards" style="height:400px; overflow: scroll">
-    <pre><code>
-    {{clanRewards | json}}
-</code></pre>
-</div>
-
-
-<div *ngIf="clanDetails.clanRewards$ | async as clanRewards" style="height:400px; overflow: scroll">
-    <pre><code>
-    {{clanRewards | json}}
-</code></pre>
-</div>
-<div *ngIf="clanDetails.clanRewardDefinitions$ | async as clanRewardsDef" style="height:400px; overflow: scroll">
-    <pre><code>
-    {{clanRewardsDef | json}}
-</code></pre>
-</div> -->

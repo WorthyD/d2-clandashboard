@@ -5,3 +5,4 @@ export * from './MemberProfile';
 export * from './MemberActivityStat';
 export * from './Definitions/public-api';
 export * from './ClanReward';
+export * from './ClanProgress';

@@ -6,7 +6,7 @@ import { CharacterCardModule } from './character-card.module';
 import { MOCK_CHARACTER_CARD } from './_MOCK_CHARACTER_CARD';
 
 export default {
-    title: 'Character Card',
+    title: 'Clan Member / Character Card',
     decorators: [
         moduleMetadata({
             imports: [CharacterCardModule],

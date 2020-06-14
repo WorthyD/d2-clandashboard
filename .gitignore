@@ -45,3 +45,6 @@ Thumbs.db
 .vs/*
 
 src/environments/keys.ts
+
+# Local Netlify folder
+.netlify

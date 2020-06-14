@@ -125,7 +125,7 @@ export class Updater {
                                 .destiny2GetProfile(
                                     member.destinyUserInfo.membershipId,
                                     member.destinyUserInfo.membershipType,
-                                    [100, 104, 200] /// 100 - profile, 200 - characters
+                                    [100, 104, 200, 202] /// 100 - profile, 200 - characters
                                     // -  900 records? 104 - Profile progression
                                     // 202 --  Character progression 204 character activities
                                     // 800 collectibles

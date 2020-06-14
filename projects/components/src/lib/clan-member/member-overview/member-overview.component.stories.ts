@@ -4,7 +4,7 @@ import { MemberOverviewComponent } from './member-overview.component';
 import { MOCK_MEMBER_OVERVIEW, MOCK_MEMBER } from './_MOCK_MEMBER_OVERVIEW';
 
 export default {
-    title: 'Member Overview',
+    title: 'Clan Member / Member Overview',
     decorators: [
         moduleMetadata({
             imports: [MemberOverviewModule],
@@ -18,6 +18,6 @@ export const base = () => ({
         <lib-member-overview [memberOverview]="member"></lib-member-overview>
    `,
     props: {
-        member: { memberProfile: MOCK_MEMBER_OVERVIEW, clanMember: MOCK_MEMBER },
+        member: MOCK_MEMBER_OVERVIEW,
     },
 });

@@ -5,32 +5,36 @@ import {
     Output,
     EventEmitter,
     ViewChild,
-    ChangeDetectionStrategy
+    ChangeDetectionStrategy,
 } from '@angular/core';
 
 import { MemberProfile, ClanMember } from 'bungie-models';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Sort } from '@angular/material/sort';
+import { ClanMemberListItem } from '../models/ClanMemberListItem';
 
-export interface ClanMemberListItem {
-    member: ClanMember;
-    profile: MemberProfile;
-}
+export { ClanMemberListItem } from '../models/ClanMemberListItem';
+
+// export interface ClanMemberListItem {
+//     member: ClanMember;
+//     profile: MemberProfile;
+// }
 
 @Component({
     selector: 'lib-clan-roster-list-view',
     templateUrl: './clan-roster-list-view.component.html',
     styleUrls: ['./clan-roster-list-view.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ClanRosterListViewComponent   {
+export class ClanRosterListViewComponent {
     displayedColumns: string[] = [
         'displayName',
         'characters',
+        'powerBonus',
         'joinDate',
         'dateLastPlayed',
-        'controls'
+        'controls',
     ];
     sortedData: ClanMemberListItem[];
 
@@ -44,7 +48,6 @@ export class ClanRosterListViewComponent   {
         this._members = value;
         this.sortedData = value.slice();
     }
-
 
     @Output() viewMember = new EventEmitter<number>();
 
@@ -73,6 +76,12 @@ export class ClanRosterListViewComponent   {
                         b.profile?.profile.data.dateLastPlayed,
                         isAsc
                     );
+                case 'powerBonus':
+                    return compare(
+                        a.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus ?? 0,
+                        b.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus ?? 0,
+                        isAsc
+                    );
                 case 'joinDate':
                     return compare(a.member?.joinDate, b.member?.joinDate, isAsc);
 
@@ -86,7 +95,7 @@ export class ClanRosterListViewComponent   {
 
     // This is probably terribly un-performant, but whatever
     getHighestLight(item: ClanMemberListItem) {
-        const lights = item.profile.profile.data.characterIds.map(hash => {
+        const lights = item.profile.profile.data.characterIds.map((hash) => {
             return item.profile.characters.data[hash].light;
         });
         return Math.max(...lights);

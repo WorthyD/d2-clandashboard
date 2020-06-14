@@ -12,7 +12,7 @@ export interface MemberOverview {
 })
 export class MemberOverviewComponent implements OnInit {
     @Input()
-    memberOverview: MemberOverview;
+    memberOverview: MemberProfile;
 
     constructor() {}
 
