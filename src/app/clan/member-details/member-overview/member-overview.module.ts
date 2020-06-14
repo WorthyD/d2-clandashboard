@@ -5,6 +5,7 @@ import {
     ActivityGridModule,
     MemberOverviewModule as MemberOverviewComponentModule,
     CharacterCardModule,
+    SeasonPassModule,
 } from '@destiny/components';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -26,6 +27,7 @@ export class OverviewRoutingModule {}
         MemberOverviewComponentModule,
         CharacterCardModule,
         ActivityGridModule,
+        SeasonPassModule,
     ],
 })
 export class MemberOverviewModule {}

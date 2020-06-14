@@ -26,6 +26,7 @@ export class AppComponent {
         domSanitizer: DomSanitizer
     ) {
         registerIcons(iconRegistry, domSanitizer);
+        // TODO: Call for api/settings and look at destiny2CoreSettings
         const tables = [
             //            'DestinyChecklistDefinition',
             //            'DestinyObjectiveDefinition',

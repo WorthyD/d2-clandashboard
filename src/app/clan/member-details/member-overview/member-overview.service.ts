@@ -6,7 +6,9 @@ import { Store, select } from '@ngrx/store';
 import { getSelectedClanMember } from '../../store/clan-members/clan-members.selectors';
 import { getClanMemberById } from '../../store/member-profiles/member-profiles.selectors';
 import { map, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
+import { ClanMemberSeasonPassProgression } from '@destiny/components';
+import { AppConstants } from 'src/app/app.constants';
 
 @Injectable()
 export class MemberOverviewService {
@@ -22,9 +24,26 @@ export class MemberOverviewService {
         })
     );
 
+    selectSeasonPass$: Observable<ClanMemberSeasonPassProgression> = this.selectedProfile$.pipe(
+        map((member) => {
+            const characterId = member?.profile?.data?.characterIds[0];
+            if (characterId > 0) {
+                console.log('Character id', characterId);
+                const characterProgressions =
+                    member?.characterProgressions?.data[characterId].progressions;
+
+                console.log('Progressions', characterProgressions);
+                return {
+                    progression: characterProgressions[AppConstants.SeasonRewardProgressionHash],
+                    prestigeProgression:
+                        characterProgressions[AppConstants.SeasonPrestigeProgressionHash],
+                };
+            }
+        })
+    );
+
     selectedCharacters$ = this.selectedProfile$.pipe(
         map((item) => {
-            console.log('character profiles', item);
             const charIDs = item?.profile?.data?.characterIds;
             return charIDs?.map((x) => {
                 return item.characters.data[x];

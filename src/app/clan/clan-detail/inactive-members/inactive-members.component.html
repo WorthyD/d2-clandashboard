@@ -1,5 +1,5 @@
 <div *ngIf="clanDetails.inactiveMemberList$ | async as inactiveMemberList">
-    <lib-clan-members-card [cardTitle]="'Inactive Members'" [members]="inactiveMemberList"
+    <lib-clan-members-card [cardTitle]="'Inactive Members'" [members]="inactiveMemberList"  (viewMember)="viewMember($event)"
         [itemTemplate]="itemTemplate">
         <ng-template let-member #itemTemplate>
             <div>
