@@ -38,6 +38,8 @@ export class AppComponent {
             //            'DestinyCollectibleDefinition',
             //            'DestinyPresentationNodeDefinition',
             //            'DestinyRecordDefinition',
+            'DestinySeasonDefinition',
+            'DestinySeasonPassDefinition',
             'DestinyMilestoneDefinition',
             'DestinyActivityDefinition',
             'DestinyActivityModeDefinition'

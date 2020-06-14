@@ -5,11 +5,13 @@ import { getClanRewards } from '../store/clan-rewards/clan-rewards.selectors';
 import { ClanRewardState } from '../store/clan-rewards/clan-rewards.state';
 import { Observable, combineLatest, of } from 'rxjs';
 import { ClanReward, ClanProgress, ClanDetails } from 'bungie-models';
-import { ClanWeeklyProgressModel } from '@destiny/components';
+import { ClanWeeklyProgressModel, ClanMemberListItem } from '@destiny/components';
 import * as clanDetailSelectors from '../store/clan-detail/clan-detail.selectors';
 import * as clanDetailStore from '../store/clan-detail/clan-detail.state';
 import { map } from 'rxjs/operators';
-
+import { AppConstants } from '../../app.constants';
+import { getClanMemberEntities, getAllMembers } from '../store/clan-members/clan-members.selectors';
+import { getMemberProfileEntities } from '../store/member-profiles/member-profiles.selectors';
 @Injectable()
 export class ClanDetailService {
     constructor(
@@ -22,6 +24,84 @@ export class ClanDetailService {
         select(clanDetailSelectors.getClanDetail)
     );
 
+    private clanMembers$ = this.store.pipe(select(getAllMembers));
+    private clanMemberProfiles$ = this.store.pipe(select(getMemberProfileEntities));
+
+    allClanMemberProfiles$ = combineLatest(
+        this.clanMembers$,
+        this.clanMemberProfiles$,
+        (members, profiles) => {
+            console.log('stuff');
+            const allUsers: ClanMemberListItem[] = [];
+            members.forEach((x) => {
+                allUsers.push({
+                    member: x,
+                    profile: profiles[x.destinyUserInfo.membershipId],
+                });
+            });
+            return allUsers;
+        }
+    );
+
+    highestLLMembers$ = this.allClanMemberProfiles$.pipe(
+        map((members) => {
+            if (members.length > 0) {
+                const sortedMembers = members.sort((a, b) => {
+                    return (a.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus ??
+                        0) >
+                        (b.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus ?? 0)
+                        ? -1
+                        : 1;
+                });
+                return sortedMembers.slice(0, 10);
+            }
+        })
+    );
+
+    lastLoginMembers$ = this.allClanMemberProfiles$.pipe(
+        map((members) => {
+            if (members.length > 0) {
+                const sortedMembers = members.sort((a, b) => {
+                    return a.profile?.profile.data.dateLastPlayed >
+                        b.profile?.profile.data.dateLastPlayed
+                        ? -1
+                        : 1;
+                });
+                return sortedMembers.slice(0, 10);
+            }
+        })
+    );
+
+    inactiveMemberList$ = this.allClanMemberProfiles$.pipe(
+        map((members) => {
+            if (members.length > 0) {
+                const sortedMembers = members.sort((a, b) => {
+                    return a.profile?.profile.data.dateLastPlayed >
+                        b.profile?.profile.data.dateLastPlayed
+                        ? 1
+                        : -1;
+                });
+                return sortedMembers.slice(0, 10);
+            }
+        })
+    );
+    /*
+    clanMembers$ = createSelector(
+        getAllMembers,
+        getMemberProfileEntities,
+        (members, profiles) => {
+            const allUsers: ClanMemberListItem[] = [];
+            members.forEach(x => {
+                allUsers.push({
+                    member: x,
+                    profile: profiles[x.destinyUserInfo.membershipId]
+                });
+            });
+            return allUsers;
+        }
+    );
+    */
+
     clanRewards$: Observable<ClanReward> = this.store.pipe(select(getClanRewards));
     clanRewardDefinitions$ = this.milestoneDefinitionService.getDefinitionsByHash(
         MilestoneHashes.ClanRewards
@@ -29,11 +109,13 @@ export class ClanDetailService {
 
     clanSeasonalProgression$: Observable<ClanProgress> = this.clanDetails$.pipe(
         map((clan) => {
-            console.log(clan);
-            if (clan?.clanInfo?.d2ClanProgressions) {
-                //return clan?.clanInfo?.d2ClanProgressions[584850370]
+            if (
+                clan?.clanInfo?.d2ClanProgressions &&
+                clan?.clanInfo?.d2ClanProgressions[AppConstants.SeasonHash]
+            ) {
+                return clan?.clanInfo?.d2ClanProgressions[AppConstants.SeasonHash];
             }
-            return of(null);
+            return null;
         })
     );
 

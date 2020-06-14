@@ -13,6 +13,9 @@ export class ClanSeasonProgressComponent implements OnInit {
     clanProgress: ClanProgress;
 
     get seasonProgress() {
+        if (this.clanProgress?.level === this.clanProgress?.levelCap){
+            return 100;
+        }
         return (this.clanProgress?.progressToNextLevel / this.clanProgress?.nextLevelAt) * 100;
     }
 
