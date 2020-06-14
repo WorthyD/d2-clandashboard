@@ -19,6 +19,6 @@ export class FeaturedClanCardComponent implements OnInit {
   ngOnInit(): void {}
 
   clanClick(clan) {
-    this.viewClan.emit(clan.id);
+    this.viewClan.emit(clan);
 }
 }
