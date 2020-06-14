@@ -8,19 +8,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FeaturedClansModule } from './featured-clans/featured-clans.module';
 
 import { CoreModule } from '../core/core.module';
 @NgModule({
-    declarations: [ClanSearchComponent],
-    imports: [
-        CommonModule,
-        CoreModule,
-        MatTooltipModule,
-        ReactiveFormsModule,
-        MatAutocompleteModule,
-        MatInputModule,
-        MatFormFieldModule,
-        RouterModule
-    ]
+  declarations: [ClanSearchComponent],
+  imports: [
+    CommonModule,
+    CoreModule,
+    MatTooltipModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule,
+    RouterModule,
+    FeaturedClansModule,
+  ],
 })
 export class ClanSearchModule {}
