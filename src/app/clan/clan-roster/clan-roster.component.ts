@@ -44,7 +44,6 @@ export class ClanRosterComponent implements OnInit {
 
     ngOnInit() {}
     viewMember(memberId: number) {
-        console.log(memberId);
         this.router.navigate(['../../../member-details', memberId], {
             relativeTo: this.route
         });

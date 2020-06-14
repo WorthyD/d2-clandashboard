@@ -11,10 +11,11 @@ const routes: Routes = [
         component: MemberActivityComponent
     }
 ];
+@NgModule({ imports: [RouterModule.forChild(routes)], exports: [RouterModule] })
+export class ActivityRoutingModule {}
 
 @NgModule({
     declarations: [MemberActivityComponent],
-    imports: [CommonModule, RouterModule.forChild(routes), ActivityGridModule],
-    exports: [RouterModule]
+    imports: [CommonModule, ActivityRoutingModule, ActivityGridModule]
 })
 export class MemberActivityModule {}

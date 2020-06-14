@@ -1,0 +1,12 @@
+@mixin d2-side-menu-theme($theme) {
+    $accent: map-get($theme, accent);
+    .mat-nav-list .active-link {
+        background: mat-color($accent);;
+    }
+}
+@mixin d2-side-menu-base() {
+}
+
+@include d2-side-menu-theme($destiny-dashboard-theme);
+
+@include d2-side-menu-base();

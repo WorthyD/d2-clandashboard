@@ -16,7 +16,7 @@ import * as clanIdActions from './store/clan-id/clan-id.action';
 import * as clanMemberSelectors from './store/clan-members/clan-members.selectors';
 import * as clanMemberActions from './store/clan-members/clan-members.actions';
 import * as memberActivityActions from './store/member-activities/member-activities.actions';
-
+import * as clanRewardActions from './store/clan-rewards/clan-rewards.actions';
 import * as memberProfileActions from './store/member-profiles/member-profiles.actions';
 
 import * as routerStore from '../root-store/router/router.selectors';
@@ -33,6 +33,8 @@ import {
     take
 } from 'rxjs/operators';
 
+import { RewardsUpdater } from './services/clanRewardsUpdater';
+
 @Component({
     selector: 'app-clan',
     templateUrl: './clan.component.html',
@@ -42,7 +44,8 @@ export class ClanComponent implements OnInit, OnDestroy {
     constructor(
         private activatedRoute: ActivatedRoute,
         private store: Store<clanDetailStore.ClanDetailState>,
-        private rStore: Store<routerStore.State>
+        private rStore: Store<routerStore.State>,
+        private clanRewards: RewardsUpdater
     ) {
         this.clanId
             .pipe(takeUntil(this.destroyed))
@@ -82,6 +85,11 @@ export class ClanComponent implements OnInit, OnDestroy {
                 take(1)
             )
             .subscribe(x => {
+                // this.clanRewards.update('clanRewards', clanId);
+                this.store.dispatch(
+                    clanRewardActions.loadRewards({ clanId: clanId })
+                );
+
                 this.store.dispatch(
                     clanIdActions.setClanId({ clanId: clanId })
                 );

@@ -1,0 +1,11 @@
+
+<div *ngIf="clanDetails.highestLLMembers$ | async as highestLLMembers">
+    <lib-clan-members-card [cardTitle]="'Highest Power Bonus'" [members]="highestLLMembers"  (viewMember)="viewMember($event)"
+        [itemTemplate]="itemTemplate">
+        <ng-template let-member #itemTemplate>
+            <div>
+                {{member.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus}}
+            </div>
+        </ng-template>
+    </lib-clan-members-card>
+</div>

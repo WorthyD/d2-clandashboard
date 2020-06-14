@@ -1,0 +1,16 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ClanDetailComponent } from './clan-detail.component';
+import { ClanWeeklyProgressModule } from '@destiny/components';
+import { ClanOverviewModule } from '@destiny/components/lib/clan-overview';
+import { ClanSeasonProgressModule, ClanMembersCardModule } from '@destiny/components';
+import { InactiveMembersComponent } from './inactive-members/inactive-members.component';
+import { HighestpowerMembersComponent } from './highestpower-members/highestpower-members.component';
+import { RecentlyActiveMembersComponent } from './recently-active-members/recently-active-members.component';
+import { BaseMemberCardComponent } from './base-member-card/base-member-card.component';
+
+@NgModule({
+    declarations: [ClanDetailComponent, InactiveMembersComponent, HighestpowerMembersComponent, RecentlyActiveMembersComponent, BaseMemberCardComponent],
+    imports: [CommonModule, ClanWeeklyProgressModule, ClanOverviewModule, ClanSeasonProgressModule, ClanMembersCardModule],
+})
+export class ClanDetailModule {}

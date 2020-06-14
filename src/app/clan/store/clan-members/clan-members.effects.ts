@@ -9,7 +9,6 @@ import * as memberProfileActions from '../member-profiles/member-profiles.action
 import { GroupV2Service } from 'bungie-api';
 
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
-import { ClanParseService } from '../../../parser/parsers/clan-parse.service';
 import { ClanMember } from 'bungie-models';
 
 import { ClanDatabase } from '../../../services/ClanDatabase';
@@ -102,9 +101,7 @@ export class ClanMemberEffects {
                     this.store.select(clanIdSelectors.getClanIdState)
                 ),
                 tap(([action, clanId]) => {
-                    console.log('updating from api');
                     const members: ClanMember[] = action.clanMembers;
-                    console.log(members);
 
                     members.forEach(x => {
                         x.id = x.destinyUserInfo.membershipId;

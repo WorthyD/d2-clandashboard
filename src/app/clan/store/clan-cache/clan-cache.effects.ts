@@ -55,8 +55,6 @@ export class ClanCacheEffects {
                     this.store.select(clanIdSelectors.getClanIdState)
                 ),
                 tap(([cache, clanId]) => {
-                    console.log('about to update');
-                    console.log(cache);
                     this.clanDB.update(clanId.toString(), 'CacheDetails', [
                         cache.cache
                     ]);

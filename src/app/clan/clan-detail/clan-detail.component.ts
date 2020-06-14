@@ -19,19 +19,20 @@ import {} from 'bungie-models';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { filter, map, distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { ClanDetailService } from './clan-detail.service';
 
 @Component({
     selector: 'app-clan-detail',
     templateUrl: './clan-detail.component.html',
-    styleUrls: ['./clan-detail.component.scss']
+    styleUrls: ['./clan-detail.component.scss'],
+    providers: [ClanDetailService]
 })
 export class ClanDetailComponent implements OnInit, OnDestroy {
     constructor(
         private activatedRoute: ActivatedRoute,
         private store: Store<clanDetailStore.ClanDetailState>,
-    ) {
-
-    }
+        public clanDetails: ClanDetailService
+    ) {}
 
     // private clanId = this.activatedRoute.params.pipe(
     //     map(x => x.id, distinctUntilChanged())
@@ -49,6 +50,4 @@ export class ClanDetailComponent implements OnInit, OnDestroy {
         this.destroyed.next();
         this.destroyed.complete();
     }
-
-
 }

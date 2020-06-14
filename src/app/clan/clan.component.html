@@ -7,9 +7,10 @@
     <lib-navbar [clanDetails]="clanDetails$ | async"></lib-navbar>
     <mat-sidenav-container>
         <mat-sidenav mode="side" opened>
-            <mat-nav-list>
-                <a mat-list-item routerLink="./"> Details </a>
-                <a mat-list-item routerLink="roster"> Roster </a>
+            <mat-nav-list class="clan-nav">
+                <a mat-list-item routerLink="./" routerLinkActive="active"> Details </a>
+                <a mat-list-item routerLink="roster" routerLinkActive="active"> Roster </a>
+                <a mat-list-item routerLink="/" >Clan Search</a>
             </mat-nav-list>
 
         </mat-sidenav>

@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-title>
+        Seasonal Progress
+    </mat-card-title>
+    <mat-card-subtitle>Current Level: {{clanProgress.level}}</mat-card-subtitle>
+    <mat-card-content>
+        <mat-progress-bar mode="determinate" [value]="seasonProgress"></mat-progress-bar>
+        <div>
+            Progress to next level:
+            <div class="float-right" *ngIf="clanProgress.progressToNextLevel > 0; else maxLevel">
+                {{clanProgress.progressToNextLevel}} /
+                {{clanProgress.nextLevelAt}}</div>
+        </div>
+    </mat-card-content>
+</mat-card>
+<ng-template #maxLevel>
+    <div class="float-right">
+        Max level
+    </div>
+</ng-template>
+
+<!-- clanInfo.d2ClanProgressions "584850370" : { "progressionHash" : 584850370, "dailyProgress" :
+    257250, "dailyLimit" : 0, "weeklyProgress" : 39250, <-- Visible on Bungie's website "weeklyLimit" :
+    266667, "currentProgress" : 257250, "level" : 3, <--- "levelCap" : 6, "stepIndex" : 3, "progressToNextLevel" :
+    32250, <--- 32,250/125,000 "nextLevelAt" : 125000 }, -->
+
+<!--
+                    bungie.net
+                    <div class="clan-progression">
+
+					<div class="progress-bar">
+						<div class="bar-fill" style="width: 25.8%;"></div>
+					</div>
+					<p class="weeklyClanCap"> 39250 Clan Contribution this Week</p>
+
+                </div>
+
+
+
+                braytech
+            <div class="progress-bar chunky">
+                <div class="bar full">
+                    <div class="text">
+                        <div class="description">Level 3</div>
+                    <div class="fraction">32,250/125,000</div>
+                </div>
+            <div class="fill" style="width: 25.8%;"></div>
+       </div></div>
+        -->

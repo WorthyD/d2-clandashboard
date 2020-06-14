@@ -1,0 +1,9 @@
+.member-info {
+    display: flex;
+    align-content: space-between;
+    width:100%;
+
+    .member-name {
+        flex: 1;
+    }
+}

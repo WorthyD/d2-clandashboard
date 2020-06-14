@@ -1,1 +1,4 @@
-<lib-clan-roster-list-view [members]="members$ | async" (viewMember)="viewMember($event)"></lib-clan-roster-list-view>
+<ng-container *ngIf="members$ | async as members">
+    <lib-clan-roster-list-view *ngIf="members.length > 0" [members]="members" (viewMember)="viewMember($event)">
+    </lib-clan-roster-list-view>
+</ng-container>

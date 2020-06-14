@@ -3,9 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { distinctUntilChanged, map, takeUntil, take, filter } from 'rxjs/operators';
 import { Store, select, createSelector } from '@ngrx/store';
 
-import { ClanMember, MemberProfile, MemberActivityStat, ActivityModeDefinition } from 'bungie-models';
+import {
+    ClanMember,
+    MemberProfile,
+    MemberActivityStat,
+} from 'bungie-models';
 import { ActivitiesService, ActivityModeService } from '@destiny/data';
-// import { ActivityModeDefinition } from 'bungie-models/definitions';
 
 import { Observable, Subject, Subscription, combineLatest } from 'rxjs';
 
@@ -22,7 +25,9 @@ export const getRecentClanMemberActivities = memberId =>
             return null;
         }
 
-        return activities.sort((a, b) => new Date(b.period).getTime() - new Date(a.period).getTime()).slice(0, 250);
+        return activities
+            .sort((a, b) => new Date(b.period).getTime() - new Date(a.period).getTime())
+            .slice(0, 250);
     });
 
 @Component({
@@ -39,10 +44,13 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
     ) {
         this.memberId.pipe(takeUntil(this.destroyed)).subscribe(r => {
             store.dispatch(clanMemberActions.selectClanMember({ memberId: r }));
+            this.loadMemberDetails(r);
         });
     }
 
-    private memberId = this.activatedRoute.params.pipe(map(x => x.memberId, distinctUntilChanged()));
+    memberId = this.activatedRoute.params.pipe(
+        map(x => x.memberId, distinctUntilChanged())
+    );
 
     member$: Observable<ClanMember>;
     profile$: Observable<MemberProfile>;
@@ -57,108 +65,19 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {}
 
-    // loadMemberDetails(memberId) {
-    //     this.member$ = this.store.pipe(select(clanMemberSelectors.getClanMemberById(memberId)));
-    //     this.profile$ = this.store.pipe(select(memberProfileSelectors.getClanMemberById(memberId)));
+    loadMemberDetails(memberId) {
+        this.profile$ = this.store.pipe(select(memberProfileSelectors.getClanMemberById(memberId)));
+        this.member$ = this.store.pipe(select(clanMemberSelectors.getClanMemberById(memberId)));
 
-    //     this.playerActivities$ = this.store.pipe(select(getRecentClanMemberActivities(memberId)));
-    //     this.activityModeDefinitions$ = this.activityModeService.getDefinitions();
-    //     this.activityDefinitions$ = this.activityService.getDefinitions();
-
-    //     this.activityDetails$ = combineLatest(
-    //         this.playerActivities$,
-    //         this.activityModeDefinitions$,
-    //         this.activityDefinitions$,
-    //         (pActivities, pDefinitions, activityDefinitions) => {
-    //             if (pActivities && pDefinitions && activityDefinitions) {
-    //                 const defArray = Object.keys(pDefinitions.definitions).map(id => pDefinitions.definitions[id]);
-    //                 return pActivities.map(x => {
-    //                     return {
-    //                         playerActivity: x,
-    //                         activity: activityDefinitions.definitions[x.activityDetails.referenceId],
-    //                         activityTypes: x.activityDetails.modes.map(
-    //                             z =>
-    //                                 defArray.find(y => {
-    //                                     return y.modeType === z;
-    //                                 }).displayProperties.name
-    //                         ),
-    //                         activityMode: defArray.find(y => {
-    //                             return y.modeType === x.activityDetails.mode;
-    //                         })
-    //                     };
-    //                 });
-    //             }
-    //             return [];
-    //         }
-    //     );
-
-        // this.activityDetailsTwo$ = combineLatest(
-        //     this.playerActivities$,
-        //     this.activityModeDefinitions$,
-        //     this.activityDefinitions$,
-        //     (pActivities, pDefinitions, activityDefinitions) => {
-        //         if (pActivities && pDefinitions && activityDefinitions) {
-        //             const defArray = Object.keys(pDefinitions.definitions).map(id => pDefinitions.definitions[id]);
-        //             const modeIDs = pActivities.map(x => {
-        //                 return x.activityDetails.mode;
-        //             });
-        //             //console.log(modeIDs);
-        //             const uniqueIds = [...new Set(modeIDs)];
-        //             //console.log(uniqueIds);
-
-        //             const stuff = uniqueIds.map(y => {
-        //                const activities = pActivities.filter(z => {
-        //                     return (z.activityDetails.mode === y);
-        //                 });
-
-        //                 return {
-        //                     mode: y,
-        //                     modeName: defArray.find(z => {
-        //                         return z.modeType === y;
-        //                     }).displayProperties.name,
-        //                     total: activities.reduce((prev, cur) => {
-        //                         return prev + cur.values.activityDurationSeconds.basic.value;
-        //                     }, 0)
-        //                 };
-        //             });
-        //             console.log(stuff);
-        //             return stuff;
-
-        //             // return pActivities.map(x => {
-        //             //     return {
-        //             //         playerActivity: x,
-        //             //         activity: activityDefinitions.definitions[x.activityDetails.referenceId],
-        //             //         // activityTypes: x.activityDetails.modes.map(z =>
-        //             //         //     defArray.find(y => {
-        //             //         //         return y.modeType === z;
-        //             //         //     }).displayProperties.name
-        //             //         // ),
-        //             //         activityMode: defArray.find(y => {
-        //             //             return y.modeType === x.activityDetails.mode;
-        //             //         })
-        //             //     };
-
-        //             // });
-        //         }
-        //         return [];
-        //     }
-        // );
-
-        // Object.keys(obj).forEach(function(k, i) {
-        //     if (i >= 100 && i < 300) {
-        //         console.log(obj[k]);
-        //     }
-        // });
-    //     this.profile$
-    //         .pipe(
-    //             filter(loaded => !!loaded),
-    //             take(1)
-    //         )
-    //         .subscribe(x => {
-    //             console.log('loading activities');
-    //             this.store.dispatch(memberActivityActions.loadMemberActivities({ member: x }));
-    //         });
-    // }
+        this.profile$
+            .pipe(
+                filter(loaded => !!loaded),
+                take(1)
+            )
+            .subscribe(x => {
+                this.store.dispatch(memberActivityActions.loadMemberActivities({ member: x }));
+            });
+    }
 
     ngOnDestroy() {
         this.destroyed.next();
