@@ -28,11 +28,8 @@ export class MemberOverviewService {
         map((member) => {
             const characterId = member?.profile?.data?.characterIds[0];
             if (characterId > 0) {
-                console.log('Character id', characterId);
                 const characterProgressions =
                     member?.characterProgressions?.data[characterId].progressions;
-
-                console.log('Progressions', characterProgressions);
                 return {
                     progression: characterProgressions[AppConstants.SeasonRewardProgressionHash],
                     prestigeProgression:

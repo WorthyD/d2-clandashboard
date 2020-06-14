@@ -18,6 +18,6 @@ export const base = () => ({
         <lib-member-overview [memberOverview]="member"></lib-member-overview>
    `,
     props: {
-        member: { memberProfile: MOCK_MEMBER_OVERVIEW, clanMember: MOCK_MEMBER },
+        member: MOCK_MEMBER_OVERVIEW,
     },
 });
