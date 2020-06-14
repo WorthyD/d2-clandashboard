@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-title>{{cardTitle}}</mat-card-title>
+  <mat-card-content>
+    <mat-action-list>
+      <button mat-list-item *ngFor="let clan of featuredClans; let idx = index" (click)="clanClick(clan)">
+        {{clan.name}}
+      </button>
+    </mat-action-list>
+  </mat-card-content>
+</mat-card>
