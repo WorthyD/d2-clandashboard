@@ -1,6 +1,6 @@
 {
   "name": "destiny-dashboard",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4321 --open",
@@ -8,8 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "netlify":"netlify deploy --dir=./dist/destiny-dashboard --prod",
-    "deploy":"ng build --prod && npm run netlify",
+    "netlify": "netlify deploy --dir=./dist/destiny-dashboard --prod",
+    "deploy": "npm run release && ng build --prod && npm run netlify",
+    "release": "standard-version",
     "storybook": "start-storybook --port=6006",
     "postinsta": "node patch-webpack.js",
     "swagger-gen": "openapi-generator generate -g typescript-angular -o projects/bungie-api/src/lib -i https://raw.githubusercontent.com/WorthyD/api/master/openapi-2.json --skip-validate-spec"
@@ -68,6 +69,7 @@
     "ng-packagr": "^9.0.0",
     "protractor": "~5.4.0",
     "replace-in-file": "^5.0.2",
+    "standard-version": "^8.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.7.5"
