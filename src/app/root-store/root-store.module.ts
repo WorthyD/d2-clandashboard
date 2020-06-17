@@ -6,24 +6,24 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { RouterModule } from '@angular/router';
 
-import { reducers } from './root-store.state';
+import { reducers, metaReducers } from './root-store.state';
 import { CustomSerializer } from './router/custom-route-serializer';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        // StoreModule.forRoot({
-        //   router: routerReducer,
-        // }),
-         EffectsModule.forRoot([]),
-        StoreModule.forRoot(reducers),
-        StoreRouterConnectingModule.forRoot({
-            serializer: CustomSerializer
-        }),
-        StoreDevtoolsModule.instrument({
-            maxAge: 25 // Retains last 25 states
-        })
-    ],
-    declarations: []
+  imports: [
+    CommonModule,
+    // StoreModule.forRoot({
+    //   router: routerReducer,
+    // }),
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreRouterConnectingModule.forRoot({
+      serializer: CustomSerializer
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25 // Retains last 25 states
+    })
+  ],
+  declarations: []
 })
 export class RootStoreModule {}

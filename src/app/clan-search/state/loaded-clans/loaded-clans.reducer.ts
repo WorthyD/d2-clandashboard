@@ -1,5 +1,5 @@
-import { createReducer, on } from '@ngrx/store';
-import { LoadedClanInitialState, LoadedClansAdapter } from './loaded-clans.state';
+import { createReducer, on, Action } from '@ngrx/store';
+import { LoadedClanInitialState, LoadedClansAdapter, LoadedClansState } from './loaded-clans.state';
 import { addClan } from './loaded-clans.actions';
 
 const reducer = createReducer(
@@ -8,3 +8,7 @@ const reducer = createReducer(
     return LoadedClansAdapter.addOne(clan, { ...state });
   })
 );
+
+export function LoadedClanReducer(state: LoadedClansState | undefined, action: Action) {
+  return reducer(state, action);
+}
