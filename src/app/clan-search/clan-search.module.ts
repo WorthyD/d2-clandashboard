@@ -15,6 +15,7 @@ import { ClanSearchState, ClanSearchEffects, reducers } from './state/clan-searc
 import { CLAN_SEARCH_FEATURE } from './state/clan-search.selectors';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { SavedClansModule } from './saved-clans/saved-clans.module';
 
 @NgModule({
   declarations: [ClanSearchComponent],
@@ -28,6 +29,7 @@ import { EffectsModule } from '@ngrx/effects';
     MatFormFieldModule,
     RouterModule,
     FeaturedClansModule,
+    SavedClansModule,
     StoreModule.forFeature(CLAN_SEARCH_FEATURE, reducers),
     EffectsModule.forFeature(ClanSearchEffects)
   ]
