@@ -13,7 +13,7 @@ export class LocalStorageService {
       if (storageKey.includes(APP_PREFIX)) {
         const stateKeys = storageKey
           .replace(APP_PREFIX, '')
-          .toLowerCase()
+        //  .toLowerCase()
           .split('.')
           .map(key =>
             key
@@ -35,6 +35,7 @@ export class LocalStorageService {
           currentStateRef = currentStateRef[key];
         });
       }
+      console.log(state);
       return state;
     }, {});
   }
