@@ -25,3 +25,13 @@ export const base = () => ({
         progress: MOCK_WEEKLY_PROGRESS
     }
 });
+
+export const loading = () => ({
+    component: ClanWeeklyProgressComponent,
+    template: `
+        <lib-clan-weekly-progress [clanRewards]="progress" [isLoading]="true"></lib-clan-weekly-progress>
+   `,
+    props: {
+        progress: null
+    }
+});

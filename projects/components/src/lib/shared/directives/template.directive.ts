@@ -10,7 +10,6 @@ export class TemplateDirective {
     @Input('dTemplate') name: string;
 
     constructor(public template: TemplateRef<any>) {
-        console.log('template');
     }
 
     getType(): string {
