@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType, createEffect } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { empty, of } from 'rxjs';
-import { take, withLatestFrom } from 'rxjs/operators';
+import { take, withLatestFrom, delay } from 'rxjs/operators';
 
 //import * as clanDetailActions from './clan-detail.actions';
 import * as clanRewardActions from './clan-rewards.actions';
@@ -39,6 +39,7 @@ export class ClanRewardEffects {
     loadRewards$ = createEffect(() =>
         this.actions$.pipe(
             ofType(clanRewardActions.loadRewards),
+            delay(1000),
             switchMap(({ clanId }) => {
                 return this.clanDB.getValues(clanId.toString()).ClanRewards.pipe(
                     take(1),
