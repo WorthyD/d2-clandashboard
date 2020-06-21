@@ -25,88 +25,70 @@ import {} from 'bungie-models';
 // import { Clan } from 'bungie-parse';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subject, Subscription } from 'rxjs';
-import {
-    filter,
-    map,
-    distinctUntilChanged,
-    takeUntil,
-    take
-} from 'rxjs/operators';
+import { filter, map, distinctUntilChanged, takeUntil, take } from 'rxjs/operators';
 
 import { RewardsUpdater } from './services/clanRewardsUpdater';
+import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'app-clan',
-    templateUrl: './clan.component.html',
-    styleUrls: ['./clan.component.scss']
+  selector: 'app-clan',
+  templateUrl: './clan.component.html',
+  styleUrls: ['./clan.component.scss']
 })
 export class ClanComponent implements OnInit, OnDestroy {
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private store: Store<clanDetailStore.ClanDetailState>,
-        private rStore: Store<routerStore.State>,
-        private clanRewards: RewardsUpdater
-    ) {
-        this.clanId
-            .pipe(takeUntil(this.destroyed))
-            .subscribe(r => this.loadClan(r));
-    }
+  versionNumber = environment.versions.app;
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private store: Store<clanDetailStore.ClanDetailState>,
+    private rStore: Store<routerStore.State>,
+    private clanRewards: RewardsUpdater
+  ) {
+    this.clanId.pipe(takeUntil(this.destroyed)).subscribe((r) => this.loadClan(r));
+  }
 
-    private clanId = this.activatedRoute.params.pipe(
-        map(x => x.id, distinctUntilChanged())
-    );
+  private clanId = this.activatedRoute.params.pipe(map((x) => x.id, distinctUntilChanged()));
 
-    clanDetails$: Observable<ClanDetails> = this.store.pipe(
-        select(clanDetailSelectors.getClanDetail)
-    );
-    // clanMembers$: Observable<ClanMember[]> = this.store.pipe(
-    //     select(clanMemberSelectors.getAllMembers)
-    // );
+  clanDetails$: Observable<ClanDetails> = this.store.pipe(select(clanDetailSelectors.getClanDetail));
+  // clanMembers$: Observable<ClanMember[]> = this.store.pipe(
+  //     select(clanMemberSelectors.getAllMembers)
+  // );
 
-    private destroyed = new Subject();
+  private destroyed = new Subject();
 
-    ngOnInit() {}
+  ngOnInit() {}
 
-    ngOnDestroy() {
-        this.destroyed.next();
-        this.destroyed.complete();
-    }
+  ngOnDestroy() {
+    this.destroyed.next();
+    this.destroyed.complete();
+  }
 
-    loadClan(clanId) {
-        // if valid clan load the rest
+  openLink(url) {
+    window.open(url, '_blank');
+  }
+
+  loadClan(clanId) {
+    // if valid clan load the rest
+    this.store.dispatch(clanCacheActions.initializeCache({ clanId: clanId }));
+
+    this.store
+      .select(clanCacheSelectors.isCacheLoaded)
+      .pipe(
+        filter((loaded) => !!loaded),
+        take(1)
+      )
+      .subscribe((x) => {
+        // this.clanRewards.update('clanRewards', clanId);
+        this.store.dispatch(clanRewardActions.loadRewards({ clanId: clanId }));
+
+        this.store.dispatch(clanIdActions.setClanId({ clanId: clanId }));
+        this.store.dispatch(clanDetailActions.loadClan({ clanId: clanId }));
+        this.store.dispatch(clanMemberActions.loadClanMembers({ clanId: clanId }));
+        this.store.dispatch(memberProfileActions.loadMemberProfiles({ clanId: clanId }));
         this.store.dispatch(
-            clanCacheActions.initializeCache({ clanId: clanId })
+          memberActivityActions.loadClanMembersActivities({
+            clanId: clanId
+          })
         );
-
-        this.store
-            .select(clanCacheSelectors.isCacheLoaded)
-            .pipe(
-                filter(loaded => !!loaded),
-                take(1)
-            )
-            .subscribe(x => {
-                // this.clanRewards.update('clanRewards', clanId);
-                this.store.dispatch(
-                    clanRewardActions.loadRewards({ clanId: clanId })
-                );
-
-                this.store.dispatch(
-                    clanIdActions.setClanId({ clanId: clanId })
-                );
-                this.store.dispatch(
-                    clanDetailActions.loadClan({ clanId: clanId })
-                );
-                this.store.dispatch(
-                    clanMemberActions.loadClanMembers({ clanId: clanId })
-                );
-                this.store.dispatch(
-                    memberProfileActions.loadMemberProfiles({ clanId: clanId })
-                );
-                this.store.dispatch(
-                    memberActivityActions.loadClanMembersActivities({
-                        clanId: clanId
-                    })
-                );
-            });
-    }
+      });
+  }
 }

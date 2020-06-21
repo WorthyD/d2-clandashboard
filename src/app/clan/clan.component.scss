@@ -1,24 +1,30 @@
 .main-container {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 64px;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
-.clan-nav{
-    min-width:150px;
+.clan-nav {
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  height:100%;
+  .section-nav {
+    flex: 1;
+  }
 }
 
 lib-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 }
 
-mat-sidenav-container{
-    min-height: calc(100vh - 64px);
+mat-sidenav-container {
+  min-height: calc(100vh - 64px);
 }
