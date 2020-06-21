@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-
-const componentModules = [MatButtonModule];
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+const componentModules = [MatButtonModule, MatProgressSpinnerModule];
 
 @NgModule({
   declarations: [],

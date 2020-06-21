@@ -6,14 +6,9 @@ import * as routerState from '../../../root-store/router/router.selectors';
 
 import { getClanState } from '../clan-state.selector';
 
-export const getClanRewardState = createSelector(
-    getClanState,
-    s => s.clanRewards
-);
-export const getClanRewards = createSelector(
-    getClanRewardState,
-    s => s.clanReward
-);
+export const getClanRewardState = createSelector(getClanState, (s) => s.clanRewards);
+export const getClanRewards = createSelector(getClanRewardState, (s) => s.clanReward);
+export const getClanRewardsLoading = createSelector(getClanRewardState, (s) => s.loading);
 
 // export const getClanDetailEntities = createSelector(
 //     getClanDetailState,
