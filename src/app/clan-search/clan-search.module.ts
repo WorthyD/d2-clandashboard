@@ -11,6 +11,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FeaturedClansModule } from './featured-clans/featured-clans.module';
 
 import { CoreModule } from '../core/core.module';
+import { ClanSearchState, ClanSearchEffects, reducers } from './state/clan-search.state';
+import { CLAN_SEARCH_FEATURE } from './state/clan-search.selectors';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { SavedClansModule } from './saved-clans/saved-clans.module';
+
 @NgModule({
   declarations: [ClanSearchComponent],
   imports: [
@@ -23,6 +29,9 @@ import { CoreModule } from '../core/core.module';
     MatFormFieldModule,
     RouterModule,
     FeaturedClansModule,
-  ],
+    SavedClansModule,
+    StoreModule.forFeature(CLAN_SEARCH_FEATURE, reducers),
+    EffectsModule.forFeature(ClanSearchEffects)
+  ]
 })
 export class ClanSearchModule {}

@@ -1,26 +1,29 @@
 <!-- <p>clan-search works!</p>
 <button (click)="load(2073131)">Load DoD PC</button> -->
 <div class="clan-search">
-    <h1>Clan Search <i class="material-icons"
-            matTooltip="Must search for full clan name. Bungie doesn't support a 'fuzzy' search.">
-            help
-        </i></h1>
-    <mat-form-field appearance="outline" class="search">
-        <input matInput autofocus #clanInput (keyup.Enter)="open(clanInput.value)" [matAutocomplete]="auto"
-            [formControl]="autocompleteControl" placeholder="Find your clan...">
-        <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="true"
-            (optionSelected)="autocompleteSelected($event)">
-            <mat-option *ngFor="let clan of (autocompleteResult$ | async)" [value]="clan">
-                {{clan.name}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
-    <div>
-      <app-featured-clans></app-featured-clans>
-    </div>
-    <!-- <hr>
+  <h1>Clan Search <i class="material-icons"
+      matTooltip="Must search for full clan name. Bungie doesn't support a 'fuzzy' search.">
+      help
+    </i></h1>
+  <mat-form-field appearance="outline" class="search">
+    <input matInput autofocus #clanInput (keyup.Enter)="open(clanInput.value)" [matAutocomplete]="auto"
+      [formControl]="autocompleteControl" placeholder="Find your clan...">
+    <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="true"
+      (optionSelected)="autocompleteSelected($event)">
+      <mat-option *ngFor="let clan of (autocompleteResult$ | async)" [value]="clan">
+        {{clan.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <div>
+    <app-saved-clans></app-saved-clans>
+  </div>
+  <div>
+    <app-featured-clans></app-featured-clans>
+  </div>
+  <!-- <hr>
     <a [routerLink]="'./clan/2073131'">DoD PC</a> -->
 </div>
 <div class="footer">
-    <app-footer></app-footer>
+  <app-footer></app-footer>
 </div>

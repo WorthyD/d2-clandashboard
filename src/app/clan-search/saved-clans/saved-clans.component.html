@@ -1,0 +1,5 @@
+<h2 class="text-center">Saved Clans</h2>
+<div *ngIf="savedClans$ | async as savedClans">
+  <button mat-stroked-button color="primary" *ngFor="let savedClan of savedClans" class="m-3"
+    (click)="viewClan(savedClan)">{{savedClan.name}}</button>
+</div>

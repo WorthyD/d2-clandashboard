@@ -13,3 +13,6 @@ export * from './lib/clan-search/featured-clan-card';
 export * from './lib/clan-weekly-progress';
 export * from './lib/clan-season-progress';
 export * from './lib/clan-members-card';
+
+
+export * from './lib/shared/modules/material.module';
