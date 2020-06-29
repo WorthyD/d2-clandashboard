@@ -1,0 +1,12 @@
+DestinyPresentationNodeDefinition - Get seals Need to figure out what Type they are
+
+
+https://data.destinysets.com/i/PresentationNode:1652422747
+Get DestinyPresentationNodeDefinition id of '1652422747' root seals. Get all seals from here. Then get
+
+Things todo: Setup definition for presentation nodes store
+
+Get Parent Seals
+Get Seals
+Get player records to compare.
+Setup cache for player records.
