@@ -31,11 +31,11 @@ export class AppComponent {
       //            'DestinyClassDefinition',
       //            'DestinySandboxPerkDefinition',
       //            'DestinyEnergyTypeDefinition',
-      'DestinyCollectibleDefinition',
+      //'DestinyCollectibleDefinition',
       'DestinyPresentationNodeDefinition',
-      'DestinyRecordDefinition',
+      //'DestinyRecordDefinition',
       'DestinySeasonDefinition',
-      'DestinySeasonPassDefinition',
+      //'DestinySeasonPassDefinition',
       'DestinyMilestoneDefinition',
       'DestinyActivityDefinition',
       'DestinyActivityModeDefinition'
@@ -44,7 +44,6 @@ export class AppComponent {
     ];
     data.loadManifestData('en', tables, null, null).subscribe((x) => {
       if (x && x.data) {
-        console.log(x.data);
         if (x.data.DestinyActivityModeDefinition) {
           this.activityModeService.initializeCache(x.data.DestinyActivityModeDefinition);
         }
@@ -55,8 +54,9 @@ export class AppComponent {
         if (x.data.DestinyMilestoneDefinition) {
           this.milestoneDefinitionService.initializeCache(x.data.DestinyMilestoneDefinition);
         }
+        if (x.data.DestinyPresentationNodeDefinition){
+        }
       }
-      //     this.activityService.initializeCache(x.);
     });
   }
 }
