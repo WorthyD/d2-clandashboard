@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 
-import { DataService, MilestoneDefinitionService, ActivitiesService, ActivityModeService } from '@destiny/data';
+import {
+  DataService,
+  MilestoneDefinitionService,
+  ActivitiesService,
+  ActivityModeService,
+  PresentationNodeDefinitionService
+} from '@destiny/data';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { registerIcons } from 'projects/components/src/lib/icons/register-icons';
@@ -17,6 +23,7 @@ export class AppComponent {
     private activityService: ActivitiesService,
     private activityModeService: ActivityModeService,
     private milestoneDefinitionService: MilestoneDefinitionService,
+    private presentationNodeDefinitionService: PresentationNodeDefinitionService,
     iconRegistry: MatIconRegistry,
     domSanitizer: DomSanitizer
   ) {
@@ -54,7 +61,8 @@ export class AppComponent {
         if (x.data.DestinyMilestoneDefinition) {
           this.milestoneDefinitionService.initializeCache(x.data.DestinyMilestoneDefinition);
         }
-        if (x.data.DestinyPresentationNodeDefinition){
+        if (x.data.DestinyPresentationNodeDefinition) {
+          this.presentationNodeDefinitionService.initializeCache(x.data.DestinyPresentationNodeDefinition);
         }
       }
     });

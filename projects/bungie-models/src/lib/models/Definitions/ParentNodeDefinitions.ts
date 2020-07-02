@@ -1,1 +1,3 @@
-DestinyDefinitionsPresentationDestinyPresentationNodeDefinition
+import { DestinyDefinitionsPresentationDestinyPresentationNodeDefinition } from 'bungie-api';
+
+export interface PresentationNodeDefinition extends DestinyDefinitionsPresentationDestinyPresentationNodeDefinition {}

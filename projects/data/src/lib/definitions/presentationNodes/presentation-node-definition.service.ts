@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BaseDefinitionsService } from '../base-definitions.service';
 import { DefinitionModelState } from '../store/definitions.state';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { PresentationNodeDefinition } from '@destiny/models/definitions';
+import * as definitionSelectors from '../store/definitions.selectors';
 
-interface DefinitionPresentationNodeModel{
-  id:string;
-  definitions:
+interface DefinitionPresentationNodeModel {
+  id: string;
+  definitions: PresentationNodeDefinition;
 }
 
 @Injectable({
@@ -19,24 +21,24 @@ export class PresentationNodeDefinitionService extends BaseDefinitionsService {
   }
   initializeCache(defs: any) {
     this.addDefinitionsToState({
-        id: this.definitionModeKey,
-        definitions: defs
+      id: this.definitionModeKey,
+      definitions: defs
     });
-}
+  }
 
-getDefinitions(): Observable<DefinitionActivityModel> {
+  getDefinitions(): Observable<DefinitionPresentationNodeModel> {
     return this.getDefinitionsFromState(this.definitionModeKey);
-}
+  }
 
-getDefinitionsByHash(hash: number): Observable<MilestoneDefinition> {
+  getDefinitionsByHash(hash: number): Observable<PresentationNodeDefinition> {
     return this.pStore.pipe(
-        select(
-            definitionSelectors.cacheByHash(
-                this.definitionModeKey,
-                //MilestoneHashes.ClanRewards
-                hash
-            )
+      select(
+        definitionSelectors.cacheByHash(
+          this.definitionModeKey,
+          //MilestoneHashes.ClanRewards
+          hash
         )
+      )
     );
-}
+  }
 }
