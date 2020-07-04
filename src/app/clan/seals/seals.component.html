@@ -1,4 +1,5 @@
-<p>seals works!</p>
-<pre><code>
- {{(sealService.rootSealNode$ | async) | json}}
-</code></pre>
+<ng-container *ngIf="sealService.rootSealNode$ | async as rootSeal">
+  <ng-container *ngFor="let seal of rootSeal.children.presentationNodes">
+    <app-seal [presentationNode]="sealService.getChildNode(seal.presentationNodeHash) | async"></app-seal>
+  </ng-container>
+</ng-container>
