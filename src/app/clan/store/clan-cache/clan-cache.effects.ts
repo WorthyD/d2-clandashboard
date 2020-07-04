@@ -7,7 +7,7 @@ import { empty, of } from 'rxjs';
 import * as clanCacheActions from './clan-cache.actions';
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
 
-import { ClanDatabase } from '../../../services/ClanDatabase';
+// import { ClanDatabase } from '../../../services/ClanDatabase';
 import {
     catchError,
     map,
@@ -20,6 +20,7 @@ import {
     withLatestFrom
 } from 'rxjs/operators';
 import { dispatch } from 'rxjs/internal/observable/range';
+import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
 @Injectable()
 export class ClanCacheEffects {

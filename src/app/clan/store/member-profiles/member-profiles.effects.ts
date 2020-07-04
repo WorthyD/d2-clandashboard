@@ -7,7 +7,7 @@ import { empty, of, from } from 'rxjs';
 //import * as clanDetailActions from './clan-detail.actions';
 // import * as clanMemberActions from './clan-members.actions';
 
-import { ClanDatabase } from '../../../services/ClanDatabase';
+// import { ClanDatabase } from '../../../services/ClanDatabase';
 import { Updater } from '../../services/updater';
 
 import { MemberProfile } from 'bungie-models';
@@ -30,6 +30,7 @@ import {
     take,
     withLatestFrom
 } from 'rxjs/operators';
+import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
 @Injectable()
 export class MemberProfileEffects {

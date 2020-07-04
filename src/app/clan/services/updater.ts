@@ -5,7 +5,7 @@ import { BehaviorSubject, combineLatest, Observable, of, from } from 'rxjs';
 import * as moment from 'moment';
 
 import { ClanState } from '../store/clan-state.state';
-import { ClanDatabase } from 'src/app/services/ClanDatabase';
+// import { ClanDatabase } from 'src/app/services/ClanDatabase';
 import { take, mergeMap, map } from 'rxjs/operators';
 
 import { GroupV2Service, Destiny2Service } from 'bungie-api';
