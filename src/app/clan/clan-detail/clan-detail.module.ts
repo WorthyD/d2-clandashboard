@@ -10,7 +10,13 @@ import { RecentlyActiveMembersComponent } from './recently-active-members/recent
 import { BaseMemberCardComponent } from './base-member-card/base-member-card.component';
 
 @NgModule({
-    declarations: [ClanDetailComponent, InactiveMembersComponent, HighestpowerMembersComponent, RecentlyActiveMembersComponent, BaseMemberCardComponent],
-    imports: [CommonModule, ClanWeeklyProgressModule, ClanOverviewModule, ClanSeasonProgressModule, ClanMembersCardModule],
+  declarations: [
+    ClanDetailComponent,
+    InactiveMembersComponent,
+    HighestpowerMembersComponent,
+    RecentlyActiveMembersComponent,
+    BaseMemberCardComponent
+  ],
+  imports: [CommonModule, ClanWeeklyProgressModule, ClanOverviewModule, ClanSeasonProgressModule, ClanMembersCardModule]
 })
 export class ClanDetailModule {}

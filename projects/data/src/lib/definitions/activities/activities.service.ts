@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { DefinitionModelState } from '../store/definitions.state';
 import * as definitionSelectors from '../store/definitions.selectors';
 
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 // import { DefinitionModel } from '../models/definitionModel';
 import {ActivityDefinition} from '@destiny/models/definitions';
 
@@ -19,6 +19,7 @@ interface DefinitionActivityModeModel {
 })
 export class ActivitiesService extends BaseDefinitionsService {
     definitionModeKey = 'activities';
+    definitions:  BehaviorSubject<ActivityDefinition[]> = new BehaviorSubject([]);
 
     constructor(private pStore: Store<DefinitionModelState>) {
         super(pStore);
@@ -26,6 +27,7 @@ export class ActivitiesService extends BaseDefinitionsService {
 
     initializeCache(defs: any) {
         this.addDefinitionsToState({ id: this.definitionModeKey, definitions: defs });
+        // this.definitions.next(defs);
     }
 
     getDefinitions(): Observable<DefinitionActivityModeModel> {
