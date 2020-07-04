@@ -26,11 +26,12 @@ export class ActivitiesService extends BaseDefinitionsService {
     }
 
     initializeCache(defs: any) {
-        this.addDefinitionsToState({ id: this.definitionModeKey, definitions: defs });
-        // this.definitions.next(defs);
+        //this.addDefinitionsToState({ id: this.definitionModeKey, definitions: defs });
+         this.definitions.next(defs);
     }
 
-    getDefinitions(): Observable<DefinitionActivityModeModel> {
-        return this.getDefinitionsFromState(this.definitionModeKey);
+    getDefinitions(): Observable<ActivityDefinition[]> {
+      return this.definitions;
+       // return this.getDefinitionsFromState(this.definitionModeKey);
     }
 }

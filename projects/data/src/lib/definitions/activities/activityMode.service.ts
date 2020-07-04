@@ -6,7 +6,7 @@ import { DefinitionModelState } from '../store/definitions.state';
 import * as definitionSelectors from '../store/definitions.selectors';
 
 // import { ActivityModeDefinition } from 'bungie-models';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { DefinitionModel } from '../models/definitionModel';
 // import { ActivityModeModel } from '../models/ActivityModeModel';
 // import { ActivityModeModel } from 'bungie-models/definitions';
@@ -14,25 +14,29 @@ import { DefinitionModel } from '../models/definitionModel';
 
 import { ActivityModeDefinition } from '@destiny/models/definitions';
 interface DefinitionActivityModel {
-    id: string;
-    definitions: ActivityModeDefinition[];
+  id: string;
+  definitions: ActivityModeDefinition[];
 }
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class ActivityModeService extends BaseDefinitionsService {
-    definitionModeKey = 'activityModes';
+  definitionModeKey = 'activityModes';
 
-    constructor(private pStore: Store<DefinitionModelState>) {
-        super(pStore);
-    }
+  definitions: BehaviorSubject<ActivityModeDefinition[]> = new BehaviorSubject([]);
+  constructor(private pStore: Store<DefinitionModelState>) {
+    super(pStore);
+  }
 
-    initializeCache(defs: any) {
-        this.addDefinitionsToState({ id: this.definitionModeKey, definitions: defs });
-    }
+  initializeCache(defs: any) {
+    // this.addDefinitionsToState({ id: this.definitionModeKey, definitions: defs });
 
-    getDefinitions(): Observable<DefinitionActivityModel> {
-        return this.getDefinitionsFromState(this.definitionModeKey);
-    }
+    this.definitions.next(defs);
+  }
+
+  getDefinitions(): Observable<ActivityModeDefinition[]> {
+    //return this.getDefinitionsFromState(this.definitionModeKey);
+    return this.definitions;
+  }
 }

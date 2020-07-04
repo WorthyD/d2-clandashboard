@@ -25,11 +25,11 @@ export class MemberActivityService {
         this.activityDefinitions$,
         (pActivities, activityModeDefinitions, activityDefinitions) => {
             if (pActivities && activityModeDefinitions && activityDefinitions) {
-                const defArray = Object.keys(activityModeDefinitions.definitions).map(id => activityModeDefinitions.definitions[id]);
+                const defArray = Object.keys(activityModeDefinitions).map(id => activityModeDefinitions[id]);
                 return pActivities.map(x => {
                     return {
                         playerActivity: x,
-                        activityDefinition: activityDefinitions.definitions[x.activityDetails.referenceId],
+                        activityDefinition: activityDefinitions[x.activityDetails.referenceId],
                         activityModeDefinition: defArray.find(y => {
                             return y.modeType === x.activityDetails.mode;
                         })
