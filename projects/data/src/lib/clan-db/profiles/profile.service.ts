@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Destiny2Service } from 'bungie-api';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { ClanDatabase } from '../ClanDatabase';
-import { map, take, switchMap } from 'rxjs/operators';
+import { map, take, switchMap, catchError } from 'rxjs/operators';
 import { Observable, from, of } from 'rxjs';
 import { DBObject } from '../app-indexed-db';
 
@@ -20,6 +20,31 @@ export class ProfileService {
 
   private getProfileId(member: ClanMember) {
     return `${member.destinyUserInfo.membershipType}-${member.destinyUserInfo.membershipId}`;
+  }
+
+  getSerializedProfile(clanId: string, member: ClanMember): Observable<MemberProfile> {
+    return this.getProfile(clanId, member).pipe(map((profile) => this.serializeProfile(profile)));
+  }
+
+  private serializeProfile(p: MemberProfile): MemberProfile {
+    return {
+      profile: {
+        data: {
+          userInfo: {
+            membershipType: p.profile.data.userInfo.membershipType,
+            membershipId: p.profile.data.userInfo.membershipId,
+            displayName: p.profile.data.userInfo.displayName
+          },
+          dateLastPlayed: p.profile.data.dateLastPlayed
+        }
+      },
+      profileProgression: {
+        data: {
+          seasonalArtifact: { ...p.profileProgression.data.seasonalArtifact }
+        }
+      },
+      characters: { ...p.characters }
+    };
   }
 
   getProfile(clanId: string, member: ClanMember): Observable<MemberProfile> {
@@ -59,6 +84,12 @@ export class ProfileService {
 
                 return memberProfileResponse.Response;
               }
+            }),
+            catchError((error) => {
+              if (p && p.data) {
+                return of(p.data);
+              }
+              throw error;
             })
           );
       })

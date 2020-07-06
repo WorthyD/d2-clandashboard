@@ -4,10 +4,11 @@ import { ProfileService } from './profile.service';
 
 import { Destiny2Service } from 'bungie-api';
 import { ClanDatabase } from '../ClanDatabase';
-import { of, from } from 'rxjs';
+import { of, from, defer } from 'rxjs';
 import { MOCK_DB_PROFILES, MOCK_WORTHY_PROFILE, MOCK_OMEGA_PROFILE } from '../../testing-utils/objects/profiles.mock';
 import { MOCK_WORTHY_MEMBER, MOCK_OMEGA_MEMBER } from '../../testing-utils/objects/member.mock';
 import { ClanMember, MemberProfile } from 'bungie-models';
+import { HttpErrorResponse } from '@angular/common/http';
 
 describe('ProfileService', () => {
   let service: ProfileService;
@@ -89,8 +90,48 @@ describe('ProfileService', () => {
       });
     });
 
-    it('should handle API down', () => {
+    it('should handle API down with DB data', () => {
+      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+        return { MemberProfiles: of(MOCK_DB_PROFILES) };
+      });
+      const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      const errorResponse = new HttpErrorResponse({
+        error: '404 error',
+        status: 404,
+        statusText: 'Not Found'
+      });
+      const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
+        return defer(() => Promise.reject(errorResponse));
+      });
 
+      service.getProfile('1', mockOldMember as ClanMember).subscribe((x) => {
+        expect(x).toBe((MOCK_WORTHY_PROFILE as unknown) as MemberProfile);
+        expect(dbGetSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(1);
+        expect(updateSpy).toHaveBeenCalledTimes(0);
+      });
+    });
+    it('should handle API down with no DB data', () => {
+      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+        return { MemberProfiles: of([]) };
+      });
+      const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      const errorResponse = new HttpErrorResponse({
+        error: '404 error',
+        status: 404,
+        statusText: 'Not Found'
+      });
+      const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
+        return defer(() => Promise.reject(errorResponse));
+      });
+
+      service.getProfile('1', mockOldMember as ClanMember).subscribe(
+        (x) => fail('should have returned error'),
+        (error: HttpErrorResponse) => {
+          expect(error.status).toEqual(404);
+          expect(error.error).toContain('404 error');
+        }
+      );
     });
   });
 });
