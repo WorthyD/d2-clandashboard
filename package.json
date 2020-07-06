@@ -6,6 +6,7 @@
     "start": "ng serve --port 4321 --open",
     "build": "ng build",
     "test": "ng test --codeCoverage=true",
+    "test:data": "ng test --project=data --codeCoverage=true",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "netlify": "netlify deploy --dir=./dist/destiny-dashboard --prod",

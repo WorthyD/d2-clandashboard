@@ -11,7 +11,7 @@ import * as clanIdSelectors from '../clan-id/clan-id.selector';
 
 // import { ClanParseService } from '../../../parser/parsers/clan-parse.service';
 
-import { ClanDatabase } from '../../../services/ClanDatabase';
+// import { ClanDatabase } from '../../../services/ClanDatabase';
 import { Updater } from '../../services/updater';
 
 import {
@@ -23,6 +23,7 @@ import {
     first,
     filter
 } from 'rxjs/operators';
+import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
 @Injectable()
 export class ClanDetailEffects {

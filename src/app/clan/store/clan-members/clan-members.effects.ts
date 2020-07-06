@@ -11,7 +11,7 @@ import { GroupV2Service } from 'bungie-api';
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
 import { ClanMember } from 'bungie-models';
 
-import { ClanDatabase } from '../../../services/ClanDatabase';
+// import { ClanDatabase } from '../../../services/ClanDatabase';
 import { Updater } from '../../services/updater';
 
 import {
@@ -25,6 +25,7 @@ import {
     tap,
     withLatestFrom
 } from 'rxjs/operators';
+import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
 @Injectable()
 export class ClanMemberEffects {
