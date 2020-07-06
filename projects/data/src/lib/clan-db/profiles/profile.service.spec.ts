@@ -15,8 +15,8 @@ describe('ProfileService', () => {
   let dbService: ClanDatabase;
   let d2Service: Destiny2Service;
 
-  const mockOldMember: unknown = MOCK_WORTHY_MEMBER;
-  const mockNewMember: unknown = MOCK_OMEGA_MEMBER;
+  const mockOldMember: unknown = MOCK_WORTHY_MEMBER as MemberProfile;
+  const mockNewMember: unknown = MOCK_OMEGA_MEMBER  as MemberProfile;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -33,7 +33,7 @@ describe('ProfileService', () => {
   });
 
   describe('getProfile', () => {
-    it('should get profile from DB, but call service if expired', () => {
+    fit('should get profile from DB, but call service if expired', () => {
       const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
         return { MemberProfiles: of(MOCK_DB_PROFILES) };
       });
@@ -44,7 +44,7 @@ describe('ProfileService', () => {
         });
       });
 
-      service.getProfile('1', mockOldMember as ClanMember).subscribe((x) => {
+      service.getSerializedProfile('1', mockOldMember as ClanMember).subscribe((x) => {
         expect(x).toBe((MOCK_WORTHY_PROFILE as unknown) as MemberProfile);
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(1);
@@ -130,6 +130,36 @@ describe('ProfileService', () => {
         (error: HttpErrorResponse) => {
           expect(error.status).toEqual(404);
           expect(error.error).toContain('404 error');
+        }
+      );
+    });
+  });
+
+  describe('getProfiles', () => {
+    it('should get users profiles', () => {
+      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+        return { MemberProfiles: of(MOCK_DB_PROFILES) };
+      });
+      const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
+        return of({
+          Response: MOCK_WORTHY_PROFILE
+        });
+      });
+
+      const clanMembers = [mockOldMember, mockNewMember];
+      const receivedMembers = [];
+      service.getProfiles('1', clanMembers).subscribe(
+        (x) => {
+          receivedMembers.push(x);
+        },
+        (err) => {},
+        () => {
+          expect(receivedMembers.length).toEqual(clanMembers.length);
+          expect(dbGetSpy).toHaveBeenCalledTimes(2);
+          expect(updateSpy).toHaveBeenCalledTimes(1);
+          expect(serviceSpy).toHaveBeenCalledTimes(1);
+          console.log('done');
         }
       );
     });

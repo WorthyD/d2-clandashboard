@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { Destiny2Service } from 'bungie-api';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { ClanDatabase } from '../ClanDatabase';
-import { map, take, switchMap, catchError } from 'rxjs/operators';
+import { map, take, switchMap, catchError, mergeMap } from 'rxjs/operators';
 import { Observable, from, of } from 'rxjs';
 import { DBObject } from '../app-indexed-db';
 
 import * as moment from 'moment';
+import { profileSerializer } from './profile.serializer';
+import { ContentHashService } from '../../services/content-hash.service';
 
 @Injectable()
 export class ProfileService {
@@ -14,37 +16,24 @@ export class ProfileService {
   private xp = moment().add(-1, 'hours');
   private profileComponents = [100, 104, 200, 202];
 
-  constructor(private d2Service: Destiny2Service, private clanDb: ClanDatabase) {}
+  constructor(
+    private d2Service: Destiny2Service,
+    private clanDb: ClanDatabase,
+    private contentHashService: ContentHashService
+  ) {}
 
-  private getProfiles(clanId: string, members: ClanMember[]) {}
+  getProfiles(clanId: string, members: ClanMember[]) {
+    return from(members).pipe(mergeMap((member) => this.getProfile(clanId, member), 10));
+  }
 
   private getProfileId(member: ClanMember) {
     return `${member.destinyUserInfo.membershipType}-${member.destinyUserInfo.membershipId}`;
   }
 
   getSerializedProfile(clanId: string, member: ClanMember): Observable<MemberProfile> {
-    return this.getProfile(clanId, member).pipe(map((profile) => this.serializeProfile(profile)));
-  }
-
-  private serializeProfile(p: MemberProfile): MemberProfile {
-    return {
-      profile: {
-        data: {
-          userInfo: {
-            membershipType: p.profile.data.userInfo.membershipType,
-            membershipId: p.profile.data.userInfo.membershipId,
-            displayName: p.profile.data.userInfo.displayName
-          },
-          dateLastPlayed: p.profile.data.dateLastPlayed
-        }
-      },
-      profileProgression: {
-        data: {
-          seasonalArtifact: { ...p.profileProgression.data.seasonalArtifact }
-        }
-      },
-      characters: { ...p.characters }
-    };
+    return this.getProfile(clanId, member).pipe(
+      map((profile) => (profileSerializer(profile, this.contentHashService.getProfileHashes()) as unknown) as MemberProfile)
+    );
   }
 
   getProfile(clanId: string, member: ClanMember): Observable<MemberProfile> {
