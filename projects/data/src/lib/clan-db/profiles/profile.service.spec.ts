@@ -16,12 +16,12 @@ describe('ProfileService', () => {
   let d2Service: Destiny2Service;
 
   const mockOldMember: unknown = MOCK_WORTHY_MEMBER as MemberProfile;
-  const mockNewMember: unknown = MOCK_OMEGA_MEMBER  as MemberProfile;
+  const mockNewMember: unknown = MOCK_OMEGA_MEMBER as MemberProfile;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [Destiny2Service, ProfileService]
+      providers: [Destiny2Service, ProfileService, ClanDatabase]
     });
     service = TestBed.inject(ProfileService);
     dbService = TestBed.inject(ClanDatabase);
@@ -33,7 +33,7 @@ describe('ProfileService', () => {
   });
 
   describe('getProfile', () => {
-    fit('should get profile from DB, but call service if expired', () => {
+    it('should get profile from DB, but call service if expired', () => {
       const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
         return { MemberProfiles: of(MOCK_DB_PROFILES) };
       });
@@ -45,7 +45,7 @@ describe('ProfileService', () => {
       });
 
       service.getSerializedProfile('1', mockOldMember as ClanMember).subscribe((x) => {
-        expect(x).toBe((MOCK_WORTHY_PROFILE as unknown) as MemberProfile);
+        expect(x.profile.data.userInfo.displayName).toBe(MOCK_WORTHY_PROFILE.profile.data.userInfo.displayName);
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(1);
         expect(updateSpy).toHaveBeenCalledTimes(1);
@@ -63,8 +63,8 @@ describe('ProfileService', () => {
         });
       });
 
-      service.getProfile('1', mockNewMember as ClanMember).subscribe((x) => {
-        expect(x).toBe((MOCK_OMEGA_PROFILE as unknown) as MemberProfile);
+      service.getSerializedProfile('1', mockNewMember as ClanMember).subscribe((x) => {
+        expect(x.profile.data.userInfo.displayName).toBe(MOCK_OMEGA_PROFILE.profile.data.userInfo.displayName);
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(0);
         expect(updateSpy).toHaveBeenCalledTimes(0);
@@ -82,8 +82,8 @@ describe('ProfileService', () => {
         });
       });
 
-      service.getProfile('1', mockOldMember as ClanMember).subscribe((x) => {
-        expect(x).toBe((MOCK_WORTHY_PROFILE as unknown) as MemberProfile);
+      service.getSerializedProfile('1', mockOldMember as ClanMember).subscribe((x) => {
+        expect(x.profile.data.userInfo.displayName).toBe(MOCK_WORTHY_PROFILE.profile.data.userInfo.displayName);
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(1);
         expect(updateSpy).toHaveBeenCalledTimes(1);
@@ -104,8 +104,8 @@ describe('ProfileService', () => {
         return defer(() => Promise.reject(errorResponse));
       });
 
-      service.getProfile('1', mockOldMember as ClanMember).subscribe((x) => {
-        expect(x).toBe((MOCK_WORTHY_PROFILE as unknown) as MemberProfile);
+      service.getSerializedProfile('1', mockOldMember as ClanMember).subscribe((x) => {
+        expect(x.profile.data.userInfo.displayName).toBe(MOCK_WORTHY_PROFILE.profile.data.userInfo.displayName);
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(1);
         expect(updateSpy).toHaveBeenCalledTimes(0);
@@ -125,7 +125,7 @@ describe('ProfileService', () => {
         return defer(() => Promise.reject(errorResponse));
       });
 
-      service.getProfile('1', mockOldMember as ClanMember).subscribe(
+      service.getSerializedProfile('1', mockOldMember as ClanMember).subscribe(
         (x) => fail('should have returned error'),
         (error: HttpErrorResponse) => {
           expect(error.status).toEqual(404);
@@ -135,7 +135,7 @@ describe('ProfileService', () => {
     });
   });
 
-  describe('getProfiles', () => {
+  fdescribe('getProfiles', () => {
     it('should get users profiles', () => {
       const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
         return { MemberProfiles: of(MOCK_DB_PROFILES) };
@@ -149,7 +149,7 @@ describe('ProfileService', () => {
 
       const clanMembers = [mockOldMember, mockNewMember];
       const receivedMembers = [];
-      service.getProfiles('1', clanMembers).subscribe(
+      service.getSerializedProfiles('1', clanMembers).subscribe(
         (x) => {
           receivedMembers.push(x);
         },
@@ -159,7 +159,6 @@ describe('ProfileService', () => {
           expect(dbGetSpy).toHaveBeenCalledTimes(2);
           expect(updateSpy).toHaveBeenCalledTimes(1);
           expect(serviceSpy).toHaveBeenCalledTimes(1);
-          console.log('done');
         }
       );
     });

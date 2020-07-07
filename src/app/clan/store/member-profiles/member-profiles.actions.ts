@@ -1,28 +1,24 @@
 import { createAction, props } from '@ngrx/store';
 
-import {  MemberProfile } from 'bungie-models';
+import { ClanMember, MemberProfile } from 'bungie-models';
 
 const base = '[MemberProfiles] - ';
 
 export const loadMemberProfiles = createAction(
-    `${base} Load MemberProfiles`,
-    props<{ clanId: number }>()
+  `${base} Load MemberProfiles`,
+  props<{ clanId: number; clanMembers: ClanMember[] }>()
 );
 
-export const loadMemberProfilesEmpty = createAction(
-    `${base} Load MemberProfilesEmpty`
-);
+export const loadMemberProfilesEmpty = createAction(`${base} Load MemberProfilesEmpty`);
 
 export const loadMemberProfilesFromAPI = createAction(
-    `${base} Load MemberProfiles From API`,
-    props<{ memberProfiles: MemberProfile[] }>()
+  `${base} Load MemberProfiles From API`,
+  props<{ memberProfiles: MemberProfile[] }>()
 );
 
+export const loadMemberProfile = createAction(`${base} Load Clan Member`, props<{ memberProfiles: MemberProfile }>());
 export const loadMemberProfileSuccess = createAction(
-    `${base} Load Clan Members Success`,
-    props<{ memberProfiles: MemberProfile[] }>()
+  `${base} Load Clan Members Success`,
+  props<{ memberProfiles: MemberProfile[] }>()
 );
-export const loadClanMemberFailure = createAction(
-    `${base} Load Clan Members Failure`,
-    props<{ error: any }>()
-);
+export const loadClanMemberFailure = createAction(`${base} Load Clan Members Failure`, props<{ error: any }>());

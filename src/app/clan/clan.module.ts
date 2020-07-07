@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { RewardsUpdater } from './services/clanRewardsUpdater';
 import { ClanDetailModule } from './clan-detail/clan-detail.module';
 import {MaterialModule} from '@destiny/components';
+import {ClanDbModule} from '@destiny/data';
 
 @NgModule({
     declarations: [ClanComponent],
@@ -26,6 +27,7 @@ import {MaterialModule} from '@destiny/components';
         MatListModule,
         MatSidenavModule,
         MaterialModule,
+        ClanDbModule,
         // ClanRosterModule,
         //         BungieParseModule,
         StoreModule.forFeature('clan', clanState.reducers),

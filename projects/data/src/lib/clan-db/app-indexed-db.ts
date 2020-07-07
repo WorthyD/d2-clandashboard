@@ -28,7 +28,8 @@ export interface DBObject {
 }
 
 export class AppIndexedDb {
-  initialValues: { [key in StoreId]?: Subject<DBObject[]> } = {};
+  initialValues: { [key in StoreId]?: Subject<any[]> } = {};
+//  initialValues: { [key in StoreId]?: Subject<DBObject[]> } = {};
 
   name: string;
 
@@ -37,7 +38,8 @@ export class AppIndexedDb {
   private destroyed = new Subject();
 
   constructor(name: string) {
-    STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<DBObject[]>(1)));
+    // STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<DBObject[]>(1)));
+    STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<any[]>(1)));
     this.name = name;
     this.openDb();
   }
