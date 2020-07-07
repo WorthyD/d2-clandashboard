@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Actions, Effect, ofType, createEffect } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
-import { empty, of, from } from 'rxjs';
+import { empty, of, from, forkJoin } from 'rxjs';
 
 // import * as clanDetailActions from './clan-detail.actions';
 // import * as clanMemberActions from './clan-members.actions';
@@ -34,7 +34,8 @@ import {
   mergeAll,
   concatAll,
   mergeMapTo,
-  toArray
+  toArray,
+  combineAll
 } from 'rxjs/operators';
 import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
@@ -57,12 +58,35 @@ export class MemberProfileEffects {
       ofType(memberProfileActions.loadMemberProfiles),
       switchMap((action) => {
         console.log('loading profile', action.clanMembers);
-        return this.profileService.getSerializedProfiles(action.clanId.toString(), action.clanMembers).pipe(
-          map((x) => {
+        const obs = this.profileService.getSerializedProfiles(action.clanId.toString(), action.clanMembers).pipe(
+          tap((x) => {
             console.log('map', x);
-            return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [x] });
-          }),
-          // toArray(),
+            //   // return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [x] });
+          })
+          // map((x) => {
+          //   return x;
+          // }),
+          //mergeAll()
+        );
+        //.pipe(
+        //concatAll(),
+        // map((x) => {
+        //   return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [x] });
+        // })
+        // );
+        const final = forkJoin([obs]).pipe(
+          map((x) => {
+            return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+          })
+        );
+
+        return final;
+      })
+    )
+  );
+
+  /*
+    // toArray(),
           // map((x) => {
           //   console.log('fina', map);
           //   return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
@@ -78,10 +102,7 @@ export class MemberProfileEffects {
           //   // return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [x] });
           //   return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [x] });
           // })
-        );
-      })
-    )
-  );
+  */
 
   // updateMembers$ = createEffect(
   //   () =>

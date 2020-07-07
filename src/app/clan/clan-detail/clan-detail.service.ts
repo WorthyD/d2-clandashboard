@@ -127,7 +127,7 @@ export class ClanDetailService {
       const rewardDefinitions = clanRewardDefinitions.rewards[weekHash];
       retVal.title = rewardDefinitions.displayProperties.name;
 
-      if (clanWeekRewards) {
+      if (clanWeekRewards && clanWeekRewards.rewards) {
         const rewards = clanWeekRewards.rewards.find((x) => x.rewardCategoryHash === weekHash);
         retVal.rewards = rewards?.entries?.map((r) => {
           return {
