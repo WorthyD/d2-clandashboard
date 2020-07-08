@@ -75,7 +75,8 @@ export class ProfileService {
   ) {}
 
   getSerializedProfiles(clanId: string, members: ClanMember[]) {
-    return from(members).pipe(mergeMap((member) => this.getSerializedProfile(clanId, member), 1));
+    return from(members).pipe(mergeMap((member) => this.getSerializedProfile(clanId, member)));
+    //return from(members).pipe(map((member) => this.getSerializedProfile(clanId, member)));
   }
 
   getSerializedProfile(clanId: string, member: ClanMember): Observable<MemberProfile> {

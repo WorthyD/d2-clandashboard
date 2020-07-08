@@ -151,6 +151,7 @@ describe('ProfileService', () => {
       const receivedMembers = [];
       service.getSerializedProfiles('1', clanMembers).subscribe(
         (x) => {
+          console.log('subbing', x);
           receivedMembers.push(x);
         },
         (err) => {},
