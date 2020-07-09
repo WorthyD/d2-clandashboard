@@ -43,11 +43,9 @@ import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 export class MemberProfileEffects {
   constructor(
     private actions$: Actions,
-    private store: Store<any>,
+    //private store: Store<any>,
     // private d2Service: Destiny2Service,
     // private parser: ClanParseService,
-    private clanDB: ClanDatabase,
-    private updater: Updater,
     private profileService: ProfileService
   ) {}
 
@@ -56,26 +54,97 @@ export class MemberProfileEffects {
   loadProfiles$ = createEffect(() =>
     this.actions$.pipe(
       ofType(memberProfileActions.loadMemberProfiles),
-      switchMap((action) => {
+      mergeMap((action) => {
         // console.log('loading profile', action.clanMembers);
 
-        const members = action.clanMembers.slice(0, 10);
-
-        //const obs2 = of(action.clanMembers).pipe(
-        const obs2 = this.profileService.getSerializedProfiles(action.clanId.toString(), members).pipe(
-          // mergeMap(x => {
-          //   console.log('merge map', x);
-          //   return x;
-          // }),
+        const members = action.clanMembers.slice(0, 5);
+/*
+        const mems = from(members).pipe(
+          mergeMap((member) => this.profileService.getSerializedProfile(action.clanId.toString(), member)),
           tap((x) => {
             console.log('tapping', x);
           }),
-           //toArray()
-          // mergeMap((x) => {
-          //   console.log(x);
-          //   return x;
-          // })
+          toArray(),
+          map((x) => {
+            console.log('final', x);
+            return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+          })
         );
+
+        const mems2 = mems.pipe(
+          // tap((x) => {
+          //   console.log('tapping', x);
+          // }),
+          toArray(),
+          map((x) => {
+            console.log('final', x);
+            return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+          })
+        );
+        return mems;
+
+*/
+        /*
+        // This almost works
+        return this.profileService
+          .getSerializedProfiles(action.clanId.toString(), members)
+          .pipe(
+            tap((x) => {
+              console.log('tapping', x);
+            }),
+            toArray()
+          )
+          .pipe(
+            map((x) => {
+              console.log('final', x);
+              return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+            })
+          );
+          */
+
+        const obs = this.profileService.getSerializedProfiles(action.clanId.toString(), members).pipe(
+          tap((x) => {
+            console.log('tapping', x);
+          }),
+          //take(2),
+          toArray(),
+          //toArray(),
+          // mergeAll()
+          map((x) => {
+            console.log('final', x);
+            return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+          })
+        );
+        // obs.subscribe((x) => {
+
+        //   console.log('-----------------------');
+        //   console.log('finally final', x);
+        // });
+        //console.log(obs);
+
+        // const obs2 = forkJoin([obs]).pipe(
+        //   map((x) => {
+        //     console.log('final', x);
+        //     return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+        //   })
+        // );
+        return obs;
+
+        //const obs2 = of(action.clanMembers).pipe(
+        // const obs2 = this.profileService.getSerializedProfiles(action.clanId.toString(), members).pipe(
+        //   // mergeMap(x => {
+        //   //   console.log('merge map', x);
+        //   //   return x;
+        //   // }),
+        //   tap((x) => {
+        //     console.log('tapping', x);
+        //   }),
+        //    //toArray()
+        //   // mergeMap((x) => {
+        //   //   console.log(x);
+        //   //   return x;
+        //   // })
+        // );
 
         // const obs = this.profileService.getSerializedProfiles(action.clanId.toString(), action.clanMembers).pipe(
         //   // tap((x) => {
@@ -102,14 +171,14 @@ export class MemberProfileEffects {
         //   return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [x] });
         // })
         // );
-        const final = forobs2.pipe(
-          map((x) => {
-            console.log('final', x);
-            return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
-          })
-        );
+        // const final = forobs2.pipe(
+        //   map((x) => {
+        //     console.log('final', x);
+        //     return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+        //   })
+        // );
 
-        return final;
+        // return final;
       })
     )
   );

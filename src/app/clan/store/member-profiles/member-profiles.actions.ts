@@ -18,7 +18,7 @@ export const loadMemberProfilesFromAPI = createAction(
 
 export const loadMemberProfile = createAction(`${base} Load Clan Member`, props<{ memberProfiles: MemberProfile }>());
 export const loadMemberProfileSuccess = createAction(
-  `${base} Load Clan Members Success`,
+  `${base} Load Clan Members Profiles Success`,
   props<{ memberProfiles: MemberProfile[] }>()
 );
 export const loadClanMemberFailure = createAction(`${base} Load Clan Members Failure`, props<{ error: any }>());

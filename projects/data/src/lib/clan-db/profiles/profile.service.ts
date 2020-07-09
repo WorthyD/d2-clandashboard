@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Destiny2Service } from 'bungie-api';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { ClanDatabase } from '../ClanDatabase';
-import { map, take, switchMap, catchError, mergeMap } from 'rxjs/operators';
+import { map, take, switchMap, catchError, mergeMap, toArray, mergeAll } from 'rxjs/operators';
 import { Observable, from, of } from 'rxjs';
 import { DBObject, StoreId } from '../app-indexed-db';
 
@@ -13,6 +13,7 @@ import { ContentHashService } from '../../services/content-hash.service';
 @Injectable()
 export class ProfileService {
   private tableName: StoreId = 'MemberProfiles';
+  private concurrentRequests = 10;
   private profileComponents = [100, 104, 200, 202];
 
   private getProfileId(member: ClanMember) {
@@ -75,11 +76,16 @@ export class ProfileService {
   ) {}
 
   getSerializedProfiles(clanId: string, members: ClanMember[]) {
-    return from(members).pipe(mergeMap((member) => this.getSerializedProfile(clanId, member)));
-    //return from(members).pipe(map((member) => this.getSerializedProfile(clanId, member)));
+    console.log('getting profiles', members);
+    // return of(members).pipe(
+    //   mergeAll(),
+    //   mergeMap((member) => this.getSerializedProfile(clanId, member), 2)
+    // );
+    return from(members).pipe(mergeMap((member) => this.getSerializedProfile(clanId, member), 10));
   }
 
   getSerializedProfile(clanId: string, member: ClanMember): Observable<MemberProfile> {
+    console.log('getting profile', member);
     return this.getProfile(clanId, member).pipe(
       map(
         (profile) =>

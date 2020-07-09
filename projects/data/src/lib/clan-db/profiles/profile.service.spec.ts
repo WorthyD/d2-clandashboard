@@ -9,6 +9,7 @@ import { MOCK_DB_PROFILES, MOCK_WORTHY_PROFILE, MOCK_OMEGA_PROFILE } from '../..
 import { MOCK_WORTHY_MEMBER, MOCK_OMEGA_MEMBER } from '../../testing-utils/objects/member.mock';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { HttpErrorResponse } from '@angular/common/http';
+import { tap, toArray } from 'rxjs/operators';
 
 describe('ProfileService', () => {
   let service: ProfileService;
@@ -135,7 +136,7 @@ describe('ProfileService', () => {
     });
   });
 
-  fdescribe('getProfiles', () => {
+  describe('getProfiles', () => {
     it('should get users profiles', () => {
       const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
         return { MemberProfiles: of(MOCK_DB_PROFILES) };
@@ -148,20 +149,23 @@ describe('ProfileService', () => {
       });
 
       const clanMembers = [mockOldMember, mockNewMember];
-      const receivedMembers = [];
-      service.getSerializedProfiles('1', clanMembers).subscribe(
-        (x) => {
-          console.log('subbing', x);
-          receivedMembers.push(x);
-        },
-        (err) => {},
-        () => {
-          expect(receivedMembers.length).toEqual(clanMembers.length);
-          expect(dbGetSpy).toHaveBeenCalledTimes(2);
-          expect(updateSpy).toHaveBeenCalledTimes(1);
-          expect(serviceSpy).toHaveBeenCalledTimes(1);
-        }
-      );
+      service
+        .getSerializedProfiles('1', clanMembers)
+        .pipe(
+          // tap((x) => {
+          //   console.log('thing', x);
+          // }),
+          toArray()
+        )
+        .subscribe(
+          (x) => {
+            expect(x.length).toEqual(clanMembers.length);
+            expect(dbGetSpy).toHaveBeenCalledTimes(2);
+            expect(updateSpy).toHaveBeenCalledTimes(1);
+            expect(serviceSpy).toHaveBeenCalledTimes(1);
+          },
+          (err) => {}
+        );
     });
   });
 });
