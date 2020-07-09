@@ -54,11 +54,48 @@ export class MemberProfileEffects {
   loadProfiles$ = createEffect(() =>
     this.actions$.pipe(
       ofType(memberProfileActions.loadMemberProfiles),
-      mergeMap((action) => {
-        // console.log('loading profile', action.clanMembers);
+      switchMap(({ clanId, clanMembers }) => {
+        const members = clanMembers.slice(0, 5);
+        return this.profileService.getSerializedProfiles(clanId.toString(), members).pipe(
+          tap((x) => {
+            console.log('tapping', x);
+          }),
+          toArray(),
+          map((x) => {
+            console.log('fina', x);
+            return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+          })
+        );
+      })
+      // map((data) => {
+      //   console.log('result', data);
+      //   //return of(null);
+      //   return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+      // })
+    )
+  );
 
-        const members = action.clanMembers.slice(0, 5);
-/*
+  // .pipe(
+  //   map(
+  //     (result) => {
+  //       console.log('resulting', result);
+  //       //return of(result);
+  //       return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+  //     },
+  //     catchError((error) => {
+  //       console.log('error', error);
+  //       return of(null);
+  //     })
+  //   )
+  // );
+  //.pipe(
+  //take(1)
+  // map((clanProfiles) => {
+  //   console.log('profiles', clanProfiles);
+  //   return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+  // })
+  //);
+  /*
         const mems = from(members).pipe(
           mergeMap((member) => this.profileService.getSerializedProfile(action.clanId.toString(), member)),
           tap((x) => {
@@ -84,7 +121,7 @@ export class MemberProfileEffects {
         return mems;
 
 */
-        /*
+  /*
         // This almost works
         return this.profileService
           .getSerializedProfiles(action.clanId.toString(), members)
@@ -102,86 +139,90 @@ export class MemberProfileEffects {
           );
           */
 
-        const obs = this.profileService.getSerializedProfiles(action.clanId.toString(), members).pipe(
-          tap((x) => {
-            console.log('tapping', x);
-          }),
-          //take(2),
-          toArray(),
-          //toArray(),
-          // mergeAll()
-          map((x) => {
-            console.log('final', x);
-            return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
-          })
-        );
-        // obs.subscribe((x) => {
+  // const obs = this.profileService.getSerializedProfiles(action.clanId.toString(), members).pipe(
+  //   // tap((x) => {
+  //   //   console.log('tapping', x);
+  //   // }),
+  //   // //take(2),
+  //   // toArray(),
+  //   // //toArray(),
+  //   // // mergeAll()
+  //   map((x) => {
+  //     console.log('final', x);
+  //     return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: x });
+  //   })
+  // );
+  // obs.subscribe((x) => {
 
-        //   console.log('-----------------------');
-        //   console.log('finally final', x);
-        // });
-        //console.log(obs);
+  //   console.log('-----------------------');
+  //   console.log('finally final', x);
+  // });
+  //console.log(obs);
 
-        // const obs2 = forkJoin([obs]).pipe(
-        //   map((x) => {
-        //     console.log('final', x);
-        //     return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
-        //   })
-        // );
-        return obs;
+  // const obs2 = forkJoin([obs]).pipe(
+  //   map((x) => {
+  //     console.log('final', x);
+  //     return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+  //   })
+  // );
+  // return obs;
 
-        //const obs2 = of(action.clanMembers).pipe(
-        // const obs2 = this.profileService.getSerializedProfiles(action.clanId.toString(), members).pipe(
-        //   // mergeMap(x => {
-        //   //   console.log('merge map', x);
-        //   //   return x;
-        //   // }),
-        //   tap((x) => {
-        //     console.log('tapping', x);
-        //   }),
-        //    //toArray()
-        //   // mergeMap((x) => {
-        //   //   console.log(x);
-        //   //   return x;
-        //   // })
-        // );
+  //const obs2 = of(action.clanMembers).pipe(
+  // const obs2 = this.profileService.getSerializedProfiles(action.clanId.toString(), members).pipe(
+  //   // mergeMap(x => {
+  //   //   console.log('merge map', x);
+  //   //   return x;
+  //   // }),
+  //   tap((x) => {
+  //     console.log('tapping', x);
+  //   }),
+  //    //toArray()
+  //   // mergeMap((x) => {
+  //   //   console.log(x);
+  //   //   return x;
+  //   // })
+  // );
 
-        // const obs = this.profileService.getSerializedProfiles(action.clanId.toString(), action.clanMembers).pipe(
-        //   // tap((x) => {
-        //   //   console.log('map', x);
-        //   //   //   // return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [x] });
-        //   // }),
-        //   mergeMap((x, i) => {
-        //     console.log('merge map', x);
-        //     return from(x);
-        //   }, 10),
-        //   mergeMap((x, i) => {
-        //     console.log('second merge', x);
-        //     return x;
-        //   })
+  // const obs = this.profileService.getSerializedProfiles(action.clanId.toString(), action.clanMembers).pipe(
+  //   // tap((x) => {
+  //   //   console.log('map', x);
+  //   //   //   // return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [x] });
+  //   // }),
+  //   mergeMap((x, i) => {
+  //     console.log('merge map', x);
+  //     return from(x);
+  //   }, 10),
+  //   mergeMap((x, i) => {
+  //     console.log('second merge', x);
+  //     return x;
+  //   })
 
-        // map((x) => {
-        //   return x;
-        // }),
-        //mergeAll()
-        //);
-        //.pipe(
-        //concatAll(),
-        // map((x) => {
-        //   return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [x] });
-        // })
-        // );
-        // const final = forobs2.pipe(
-        //   map((x) => {
-        //     console.log('final', x);
-        //     return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
-        //   })
-        // );
+  // map((x) => {
+  //   return x;
+  // }),
+  //mergeAll()
+  //);
+  //.pipe(
+  //concatAll(),
+  // map((x) => {
+  //   return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [x] });
+  // })
+  // );
+  // const final = forobs2.pipe(
+  //   map((x) => {
+  //     console.log('final', x);
+  //     return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+  //   })
+  // );
 
-        // return final;
-      })
-    )
-  );
+  // return final;
+  // })
+  // map((x) => {
+  //   console.log('profiles', x);
+  //   return memberProfileActions.loadMemberProfileSuccess({ memberProfiles: [] });
+  // })
+  //   )
+  // );
 
   /*
     // toArray(),

@@ -28,31 +28,31 @@ import * as clanRewardReducer from './clan-rewards/clan-rewards.reducers';
 import { ClanRewardEffects } from './clan-rewards/clan-rewards.effects';
 
 export interface ClanState {
-    clanId: number;
-    clanDetails: clanDetailState.ClanDetailState;
-    clanMembers: clanMemberState.ClanMemberState;
-    clanRewards: clanRewardState.ClanRewardState;
-    memberProfiles: memberProfileState.MemberProfileState;
-    memberActivities: memberActivityState.MemberActivityStatState;
-    clanCache: clanCacheState.CacheDetailState;
+  clanId: number;
+  clanDetails: clanDetailState.ClanDetailState;
+  clanMembers: clanMemberState.ClanMemberState;
+  clanRewards: clanRewardState.ClanRewardState;
+  memberProfiles: memberProfileState.MemberProfileState;
+  memberActivities: memberActivityState.MemberActivityStatState;
+  clanCache: clanCacheState.CacheDetailState;
 }
 
 export const reducers: ActionReducerMap<ClanState> = {
-    clanId: ClanIdReducer,
-    clanDetails: clanDetailReducers.ClanDetailReducer,
-    clanRewards: clanRewardReducer.ClanRewardReducer,
-    clanMembers: clanMemberReducer.ClanMemberReducer,
-    memberProfiles: memberProfileReducer.MemberProfileReducer,
-    memberActivities: memberActivityReducer.MemberProfileReducer,
-    clanCache: clanCacheReducer.ClanCacheReducer
+  clanId: ClanIdReducer,
+  clanDetails: clanDetailReducers.ClanDetailReducer,
+  clanRewards: clanRewardReducer.ClanRewardReducer,
+  clanMembers: clanMemberReducer.ClanMemberReducer,
+  memberProfiles: memberProfileReducer.MemberProfileReducer,
+  memberActivities: memberActivityReducer.MemberProfileReducer,
+  clanCache: clanCacheReducer.ClanCacheReducer
 };
 
 export const ClanEffects = [
-    ClanDetailEffects,
-    ClanMemberEffects,
-    MemberProfileEffects,
-    MemberStatEffects,
-    ClanCacheEffects,
-    ClanRewardEffects
+  ClanDetailEffects,
+  ClanMemberEffects,
+   MemberProfileEffects,
+  MemberStatEffects,
+  ClanCacheEffects,
+  ClanRewardEffects
 ];
 // export const ClanEffects = [ClanDetailEffects, ClanMemberEffects];

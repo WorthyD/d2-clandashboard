@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ClanDetails, ClanMember } from 'bungie-models';
+import { ClanDetails, ClanMember, MemberProfile } from 'bungie-models';
 
 import { Event, NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 // import { GroupV2Service } from 'bungie-api';
@@ -24,11 +24,13 @@ import {} from 'bungie-models';
 
 // import { Clan } from 'bungie-parse';
 import { Store, select } from '@ngrx/store';
-import { Observable, Subject, Subscription } from 'rxjs';
-import { filter, map, distinctUntilChanged, takeUntil, take } from 'rxjs/operators';
+import { Observable, Subject, Subscription, forkJoin, of, interval, from } from 'rxjs';
+import { filter, map, distinctUntilChanged, takeUntil, take, mergeMap } from 'rxjs/operators';
 
 import { RewardsUpdater } from './services/clanRewardsUpdater';
 import { environment } from 'src/environments/environment';
+import { ProfileService } from '@destiny/data';
+import { MOCK_WORTHY_MEMBER, MOCK_OMEGA_MEMBER } from 'projects/data/src/lib/testing-utils/objects/member.mock';
 
 @Component({
   selector: 'app-clan',
@@ -41,7 +43,8 @@ export class ClanComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private store: Store<clanDetailStore.ClanDetailState>,
     private rStore: Store<routerStore.State>,
-    private clanRewards: RewardsUpdater
+    private clanRewards: RewardsUpdater,
+    private profileService: ProfileService
   ) {
     this.clanId.pipe(takeUntil(this.destroyed)).subscribe((r) => this.loadClan(r));
   }
@@ -83,6 +86,7 @@ export class ClanComponent implements OnInit, OnDestroy {
         this.store.dispatch(clanIdActions.setClanId({ clanId: clanId }));
         this.store.dispatch(clanDetailActions.loadClan({ clanId: clanId }));
         this.store.dispatch(clanMemberActions.loadClanMembers({ clanId: clanId }));
+
         // this.store.dispatch(memberProfileActions.loadMemberProfiles({ clanId: clanId }));
         // this.store.dispatch(
         //   memberActivityActions.loadClanMembersActivities({
@@ -90,5 +94,71 @@ export class ClanComponent implements OnInit, OnDestroy {
         //   })
         // );
       });
+
+    const mockOldMember: unknown = MOCK_WORTHY_MEMBER as MemberProfile;
+    const mockNewMember: unknown = MOCK_OMEGA_MEMBER as MemberProfile;
+    const members = [mockOldMember, mockNewMember];
+
+    // this.profileService.getSerializedProfiles(clanId.toString(), members).subscribe((x) => {
+    //   console.log('subbing', x);
+    // });
+    // const profileRequest = [];
+    // members.forEach((m) => {
+    //   profileRequest.push(
+    //     this.profileService.getSerializedProfile(clanId, m).pipe(
+    //       map((x) => {
+    //         console.log('duur', x);
+    //         return x;
+    //       })
+    //     )
+    //   );
+    // });
+    // // . console.log('pre fork', profileRequest);
+    // const fork = forkJoin(...profileRequest)
+    //   .pipe((map) => {
+    //     console.log('map', map);
+    //     return map;
+    //   })
+    //   .subscribe((data) => {
+    //     console.log('look ma', data);
+    //   });
+
+    // // from(members)
+    // //   .pipe(mergeMap((x) => this.profileService.getSerializedProfile(clanId, x)))
+    // //   .subscribe({
+    // //     next: (x) => {
+    // //       console.log('sub', x);
+    // //     },
+    // //     error: (x) => {
+    // //       console.log('error');
+    // //     },
+    // //     complete: () => {
+    // //       console.log('done');
+    // //     }
+    // //   });
+    // // console.log('function', fork);
+    // // fork.subscribe((x) => {
+    // //   console.log('actual fork', x);
+    // // });
+    // // this.profileService.getSerializedProfile(clanId.toString(), members[0]).subscribe((x) => {
+    // //   console.log('subbing 2', x);
+    // // });
+
+    // const example = forkJoin(
+    //   //emit 'Hello' immediately
+    //   of('Hello'),
+    //   //emit 'World' after 1 second
+    //   of('World'),
+    //   this.profileService.getSerializedProfile(clanId, mockNewMember),
+    //   //emit 0 after 1 second
+    //   interval(1000).pipe(take(1)),
+    //   //emit 0...1 in 1 second interval
+    //   interval(1000).pipe(take(2))
+    //   //promise that resolves to 'Promise Resolved' after 5 seconds
+    //   //myPromise('RESULT')
+    // );
+    // console.log('example', example);
+    // //output: ["Hello", "World", 0, 1, "Promise Resolved: RESULT"]
+    // const subscribe = example.subscribe((val) => console.log(val));
   }
 }
