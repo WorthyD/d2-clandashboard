@@ -7,7 +7,7 @@ const DB_VERSION = 1;
 export type StoreId =
   | 'CacheDetails'
   | 'ClanDetails'
-  | 'ClanMembers'
+  //| 'ClanMembers'
   | 'ClanRewards'
   | 'MemberProfiles'
   | 'MemberActivities';
@@ -15,7 +15,7 @@ export type StoreId =
 export const STORE_IDS: StoreId[] = [
   'CacheDetails',
   'ClanDetails',
-  'ClanMembers',
+ // 'ClanMembers',
   'ClanRewards',
   'MemberProfiles',
   'MemberActivities'

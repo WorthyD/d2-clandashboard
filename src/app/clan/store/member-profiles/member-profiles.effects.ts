@@ -8,7 +8,7 @@ import { empty, of, from, forkJoin, BehaviorSubject } from 'rxjs';
 // import * as clanMemberActions from './clan-members.actions';
 
 // import { ClanDatabase } from '../../../services/ClanDatabase';
-import { Updater } from '../../services/updater';
+// import { Updater } from '../../services/updater';
 import { ProfileService } from '@destiny/data';
 
 import { MemberProfile } from 'bungie-models';

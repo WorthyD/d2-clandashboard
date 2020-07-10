@@ -7,7 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { ClanRoutingModule } from './clan-routing.module';
 import { EffectsModule } from '@ngrx/effects';
 import { ClanComponent } from './clan.component';
-import { Updater } from './services/updater';
+// import { Updater } from './services/updater';
 import { MemberUpdater } from './services/memberUpdater';
 import { NavbarModule } from '@destiny/components';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -33,6 +33,6 @@ import {ClanDbModule} from '@destiny/data';
         StoreModule.forFeature('clan', clanState.reducers),
         EffectsModule.forFeature(clanState.ClanEffects)
     ],
-    providers: [Updater, MemberUpdater, RewardsUpdater]
+    providers: [MemberUpdater, RewardsUpdater]
 })
 export class ClanModule {}

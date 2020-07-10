@@ -13,7 +13,7 @@ import { ClanMember } from 'bungie-models';
 import { loadMemberProfiles } from '../member-profiles/member-profiles.actions';
 
 // import { ClanDatabase } from '../../../services/ClanDatabase';
-import { Updater } from '../../services/updater';
+// import { Updater } from '../../services/updater';
 
 import {
   catchError,
@@ -28,6 +28,8 @@ import {
 } from 'rxjs/operators';
 import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
+import { ClanMembersService } from '@destiny/data';
+
 @Injectable()
 export class ClanMemberEffects {
   constructor(
@@ -35,28 +37,38 @@ export class ClanMemberEffects {
     private store: Store<any>,
     //       private groupService: GroupV2Service,
     //        private parser: ClanParseService
-    private clanDB: ClanDatabase,
-    private updater: Updater
+    //    private clanDB: ClanDatabase,
+    //   private updater: Updater,
+    private clanMemberService: ClanMembersService
   ) {}
 
   loadMembers$ = createEffect(() =>
     this.actions$.pipe(
       ofType(clanMemberActions.loadClanMembers),
       switchMap(({ clanId }) => {
-        return this.clanDB.getValues(clanId.toString()).ClanMembers.pipe(
-          take(1),
+        return this.clanMemberService.getClanMembersSerialized(clanId).pipe(
           map((clanMembers) => {
-            if (clanMembers.length > 0) {
-              console.log('loading members');
-              this.store.dispatch(loadMemberProfiles({ clanId, clanMembers }));
-              return clanMemberActions.loadClanMembersSuccess({
-                clanMembers
-              });
-            } else {
-              return clanMemberActions.loadClanMembersEmpty();
-            }
+            this.store.dispatch(loadMemberProfiles({ clanId, clanMembers }));
+            return clanMemberActions.loadClanMembersSuccess({
+              clanMembers
+            });
           })
         );
+
+        // return this.clanDB.getValues(clanId.toString()).ClanMembers.pipe(
+        //   take(1),
+        //   map((clanMembers) => {
+        //     if (clanMembers.length > 0) {
+        //       console.log('loading members');
+        //       this.store.dispatch(loadMemberProfiles({ clanId, clanMembers }));
+        //       return clanMemberActions.loadClanMembersSuccess({
+        //         clanMembers
+        //       });
+        //     } else {
+        //       return clanMemberActions.loadClanMembersEmpty();
+        //     }
+        //   })
+        // );
         // return this.groupService
         //     .groupV2GetMembersOfGroup(1, clanId)
         //     .pipe(
@@ -82,32 +94,32 @@ export class ClanMemberEffects {
     )
   );
 
-  updateMembers$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(clanMemberActions.loadClanMembers),
-        tap(({ clanId }) => {
-          this.updater.update('clanMembers', clanId);
-        })
-      ),
-    { dispatch: false }
-  );
+  // updateMembers$ = createEffect(
+  //   () =>
+  //     this.actions$.pipe(
+  //       ofType(clanMemberActions.loadClanMembers),
+  //       tap(({ clanId }) => {
+  //         this.updater.update('clanMembers', clanId);
+  //       })
+  //     ),
+  //   { dispatch: false }
+  // );
 
-  syncMembers$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(clanMemberActions.loadClanMembersFromAPI),
-        withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
-        tap(([action, clanId]) => {
-          const members: ClanMember[] = action.clanMembers;
+  // syncMembers$ = createEffect(
+  //   () =>
+  //     this.actions$.pipe(
+  //       ofType(clanMemberActions.loadClanMembersFromAPI),
+  //       withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
+  //       tap(([action, clanId]) => {
+  //         const members: ClanMember[] = action.clanMembers;
 
-          members.forEach((x) => {
-            x.id = x.destinyUserInfo.membershipId;
-          });
+  //         members.forEach((x) => {
+  //           x.id = x.destinyUserInfo.membershipId;
+  //         });
 
-          this.clanDB.update(clanId.toString(), 'ClanMembers', members);
-        })
-      ),
-    { dispatch: false }
-  );
+  //         this.clanDB.update(clanId.toString(), 'ClanMembers', members);
+  //       })
+  //     ),
+  //   { dispatch: false }
+  // );
 }

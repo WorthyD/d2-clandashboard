@@ -12,7 +12,7 @@ import * as clanIdSelectors from '../clan-id/clan-id.selector';
 // import { ClanParseService } from '../../../parser/parsers/clan-parse.service';
 
 // import { ClanDatabase } from '../../../services/ClanDatabase';
-import { Updater } from '../../services/updater';
+// import { Updater } from '../../services/updater';
 
 import { catchError, map, switchMap, tap, distinctUntilChanged, first, filter } from 'rxjs/operators';
 import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';

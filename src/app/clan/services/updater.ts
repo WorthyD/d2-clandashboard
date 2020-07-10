@@ -32,48 +32,48 @@ export type UpdaterState = {
 @Injectable()
 export class Updater {
     constructor(
-        private store: Store<any>,
-        private groupService: GroupV2Service,
-        private d2Service: Destiny2Service
+        // private store: Store<any>,
+        // private groupService: GroupV2Service,
+        // private d2Service: Destiny2Service
     ) {}
-    state = new BehaviorSubject<UpdaterState>({
-        clanDetails: 'can-update',
-        clanMembers: 'can-update',
-        memberProfiles: 'can-update',
-    });
+    // state = new BehaviorSubject<UpdaterState>({
+    //     clanDetails: 'can-update',
+    //     clanMembers: 'can-update',
+    //     memberProfiles: 'can-update',
+    // });
 
-    private updateClanMembers(clanId: number) {
-        const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('clanMembers')));
+    // private updateClanMembers(clanId: number) {
+    //     const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('clanMembers')));
 
-        cacheDetails$.pipe(take(1)).subscribe((cacheDetails) => {
-            const xpDate = moment().add(-1, 'hours');
-            if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
-                this.setTypeState('clanMembers', 'updating');
-                this.groupService
-                    .groupV2GetMembersOfGroup(1, clanId)
-                    .pipe(take(1))
-                    .subscribe((x) => {
-                        this.store.dispatch(
-                            clanMemberActions.loadClanMembersFromAPI({
-                                clanMembers: x.Response.results,
-                            })
-                        );
-                        this.store.dispatch(
-                            cacheActions.updateCache({
-                                cache: {
-                                    id: 'clanMembers',
-                                    lastUpdated: new Date(),
-                                },
-                            })
-                        );
+    //     cacheDetails$.pipe(take(1)).subscribe((cacheDetails) => {
+    //         const xpDate = moment().add(-1, 'hours');
+    //         if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
+    //             this.setTypeState('clanMembers', 'updating');
+    //             this.groupService
+    //                 .groupV2GetMembersOfGroup(1, clanId)
+    //                 .pipe(take(1))
+    //                 .subscribe((x) => {
+    //                     this.store.dispatch(
+    //                         clanMemberActions.loadClanMembersFromAPI({
+    //                             clanMembers: x.Response.results,
+    //                         })
+    //                     );
+    //                     this.store.dispatch(
+    //                         cacheActions.updateCache({
+    //                             cache: {
+    //                                 id: 'clanMembers',
+    //                                 lastUpdated: new Date(),
+    //                             },
+    //                         })
+    //                     );
 
-                        this.setTypeState('clanMembers', 'updated');
-                    });
-            } else {
-                this.setTypeState('clanMembers', 'up-to-date');
-            }
-        });
-    }
+    //                     this.setTypeState('clanMembers', 'updated');
+    //                 });
+    //         } else {
+    //             this.setTypeState('clanMembers', 'up-to-date');
+    //         }
+    //     });
+    // }
 
     // private updateClanDetails(clanId: number) {
     //     const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('clanDetails')));
@@ -168,23 +168,23 @@ export class Updater {
     //     });
     // }
 
-    update(type: UpdatableType, clanId: number) {
-        switch (type) {
-            // case 'clanDetails':
-            //     return this.updateClanDetails(clanId);
-            case 'clanMembers':
-                return this.updateClanMembers(clanId);
-            // case 'memberProfiles':
-            //     return this.updateMemberProfiles(clanId);
-            default:
-                return null;
-        }
-    }
-    private setTypeState(type: UpdatableType, typeState: UpdateState) {
-        this.state.pipe(take(1)).subscribe((updaterState) => {
-            const newState = { ...updaterState };
-            newState[type] = typeState;
-            this.state.next(newState);
-        });
-    }
+    // update(type: UpdatableType, clanId: number) {
+    //     switch (type) {
+    //         // case 'clanDetails':
+    //         //     return this.updateClanDetails(clanId);
+    //         case 'clanMembers':
+    //            // return this.updateClanMembers(clanId);
+    //         // case 'memberProfiles':
+    //         //     return this.updateMemberProfiles(clanId);
+    //         default:
+    //             return null;
+    //     }
+    // }
+    // private setTypeState(type: UpdatableType, typeState: UpdateState) {
+    //     this.state.pipe(take(1)).subscribe((updaterState) => {
+    //         const newState = { ...updaterState };
+    //         newState[type] = typeState;
+    //         this.state.next(newState);
+    //     });
+    // }
 }
