@@ -16,10 +16,10 @@ export const ClanDetailReducer = createReducer(
         loaded: true,
         loading: false
     })),
-    on(clanActions.updateClanFromAPI, (state, { clanDetails }) => ({
-        ...state,
-        clan: clanDetails,
-        loaded: true,
-        loading: false
-    }))
+    // on(clanActions.updateClanFromAPI, (state, { clanDetails }) => ({
+    //     ...state,
+    //     clan: clanDetails,
+    //     loaded: true,
+    //     loading: false
+    // }))
 );

@@ -14,7 +14,7 @@ export function profileSerializer(p: MemberProfile, progressionHashes: any[]): M
     },
     profileProgression: {
       data: {
-        seasonalArtifact: { ...p.profileProgression.data.seasonalArtifact }
+        seasonalArtifact: { ...p.profileProgression?.data?.seasonalArtifact }
       }
     },
     characters: { ...p.characters },
@@ -26,12 +26,14 @@ export function profileSerializer(p: MemberProfile, progressionHashes: any[]): M
 
 function getCharacterProgressions(data, progressionHashes) {
   const characterProgressions = {};
-  for (const [key, value] of Object.entries(data)) {
-    const progressions = {};
-    progressionHashes.forEach((ph) => {
-      progressions[ph] = value['progressions'][ph];
-    });
-    characterProgressions[key] = { progressions };
+  if (data) {
+    for (const [key, value] of Object.entries(data)) {
+      const progressions = {};
+      progressionHashes.forEach((ph) => {
+        progressions[ph] = value['progressions'][ph];
+      });
+      characterProgressions[key] = { progressions };
+    }
   }
   return characterProgressions;
 }

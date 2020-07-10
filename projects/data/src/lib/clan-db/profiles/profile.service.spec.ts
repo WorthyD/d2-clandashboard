@@ -151,12 +151,7 @@ describe('ProfileService', () => {
       const clanMembers = [mockOldMember, mockNewMember];
       service
         .getSerializedProfiles('1', clanMembers)
-        // .pipe(
-        //   // tap((x) => {
-        //   //   console.log('thing', x);
-        //   // }),
-        //   toArray()
-        // )
+        .pipe(toArray())
         .subscribe(
           (x) => {
             expect(x.length).toEqual(clanMembers.length);

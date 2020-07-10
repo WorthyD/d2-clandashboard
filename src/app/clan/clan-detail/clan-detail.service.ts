@@ -26,6 +26,7 @@ export class ClanDetailService {
   private clanMemberProfiles$ = this.store.pipe(select(getMemberProfileEntities));
 
   clanWeekRewardsLoading$ = this.store.pipe(select(getClanRewardsLoading));
+  clanDetailsLoading$ = this.store.pipe(select(clanDetailSelectors.getClanDetailLoading));
 
   allClanMemberProfiles$ = combineLatest(this.clanMembers$, this.clanMemberProfiles$, (members, profiles) => {
     const allUsers: ClanMemberListItem[] = [];

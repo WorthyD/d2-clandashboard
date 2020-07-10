@@ -14,101 +14,100 @@ import * as clanIdSelectors from '../clan-id/clan-id.selector';
 // import { ClanDatabase } from '../../../services/ClanDatabase';
 import { Updater } from '../../services/updater';
 
-import {
-    catchError,
-    map,
-    switchMap,
-    tap,
-    distinctUntilChanged,
-    first,
-    filter
-} from 'rxjs/operators';
+import { catchError, map, switchMap, tap, distinctUntilChanged, first, filter } from 'rxjs/operators';
 import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
+import { ClanDetailsService } from '@destiny/data';
 
 @Injectable()
 export class ClanDetailEffects {
-    constructor(
-        private actions$: Actions,
-        private store: Store<any>,
-        //     private groupService: GroupV2Service,
-        //      private parser: ClanParseService,
-        private clanDB: ClanDatabase,
-        private updater: Updater
-    ) {}
+  constructor(
+    private actions$: Actions,
+    private store: Store<any>,
+    //     private groupService: GroupV2Service,
+    //      private parser: ClanParseService,
+    //private clanDB: ClanDatabase,
+    //private updater: Updater
+    private clanDetailsService: ClanDetailsService
+  ) {}
 
-    loadDetails$ = createEffect(() =>
-        this.actions$.pipe(
-            ofType(clanDetailActions.loadClan),
-            switchMap(({ clanId }) => {
-                return this.clanDB
-                    .getValues(clanId.toString())
-                    .ClanDetails.pipe(
-                        take(1),
-                        map(clanDetails => {
-                            if (clanDetails[0] && clanDetails[0].clanDetails) {
-                                return clanDetailActions.loadClanSuccess({
-                                    clanDetails: clanDetails[0].clanDetails
-                                });
-                            } else {
-                                return clanDetailActions.loadClanSuccess({
-                                    clanDetails: {}
-                                });
-                            }
-                        })
-                    );
-            })
-        )
-    );
+  loadDetails$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(clanDetailActions.loadClan),
+      switchMap(({ clanId }) => {
+        return this.clanDetailsService.getClanDetailsSerialized(clanId).pipe(
+          map((x) => {
+            return clanDetailActions.loadClanSuccess({ clanDetails: x });
+          })
+        );
+        // return this.clanDB
+        //     .getValues(clanId.toString())
+        //     .ClanDetails.pipe(
+        //         take(1),
+        //         map(clanDetails => {
+        //             if (clanDetails[0] && clanDetails[0].clanDetails) {
+        //                 return clanDetailActions.loadClanSuccess({
+        //                     clanDetails: clanDetails[0].clanDetails
+        //                 });
+        //             } else {
+        //                 return clanDetailActions.loadClanSuccess({
+        //                     clanDetails: {}
+        //                 });
+        //             }
+        //         })
+        //     );
+      })
+    )
+  );
 
-    updateDetails$ = createEffect(
-        () =>
-            this.actions$.pipe(
-                ofType(clanDetailActions.loadClan),
-                tap(({ clanId }) => {
-                    this.updater.update('clanDetails', clanId);
-                })
-            ),
-        { dispatch: false }
-    );
+  // updateDetails$ = createEffect(
+  //     () =>
+  //         this.actions$.pipe(
+  //             ofType(clanDetailActions.loadClan),
+  //             tap(({ clanId }) => {
+  //                 this.updater.update('clanDetails', clanId);
+  //             })
+  //         ),
+  //     { dispatch: false }
+  // );
 
-    syncDetails$ = createEffect(
-        () =>
-            this.actions$.pipe(
-                ofType(clanDetailActions.updateClanFromAPI),
-                withLatestFrom(
-                    this.store.select(clanIdSelectors.getClanIdState)
-                ),
-                tap(([action, clanId]) => {
-                    this.clanDB.update(clanId.toString(), 'ClanDetails', [
-                        {
-                            id: action.clanDetails.groupId,
-                            clanDetails: action.clanDetails
-                        }
-                    ]);
-                })
-            ),
+  // syncDetails$ = createEffect(
+  //     () =>
+  //         this.actions$.pipe(
+  //             ofType(clanDetailActions.updateClanFromAPI),
+  //             withLatestFrom(
+  //                 this.store.select(clanIdSelectors.getClanIdState)
+  //             ),
+  //             tap(([action, clanId]) => {
+  //                 this.clanDB.update(clanId.toString(), 'ClanDetails', [
+  //                     {
+  //                         id: action.clanDetails.groupId,
+  //                         clanDetails: action.clanDetails
+  //                     }
+  //                 ]);
+  //             })
+  //         ),
 
-        { dispatch: false }
-    );
+  //     { dispatch: false }
+  // );
 
-    // loadFromAPI$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(clanDetailActions.loadClanFromAPI),
-    //         switchMap(({ clanId }) => {
-    //             return this.groupService.groupV2GetGroup(clanId).pipe(
-    //                 map(result => {
-    //                     return clanDetailActions.loadClanFromAPISuccess({
-    //                         clanDetails: result.Response.detail
-    //                     });
-    //                 }),
-    //                 catchError(error => {
-    //                     return of(
-    //                         clanDetailActions.loadClanFromAPIFailure({ error })
-    //                     );
-    //                     //         // return of(false);
-    //                 })
-    //             );
-    //         })
-    //     )
-    // );
+  // loadFromAPI$ = createEffect(() =>
+  //     this.actions$.pipe(
+  //         ofType(clanDetailActions.loadClanFromAPI),
+  //         switchMap(({ clanId }) => {
+  //             return this.groupService.groupV2GetGroup(clanId).pipe(
+  //                 map(result => {
+  //                     return clanDetailActions.loadClanFromAPISuccess({
+  //                         clanDetails: result.Response.detail
+  //                     });
+  //                 }),
+  //                 catchError(error => {
+  //                     return of(
+  //                         clanDetailActions.loadClanFromAPIFailure({ error })
+  //                     );
+  //                     //         // return of(false);
+  //                 })
+  //             );
+  //         })
+  //     )
+  // );
 }

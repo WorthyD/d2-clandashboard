@@ -75,107 +75,107 @@ export class Updater {
         });
     }
 
-    private updateClanDetails(clanId: number) {
-        const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('clanDetails')));
+    // private updateClanDetails(clanId: number) {
+    //     const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('clanDetails')));
 
-        cacheDetails$.pipe(take(1)).subscribe((cacheDetails) => {
-            const xpDate = moment().add(-1, 'hours');
-            if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
-                this.setTypeState('clanDetails', 'updating');
-                this.groupService
-                    .groupV2GetGroup(clanId)
-                    .pipe(take(1))
-                    .subscribe((x) => {
-                        this.store.dispatch(
-                            clanDetailActions.updateClanFromAPI({
-                                clanDetails: x.Response.detail,
-                            })
-                        );
-                        this.store.dispatch(
-                            cacheActions.updateCache({
-                                cache: {
-                                    id: 'clanDetails',
-                                    lastUpdated: new Date(),
-                                },
-                            })
-                        );
+    //     cacheDetails$.pipe(take(1)).subscribe((cacheDetails) => {
+    //         const xpDate = moment().add(-1, 'hours');
+    //         if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
+    //             this.setTypeState('clanDetails', 'updating');
+    //             this.groupService
+    //                 .groupV2GetGroup(clanId)
+    //                 .pipe(take(1))
+    //                 .subscribe((x) => {
+    //                     this.store.dispatch(
+    //                         clanDetailActions.updateClanFromAPI({
+    //                             clanDetails: x.Response.detail,
+    //                         })
+    //                     );
+    //                     this.store.dispatch(
+    //                         cacheActions.updateCache({
+    //                             cache: {
+    //                                 id: 'clanDetails',
+    //                                 lastUpdated: new Date(),
+    //                             },
+    //                         })
+    //                     );
 
-                        this.setTypeState('clanDetails', 'updated');
-                    });
-            } else {
-                this.setTypeState('clanDetails', 'up-to-date');
-            }
-        });
-    }
+    //                     this.setTypeState('clanDetails', 'updated');
+    //                 });
+    //         } else {
+    //             this.setTypeState('clanDetails', 'up-to-date');
+    //         }
+    //     });
+    // }
 
-    private updateMemberProfiles(clanId: number) {
-        const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('memberProfiles')));
+    // private updateMemberProfiles(clanId: number) {
+    //     const cacheDetails$ = this.store.pipe(select(cacheSelectors.cacheById('memberProfiles')));
 
-        cacheDetails$.pipe(take(1)).subscribe((cacheDetails) => {
-            const xpDate = moment().add(-1, 'hours');
-            if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
-                this.setTypeState('memberProfiles', 'updating');
-                const clanMembers$ = this.store.pipe(select(clanMemberSelectors.getAllMembers));
-                clanMembers$.pipe(take(1)).subscribe((clanMembers) => {
-                    const savedProfiles = [];
-                    // possible concat map
-                    const memberProfiles = from(clanMembers).pipe(
-                        mergeMap((member) => {
-                            return this.d2Service
-                                .destiny2GetProfile(
-                                    member.destinyUserInfo.membershipId,
-                                    member.destinyUserInfo.membershipType,
-                                    [100, 104, 200, 202] /// 100 - profile, 200 - characters
-                                    // -  900 records? 104 - Profile progression
-                                    // 202 --  Character progression 204 character activities
-                                    // 800 collectibles
-                                )
-                                .pipe(
-                                    map((memberProfileResponse) => {
-                                        return memberProfileResponse.Response;
-                                    })
-                                );
-                        })
-                    );
+    //     cacheDetails$.pipe(take(1)).subscribe((cacheDetails) => {
+    //         const xpDate = moment().add(-1, 'hours');
+    //         if (!cacheDetails || xpDate.isAfter(cacheDetails.lastUpdated)) {
+    //             this.setTypeState('memberProfiles', 'updating');
+    //             const clanMembers$ = this.store.pipe(select(clanMemberSelectors.getAllMembers));
+    //             clanMembers$.pipe(take(1)).subscribe((clanMembers) => {
+    //                 const savedProfiles = [];
+    //                 // possible concat map
+    //                 const memberProfiles = from(clanMembers).pipe(
+    //                     mergeMap((member) => {
+    //                         return this.d2Service
+    //                             .destiny2GetProfile(
+    //                                 member.destinyUserInfo.membershipId,
+    //                                 member.destinyUserInfo.membershipType,
+    //                                 [100, 104, 200, 202] /// 100 - profile, 200 - characters
+    //                                 // -  900 records? 104 - Profile progression
+    //                                 // 202 --  Character progression 204 character activities
+    //                                 // 800 collectibles
+    //                             )
+    //                             .pipe(
+    //                                 map((memberProfileResponse) => {
+    //                                     return memberProfileResponse.Response;
+    //                                 })
+    //                             );
+    //                     })
+    //                 );
 
-                    memberProfiles.subscribe(
-                        (result) => {
-                            savedProfiles.push(result);
-                        },
-                        (err) => {},
-                        () => {
-                            this.store.dispatch(
-                                memberProfileActions.loadMemberProfilesFromAPI({
-                                    memberProfiles: savedProfiles,
-                                })
-                            );
-                            this.store.dispatch(
-                                cacheActions.updateCache({
-                                    cache: {
-                                        id: 'memberProfiles',
-                                        lastUpdated: new Date(),
-                                    },
-                                })
-                            );
+    //                 memberProfiles.subscribe(
+    //                     (result) => {
+    //                         savedProfiles.push(result);
+    //                     },
+    //                     (err) => {},
+    //                     () => {
+    //                         this.store.dispatch(
+    //                             memberProfileActions.loadMemberProfilesFromAPI({
+    //                                 memberProfiles: savedProfiles,
+    //                             })
+    //                         );
+    //                         this.store.dispatch(
+    //                             cacheActions.updateCache({
+    //                                 cache: {
+    //                                     id: 'memberProfiles',
+    //                                     lastUpdated: new Date(),
+    //                                 },
+    //                             })
+    //                         );
 
-                            this.setTypeState('memberProfiles', 'updated');
-                        }
-                    );
-                });
-            } else {
-                this.setTypeState('clanMembers', 'up-to-date');
-            }
-        });
-    }
+    //                         this.setTypeState('memberProfiles', 'updated');
+    //                     }
+    //                 );
+    //             });
+    //         } else {
+    //             this.setTypeState('clanMembers', 'up-to-date');
+    //         }
+    //     });
+    // }
 
     update(type: UpdatableType, clanId: number) {
         switch (type) {
-            case 'clanDetails':
-                return this.updateClanDetails(clanId);
+            // case 'clanDetails':
+            //     return this.updateClanDetails(clanId);
             case 'clanMembers':
                 return this.updateClanMembers(clanId);
-            case 'memberProfiles':
-                return this.updateMemberProfiles(clanId);
+            // case 'memberProfiles':
+            //     return this.updateMemberProfiles(clanId);
             default:
                 return null;
         }

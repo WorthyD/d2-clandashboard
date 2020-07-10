@@ -5,16 +5,10 @@ import * as routerState from '../../../root-store/router/router.selectors';
 
 import { getClanState } from '../clan-state.selector';
 
-export const getClanDetailState = createSelector(
-    getClanState,
-    s => s.clanDetails
-);
-export const getClanDetail = createSelector(
-    getClanDetailState,
-    s => s.clan
-);
+export const getClanDetailState = createSelector(getClanState, (s) => s.clanDetails);
+export const getClanDetail = createSelector(getClanDetailState, (s) => s.clan);
 
-
+export const getClanDetailLoading = createSelector(getClanDetailState, (s) => s.loading);
 
 // export const getClanDetailEntities = createSelector(
 //     getClanDetailState,
