@@ -35,7 +35,7 @@ describe('ClanDetailsService', () => {
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2GroupService, 'groupV2GetGroup').and.callFake(() => {
         return of({
-          Response: MOCK_CLAN_OVERVIEW
+          Response: { detail: MOCK_CLAN_OVERVIEW }
         });
       });
 
@@ -55,7 +55,7 @@ describe('ClanDetailsService', () => {
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2GroupService, 'groupV2GetGroup').and.callFake(() => {
         return of({
-          Response: MOCK_CLAN_OVERVIEW
+          Response: { detail: MOCK_CLAN_OVERVIEW }
         });
       });
 
@@ -74,7 +74,7 @@ describe('ClanDetailsService', () => {
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2GroupService, 'groupV2GetGroup').and.callFake(() => {
         return of({
-          Response: MOCK_CLAN_OVERVIEW
+          Response: { detail: MOCK_CLAN_OVERVIEW }
         });
       });
 
