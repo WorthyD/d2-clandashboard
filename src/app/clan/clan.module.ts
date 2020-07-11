@@ -12,7 +12,6 @@ import { MemberUpdater } from './services/memberUpdater';
 import { NavbarModule } from '@destiny/components';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { RewardsUpdater } from './services/clanRewardsUpdater';
 import { ClanDetailModule } from './clan-detail/clan-detail.module';
 import {MaterialModule} from '@destiny/components';
 import {ClanDbModule} from '@destiny/data';
@@ -33,6 +32,6 @@ import {ClanDbModule} from '@destiny/data';
         StoreModule.forFeature('clan', clanState.reducers),
         EffectsModule.forFeature(clanState.ClanEffects)
     ],
-    providers: [MemberUpdater, RewardsUpdater]
+    providers: [MemberUpdater]
 })
 export class ClanModule {}

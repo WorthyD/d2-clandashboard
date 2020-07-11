@@ -15,7 +15,7 @@ import { ContentHashService } from '../../services/content-hash.service';
 @Injectable()
 export class ProfileService {
   private tableName: StoreId = 'MemberProfiles';
-  private concurrentRequests = 10;
+  private concurrentRequests = 20;
   private profileComponents = [100, 104, 200, 202];
 
   private getProfileId(member: ClanMember) {

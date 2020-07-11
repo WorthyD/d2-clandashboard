@@ -3,6 +3,7 @@ export * from './profiles/profile.service';
 export * from './clan-details/clan-details.service';
 export * from './clan-members/clan-members.service';
 export * from './clan-rewards/clan-rewards.service';
+export * from './clan-member-activity/clan-member-activity.service';
 
 
 // TEMP remove eventually
