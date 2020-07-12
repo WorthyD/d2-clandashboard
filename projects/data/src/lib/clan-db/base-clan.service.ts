@@ -3,6 +3,7 @@ import { map, take } from 'rxjs/operators';
 import { DBObject, StoreId } from './app-indexed-db';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
+import * as _ from 'lodash';
 
 export class BaseClanService {
   tableName;
@@ -22,10 +23,15 @@ export class BaseClanService {
     );
   }
 
-  isCacheValid(cachedData: DBObject, minuteExpiration: number) {
+  isCacheValid(cachedData: DBObject, minuteExpiration: number, lastActivty?: Date) {
     if (cachedData && cachedData.createDate) {
       const cacheDate = moment(cachedData.createDate);
-      const expireDate = moment().add(-minuteExpiration, 'minutes');
+      let expireDate;
+      if (_.isDate(lastActivty)) {
+        expireDate = moment(lastActivty);
+      } else {
+        expireDate = moment().add(-minuteExpiration, 'minutes');
+      }
       return cacheDate.isAfter(expireDate);
     }
     return false;
