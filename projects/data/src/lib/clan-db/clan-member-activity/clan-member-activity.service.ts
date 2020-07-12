@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service, DestinyHistoricalStatsDestinyActivityHistoryResults } from 'bungie-api';
 import { BaseClanService } from '../base-clan.service';
 import { ClanDatabase } from '../ClanDatabase';
 import { MemberProfile } from 'bungie-models';
-import { from, of } from 'rxjs';
+import { from, of, Observable } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
+
+import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
 
 @Injectable()
 export class ClanMemberActivityService extends BaseClanService {
@@ -26,7 +28,11 @@ export class ClanMemberActivityService extends BaseClanService {
     );
   }
 
-  private getMemberCharacterActivity(clanId: number, member: MemberProfile, characterId: number) {
+  private getMemberCharacterActivity(
+    clanId: number,
+    member: MemberProfile,
+    characterId: number
+  ): Observable<DestinyHistoricalStatsDestinyActivityHistoryResults> {
     const characterActivityId = this.getMemberActivityId(member, characterId);
     return this.getDataFromCache(clanId.toString(), characterActivityId).pipe(
       mergeMap((cachedData) => {
@@ -48,24 +54,25 @@ export class ClanMemberActivityService extends BaseClanService {
             throw error;
           })
         );
-
       })
     );
   }
 
-  private getMemberCharacterActivitySerialized(clanId: number, member: MemberProfile, characterId: number) {
+  getMemberCharacterActivitySerialized(clanId: number, member: MemberProfile, characterId: number) {
     return this.getMemberCharacterActivity(clanId, member, characterId).pipe(
       map((activity) => {
-        return activity;
+        return {
+          activities: activity.activities.map((a) => clanMemberActivitySerializer(a))
+        };
       })
     );
   }
-  private getMemberActivity(clanId: number, member: MemberProfile) {
+  getMemberActivity(clanId: number, member: MemberProfile) {
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId) => {
         return this.getMemberCharacterActivitySerialized(clanId, member, characterId);
       })
     );
   }
-  getMemberActivitiesSerialized(clanId: number, member: MemberProfile) {}
+
 }
