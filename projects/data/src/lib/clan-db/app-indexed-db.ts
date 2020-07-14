@@ -10,15 +10,17 @@ export type StoreId =
   //| 'ClanMembers'
   | 'ClanRewards'
   | 'MemberProfiles'
-  | 'MemberActivities';
+  | 'MemberActivities'
+  | 'ProfileMilestones';
 
 export const STORE_IDS: StoreId[] = [
   'CacheDetails',
   'ClanDetails',
- // 'ClanMembers',
+  // 'ClanMembers',
   'ClanRewards',
   'MemberProfiles',
-  'MemberActivities'
+  'MemberActivities',
+  'ProfileMilestones'
 ];
 
 export interface DBObject {
@@ -29,7 +31,7 @@ export interface DBObject {
 
 export class AppIndexedDb {
   initialValues: { [key in StoreId]?: Subject<any[]> } = {};
-//  initialValues: { [key in StoreId]?: Subject<DBObject[]> } = {};
+  //  initialValues: { [key in StoreId]?: Subject<DBObject[]> } = {};
 
   name: string;
 
