@@ -9,7 +9,8 @@ export function profileSerializer(p: MemberProfile, progressionHashes: any[]): M
           membershipId: p.profile.data.userInfo.membershipId,
           displayName: p.profile.data.userInfo.displayName
         },
-        dateLastPlayed: p.profile.data.dateLastPlayed
+        dateLastPlayed: p.profile.data.dateLastPlayed,
+        characterIds: p.profile.data.characterIds
       }
     },
     profileProgression: {
@@ -17,7 +18,7 @@ export function profileSerializer(p: MemberProfile, progressionHashes: any[]): M
         seasonalArtifact: { ...p.profileProgression?.data?.seasonalArtifact }
       }
     },
-    characters: { ...p.characters },
+    characters: p.characters,
     characterProgressions: {
       data: getCharacterProgressions(p.characterProgressions.data, progressionHashes)
     }

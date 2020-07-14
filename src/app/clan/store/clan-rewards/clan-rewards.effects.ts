@@ -13,7 +13,6 @@ import * as clanIdSelectors from '../clan-id/clan-id.selector';
 // import { ClanParseService } from '../../../parser/parsers/clan-parse.service';
 
 import { ClanDatabase } from '@destiny/data';
-import { RewardsUpdater } from '../../services/clanRewardsUpdater';
 
 import { catchError, map, switchMap, tap, distinctUntilChanged, first, filter } from 'rxjs/operators';
 import { ClanRewardsService } from '@destiny/data';

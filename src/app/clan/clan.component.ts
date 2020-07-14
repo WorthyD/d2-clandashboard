@@ -27,7 +27,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable, Subject, Subscription, forkJoin, of, interval, from } from 'rxjs';
 import { filter, map, distinctUntilChanged, takeUntil, take, mergeMap } from 'rxjs/operators';
 
-import { RewardsUpdater } from './services/clanRewardsUpdater';
+// import { RewardsUpdater } from './services/clanRewardsUpdater';
 import { environment } from 'src/environments/environment';
 import { ProfileService } from '@destiny/data';
 import { MOCK_WORTHY_MEMBER, MOCK_OMEGA_MEMBER } from 'projects/data/src/lib/testing-utils/objects/member.mock';
@@ -43,7 +43,7 @@ export class ClanComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private store: Store<clanDetailStore.ClanDetailState>,
     private rStore: Store<routerStore.State>,
-    private clanRewards: RewardsUpdater,
+    // private clanRewards: RewardsUpdater,
     private profileService: ProfileService
   ) {
     this.clanId.pipe(takeUntil(this.destroyed)).subscribe((r) => this.loadClan(r));

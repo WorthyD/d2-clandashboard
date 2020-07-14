@@ -9,17 +9,17 @@ export const MemberProfileReducer = createReducer(
         ...state,
         loading: true
     })),
+    // on(
+    //     MemberActivityActions.loadMemberActivitiesSuccess,
+    //     (state, { memberActivities }) => {
+    //         return MemberActivityState.MemberActivityStatAdapter.addAll(
+    //             memberActivities,
+    //             { ...state, loaded: true, loading: false }
+    //         );
+    //     }
+    // ),
     on(
         MemberActivityActions.loadMemberActivitiesSuccess,
-        (state, { memberActivities }) => {
-            return MemberActivityState.MemberActivityStatAdapter.addAll(
-                memberActivities,
-                { ...state, loaded: true, loading: false }
-            );
-        }
-    ),
-    on(
-        MemberActivityActions.loadMemberActivitiesFromAPI,
         (state, { memberActivities }) => {
             return MemberActivityState.MemberActivityStatAdapter.upsertOne(
                 memberActivities,

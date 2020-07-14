@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Destiny2Service, DestinyHistoricalStatsDestinyActivityHistoryResults } from 'bungie-api';
 import { BaseClanService } from '../base-clan.service';
 import { ClanDatabase } from '../ClanDatabase';
-import { MemberProfile } from 'bungie-models';
+import { MemberProfile, MemberActivityStats } from 'bungie-models';
 import { from, of, Observable } from 'rxjs';
-import { mergeMap, map, catchError } from 'rxjs/operators';
+import { mergeMap, map, catchError, concatAll, mergeAll, toArray } from 'rxjs/operators';
 
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
 
@@ -67,12 +67,21 @@ export class ClanMemberActivityService extends BaseClanService {
       })
     );
   }
-  getMemberActivity(clanId: number, member: MemberProfile) {
+  getMemberActivity(clanId: number, member: MemberProfile): Observable<MemberActivityStats> {
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId) => {
         return this.getMemberCharacterActivitySerialized(clanId, member, characterId);
+      }),
+      map((x) => {
+        return x.activities;
+      }),
+      toArray(),
+      map((x) => {
+        return {
+          id: `${member.profile.data.userInfo.membershipType}-${member.profile.data.userInfo.membershipId}`,
+          activities: [].concat(...x)
+        };
       })
     );
   }
-
 }

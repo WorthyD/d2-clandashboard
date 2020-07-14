@@ -9,15 +9,15 @@ import { empty, of, from } from 'rxjs';
 
 // import { ClanDatabase } from '../../../services/ClanDatabase';
 import { ClanDatabase } from '../../../../../projects/data/src/lib/clan-db/ClanDatabase';
-import { MemberUpdater } from '../../services/memberUpdater';
+// import { MemberUpdater } from '../../services/memberUpdater';
 
 // import { MemberProfile } from 'bungie-models';
-import { MemberActivityStats } from '../member-activities/member-activities.state';
 
 // import * as memberProfileActions from './member-profiles.actions';
 import * as memberActivityActions from './member-activities.actions';
 // import * as clanMemberActions from '../clan-members/clan-members.actions';
 
+import { ClanMemberActivityService } from '@destiny/data';
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
 
 import {
@@ -39,53 +39,48 @@ export class MemberStatEffects {
   constructor(
     private actions$: Actions,
     private store: Store<any>,
-    private clanDB: ClanDatabase,
-    private updater: MemberUpdater
+    private memberActivityService: ClanMemberActivityService
   ) {}
 
   loadMemberActivities$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(memberActivityActions.loadClanMembersActivities),
-      switchMap(({ clanId }) => {
-        return this.clanDB.getValues(clanId.toString()).MemberActivities.pipe(
-          take(1),
-          map((memberActivities) => {
-            if (memberActivities.length > 0) {
-              return memberActivityActions.loadMemberActivitiesSuccess({ memberActivities });
-            } else {
-              return memberActivityActions.loadMemberActivitiesEmpty();
-            }
+      ofType(memberActivityActions.loadMemberActivities),
+      withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
+      switchMap(([action, clanId]) => {
+        return this.memberActivityService.getMemberActivity(clanId, action.member).pipe(
+          map((x) => {
+            return memberActivityActions.loadMemberActivitiesSuccess({ memberActivities: x });
           })
         );
       })
     )
   );
 
-  updateMembers$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(memberActivityActions.loadMemberActivities),
-        withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
-        tap(([action, clanId]) => {
-          this.updater.update('memberActivities', clanId, action.member);
-        })
-      ),
-    { dispatch: false }
-  );
+  // updateMembers$ = createEffect(
+  //   () =>
+  //     this.actions$.pipe(
+  //       ofType(memberActivityActions.loadMemberActivities),
+  //       withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
+  //       tap(([action, clanId]) => {
+  //         this.updater.update('memberActivities', clanId, action.member);
+  //       })
+  //     ),
+  //   { dispatch: false }
+  // );
 
-  syncMemberProfiles$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(memberActivityActions.loadMemberActivitiesFromAPI),
-        withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
-        tap(([action, clanId]) => {
-          const memberActivities: MemberActivityStats = action.memberActivities;
+  // syncMemberProfiles$ = createEffect(
+  //   () =>
+  //     this.actions$.pipe(
+  //       ofType(memberActivityActions.loadMemberActivitiesFromAPI),
+  //       withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
+  //       tap(([action, clanId]) => {
+  //         const memberActivities: MemberActivityStats = action.memberActivities;
 
-          if (memberActivities) {
-            this.clanDB.update(clanId.toString(), 'MemberActivities', [memberActivities]);
-          }
-        })
-      ),
-    { dispatch: false }
-  );
+  //         if (memberActivities) {
+  //           this.clanDB.update(clanId.toString(), 'MemberActivities', [memberActivities]);
+  //         }
+  //       })
+  //     ),
+  //   { dispatch: false }
+  // );
 }
