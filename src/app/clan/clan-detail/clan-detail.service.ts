@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 import { AppConstants } from '../../app.constants';
 import { getClanMemberEntities, getAllMembers } from '../store/clan-members/clan-members.selectors';
 import { getMemberProfileEntities } from '../store/member-profiles/member-profiles.selectors';
+import { getClanMemberId } from '@destiny/data';
 @Injectable()
 export class ClanDetailService {
   constructor(
@@ -30,10 +31,10 @@ export class ClanDetailService {
 
   allClanMemberProfiles$ = combineLatest(this.clanMembers$, this.clanMemberProfiles$, (members, profiles) => {
     const allUsers: ClanMemberListItem[] = [];
-    members.forEach((x) => {
+    members.forEach((member) => {
       allUsers.push({
-        member: x,
-        profile: profiles[x.destinyUserInfo.membershipId]
+        member: member,
+        profile: profiles[getClanMemberId(member)]
       });
     });
     return allUsers;
