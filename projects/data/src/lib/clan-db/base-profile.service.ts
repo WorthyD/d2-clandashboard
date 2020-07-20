@@ -29,7 +29,7 @@ export class BaseProfileService extends BaseClanService {
     );
   }
 
-  private getProfile(clanId: string, member: ClanMember): Observable<any> {
+  getProfile(clanId: string, member: ClanMember): Observable<any> {
     return this.getDataFromCache(clanId, this.getProfileId(member)).pipe(
       mergeMap((cachedData) => {
         const lastActivity = moment.unix(member.lastOnlineStatusChange).toDate();

@@ -3,10 +3,58 @@ import { BaseClanService } from '../base-clan.service';
 import { BaseProfileService } from '../base-profile.service';
 import { ClanDatabase } from '../ClanDatabase';
 import { Destiny2Service } from 'bungie-api';
+import { ClanMember, MemberProfile } from 'bungie-models';
+import { Observable, from } from 'rxjs';
+import { mergeMap, map } from 'rxjs/operators';
+import { profileMilestoneSerializer } from './profile-milestones.serializer';
 
 @Injectable()
 export class ProfileMilestonesService extends BaseProfileService {
+  private concurrentRequests = 20;
+
   constructor(private clanDb: ClanDatabase, private d2Service: Destiny2Service) {
     super(clanDb, 'ProfileMilestones', d2Service, [900]);
   }
+
+  getSerializedProfiles(
+    clanId: string,
+    members: ClanMember[],
+    milestoneHashes: number[] = []
+  ): Observable<MemberProfile> {
+    return from(members).pipe(mergeMap((member) => this.getSerializedProfile(clanId, member), this.concurrentRequests));
+  }
+
+  getSerializedProfile(clanId: string, member: ClanMember, milestoneHashes: number[] = []): Observable<MemberProfile> {
+    return this.getProfile(clanId, member).pipe(
+      map((profile) => {
+        return (profileMilestoneSerializer(profile, milestoneHashes) as unknown) as MemberProfile;
+      })
+    );
+  }
 }
+// "2460356851": {
+//   "state": 67,
+//   "objectives": [
+//       {
+//           "objectiveHash": 1899840878,
+//           "progress": 28,
+//           "completionValue": 28,
+//           "complete": true,
+//           "visible": true
+//       }
+//   ],
+//   "intervalsRedeemedCount": 0
+// },
+// "4239091332": {
+//   "state": 4,
+//   "objectives": [
+//       {
+//           "objectiveHash": 2661090795,
+//           "progress": 12,
+//           "completionValue": 28,
+//           "complete": false,
+//           "visible": true
+//       }
+//   ],
+//   "intervalsRedeemedCount": 0
+// }
