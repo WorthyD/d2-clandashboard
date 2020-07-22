@@ -6,7 +6,7 @@ import * as sealState from './seal.state';
 
 export const getSealEntityState = createSelector(
     getClanState,
-    state => state.memberProfiles
+    state => state.seals
 );
 
 export const {

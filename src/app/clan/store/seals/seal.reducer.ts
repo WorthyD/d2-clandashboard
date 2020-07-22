@@ -1,17 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
-import * as MemberProfileState from './member-profiles.state';
-import * as MemberProfileActions from './member-profiles.actions';
+//import * as MemberProfileState from './member-profiles.state';
+// import * as MemberProfileActions from './member-profiles.actions';
+import { SealInitialState, SealProfileAdapter } from './seal.state';
+import { loadSeals, loadSealSuccess, loadSealFailure } from './seal.actions';
 
 export const MemberProfileReducer = createReducer(
-  MemberProfileState.MemberProfileInitialState,
-  on(MemberProfileActions.loadMemberProfiles, (state) => ({
+  SealInitialState,
+  on(loadSeals, (state) => ({
     ...state,
     loading: true
   })),
-  on(MemberProfileActions.loadMemberProfileSuccess, (state) => {
-    return { ...state, loaded: true, loading: false };
+  on(loadSealSuccess, (state, { sealMembers }) => {
+    return SealProfileAdapter.addAll(sealMembers, { ...state, loaded: true, loading: false });
+    //return { ...state, loaded: true, loading: false };
   }),
-  on(MemberProfileActions.loadMemberProfile, (state, { memberProfile }) => {
-    return MemberProfileState.MemberProfileAdapter.upsertOne(memberProfile, { ...state });
+  on(loadSealFailure, (state) => {
+    return { ...state };
   })
 );
