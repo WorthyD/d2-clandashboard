@@ -1,6 +1,6 @@
 import { MemberProfile } from 'bungie-models';
 
-export function profileMilestoneSerializer(p: MemberProfile, progressionHashes: any[]): MemberProfile {
+export function profileMilestoneSerializer(p: MemberProfile, profileRecords: any[]): MemberProfile {
   return {
     profile: {
       data: {
@@ -8,33 +8,27 @@ export function profileMilestoneSerializer(p: MemberProfile, progressionHashes: 
           membershipType: p.profile.data.userInfo.membershipType,
           membershipId: p.profile.data.userInfo.membershipId,
           displayName: p.profile.data.userInfo.displayName
-        },
-        dateLastPlayed: p.profile.data.dateLastPlayed,
-        characterIds: p.profile.data.characterIds
+        }
       }
     },
-    profileProgression: {
+    profileRecords: {
       data: {
-        seasonalArtifact: { ...p.profileProgression?.data?.seasonalArtifact }
+        score: p.profileRecords?.data?.score,
+        records: getProfileRecords(p.profileRecords?.data?.records, profileRecords)
       }
-    },
-    characters: p.characters,
-    characterProgressions: {
-      data: getCharacterProgressions(p.characterProgressions.data, progressionHashes)
     }
   };
 }
 
-function getCharacterProgressions(data, progressionHashes) {
-  const characterProgressions = {};
+function getProfileRecords(data, profileRecordHashes: number[]) {
+  let profileRecords = {};
   if (data) {
-    for (const [key, value] of Object.entries(data)) {
-      const progressions = {};
-      progressionHashes.forEach((ph) => {
-        progressions[ph] = value['progressions'][ph];
-      });
-      characterProgressions[key] = { progressions };
-    }
+    const progressions = {};
+    profileRecordHashes.forEach((ph) => {
+      progressions[ph] = data[ph];
+    });
+    profileRecords = progressions;
   }
-  return characterProgressions;
+
+  return profileRecords;
 }

@@ -95,9 +95,9 @@ export class ClanComponent implements OnInit, OnDestroy {
         // );
       });
 
-    const mockOldMember: unknown = MOCK_WORTHY_MEMBER as MemberProfile;
-    const mockNewMember: unknown = MOCK_OMEGA_MEMBER as MemberProfile;
-    const members = [mockOldMember, mockNewMember];
+    // const mockOldMember: unknown = MOCK_WORTHY_MEMBER as MemberProfile;
+    // const mockNewMember: unknown = MOCK_OMEGA_MEMBER as MemberProfile;
+    // const members = [mockOldMember, mockNewMember];
 
     // this.profileService.getSerializedProfiles(clanId.toString(), members).subscribe((x) => {
     //   console.log('subbing', x);

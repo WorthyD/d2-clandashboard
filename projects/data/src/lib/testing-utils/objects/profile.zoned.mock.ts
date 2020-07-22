@@ -9878,5 +9878,43 @@ export const MOCK_ZONED_PROFILE = {
       }
     },
     privacy: 2
+  },
+  profileRecords: {
+    data: {
+      score: 93590,
+      records: {
+        '2460356851': {
+          state: 67,
+          objectives: [
+            {
+              objectiveHash: 1899840878,
+              progress: 28,
+              completionValue: 28,
+              complete: true,
+              visible: true
+            }
+          ],
+          intervalsRedeemedCount: 0
+        },
+        '4239091332': {
+          state: 4,
+          objectives: [
+            {
+              objectiveHash: 2661090795,
+              progress: 12,
+              completionValue: 28,
+              complete: false,
+              visible: true
+            }
+          ],
+          intervalsRedeemedCount: 0
+        }
+      }
+    },
+    privacy: 2
+  },
+  characterRecords: {
+    data: {},
+    privacy: 2
   }
 };

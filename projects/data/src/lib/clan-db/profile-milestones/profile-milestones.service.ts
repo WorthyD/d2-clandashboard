@@ -5,8 +5,13 @@ import { ClanDatabase } from '../ClanDatabase';
 import { Destiny2Service } from 'bungie-api';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { Observable, from } from 'rxjs';
-import { mergeMap, map } from 'rxjs/operators';
+import { mergeMap, map, toArray } from 'rxjs/operators';
 import { profileMilestoneSerializer } from './profile-milestones.serializer';
+
+export interface MilestoneProfiles {
+  milestoneHash: number;
+  profiles: MemberProfile[];
+}
 
 @Injectable()
 export class ProfileMilestonesService extends BaseProfileService {
@@ -21,13 +26,36 @@ export class ProfileMilestonesService extends BaseProfileService {
     members: ClanMember[],
     milestoneHashes: number[] = []
   ): Observable<MemberProfile> {
-    return from(members).pipe(mergeMap((member) => this.getSerializedProfile(clanId, member), this.concurrentRequests));
+    return from(members).pipe(
+      mergeMap((member) => this.getSerializedProfile(clanId, member, milestoneHashes), this.concurrentRequests)
+    );
   }
 
   getSerializedProfile(clanId: string, member: ClanMember, milestoneHashes: number[] = []): Observable<MemberProfile> {
     return this.getProfile(clanId, member).pipe(
       map((profile) => {
         return (profileMilestoneSerializer(profile, milestoneHashes) as unknown) as MemberProfile;
+      })
+    );
+  }
+
+  getSerializedProfilesByHash(
+    clanId: string,
+    members: ClanMember[],
+    milestoneHashes: number[] = []
+  ): Observable<MilestoneProfiles[]> {
+    return from(members).pipe(
+      mergeMap((member) => this.getSerializedProfile(clanId, member, milestoneHashes), this.concurrentRequests),
+      toArray(),
+      map((serializedMembers) => {
+        const groupedMilestones = milestoneHashes.map((x) => {
+          return {
+            milestoneHash: x,
+            profiles: serializedMembers.map((profile) => profileMilestoneSerializer(profile, [x]))
+          };
+        });
+
+        return groupedMilestones;
       })
     );
   }
