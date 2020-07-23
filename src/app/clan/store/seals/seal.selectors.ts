@@ -1,7 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { getClanState } from '../clan-state.selector';
-//import * as memberProfileState from './member-profiles.state';
 import * as sealState from './seal.state';
 
 export const getSealEntityState = createSelector(
@@ -17,9 +16,4 @@ export const {
 } = sealState.SealProfileAdapter.getSelectors(
   getSealEntityState
 );
-
-// export const getClanMemberById = memberId =>
-//     createSelector(getMemberProfileEntities, entities => {
-//         return memberId && entities[memberId];
-//     });
 

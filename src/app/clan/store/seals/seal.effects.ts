@@ -9,12 +9,13 @@ import { empty, of, from, forkJoin, BehaviorSubject } from 'rxjs';
 
 // import { ClanDatabase } from '../../../services/ClanDatabase';
 // import { Updater } from '../../services/updater';
-import { ProfileService } from '@destiny/data';
+import { ProfileMilestonesService } from '@destiny/data';
 
-import { MemberProfile } from 'bungie-models';
+import { MemberProfile, SealMembers } from 'bungie-models';
 import { getAllMembers } from '../clan-members/clan-members.selectors';
 
-import * as memberProfileActions from './member-profiles.actions';
+//import * as memberProfileActions from './member-profiles.actions';
+import { loadSeals, loadSealSuccess, loadSealFailure } from './seal.actions';
 import * as clanMemberActions from '../clan-members/clan-members.actions';
 
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
@@ -44,24 +45,24 @@ export class MemberProfileEffects {
   constructor(
     private actions$: Actions,
     private store: Store<any>,
-    // private d2Service: Destiny2Service,
-    // private parser: ClanParseService,
-    private profileService: ProfileService
+    private profileMilestonesService: ProfileMilestonesService
   ) {}
 
-  // loadMemberProfiles$ = createEffect(() =>
-
-  loadProfiles$ = createEffect(() =>
+  loadSeals$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(memberProfileActions.loadMemberProfiles),
-      switchMap(({ clanId, clanMembers }) => {
-        return this.profileService.getSerializedProfiles(clanId.toString(), clanMembers).pipe(
-          tap((x) => {
-            this.store.dispatch(memberProfileActions.loadMemberProfile({ memberProfile: x }));
-          }),
-          toArray(),
-          map((x) => {
-            return memberProfileActions.loadMemberProfileSuccess();
+      ofType(loadSeals),
+      switchMap(({ clanId, clanMembers, seals }) => {
+        const hashes = seals.map((x) => x.hash);
+        return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), clanMembers, hashes).pipe(
+          map((sealProfiles) => {
+            const sealProfilesCleaned: SealMembers[] = sealProfiles.map((sealMember) => {
+              return {
+                seal: seals.find((seal) => sealMember.milestoneHash === seal.hash),
+                members: sealMember.profiles
+              };
+            });
+
+            return loadSealSuccess({ sealMembers: sealProfilesCleaned });
           })
         );
       })
