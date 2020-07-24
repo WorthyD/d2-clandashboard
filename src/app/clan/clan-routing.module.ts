@@ -26,6 +26,10 @@ const routes: Routes = [
       {
         path: 'seals',
         loadChildren: () => import('./seals/seals.module').then((module) => module.SealsModule)
+      },
+      {
+        path: 'raids',
+        loadChildren: () => import('./raids/raids.module').then((module) => module.RaidsModule)
       }
     ]
   } ///,
