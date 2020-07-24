@@ -1,4 +1,118 @@
-<p>raids works!</p>
-<textarea >
-  {{members | json}}
-</textarea>
+<table mat-table [dataSource]="members" matSort class="mat-elevation-z8">
+  <ng-container matColumnDef="displayName">
+    <th mat-header-cell *matHeaderCellDef>Name </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.name}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="levi">
+    <th mat-header-cell *matHeaderCellDef>Leviathan </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.levi}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="levip">
+    <th mat-header-cell *matHeaderCellDef>Levi - Pres </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.levip}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="levigg">
+    <th mat-header-cell *matHeaderCellDef>Levi - GG </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.levigg}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="eow">
+    <th mat-header-cell *matHeaderCellDef>EoW </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.eow}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="eowp">
+    <th mat-header-cell *matHeaderCellDef>EoW - Pres </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.eowP}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="eowgg">
+    <th mat-header-cell *matHeaderCellDef>EoW - GG </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.eowgg}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="spire">
+    <th mat-header-cell *matHeaderCellDef>Spire </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.spire}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="spirep">
+    <th mat-header-cell *matHeaderCellDef>Spire - Pres </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.spireP}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="spiregg">
+    <th mat-header-cell *matHeaderCellDef>Spire - GG </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.spireGG}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="lw">
+    <th mat-header-cell *matHeaderCellDef>Last Wish </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.lw}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="lwgg">
+    <th mat-header-cell *matHeaderCellDef>Last Wish - GG </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.lwgg}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="scourge">
+    <th mat-header-cell *matHeaderCellDef>Scourge </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.scourge}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="scourgegg">
+    <th mat-header-cell *matHeaderCellDef>Scourge - GG </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.scourgeGG}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="crown">
+    <th mat-header-cell *matHeaderCellDef>Crown </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.crown}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="crowngg">
+    <th mat-header-cell *matHeaderCellDef>Crown - GG </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.crowngg}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="garden">
+    <th mat-header-cell *matHeaderCellDef>Garden </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.garden}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="gardengg">
+    <th mat-header-cell *matHeaderCellDef>Garden -GG </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.gardenGG}}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

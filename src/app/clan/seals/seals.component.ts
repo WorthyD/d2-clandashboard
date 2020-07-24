@@ -10,5 +10,7 @@ import { SealsService } from './seals.service';
 export class SealsComponent implements OnInit {
   constructor(public sealService: SealsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sealService.loadSeals();
+  }
 }

@@ -17,6 +17,7 @@ import { getAllMembers } from '../clan-members/clan-members.selectors';
 //import * as memberProfileActions from './member-profiles.actions';
 import { loadSeals, loadSealSuccess, loadSealFailure } from './seal.actions';
 import * as clanMemberActions from '../clan-members/clan-members.actions';
+import * as clanMemberSelectors from '../clan-members/clan-members.selectors';
 
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
 
@@ -51,7 +52,11 @@ export class MemberProfileEffects {
   loadSeals$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadSeals),
-      switchMap(({ clanId, clanMembers, seals }) => {
+      withLatestFrom(
+        this.store.select(clanIdSelectors.getClanIdState),
+        this.store.select(clanMemberSelectors.getAllMembers)
+      ),
+      switchMap(([{ seals }, clanId, clanMembers]) => {
         const hashes = seals.map((x) => x.hash);
         return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), clanMembers, hashes).pipe(
           map((sealProfiles) => {

@@ -4,10 +4,7 @@ import { ClanMember, MemberProfile, SealMembers, PresentationNodeDefinition } fr
 
 const base = '[Seals] - ';
 
-export const loadSeals = createAction(
-  `${base} Load Member Seals`,
-  props<{ clanId: number; clanMembers: ClanMember[]; seals: PresentationNodeDefinition[] }>()
-);
+export const loadSeals = createAction(`${base} Load Member Seals`, props<{ seals: PresentationNodeDefinition[] }>());
 
 export const loadSealSuccess = createAction(`${base} Load Seals Success`, props<{ sealMembers: SealMembers[] }>());
 
