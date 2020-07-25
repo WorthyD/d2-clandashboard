@@ -5,6 +5,7 @@ import { getClanIdState } from '../store/clan-id/clan-id.selector';
 import { ClanState } from '../store/clan-state.state';
 import { loadSeals } from '../store/seals/seal.actions';
 import { Store } from '@ngrx/store';
+import { of } from 'rxjs';
 
 @Injectable()
 export class SealsService {
@@ -13,9 +14,12 @@ export class SealsService {
   rootSealNode$ = this.presentationNodeService.getDefinitionsByHash(1652422747);
   sealsNodes$ = this.rootSealNode$.pipe(
     switchMap((x) => {
-      console.log(x);
-      const hashes = x.children.presentationNodes.map((x) => x.presentationNodeHash);
-      return this.presentationNodeService.getDefinitionsGroupByHash(hashes);
+      console.log('updating', x);
+      if (x) {
+        const hashes = x.children.presentationNodes.map((x) => x.presentationNodeHash);
+        return this.presentationNodeService.getDefinitionsGroupByHash(hashes);
+      }
+      return of(undefined);
     })
   );
 
@@ -25,8 +29,12 @@ export class SealsService {
 
   loadSeals() {
     this.sealsNodes$.subscribe((seals) => {
-      console.log('seals loaded');
-      this.store.dispatch(loadSeals({ seals }));
+      if (seals) {
+        this.store.dispatch(loadSeals({ seals }));
+      }
+    });
+    this.rootSealNode$.subscribe((defs) => {
+      console.log('defs', defs);
     });
   }
 

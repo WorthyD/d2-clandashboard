@@ -5,7 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable, of, BehaviorSubject, from } from 'rxjs';
 import { PresentationNodeDefinition } from '@destiny/models/definitions';
 import * as definitionSelectors from '../store/definitions.selectors';
-import { map, mergeMap, toArray } from 'rxjs/operators';
+import { map, mergeMap, toArray, take } from 'rxjs/operators';
 
 // interface DefinitionPresentationNodeModel {
 //   id: string;
@@ -38,15 +38,16 @@ export class PresentationNodeDefinitionService extends BaseDefinitionsService {
       })
     );
   }
-  getDefinitionsGroupByHash(hashes: number[]): Observable<PresentationNodeDefinition[]> {
+  getDefinitionsGroupByHash(hashes: number[]): Observable<any[]> {
     return from(hashes).pipe(
-      mergeMap((hash) =>
-        this.definitions.pipe(
+      mergeMap((hash) => {
+        return this.definitions.pipe(
+          take(1),
           map((x) => {
             return x[hash];
           })
-        )
-      ),
+        );
+      }),
       toArray()
     );
   }
