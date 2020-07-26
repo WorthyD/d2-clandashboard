@@ -16,7 +16,7 @@ import { RootStoreModule } from './root-store/root-store.module';
 
 // import { ClanSearchComponent } from './clan-search/clan-search.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { DefinitionsModule } from '@destiny/data';
+//import { DefinitionsModule } from '@destiny/data';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClanSearchModule } from './clan-search/clan-search.module';
 import { ManifestService } from './services/manifest.service';
@@ -46,7 +46,7 @@ export function initConfig(appConfig: ManifestService) {
       serverLogLevel: NgxLoggerLevel.ERROR,
       disableConsoleLogging: false
     }),
-    DefinitionsModule,
+    // DefinitionsModule,
     BrowserAnimationsModule,
     ClanSearchModule
     //   StoreModule.forRoot(reducers, { metaReducers })

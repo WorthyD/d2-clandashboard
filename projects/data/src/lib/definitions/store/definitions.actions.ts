@@ -1,6 +1,6 @@
-import { createAction, props } from '@ngrx/store';
-import { DefinitionModel } from '../models/definitionModel';
+// import { createAction, props } from '@ngrx/store';
+// import { DefinitionModel } from '../models/definitionModel';
 
-const base = '[Definitions] -';
+// const base = '[Definitions] -';
 
-export const initializeCache = createAction(`${base} - initialize cache`, props<{ definitions: DefinitionModel }>());
+// export const initializeCache = createAction(`${base} - initialize cache`, props<{ definitions: DefinitionModel }>());

@@ -45,11 +45,10 @@ export class ManifestService {
       //            'DestinyFactionDefinition'
     ];
     return this.data
-      .loadManifestData('en', tables, null, null)
+      .loadManifestData('en', tables)
       .pipe(take(1))
       .toPromise()
       .then((x) => {
-        console.log('thenning');
         if (x && x.data) {
           if (x.data.DestinyActivityModeDefinition) {
             this.activityModeService.initializeCache(x.data.DestinyActivityModeDefinition);
