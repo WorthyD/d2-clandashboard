@@ -1,4 +1,4 @@
-export const _MOCK_CLAN_SEAL = {
+export const MOCK_CLAN_SEAL = {
   seal: {
     displayProperties: {
       description: 'Complete all Destination Triumphs.',

@@ -49,7 +49,6 @@ export class ProfileMilestonesService extends BaseProfileService {
       toArray(),
       map((serializedMembers) => {
         const groupedMilestones = milestoneHashes.map((x) => {
-          console.log(x);
           return {
             milestoneHash: x,
             profiles: serializedMembers.map((profile) => profileMilestoneSerializer(profile, [x]))

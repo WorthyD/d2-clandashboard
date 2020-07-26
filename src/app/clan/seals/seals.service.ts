@@ -6,7 +6,7 @@ import { ClanState } from '../store/clan-state.state';
 import { loadSeals } from '../store/seals/seal.actions';
 import { Store, select } from '@ngrx/store';
 import { of } from 'rxjs';
-import { getAllSeals } from '../store/seals/seal.selectors';
+import { getAllSeals, getClanSealLoading } from '../store/seals/seal.selectors';
 
 @Injectable()
 export class SealsService {
@@ -23,6 +23,7 @@ export class SealsService {
     })
   );
 
+  sealsLoading$ = this.store.pipe(select(getClanSealLoading));
   sealMembers$ = this.store.pipe(select(getAllSeals));
 
   getChildNode(hash) {

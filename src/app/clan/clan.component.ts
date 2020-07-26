@@ -30,7 +30,8 @@ import { filter, map, distinctUntilChanged, takeUntil, take, mergeMap } from 'rx
 // import { RewardsUpdater } from './services/clanRewardsUpdater';
 import { environment } from 'src/environments/environment';
 import { ProfileService } from '@destiny/data';
-import { MOCK_WORTHY_MEMBER, MOCK_OMEGA_MEMBER } from 'projects/data/src/lib/testing-utils/objects/member.mock';
+// import { MOCK_WORTHY_MEMBER, MOCK_OMEGA_MEMBER } from 'projects/data/src/lib/testing-utils/objects/member.mock';
+import { ClanDatabase } from '@destiny/data';
 
 @Component({
   selector: 'app-clan',
@@ -42,14 +43,12 @@ export class ClanComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store<clanDetailStore.ClanDetailState>,
-    private rStore: Store<routerStore.State>,
-    // private clanRewards: RewardsUpdater,
-    private profileService: ProfileService
+    private db: ClanDatabase //private rStore: Store<routerStore.State>, // private clanRewards: RewardsUpdater, //private profileService: ProfileService
   ) {
     this.clanId.pipe(takeUntil(this.destroyed)).subscribe((r) => this.loadClan(r));
   }
 
-  private clanId = this.activatedRoute.params.pipe(map((x) => x.id, distinctUntilChanged()));
+  clanId = this.activatedRoute.params.pipe(map((x) => x.id, distinctUntilChanged()));
 
   clanDetails$: Observable<ClanDetails> = this.store.pipe(select(clanDetailSelectors.getClanDetail));
   // clanMembers$: Observable<ClanMember[]> = this.store.pipe(
@@ -71,6 +70,7 @@ export class ClanComponent implements OnInit, OnDestroy {
 
   loadClan(clanId) {
     // if valid clan load the rest
+
     this.store.dispatch(clanCacheActions.initializeCache({ clanId: clanId }));
 
     this.store
@@ -160,5 +160,12 @@ export class ClanComponent implements OnInit, OnDestroy {
     // console.log('example', example);
     // //output: ["Hello", "World", 0, 1, "Promise Resolved: RESULT"]
     // const subscribe = example.subscribe((val) => console.log(val));
+  }
+
+  resetDatabase() {
+    this.clanId.subscribe((x) => {
+      this.db.deleteDatabase(x);
+    });
+    console.log('resetting');
   }
 }

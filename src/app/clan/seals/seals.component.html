@@ -4,8 +4,17 @@
   </ng-container>
 </ng-container> -->
 
-<ng-container *ngIf="sealService.sealMembers$ | async as sealNodes">
-  <ng-container *ngFor="let seal of sealNodes">
-    <app-seal [sealMembers]="seal"></app-seal>
+
+<ng-container *ngIf="!  (sealService.sealsLoading$ | async); else loading">
+  <ng-container *ngIf="sealService.sealMembers$ | async as sealNodes">
+    <ng-container *ngFor="let seal of sealNodes">
+      <lib-clan-seal [sealMembers]="seal" class="m-3"></lib-clan-seal>
+    </ng-container>
   </ng-container>
 </ng-container>
+<ng-template #loading>
+  <div class="text-center m-5">
+    <h2>Loading Seals</h2>
+    <lib-loading></lib-loading>
+  </div>
+</ng-template>

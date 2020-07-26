@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {AppIndexedDb, StoreId} from './app-indexed-db';
+import { Injectable } from '@angular/core';
+import { AppIndexedDb, StoreId } from './app-indexed-db';
 
 @Injectable()
 export class ClanDatabase {
   private database: AppIndexedDb;
 
-  getValues(repository: string)  {
+  getValues(repository: string) {
     return this.getDatabase(repository).initialValues;
   }
 
@@ -19,6 +19,10 @@ export class ClanDatabase {
 
   removeAll(repository: string, type: StoreId) {
     return this.getDatabase(repository).removeAllValues(type);
+  }
+
+  deleteDatabase(repository: string) {
+    return this.getDatabase(repository).removeData();
   }
 
   private getDatabase(repository: string) {

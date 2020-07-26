@@ -4,7 +4,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-const componentModules = [MatButtonModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule];
+import { MatExpansionModule } from '@angular/material/expansion';
+
+import { MatCardModule } from '@angular/material/card';
+const componentModules = [
+  MatButtonModule,
+  MatProgressSpinnerModule,
+  MatMenuModule,
+  MatIconModule,
+  MatExpansionModule,
+  MatCardModule
+];
 
 @NgModule({
   declarations: [],
