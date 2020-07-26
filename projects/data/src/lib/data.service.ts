@@ -79,7 +79,7 @@ export class DataService {
         this.logger.info('Requesting fresh definitions archive', { dbPath });
 
         return this.db.getValues('manifest').allData.pipe(
-            take(1),
+           // take(1),
             switchMap(cachedValue => {
                 const versionKey = `${VERSION}:${dbPath}`;
                 this.logger.info('got manifest', cachedValue);
@@ -123,7 +123,7 @@ export class DataService {
 
                         return this.allDataFromRemote(path, tableNames, progressCallback).pipe(
                             map(definitions => {
-
+                                  console.log('defs');
                                 return definitions;
                             })
                         );

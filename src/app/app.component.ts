@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 
-import {
-  DataService,
-  MilestoneDefinitionService,
-  ActivitiesService,
-  ActivityModeService,
-  PresentationNodeDefinitionService
-} from '@destiny/data';
+// import {
+//   DataService,
+//   MilestoneDefinitionService,
+//   ActivitiesService,
+//   ActivityModeService,
+//   PresentationNodeDefinitionService
+// } from '@destiny/data';
+
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { registerIcons } from 'projects/components/src/lib/icons/register-icons';
@@ -19,52 +20,16 @@ import { registerIcons } from 'projects/components/src/lib/icons/register-icons'
 export class AppComponent {
   title = 'destiny-dashboard';
   constructor(
-    private data: DataService,
-    private activityService: ActivitiesService,
-    private activityModeService: ActivityModeService,
-    private milestoneDefinitionService: MilestoneDefinitionService,
-    private presentationNodeDefinitionService: PresentationNodeDefinitionService,
+    // private data: DataService,
+    // private activityService: ActivitiesService,
+    // private activityModeService: ActivityModeService,
+    // private milestoneDefinitionService: MilestoneDefinitionService,
+    // private presentationNodeDefinitionService: PresentationNodeDefinitionService,
     iconRegistry: MatIconRegistry,
     domSanitizer: DomSanitizer
   ) {
+    console.log('constructin');
     registerIcons(iconRegistry, domSanitizer);
-    // TODO: Call for api/settings and look at destiny2CoreSettings
-    const tables = [
-      //            'DestinyChecklistDefinition',
-      //            'DestinyObjectiveDefinition',
-      //            'DestinyStatDefinition',
-      //            'DestinyVendorDefinition',
-      //            'DestinyInventoryItemDefinition',
-      //            'DestinyClassDefinition',
-      //            'DestinySandboxPerkDefinition',
-      //            'DestinyEnergyTypeDefinition',
-      //'DestinyCollectibleDefinition',
-      'DestinyPresentationNodeDefinition',
-      //'DestinyRecordDefinition',
-      'DestinySeasonDefinition',
-      //'DestinySeasonPassDefinition',
-      'DestinyMilestoneDefinition',
-      'DestinyActivityDefinition',
-      'DestinyActivityModeDefinition'
-      //            'DestinyPlaceDefinition',
-      //            'DestinyFactionDefinition'
-    ];
-    data.loadManifestData('en', tables, null, null).subscribe((x) => {
-      if (x && x.data) {
-        if (x.data.DestinyActivityModeDefinition) {
-          this.activityModeService.initializeCache(x.data.DestinyActivityModeDefinition);
-        }
-        if (x.data.DestinyActivityDefinition) {
-          this.activityService.initializeCache(x.data.DestinyActivityDefinition);
-        }
 
-        if (x.data.DestinyMilestoneDefinition) {
-          this.milestoneDefinitionService.initializeCache(x.data.DestinyMilestoneDefinition);
-        }
-        if (x.data.DestinyPresentationNodeDefinition) {
-          this.presentationNodeDefinitionService.initializeCache(x.data.DestinyPresentationNodeDefinition);
-        }
-      }
-    });
   }
 }
