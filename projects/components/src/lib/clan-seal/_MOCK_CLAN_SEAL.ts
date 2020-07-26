@@ -1,4 +1,4 @@
-export const MOCK_CLAN_SEAL = {
+export const _MOCK_CLAN_SEAL = {
   seal: {
     displayProperties: {
       description: 'Complete all Destination Triumphs.',
@@ -124,24 +124,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 35475,
-          records: {}
-        }
-      }
-    },
-    {
-      profile: {
-        data: {
-          userInfo: {
-            membershipType: 3,
-            membershipId: '4611686018486974634',
-            displayName: 'OneFPS'
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 11,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
           }
-        }
-      },
-      profileRecords: {
-        data: {
-          score: 52875,
-          records: {}
         }
       }
     },
@@ -158,7 +155,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 84670,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -175,7 +186,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 68095,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 19,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -192,7 +217,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 56125,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 19,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -209,7 +248,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 73020,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 17,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -226,7 +279,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 123660,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -243,7 +310,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 68665,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -260,7 +341,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 70415,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 19,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -277,7 +372,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 83880,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -294,7 +403,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 52495,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 17,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -311,7 +434,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 61810,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 12,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -328,7 +465,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 39760,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 10,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -345,7 +496,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 100520,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -362,7 +527,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 38505,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 8,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -379,7 +558,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 56370,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 20,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -396,7 +589,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 104735,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -413,7 +620,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 72950,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -430,7 +651,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 93850,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -447,7 +682,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 55110,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 14,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -464,7 +713,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 50530,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 20,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -481,7 +744,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 51830,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 15,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -498,7 +775,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 85315,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -515,7 +806,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 48265,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 13,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -532,7 +837,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 71650,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 21,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -549,7 +868,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 63025,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 13,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -566,7 +899,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 47020,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 16,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -583,7 +930,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 55465,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 18,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -600,7 +961,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 32700,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 7,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -617,7 +992,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 75490,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 17,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -634,7 +1023,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 68030,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 17,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -651,7 +1054,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 11845,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 6,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -668,7 +1085,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 85450,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -685,7 +1116,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 46695,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 18,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -702,7 +1147,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 67370,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 11,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -719,7 +1178,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 63985,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 17,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -736,7 +1209,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 52310,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -753,7 +1240,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 75070,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 18,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -770,7 +1271,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 80185,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -787,7 +1302,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 48450,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 20,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -804,7 +1333,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 98255,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -821,7 +1364,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 67190,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 12,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -838,7 +1395,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 35375,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 11,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -855,7 +1426,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 69895,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 20,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -872,7 +1457,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 11890,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 3,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -889,7 +1488,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 128660,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -906,7 +1519,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 49230,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 19,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -923,7 +1550,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 93790,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -940,7 +1581,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 93310,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -957,7 +1612,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 10545,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 4,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -974,7 +1643,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 50590,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 14,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -991,7 +1674,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 67085,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 15,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1008,7 +1705,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 62880,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 20,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1025,7 +1736,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 60605,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1042,7 +1767,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 73520,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1059,7 +1798,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 63525,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 19,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1076,7 +1829,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 54620,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 12,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1093,7 +1860,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 51275,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 16,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1110,7 +1891,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 76160,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 18,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1127,7 +1922,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 63600,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 20,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1144,7 +1953,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 67025,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 16,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1161,7 +1984,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 69670,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 17,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1178,7 +2015,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 81845,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1195,7 +2046,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 72100,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 18,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1212,7 +2077,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 29470,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 7,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1229,7 +2108,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 64510,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 18,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1246,7 +2139,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 48645,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 11,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1263,7 +2170,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 11070,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 1,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1280,7 +2201,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 92090,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1297,7 +2232,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 54210,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 11,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1314,7 +2263,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 94190,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 18,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1331,7 +2294,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 58070,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 18,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1348,7 +2325,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 86125,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1365,7 +2356,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 76675,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1382,7 +2387,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 128260,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1399,7 +2418,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 42020,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 10,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1416,7 +2449,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 82045,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1433,7 +2480,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 54290,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1450,7 +2511,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 68375,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 21,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1467,7 +2542,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 61810,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 16,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1484,7 +2573,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 43410,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 7,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1501,7 +2604,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 35310,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 4,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1534,7 +2651,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 68405,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 13,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1551,7 +2682,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 45185,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 5,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1568,7 +2713,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 68380,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1585,7 +2744,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 75190,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 20,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1602,7 +2775,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 74450,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 18,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1619,7 +2806,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 77885,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 20,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1636,7 +2837,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 46960,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 10,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1653,7 +2868,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 60470,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 14,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1670,24 +2899,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 41780,
-          records: {}
-        }
-      }
-    },
-    {
-      profile: {
-        data: {
-          userInfo: {
-            membershipType: 3,
-            membershipId: '4611686018482800353',
-            displayName: 'couchlion'
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 11,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
           }
-        }
-      },
-      profileRecords: {
-        data: {
-          score: 52865,
-          records: {}
         }
       }
     },
@@ -1704,7 +2930,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 50440,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 8,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1721,7 +2961,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 96460,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1738,7 +2992,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 77985,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1755,7 +3023,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 55745,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 19,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1772,7 +3054,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 82510,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 21,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1789,7 +3085,21 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 51295,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 14,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     },
@@ -1806,7 +3116,52 @@ export const MOCK_CLAN_SEAL = {
       profileRecords: {
         data: {
           score: 72035,
-          records: {}
+          records: {
+            '2757681677': {
+              state: 67,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 22,
+                  completionValue: 22,
+                  complete: true,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
+        }
+      }
+    },
+    {
+      profile: {
+        data: {
+          userInfo: {
+            membershipType: 3,
+            membershipId: '4611686018486974634',
+            displayName: 'OneFPS'
+          }
+        }
+      },
+      profileRecords: {
+        data: {
+          score: 52875,
+          records: {
+            '2757681677': {
+              state: 4,
+              objectives: [
+                {
+                  objectiveHash: 2598689440,
+                  progress: 14,
+                  completionValue: 22,
+                  complete: false,
+                  visible: true
+                }
+              ],
+              intervalsRedeemedCount: 0
+            }
+          }
         }
       }
     }
