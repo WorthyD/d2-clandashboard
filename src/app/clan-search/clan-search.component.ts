@@ -5,7 +5,7 @@ import { GroupV2Service } from 'bungie-api';
 import { ClanDetails } from 'bungie-models';
 import { Subscription } from 'rxjs';
 
-import { ClanDatabase } from '../services/ClanDatabase';
+// import { ClanDatabase } from '../services/ClanDatabase';
 import { FormControl } from '@angular/forms';
 import { map, sampleTime, shareReplay, switchMap, take, withLatestFrom } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -15,6 +15,7 @@ import { NGXLogger } from 'ngx-logger';
 import { ClanSearchState } from './state/clan-search.state';
 import { Store } from '@ngrx/store';
 import { addClan } from './state/loaded-clans/loaded-clans.actions';
+import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
 interface LoadClanResult {
   id: number;

@@ -27,32 +27,39 @@ import * as clanRewardState from './clan-rewards/clan-rewards.state';
 import * as clanRewardReducer from './clan-rewards/clan-rewards.reducers';
 import { ClanRewardEffects } from './clan-rewards/clan-rewards.effects';
 
+import * as sealState from './seals/seal.state';
+import * as sealReducer from './seals/seal.reducer';
+import { SealEffects } from './seals/seal.effects';
+
 export interface ClanState {
-    clanId: number;
-    clanDetails: clanDetailState.ClanDetailState;
-    clanMembers: clanMemberState.ClanMemberState;
-    clanRewards: clanRewardState.ClanRewardState;
-    memberProfiles: memberProfileState.MemberProfileState;
-    memberActivities: memberActivityState.MemberActivityStatState;
-    clanCache: clanCacheState.CacheDetailState;
+  clanId: number;
+  clanDetails: clanDetailState.ClanDetailState;
+  clanMembers: clanMemberState.ClanMemberState;
+  clanRewards: clanRewardState.ClanRewardState;
+  memberProfiles: memberProfileState.MemberProfileState;
+  memberActivities: memberActivityState.MemberActivityStatState;
+  clanCache: clanCacheState.CacheDetailState;
+  seals: sealState.SealState;
 }
 
 export const reducers: ActionReducerMap<ClanState> = {
-    clanId: ClanIdReducer,
-    clanDetails: clanDetailReducers.ClanDetailReducer,
-    clanRewards: clanRewardReducer.ClanRewardReducer,
-    clanMembers: clanMemberReducer.ClanMemberReducer,
-    memberProfiles: memberProfileReducer.MemberProfileReducer,
-    memberActivities: memberActivityReducer.MemberProfileReducer,
-    clanCache: clanCacheReducer.ClanCacheReducer
+  clanId: ClanIdReducer,
+  clanDetails: clanDetailReducers.ClanDetailReducer,
+  clanRewards: clanRewardReducer.ClanRewardReducer,
+  clanMembers: clanMemberReducer.ClanMemberReducer,
+  memberProfiles: memberProfileReducer.MemberProfileReducer,
+  memberActivities: memberActivityReducer.MemberProfileReducer,
+  clanCache: clanCacheReducer.ClanCacheReducer,
+  seals: sealReducer.SealReducer
 };
 
 export const ClanEffects = [
-    ClanDetailEffects,
-    ClanMemberEffects,
-    MemberProfileEffects,
-    MemberStatEffects,
-    ClanCacheEffects,
-    ClanRewardEffects
+  ClanDetailEffects,
+  ClanMemberEffects,
+  MemberProfileEffects,
+  MemberStatEffects,
+  ClanCacheEffects,
+  ClanRewardEffects,
+  SealEffects
 ];
 // export const ClanEffects = [ClanDetailEffects, ClanMemberEffects];

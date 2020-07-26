@@ -49,7 +49,7 @@ export class ClanRosterListViewComponent {
         this.sortedData = value.slice();
     }
 
-    @Output() viewMember = new EventEmitter<number>();
+    @Output() viewMember = new EventEmitter<ClanMember>();
 
     @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -102,7 +102,7 @@ export class ClanRosterListViewComponent {
     }
 
     memberClick(m: ClanMemberListItem) {
-        this.viewMember.emit(m.member.destinyUserInfo.membershipId);
+        this.viewMember.emit(m.member);
     }
 }
 function compare(a: number | string | Date, b: number | string | Date, isAsc: boolean) {

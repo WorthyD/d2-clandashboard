@@ -1,0 +1,32 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { SealMembers } from 'bungie-models';
+
+@Component({
+  selector: 'lib-clan-seal',
+  templateUrl: './clan-seal.component.html',
+  styleUrls: ['./clan-seal.component.scss']
+})
+export class ClanSealComponent implements OnInit {
+  @Input()
+  sealMembers: SealMembers;
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  getCompletedMembers() {
+    console.log('loading stuff');
+    const members = this.sealMembers.members;
+    const hash = this.sealMembers.seal.completionRecordHash;
+    const completed = members.filter((m) => {
+      const records = m.profileRecords.data.records[hash]?.objectives;
+
+      if (records) {
+        return records[0]?.progress === records[0]?.completionValue;
+      }
+      return false;
+    });
+
+    return completed;
+  }
+}

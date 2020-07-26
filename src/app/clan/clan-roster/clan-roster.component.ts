@@ -10,6 +10,8 @@ import { getMemberProfileEntities } from '../store/member-profiles/member-profil
 
 import { ClanMemberListItem } from '@destiny/components';
 import { Router, ActivatedRoute } from '@angular/router';
+import {getClanMemberId} from '@destiny/data';
+import { ClanMember } from 'bungie-models';
 
 const clanMembers = createSelector(
     getAllMembers,
@@ -19,7 +21,7 @@ const clanMembers = createSelector(
         members.forEach(x => {
             allUsers.push({
                 member: x,
-                profile: profiles[x.destinyUserInfo.membershipId]
+                profile: profiles[getClanMemberId(x)]
             });
         });
         return allUsers;
@@ -43,8 +45,8 @@ export class ClanRosterComponent implements OnInit {
     );
 
     ngOnInit() {}
-    viewMember(memberId: number) {
-        this.router.navigate(['../../../member-details', memberId], {
+    viewMember(member: ClanMember) {
+        this.router.navigate(['../../../member-details', getClanMemberId(member)], {
             relativeTo: this.route
         });
     }

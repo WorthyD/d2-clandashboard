@@ -5,9 +5,10 @@ import { ClanOverviewComponent } from './clan-overview.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
     declarations: [ClanOverviewComponent],
     exports: [ClanOverviewComponent],
-    imports: [CommonModule, MatCardModule, MatListModule, MatIconModule]
+    imports: [CommonModule, MatCardModule, MatListModule, MatIconModule, SharedModule]
 })
 export class ClanOverviewModule {}

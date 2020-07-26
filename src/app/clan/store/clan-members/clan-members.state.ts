@@ -3,14 +3,16 @@ import { ClanMember } from 'bungie-models';
 
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
+import { getClanMemberId } from '@destiny/data';
+
 export interface ClanMemberState extends EntityState<ClanMember> {
     loaded: boolean;
     loading: boolean;
-    selectedMemberId: number;
+    selectedMemberId: string;
 }
 
 export const ClanMemberAdapter: EntityAdapter<ClanMember> = createEntityAdapter<ClanMember>({
-    selectId: (cm: ClanMember) => cm.destinyUserInfo.membershipId,
+    selectId: (cm: ClanMember) => getClanMemberId(cm),
     sortComparer: false
 });
 

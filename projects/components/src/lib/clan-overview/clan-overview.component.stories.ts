@@ -28,3 +28,12 @@ export const base = () => ({
         details: CLAN_OVERVIEW
     }
 });
+export const loading = () => ({
+  component: ClanOverviewComponent,
+  template: `
+      <lib-clan-overview [clanDetails]="details" [isLoading]="true"></lib-clan-overview>
+ `,
+  props: {
+      details: CLAN_OVERVIEW
+  }
+});

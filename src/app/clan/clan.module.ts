@@ -7,14 +7,14 @@ import { StoreModule } from '@ngrx/store';
 import { ClanRoutingModule } from './clan-routing.module';
 import { EffectsModule } from '@ngrx/effects';
 import { ClanComponent } from './clan.component';
-import { Updater } from './services/updater';
-import { MemberUpdater } from './services/memberUpdater';
+// import { Updater } from './services/updater';
+// import { MemberUpdater } from './services/memberUpdater';
 import { NavbarModule } from '@destiny/components';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { RewardsUpdater } from './services/clanRewardsUpdater';
 import { ClanDetailModule } from './clan-detail/clan-detail.module';
 import {MaterialModule} from '@destiny/components';
+import {ClanDbModule} from '@destiny/data';
 
 @NgModule({
     declarations: [ClanComponent],
@@ -26,11 +26,12 @@ import {MaterialModule} from '@destiny/components';
         MatListModule,
         MatSidenavModule,
         MaterialModule,
+        ClanDbModule,
         // ClanRosterModule,
         //         BungieParseModule,
         StoreModule.forFeature('clan', clanState.reducers),
         EffectsModule.forFeature(clanState.ClanEffects)
     ],
-    providers: [Updater, MemberUpdater, RewardsUpdater]
+    providers: []
 })
 export class ClanModule {}

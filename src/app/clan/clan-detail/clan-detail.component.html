@@ -1,7 +1,8 @@
 <div class="container-fluid">
   <div class="row">
-    <div *ngIf="clanDetails$ | async as clanDetails" class="col m-3">
-      <lib-clan-overview [clanDetails]="clanDetails"></lib-clan-overview>
+    <div class="col m-3">
+      <lib-clan-overview [clanDetails]="clanDetails$ | async" [isLoading]="clanDetails.clanDetailsLoading$ | async">
+      </lib-clan-overview>
     </div>
     <div class="col">
       <div class="m-3">

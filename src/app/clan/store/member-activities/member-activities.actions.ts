@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { MemberActivityStats } from './member-activities.state';
-import { MemberProfile, MemberActivityStat } from 'bungie-models';
+import { MemberProfile, MemberActivityStat, MemberActivityStats } from 'bungie-models';
 
 const base = '[MemberActivities] - ';
 
@@ -19,14 +18,14 @@ export const loadMemberActivitiesEmpty = createAction(
     `${base} Load MemberActivitiesEmpty`
 );
 
-export const loadMemberActivitiesFromAPI = createAction(
-    `${base} Load MemberActivities From API`,
-    props<{ memberActivities: MemberActivityStats }>()
-);
+// export const loadMemberActivitiesFromAPI = createAction(
+//     `${base} Load MemberActivities From API`,
+//     props<{ memberActivities: MemberActivityStats }>()
+// );
 
 export const loadMemberActivitiesSuccess = createAction(
     `${base} Load Clan Members Success`,
-    props<{ memberActivities: MemberActivityStats[] }>()
+    props<{ memberActivities: MemberActivityStats }>()
 );
 export const loadClanMemberFailure = createAction(
     `${base} Load Clan Members Failure`,

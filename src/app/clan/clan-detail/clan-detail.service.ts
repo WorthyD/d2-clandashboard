@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 import { AppConstants } from '../../app.constants';
 import { getClanMemberEntities, getAllMembers } from '../store/clan-members/clan-members.selectors';
 import { getMemberProfileEntities } from '../store/member-profiles/member-profiles.selectors';
+import { getClanMemberId } from '@destiny/data';
 @Injectable()
 export class ClanDetailService {
   constructor(
@@ -26,13 +27,14 @@ export class ClanDetailService {
   private clanMemberProfiles$ = this.store.pipe(select(getMemberProfileEntities));
 
   clanWeekRewardsLoading$ = this.store.pipe(select(getClanRewardsLoading));
+  clanDetailsLoading$ = this.store.pipe(select(clanDetailSelectors.getClanDetailLoading));
 
   allClanMemberProfiles$ = combineLatest(this.clanMembers$, this.clanMemberProfiles$, (members, profiles) => {
     const allUsers: ClanMemberListItem[] = [];
-    members.forEach((x) => {
+    members.forEach((member) => {
       allUsers.push({
-        member: x,
-        profile: profiles[x.destinyUserInfo.membershipId]
+        member: member,
+        profile: profiles[getClanMemberId(member)]
       });
     });
     return allUsers;
@@ -95,6 +97,7 @@ export class ClanDetailService {
 
   clanSeasonalProgression$: Observable<ClanProgress> = this.clanDetails$.pipe(
     map((clan) => {
+      console.log(clan?.clanInfo?.d2ClanProgressions);
       if (clan?.clanInfo?.d2ClanProgressions && clan?.clanInfo?.d2ClanProgressions[AppConstants.SeasonHash]) {
         return clan?.clanInfo?.d2ClanProgressions[AppConstants.SeasonHash];
       }
@@ -126,7 +129,7 @@ export class ClanDetailService {
       const rewardDefinitions = clanRewardDefinitions.rewards[weekHash];
       retVal.title = rewardDefinitions.displayProperties.name;
 
-      if (clanWeekRewards) {
+      if (clanWeekRewards && clanWeekRewards.rewards) {
         const rewards = clanWeekRewards.rewards.find((x) => x.rewardCategoryHash === weekHash);
         retVal.rewards = rewards?.entries?.map((r) => {
           return {

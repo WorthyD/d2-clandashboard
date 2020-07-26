@@ -1,17 +1,29 @@
 <mat-card>
-    <mat-card-title>{{clanDetails.name}}</mat-card-title>
-    <mat-card-subtitle>{{clanDetails.motto}}</mat-card-subtitle>
-    <mat-card-content>
+  <ng-container *ngIf="!isLoading; else loading">
+    <ng-container *ngIf="clanDetails">
+      <mat-card-title>{{clanDetails.name}}</mat-card-title>
+      <mat-card-subtitle>{{clanDetails.motto}}</mat-card-subtitle>
+      <mat-card-content>
         <div [innerText]="clanDetails.about"></div>
         <mat-list>
-            <mat-list-item>
-                <mat-icon matListIcon>people</mat-icon>
-                <h3 matLine>{{clanDetails.memberCount}}</h3>
-            </mat-list-item>
-            <mat-list-item>
-                <mat-icon matListIcon>date_range</mat-icon>
-                <h3 matLine>{{clanDetails.creationDate | date : 'longDate' }}</h3>
-            </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>people</mat-icon>
+            <h3 matLine>{{clanDetails.memberCount}}</h3>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>date_range</mat-icon>
+            <h3 matLine>{{clanDetails.creationDate | date : 'longDate' }}</h3>
+          </mat-list-item>
         </mat-list>
-    </mat-card-content>
+      </mat-card-content>
+    </ng-container>
+  </ng-container>
 </mat-card>
+<ng-template #loading>
+  <mat-card-title>
+    Loading Details....
+  </mat-card-title>
+  <mat-card-content>
+    <lib-loading></lib-loading>
+  </mat-card-content>
+</ng-template>
