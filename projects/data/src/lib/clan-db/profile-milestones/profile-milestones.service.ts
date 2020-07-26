@@ -18,7 +18,7 @@ export class ProfileMilestonesService extends BaseProfileService {
   private concurrentRequests = 20;
 
   constructor(private clanDb: ClanDatabase, private d2Service: Destiny2Service) {
-    super(clanDb, 'ProfileMilestones', d2Service, [900]);
+    super(clanDb, 'ProfileMilestones', d2Service, [100, 900]);
   }
 
   getSerializedProfiles(
@@ -49,6 +49,7 @@ export class ProfileMilestonesService extends BaseProfileService {
       toArray(),
       map((serializedMembers) => {
         const groupedMilestones = milestoneHashes.map((x) => {
+          console.log(x);
           return {
             milestoneHash: x,
             profiles: serializedMembers.map((profile) => profileMilestoneSerializer(profile, [x]))

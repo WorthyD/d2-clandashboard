@@ -11,7 +11,7 @@ export const getSealEntityState = createSelector(
 export const {
     selectIds: getMemberIds,
     selectEntities: getMemberProfileEntities,
-    selectAll: getAllMembers,
+    selectAll: getAllSeals,
     selectTotal: getTotalMembers
 } = sealState.SealProfileAdapter.getSelectors(
   getSealEntityState

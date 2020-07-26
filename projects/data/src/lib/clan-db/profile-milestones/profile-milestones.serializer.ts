@@ -5,9 +5,9 @@ export function profileMilestoneSerializer(p: MemberProfile, profileRecords: any
     profile: {
       data: {
         userInfo: {
-          membershipType: p.profile.data.userInfo.membershipType,
-          membershipId: p.profile.data.userInfo.membershipId,
-          displayName: p.profile.data.userInfo.displayName
+          membershipType: p.profile.data?.userInfo?.membershipType,
+          membershipId: p.profile.data?.userInfo?.membershipId,
+          displayName: p.profile.data?.userInfo?.displayName
         }
       }
     },

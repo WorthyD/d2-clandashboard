@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SealsService } from '../seals.service';
-import { PresentationNodeDefinition } from 'bungie-models';
+import { PresentationNodeDefinition, SealMembers } from 'bungie-models';
 
 @Component({
   selector: 'app-seal',
@@ -8,6 +8,10 @@ import { PresentationNodeDefinition } from 'bungie-models';
   styleUrls: ['./seal.component.scss']
 })
 export class SealComponent implements OnInit {
+
+
+  @Input()
+  sealMembers: SealMembers;
 
   @Input()
   presentationNode: PresentationNodeDefinition;

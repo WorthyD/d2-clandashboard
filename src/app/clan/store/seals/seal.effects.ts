@@ -42,7 +42,7 @@ import {
 import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
 @Injectable()
-export class MemberProfileEffects {
+export class SealEffects {
   constructor(
     private actions$: Actions,
     private store: Store<any>,
@@ -57,12 +57,12 @@ export class MemberProfileEffects {
         this.store.select(clanMemberSelectors.getAllMembers)
       ),
       switchMap(([{ seals }, clanId, clanMembers]) => {
-        const hashes = seals.map((x) => x.hash);
+        const hashes = seals.map((x) => x.completionRecordHash);
         return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), clanMembers, hashes).pipe(
           map((sealProfiles) => {
             const sealProfilesCleaned: SealMembers[] = sealProfiles.map((sealMember) => {
               return {
-                seal: seals.find((seal) => sealMember.milestoneHash === seal.hash),
+                seal: seals.find((seal) => sealMember.milestoneHash === seal.completionRecordHash),
                 members: sealMember.profiles
               };
             });

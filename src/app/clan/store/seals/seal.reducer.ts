@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { SealInitialState, SealProfileAdapter } from './seal.state';
 import { loadSeals, loadSealSuccess, loadSealFailure } from './seal.actions';
 
-export const MemberProfileReducer = createReducer(
+export const SealReducer = createReducer(
   SealInitialState,
   on(loadSeals, (state) => ({
     ...state,

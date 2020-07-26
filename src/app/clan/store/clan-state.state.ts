@@ -28,6 +28,8 @@ import * as clanRewardReducer from './clan-rewards/clan-rewards.reducers';
 import { ClanRewardEffects } from './clan-rewards/clan-rewards.effects';
 
 import * as sealState from './seals/seal.state';
+import * as sealReducer from './seals/seal.reducer';
+import { SealEffects } from './seals/seal.effects';
 
 export interface ClanState {
   clanId: number;
@@ -48,7 +50,7 @@ export const reducers: ActionReducerMap<ClanState> = {
   memberProfiles: memberProfileReducer.MemberProfileReducer,
   memberActivities: memberActivityReducer.MemberProfileReducer,
   clanCache: clanCacheReducer.ClanCacheReducer,
-  seals: null
+  seals: sealReducer.SealReducer
 };
 
 export const ClanEffects = [
@@ -57,6 +59,7 @@ export const ClanEffects = [
   MemberProfileEffects,
   MemberStatEffects,
   ClanCacheEffects,
-  ClanRewardEffects
+  ClanRewardEffects,
+  SealEffects
 ];
 // export const ClanEffects = [ClanDetailEffects, ClanMemberEffects];
