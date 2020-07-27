@@ -30,8 +30,7 @@ export interface DBObject {
 }
 
 export class AppIndexedDb {
-  initialValues: { [key in StoreId]?: Subject<any[]> } = {};
-  //  initialValues: { [key in StoreId]?: Subject<DBObject[]> } = {};
+  initialValues: { [key in StoreId]?: Subject<DBObject[]> } = {};
 
   name: string;
 
@@ -40,8 +39,7 @@ export class AppIndexedDb {
   private destroyed = new Subject();
 
   constructor(name: string) {
-    // STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<DBObject[]>(1)));
-    STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<any[]>(1)));
+    this.resetInitialValues();
     this.name = name;
     this.openDb();
   }
@@ -50,14 +48,23 @@ export class AppIndexedDb {
     return this.db.then((db) => db.close());
   }
 
-  ngOnDestroy() {
-    this.destroyed.next();
-    this.destroyed.complete();
+
+
+  private resetInitialValues() {
+    STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<DBObject[]>(1)));
+  }
+
+  getAllData(){
+  }
+  getByIds(){
+  }
+  getById(){
   }
 
   removeData() {
     this.db
       .then((db) => {
+        this.resetInitialValues();
         db.close();
         return deleteDB(this.name);
       })
