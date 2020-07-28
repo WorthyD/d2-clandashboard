@@ -48,17 +48,17 @@ export class AppIndexedDb {
     return this.db.then((db) => db.close());
   }
 
-
-
   private resetInitialValues() {
     STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<DBObject[]>(1)));
   }
 
-  getAllData(){
-  }
-  getByIds(){
-  }
-  getById(){
+  getAllData() {}
+  getByIds() {}
+
+  getById(store: StoreId, id) {
+    return this.db.then((db) => {
+      return db.transaction(store, 'readonly').objectStore(store).get(id);
+    });
   }
 
   removeData() {

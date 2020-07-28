@@ -56,6 +56,12 @@ fdescribe('App Indexed DB', () => {
         done();
       });
     });
+    it('should be able to retrieve data', async (done) => {
+      database.getById('ClanDetails', '1').then(x => {
+        console.log(x);
+        done();
+      });
+    });
 
     it('should remove values passed in', async (done) => {
       const takeCount = 2;
@@ -70,7 +76,6 @@ fdescribe('App Indexed DB', () => {
 
       await database.removeValues(idsToRemove, storeId);
 
-
       await database.close();
 
       database = new AppIndexedDb(databaseName);
@@ -82,8 +87,6 @@ fdescribe('App Indexed DB', () => {
         expect(found).toBeTruthy();
       });
 
-
-
       done();
     });
 
@@ -93,7 +96,6 @@ fdescribe('App Indexed DB', () => {
       expect(originalData.length).toBeGreaterThan(0);
 
       await database.removeAllValues(storeId);
-
 
       await database.close();
 
