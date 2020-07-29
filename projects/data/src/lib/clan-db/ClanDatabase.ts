@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AppIndexedDb, StoreId } from './app-indexed-db';
+import { AppIndexedDb, StoreId, DBObject } from './app-indexed-db';
 
 @Injectable()
 export class ClanDatabase {
@@ -7,6 +7,10 @@ export class ClanDatabase {
 
   getValues(repository: string) {
     return this.getDatabase(repository).initialValues;
+  }
+
+  getById(repository: string, type: StoreId, id: string): Promise<DBObject> {
+    return this.getDatabase(repository).getById(type, id);
   }
 
   update(repository: string, type: StoreId, entities: any[]): Promise<void> {

@@ -30,7 +30,8 @@ export interface DBObject {
 }
 
 export class AppIndexedDb {
-  initialValues: { [key in StoreId]?: Subject<DBObject[]> } = {};
+  //initialValues: { [key in StoreId]?: Subject<DBObject[]> } = {};
+  initialValues: { [key in StoreId]?: Subject<any[]> } = {};
 
   name: string;
 
@@ -52,8 +53,11 @@ export class AppIndexedDb {
     STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<DBObject[]>(1)));
   }
 
-  getAllData() {}
-  getByIds() {}
+  getAllData(store: StoreId) {
+    return this.db.then((db) => {
+      return db.transaction(store, 'readonly').objectStore(store).getAll();
+    });
+  }
 
   getById(store: StoreId, id) {
     return this.db.then((db) => {

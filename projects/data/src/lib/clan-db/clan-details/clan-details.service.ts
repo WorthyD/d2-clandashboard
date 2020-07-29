@@ -5,7 +5,7 @@ import { DBObject, StoreId } from '../app-indexed-db';
 import { map, take, catchError, mergeMap, switchMap } from 'rxjs/operators';
 import * as moment from 'moment';
 import { ClanDatabase } from '../ClanDatabase';
-import { of } from 'rxjs';
+import { of, from } from 'rxjs';
 import { BaseClanService } from '../base-clan.service';
 
 @Injectable()
@@ -34,7 +34,7 @@ export class ClanDetailsService extends BaseClanService {
   }
 
   private getClanDetails(clanId: number) {
-    return this.getDataFromCache(clanId.toString(), this.rowId).pipe(
+    return from(this.getDataFromCache(clanId.toString(), this.rowId)).pipe(
       switchMap((cachedData) => {
         if (this.isCacheValid(cachedData, 10)) {
           return of(cachedData?.data);

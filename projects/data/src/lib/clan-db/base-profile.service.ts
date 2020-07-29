@@ -4,7 +4,7 @@ import { StoreId } from './app-indexed-db';
 import { Destiny2Service } from 'bungie-api';
 import { ClanMember } from 'bungie-models';
 import { mergeMap, map, catchError } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable, of, from } from 'rxjs';
 import * as moment from 'moment';
 
 export class BaseProfileService extends BaseClanService {
@@ -30,7 +30,7 @@ export class BaseProfileService extends BaseClanService {
   }
 
   getProfile(clanId: string, member: ClanMember): Observable<any> {
-    return this.getDataFromCache(clanId, this.getProfileId(member)).pipe(
+    return from(this.getDataFromCache(clanId, this.getProfileId(member))).pipe(
       mergeMap((cachedData) => {
         const lastActivity = moment.unix(member.lastOnlineStatusChange).toDate();
         if (this.isCacheValid(cachedData, 0, lastActivity)) {

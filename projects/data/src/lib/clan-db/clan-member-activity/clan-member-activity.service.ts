@@ -34,7 +34,7 @@ export class ClanMemberActivityService extends BaseClanService {
     characterId: number
   ): Observable<DestinyHistoricalStatsDestinyActivityHistoryResults> {
     const characterActivityId = this.getMemberActivityId(member, characterId);
-    return this.getDataFromCache(clanId.toString(), characterActivityId).pipe(
+    return from(this.getDataFromCache(clanId.toString(), characterActivityId)).pipe(
       mergeMap((cachedData) => {
         if (this.isCacheValid(cachedData, 0, new Date(member.profile.data.dateLastPlayed))) {
           return of(cachedData.data);

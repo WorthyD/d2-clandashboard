@@ -11,16 +11,17 @@ export class BaseClanService {
     this.tableName = tableNameBase;
   }
 
-  getDataFromCache(clanId: string, rowId: string): Observable<DBObject> {
-    return this.clanDbBase.getValues(clanId)[this.tableNameBase].pipe(
-      map((rows: DBObject[]) => {
-        if (rows && rows.length > 0) {
-          return rows.find((m) => m.id === rowId);
-        }
-        return undefined;
-      }),
-      take(1)
-    );
+  getDataFromCache(clanId: string, rowId: string): Promise<DBObject> {
+    // return this.clanDbBase.getValues(clanId)[this.tableNameBase].pipe(
+    //   map((rows: DBObject[]) => {
+    //     if (rows && rows.length > 0) {
+    //       return rows.find((m) => m.id === rowId);
+    //     }
+    //     return undefined;
+    //   }),
+    //   take(1)
+    // );
+    return this.clanDbBase.getById(clanId, this.tableNameBase, rowId);
   }
 
   isCacheValid(cachedData: DBObject, minuteExpiration: number, lastActivty?: Date) {
