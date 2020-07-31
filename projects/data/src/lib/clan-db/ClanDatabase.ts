@@ -26,10 +26,16 @@ export class ClanDatabase {
   }
 
   deleteDatabase(repository: string) {
-    return this.getDatabase(repository).removeData();
+    //await service.close();
+    //await db.close();
+    //await deleteDB(UNIT_TEST_DB_NAME);
+    return this.getDatabase(repository, false).purgeDatabase();
+    //   if (this.database) {
+    //     return this.database.purgeDatabase();
+    //   }
   }
 
-  private getDatabase(repository: string) {
+  private getDatabase(repository: string, initializeValues: boolean = true) {
     if (this.database && this.database.name === repository) {
       return this.database;
     }
@@ -38,7 +44,7 @@ export class ClanDatabase {
       this.database.close();
     }
 
-    this.database = new AppIndexedDb(repository);
+    this.database = new AppIndexedDb(repository, initializeValues);
     return this.database;
   }
 }

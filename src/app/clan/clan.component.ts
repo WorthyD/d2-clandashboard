@@ -43,6 +43,7 @@ export class ClanComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store<clanDetailStore.ClanDetailState>,
+    private router: Router,
     private db: ClanDatabase //private rStore: Store<routerStore.State>, // private clanRewards: RewardsUpdater, //private profileService: ProfileService
   ) {
     this.clanId.pipe(takeUntil(this.destroyed)).subscribe((r) => this.loadClan(r));
@@ -71,29 +72,29 @@ export class ClanComponent implements OnInit, OnDestroy {
   loadClan(clanId) {
     // if valid clan load the rest
 
-    this.store.dispatch(clanCacheActions.initializeCache({ clanId: clanId }));
+    //  this.store.dispatch(clanCacheActions.initializeCache({ clanId: clanId }));
 
-    this.store
-      .select(clanCacheSelectors.isCacheLoaded)
-      .pipe(
-        filter((loaded) => !!loaded),
-        take(1)
-      )
-      .subscribe((x) => {
-        // this.clanRewards.update('clanRewards', clanId);
-        this.store.dispatch(clanRewardActions.loadRewards({ clanId: clanId }));
+    // this.store
+    //   .select(clanCacheSelectors.isCacheLoaded)
+    //   .pipe(
+    //     filter((loaded) => !!loaded),
+    //     take(1)
+    //   )
+    //   .subscribe((x) => {
+    // this.clanRewards.update('clanRewards', clanId);
+    this.store.dispatch(clanRewardActions.loadRewards({ clanId: clanId }));
 
-        this.store.dispatch(clanIdActions.setClanId({ clanId: clanId }));
-        this.store.dispatch(clanDetailActions.loadClan({ clanId: clanId }));
-        this.store.dispatch(clanMemberActions.loadClanMembers({ clanId: clanId }));
+    this.store.dispatch(clanIdActions.setClanId({ clanId: clanId }));
+    this.store.dispatch(clanDetailActions.loadClan({ clanId: clanId }));
+    this.store.dispatch(clanMemberActions.loadClanMembers({ clanId: clanId }));
 
-        // this.store.dispatch(memberProfileActions.loadMemberProfiles({ clanId: clanId }));
-        // this.store.dispatch(
-        //   memberActivityActions.loadClanMembersActivities({
-        //     clanId: clanId
-        //   })
-        // );
-      });
+    // this.store.dispatch(memberProfileActions.loadMemberProfiles({ clanId: clanId }));
+    // this.store.dispatch(
+    //   memberActivityActions.loadClanMembersActivities({
+    //     clanId: clanId
+    //   })
+    // );
+    // });
 
     // const mockOldMember: unknown = MOCK_WORTHY_MEMBER as MemberProfile;
     // const mockNewMember: unknown = MOCK_OMEGA_MEMBER as MemberProfile;
@@ -163,9 +164,12 @@ export class ClanComponent implements OnInit, OnDestroy {
   }
 
   resetDatabase() {
-    this.clanId.subscribe((x) => {
-      this.db.deleteDatabase(x);
-    });
     console.log('resetting');
+    this.clanId.pipe(take(1)).subscribe((x) => {
+      console.log('getting id done');
+      this.db.deleteDatabase(x).then((y) => {
+        this.router.navigate(['/']);
+      });
+    });
   }
 }

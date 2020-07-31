@@ -39,13 +39,17 @@ export class AppIndexedDb {
 
   private destroyed = new Subject();
 
-  constructor(name: string) {
-    this.resetInitialValues();
+  constructor(name: string, initializeValues: boolean = true) {
+    console.log('constructing');
+    if (initializeValues) {
+      this.resetInitialValues();
+    }
     this.name = name;
     this.openDb();
   }
 
   close() {
+    console.log('closing');
     return this.db.then((db) => db.close());
   }
 
@@ -66,6 +70,7 @@ export class AppIndexedDb {
   }
 
   removeData() {
+    console.log('remove data');
     this.db
       .then((db) => {
         this.resetInitialValues();
@@ -73,6 +78,14 @@ export class AppIndexedDb {
         return deleteDB(this.name);
       })
       .then(() => this.openDb());
+  }
+
+  purgeDatabase() {
+    console.log('purge');
+    return this.close().then((db) => {
+      console.log('close done');
+      return deleteDB(this.name);
+    });
   }
 
   updateValues(values: DBObject[], collectionId: string) {
@@ -102,6 +115,7 @@ export class AppIndexedDb {
   }
 
   private openDb() {
+    console.log('re opening');
     this.db = openDB(this.name, DB_VERSION, {
       upgrade(db, oldVersion, newVersion, transaction) {
         STORE_IDS.forEach((collectionId) => {
@@ -121,6 +135,7 @@ export class AppIndexedDb {
   }
 
   private initializeAllValues() {
+    console.log('initializing');
     STORE_IDS.forEach((id) => {
       this.db
         .then((db) => db.transaction(id, 'readonly').objectStore(id).getAll())

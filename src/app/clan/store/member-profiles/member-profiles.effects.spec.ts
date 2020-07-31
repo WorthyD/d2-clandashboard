@@ -12,7 +12,7 @@ import { of } from 'rxjs';
 import { MOCK_WORTHY_MEMBER, MOCK_OMEGA_MEMBER } from 'projects/data/src/lib/testing-utils/objects/member.mock';
 import { MemberProfile } from 'bungie-models';
 
-fdescribe('Member Profile Effects', () => {
+describe('Member Profile Effects', () => {
   let service: ProfileService;
   let scheduler;
   let dbService: ClanDatabase;

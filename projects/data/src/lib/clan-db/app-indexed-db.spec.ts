@@ -3,7 +3,7 @@ import { AppIndexedDb, STORE_IDS } from './app-indexed-db';
 import { take } from 'rxjs/operators';
 import { deleteDB } from 'idb';
 
-fdescribe('App Indexed DB', () => {
+describe('App Indexed DB', () => {
   let database: AppIndexedDb;
   const databaseName = 'UnitTestDB';
   const storeId = 'ClanDetails';

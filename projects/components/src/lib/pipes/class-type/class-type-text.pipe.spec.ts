@@ -1,6 +1,6 @@
 import { ClassTypeTextPipe } from './class-type-text.pipe';
 
-fdescribe('ClassTypeTextPipe', () => {
+describe('ClassTypeTextPipe', () => {
   it('create an instance', () => {
     const pipe = new ClassTypeTextPipe();
     expect(pipe).toBeTruthy();
