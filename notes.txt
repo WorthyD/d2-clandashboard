@@ -12,3 +12,4 @@ Get player records to compare.
 Setup cache for player records.
 
 
+https://www.bungie.net/en/ClanV2?groupId=2071016
