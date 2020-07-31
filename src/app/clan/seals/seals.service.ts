@@ -12,15 +12,10 @@ import { getAllSeals, getClanSealLoading } from '../store/seals/seal.selectors';
 export class SealsService {
   constructor(private presentationNodeService: PresentationNodeDefinitionService, private store: Store<ClanState>) {}
 
-  rootSealNode$ = this.presentationNodeService.getDefinitionsByHash(1652422747);
-  sealsNodes$ = this.rootSealNode$.pipe(
-    switchMap((x) => {
-      if (x) {
-        const hashes = x.children.presentationNodes.map((x) => x.presentationNodeHash);
-        return this.presentationNodeService.getDefinitionsGroupByHash(hashes);
-      }
-      return of(undefined);
-    })
+  rootSealNode = this.presentationNodeService.getDefinitionsByHash(1652422747);
+
+  sealNodes = this.presentationNodeService.getDefinitionsGroupByHash(
+    this.rootSealNode.children.presentationNodes.map((x) => x.presentationNodeHash)
   );
 
   sealsLoading$ = this.store.pipe(select(getClanSealLoading));
@@ -31,13 +26,6 @@ export class SealsService {
   }
 
   loadSeals() {
-    this.sealsNodes$.subscribe((seals) => {
-      if (seals) {
-        this.store.dispatch(loadSeals({ seals }));
-      }
-    });
+    this.store.dispatch(loadSeals({ seals: this.sealNodes }));
   }
-
-  // get seal hashes
-  // get members
 }

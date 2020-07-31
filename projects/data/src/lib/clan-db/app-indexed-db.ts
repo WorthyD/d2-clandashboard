@@ -30,8 +30,8 @@ export interface DBObject {
 }
 
 export class AppIndexedDb {
+  //initialValues: { [key in StoreId]?: Subject<DBObject[]> } = {};
   initialValues: { [key in StoreId]?: Subject<any[]> } = {};
-  //  initialValues: { [key in StoreId]?: Subject<DBObject[]> } = {};
 
   name: string;
 
@@ -39,29 +39,53 @@ export class AppIndexedDb {
 
   private destroyed = new Subject();
 
-  constructor(name: string) {
-    // STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<DBObject[]>(1)));
-    STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<any[]>(1)));
+  constructor(name: string, initializeValues: boolean = true) {
+    console.log('constructing');
+    if (initializeValues) {
+      this.resetInitialValues();
+    }
     this.name = name;
     this.openDb();
   }
 
   close() {
+    console.log('closing');
     return this.db.then((db) => db.close());
   }
 
-  ngOnDestroy() {
-    this.destroyed.next();
-    this.destroyed.complete();
+  private resetInitialValues() {
+    STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<DBObject[]>(1)));
+  }
+
+  getAllData(store: StoreId) {
+    return this.db.then((db) => {
+      return db.transaction(store, 'readonly').objectStore(store).getAll();
+    });
+  }
+
+  getById(store: StoreId, id) {
+    return this.db.then((db) => {
+      return db.transaction(store, 'readonly').objectStore(store).get(id);
+    });
   }
 
   removeData() {
+    console.log('remove data');
     this.db
       .then((db) => {
+        this.resetInitialValues();
         db.close();
         return deleteDB(this.name);
       })
       .then(() => this.openDb());
+  }
+
+  purgeDatabase() {
+    console.log('purge');
+    return this.close().then((db) => {
+      console.log('close done');
+      return deleteDB(this.name);
+    });
   }
 
   updateValues(values: DBObject[], collectionId: string) {
@@ -91,6 +115,7 @@ export class AppIndexedDb {
   }
 
   private openDb() {
+    console.log('re opening');
     this.db = openDB(this.name, DB_VERSION, {
       upgrade(db, oldVersion, newVersion, transaction) {
         STORE_IDS.forEach((collectionId) => {
@@ -110,6 +135,7 @@ export class AppIndexedDb {
   }
 
   private initializeAllValues() {
+    console.log('initializing');
     STORE_IDS.forEach((id) => {
       this.db
         .then((db) => db.transaction(id, 'readonly').objectStore(id).getAll())

@@ -18,7 +18,7 @@ export class ClanRewardsService extends BaseClanService {
   }
 
   private getClanRewards(clanId: number) {
-    return this.getDataFromCache(clanId.toString(), this.rowId).pipe(
+    return from(this.getDataFromCache(clanId.toString(), this.rowId)).pipe(
       switchMap((cachedData) => {
         if (this.isCacheValid(cachedData, 10)) {
           return of(cachedData?.data);
