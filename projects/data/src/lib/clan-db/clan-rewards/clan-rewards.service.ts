@@ -6,11 +6,12 @@ import { ClanDatabase } from '../ClanDatabase';
 import { Observable, from, of } from 'rxjs';
 import { BaseClanService } from '../base-clan.service';
 import { map, take, catchError, mergeMap, switchMap } from 'rxjs/operators';
+import { StoreId } from '../app-indexed-db';
 @Injectable()
 export class ClanRewardsService extends BaseClanService {
   private rowId = 'ClanRewards';
   constructor(private d2Service: Destiny2Service, private clanDb: ClanDatabase) {
-    super(clanDb, 'ClanDetails');
+    super(clanDb, StoreId.ClanDetails);
   }
 
   private getClanRewardsFromAPI(clanId: number) {

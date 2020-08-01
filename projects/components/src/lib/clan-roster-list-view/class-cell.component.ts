@@ -18,7 +18,6 @@ export class ClassCellComponent implements OnInit {
   ngOnInit(): void {}
 
   getIcon(): string {
-    console.log('getting');
     const classType = (this.profile?.characters.data)[this.characterHash].classType;
     switch (classType) {
       case 0:

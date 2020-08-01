@@ -24,7 +24,6 @@ export class MemberActivityService {
     this.activityModeDefinitions$,
     this.activityDefinitions$,
     (pActivities, activityModeDefinitions, activityDefinitions) => {
-      console.log(pActivities);
       if (pActivities && activityModeDefinitions && activityDefinitions) {
         const defArray = Object.keys(activityModeDefinitions).map((id) => activityModeDefinitions[id]);
         return pActivities.map((x) => {

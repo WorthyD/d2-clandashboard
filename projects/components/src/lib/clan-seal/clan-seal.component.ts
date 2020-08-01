@@ -15,7 +15,6 @@ export class ClanSealComponent implements OnInit {
   ngOnInit(): void {}
 
   getCompletedMembers() {
-    console.log('loading stuff');
     const members = this.sealMembers.members;
     const hash = this.sealMembers.seal.completionRecordHash;
     const completed = members.filter((m) => {

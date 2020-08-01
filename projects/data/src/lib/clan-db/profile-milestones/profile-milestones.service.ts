@@ -7,6 +7,7 @@ import { ClanMember, MemberProfile } from 'bungie-models';
 import { Observable, from } from 'rxjs';
 import { mergeMap, map, toArray } from 'rxjs/operators';
 import { profileMilestoneSerializer } from './profile-milestones.serializer';
+import { StoreId } from '../app-indexed-db';
 
 export interface MilestoneProfiles {
   milestoneHash: number;
@@ -18,7 +19,7 @@ export class ProfileMilestonesService extends BaseProfileService {
   private concurrentRequests = 20;
 
   constructor(private clanDb: ClanDatabase, private d2Service: Destiny2Service) {
-    super(clanDb, 'ProfileMilestones', d2Service, [100, 900]);
+    super(clanDb, StoreId.ProfileMilestones, d2Service, [100, 900]);
   }
 
   getSerializedProfiles(

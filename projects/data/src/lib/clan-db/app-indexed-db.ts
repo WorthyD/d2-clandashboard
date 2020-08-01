@@ -1,26 +1,26 @@
 import { openDB, deleteDB, IDBPDatabase } from 'idb';
 import { ReplaySubject, Subject } from 'rxjs';
 
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
-// TODO: Use enum
-export type StoreId =
-  | 'CacheDetails'
-  | 'ClanDetails'
-  //| 'ClanMembers'
-  | 'ClanRewards'
-  | 'MemberProfiles'
-  | 'MemberActivities'
-  | 'ProfileMilestones';
+export enum StoreId {
+  CacheDetails = 'CacheDetails',
+  ClanDetails = 'ClanDetails',
+  ClanRewards = 'ClanRewards',
+  MemberProfiles = 'MemberProfiles',
+  MemberActivities = 'MemberActivities',
+  ProfileMilestones = 'ProfileMilestones',
+  Raids = 'Raids'
+}
 
 export const STORE_IDS: StoreId[] = [
-  'CacheDetails',
-  'ClanDetails',
-  // 'ClanMembers',
-  'ClanRewards',
-  'MemberProfiles',
-  'MemberActivities',
-  'ProfileMilestones'
+  StoreId.CacheDetails,
+  StoreId.ClanDetails,
+  StoreId.ClanRewards,
+  StoreId.MemberProfiles,
+  StoreId.MemberActivities,
+  StoreId.ProfileMilestones,
+  StoreId.Raids
 ];
 
 export interface DBObject {
@@ -30,9 +30,6 @@ export interface DBObject {
 }
 
 export class AppIndexedDb {
-  //initialValues: { [key in StoreId]?: Subject<DBObject[]> } = {};
-  initialValues: { [key in StoreId]?: Subject<any[]> } = {};
-
   name: string;
 
   private db: Promise<IDBPDatabase>;
@@ -40,7 +37,6 @@ export class AppIndexedDb {
   private destroyed = new Subject();
 
   constructor(name: string, initializeValues: boolean = true) {
-    console.log('constructing');
     if (initializeValues) {
       this.resetInitialValues();
     }
@@ -49,13 +45,10 @@ export class AppIndexedDb {
   }
 
   close() {
-    console.log('closing');
     return this.db.then((db) => db.close());
   }
 
-  private resetInitialValues() {
-    STORE_IDS.forEach((id) => (this.initialValues[id] = new ReplaySubject<DBObject[]>(1)));
-  }
+  private resetInitialValues() {}
 
   getAllData(store: StoreId) {
     return this.db.then((db) => {
@@ -70,7 +63,6 @@ export class AppIndexedDb {
   }
 
   removeData() {
-    console.log('remove data');
     this.db
       .then((db) => {
         this.resetInitialValues();
@@ -81,9 +73,7 @@ export class AppIndexedDb {
   }
 
   purgeDatabase() {
-    console.log('purge');
     return this.close().then((db) => {
-      console.log('close done');
       return deleteDB(this.name);
     });
   }
@@ -115,37 +105,19 @@ export class AppIndexedDb {
   }
 
   private openDb() {
-    console.log('re opening');
     this.db = openDB(this.name, DB_VERSION, {
       upgrade(db, oldVersion, newVersion, transaction) {
+        console.log('db update');
         STORE_IDS.forEach((collectionId) => {
+          console.log('Collection ID', collectionId);
           if (!db.objectStoreNames.contains(collectionId)) {
+            console.log('Collection ID Not Contained', collectionId);
             const objectStore = db.createObjectStore(collectionId, {
               keyPath: 'id'
             });
-
-            //if (this.name === 'angular/components') {
-            // initializeDemoConfig(collectionId, objectStore);
-            // }
           }
         });
       }
-    });
-    this.db.then(() => this.initializeAllValues());
-  }
-
-  private initializeAllValues() {
-    console.log('initializing');
-    STORE_IDS.forEach((id) => {
-      this.db
-        .then((db) => db.transaction(id, 'readonly').objectStore(id).getAll())
-        .then((result) => {
-          const initialValues = this.initialValues[id];
-          if (!initialValues) {
-            throw Error('Object store not initialized :' + id);
-          }
-          initialValues.next(result);
-        });
     });
   }
 }
