@@ -58,7 +58,6 @@ describe('App Indexed DB', () => {
     });
     it('should be able to retrieve data', async (done) => {
       database.getById('ClanDetails', '1').then(x => {
-        console.log(x);
         done();
       });
     });

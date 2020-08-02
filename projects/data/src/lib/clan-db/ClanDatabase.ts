@@ -5,9 +5,9 @@ import { AppIndexedDb, StoreId, DBObject } from './app-indexed-db';
 export class ClanDatabase {
   private database: AppIndexedDb;
 
-  getValues(repository: string) {
-    return this.getDatabase(repository).initialValues;
-  }
+  // getValues(repository: string) {
+  //   return this.getDatabase(repository).initialValues;
+  // }
 
   getById(repository: string, type: StoreId, id: string): Promise<DBObject> {
     return this.getDatabase(repository).getById(type, id);
@@ -26,13 +26,7 @@ export class ClanDatabase {
   }
 
   deleteDatabase(repository: string) {
-    //await service.close();
-    //await db.close();
-    //await deleteDB(UNIT_TEST_DB_NAME);
-    return this.getDatabase(repository, false).purgeDatabase();
-    //   if (this.database) {
-    //     return this.database.purgeDatabase();
-    //   }
+   return this.getDatabase(repository, false).purgeDatabase();
   }
 
   private getDatabase(repository: string, initializeValues: boolean = true) {

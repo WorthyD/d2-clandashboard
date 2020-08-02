@@ -70,11 +70,8 @@ export class RaidsComponent implements OnInit {
         ofType(loadMemberProfileSuccess),
         withLatestFrom(this.members$),
         switchMap(([actions, members]) => {
-          //console.log('mapping', members);
-          //members = members.slice(0, 10);
           return from(members).pipe(
             mergeMap((x) => {
-              //console.log('merge mapping', x);
               return from(x.profile.data.characterIds).pipe(
                 mergeMap((characterId: number) => {
                   return this.d2Service
@@ -109,9 +106,7 @@ export class RaidsComponent implements OnInit {
         //take(1)
       )
       .subscribe((x) => {
-        console.log('done', x);
         this.members = x;
-        //console.log('done', x);
       });
   }
 

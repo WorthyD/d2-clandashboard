@@ -14,21 +14,8 @@ export class ClanDetailsService extends BaseClanService {
   private rowId = 'ClanDetails';
 
   constructor(private groupService: GroupV2Service, private clanDb: ClanDatabase) {
-    super(clanDb, 'ClanDetails');
+    super(clanDb, StoreId.ClanDetails);
   }
-
-  // private getClanDetailsFromCache(clanId: string) {
-  //   return this.clanDb.getValues(clanId).ClanDetails.pipe(
-  //     map((clanDetails) => {
-  //       if (clanDetails && clanDetails.length > 0) {
-  //         return clanDetails.find((m) => m.id === this.rowId);
-  //       }
-  //       return undefined;
-  //     }),
-  //     take(1)
-  //   );
-  // }
-
   private getClanDetailsFromAPI(clanId: number) {
     return this.groupService.groupV2GetGroup(clanId);
   }

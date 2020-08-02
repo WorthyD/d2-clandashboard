@@ -8,12 +8,13 @@ import { from, of, Observable } from 'rxjs';
 import { mergeMap, map, catchError, concatAll, mergeAll, toArray } from 'rxjs/operators';
 
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
+import { StoreId } from '../app-indexed-db';
 
 @Injectable()
 export class ClanMemberActivityService extends BaseClanService {
   private ACTIVITY_GET_COUNT = 100;
   constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
-    super(clanDB, 'MemberActivities');
+    super(clanDB, StoreId.MemberActivities);
   }
   private getMemberActivityId(member: MemberProfile, characterId: number) {
     return `${member.profile.data.userInfo.membershipType}-${member.profile.data.userInfo.membershipId}-${characterId}`;

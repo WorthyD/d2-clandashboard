@@ -12,6 +12,7 @@ import {
 
 import { ClanMemberListItem } from '../models/ClanMemberListItem';
 import { TemplateDirective } from '../shared/directives/template.directive';
+import { ClanMember } from 'bungie-models';
 export { ClanMemberListItem } from '../models/ClanMemberListItem';
 
 @Component({
@@ -28,9 +29,9 @@ export class ClanMembersCardComponent implements OnInit {
 
     @Input() itemTemplate: TemplateRef<HTMLElement>;
 
-    @Output() viewMember = new EventEmitter<number>();
+    @Output() viewMember = new EventEmitter<ClanMember>();
     memberClick(m: ClanMemberListItem) {
-        this.viewMember.emit(m.member.destinyUserInfo.membershipId);
+        this.viewMember.emit(m.member);
     }
     constructor() {}
 

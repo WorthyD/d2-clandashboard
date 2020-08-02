@@ -27,11 +27,11 @@ export function initConfig(appConfig: ManifestService) {
     HttpClientModule,
     ClanModule,
     RootStoreModule,
-    LoggerModule.forRoot({
-      level: NgxLoggerLevel.TRACE,
-      serverLogLevel: NgxLoggerLevel.ERROR,
-      disableConsoleLogging: false
-    }),
+    // LoggerModule.forRoot({
+    //   level: NgxLoggerLevel.TRACE,
+    //   serverLogLevel: NgxLoggerLevel.ERROR,
+    //   disableConsoleLogging: false
+    // }),
     BrowserAnimationsModule,
     ClanSearchModule
   ],

@@ -97,7 +97,6 @@ export class ClanDetailService {
 
   clanSeasonalProgression$: Observable<ClanProgress> = this.clanDetails$.pipe(
     map((clan) => {
-      console.log(clan?.clanInfo?.d2ClanProgressions);
       if (clan?.clanInfo?.d2ClanProgressions && clan?.clanInfo?.d2ClanProgressions[AppConstants.SeasonHash]) {
         return clan?.clanInfo?.d2ClanProgressions[AppConstants.SeasonHash];
       }

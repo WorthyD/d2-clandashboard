@@ -5,17 +5,14 @@ import { GroupV2Service } from 'bungie-api';
 import { ClanDetails } from 'bungie-models';
 import { Subscription } from 'rxjs';
 
-// import { ClanDatabase } from '../services/ClanDatabase';
 import { FormControl } from '@angular/forms';
-import { map, sampleTime, shareReplay, switchMap, take, withLatestFrom } from 'rxjs/operators';
+import { map, sampleTime, shareReplay, switchMap } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Router } from '@angular/router';
 
-import { NGXLogger } from 'ngx-logger';
 import { ClanSearchState } from './state/clan-search.state';
 import { Store } from '@ngrx/store';
 import { addClan } from './state/loaded-clans/loaded-clans.actions';
-import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
 interface LoadClanResult {
   id: number;
@@ -30,13 +27,7 @@ interface LoadClanResult {
 export class ClanSearchComponent implements OnInit {
   loadSubscription: Subscription;
 
-  constructor(
-    private groupService: GroupV2Service,
-    private clanDB: ClanDatabase,
-    private router: Router,
-    private logger: NGXLogger,
-    private store: Store<ClanSearchState>
-  ) {}
+  constructor(private groupService: GroupV2Service, private router: Router, private store: Store<ClanSearchState>) {}
 
   autocompleteControl = new FormControl('');
 
@@ -67,7 +58,6 @@ export class ClanSearchComponent implements OnInit {
 
   /** Navigate to the select location from the autocomplete options. */
   autocompleteSelected(event: MatAutocompleteSelectedEvent) {
-    this.logger.log('autocompleteSelected', event);
     this.persistSelection(event.option.value);
     this.open(event.option.value);
   }
@@ -77,7 +67,6 @@ export class ClanSearchComponent implements OnInit {
   }
 
   open(group: any) {
-    this.logger.log('opening', group);
     this.router.navigate(['clan', group.groupId]);
   }
 
@@ -97,10 +86,10 @@ export class ClanSearchComponent implements OnInit {
       .subscribe((x) => {});
   }
 
-  persistData(clanResult: LoadClanResult) {
-    const dbId: string = clanResult.clanDetails.groupId.toString();
-    clanResult.id = clanResult.clanDetails.groupId;
-    this.clanDB.update(dbId, 'ClanDetails', [clanResult]);
-    // look at home-page.ts
-  }
+  // persistData(clanResult: LoadClanResult) {
+  //   const dbId: string = clanResult.clanDetails.groupId.toString();
+  //   clanResult.id = clanResult.clanDetails.groupId;
+  //   this.clanDB.update(dbId, 'ClanDetails', [clanResult]);
+  //   // look at home-page.ts
+  // }
 }

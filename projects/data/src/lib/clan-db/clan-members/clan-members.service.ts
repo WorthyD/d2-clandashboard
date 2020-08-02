@@ -12,7 +12,7 @@ import { BaseClanService } from '../base-clan.service';
 export class ClanMembersService extends BaseClanService {
   private rowId = 'ClanMembers';
   constructor(private groupService: GroupV2Service, private clanDb: ClanDatabase) {
-    super(clanDb, 'ClanDetails');
+    super(clanDb, StoreId.ClanDetails);
   }
 
   private getClanMembersFromAPI(clanId: number) {

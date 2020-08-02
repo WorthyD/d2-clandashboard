@@ -14,7 +14,7 @@ import { ContentHashService } from '../../services/content-hash.service';
 
 @Injectable()
 export class ProfileService {
-  private tableName: StoreId = 'MemberProfiles';
+  private tableName: StoreId = StoreId.MemberProfiles;
   private concurrentRequests = 20;
   private profileComponents = [100, 104, 200, 202];
 
@@ -23,15 +23,16 @@ export class ProfileService {
   }
 
   private getProfileFromCache(clanId: string, member: ClanMember) {
-    return this.clanDb.getValues(clanId).MemberProfiles.pipe(
-      map((c) => {
-        if (c && c.length > 0) {
-          return c.find((m) => m.id === this.getProfileId(member));
-        }
-        return undefined;
-      }),
-      take(1)
-    );
+    // return this.clanDb.getValues(clanId).MemberProfiles.pipe(
+    //   map((c) => {
+    //     if (c && c.length > 0) {
+    //       return c.find((m) => m.id === this.getProfileId(member));
+    //     }
+    //     return undefined;
+    //   }),
+    //   take(1)
+    // );
+    return this.clanDb.getById(clanId, this.tableName, this.getProfileId(member));
   }
 
   private getProfileFromAPI(member: ClanMember) {
@@ -43,7 +44,7 @@ export class ProfileService {
   }
 
   private getProfile(clanId: string, member: ClanMember): Observable<any> {
-    return this.getProfileFromCache(clanId, member).pipe(
+    return from(this.getProfileFromCache(clanId, member)).pipe(
       mergeMap((cachedData) => {
         if (cachedData && cachedData.createDate) {
           const cacheDate = moment(cachedData.createDate);

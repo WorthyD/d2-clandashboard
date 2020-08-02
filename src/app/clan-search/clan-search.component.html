@@ -1,10 +1,14 @@
-<!-- <p>clan-search works!</p>
-<button (click)="load(2073131)">Load DoD PC</button> -->
+<h1>
+  Destiny 2 Clan Dashboard
+</h1>
+<p>
+  This app is still in a very Alpha stage. Peak around knowing there will be bugs.
+</p>
 <div class="clan-search">
-  <h1>Clan Search <i class="material-icons"
+  <h2>Clan Search <i class="material-icons"
       matTooltip="Must search for full clan name. Bungie doesn't support a 'fuzzy' search.">
       help
-    </i></h1>
+    </i></h2>
   <mat-form-field appearance="outline" class="search">
     <input matInput autofocus #clanInput (keyup.Enter)="open(clanInput.value)" [matAutocomplete]="auto"
       [formControl]="autocompleteControl" placeholder="Find your clan...">
@@ -21,8 +25,6 @@
   <div>
     <app-featured-clans></app-featured-clans>
   </div>
-  <!-- <hr>
-    <a [routerLink]="'./clan/2073131'">DoD PC</a> -->
 </div>
 <div class="footer">
   <app-footer></app-footer>

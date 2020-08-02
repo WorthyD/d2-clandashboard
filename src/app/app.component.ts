@@ -16,7 +16,6 @@ export class AppComponent {
     iconRegistry: MatIconRegistry,
     domSanitizer: DomSanitizer
   ) {
-    console.log('constructin');
     registerIcons(iconRegistry, domSanitizer);
 
   }

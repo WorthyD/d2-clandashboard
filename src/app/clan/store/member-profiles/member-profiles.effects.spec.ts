@@ -57,7 +57,6 @@ describe('Member Profile Effects', () => {
       const effects = new MemberProfileEffects(actions, service);
 
       effects.loadProfiles$.subscribe((result) => {
-        console.log(result);
         //expect(result).toEqual(successAction);
       });
     });
