@@ -107,11 +107,8 @@ export class AppIndexedDb {
   private openDb() {
     this.db = openDB(this.name, DB_VERSION, {
       upgrade(db, oldVersion, newVersion, transaction) {
-        console.log('db update');
         STORE_IDS.forEach((collectionId) => {
-          console.log('Collection ID', collectionId);
           if (!db.objectStoreNames.contains(collectionId)) {
-            console.log('Collection ID Not Contained', collectionId);
             const objectStore = db.createObjectStore(collectionId, {
               keyPath: 'id'
             });

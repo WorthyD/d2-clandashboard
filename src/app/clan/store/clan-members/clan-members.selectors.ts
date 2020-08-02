@@ -21,6 +21,12 @@ export const getSelectedClanMemberId = createSelector(
     getClanMemberEntityState,
     (state) => state.selectedMemberId
 );
+
+export const getIsMembersLoaded = createSelector(
+    getClanMemberEntityState,
+    (state) => state.loaded
+);
+
 export const getSelectedClanMember = createSelector(
     getSelectedClanMemberId,
     getClanMemberEntities,

@@ -3,7 +3,6 @@
     <mat-panel-title>
       <img src="//bungie.net/{{sealMembers.seal.displayProperties.icon}}" class="seal-image" alt="">
       {{sealMembers.seal.displayProperties.name}}
-      - {{sealMembers.seal.completionRecordHash}}
     </mat-panel-title>
     <mat-panel-description>{{sealMembers.seal.displayProperties.description}}
       <div>{{sealMembers.members | completion : sealMembers.seal.completionRecordHash }}</div>

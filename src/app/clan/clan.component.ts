@@ -25,6 +25,8 @@ import { filter, map, distinctUntilChanged, takeUntil, take, mergeMap } from 'rx
 import { environment } from 'src/environments/environment';
 import { ProfileService } from '@destiny/data';
 import { ClanDatabase } from '@destiny/data';
+import { AboutComponent } from '../about/about.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-clan',
@@ -37,6 +39,7 @@ export class ClanComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private store: Store<clanDetailStore.ClanDetailState>,
     private router: Router,
+    public dialog: MatDialog,
     private db: ClanDatabase
   ) {
     this.clanId.pipe(takeUntil(this.destroyed)).subscribe((r) => this.loadClan(r));
@@ -56,6 +59,9 @@ export class ClanComponent implements OnInit, OnDestroy {
 
   openLink(url) {
     window.open(url, '_blank');
+  }
+  openAbout() {
+    this.dialog.open(AboutComponent);
   }
 
   loadClan(clanId) {

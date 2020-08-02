@@ -13,25 +13,29 @@ import { NavbarModule } from '@destiny/components';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ClanDetailModule } from './clan-detail/clan-detail.module';
-import {MaterialModule} from '@destiny/components';
-import {ClanDbModule} from '@destiny/data';
+import { MaterialModule } from '@destiny/components';
+import { ClanDbModule } from '@destiny/data';
+import { AboutModule } from '../about/about.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-    declarations: [ClanComponent],
-    imports: [
-        CommonModule,
-        ClanDetailModule,
-        ClanRoutingModule,
-        NavbarModule,
-        MatListModule,
-        MatSidenavModule,
-        MaterialModule,
-        ClanDbModule,
-        // ClanRosterModule,
-        //         BungieParseModule,
-        StoreModule.forFeature('clan', clanState.reducers),
-        EffectsModule.forFeature(clanState.ClanEffects)
-    ],
-    providers: []
+  declarations: [ClanComponent],
+  imports: [
+    CommonModule,
+    ClanDetailModule,
+    ClanRoutingModule,
+    NavbarModule,
+    MatListModule,
+    MatSidenavModule,
+    MaterialModule,
+    ClanDbModule,
+    MatDialogModule,
+    AboutModule,
+    // ClanRosterModule,
+    //         BungieParseModule,
+    StoreModule.forFeature('clan', clanState.reducers),
+    EffectsModule.forFeature(clanState.ClanEffects)
+  ],
+  providers: []
 })
 export class ClanModule {}
