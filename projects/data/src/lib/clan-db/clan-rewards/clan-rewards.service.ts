@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Destiny2Service } from 'bungie-api';
-import { ClanMember, MemberProfile } from 'bungie-models';
 import { ClanDatabase } from '../ClanDatabase';
-// import { map, take, catchError, mergeMap } from 'rxjs/operators';
-import { Observable, from, of } from 'rxjs';
+import { from, of } from 'rxjs';
 import { BaseClanService } from '../base-clan.service';
-import { map, take, catchError, mergeMap, switchMap } from 'rxjs/operators';
+import { map, catchError, switchMap } from 'rxjs/operators';
 import { StoreId } from '../app-indexed-db';
+
 @Injectable()
 export class ClanRewardsService extends BaseClanService {
   private rowId = 'ClanRewards';

@@ -1,7 +1,7 @@
 import { openDB, deleteDB, IDBPDatabase } from 'idb';
 import { ReplaySubject, Subject } from 'rxjs';
 
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 
 export enum StoreId {
   CacheDetails = 'CacheDetails',
@@ -9,6 +9,7 @@ export enum StoreId {
   ClanRewards = 'ClanRewards',
   MemberProfiles = 'MemberProfiles',
   MemberActivities = 'MemberActivities',
+  MemberActivityStats = 'MemberActivityStats',
   ProfileMilestones = 'ProfileMilestones',
   Raids = 'Raids'
 }
@@ -20,6 +21,7 @@ export const STORE_IDS: StoreId[] = [
   StoreId.MemberProfiles,
   StoreId.MemberActivities,
   StoreId.ProfileMilestones,
+  StoreId.MemberActivityStats,
   StoreId.Raids
 ];
 
@@ -34,7 +36,6 @@ export class AppIndexedDb {
 
   private db: Promise<IDBPDatabase>;
 
-  private destroyed = new Subject();
 
   constructor(name: string, initializeValues: boolean = true) {
     if (initializeValues) {
