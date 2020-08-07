@@ -34,7 +34,7 @@ describe('ClanRewardsService', () => {
   describe('clan rewards', () => {
     it('should get profile from DB, but call service if expired', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { ClanDetails: of(MOCK_DB_CLAN_REWARDS) };
+        return of(MOCK_DB_CLAN_REWARDS);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetClanWeeklyRewardState').and.callFake(() => {
@@ -52,9 +52,9 @@ describe('ClanRewardsService', () => {
     });
 
     it('should get profile from DB and not call service if cache is good', () => {
-      const mockDBItem = [{ ...MOCK_DB_CLAN_REWARDS[0], createDate: new Date() }];
+      const mockDBItem = { ...MOCK_DB_CLAN_REWARDS[0], createDate: new Date() };
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { ClanDetails: of(mockDBItem) };
+        return of(mockDBItem);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetClanWeeklyRewardState').and.callFake(() => {
@@ -73,7 +73,7 @@ describe('ClanRewardsService', () => {
 
     it('should call service if not in DB', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { ClanDetails: of([]) };
+        return of([]);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetClanWeeklyRewardState').and.callFake(() => {
@@ -93,7 +93,7 @@ describe('ClanRewardsService', () => {
     it('should handle API down with DB data', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         //return { ClanDetails: of([]) };
-        return { ClanDetails: of(MOCK_DB_CLAN_REWARDS) };
+        return of(MOCK_DB_CLAN_REWARDS);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const errorResponse = new HttpErrorResponse({
@@ -114,7 +114,7 @@ describe('ClanRewardsService', () => {
     });
     it('should handle API down with no DB data', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { ClanDetails: of([]) };
+        return of({});
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const errorResponse = new HttpErrorResponse({

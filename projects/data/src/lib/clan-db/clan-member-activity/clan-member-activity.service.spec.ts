@@ -33,13 +33,12 @@ describe('ClanMemberActivityService', () => {
 
   describe('getMemberCharacterActivitySerialized', () => {
     it('should get profile from DB, but call service if expired', () => {
-      const mockDBItem = [
-        { ...MOCK_DB_ACTIVITIES[0], createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()) }
-      ];
+      const mockDBItem = {
+        ...MOCK_DB_ACTIVITIES[0],
+        createDate: new Date(moment(new Date()).add(-10, 'days').valueOf())
+      };
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return {
-          MemberActivities: of(mockDBItem)
-        };
+        return of(mockDBItem);
       });
 
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -62,13 +61,12 @@ describe('ClanMemberActivityService', () => {
     });
 
     it('should get profile from DB and not call service if cache is good', () => {
-      const mockDBItem = [
-        { ...MOCK_DB_ACTIVITIES[0], createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()) }
-      ];
+      const mockDBItem = {
+        ...MOCK_DB_ACTIVITIES[0],
+        createDate: new Date(moment(new Date()).add(-10, 'days').valueOf())
+      };
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return {
-          MemberActivities: of(mockDBItem)
-        };
+        return of(mockDBItem);
       });
 
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -91,9 +89,7 @@ describe('ClanMemberActivityService', () => {
     });
     it('should call service if not in DB', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return {
-          MemberActivities: of([])
-        };
+        return of([]);
       });
 
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -115,13 +111,12 @@ describe('ClanMemberActivityService', () => {
       });
     });
     it('should handle API down with DB data', () => {
-      const mockDBItem = [
-        { ...MOCK_DB_ACTIVITIES[0], createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()) }
-      ];
+      const mockDBItem = {
+        ...MOCK_DB_ACTIVITIES[0],
+        createDate: new Date(moment(new Date()).add(-10, 'days').valueOf())
+      };
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return {
-          MemberActivities: of(mockDBItem)
-        };
+        return of(mockDBItem);
       });
 
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -148,7 +143,7 @@ describe('ClanMemberActivityService', () => {
 
     it('should handle API down with no DB data', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { MemberActivities: of([]) };
+        return of([]);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const errorResponse = new HttpErrorResponse({
@@ -179,9 +174,7 @@ describe('ClanMemberActivityService', () => {
       const mockDBItem = MOCK_DB_ACTIVITIES;
 
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return {
-          MemberActivities: of(mockDBItem)
-        };
+        return of(mockDBItem);
       });
 
       const updateSpy = spyOn(dbService, 'update').and.callThrough();

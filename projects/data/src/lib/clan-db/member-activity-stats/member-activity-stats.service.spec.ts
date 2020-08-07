@@ -8,10 +8,11 @@ import {
   MOCK_AGGREGATE_ACTIVITY_STATS,
   MOCK_DB_ACTIVITY_STATS
 } from '../../testing-utils/objects/aggregate-activity-stats';
-import { of } from 'rxjs';
+import { of, defer } from 'rxjs';
 import { ClanMember, MemberProfile } from 'bungie-models';
+import { HttpErrorResponse } from '@angular/common/http';
 
-fdescribe('MemberActivityStatsService', () => {
+describe('MemberActivityStatsService', () => {
   let service: MemberActivityStatsService;
   let dbService: ClanDatabase;
   let d2Service: Destiny2Service;
@@ -105,8 +106,53 @@ fdescribe('MemberActivityStatsService', () => {
       });
     });
 
-    it('should handle API down with DB data', () => {});
+    it('should handle API down with DB data', () => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
+        const m = MOCK_DB_ACTIVITY_STATS.find((x) => x.id === id);
+        m.createDate = new Date('1/1/1900');
+        return of(m);
+      });
+      const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      const errorResponse = new HttpErrorResponse({
+        error: '404 error',
+        status: 404,
+        statusText: 'Not Found'
+      });
+      const serviceSpy = spyOn(d2Service, 'destiny2GetDestinyAggregateActivityStats').and.callFake(() => {
+        return defer(() => Promise.reject(errorResponse));
+      });
 
-    it('should handle API down with no DB data', () => {});
+      const profile = { ...memberProfile };
+      service.getMemberCharacterActivityStatsSerialized(1, profile, 1, activityHashes, statTracked).subscribe((x) => {
+        expect(x).toBeTruthy();
+        expect(dbGetSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(1);
+        expect(updateSpy).toHaveBeenCalledTimes(0);
+      });
+    });
+
+    it('should handle API down with no DB data', () => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
+        return of({});
+      });
+      const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      const errorResponse = new HttpErrorResponse({
+        error: '404 error',
+        status: 404,
+        statusText: 'Not Found'
+      });
+      const serviceSpy = spyOn(d2Service, 'destiny2GetDestinyAggregateActivityStats').and.callFake(() => {
+        return defer(() => Promise.reject(errorResponse));
+      });
+
+      const profile = { ...memberProfile };
+      service.getMemberCharacterActivityStatsSerialized(1, profile, 1, activityHashes, statTracked).subscribe(
+        (x) => fail('should have returned error'),
+        (error: HttpErrorResponse) => {
+          expect(error.status).toEqual(404);
+          expect(error.error).toContain('404 error');
+        }
+      );
+    });
   });
 });
