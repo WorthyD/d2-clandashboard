@@ -34,9 +34,8 @@ describe('ProfileMilestonesService', () => {
   });
   describe('getProfile', () => {
     it('should get profile from DB, but call service if expired', () => {
-      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((id) => {
-        console.log('id', id);
-        return { ProfileMilestones: of(MOCK_DB_PROFILES) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((x, y, id) => {
+        return of(MOCK_DB_PROFILES.find((z) => z.id === id));
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
@@ -54,8 +53,8 @@ describe('ProfileMilestonesService', () => {
     });
 
     it('should get profile from DB and not call service if cache is good', () => {
-      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { ProfileMilestones: of(MOCK_DB_PROFILES) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((x, y, z) => {
+        return of(MOCK_DB_PROFILES.find((a) => a.id === z));
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
@@ -74,7 +73,7 @@ describe('ProfileMilestonesService', () => {
 
     it('should call service if not in DB', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { ProfileMilestones: of([]) };
+        return of([]);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
@@ -92,8 +91,8 @@ describe('ProfileMilestonesService', () => {
     });
 
     it('should handle API down with DB data', () => {
-      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { ProfileMilestones: of(MOCK_DB_PROFILES) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((a, b, id) => {
+        return of(MOCK_DB_PROFILES.find((x) => x.id === id));
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const errorResponse = new HttpErrorResponse({
@@ -114,7 +113,7 @@ describe('ProfileMilestonesService', () => {
     });
     it('should handle API down with no DB data', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { ProfileMilestones: of([]) };
+        return of([]);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const errorResponse = new HttpErrorResponse({
@@ -138,8 +137,8 @@ describe('ProfileMilestonesService', () => {
 
   describe('getProfiles', () => {
     it('should get users profiles', () => {
-      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { ProfileMilestones: of(MOCK_DB_PROFILES) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((a, b, id) => {
+        return of(MOCK_DB_PROFILES.find((x) => x.id === id));
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
@@ -165,8 +164,8 @@ describe('ProfileMilestonesService', () => {
   });
   describe('getSerializedProfilesByHash', () => {
     it('should get users profiles and group them by harsh', () => {
-      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { ProfileMilestones: of(MOCK_DB_PROFILES) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((a, b, id) => {
+        return of(MOCK_DB_PROFILES.find((x) => x.id === id));
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
@@ -176,17 +175,15 @@ describe('ProfileMilestonesService', () => {
       });
 
       const clanMembers = [mockOldMember, mockNewMember];
-      service
-        .getSerializedProfilesByHash('1', clanMembers, [2460356851, 1, 4239091332])
-        .subscribe(
-          (x) => {
-            expect(x.length).toEqual(3);
-            expect(dbGetSpy).toHaveBeenCalledTimes(2);
-            expect(updateSpy).toHaveBeenCalledTimes(1);
-            expect(serviceSpy).toHaveBeenCalledTimes(1);
-          },
-          (err) => {}
-        );
+      service.getSerializedProfilesByHash('1', clanMembers, [2460356851, 1, 4239091332]).subscribe(
+        (x) => {
+          expect(x.length).toEqual(3);
+          expect(dbGetSpy).toHaveBeenCalledTimes(2);
+          expect(updateSpy).toHaveBeenCalledTimes(1);
+          expect(serviceSpy).toHaveBeenCalledTimes(1);
+        },
+        (err) => {}
+      );
     });
   });
 });

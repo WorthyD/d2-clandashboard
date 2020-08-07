@@ -35,8 +35,8 @@ describe('ProfileService', () => {
 
   describe('getProfile', () => {
     it('should get profile from DB, but call service if expired', () => {
-      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { MemberProfiles: of(MOCK_DB_PROFILES) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((a, b, id) => {
+        return of(MOCK_DB_PROFILES.find((x) => x.id === id));
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
@@ -54,8 +54,8 @@ describe('ProfileService', () => {
     });
 
     it('should get profile from DB and not call service if cache is good', () => {
-      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { MemberProfiles: of(MOCK_DB_PROFILES) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((a, b, id) => {
+        return of(MOCK_DB_PROFILES.find((x) => x.id === id));
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
@@ -74,7 +74,7 @@ describe('ProfileService', () => {
 
     it('should call service if not in DB', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { MemberProfiles: of([]) };
+        return of([]);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
@@ -92,8 +92,8 @@ describe('ProfileService', () => {
     });
 
     it('should handle API down with DB data', () => {
-      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { MemberProfiles: of(MOCK_DB_PROFILES) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((a, b, id) => {
+        return of(MOCK_DB_PROFILES.find((x) => x.id === id));
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const errorResponse = new HttpErrorResponse({
@@ -114,7 +114,7 @@ describe('ProfileService', () => {
     });
     it('should handle API down with no DB data', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { MemberProfiles: of([]) };
+        return of([]);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const errorResponse = new HttpErrorResponse({
@@ -138,8 +138,8 @@ describe('ProfileService', () => {
 
   describe('getProfiles', () => {
     it('should get users profiles', () => {
-      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
-        return { MemberProfiles: of(MOCK_DB_PROFILES) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((a, b, id) => {
+        return of(MOCK_DB_PROFILES.find((x) => x.id === id));
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetProfile').and.callFake(() => {
