@@ -5,7 +5,7 @@ import { from, of } from 'rxjs';
 import { BaseClanService } from '../base-clan.service';
 import { map, catchError, switchMap, mergeMap } from 'rxjs/operators';
 import { StoreId } from '../app-indexed-db';
-import { ClanMember, MemberProfile } from 'bungie-models';
+import { ClanMember, MemberProfile, MemberAggregateActivityStats } from 'bungie-models';
 import { memberActivityStatSerializer } from './member-activity-stat.serializer';
 
 @Injectable()
@@ -54,7 +54,7 @@ export class MemberActivityStatsService extends BaseClanService {
     characterId: number,
     statHashes: number[],
     trackedStats: string[]
-  ) {
+  ): Observable<MemberAggregateActivityStats> {
     return this.getMemberActivityStats(clanId, member, characterId).pipe(
       map((activityStats) => {
         return {
