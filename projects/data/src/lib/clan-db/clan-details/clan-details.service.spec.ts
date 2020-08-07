@@ -29,7 +29,7 @@ describe('ClanDetailsService', () => {
 
   describe('clanDetails', () => {
     it('should get profile from DB, but call service if expired', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return { ClanDetails: of(MOCK_DB_CLAN_DETAILS) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -49,7 +49,7 @@ describe('ClanDetailsService', () => {
 
     it('should get profile from DB and not call service if cache is good', () => {
       const mockDBItem = [{ ...MOCK_DB_CLAN_DETAILS[0], createDate: new Date() }];
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return { ClanDetails: of(mockDBItem) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -68,7 +68,7 @@ describe('ClanDetailsService', () => {
     });
 
     it('should call service if not in DB', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return { ClanDetails: of([]) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -87,7 +87,7 @@ describe('ClanDetailsService', () => {
     });
 
     it('should handle API down with DB data', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         //return { ClanDetails: of([]) };
         return { ClanDetails: of(MOCK_DB_CLAN_DETAILS) };
       });
@@ -109,7 +109,7 @@ describe('ClanDetailsService', () => {
       });
     });
     it('should handle API down with no DB data', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return { ClanDetails: of([]) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();

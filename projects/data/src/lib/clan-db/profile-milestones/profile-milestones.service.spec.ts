@@ -34,7 +34,8 @@ describe('ProfileMilestonesService', () => {
   });
   describe('getProfile', () => {
     it('should get profile from DB, but call service if expired', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((id) => {
+        console.log('id', id);
         return { ProfileMilestones: of(MOCK_DB_PROFILES) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -53,7 +54,7 @@ describe('ProfileMilestonesService', () => {
     });
 
     it('should get profile from DB and not call service if cache is good', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return { ProfileMilestones: of(MOCK_DB_PROFILES) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -72,7 +73,7 @@ describe('ProfileMilestonesService', () => {
     });
 
     it('should call service if not in DB', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return { ProfileMilestones: of([]) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -91,7 +92,7 @@ describe('ProfileMilestonesService', () => {
     });
 
     it('should handle API down with DB data', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return { ProfileMilestones: of(MOCK_DB_PROFILES) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -112,7 +113,7 @@ describe('ProfileMilestonesService', () => {
       });
     });
     it('should handle API down with no DB data', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return { ProfileMilestones: of([]) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -137,7 +138,7 @@ describe('ProfileMilestonesService', () => {
 
   describe('getProfiles', () => {
     it('should get users profiles', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return { ProfileMilestones: of(MOCK_DB_PROFILES) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -164,7 +165,7 @@ describe('ProfileMilestonesService', () => {
   });
   describe('getSerializedProfilesByHash', () => {
     it('should get users profiles and group them by harsh', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return { ProfileMilestones: of(MOCK_DB_PROFILES) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();

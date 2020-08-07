@@ -6,6 +6,7 @@ import { BaseClanService } from '../base-clan.service';
 import { map, catchError, switchMap, mergeMap } from 'rxjs/operators';
 import { StoreId } from '../app-indexed-db';
 import { ClanMember, MemberProfile } from 'bungie-models';
+import { memberActivityStatSerializer } from './member-activity-stat.serializer';
 
 @Injectable()
 export class MemberActivityStatsService extends BaseClanService {
@@ -43,6 +44,24 @@ export class MemberActivityStatsService extends BaseClanService {
             throw error;
           })
         );
+      })
+    );
+  }
+
+  getMemberCharacterActivityStatsSerialized(
+    clanId: number,
+    member: MemberProfile,
+    characterId: number,
+    statHashes: number[],
+    trackedStats: string[]
+  ) {
+    return this.getMemberActivityStats(clanId, member, characterId).pipe(
+      map((activityStats) => {
+        return {
+          member,
+          characterId,
+          activityStats: memberActivityStatSerializer(activityStats.activities, statHashes, trackedStats)
+        };
       })
     );
   }

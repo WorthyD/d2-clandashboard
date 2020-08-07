@@ -36,7 +36,7 @@ describe('ClanMemberActivityService', () => {
       const mockDBItem = [
         { ...MOCK_DB_ACTIVITIES[0], createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()) }
       ];
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return {
           MemberActivities: of(mockDBItem)
         };
@@ -65,7 +65,7 @@ describe('ClanMemberActivityService', () => {
       const mockDBItem = [
         { ...MOCK_DB_ACTIVITIES[0], createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()) }
       ];
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return {
           MemberActivities: of(mockDBItem)
         };
@@ -90,7 +90,7 @@ describe('ClanMemberActivityService', () => {
       });
     });
     it('should call service if not in DB', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return {
           MemberActivities: of([])
         };
@@ -118,7 +118,7 @@ describe('ClanMemberActivityService', () => {
       const mockDBItem = [
         { ...MOCK_DB_ACTIVITIES[0], createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()) }
       ];
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return {
           MemberActivities: of(mockDBItem)
         };
@@ -147,7 +147,7 @@ describe('ClanMemberActivityService', () => {
     });
 
     it('should handle API down with no DB data', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return { MemberActivities: of([]) };
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -178,7 +178,7 @@ describe('ClanMemberActivityService', () => {
     it('getMemberActivity', () => {
       const mockDBItem = MOCK_DB_ACTIVITIES;
 
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return {
           MemberActivities: of(mockDBItem)
         };
