@@ -12,7 +12,7 @@ import { of, defer } from 'rxjs';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { HttpErrorResponse } from '@angular/common/http';
 
-describe('MemberActivityStatsService', () => {
+fdescribe('MemberActivityStatsService', () => {
   let service: MemberActivityStatsService;
   let dbService: ClanDatabase;
   let d2Service: Destiny2Service;
@@ -58,6 +58,7 @@ describe('MemberActivityStatsService', () => {
       service
         .getMemberCharacterActivityStatsSerialized(1, memberProfile, 1, activityHashes, statTracked)
         .subscribe((x) => {
+          console.log(JSON.stringify(x));
           expect(x).toBeTruthy();
           expect(dbGetSpy).toHaveBeenCalledTimes(1);
           expect(serviceSpy).toHaveBeenCalledTimes(1);

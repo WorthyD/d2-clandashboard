@@ -8,6 +8,8 @@ export * from './profile.worthy.mock';
 export * from './profile.zoned.mock';
 export * from './profile.omega.mock';
 
+export const MOCK_PROFILES = [MOCK_WORTHY_PROFILE, MOCK_OMEGA_PROFILE, MOCK_ZONED_PROFILE];
+
 export const MOCK_DB_PROFILES: DBObject[] = [
   {
     id: '3-4611686018469839063',
@@ -21,7 +23,7 @@ export const MOCK_DB_PROFILES: DBObject[] = [
   },
   {
     id: '3-4611686018467238913',
-    createDate:  new Date(moment(new Date()).add(-10, 'days').valueOf()),
+    createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()),
     data: MOCK_WORTHY_PROFILE
   }
-]
+];

@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { ClanMember, MemberProfile, SealMembers, PresentationNodeDefinition } from 'bungie-models';
+import { ClanMember, MemberProfile, , PresentationNodeDefinition } from 'bungie-models';
 
 const base = '[Seals] - ';
 

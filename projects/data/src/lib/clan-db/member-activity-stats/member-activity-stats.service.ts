@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service, DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api';
 import { ClanDatabase } from '../ClanDatabase';
-import { from, of } from 'rxjs';
+import { from, of, Observable } from 'rxjs';
 import { BaseClanService } from '../base-clan.service';
 import { map, catchError, switchMap, mergeMap } from 'rxjs/operators';
 import { StoreId } from '../app-indexed-db';
@@ -54,14 +54,10 @@ export class MemberActivityStatsService extends BaseClanService {
     characterId: number,
     statHashes: number[],
     trackedStats: string[]
-  ): Observable<MemberAggregateActivityStats> {
+  ): Observable<DestinyHistoricalStatsDestinyAggregateActivityStats[]> {
     return this.getMemberActivityStats(clanId, member, characterId).pipe(
       map((activityStats) => {
-        return {
-          member,
-          characterId,
-          activityStats: memberActivityStatSerializer(activityStats.activities, statHashes, trackedStats)
-        };
+        return memberActivityStatSerializer(activityStats.activities, statHashes, trackedStats);
       })
     );
   }
