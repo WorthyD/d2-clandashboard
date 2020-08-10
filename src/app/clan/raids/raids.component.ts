@@ -70,7 +70,7 @@ export class RaidsComponent implements OnInit {
         ofType(loadMemberProfileSuccess),
         withLatestFrom(this.members$),
         switchMap(([actions, members]) => {
-          members = members.slice(0, 10);
+          members = members.slice(0, 5);
           return from(members).pipe(
             mergeMap((x) => {
               return from(x.profile.data.characterIds).pipe(

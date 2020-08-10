@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AllRaids } from '@destiny/models';
+import { AllRaids, MemberRaidStats } from '@destiny/models';
 import { MemberProfile } from 'bungie-models';
 
 import { DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api';
-import { from, of } from 'rxjs';
+import { from, of, Observable } from 'rxjs';
 import { switchMap, take, takeUntil, filter, withLatestFrom, mergeMap, toArray, map } from 'rxjs/operators';
 import { MemberActivityStatsService } from '../clan-db/member-activity-stats/member-activity-stats.service';
 // export interface MemberAggregateActivityStats {
@@ -34,14 +34,14 @@ export class ClanRaidsService {
     );
   }
 
-  private getMemberRaidStats(clanId: number, member: MemberProfile) {
+  private getMemberRaidStats(clanId: number, member: MemberProfile): Observable<MemberRaidStats> {
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId: number) => {
         return this.getCharacterRaidStats(clanId, member, characterId);
       }),
       toArray(),
       map((characterStats) => {
-        console.log(characterStats);
+        //        console.log(characterStats);
         return {
           memberProfile: member,
           stats: this.combineCharacterActivityStats(characterStats)
@@ -68,19 +68,18 @@ export class ClanRaidsService {
   }
   private combineStatValues(stats, activityHashes) {
     const statValues = {};
-    console.log(stats);
+    //    console.log('stats', stats);
 
     this.TRACKED_STATS.forEach((x) => {
       const combinedValues = stats.reduce((prevCharact, character) => {
-        console.log('prevCharact', prevCharact);
-        console.log('character', character);
-
+        //       console.log('prevCharact', prevCharact);
+        //      console.log('character', character);
 
         const characterCompletions = activityHashes.reduce((prevHash, curHash) => {
-          console.log('prev', prevHash);
-          console.log('cur', curHash);
-          const activityCompletion = character.activities?.find((activity) => activity.activityHash === curHash)?.values?.[x]?.basic
-            ?.value;
+          // console.log('prev', prevHash);
+          // console.log('cur', curHash);
+          const activityCompletion = character.activities?.find((activity) => activity.activityHash === curHash)
+            ?.values?.[x]?.basic?.value;
           // console.log(character.find((activity) => activity.activityHash === curHash)?.values?.[x]?.basic
           //   ?.value);
 
@@ -97,8 +96,8 @@ export class ClanRaidsService {
         // console.log('combo', parseInt(prevCharact, 10) + characterCompletions);
 
         return parseInt(prevCharact, 10) + characterCompletions;
-      });
-      console.log('combinedValues', combinedValues);
+      }, 0);
+      //      console.log('combinedValues', combinedValues);
 
       statValues[x] = combinedValues;
     });

@@ -1,11 +1,11 @@
 import { createAction, props } from '@ngrx/store';
 
-import { ClanMember, MemberProfile, , PresentationNodeDefinition } from 'bungie-models';
+import { ClanMember, MemberProfile, } from 'bungie-models';
 
-const base = '[Seals] - ';
+const base = '[Raids] - ';
 
-export const loadSeals = createAction(`${base} Load Member Seals`, props<{ seals: PresentationNodeDefinition[] }>());
+export const loadRaids = createAction(`${base} Load Member Raids`);
 
-export const loadSealSuccess = createAction(`${base} Load Seals Success`, props<{ sealMembers: SealMembers[] }>());
+export const loadRaidSuccess = createAction(`${base} Load Raid Success`, props<{ raidStats: any[] }>());
 
-export const loadSealFailure = createAction(`${base} Load Seals Failure`, props<{ error: any }>());
+export const loadRaidFailure = createAction(`${base} Load Raid Failure`, props<{ error: any }>());
