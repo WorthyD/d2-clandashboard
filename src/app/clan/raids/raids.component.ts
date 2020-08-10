@@ -70,6 +70,7 @@ export class RaidsComponent implements OnInit {
         ofType(loadMemberProfileSuccess),
         withLatestFrom(this.members$),
         switchMap(([actions, members]) => {
+          members = members.slice(0, 10);
           return from(members).pipe(
             mergeMap((x) => {
               return from(x.profile.data.characterIds).pipe(
@@ -133,7 +134,11 @@ export class RaidsComponent implements OnInit {
     };
   }
   getStats(stats, hashes) {
+    console.log(stats);
     return stats.reduce((prevCharact, character) => {
+      console.log('prevCharact', prevCharact);
+      console.log('character', character);
+
       const characterCompletions = hashes.reduce((prevHash, curHash) => {
         const activityCompletion = character.activities?.find((x) => x.activityHash === curHash)?.values
           ?.activityCompletions?.basic?.value;

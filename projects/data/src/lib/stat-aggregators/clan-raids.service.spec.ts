@@ -7,6 +7,7 @@ import { MemberActivityStatsService } from '../clan-db/member-activity-stats/mem
 import { Destiny2Service } from 'bungie-api';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ClanDatabase } from '../clan-db';
+import { of } from 'rxjs';
 const MOCK_MEMBERS = [
   {
     profile: {
@@ -32,32 +33,34 @@ const MOCK_MEMBERS = [
   }
 ] as MemberProfile[];
 
-const MOCK_ACTIVITY = [
-  {
-    activityHash: 3089205900,
-    values: {
-      activityCompletions: { statId: 'activityCompletions', basic: { value: 0, displayValue: '0' } }
+const MOCK_ACTIVITY = {
+  activities: [
+    {
+      activityHash: 3089205900,
+      values: {
+        activityCompletions: { statId: 'activityCompletions', basic: { value: 0, displayValue: '0' } }
+      }
+    },
+    {
+      activityHash: 2693136600,
+      values: {
+        activityCompletions: { statId: 'activityCompletions', basic: { value: 1, displayValue: '1' } }
+      }
+    },
+    {
+      activityHash: 2693136601,
+      values: {
+        activityCompletions: { statId: 'activityCompletions', basic: { value: 7, displayValue: '7' } }
+      }
+    },
+    {
+      activityHash: 548750096,
+      values: {
+        activityCompletions: { statId: 'activityCompletions', basic: { value: 100, displayValue: '100' } }
+      }
     }
-  },
-  {
-    activityHash: 2693136600,
-    values: {
-      activityCompletions: { statId: 'activityCompletions', basic: { value: 1, displayValue: '1' } }
-    }
-  },
-  {
-    activityHash: 2693136601,
-    values: {
-      activityCompletions: { statId: 'activityCompletions', basic: { value: 7, displayValue: '7' } }
-    }
-  },
-  {
-    activityHash: 548750096,
-    values: {
-      activityCompletions: { statId: 'activityCompletions', basic: { value: 100, displayValue: '100' } }
-    }
-  }
-];
+  ]
+};
 
 fdescribe('ClanRaidsService', () => {
   let service: ClanRaidsService;
@@ -78,11 +81,13 @@ fdescribe('ClanRaidsService', () => {
   describe('getClanRaidStats', () => {
     it('should return expected results', () => {
       const serviceSpy = spyOn(activityService, 'getMemberCharacterActivityStatsSerialized').and.callFake(() => {
-        return;
+        return of(MOCK_ACTIVITY);
       });
 
       service.getClanRaidStats(2, MOCK_MEMBERS).subscribe((x) => {
         console.log(x);
+        expect(x).toBeTruthy();
+        //console.log(x);
       });
     });
   });

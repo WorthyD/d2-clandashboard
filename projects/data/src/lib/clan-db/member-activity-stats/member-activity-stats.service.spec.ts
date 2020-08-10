@@ -58,7 +58,6 @@ fdescribe('MemberActivityStatsService', () => {
       service
         .getMemberCharacterActivityStatsSerialized(1, memberProfile, 1, activityHashes, statTracked)
         .subscribe((x) => {
-          console.log(JSON.stringify(x));
           expect(x).toBeTruthy();
           expect(dbGetSpy).toHaveBeenCalledTimes(1);
           expect(serviceSpy).toHaveBeenCalledTimes(1);

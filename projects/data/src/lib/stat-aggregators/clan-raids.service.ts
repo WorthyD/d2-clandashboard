@@ -18,7 +18,7 @@ import { MemberActivityStatsService } from '../clan-db/member-activity-stats/mem
 @Injectable({ providedIn: 'root' })
 export class ClanRaidsService {
   readonly CONCURRENT_COUNT = 10;
-  readonly TRACKED_STATS = ['activityCompletion'];
+  readonly TRACKED_STATS = ['activityCompletions'];
   readonly TACKED_ACTIVITIES = AllRaids.map((raid) => {
     return raid.hashes;
   }).reduce((acc, val) => acc.concat(val), []);
@@ -39,7 +39,14 @@ export class ClanRaidsService {
       mergeMap((characterId: number) => {
         return this.getCharacterRaidStats(clanId, member, characterId);
       }),
-      toArray()
+      toArray(),
+      map((characterStats) => {
+        console.log(characterStats);
+        return {
+          memberProfile: member,
+          stats: this.combineCharacterActivityStats(characterStats)
+        };
+      })
     );
   }
 
@@ -51,5 +58,51 @@ export class ClanRaidsService {
       this.TACKED_ACTIVITIES,
       this.TRACKED_STATS
     );
+  }
+  private combineCharacterActivityStats(stats) {
+    const statsObj = {};
+    AllRaids.forEach((x) => {
+      statsObj[x.key] = this.combineStatValues(stats, x.hashes);
+    });
+    return statsObj;
+  }
+  private combineStatValues(stats, activityHashes) {
+    const statValues = {};
+    console.log(stats);
+
+    this.TRACKED_STATS.forEach((x) => {
+      const combinedValues = stats.reduce((prevCharact, character) => {
+        console.log('prevCharact', prevCharact);
+        console.log('character', character);
+
+
+        const characterCompletions = activityHashes.reduce((prevHash, curHash) => {
+          console.log('prev', prevHash);
+          console.log('cur', curHash);
+          const activityCompletion = character.activities?.find((activity) => activity.activityHash === curHash)?.values?.[x]?.basic
+            ?.value;
+          // console.log(character.find((activity) => activity.activityHash === curHash)?.values?.[x]?.basic
+          //   ?.value);
+
+          // console.log('-----------------------');
+          // console.log(' prevHash', prevHash);
+          // console.log('activityCompletion', activityCompletion ? activityCompletion : 0);
+          // console.log('total', prevHash + (activityCompletion ? activityCompletion : 0));
+
+          return prevHash + (activityCompletion ? activityCompletion : 0);
+        }, 0);
+        // console.log('prevCharact ', prevCharact);
+        // console.log('parse ', parseInt(prevCharact, 10));
+        // console.log('characterCompletions ', characterCompletions);
+        // console.log('combo', parseInt(prevCharact, 10) + characterCompletions);
+
+        return parseInt(prevCharact, 10) + characterCompletions;
+      });
+      console.log('combinedValues', combinedValues);
+
+      statValues[x] = combinedValues;
+    });
+
+    return statValues;
   }
 }
