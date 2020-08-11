@@ -8,12 +8,12 @@ export interface RaidState extends EntityState<MemberRaidStats> {
   loading: boolean;
 }
 
-export const SealProfileAdapter: EntityAdapter<MemberRaidStats> = createEntityAdapter<MemberRaidStats>({
+export const RaidAdapter: EntityAdapter<MemberRaidStats> = createEntityAdapter<MemberRaidStats>({
   selectId: (cm: MemberRaidStats) => cm.memberProfile.profile.data.userInfo.membershipId,
   sortComparer: false
 });
 
-export const SealInitialState: RaidState = SealProfileAdapter.getInitialState({
+export const RaidInitialState: RaidState = RaidAdapter.getInitialState({
   loaded: false,
   loading: false
 });

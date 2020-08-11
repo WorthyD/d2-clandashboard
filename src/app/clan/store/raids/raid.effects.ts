@@ -10,7 +10,8 @@ import { getAllMembers } from '../clan-members/clan-members.selectors';
 
 import { loadRaidFailure, loadRaidSuccess, loadRaids } from './raid.actions';
 import * as clanMemberActions from '../clan-members/clan-members.actions';
-import * as clanMemberSelectors from '../clan-members/clan-members.selectors';
+//import * as clanMemberSelectors from '../clan-members/clan-members.selectors';
+import * as clanMemberProfileSelectors from '../member-profiles/member-profiles.selectors';
 
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
 
@@ -35,7 +36,7 @@ import {
 import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
 @Injectable()
-export class SealEffects {
+export class RaidEffects {
   constructor(
     private actions$: Actions,
     private store: Store<any>,
@@ -47,10 +48,12 @@ export class SealEffects {
       ofType(loadRaids),
       withLatestFrom(
         this.store.select(clanIdSelectors.getClanIdState),
-        this.store.select(clanMemberSelectors.getAllMembers)
+        this.store.select(clanMemberProfileSelectors.getAllMembers)
       ),
       switchMap(([action, clanId, clanMembers]) => {
-        //const hashes = seals.map((x) => x.completionRecordHash);
+        /// Temp
+        clanMembers = clanMembers.slice(0, 10);
+
         return this.clanRaidsService.getClanRaidStats(clanId, clanMembers).pipe(
           map((memberStats) => {
             return loadRaidSuccess({ raidStats: memberStats });

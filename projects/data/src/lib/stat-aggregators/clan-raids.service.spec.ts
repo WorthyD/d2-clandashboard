@@ -33,36 +33,33 @@ const MOCK_MEMBERS = [
   }
 ] as MemberProfile[];
 
-const MOCK_ACTIVITY = {
-  activities: [
-    {
-      activityHash: 3089205900,
-      values: {
-        activityCompletions: { statId: 'activityCompletions', basic: { value: 0, displayValue: '0' } }
-      }
-    },
-    {
-      activityHash: 2693136600,
-      values: {
-        activityCompletions: { statId: 'activityCompletions', basic: { value: 1, displayValue: '1' } }
-      }
-    },
-    {
-      activityHash: 2693136601,
-      values: {
-        activityCompletions: { statId: 'activityCompletions', basic: { value: 7, displayValue: '7' } }
-      }
-    },
-    {
-      activityHash: 548750096,
-      values: {
-        activityCompletions: { statId: 'activityCompletions', basic: { value: 100, displayValue: '100' } }
-      }
+const MOCK_ACTIVITY = [
+  {
+    activityHash: 3089205900,
+    values: {
+      activityCompletions: { statId: 'activityCompletions', basic: { value: 0, displayValue: '0' } }
     }
-  ]
-};
-
-fdescribe('ClanRaidsService', () => {
+  },
+  {
+    activityHash: 2693136600,
+    values: {
+      activityCompletions: { statId: 'activityCompletions', basic: { value: 1, displayValue: '1' } }
+    }
+  },
+  {
+    activityHash: 2693136601,
+    values: {
+      activityCompletions: { statId: 'activityCompletions', basic: { value: 7, displayValue: '7' } }
+    }
+  },
+  {
+    activityHash: 548750096,
+    values: {
+      activityCompletions: { statId: 'activityCompletions', basic: { value: 100, displayValue: '100' } }
+    }
+  }
+];
+describe('ClanRaidsService', () => {
   let service: ClanRaidsService;
   let activityService: MemberActivityStatsService;
 

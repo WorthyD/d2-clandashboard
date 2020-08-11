@@ -1,15 +1,15 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { getClanState } from '../clan-state.selector';
-import * as sealState from './seal.state';
+import * as raidState from './raid.state';
 
-export const getRaidEntityState = createSelector(getClanState, (state) => state.seals);
+export const getRaidEntityState = createSelector(getClanState, (state) => state.raidStats);
 
 export const {
   selectIds: getMemberIds,
   selectEntities: getRaidEntities,
   selectAll: getAllRaidStats,
   selectTotal: getTotal
-} = sealState.SealProfileAdapter.getSelectors(getRaidEntityState);
+} = raidState.RaidAdapter.getSelectors(getRaidEntityState);
 
-export const getClanSealLoading = createSelector(getRaidEntityState, (s) => s.loading);
+export const getRaidStatsLoading = createSelector(getRaidEntityState, (s) => s.loading);

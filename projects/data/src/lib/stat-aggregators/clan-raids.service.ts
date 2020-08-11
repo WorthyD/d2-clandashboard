@@ -35,6 +35,7 @@ export class ClanRaidsService {
   }
 
   private getMemberRaidStats(clanId: number, member: MemberProfile): Observable<MemberRaidStats> {
+    console.log(member);
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId: number) => {
         return this.getCharacterRaidStats(clanId, member, characterId);
@@ -43,7 +44,7 @@ export class ClanRaidsService {
       map((characterStats) => {
         //        console.log(characterStats);
         return {
-          memberProfile: member,
+          memberProfile: { profile: member.profile },
           stats: this.combineCharacterActivityStats(characterStats)
         };
       })
@@ -68,24 +69,23 @@ export class ClanRaidsService {
   }
   private combineStatValues(stats, activityHashes) {
     const statValues = {};
-    //    console.log('stats', stats);
 
     this.TRACKED_STATS.forEach((x) => {
       const combinedValues = stats.reduce((prevCharact, character) => {
         //       console.log('prevCharact', prevCharact);
-        //      console.log('character', character);
 
         const characterCompletions = activityHashes.reduce((prevHash, curHash) => {
           // console.log('prev', prevHash);
           // console.log('cur', curHash);
-          const activityCompletion = character.activities?.find((activity) => activity.activityHash === curHash)
-            ?.values?.[x]?.basic?.value;
+
+          const activityCompletion = character.find((activity) => activity.activityHash === curHash)?.values?.[x]?.basic
+            ?.value;
           // console.log(character.find((activity) => activity.activityHash === curHash)?.values?.[x]?.basic
           //   ?.value);
 
-          // console.log('-----------------------');
+          //console.log('-----------------------');
           // console.log(' prevHash', prevHash);
-          // console.log('activityCompletion', activityCompletion ? activityCompletion : 0);
+          //console.log('activityCompletion', activityCompletion ? activityCompletion : 0);
           // console.log('total', prevHash + (activityCompletion ? activityCompletion : 0));
 
           return prevHash + (activityCompletion ? activityCompletion : 0);

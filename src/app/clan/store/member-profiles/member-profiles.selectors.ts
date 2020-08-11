@@ -17,6 +17,11 @@ export const {
     getMemberProfileEntityState
 );
 
+export const getIsMembersProfilesLoaded = createSelector(
+  getMemberProfileEntityState,
+  (state) => state.loaded
+);
+
 export const getClanMemberById = memberId =>
     createSelector(getMemberProfileEntities, entities => {
         return memberId && entities[memberId];
