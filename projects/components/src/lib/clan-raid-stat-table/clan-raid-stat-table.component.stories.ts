@@ -1,23 +1,23 @@
 import { moduleMetadata } from '@storybook/angular';
 import { StorybookService } from '../storybook/storybook.service';
 import { StorybookModule } from '../storybook/storybook.module';
-import { MOCK_CLAN_SEAL } from './_MOCK_CLAN_SEAL';
-import { ClanSealModule } from './clan-seal.module';
-import { ClanSealComponent } from './clan-seal.component';
+import { MOCK_RAID_STATS } from './_MOCK_RAID_STATS';
+import { ClanRaidStatTableModule } from './clan-raid-stat-table.module';
+import { ClanRaidStatTableComponent } from './clan-raid-stat-table.component';
 
 export default {
-  title: 'Clan Seal',
+  title: 'Clan Raid Stats',
   decorators: [
     moduleMetadata({
-      imports: [StorybookModule, ClanSealModule]
+      imports: [StorybookModule, ClanRaidStatTableModule]
     })
   ]
 };
 
 export const base = () => ({
-  component: ClanSealComponent,
+  component: ClanRaidStatTableComponent,
   template: `<lib-clan-seal [sealMembers]="seals"></lib-clan-seal>`,
   props: {
-    seals: MOCK_CLAN_SEAL
+    raidStats: MOCK_RAID_STATS
   }
 });
