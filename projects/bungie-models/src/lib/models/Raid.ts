@@ -3,4 +3,6 @@ export interface Raid {
   abbreviatedName: string;
   key: string;
   hashes: number[];
+  sortOrder: number;
+  isGuidedGames: boolean;
 }

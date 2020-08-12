@@ -16,7 +16,15 @@ export default {
 
 export const base = () => ({
   component: ClanRaidStatTableComponent,
-  template: `<lib-clan-seal [sealMembers]="seals"></lib-clan-seal>`,
+  template: `<lib-clan-raid-stat-table [memberRaidStats]="raidStats"></lib-clan-raid-stat-table>`,
+  props: {
+    raidStats: MOCK_RAID_STATS
+  }
+});
+
+export const isLoading = () => ({
+  component: ClanRaidStatTableComponent,
+  template: `<lib-clan-raid-stat-table [memberRaidStats]="raidStats" isLoading="true"></lib-clan-raid-stat-table>`,
   props: {
     raidStats: MOCK_RAID_STATS
   }

@@ -4,19 +4,25 @@ export const EaterOfWorlds: Raid = {
   hashes: [3089205900],
   key: 'eow',
   abbreviatedName: 'EoW',
-  displayName: 'Eater of Worlds'
+  displayName: 'Eater of Worlds',
+  sortOrder: 4,
+  isGuidedGames: false
 };
 
 export const EaterOfWorldsPrestige: Raid = {
   hashes: [809170886],
   key: 'eowp',
   abbreviatedName: 'EoW Pres',
-  displayName: 'Eater of Worlds Prestige'
+  displayName: 'Eater of Worlds Prestige',
+  sortOrder: 5,
+  isGuidedGames: false
 };
 
 export const EaterOfWorldsGG: Raid = {
   hashes: [2164432138],
   key: 'eowgg',
   abbreviatedName: 'EoW Guided',
-  displayName: 'Eater of Worlds Guided Games'
+  displayName: 'Eater of Worlds Guided Games',
+  sortOrder: 6,
+  isGuidedGames: true
 };

@@ -5,6 +5,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 import { MatCardModule } from '@angular/material/card';
 const componentModules = [
@@ -13,7 +15,9 @@ const componentModules = [
   MatMenuModule,
   MatIconModule,
   MatExpansionModule,
-  MatCardModule
+  MatCardModule,
+  MatTableModule,
+  MatSortModule
 ];
 
 @NgModule({

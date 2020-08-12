@@ -55,7 +55,7 @@
     "@babel/core": "^7.8.3",
     "@netlify-builder/deploy": "^3.0.0",
     "@openapitools/openapi-generator-cli": "0.0.9-4.0.0-beta3",
-    "@storybook/angular": "^5.3.9",
+    "@storybook/angular": "^6.0.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.12.28",
