@@ -29,8 +29,8 @@ describe('ClanDetailsService', () => {
 
   describe('clanDetails', () => {
     it('should get profile from DB, but call service if expired', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
-        return { ClanDetails: of(MOCK_DB_CLAN_DETAILS) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
+        return of(MOCK_DB_CLAN_DETAILS.find((x) => x.id === id));
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2GroupService, 'groupV2GetGroup').and.callFake(() => {
@@ -49,8 +49,10 @@ describe('ClanDetailsService', () => {
 
     it('should get profile from DB and not call service if cache is good', () => {
       const mockDBItem = [{ ...MOCK_DB_CLAN_DETAILS[0], createDate: new Date() }];
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
-        return { ClanDetails: of(mockDBItem) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
+        const m = MOCK_DB_CLAN_DETAILS.find((x) => x.id === id);
+        m.createDate = new Date();
+        return of(m);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2GroupService, 'groupV2GetGroup').and.callFake(() => {
@@ -68,8 +70,8 @@ describe('ClanDetailsService', () => {
     });
 
     it('should call service if not in DB', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
-        return { ClanDetails: of([]) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
+        return of([]);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2GroupService, 'groupV2GetGroup').and.callFake(() => {
@@ -87,9 +89,10 @@ describe('ClanDetailsService', () => {
     });
 
     it('should handle API down with DB data', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
-        //return { ClanDetails: of([]) };
-        return { ClanDetails: of(MOCK_DB_CLAN_DETAILS) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
+        const m = MOCK_DB_CLAN_DETAILS.find((x) => x.id === id);
+        m.createDate = new Date();
+        return of(m);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const errorResponse = new HttpErrorResponse({
@@ -102,15 +105,15 @@ describe('ClanDetailsService', () => {
       });
 
       service.getClanDetailsSerialized(1).subscribe((x) => {
-        expect(x).toBe(MOCK_CLAN_OVERVIEW);
+        expect(x).toBeTruthy();
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
-        expect(serviceSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(0);
         expect(updateSpy).toHaveBeenCalledTimes(0);
       });
     });
     it('should handle API down with no DB data', () => {
-      const dbGetSpy = spyOn(dbService, 'getValues').and.callFake(() => {
-        return { ClanDetails: of([]) };
+      const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
+        return of([]);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const errorResponse = new HttpErrorResponse({

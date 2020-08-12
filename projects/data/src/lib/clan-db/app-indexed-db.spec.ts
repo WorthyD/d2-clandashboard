@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { AppIndexedDb, STORE_IDS } from './app-indexed-db';
+import { AppIndexedDb, STORE_IDS, StoreId } from './app-indexed-db';
 import { take } from 'rxjs/operators';
 import { deleteDB } from 'idb';
 
 describe('App Indexed DB', () => {
   let database: AppIndexedDb;
   const databaseName = 'UnitTestDB';
-  const storeId = 'ClanDetails';
+  const storeId = StoreId.CacheDetails;
 
   const testData = [
     { id: '1', data: { name: 'testing 1' }, createDate: new Date() },
@@ -26,10 +26,9 @@ describe('App Indexed DB', () => {
     done();
   });
 
-  it('should be created with no data', async (done) => {
-    database.initialValues.ClanDetails.pipe(take(1)).subscribe((x) => {
+  it('should be created with no data', () => {
+    database.getAllData(storeId).then((x) => {
       expect(x.length).toEqual(0);
-      done();
     });
   });
 
@@ -51,13 +50,14 @@ describe('App Indexed DB', () => {
     });
 
     it('should be able to retrieve data', async (done) => {
-      database.initialValues.ClanDetails.pipe(take(1)).subscribe((x) => {
+      database.getAllData(storeId).then((x) => {
         expect(x).toEqual(testData);
         done();
       });
     });
     it('should be able to retrieve data', async (done) => {
-      database.getById('ClanDetails', '1').then(x => {
+      database.getById(storeId, '1').then((x) => {
+        expect(x).toEqual(testData.find((y) => y.id === '1'));
         done();
       });
     });
@@ -65,7 +65,7 @@ describe('App Indexed DB', () => {
     it('should remove values passed in', async (done) => {
       const takeCount = 2;
 
-      const originalData = await database.initialValues.ClanDetails.pipe(take(1)).toPromise();
+      const originalData = await database.getAllData(storeId);
 
       const initialLength = originalData.length;
 
@@ -75,10 +75,7 @@ describe('App Indexed DB', () => {
 
       await database.removeValues(idsToRemove, storeId);
 
-      await database.close();
-
-      database = new AppIndexedDb(databaseName);
-      const refreshedData = await database.initialValues.ClanDetails.pipe(take(1)).toPromise();
+      const refreshedData = await database.getAllData(storeId);
       expect(refreshedData.length).toEqual(initialLength - takeCount);
 
       refreshedData.forEach((x) => {
@@ -90,26 +87,14 @@ describe('App Indexed DB', () => {
     });
 
     it('should remove all values', async (done) => {
-      const originalData = await database.initialValues.ClanDetails.pipe(take(1)).toPromise();
+      const originalData = await database.getAllData(storeId);
       // Verify we have data
       expect(originalData.length).toBeGreaterThan(0);
 
       await database.removeAllValues(storeId);
 
-      await database.close();
-
-      database = new AppIndexedDb(databaseName);
-      const refreshedData = await database.initialValues.ClanDetails.pipe(take(1)).toPromise();
+      const refreshedData = await database.getAllData(storeId);
       expect(refreshedData.length).toEqual(0);
-      done();
-    });
-
-    it('should remove data without force re-initialize', async (done) => {
-      const originalData = await database.initialValues.ClanDetails.pipe(take(1)).toPromise();
-      expect(originalData.length).toBeGreaterThan(0);
-      await database.removeData();
-      const refreshedData = await database.initialValues.ClanDetails.pipe(take(1)).toPromise();
-      expect(refreshedData.length).toBe(0);
       done();
     });
   });

@@ -24,12 +24,12 @@ export class BaseClanService {
     return this.clanDbBase.getById(clanId, this.tableNameBase, rowId);
   }
 
-  isCacheValid(cachedData: DBObject, minuteExpiration: number, lastActivty?: Date) {
+  isCacheValid(cachedData: DBObject, minuteExpiration: number, lastActivity?: Date) {
     if (cachedData && cachedData.createDate) {
       const cacheDate = moment(cachedData.createDate);
       let expireDate;
-      if (_.isDate(lastActivty)) {
-        expireDate = moment(lastActivty);
+      if (_.isDate(lastActivity)) {
+        expireDate = moment(lastActivity);
       } else {
         expireDate = moment().add(-minuteExpiration, 'minutes');
       }

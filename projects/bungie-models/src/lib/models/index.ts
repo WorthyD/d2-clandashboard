@@ -7,3 +7,5 @@ export * from './Definitions/public-api';
 export * from './ClanReward';
 export * from './ClanProgress';
 export * from './SealMembers';
+export * from './MemberAggregateActivityStat';
+export * from './RaidStats';

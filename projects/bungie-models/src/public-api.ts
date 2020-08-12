@@ -7,3 +7,4 @@
 // export * from './lib/bungie-models.module';
 
 export * from './lib/models/index';
+export * from './lib/entities/index';
