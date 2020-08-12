@@ -1,7 +1,11 @@
-<textarea name="">
+<!-- <textarea name="">
   {{(raidService.raidStats$ | async) | json}}
 </textarea>
+ -->
 
+<lib-clan-raid-stat-table [memberRaidStats]="raidService.raidStats$ | async"
+  [isLoading]="raidService.raidStatsLoading$ | async">
+</lib-clan-raid-stat-table>
 
 <!-- <table mat-table [dataSource]="members" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="displayName">

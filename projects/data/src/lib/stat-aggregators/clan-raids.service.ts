@@ -35,7 +35,7 @@ export class ClanRaidsService {
   }
 
   private getMemberRaidStats(clanId: number, member: MemberProfile): Observable<MemberRaidStats> {
-    console.log(member);
+    //console.log(member);
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId: number) => {
         return this.getCharacterRaidStats(clanId, member, characterId);

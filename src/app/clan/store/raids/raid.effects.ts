@@ -52,7 +52,6 @@ export class RaidEffects {
       ),
       switchMap(([action, clanId, clanMembers]) => {
         /// Temp
-        clanMembers = clanMembers.slice(0, 10);
 
         return this.clanRaidsService.getClanRaidStats(clanId, clanMembers).pipe(
           map((memberStats) => {
