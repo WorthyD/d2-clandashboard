@@ -33,26 +33,48 @@ export class ClanSearchComponent implements OnInit {
 
   autocompleteResult$ = this.autocompleteControl.valueChanges.pipe(
     sampleTime(350),
-    switchMap((currentQuery) =>
-      this.groupService.groupV2GroupSearch({
+    switchMap((currentQuery) => {
+      if (!isNaN(currentQuery)) {
+        return this.numericClanSearch(currentQuery);
+      } else if (currentQuery.indexOf('https://www.bungie.net/') > -1) {
+        const clanId = currentQuery.split('=')[1];
+        return this.numericClanSearch(clanId);
+      } else {
+        return this.textClanSearch(currentQuery);
+      }
+    }),
+    shareReplay(1)
+  );
+
+  numericClanSearch(clanId) {
+    return this.groupService.groupV2GetGroup(clanId).pipe(
+      map((clanResult) => {
+        return [clanResult.Response.detail];
+      })
+    );
+  }
+
+  textClanSearch(currentQuery) {
+    return this.groupService
+      .groupV2GroupSearch({
         name: currentQuery,
         groupType: 1,
         groupMemberCountFilter: null,
         tagText: null,
         localeFilter: null
       })
-    ),
-    map((clanListResults) => {
-      const currentQuery = this.autocompleteControl.value;
-      const clanList = clanListResults.Response.results;
-      if (!currentQuery || clanList.find((repo) => repo.name.toUpperCase() === currentQuery.toUpperCase())) {
-        return clanList;
-      }
+      .pipe(
+        map((clanListResults) => {
+          const currentQuery = this.autocompleteControl.value;
+          const clanList = clanListResults.Response.results;
+          if (!currentQuery || clanList.find((repo) => repo.name.toUpperCase() === currentQuery.toUpperCase())) {
+            return clanList;
+          }
 
-      return clanList.slice(0, 10);
-    }),
-    shareReplay(1)
-  );
+          return clanList.slice(0, 10);
+        })
+      );
+  }
 
   ngOnInit() {}
 
