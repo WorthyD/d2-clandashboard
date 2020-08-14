@@ -26,15 +26,19 @@ export class MemberActivityService {
     (pActivities, activityModeDefinitions, activityDefinitions) => {
       if (pActivities && activityModeDefinitions && activityDefinitions) {
         const defArray = Object.keys(activityModeDefinitions).map((id) => activityModeDefinitions[id]);
-        return pActivities.map((x) => {
-          return {
-            playerActivity: x,
-            activityDefinition: activityDefinitions[x.activityDetails.referenceId],
-            activityModeDefinition: defArray.find((y) => {
-              return y.modeType === x.activityDetails.mode;
-            })
-          };
-        });
+        return pActivities
+          .map((x) => {
+            return {
+              playerActivity: x,
+              activityDefinition: activityDefinitions[x.activityDetails.referenceId],
+              activityModeDefinition: defArray.find((y) => {
+                return y.modeType === x.activityDetails.mode;
+              })
+            };
+          })
+          .sort((a, b) => {
+            return new Date(b.playerActivity.period) - new Date(a.playerActivity.period);
+          });
       }
       return [];
     }

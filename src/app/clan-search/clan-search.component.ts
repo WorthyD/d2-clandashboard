@@ -3,10 +3,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { GroupV2Service } from 'bungie-api';
 
 import { ClanDetails } from 'bungie-models';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, of } from 'rxjs';
 
 import { FormControl } from '@angular/forms';
-import { map, sampleTime, shareReplay, switchMap } from 'rxjs/operators';
+import { map, sampleTime, shareReplay, switchMap, tap, catchError } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Router } from '@angular/router';
 
@@ -27,13 +27,19 @@ interface LoadClanResult {
 export class ClanSearchComponent implements OnInit {
   loadSubscription: Subscription;
 
+  loading: boolean;
   constructor(private groupService: GroupV2Service, private router: Router, private store: Store<ClanSearchState>) {}
 
   autocompleteControl = new FormControl('');
 
   autocompleteResult$ = this.autocompleteControl.valueChanges.pipe(
-    sampleTime(350),
+    tap(() => (this.loading = true)),
+    sampleTime(500),
     switchMap((currentQuery) => {
+      if (!currentQuery) {
+        this.loading = false;
+        return of([]);
+      }
       if (!isNaN(currentQuery)) {
         return this.numericClanSearch(currentQuery);
       } else if (currentQuery.indexOf('https://www.bungie.net/') > -1) {
@@ -43,12 +49,20 @@ export class ClanSearchComponent implements OnInit {
         return this.textClanSearch(currentQuery);
       }
     }),
-    shareReplay(1)
+    shareReplay(1),
+    catchError((err) => {
+      console.log(err);
+      this.loading = false;
+      // Just remapping the data to show the error
+      // There are better ways of doing this
+      return of([{ login: 'Error from server' }]);
+    })
   );
 
   numericClanSearch(clanId) {
     return this.groupService.groupV2GetGroup(clanId).pipe(
       map((clanResult) => {
+        this.loading = false;
         return [clanResult.Response.detail];
       })
     );
@@ -65,6 +79,7 @@ export class ClanSearchComponent implements OnInit {
       })
       .pipe(
         map((clanListResults) => {
+          this.loading = false;
           const currentQuery = this.autocompleteControl.value;
           const clanList = clanListResults.Response.results;
           if (!currentQuery || clanList.find((repo) => repo.name.toUpperCase() === currentQuery.toUpperCase())) {
