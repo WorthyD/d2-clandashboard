@@ -26,17 +26,25 @@ export class MemberActivityService {
     (pActivities, activityModeDefinitions, activityDefinitions) => {
       if (pActivities && activityModeDefinitions && activityDefinitions) {
         const defArray = Object.keys(activityModeDefinitions).map((id) => activityModeDefinitions[id]);
-        return pActivities.map((x) => {
-          return {
-            playerActivity: x,
-            activityDefinition: activityDefinitions[x.activityDetails.referenceId],
-            activityModeDefinition: defArray.find((y) => {
-              return y.modeType === x.activityDetails.mode;
-            })
-          };
-        });
+        return pActivities
+          .map((x) => {
+            return {
+              playerActivity: x,
+              activityDefinition: activityDefinitions[x.activityDetails.referenceId],
+              activityModeDefinition: defArray.find((y) => {
+                return y.modeType === x.activityDetails.mode;
+              })
+            };
+          })
+          .sort((a, b) => {
+            return compare(a.playerActivity.period, b.playerActivity.period, false);
+          });
       }
       return [];
     }
   );
+}
+// TODO: Import from component libs
+function compare(a: number | string | Date, b: number | string | Date, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

@@ -16,6 +16,7 @@ import { CLAN_SEARCH_FEATURE } from './state/clan-search.selectors';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SavedClansModule } from './saved-clans/saved-clans.module';
+import { MaterialModule, SharedModule } from '@destiny/components';
 
 @NgModule({
   declarations: [ClanSearchComponent],
@@ -29,6 +30,8 @@ import { SavedClansModule } from './saved-clans/saved-clans.module';
     MatFormFieldModule,
     RouterModule,
     FeaturedClansModule,
+    MaterialModule,
+    SharedModule,
     SavedClansModule,
     StoreModule.forFeature(CLAN_SEARCH_FEATURE, reducers),
     EffectsModule.forFeature(ClanSearchEffects)

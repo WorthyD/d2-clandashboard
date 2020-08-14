@@ -1,28 +1,33 @@
 :host {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 64px;
-    overflow: auto;
+  // display: flex;
+  // align-items: center;
+  // flex-direction: column;
+  // justify-content: center;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+  display: block;
+  padding: 64px;
+  overflow: auto;
+}
+.header {
+  text-align: center;
 }
 .clan-search {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
-    justify-content: center;
+  justify-content: center;
 
-    .search{
-        width:250px;
-    }
+  .search {
+    width: 100%;
+    max-width: 500px;
+  }
 }
 .footer {
-    flex: 0;
+  flex: 0;
 }
