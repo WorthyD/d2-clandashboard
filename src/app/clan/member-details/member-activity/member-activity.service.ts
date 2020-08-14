@@ -37,10 +37,14 @@ export class MemberActivityService {
             };
           })
           .sort((a, b) => {
-            return new Date(b.playerActivity.period) - new Date(a.playerActivity.period);
+            return compare(a.playerActivity.period, b.playerActivity.period, false);
           });
       }
       return [];
     }
   );
+}
+// TODO: Import from component libs
+function compare(a: number | string | Date, b: number | string | Date, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
