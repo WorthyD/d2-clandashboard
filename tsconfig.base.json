@@ -1,0 +1,50 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "downlevelIteration": true,
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "module": "es2020",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2018",
+            "dom"
+        ],
+        "paths": {
+            "bungie-api": [
+                "projects/bungie-api/src/public_api"
+            ],
+            "bungie-models": [
+                "projects/bungie-models/src/public-api"
+            ],
+            "bungie-models/definitions": [
+                "projects/bungie-models/src/models/definitions/public-api"
+            ],
+
+            "@destiny/components": [
+                "projects/components/src/public-api"
+            ],
+            "@destiny/components/*": [
+                "projects/components/src/*/public-api"
+            ],
+            "@destiny/data": [
+                "projects/data/src/public-api"
+            ],
+            "@destiny/models/definitions": [
+                "projects/bungie-models/src/lib/models/Definitions/public-api"
+            ],
+            "@destiny/models": [
+                "projects/bungie-models/src/public-api"
+            ]
+        }
+    }
+}
