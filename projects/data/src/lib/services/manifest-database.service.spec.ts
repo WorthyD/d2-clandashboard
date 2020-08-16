@@ -6,7 +6,7 @@
 //   beforeEach(() => TestBed.configureTestingModule({}));
 
 //   it('should be created', () => {
-//     const service: ManifestDatabaseService = TestBed.get(ManifestDatabaseService);
+//     const service: ManifestDatabaseService = TestBed.inject(ManifestDatabaseService);
 //     expect(service).toBeTruthy();
 //   });
 // });

@@ -6,7 +6,7 @@ describe('BungieApiService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: BungieApiService = TestBed.get(BungieApiService);
+    const service: BungieApiService = TestBed.inject(BungieApiService);
     expect(service).toBeTruthy();
   });
 });
