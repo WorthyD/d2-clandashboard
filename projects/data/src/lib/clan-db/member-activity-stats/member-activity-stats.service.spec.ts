@@ -12,7 +12,7 @@ import { of, defer } from 'rxjs';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { HttpErrorResponse } from '@angular/common/http';
 
-describe('MemberActivityStatsService', () => {
+fdescribe('MemberActivityStatsService', () => {
   let service: MemberActivityStatsService;
   let dbService: ClanDatabase;
   let d2Service: Destiny2Service;
@@ -65,7 +65,7 @@ describe('MemberActivityStatsService', () => {
         });
     });
 
-    it('should get profile from DB and not call service if cache is good', () => {
+    fit('should get profile from DB and not call service if cache is good', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
         const m = MOCK_DB_ACTIVITY_STATS.find((x) => x.id === id);
         return of(m);
