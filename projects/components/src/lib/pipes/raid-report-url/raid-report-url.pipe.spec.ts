@@ -1,6 +1,6 @@
 import { RaidReportUrlPipe } from './raid-report-url.pipe';
 
-fdescribe('RaidReportUrlPipe', () => {
+describe('RaidReportUrlPipe', () => {
   it('create an instance', () => {
     const pipe = new RaidReportUrlPipe();
     expect(pipe).toBeTruthy();

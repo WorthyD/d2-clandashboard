@@ -1,12 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { ClanMember } from 'bungie-models';
 import { MembershipTypes } from '@destiny/models/enums';
 
 @Pipe({
-  name: 'raidReportUrl'
+  name: 'destinyTrackerUrl'
 })
-export class RaidReportUrlPipe implements PipeTransform {
-  readonly baseUrl = 'https://raid.report';
+export class DestinyTrackerUrlPipe implements PipeTransform {
+  readonly baseUrl = 'https://destinytracker.com/destiny-2/profile';
   transform(value: ClanMember): string {
     switch (value.destinyUserInfo.membershipType) {
       case MembershipTypes.Xbox:
@@ -21,17 +22,16 @@ export class RaidReportUrlPipe implements PipeTransform {
         return '';
     }
   }
-
   getPSUrl(value: ClanMember) {
-    return `${this.baseUrl}/ps/${escape(value.destinyUserInfo.displayName)}`;
+    return `${this.baseUrl}/psn/${escape(value.destinyUserInfo.displayName)}`;
   }
 
   getXBOXUrl(value: ClanMember) {
-    return `${this.baseUrl}/xb/${escape(value.destinyUserInfo.displayName)}`;
+    return `${this.baseUrl}/xbl/${escape(value.destinyUserInfo.displayName)}`;
   }
 
   getPCUrl(value: ClanMember) {
-    return `${this.baseUrl}/pc/${value.destinyUserInfo.membershipId}`;
+    return `${this.baseUrl}/steam/${value.destinyUserInfo.membershipId}`;
   }
   getStadiaUrl(value: ClanMember) {
     return `${this.baseUrl}/stadia/${value.destinyUserInfo.membershipId}`;

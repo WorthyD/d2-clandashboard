@@ -2,14 +2,14 @@
     <mat-card-title>
         Seasonal Progress
     </mat-card-title>
-    <mat-card-subtitle>Current Level: {{clanProgress.level}}</mat-card-subtitle>
+    <mat-card-subtitle>Current Level: {{clanProgress?.level}}</mat-card-subtitle>
     <mat-card-content>
         <mat-progress-bar mode="determinate" [value]="seasonProgress"></mat-progress-bar>
         <div>
             Progress to next level:
-            <div class="float-right" *ngIf="clanProgress.progressToNextLevel > 0; else maxLevel">
-                {{clanProgress.progressToNextLevel}} /
-                {{clanProgress.nextLevelAt}}</div>
+            <div class="float-right" *ngIf="clanProgress?.progressToNextLevel > 0; else maxLevel">
+                {{clanProgress?.progressToNextLevel}} /
+                {{clanProgress?.nextLevelAt}}</div>
         </div>
     </mat-card-content>
 </mat-card>

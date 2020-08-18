@@ -5,7 +5,12 @@
                 true}">Player Overview</a>
       <a mat-list-item routerLink="./activity" routerLinkActive="active-link">Activity</a>
       <ng-container *ngIf="member$ | async as member">
+        <a mat-list-item href="{{member | bungieProfileUrl}}" target="_blank">Bungie Profile &nbsp;<mat-icon>open_in_new
+          </mat-icon></a>
+
         <a mat-list-item href="{{member | raidReportUrl}}" target="_blank">Raid Report &nbsp;<mat-icon>open_in_new
+          </mat-icon></a>
+          <a mat-list-item href="{{member | destinyTrackerUrl}}" target="_blank">Destiny Tracker &nbsp;<mat-icon>open_in_new
           </mat-icon></a>
         <!-- https://raid.report/pc/4611686018467238913 -->
       </ng-container>
