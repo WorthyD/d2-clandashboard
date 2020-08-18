@@ -7,6 +7,7 @@ export type StoreId = 'manifestBlob' | 'allData';
 
 export const STORE_IDS: StoreId[] = ['manifestBlob', 'allData'];
 
+// TODO: Add Angular decorator.
 export class AppIndexedDb {
     initialValues: { [key in StoreId]?: Subject<any[]> } = {};
 
@@ -26,10 +27,7 @@ export class AppIndexedDb {
         return this.db.then(db => db.close());
     }
 
-    ngOnDestroy() {
-        this.destroyed.next();
-        this.destroyed.complete();
-    }
+
 
     removeData() {
         this.db
@@ -75,7 +73,7 @@ export class AppIndexedDb {
                             keyPath: 'id'
                         });
 
-                       
+
                     }
                 });
             }

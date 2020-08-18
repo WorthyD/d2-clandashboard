@@ -1,16 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClassCellComponent } from './class-cell.component';
-
+import { ClassCellComponent, ClassIconPipe } from './class-cell.component';
 describe('ClassCellComponent', () => {
   let component: ClassCellComponent;
   let fixture: ComponentFixture<ClassCellComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClassCellComponent ]
-    })
-    .compileComponents();
+      declarations: [ClassCellComponent, ClassIconPipe],
+      imports: []
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,16 +1,26 @@
 <mat-sidenav-container>
-    <mat-sidenav mode="side" opened>
-        <mat-nav-list>
-            <a mat-list-item routerLink="./" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item routerLink="./" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
                 true}">Player Overview</a>
-            <a mat-list-item routerLink="./activity" routerLinkActive="active-link">Activity</a>
-        </mat-nav-list>
+      <a mat-list-item routerLink="./activity" routerLinkActive="active-link">Activity</a>
+      <ng-container *ngIf="member$ | async as member">
+        <a mat-list-item href="{{member | bungieProfileUrl}}" target="_blank">Bungie Profile &nbsp;<mat-icon>open_in_new
+          </mat-icon></a>
 
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div>
-      </div>
-        <router-outlet></router-outlet>
+        <a mat-list-item href="{{member | raidReportUrl}}" target="_blank">Raid Report &nbsp;<mat-icon>open_in_new
+          </mat-icon></a>
+          <a mat-list-item href="{{member | destinyTrackerUrl}}" target="_blank">Destiny Tracker &nbsp;<mat-icon>open_in_new
+          </mat-icon></a>
+        <!-- https://raid.report/pc/4611686018467238913 -->
+      </ng-container>
+    </mat-nav-list>
 
-    </mat-sidenav-content>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div>
+    </div>
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
 </mat-sidenav-container>

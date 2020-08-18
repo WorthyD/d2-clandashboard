@@ -26,7 +26,7 @@ export class ClanDatabase {
   }
 
   deleteDatabase(repository: string) {
-   return this.getDatabase(repository, false).purgeDatabase();
+    return this.getDatabase(repository, false).purgeDatabase();
   }
 
   private getDatabase(repository: string, initializeValues: boolean = true) {

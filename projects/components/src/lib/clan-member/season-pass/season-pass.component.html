@@ -1,22 +1,22 @@
 <mat-card>
-    <mat-card-title>
-        Season Pass
-    </mat-card-title>
-    <mat-card-subtitle>Current Level: {{seasonPassProgress}}</mat-card-subtitle>
-    <mat-card-content>
-        <mat-progress-bar mode="determinate" [value]="seasonPassProgressBarValue"></mat-progress-bar>
-        <div>
-            <div class="float-right"
-                *ngIf="clanMemberSeasonPass?.progression?.level < clanMemberSeasonPass?.progression?.levelCap; else maxLevel">
-                {{clanMemberSeasonPass?.progression?.level}} /
-                {{clanMemberSeasonPass?.progression?.levelCap}}</div>
-        </div>
-    </mat-card-content>
+  <mat-card-title>
+    Season Pass
+  </mat-card-title>
+  <mat-card-subtitle>Current Level: {{seasonPassProgress}}</mat-card-subtitle>
+  <mat-card-content>
+    <mat-progress-bar mode="determinate" [value]="seasonPassProgressBarValue"></mat-progress-bar>
+    <div class="mb-3">
+      <div class="float-right"
+        *ngIf="clanMemberSeasonPass?.progression?.level < clanMemberSeasonPass?.progression?.levelCap; else maxLevel">
+        {{clanMemberSeasonPass?.progression?.level}} /
+        {{clanMemberSeasonPass?.progression?.levelCap}}</div>
+    </div>
+  </mat-card-content>
 </mat-card>
 <ng-template #maxLevel>
-    <div class="float-right">
-       Season Pass Complete
-    </div>
+  <div class="float-right">
+    Season Pass Complete
+  </div>
 </ng-template>
 
 <!-- clanInfo.d2ClanProgressions "584850370" : { "progressionHash" : 584850370, "dailyProgress" :

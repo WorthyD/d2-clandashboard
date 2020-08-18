@@ -1,7 +1,14 @@
 <mat-card>
   <ng-container *ngIf="!isLoading; else loading">
+
     <ng-container *ngIf="clanDetails">
-      <mat-card-title>{{clanDetails.name}}</mat-card-title>
+      <mat-card-title>
+        <a mat-icon-button href="https://www.bungie.net/en/ClanV2?groupid={{clanDetails.groupId}}" target="_blank">
+          <mat-icon>open_in_new</mat-icon>
+        </a>
+        {{clanDetails.name}}
+
+      </mat-card-title>
       <mat-card-subtitle>{{clanDetails.motto}}</mat-card-subtitle>
       <mat-card-content>
         <div [innerText]="clanDetails.about"></div>

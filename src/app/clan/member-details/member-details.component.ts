@@ -83,4 +83,5 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
         this.destroyed.next();
         this.destroyed.complete();
     }
+
 }

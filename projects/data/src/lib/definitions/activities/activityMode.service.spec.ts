@@ -7,7 +7,7 @@
 //   beforeEach(() => TestBed.configureTestingModule({}));
 
 //   it('should be created', () => {
-//     const service: ActivityModeService = TestBed.get(ActivityModeService);
+//     const service: ActivityModeService = TestBed.inject(ActivityModeService);
 //     expect(service).toBeTruthy();
 //   });
 // });

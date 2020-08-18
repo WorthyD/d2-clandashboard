@@ -1,5 +1,5 @@
 <mat-expansion-panel>
-  <mat-expansion-panel-header>
+  <mat-expansion-panel-header *ngIf="sealMembers">
     <mat-panel-title>
       <img src="//bungie.net/{{sealMembers.seal.displayProperties.icon}}" class="seal-image" alt="">
       {{sealMembers.seal.displayProperties.name}}
