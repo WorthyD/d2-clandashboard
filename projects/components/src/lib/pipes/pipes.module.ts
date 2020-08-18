@@ -6,9 +6,11 @@ import { RaceTypeTextPipe } from './race-type/race-type-text.pipe';
 import { GenderTypeTextPipe } from './gender-type/gender-type-text.pipe';
 import { RaidReportUrlPipe } from './raid-report-url/raid-report-url.pipe';
 
+const pipes = [DateAgoPipe, ClassTypeTextPipe, RaceTypeTextPipe, GenderTypeTextPipe, RaidReportUrlPipe];
+
 @NgModule({
-    declarations: [DateAgoPipe, ClassTypeTextPipe, RaceTypeTextPipe, GenderTypeTextPipe, RaidReportUrlPipe],
-    exports: [DateAgoPipe, ClassTypeTextPipe, RaceTypeTextPipe, GenderTypeTextPipe],
-    imports: [CommonModule],
+  declarations: [...pipes],
+  exports: [...pipes],
+  imports: [CommonModule]
 })
 export class PipesModule {}
