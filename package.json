@@ -7,6 +7,7 @@
     "build": "ng build",
     "test": "ng test --codeCoverage=true",
     "test:data": "ng test --project=data --codeCoverage=true",
+    "test:components": "ng test --project=components --codeCoverage=true",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "netlify": "netlify deploy --dir=./dist/destiny-dashboard --prod",
