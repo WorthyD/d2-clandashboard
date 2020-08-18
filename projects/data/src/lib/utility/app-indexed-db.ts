@@ -27,10 +27,7 @@ export class AppIndexedDb {
         return this.db.then(db => db.close());
     }
 
-    ngOnDestroy() {
-        this.destroyed.next();
-        this.destroyed.complete();
-    }
+
 
     removeData() {
         this.db
@@ -76,7 +73,7 @@ export class AppIndexedDb {
                             keyPath: 'id'
                         });
 
-                       
+
                     }
                 });
             }

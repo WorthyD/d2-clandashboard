@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 const componentModules = [
   MatButtonModule,
   MatProgressSpinnerModule,
@@ -18,7 +19,8 @@ const componentModules = [
   MatCardModule,
   MatTableModule,
   MatSortModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatListModule
 ];
 
 @NgModule({

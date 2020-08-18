@@ -1,7 +1,14 @@
 <mat-card>
   <ng-container *ngIf="!isLoading; else loading">
+
     <ng-container *ngIf="clanDetails">
-      <mat-card-title>{{clanDetails.name}}</mat-card-title>
+      <mat-card-title>
+        <button mat-icon-button aria-label="Example icon button with a open in new tab icon">
+          <mat-icon>open_in_new</mat-icon>
+        </button>
+        {{clanDetails.name}}
+
+      </mat-card-title>
       <mat-card-subtitle>{{clanDetails.motto}}</mat-card-subtitle>
       <mat-card-content>
         <div [innerText]="clanDetails.about"></div>
