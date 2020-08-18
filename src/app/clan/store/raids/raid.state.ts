@@ -15,5 +15,5 @@ export const RaidAdapter: EntityAdapter<MemberRaidStats> = createEntityAdapter<M
 
 export const RaidInitialState: RaidState = RaidAdapter.getInitialState({
   loaded: false,
-  loading: false
+  loading: true
 });

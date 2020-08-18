@@ -1,8 +1,6 @@
-import {  SealMembers } from 'bungie-models';
+import { SealMembers } from 'bungie-models';
 
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-
-
 
 export interface SealState extends EntityState<SealMembers> {
   loaded: boolean;
@@ -16,5 +14,5 @@ export const SealProfileAdapter: EntityAdapter<SealMembers> = createEntityAdapte
 
 export const SealInitialState: SealState = SealProfileAdapter.getInitialState({
   loaded: false,
-  loading: false
+  loading: true
 });

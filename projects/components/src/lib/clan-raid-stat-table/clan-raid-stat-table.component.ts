@@ -53,7 +53,7 @@ export class ClanRaidStatTableComponent implements OnInit {
   }
   updateColumns() {
     this.allRaids = this.getRaids();
-    this.displayedColumns = ['displayName', ...this.allRaids.map((x) => x.key)];
+    this.displayedColumns = ['displayName', ...this.allRaids.map((x) => x.key), 'raidLink'];
   }
 
   sortData(sort: Sort) {

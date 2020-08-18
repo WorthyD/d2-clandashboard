@@ -15,5 +15,5 @@ export const MemberProfileAdapter: EntityAdapter<MemberProfile> = createEntityAd
 
 export const MemberProfileInitialState: MemberProfileState = MemberProfileAdapter.getInitialState({
   loaded: false,
-  loading: false
+  loading: true
 });
