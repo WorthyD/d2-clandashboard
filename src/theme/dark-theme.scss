@@ -1,0 +1,9 @@
+$destiny-dark-primary: mat-palette($mat-grey, 700, 300, 900);
+$destiny-dark-accent: mat-palette($mat-blue-grey, 400);
+$destiny-dark-warn: mat-palette($mat-red, 500);
+
+$destiny-dark-theme: mat-dark-theme(
+  $destiny-dark-primary,
+  $destiny-dark-accent,
+  $destiny-dark-warn
+);

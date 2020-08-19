@@ -2,6 +2,7 @@
 @import '~bootstrap/scss/bootstrap-reboot';
 @import '~bootstrap/scss/bootstrap-grid';
 @import './theme/material-theme.scss';
+@import './theme/dark-theme.scss';
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -28,7 +29,14 @@
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($destiny-dashboard-theme);
+
+.light-theme {
+  @include angular-material-theme($destiny-dashboard-theme);
+}
+
+.dark-theme {
+  @include angular-material-theme($destiny-dark-theme);
+}
 
 /* You can add global styles to this file, and also import other style files */
 * {
@@ -38,9 +46,14 @@
   }
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
 
 @import './theme/utilities';
 @import './theme/components/sidenav';
