@@ -1,16 +1,16 @@
-@import '~@angular/material/theming';
+// @import '~@angular/material/theming';
 
-@mixin clan-search-component-theme($theme) {
-  // $bg: map-get($theme, background);
-  // $fg: map-get($theme, foreground);
-  // $color: map-get($theme, primary);
-  // $primary: mat-color($theme, primary);
-  $accent: map-get($theme, accent);
-  // $primary: map-get($theme, '900-contrast');
-  div {
-    //   //background: $background;
-    //   color: $fg;
-//    color: mat-color($fg, text);
-//background: darken(mat-color($bg, background), 10%);
-  }
-}
+// @mixin clan-search-component-theme($theme) {
+//   $bg: map-get($theme, background);
+//   // $fg: map-get($theme, foreground);
+//   // $color: map-get($theme, primary);
+//   // $primary: mat-color($theme, primary);
+//   $accent: map-get($theme, accent);
+//   // $primary: map-get($theme, '900-contrast');
+//   .search-page {
+//     //   //background: $background;
+//     //   color: $fg;
+//     //    color: mat-color($fg, text);
+//     background: mat-color($bg, background);
+//   }
+// }

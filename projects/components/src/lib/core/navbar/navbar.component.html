@@ -1,6 +1,9 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row *ngIf="clanDetails">
-        <span>{{clanDetails.name}}</span>
-    </mat-toolbar-row>
-</mat-toolbar>
+  <mat-toolbar-row *ngIf="clanDetails">
+    <span class="clan-name">  {{clanDetails.name}}</span>
+    <mat-icon>
+      settings
+    </mat-icon>
 
+  </mat-toolbar-row>
+</mat-toolbar>

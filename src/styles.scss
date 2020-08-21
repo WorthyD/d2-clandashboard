@@ -5,6 +5,7 @@
 @import './theme/dark-theme.scss';
 
 @import './app/clan-search/clan-search.component.scss-theme.scss';
+@import './app/app.component.scss-theme.scss';
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -32,7 +33,8 @@
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @mixin custom-components-theme($theme) {
-  @include clan-search-component-theme($theme);
+  @include app-component-theme($theme);
+  //@include clan-search-component-theme($theme);
 }
 
 .light-theme {
@@ -40,10 +42,10 @@
   @include custom-components-theme($destiny-dashboard-theme);
 }
 
-// .dark-theme {
-//   @include angular-material-theme($destiny-dark-theme);
-//   @include custom-components-theme($destiny-dark-theme);
-// }
+.dark-theme {
+  @include angular-material-theme($destiny-dark-theme);
+  @include custom-components-theme($destiny-dark-theme);
+}
 
 /* You can add global styles to this file, and also import other style files */
 * {
