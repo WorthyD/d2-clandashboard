@@ -77,4 +77,7 @@ export class ClanComponent implements OnInit, OnDestroy {
       this.router.navigate(['/']);
     });
   }
+  changeTheme(event) {
+    console.log(event);
+  }
 }

@@ -4,7 +4,7 @@
     </mat-toolbar-row>
 </mat-toolbar> -->
 <div class="main-container">
-  <lib-navbar [clanDetails]="clanDetails$ | async"></lib-navbar>
+  <lib-navbar [clanDetails]="clanDetails$ | async" (selectThemeOutput)="changeTheme($event)"></lib-navbar>
   <mat-sidenav-container>
     <mat-sidenav mode="side" opened>
       <mat-nav-list class="clan-nav">

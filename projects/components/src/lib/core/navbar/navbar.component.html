@@ -3,9 +3,15 @@
     <div class="clan-name">
       <span *ngIf="clanDetails"> {{clanDetails.name}}</span>
     </div>
-    <mat-icon>
-      settings
-    </mat-icon>
-
+    <button mat-icon-button [matMenuTriggerFor]="themePicker">
+      <mat-icon>
+        colorize
+      </mat-icon>
+    </button>
+    <mat-menu #themePicker="matMenu">
+      <button mat-menu-item *ngFor="let theme of themes" (click)="themeSelect(theme.value)">
+        <span>{{theme.name}}</span>
+      </button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
