@@ -4,7 +4,9 @@
     </mat-toolbar-row>
 </mat-toolbar> -->
 <div class="main-container">
-  <lib-navbar [clanDetails]="clanDetails$ | async" (selectThemeOutput)="changeTheme($event)"></lib-navbar>
+  <lib-navbar [clanDetails]="clanDetails$ | async" [versionNumber]="versionNumber"
+    (selectThemeOutput)="changeTheme($event)" (openLink)="openLink($event)" (openAbout)="openAbout()"
+    (resetDatabase)="resetDatabase()"></lib-navbar>
   <mat-sidenav-container>
     <mat-sidenav mode="side" opened>
       <mat-nav-list class="clan-nav">
@@ -15,7 +17,7 @@
           <a mat-list-item routerLink="raids" routerLinkActive="active"> Raids </a>
           <a mat-list-item routerLink="/">Home</a>
         </div>
-        <a mat-list-item [matMenuTriggerFor]="appMenu">
+        <!-- <a mat-list-item [matMenuTriggerFor]="appMenu">
           <mat-icon>
             settings
           </mat-icon>
@@ -64,7 +66,7 @@
               v {{versionNumber}}
             </span>
           </button>
-        </mat-menu>
+        </mat-menu> -->
       </mat-nav-list>
 
     </mat-sidenav>

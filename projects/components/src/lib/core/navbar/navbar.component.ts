@@ -10,8 +10,14 @@ import { ClanDetails } from 'bungie-models';
 export class NavbarComponent implements OnInit {
   @Input()
   clanDetails: ClanDetails;
+  @Input()
+  versionNumber: string;
+
 
   @Output() selectThemeOutput = new EventEmitter<String>();
+  @Output() openLink = new EventEmitter<string>();
+  @Output() openAbout = new EventEmitter<string>();
+  @Output() resetDatabase = new EventEmitter<string>();
 
   themes = [
     { name: 'Light', value: 'light-theme' },

@@ -31,7 +31,6 @@ export class LocalStorageService {
           currentStateRef = currentStateRef[key];
         });
       }
-      console.log('state', state);
       return state;
     }, {});
   }
