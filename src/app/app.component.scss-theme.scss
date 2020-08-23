@@ -3,14 +3,7 @@
 @mixin app-component-theme($theme) {
   $bg: map-get($theme, background);
   $fg: map-get($theme, foreground);
-  // $color: map-get($theme, primary);
-  // $primary: mat-color($theme, primary);
-  //k$accent: map-get($theme, accent);
-  // $primary: map-get($theme, '900-contrast');
   .content-wrapper {
-    //   //background: $background;
-    //   color: $fg;
-    //    color: mat-color($fg, text);
     background: mat-color($bg, background);
     color: mat-color($fg, text);
   }
