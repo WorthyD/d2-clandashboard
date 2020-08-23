@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { reducers, metaReducers } from './root-store.state';
 import { CustomSerializer } from './router/custom-route-serializer';
+import { SettingsEffects } from './settings/settings.effects';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { CustomSerializer } from './router/custom-route-serializer';
     // StoreModule.forRoot({
     //   router: routerReducer,
     // }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([SettingsEffects]),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot({
       serializer: CustomSerializer

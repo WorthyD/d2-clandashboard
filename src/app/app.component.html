@@ -1,4 +1,4 @@
-<div class="dark-theme">
+<div [class]="(theme$ | async)">
   <div class="content-wrapper">
     <router-outlet></router-outlet>
   </div>

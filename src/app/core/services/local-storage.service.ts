@@ -13,16 +13,12 @@ export class LocalStorageService {
       if (storageKey.includes(APP_PREFIX)) {
         const stateKeys = storageKey
           .replace(APP_PREFIX, '')
-        //  .toLowerCase()
+          .toLowerCase()
           .split('.')
-          .map(key =>
+          .map((key) =>
             key
               .split('-')
-              .map((token, index) =>
-                index === 0
-                  ? token
-                  : token.charAt(0).toUpperCase() + token.slice(1)
-              )
+              .map((token, index) => (index === 0 ? token : token.charAt(0).toUpperCase() + token.slice(1)))
               .join('')
           );
         let currentStateRef = state;
@@ -35,6 +31,7 @@ export class LocalStorageService {
           currentStateRef = currentStateRef[key];
         });
       }
+      console.log('state', state);
       return state;
     }, {});
   }
