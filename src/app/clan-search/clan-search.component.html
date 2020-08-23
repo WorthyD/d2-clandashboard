@@ -1,45 +1,47 @@
-<div class="header">
-  <h1>
-    Destiny 2 Clan Dashboard
-  </h1>
-  <h2>View your clan's health quickly and easily.</h2>
-  <p>
-    Pardon the dust. This app is still in a very Alpha stage. Peak around knowing there will be bugs. <a
-      href="https://twitter.com/worthyd">Send me your feedback</a>
-  </p>
-</div>
-<div class="clan-search">
-  <h2>Clan Search <i class="material-icons"
-      matTooltip="Search by Clan Name, Clan Id, or Clan URL. Clan Name must search for full clan name. Bungie doesn't support a 'fuzzy' search.">
-      help
-    </i></h2>
-  <mat-form-field appearance="outline" class="search">
-    <input matInput autofocus #clanInput (keyup.Enter)="open(clanInput.value)" [matAutocomplete]="auto"
-      [formControl]="autocompleteControl" placeholder="Search by name, Clan Id, or Bungie Clan URL">
-    <!-- <i matSuffix class="material-icons">mode_edit</i> -->
-    <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="true"
-      (optionSelected)="autocompleteSelected($event)">
-      <ng-container *ngIf="(autocompleteResult$ | async) as clans">
-        <mat-option disabled class="loading" *ngIf="loading">
+<div class="search-page">
+  <div class="header">
+    <h1>
+      Destiny 2 Clan Dashboard
+    </h1>
+    <h2>View your clan's health quickly and easily.</h2>
+    <p>
+      Pardon the dust. This app is still in a very Alpha stage. Peak around knowing there will be bugs. <a
+        href="https://twitter.com/worthyd">Send me your feedback</a>
+    </p>
+  </div>
+  <div class="clan-search">
+    <h2>Clan Search <i class="material-icons"
+        matTooltip="Search by Clan Name, Clan Id, or Clan URL. Clan Name must search for full clan name. Bungie doesn't support a 'fuzzy' search.">
+        help
+      </i></h2>
+    <mat-form-field appearance="outline" class="search">
+      <input matInput autofocus #clanInput (keyup.Enter)="open(clanInput.value)" [matAutocomplete]="auto"
+        [formControl]="autocompleteControl" placeholder="Search by name, Clan Id, or Bungie Clan URL">
+      <!-- <i matSuffix class="material-icons">mode_edit</i> -->
+      <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="true"
+        (optionSelected)="autocompleteSelected($event)">
+        <ng-container *ngIf="(autocompleteResult$ | async) as clans">
+          <mat-option disabled class="loading" *ngIf="loading">
 
-          <lib-loading matSuffix diameter='35'></lib-loading>
-        </mat-option>
-        <mat-option *ngFor="let clan of clans" [value]="clan">
-          {{clan.name}}
-        </mat-option>
-        <mat-option disabled *ngIf="clans.length === 0 && !loading">
-          Clan Not Found
-        </mat-option>
-      </ng-container>
-    </mat-autocomplete>
-  </mat-form-field>
-  <div>
-    <app-saved-clans></app-saved-clans>
+            <lib-loading matSuffix diameter='35'></lib-loading>
+          </mat-option>
+          <mat-option *ngFor="let clan of clans" [value]="clan">
+            {{clan.name}}
+          </mat-option>
+          <mat-option disabled *ngIf="clans.length === 0 && !loading">
+            Clan Not Found
+          </mat-option>
+        </ng-container>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div>
+      <app-saved-clans></app-saved-clans>
+    </div>
+    <div>
+      <app-featured-clans></app-featured-clans>
+    </div>
   </div>
-  <div>
-    <app-featured-clans></app-featured-clans>
+  <div class="footer">
+    <app-footer></app-footer>
   </div>
-</div>
-<div class="footer">
-  <app-footer></app-footer>
 </div>

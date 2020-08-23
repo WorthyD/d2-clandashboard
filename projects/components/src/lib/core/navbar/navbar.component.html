@@ -1,6 +1,64 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row *ngIf="clanDetails">
-        <span>{{clanDetails.name}}</span>
-    </mat-toolbar-row>
-</mat-toolbar>
+  <mat-toolbar-row>
+    <div class="clan-name">
+      <span *ngIf="clanDetails"> {{clanDetails.name}}</span>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="themePicker">
+      <mat-icon>
+        colorize
+      </mat-icon>
+    </button>
 
+    <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
+      <mat-icon>
+        settings
+      </mat-icon>
+    </button>
+    <mat-menu #themePicker="matMenu">
+      <button mat-menu-item *ngFor="let theme of themes" (click)="themeSelect(theme.value)">
+        <span>{{theme.name}}</span>
+      </button>
+    </mat-menu>
+    <mat-menu #settingsMenu="matMenu">
+      <button mat-menu-item (click)="openLink.emit('https://github.com/WorthyD/d2-clandashboard/issues')">
+        <mat-icon>
+          bug_report
+        </mat-icon>
+        <span> Report a Bug</span>
+      </button>
+      <button mat-menu-item (click)="openLink.emit('https://github.com/WorthyD/d2-clandashboard')">
+        <mat-icon>
+          code
+        </mat-icon>
+        <span> Source Code</span>
+      </button>
+      <button mat-menu-item (click)="openLink.emit('https://twitter.com/worthyd')">
+        <mat-icon>
+          keyboard
+        </mat-icon>
+        <span> Developer</span>
+      </button>
+      <button mat-menu-item (click)="openAbout.emit()">
+        <mat-icon>
+          help
+        </mat-icon>
+        <span> About App</span>
+      </button>
+      <button mat-menu-item (click)="resetDatabase.emit()">
+        <mat-icon>
+          delete
+        </mat-icon>
+        <span> Reset Data</span>
+      </button>
+
+      <button mat-menu-item>
+        <mat-icon>
+          info
+        </mat-icon>
+        <span>
+          v {{versionNumber}}
+        </span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

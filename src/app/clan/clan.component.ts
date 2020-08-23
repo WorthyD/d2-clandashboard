@@ -15,7 +15,7 @@ import * as clanRewardActions from './store/clan-rewards/clan-rewards.actions';
 import * as memberProfileActions from './store/member-profiles/member-profiles.actions';
 
 import * as routerStore from '../root-store/router/router.selectors';
-import {} from 'bungie-models';
+import { actionSettingsChangeTheme } from '../root-store/settings/settings.actions';
 
 // import { Clan } from 'bungie-parse';
 import { Store, select } from '@ngrx/store';
@@ -76,5 +76,8 @@ export class ClanComponent implements OnInit, OnDestroy {
       this.db.deleteDatabase(x);
       this.router.navigate(['/']);
     });
+  }
+  changeTheme(event) {
+    this.store.dispatch(actionSettingsChangeTheme({ theme: event }));
   }
 }
