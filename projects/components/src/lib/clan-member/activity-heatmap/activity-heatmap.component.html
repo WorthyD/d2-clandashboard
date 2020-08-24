@@ -1,0 +1,14 @@
+<ng-container *ngIf="!isLoading; else loading">
+  <ng-container *ngIf="events">
+    kk
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+
+  <div class="text-center m-5">
+    <h2>
+      Loading Activities...
+    </h2>
+    <lib-loading></lib-loading>
+  </div>
+</ng-template>
