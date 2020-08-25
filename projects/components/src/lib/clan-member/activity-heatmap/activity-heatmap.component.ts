@@ -64,11 +64,15 @@ export class ActivityHeatmapComponent implements OnInit {
       ]);
 
     //    console.log('svg', d3.select(this.hostElement).select('svg'));
+    const thisYear = new Date().getFullYear() +1;
+    const lastYear = thisYear - 2;
+    console.log(thisYear);
+    console.log(d3.range(lastYear, thisYear));
 
     const svg = d3
       .select(this.hostElement)
       .selectAll('svg')
-      .data(d3.range(1, 2))
+      .data(d3.range(lastYear, thisYear))
       .enter()
       .append('svg')
       .attr('width', width)
@@ -76,15 +80,72 @@ export class ActivityHeatmapComponent implements OnInit {
       .append('g')
       .attr('transform', 'translate(' + (width - cellSize * 53) / 2 + ',' + (height - cellSize * 7 - 1) + ')');
 
-    svg
-      .append('text')
-      .attr('transform', 'translate(-6,' + cellSize * 3.5 + ')rotate(-90)')
-      .attr('font-family', 'sans-serif')
-      .attr('font-size', 10)
-      .attr('text-anchor', 'middle')
-      .text(function (d) {
-        return d;
-      });
+      // var svg = d3
+      // .select(this.hostElement)
+      // .selectAll('svg')
+      // .data(d3.range(2011, 2015))
+      // .enter()
+      // .append('svg')
+      // .attr('width', '100%')
+      // .attr('data-height', '0.5678')
+      // .attr('viewBox', '0 0 900 105')
+      // .attr('class', 'RdYlGn')
+      // .append('g')
+      // .attr(
+      //   'transform',
+      //   'translate(' +
+      //     (width - cellSize * 53) / 2 +
+      //     ',' +
+      //     (height - cellSize * 7 - 1) +
+      //     ')'
+      // );
+
+
+
+    // Left Legend
+    // svg
+    //   .append('text')
+    //   .attr('transform', 'translate(-6,' + cellSize * 3.5 + ')rotate(-90)')
+    //   .attr('font-family', 'sans-serif')
+    //   .attr('font-size', 10)
+    //   .attr('text-anchor', 'middle')
+    //   .text(function (d) {
+    //     return d;
+    //   });
+
+    // const week_days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    // const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    // var legend = svg
+    //   .selectAll('.legend')
+    //   .data(month)
+    //   .enter()
+    //   .append('g')
+    //   .attr('class', 'legend')
+    //   .attr('transform', function (d, i) {
+    //     return 'translate(' + ((i + 1) * 50 + 8) + ',0)';
+    //   });
+
+    // legend
+    //   .append('text')
+    //   .attr('class', function (d, i) {
+    //     return month[i];
+    //   })
+    //   .style('text-anchor', 'end')
+    //   .attr('dy', '-.25em')
+    //   .text(function (d, i) {
+    //     return month[i];
+    //   });
+
+    // for (var i = 0; i < 7; i++) {
+    //   svg
+    //     .append('text')
+    //     .attr('transform', 'translate(-5,' + cellSize * (i + 1) + ')')
+    //     .style('text-anchor', 'end')
+    //     .attr('dy', '-.25em')
+    //     .text(function (d) {
+    //       return week_days[i];
+    //     });
+    // }
 
     const endDate = new Date();
     const startDate = moment().add(-365, 'days');
@@ -112,44 +173,50 @@ export class ActivityHeatmapComponent implements OnInit {
         return d;
       })
       .datum(d3.timeFormat('%Y-%m-%d'));
+    // rect.on('click', mouseover);
+    // rect.on('mouseover', mouseover);
+    // function mouseover(d) {
+    //   console.log(d);
+    // }
 
-    svg
-      .append('g')
-      .attr('fill', 'none')
-      .attr('stroke', '#000')
-      .selectAll('path')
-      .data(function (d) {
-        return d3.timeMonths(new Date(d, 0, 1), new Date(d + 1, 0, 1));
-      })
-      .enter()
-      .append('path')
-      .attr('d', pathMonth);
+    //////// Month bariers
+    // svg
+    //   .append('g')
+    //   .attr('fill', 'none')
+    //   .attr('stroke', '#000')
+    //   .selectAll('path')
+    //   .data(function (d) {
+    //     return d3.timeMonths(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+    //   })
+    //   .enter()
+    //   .append('path')
+    //   .attr('d', pathMonth);
 
     // d3.csv('dji.csv', function (error, csv) {
     //   if (error) throw error;
 
-      const data = d3
-        .nest()
-        .key(function (d) {
-          return d.date;
-        })
-        .rollup(function (d) {
-          return d[0].count;
-        })
-        .object(this.sourceData);
+    const data = d3
+      .nest()
+      .key(function (d) {
+        return d.date;
+      })
+      .rollup(function (d) {
+        return d[0].count;
+      })
+      .object(this.sourceData);
 
-      rect
-        .filter(function (d) {
-          return d in data;
-        })
-        .attr('fill', function (d) {
-          return color(data[d]);
-        })
-        .append('title')
-        .text(function (d) {
-          return d + ': ' + formatPercent(data[d]);
-        });
-   // });
+    rect
+      .filter(function (d) {
+        return d in data;
+      })
+      .attr('fill', function (d) {
+        return color(data[d]);
+      })
+      .append('title')
+      .text(function (d) {
+        return d + ': ' + formatPercent(data[d]);
+      });
+    // });
 
     function pathMonth(t0) {
       var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
@@ -178,6 +245,10 @@ export class ActivityHeatmapComponent implements OnInit {
         (w0 + 1) * cellSize +
         'Z'
       );
+    }
+
+    function click(date) {
+      console.log('click');
     }
   }
 }
