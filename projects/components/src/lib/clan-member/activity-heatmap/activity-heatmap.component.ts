@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { SVGGraph, CanvasGraph, StrGraph } from 'calendar-graph';
 import * as d3 from 'd3';
 
@@ -15,9 +15,15 @@ export class ActivityHeatmapComponent implements OnInit {
   @Input()
   isLoading: boolean = true;
 
-  constructor() {}
+  hostElement; // Native element hosting the SVG container
+  constructor(private elRef: ElementRef) {
+    this.hostElement = this.elRef.nativeElement;
+    console.log(this.hostElement);
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.renderChart();
+  }
 
   renderChart() {
     //https://bl.ocks.org/mbostock/4063318/3997ed47bdfc5ef196001aa6f9677f9b5001851c
@@ -44,12 +50,14 @@ export class ActivityHeatmapComponent implements OnInit {
         '#006837'
       ]);
 
+    console.log('svg', d3.select(this.hostElement).select('svg'));
+
     const svg = d3
-      .select('body')
+      .select(this.hostElement)
       .selectAll('svg')
       .data(d3.range(1990, 2011))
-      .enter()
-      .append('svg')
+     .enter()
+     .append('svg')
       .attr('width', width)
       .attr('height', height)
       .append('g')
