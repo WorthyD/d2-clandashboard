@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { SVGGraph, CanvasGraph, StrGraph } from 'calendar-graph';
 import * as d3 from 'd3';
+import * as moment from 'moment';
 
 @Component({
   selector: 'lib-activity-heatmap',
@@ -14,6 +15,18 @@ export class ActivityHeatmapComponent implements OnInit {
 
   @Input()
   isLoading: boolean = true;
+  maxCount = 100;
+
+  sourceData = [
+    {
+      date: '2020-02-02',
+      count: 40
+    },
+    {
+      date: '2020-02-03',
+      count: 50
+    }
+  ];
 
   hostElement; // Native element hosting the SVG container
   constructor(private elRef: ElementRef) {
@@ -35,7 +48,7 @@ export class ActivityHeatmapComponent implements OnInit {
 
     const color = d3
       .scaleQuantize()
-      .domain([-0.05, 0.05])
+      .domain([0, 100])
       .range([
         '#a50026',
         '#d73027',
@@ -50,14 +63,14 @@ export class ActivityHeatmapComponent implements OnInit {
         '#006837'
       ]);
 
-    console.log('svg', d3.select(this.hostElement).select('svg'));
+    //    console.log('svg', d3.select(this.hostElement).select('svg'));
 
     const svg = d3
       .select(this.hostElement)
       .selectAll('svg')
-      .data(d3.range(1990, 2011))
-     .enter()
-     .append('svg')
+      .data(d3.range(1, 2))
+      .enter()
+      .append('svg')
       .attr('width', width)
       .attr('height', height)
       .append('g')
@@ -73,23 +86,30 @@ export class ActivityHeatmapComponent implements OnInit {
         return d;
       });
 
+    const endDate = new Date();
+    const startDate = moment().add(-365, 'days');
+
     const rect = svg
       .append('g')
       .attr('fill', 'none')
       .attr('stroke', '#ccc')
       .selectAll('rect')
       .data(function (d) {
-        return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+        return d3.timeDays(startDate, endDate);
       })
       .enter()
       .append('rect')
       .attr('width', cellSize)
       .attr('height', cellSize)
       .attr('x', function (d) {
+        // console.log('x', d);
         return d3.timeWeek.count(d3.timeYear(d), d) * cellSize;
       })
       .attr('y', function (d) {
         return d.getDay() * cellSize;
+      })
+      .attr('title', function (d) {
+        return d;
       })
       .datum(d3.timeFormat('%Y-%m-%d'));
 
@@ -105,18 +125,18 @@ export class ActivityHeatmapComponent implements OnInit {
       .append('path')
       .attr('d', pathMonth);
 
-    d3.csv('dji.csv', function (error, csv) {
-      if (error) throw error;
+    // d3.csv('dji.csv', function (error, csv) {
+    //   if (error) throw error;
 
-      var data = d3
+      const data = d3
         .nest()
         .key(function (d) {
-          return d.Date;
+          return d.date;
         })
         .rollup(function (d) {
-          return (d[0].Close - d[0].Open) / d[0].Open;
+          return d[0].count;
         })
-        .object(csv);
+        .object(this.sourceData);
 
       rect
         .filter(function (d) {
@@ -129,7 +149,7 @@ export class ActivityHeatmapComponent implements OnInit {
         .text(function (d) {
           return d + ': ' + formatPercent(data[d]);
         });
-    });
+   // });
 
     function pathMonth(t0) {
       var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
