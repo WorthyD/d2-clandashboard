@@ -228,7 +228,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
           return d.date;
         })
         .rollup(function (d) {
-          return Math.sqrt(d[0].count / 100);
+          return Math.sqrt(d[0].seconds / 43400);
         })
         .object(sourceData);
     }

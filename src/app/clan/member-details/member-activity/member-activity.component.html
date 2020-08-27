@@ -1,1 +1,4 @@
+<textarea>
+  {{(memberActivityService.playerActivities$ | async) | json}}
+</textarea>
 <lib-activity-grid [activityItems]="memberActivityService.activityDetails$| async"></lib-activity-grid>
