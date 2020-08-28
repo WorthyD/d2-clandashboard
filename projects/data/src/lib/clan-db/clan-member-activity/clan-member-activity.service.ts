@@ -86,3 +86,30 @@ export class ClanMemberActivityService extends BaseClanService {
     );
   }
 }
+// const { defer, from, concat, EMPTY, timer } = rxjs; // = require("rxjs")
+// const { mergeMap, take, mapTo, tap } = rxjs.operators; // = require("rxjs/operators")
+
+// // simulate network request
+// function fetchPage(page=0) {
+//   return timer(100).pipe(
+//     tap(() => console.log(`-> fetched page ${page}`)),
+//     mapTo({
+//       items: Array.from({ length: 10 }).map((_, i) => page * 10 + i),
+//       nextPage: page + 1,
+//     })
+//   );
+// }
+
+// const getItems = page => defer(() => fetchPage(page)).pipe(
+//   mergeMap(({ items, nextPage }) => {
+//     const items$ = from(items);
+//     const next$ = nextPage ? getItems(nextPage) : EMPTY;
+//     return concat(items$, next$);
+//   })
+// );
+
+// // process only first 30 items, without fetching all of the data
+// getItems()
+//  .pipe(take(30))
+//  .subscribe(e => console.log(e));
+// <script src="htt
