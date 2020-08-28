@@ -36,7 +36,8 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
 
   week_days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  color = d3.scaleLinear().range(['white', '#002b53']).domain([0, 1]);
+  //color = d3.scaleLinear().range(['#dae289', '#3b6427']).domain([0, 1]);
+  color = d3.scaleLinear().range(['#00ff00', '#ffff00', '#ff0000']).domain([0, 1]);
   emptyFill = '#fff';
   labelFontSize = '10px';
 
@@ -228,7 +229,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
           return d.date;
         })
         .rollup(function (d) {
-          return Math.sqrt(d[0].seconds / 43400);
+          return Math.sqrt(d[0].seconds / 86400);
         })
         .object(sourceData);
     }
