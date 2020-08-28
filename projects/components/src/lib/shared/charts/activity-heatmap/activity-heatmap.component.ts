@@ -24,6 +24,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
   svg;
   rect;
   legend;
+  tooltip;
   width = 900;
   height = 105;
   cellSize = 12;
@@ -76,6 +77,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
     this.addDayLabels();
     this.addDayRectangles();
     this.addLegend();
+    this.addToolTip();
     this.addMonthLabels();
     this.addMonthBoundaries();
 
@@ -160,6 +162,13 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       .attr('transform', (d, i) => {
         return 'translate(' + ((i + 1) * 50 + 8) + ',0)';
       });
+  }
+  private addToolTip() {
+    console.log('tool');
+    console.log('svg', this.svg);
+
+    this.tooltip = d3.select(this.hostElement).append('div').attr('class', 'tooltip');
+    console.log(this.tooltip);
   }
   private addMonthLabels() {
     this.legend
