@@ -164,11 +164,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       });
   }
   private addToolTip() {
-    console.log('tool');
-    console.log('svg', this.svg);
-
     this.tooltip = d3.select(this.hostElement).append('div').attr('class', 'tooltip');
-    console.log(this.tooltip);
   }
   private addMonthLabels() {
     this.legend
@@ -238,7 +234,8 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
           return d.date;
         })
         .rollup(function (d) {
-          return Math.sqrt(d[0].seconds / 86400);
+          const seconds = d[0].seconds;
+          return { seconds, time: Math.sqrt(d[0].seconds / 86400) };
         })
         .object(sourceData);
     }
@@ -262,10 +259,33 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
         })
         .transition()
         .duration(this.transitionDuration)
-        .attr('fill', (d) => this.color(this.data[d]))
-        .attr('title', (d) => {
-          return 'value : ' + this.data[d];
+        .attr('fill', (d) => this.color(this.data[d].time));
+
+      //Reset tool tips
+      this.rect.on('mouseover', null);
+
+      this.rect
+        .filter((d) => {
+          return d in this.data;
+        })
+        .on('mouseover', (d) => {
+          console.log(d);
         });
+
+      //   .append('svg:title', (d) => {
+      //     return 'value : ' + this.data[d];
+      //   });
+      //this.rect.on('mouseover', (d) => {
+      // console.log(this.data[d]);
+      // div.transition().duration(200).style('opacity', 0.9);
+      // div
+      //   .html(formatTime(d.date) + '<br/>' + d.close)
+      //   .style('left', d3.event.pageX + 'px')
+      //   .style('top', d3.event.pageY - 28 + 'px');
+      // });
+      //.on('mouseout', function (d) {
+      //div.transition().duration(500).style('opacity', 0);
+      //});
     }
     // rect.on('click', click);
     // rect.on('mouseover', mouseover);
