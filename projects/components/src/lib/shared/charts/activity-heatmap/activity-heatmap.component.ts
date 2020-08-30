@@ -57,7 +57,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
+    console.log('changes HM', changes);
     if (changes.events) {
       this.updateChart(changes.events.currentValue);
     }
@@ -271,14 +271,15 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       activeCells
         .on('mouseover', (d) => {
           const data = this.data[d];
-          console.log(this.data[d]);
+          //console.log(this.data[d]);
           this.tooltip.style('opacity', 0.9);
           this.tooltip.html(
             `Date: ${moment(d).format('M-D-YYYY')}<br/> Time:  ${this.formatActivityDuration(data.seconds)}`
           );
-          //this.tooltip.style('left', d3.event.pageX + 'px').style('top', d3.event.pageY - 28 + 'px');
         })
         .on('mousemove', () => {
+          //.style("left", (d3.mouse(this)[0]+70) + "px")
+          //.style("top", (d3.mouse(this)[1]) + "px")
           this.tooltip.style('left', d3.event.pageX + 'px').style('top', d3.event.pageY - 40 + 'px');
         })
         .on('mouseout', (d) => {

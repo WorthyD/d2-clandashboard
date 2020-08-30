@@ -14,6 +14,6 @@ export const MemberActivityStatAdapter: EntityAdapter<MemberActivityStats> = cre
 });
 
 export const MemberActivityStatInitialState: MemberActivityStatState = MemberActivityStatAdapter.getInitialState({
-    loaded: false,
+    loaded: true,
     loading: false
 });

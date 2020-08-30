@@ -1,4 +1,9 @@
-<textarea>
+<!-- <textarea>
   {{(memberActivityService.playerActivities$ | async) | json}}
-</textarea>
-<lib-activity-grid [activityItems]="memberActivityService.activityDetails$| async"></lib-activity-grid>
+</textarea> -->
+<div>
+  <lib-member-activity-heat-map [events]="memberActivityService.playerActivities$ | async"
+    [isLoading]="memberActivityService.playerActivitiesLoading$ | async"></lib-member-activity-heat-map>
+</div>
+
+<!-- <lib-activity-grid [activityItems]="memberActivityService.activityDetails$| async"></lib-activity-grid> -->

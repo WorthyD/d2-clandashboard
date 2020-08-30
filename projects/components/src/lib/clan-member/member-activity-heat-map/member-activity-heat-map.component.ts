@@ -17,13 +17,13 @@ export class MemberActivityHeatMapComponent implements OnInit, OnChanges {
 
   constructor() {}
   cellSelect(cellDate) {
-    console.log(cellDate);
+    //console.log(cellDate);
   }
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.events) {
-      console.log(changes.events);
+      console.log('changes', changes.events);
       this.processData(changes.events.currentValue);
     }
   }
