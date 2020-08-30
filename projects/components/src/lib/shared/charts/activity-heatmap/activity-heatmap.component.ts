@@ -7,17 +7,19 @@ import {
   ElementRef,
   SimpleChanges,
   OnChanges,
-  EventEmitter
+  EventEmitter,
+  ViewEncapsulation
 } from '@angular/core';
 //import { SVGGraph, CanvasGraph, StrGraph } from 'calendar-graph';
 import * as d3 from 'd3';
-//import * as moment from 'moment';
+import * as moment from 'moment';
 
 @Component({
   selector: 'lib-activity-heatmap',
   templateUrl: './activity-heatmap.component.html',
   styleUrls: ['./activity-heatmap.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class ActivityHeatmapComponent implements OnInit, OnChanges {
   hostElement;
@@ -164,7 +166,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       });
   }
   private addToolTip() {
-    this.tooltip = d3.select(this.hostElement).append('div').attr('class', 'tooltip');
+    this.tooltip = d3.select(this.hostElement).append('div').attr('class', 'heatmap-tooltip');
   }
   private addMonthLabels() {
     this.legend
@@ -235,7 +237,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
         })
         .rollup(function (d) {
           const seconds = d[0].seconds;
-          return { seconds, time: Math.sqrt(d[0].seconds / 86400) };
+          return { seconds, value: Math.sqrt(d[0].seconds / 86400) };
         })
         .object(sourceData);
     }
@@ -253,23 +255,34 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
   }
   private createHeatMapActiveCells() {
     if (this.data) {
-      this.rect
-        .filter((d) => {
-          return d in this.data;
-        })
+      const activeCells = this.rect.filter((d) => {
+        return d in this.data;
+      });
+
+      activeCells
         .transition()
         .duration(this.transitionDuration)
-        .attr('fill', (d) => this.color(this.data[d].time));
+        .attr('class', 'day active')
+        .attr('fill', (d) => this.color(this.data[d].value));
 
       //Reset tool tips
-      this.rect.on('mouseover', null);
+      this.rect.attr('class', 'day').on('mouseover', null);
 
-      this.rect
-        .filter((d) => {
-          return d in this.data;
-        })
+      activeCells
         .on('mouseover', (d) => {
-          console.log(d);
+          const data = this.data[d];
+          console.log(this.data[d]);
+          this.tooltip.style('opacity', 0.9);
+          this.tooltip.html(
+            `Date: ${moment(d).format('M-D-YYYY')}<br/> Time:  ${this.formatActivityDuration(data.seconds)}`
+          );
+          //this.tooltip.style('left', d3.event.pageX + 'px').style('top', d3.event.pageY - 28 + 'px');
+        })
+        .on('mousemove', () => {
+          this.tooltip.style('left', d3.event.pageX + 'px').style('top', d3.event.pageY - 40 + 'px');
+        })
+        .on('mouseout', (d) => {
+          this.tooltip.style('opacity', 0);
         });
 
       //   .append('svg:title', (d) => {
@@ -292,5 +305,8 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
     // function mouseover(d) {
     //   console.log(d);
     // }
+  }
+  private formatActivityDuration(seconds) {
+    return moment().startOf('day').seconds(seconds).format('H:mm:ss');
   }
 }
