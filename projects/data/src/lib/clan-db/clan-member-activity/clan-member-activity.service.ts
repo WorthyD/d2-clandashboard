@@ -12,7 +12,7 @@ import { StoreId } from '../app-indexed-db';
 
 @Injectable()
 export class ClanMemberActivityService extends BaseClanService {
-  private ACTIVITY_GET_COUNT = 100;
+  private ACTIVITY_GET_COUNT = 250;
   constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
     super(clanDB, StoreId.MemberActivities);
   }

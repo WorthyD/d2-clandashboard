@@ -11,12 +11,13 @@
   cursor: pointer;
 }
 .heatmap-tooltip {
-  position: absolute;
+  //position: absolute;
+  position: fixed;
   transition: opacity 0.2s;
   border: 0px;
   padding: 2px;
   border-radius: 8px;
   pointer-events: none;
   background: #fff;
-  font-size:.8em;
+  font-size: 0.8em;
 }
