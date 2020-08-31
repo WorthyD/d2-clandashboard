@@ -22,8 +22,7 @@ export class MemberActivityHeatMapComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.events) {
-      console.log('changes', changes.events);
+    if (changes.events && changes.events.currentValue) {
       this.processData(changes.events.currentValue);
     }
   }
@@ -32,7 +31,6 @@ export class MemberActivityHeatMapComponent implements OnInit, OnChanges {
     const raw = changes.map((x) => {
       return { date: moment(x.period).format('YYYY-MM-DD'), seconds: x.values.activityDurationSeconds.basic.value };
     });
-
 
     // Todo: Find better way to handle this.
     let holder = {};
@@ -50,9 +48,6 @@ export class MemberActivityHeatMapComponent implements OnInit, OnChanges {
     for (let prop in holder) {
       obj2.push({ date: prop, seconds: holder[prop] });
     }
-    console.log(obj2);
     this.formattedData = obj2;
-
-    console.log(this.formattedData);
   }
 }
