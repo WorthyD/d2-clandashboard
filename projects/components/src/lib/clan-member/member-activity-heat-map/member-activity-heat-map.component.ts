@@ -15,6 +15,9 @@ export class MemberActivityHeatMapComponent implements OnInit, OnChanges {
   @Input()
   isLoading: boolean = true;
 
+  @Output()
+  dateSelected = new EventEmitter<string>();
+
   constructor() {}
   cellSelect(cellDate) {
     //console.log(cellDate);
