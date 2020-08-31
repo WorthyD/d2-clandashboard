@@ -268,6 +268,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       //Reset tool tips
       this.rect.attr('class', 'day').on('mouseover', null);
 
+      const that = this;
       activeCells
         .on('mouseover', (d) => {
           const data = this.data[d];
@@ -277,10 +278,16 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
             `Date: ${moment(d).format('M-D-YYYY')}<br/> Time:  ${this.formatActivityDuration(data.seconds)}`
           );
         })
-        .on('mousemove', () => {
+        .on('mousemove', function()  {
+          //console.log();
           //.style("left", (d3.mouse(this)[0]+70) + "px")
           //.style("top", (d3.mouse(this)[1]) + "px")
-          this.tooltip.style('left', d3.event.pageX + 'px').style('top', d3.event.pageY - 40 + 'px');
+          //console.log(this);
+          console.log(d3.select(this).attr("cx"));
+          console.log(d3.select(this).attr("cy"));
+
+          that.tooltip.style('left', d3.select(this).attr("cx") + 'px').style('top', d3.select(this).attr("cy") - 40 + 'px');
+          //that.tooltip.style('left', (d3.mouse(this)[0]+70) + 'px').style('top', (d3.mouse(this)[1]) + 'px');
         })
         .on('mouseout', (d) => {
           this.tooltip.style('opacity', 0);
