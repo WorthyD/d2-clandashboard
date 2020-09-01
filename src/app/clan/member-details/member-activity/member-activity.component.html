@@ -9,4 +9,6 @@
 <!-- <textarea>
   {{(memberActivityService.activityDetails$ | async) | json}}
 </textarea> -->
-<lib-activity-grid [activityItems]="memberActivityService.activityDetails$| async"></lib-activity-grid>
+<div *ngIf="memberActivityService.activityDetails$| async as activityDetails">
+  <lib-activity-grid [activityItems]="activityDetails"></lib-activity-grid>
+</div>

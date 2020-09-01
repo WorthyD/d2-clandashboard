@@ -40,7 +40,8 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
   week_days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   //color = d3.scaleLinear().range(['#dae289', '#3b6427']).domain([0, 1]);
-  color = d3.scaleLinear().range(['#00ff00', '#ffff00', '#ff0000']).domain([0, 1]);
+  //color = d3.scaleLinear().range(['#00ff00', '#ffff00', '#ff0000']).domain([0, 1]);
+  color = d3.scaleLinear().range(['#00ff00', '#ff0000']).domain([0, 1]);
   emptyFill = '#fff';
   labelFontSize = '10px';
 
@@ -57,7 +58,6 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('changes HM', changes);
     if (changes.events) {
       this.updateChart(changes.events.currentValue);
     }
@@ -79,6 +79,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
     this.addDayLabels();
     this.addDayRectangles();
     this.addLegend();
+    this.addLegendScale();
     this.addToolTip();
     this.addMonthLabels();
     this.addMonthBoundaries();
@@ -102,6 +103,49 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
         'transform',
         'translate(' + (this.width - this.cellSize * 53) / 2 + ',' + (this.height - this.cellSize * 7 - 1) + ')'
       );
+  }
+
+  private addLegendScale() {
+    const legend = d3
+      .select(this.hostElement)
+      .append('svg')
+      .attr('width', '100%')
+      .attr('viewBox', '0 0 900 105')
+      //.attr('title', 'legend')
+      .append('g')
+      .attr(
+        'transform',
+        'translate(' + (this.width - this.cellSize * 53) / 2 + ',' + (this.height - this.cellSize * 7 - 1) + ')'
+      );
+    console.log(legend);
+    const categoriesCount = 12;
+
+    console.log(this.color(.99));
+    console.log(d3.interpolateBuGn(86400 / 86400));
+    const categories = [...Array(categoriesCount)].map((_, i) => {
+      const upperBound = (86400 / categoriesCount) * (i + 1);
+      const lowerBound = (86400 / categoriesCount) * i;
+      //console.log(d3.interpolateBuGn(upperBound / 86400));
+      console.log('upper ' + (upperBound / 86400))
+      console.log('lower ' + lowerBound)
+
+      return {
+        upperBound,
+        lowerBound,
+        color: this.color(upperBound / 86400),
+        selected: true
+      };
+    });
+    legend
+      .selectAll('rect')
+      .data(categories)
+      .enter()
+      .append('rect')
+      .attr('fill', (d) => d.color)
+      .attr('x', (d, i) => 60 * i)
+      .attr('width', 60)
+      .attr('height', 15);
+    //  .on('click', toggle);
   }
 
   private addYearLabels() {
@@ -291,7 +335,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
 
           //that.tooltip.style('left', d3.select(this).attr("cx") + 'px').style('top', d3.select(this).attr("cy") - 40 + 'px');
           //that.tooltip.style('left', d3.mouse(this)[0] + 70 + 'px').style('top', d3.mouse(this)[1] + 'px');
-          that.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY  + 'px');
+          that.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');
         })
         .on('mouseout', (d) => {
           this.tooltip.style('opacity', 0);
