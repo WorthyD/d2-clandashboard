@@ -3,7 +3,7 @@
 </textarea> -->
 <div>
   <lib-member-activity-heat-map [events]="memberActivityService.playerActivities$ | async"
-    [isLoading]="memberActivityService.playerActivitiesLoading$ | async"></lib-member-activity-heat-map>
+    [isLoading]="memberActivityService.playerActivitiesLoading$ | async" (dateSelected)="memberActivityService.loadDate($event)"></lib-member-activity-heat-map>
 </div>
 
 <!-- <lib-activity-grid [activityItems]="memberActivityService.activityDetails$| async"></lib-activity-grid> -->

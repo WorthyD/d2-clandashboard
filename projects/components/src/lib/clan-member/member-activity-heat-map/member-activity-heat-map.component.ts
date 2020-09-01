@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { MemberActivityStat } from 'bungie-models';
 import * as moment from 'moment';
 @Component({
@@ -21,6 +21,7 @@ export class MemberActivityHeatMapComponent implements OnInit, OnChanges {
   constructor() {}
   cellSelect(cellDate) {
     //console.log(cellDate);
+    this.dateSelected.emit(cellDate);
   }
   ngOnInit(): void {}
 

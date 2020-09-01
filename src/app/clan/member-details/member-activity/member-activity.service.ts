@@ -44,6 +44,10 @@ export class MemberActivityService {
       return [];
     }
   );
+  loadDate(event) {
+    console.log(event);
+  }
+
 }
 // TODO: Import from component libs
 function compare(a: number | string | Date, b: number | string | Date, isAsc: boolean) {
