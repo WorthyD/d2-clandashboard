@@ -19,7 +19,8 @@ interface DefinitionActivityModeModel {
 })
 export class ActivitiesService {
   definitionModeKey = 'activities';
-  definitions: BehaviorSubject<ActivityDefinition[]> = new BehaviorSubject([]);
+  //definitions: BehaviorSubject<ActivityDefinition[]> = new BehaviorSubject([]);
+  definitions: ActivityDefinition[];
 
   constructor() {
     //super(pStore);
@@ -27,10 +28,10 @@ export class ActivitiesService {
 
   initializeCache(defs: any) {
     //this.addDefinitionsToState({ id: this.definitionModeKey, definitions: defs });
-    this.definitions.next(defs);
+    this.definitions = defs;
   }
 
-  getDefinitions(): Observable<ActivityDefinition[]> {
+  getDefinitions(): ActivityDefinition[] {
     return this.definitions;
     // return this.getDefinitionsFromState(this.definitionModeKey);
   }

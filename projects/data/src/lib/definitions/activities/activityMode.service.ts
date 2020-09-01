@@ -21,18 +21,18 @@ interface DefinitionActivityModel {
 @Injectable({
   providedIn: 'root'
 })
-export class ActivityModeService  {
+export class ActivityModeService {
   definitionModeKey = 'activityModes';
 
-  definitions: BehaviorSubject<ActivityModeDefinition[]> = new BehaviorSubject([]);
-  constructor() {
-  }
+  definitions: ActivityModeDefinition[];
+
+  constructor() {}
 
   initializeCache(defs: any) {
-    this.definitions.next(defs);
+    this.definitions = defs;
   }
 
-  getDefinitions(): Observable<ActivityModeDefinition[]> {
+  getDefinitions(): ActivityModeDefinition[] {
     return this.definitions;
   }
 }
