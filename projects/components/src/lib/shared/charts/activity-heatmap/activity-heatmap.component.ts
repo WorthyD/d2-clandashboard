@@ -117,17 +117,15 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
         'transform',
         'translate(' + (this.width - this.cellSize * 53) / 2 + ',' + (this.height - this.cellSize * 7 - 1) + ')'
       );
-    console.log(legend);
     const categoriesCount = 12;
 
-    console.log(this.color(.99));
-    console.log(d3.interpolateBuGn(86400 / 86400));
+    const legendWidth = 50;
     const categories = [...Array(categoriesCount)].map((_, i) => {
       const upperBound = (86400 / categoriesCount) * (i + 1);
       const lowerBound = (86400 / categoriesCount) * i;
       //console.log(d3.interpolateBuGn(upperBound / 86400));
-      console.log('upper ' + (upperBound / 86400))
-      console.log('lower ' + lowerBound)
+      console.log('upper ' + upperBound / 86400);
+      console.log('lower ' + lowerBound);
 
       return {
         upperBound,
@@ -136,16 +134,46 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
         selected: true
       };
     });
+
     legend
       .selectAll('rect')
       .data(categories)
       .enter()
       .append('rect')
       .attr('fill', (d) => d.color)
-      .attr('x', (d, i) => 60 * i)
-      .attr('width', 60)
+      .attr('x', (d, i) => legendWidth * i)
+      .attr('width', legendWidth)
       .attr('height', 15);
     //  .on('click', toggle);
+
+    legend
+      .selectAll('text')
+      .data(categories)
+      .join('text')
+      //.attr('transform', 'rotate(90)')
+      //.attr('y', (d, i) => legendWidth * i)
+      //.attr('dy', -30)
+      .attr('x', (d, i) => legendWidth * i)
+      .attr('y', 30)
+      .attr('text-anchor', 'start')
+      .attr('font-size', 11)
+      .text((d) => `${d.lowerBound.toFixed(2) / 3600} - ${d.upperBound.toFixed(2) / 3600}`);
+
+    legend
+      .append('text')
+      .attr('dy', -5)
+      .attr('font-size', 14)
+      .text('Hours Played');
+    //   legend
+    //     .append('text')
+    //     .attr('class', 'mono')
+    //     .text(function (d) {
+    //       return '≥ ' + Math.round(d);
+    //     })
+    //     .attr('x', function (d, i) {
+    //       return 40 * i;
+    //     })
+    //     .attr('y', 8);
   }
 
   private addYearLabels() {
