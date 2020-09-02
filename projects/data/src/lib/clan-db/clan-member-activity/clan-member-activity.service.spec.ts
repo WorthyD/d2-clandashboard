@@ -9,7 +9,13 @@ import * as moment from 'moment';
 import * as _ from 'lodash';
 import { MemberProfile } from 'bungie-models';
 import { MOCK_WORTHY_PROFILE } from '../../testing-utils/objects/profiles.mock';
-import { MOCK_DB_ACTIVITIES, MOCK_RESP_ACTIVITIES } from '../../testing-utils/objects/member-activities.mock';
+import {
+  MOCK_DB_ACTIVITIES,
+  MOCK_RESP_ACTIVITIES,
+  MOCK_RESP_ACTIVITIES_PAGE1,
+  MOCK_RESP_ACTIVITIES_PAGE2,
+  MOCK_RESP_ACTIVITIES_PAGE3
+} from '../../testing-utils/objects/member-activities.mock';
 import { HttpErrorResponse } from '@angular/common/http';
 
 describe('ClanMemberActivityService', () => {
@@ -57,6 +63,54 @@ describe('ClanMemberActivityService', () => {
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(1);
         expect(updateSpy).toHaveBeenCalledTimes(1);
+      });
+    });
+    fit('should get all recent activity', () => {
+      // const mockDBItem = {
+      //   ...MOCK_DB_ACTIVITIES[0],
+      //   createDate: new Date(moment(new Date()).add(-10, 'days').valueOf())
+      // };
+      // const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
+      //   return of(mockDBItem);
+      // });
+
+      // const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
+        (charId, memberId, memberType, getCount, something, pageNumber) => {
+          console.log('mock response page', pageNumber);
+          switch (pageNumber) {
+            case 0:
+              return of({
+                Response: MOCK_RESP_ACTIVITIES_PAGE1
+              });
+            case 1:
+              return of({
+                Response: MOCK_RESP_ACTIVITIES_PAGE2
+              });
+            case 2:
+              return of({
+                Response: MOCK_RESP_ACTIVITIES_PAGE3
+              });
+
+            default:
+              return of({
+                Response: MOCK_RESP_ACTIVITIES
+              });
+              break;
+          }
+        }
+      );
+
+      const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
+      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      const defaultCharacterId = memberProfile.profile.data.characterIds[0];
+
+      service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
+        console.log('Expect', x);
+        //expect(dbGetSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(3);
+        //expect(updateSpy).toHaveBeenCalledTimes(1);
+        //expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES.activities.length);
       });
     });
 

@@ -31,18 +31,23 @@ export class ClanMemberActivityService extends BaseClanService {
     );
   }
 
-  private getAllRecentActivity(member: MemberProfile, characterId: number) {
-    const startYear = new Date().getFullYear() - 1;
+  getAllRecentActivity(member: MemberProfile, characterId: number) {
+    const startYear = new Date().getFullYear() - 2;
 
-    function fetchPage(page = 0) {
+    console.log('expiredYear', startYear);
+    //const that = this;
+    const fetchPage = (page = 0) => {
       return this.getMemberCharacterActivityFromAPI(member, characterId, page).pipe(
         //tap(() => console.log(`-> fetched page ${page}`)),
-        mapTo({
-          items: Array.from({ length: 10 }).map((_, i) => page * 10 + i),
-          nextPage: page + 1
+        map((x) => {
+          // console.log('x', x.Response.activities);
+          // console.log('has Expired year', this.activitiesContainExpiredYear(x.Response.activities, startYear));
+
+          const nextPage = this.activitiesContainExpiredYear(x?.Response?.activities, startYear) ? null : page + 1;
+          return { items: x?.Response?.activities, nextPage };
         })
       );
-    }
+    };
 
     const getItems = (page) =>
       defer(() => fetchPage(page)).pipe(
@@ -53,7 +58,20 @@ export class ClanMemberActivityService extends BaseClanService {
         })
       );
 
-    return getItems;
+    return getItems(0).pipe(
+      // map((x) => {
+      //   return x;
+      // }),
+      toArray()
+    );
+  }
+
+  private activitiesContainExpiredYear(activities, expiredYear) {
+    return !!activities.find((x) => {
+      const activityYear = new Date(x.period).getFullYear();
+      // console.log(`${activityYear} ${expiredYear}`, activityYear <= expiredYear);
+      return activityYear <= expiredYear;
+    });
   }
 
   private getMemberCharacterActivity(

@@ -149,21 +149,145 @@ export const MOCK_RESP_ACTIVITIES = {
     }
   ]
 };
+const mockValues = {
+  assists: { statId: 'assists', basic: { value: 7.0, displayValue: '7' } },
+  score: { statId: 'score', basic: { value: 0.0, displayValue: '0' } },
+  kills: { statId: 'kills', basic: { value: 294.0, displayValue: '294' } },
+  averageScorePerKill: { statId: 'averageScorePerKill', basic: { value: 0.0, displayValue: '0.00' } },
+  deaths: { statId: 'deaths', basic: { value: 8.0, displayValue: '8' } },
+  averageScorePerLife: { statId: 'averageScorePerLife', basic: { value: 0.0, displayValue: '0.00' } },
+  completed: { statId: 'completed', basic: { value: 0.0, displayValue: 'No' } },
+  opponentsDefeated: { statId: 'opponentsDefeated', basic: { value: 301.0, displayValue: '301' } },
+  efficiency: { statId: 'efficiency', basic: { value: 37.625, displayValue: '37.63' } },
+  killsDeathsRatio: { statId: 'killsDeathsRatio', basic: { value: 36.75, displayValue: '36.75' } },
+  killsDeathsAssists: { statId: 'killsDeathsAssists', basic: { value: 37.1875, displayValue: '37.19' } },
+  activityDurationSeconds: {
+    statId: 'activityDurationSeconds',
+    basic: { value: 2280.0, displayValue: '38m 0s' }
+  },
+  team: { statId: 'team', basic: { value: 0.0, displayValue: '' } },
+  completionReason: { statId: 'completionReason', basic: { value: 255.0, displayValue: 'Unknown' } },
+  fireteamId: { statId: 'fireteamId', basic: { value: -9.0136600064966666e18, displayValue: '-2147483648' } },
+  startSeconds: { statId: 'startSeconds', basic: { value: 0.0, displayValue: '0m 0s' } },
+  timePlayedSeconds: { statId: 'timePlayedSeconds', basic: { value: 2251.0, displayValue: '37m 31s' } },
+  playerCount: { statId: 'playerCount', basic: { value: 1.0, displayValue: '1' } },
+  teamScore: { statId: 'teamScore', basic: { value: 0.0, displayValue: '0' } }
+};
+
+const currentYear = new Date().getFullYear();
+export const MOCK_RESP_ACTIVITIES_PAGE1 = {
+  activities: [
+    {
+      period: new Date(currentYear, 1, 1).toJSON(),
+      activityDetails: {
+        referenceId: 1073289414,
+        directorActivityHash: 1073289414,
+        instanceId: '6534425938',
+        mode: 6,
+        modes: [7, 6],
+        isPrivate: false,
+        membershipType: 3
+      },
+      values: { ...mockValues }
+    },
+    {
+      period: new Date(currentYear, 1, 2).toJSON(),
+      activityDetails: {
+        referenceId: 1073289414,
+        directorActivityHash: 1073289414,
+        instanceId: '6534425938',
+        mode: 6,
+        modes: [7, 6],
+        isPrivate: false,
+        membershipType: 3
+      },
+      values: { ...mockValues }
+    }
+  ]
+};
+export const MOCK_RESP_ACTIVITIES_PAGE2 = {
+  activities: [
+    {
+      period: new Date(currentYear, 1, 1).toJSON(),
+      activityDetails: {
+        referenceId: 1073289414,
+        directorActivityHash: 1073289414,
+        instanceId: '6534425938',
+        mode: 6,
+        modes: [7, 6],
+        isPrivate: false,
+        membershipType: 3
+      },
+      values: { ...mockValues }
+    },
+    {
+      period: new Date(currentYear - 1, 1, 2).toJSON(),
+      activityDetails: {
+        referenceId: 1073289414,
+        directorActivityHash: 1073289414,
+        instanceId: '6534425938',
+        mode: 6,
+        modes: [7, 6],
+        isPrivate: false,
+        membershipType: 3
+      },
+      values: { ...mockValues }
+    }
+  ]
+};
+
+export const MOCK_RESP_ACTIVITIES_PAGE3 = {
+  activities: [
+    {
+      period: new Date(currentYear, 1, 1).toJSON(),
+      activityDetails: {
+        referenceId: 1073289414,
+        directorActivityHash: 1073289414,
+        instanceId: '6534425938',
+        mode: 6,
+        modes: [7, 6],
+        isPrivate: false,
+        membershipType: 3
+      },
+      values: { ...mockValues }
+    },
+    {
+      period: new Date(currentYear - 2, 1, 2).toJSON(),
+      activityDetails: {
+        referenceId: 1073289414,
+        directorActivityHash: 1073289414,
+        instanceId: '6534425938',
+        mode: 6,
+        modes: [7, 6],
+        isPrivate: false,
+        membershipType: 3
+      },
+      values: { ...mockValues }
+    }
+  ]
+};
+const combined = {
+  activities: [
+    ...MOCK_RESP_ACTIVITIES_PAGE1.activities,
+    ...MOCK_RESP_ACTIVITIES_PAGE2.activities,
+    ...MOCK_RESP_ACTIVITIES_PAGE3.activities
+  ]
+};
 
 export const MOCK_DB_ACTIVITIES: DBObject[] = [
   {
     id: '3-4611686018467238913-2305843009310516628',
     createDate: new Date(),
-    data: MOCK_RESP_ACTIVITIES
+    data: combined
   },
   {
     id: '3-4611686018467238913-2305843009319768855',
     createDate: new Date(),
-    data: MOCK_RESP_ACTIVITIES
+    data: combined
   },
   {
     id: '3-4611686018467238913-2305843009319768858',
-    createDate:  new Date(moment(new Date()).add(-10, 'days').valueOf()),
-    data: MOCK_RESP_ACTIVITIES
+    createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()),
+    data: combined
   }
-]
+];

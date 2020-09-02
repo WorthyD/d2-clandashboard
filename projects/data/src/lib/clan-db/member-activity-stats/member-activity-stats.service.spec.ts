@@ -12,7 +12,7 @@ import { of, defer } from 'rxjs';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { HttpErrorResponse } from '@angular/common/http';
 
-fdescribe('MemberActivityStatsService', () => {
+describe('MemberActivityStatsService', () => {
   let service: MemberActivityStatsService;
   let dbService: ClanDatabase;
   let d2Service: Destiny2Service;
@@ -43,7 +43,7 @@ fdescribe('MemberActivityStatsService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  fdescribe('getMemberCharacterActivityStatsSerialized', () => {
+  describe('getMemberCharacterActivityStatsSerialized', () => {
     it('should get profile from DB, but call service if expired', async (done) => {
       console.log('starting 1');
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
