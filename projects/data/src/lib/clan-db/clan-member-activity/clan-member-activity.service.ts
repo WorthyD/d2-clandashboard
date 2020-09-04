@@ -13,6 +13,8 @@ import { StoreId } from '../app-indexed-db';
 @Injectable()
 export class ClanMemberActivityService extends BaseClanService {
   private ACTIVITY_GET_COUNT = 250;
+  private MAX_REQUEST_COUNT = 30;
+
   constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
     super(clanDB, StoreId.MemberActivities);
   }
@@ -34,39 +36,43 @@ export class ClanMemberActivityService extends BaseClanService {
   getAllRecentActivity(member: MemberProfile, characterId: number) {
     const startYear = new Date().getFullYear() - 2;
 
-    console.log('expiredYear', startYear);
     //const that = this;
     const fetchPage = (page = 0) => {
       return this.getMemberCharacterActivityFromAPI(member, characterId, page).pipe(
         //tap(() => console.log(`-> fetched page ${page}`)),
         map((x) => {
-          // console.log('x', x.Response.activities);
-          // console.log('has Expired year', this.activitiesContainExpiredYear(x.Response.activities, startYear));
+          const nextPage =
+            this.activitiesContainExpiredYear(x?.Response?.activities, startYear) || page >= this.MAX_REQUEST_COUNT
+              ? null
+              : page + 1;
 
-          const nextPage = this.activitiesContainExpiredYear(x?.Response?.activities, startYear) ? null : page + 1;
-          return { items: x?.Response?.activities, nextPage };
+          const activities = x?.Response?.activities || [];
+          return { activities, nextPage };
         })
       );
     };
 
     const getItems = (page) =>
       defer(() => fetchPage(page)).pipe(
-        mergeMap(({ items, nextPage }) => {
-          const items$ = from(items);
+        mergeMap(({ activities, nextPage }) => {
+          const items$ = from(activities);
           const next$ = nextPage ? getItems(nextPage) : EMPTY;
           return concat(items$, next$);
         })
       );
 
     return getItems(0).pipe(
-      // map((x) => {
-      //   return x;
-      // }),
-      toArray()
+      toArray(),
+      map((activities) => {
+        return { activities };
+      })
     );
   }
 
   private activitiesContainExpiredYear(activities, expiredYear) {
+    if (!activities) {
+      return true;
+    }
     return !!activities.find((x) => {
       const activityYear = new Date(x.period).getFullYear();
       // console.log(`${activityYear} ${expiredYear}`, activityYear <= expiredYear);

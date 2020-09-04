@@ -266,7 +266,7 @@ export const MOCK_RESP_ACTIVITIES_PAGE3 = {
     }
   ]
 };
-const combined = {
+export const MOCK_RESP_ACTIVITIES_COMBINED = {
   activities: [
     ...MOCK_RESP_ACTIVITIES_PAGE1.activities,
     ...MOCK_RESP_ACTIVITIES_PAGE2.activities,
@@ -278,16 +278,16 @@ export const MOCK_DB_ACTIVITIES: DBObject[] = [
   {
     id: '3-4611686018467238913-2305843009310516628',
     createDate: new Date(),
-    data: combined
+    data: MOCK_RESP_ACTIVITIES_COMBINED
   },
   {
     id: '3-4611686018467238913-2305843009319768855',
     createDate: new Date(),
-    data: combined
+    data: MOCK_RESP_ACTIVITIES_COMBINED
   },
   {
     id: '3-4611686018467238913-2305843009319768858',
     createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()),
-    data: combined
+    data: MOCK_RESP_ACTIVITIES_COMBINED
   }
 ];
