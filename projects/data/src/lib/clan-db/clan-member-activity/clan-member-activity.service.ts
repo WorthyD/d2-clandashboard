@@ -10,6 +10,10 @@ import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo } from '
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
 import { StoreId } from '../app-indexed-db';
 
+interface ActivityCollection {
+  activities: any[];
+}
+
 @Injectable()
 export class ClanMemberActivityService extends BaseClanService {
   private ACTIVITY_GET_COUNT = 250;
@@ -33,7 +37,7 @@ export class ClanMemberActivityService extends BaseClanService {
     );
   }
 
-  getAllRecentActivity(member: MemberProfile, characterId: number) {
+  getAllRecentActivity(member: MemberProfile, characterId: number): Observable<ActivityCollection> {
     const startYear = new Date().getFullYear() - 2;
 
     //const that = this;
@@ -92,11 +96,11 @@ export class ClanMemberActivityService extends BaseClanService {
           return of(cachedData.data);
         }
 
-        return this.getMemberCharacterActivityFromAPI(member, characterId).pipe(
+        return this.getAllRecentActivity(member, characterId).pipe(
           map((activityResponse) => {
-            if (activityResponse.Response) {
-              this.updateDB(clanId, characterActivityId, activityResponse.Response);
-              return activityResponse.Response;
+            if (activityResponse.activities) {
+              this.updateDB(clanId, characterActivityId, activityResponse.activities);
+              return activityResponse.activities;
             }
           }),
           catchError((error) => {
