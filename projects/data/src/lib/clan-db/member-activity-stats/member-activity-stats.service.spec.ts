@@ -25,7 +25,8 @@ describe('MemberActivityStatsService', () => {
         userInfo: {
           membershipId: 1,
           membershipType: 1
-        }
+        },
+        dateLastPlayed: new Date()
       }
     }
   } as MemberProfile;
@@ -45,18 +46,19 @@ describe('MemberActivityStatsService', () => {
   });
   describe('getMemberCharacterActivityStatsSerialized', () => {
     it('should get profile from DB, but call service if expired', async (done) => {
-      console.log('starting 1');
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
-        console.log('db 1');
-        return of(MOCK_DB_ACTIVITY_STATS.find((x) => x.id === id));
+        const activity = { ...MOCK_DB_ACTIVITY_STATS.find((x) => x.id === id) };
+        activity.createDate = new Date(1900, 1, 1);
+        return of(activity);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetDestinyAggregateActivityStats').and.callFake(() => {
-        console.log('serviec 1');
         return of({
           Response: MOCK_AGGREGATE_ACTIVITY_STATS
         });
       });
+      const profile = {...memberProfile};
+      profile.profile.data.dateLastPlayed = new Date();
 
       service
         .getMemberCharacterActivityStatsSerialized(1, memberProfile, 1, activityHashes, statTracked)
@@ -65,21 +67,18 @@ describe('MemberActivityStatsService', () => {
           expect(dbGetSpy).toHaveBeenCalledTimes(1);
           expect(serviceSpy).toHaveBeenCalledTimes(1);
           expect(updateSpy).toHaveBeenCalledTimes(1);
-          console.log('done 1');
           done();
         });
     });
 
     it('should get profile from DB and not call service if cache is good', async (done) => {
-      console.log('starting');
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
-        console.log('calling db');
         const m = MOCK_DB_ACTIVITY_STATS.find((x) => x.id === id);
+        //console.log(m);
         return of(m);
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetDestinyAggregateActivityStats').and.callFake(() => {
-        console.log('calling service');
         return of({
           Response: MOCK_AGGREGATE_ACTIVITY_STATS
         });
@@ -91,7 +90,6 @@ describe('MemberActivityStatsService', () => {
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(0);
         expect(updateSpy).toHaveBeenCalledTimes(0);
-        console.log('done');
         done();
       });
     });

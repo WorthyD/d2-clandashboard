@@ -97,6 +97,7 @@ describe('ClanMemberActivityService', () => {
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
+        console.log(x);
         //expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(3);
         //expect(updateSpy).toHaveBeenCalledTimes(1);
@@ -142,11 +143,13 @@ describe('ClanMemberActivityService', () => {
     });
     it('should get all recent activity and stop when done at max page size', () => {
       // const updateSpy = spyOn(dbService, 'update').and.callThrough();
-      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(() => {
-        return of({
-          Response: MOCK_RESP_ACTIVITIES_PAGE1
-        });
-      });
+      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
+        (charId, memberId, memberType, getCount, something, pageNumber) => {
+          return of({
+            Response: MOCK_RESP_ACTIVITIES_PAGE1
+          });
+        }
+      );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
       _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
@@ -169,11 +172,21 @@ describe('ClanMemberActivityService', () => {
       });
 
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
-      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(() => {
-        return of({
-          Response: MOCK_RESP_ACTIVITIES_COMBINED
-        });
-      });
+      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
+        (charId, memberId, memberType, getCount, something, pageNumber) => {
+          switch (pageNumber) {
+            case 0:
+              return of({
+                Response: MOCK_RESP_ACTIVITIES_PAGE1
+              });
+            default:
+              return of({
+                Response: {}
+              });
+              break;
+          }
+        }
+      );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
       _.set(memberProfile, 'profile.data.dateLastPlayed', new Date(moment(new Date()).add(-100, 'days').valueOf()));
@@ -192,18 +205,28 @@ describe('ClanMemberActivityService', () => {
       });
 
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
-      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(() => {
-        return of({
-          Response: MOCK_RESP_ACTIVITIES_COMBINED
-        });
-      });
+      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
+        (charId, memberId, memberType, getCount, something, pageNumber) => {
+          switch (pageNumber) {
+            case 0:
+              return of({
+                Response: MOCK_RESP_ACTIVITIES_PAGE1
+              });
+            default:
+              return of({
+                Response: {}
+              });
+              break;
+          }
+        }
+      );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
       _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
-        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_COMBINED.activities.length);
+        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_PAGE1.activities.length);
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(1);
         expect(updateSpy).toHaveBeenCalledTimes(1);
@@ -277,16 +300,26 @@ describe('ClanMemberActivityService', () => {
       });
 
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
-      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(() => {
-        return of({
-          Response: MOCK_RESP_ACTIVITIES_COMBINED
-        });
-      });
+      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
+        (charId, memberId, memberType, getCount, something, pageNumber) => {
+          switch (pageNumber) {
+            case 0:
+              return of({
+                Response: MOCK_RESP_ACTIVITIES_PAGE1
+              });
+            default:
+              return of({
+                Response: {}
+              });
+              break;
+          }
+        }
+      );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
 
       service.getMemberActivity(1, memberProfile).subscribe((x) => {
-        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_COMBINED.activities.length * 3);
+        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_PAGE1.activities.length * 3);
         expect(dbGetSpy).toHaveBeenCalledTimes(3);
         expect(serviceSpy).toHaveBeenCalledTimes(3);
         expect(updateSpy).toHaveBeenCalledTimes(3);

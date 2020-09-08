@@ -28,7 +28,7 @@ describe('ClanDetailsService', () => {
   });
 
   describe('clanDetails', () => {
-    it('should get profile from DB, but call service if expired', () => {
+    it('should get profile from DB, but call service if expired', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
         return of(MOCK_DB_CLAN_DETAILS.find((x) => x.id === id));
       });
@@ -44,10 +44,11 @@ describe('ClanDetailsService', () => {
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(1);
         expect(updateSpy).toHaveBeenCalledTimes(1);
+        done();
       });
     });
 
-    it('should get profile from DB and not call service if cache is good', () => {
+    it('should get profile from DB and not call service if cache is good', async(done) => {
       const mockDBItem = [{ ...MOCK_DB_CLAN_DETAILS[0], createDate: new Date() }];
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
         const m = MOCK_DB_CLAN_DETAILS.find((x) => x.id === id);
@@ -66,10 +67,11 @@ describe('ClanDetailsService', () => {
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(0);
         expect(updateSpy).toHaveBeenCalledTimes(0);
+        done();
       });
     });
 
-    it('should call service if not in DB', () => {
+    it('should call service if not in DB', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return of([]);
       });
@@ -85,12 +87,13 @@ describe('ClanDetailsService', () => {
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(1);
         expect(updateSpy).toHaveBeenCalledTimes(1);
+        done();
       });
     });
 
-    it('should handle API down with DB data', () => {
+    it('should handle API down with DB data', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
-        const m = MOCK_DB_CLAN_DETAILS.find((x) => x.id === id);
+        const m = { ...MOCK_DB_CLAN_DETAILS.find((x) => x.id === id) };
         m.createDate = new Date();
         return of(m);
       });
@@ -109,9 +112,10 @@ describe('ClanDetailsService', () => {
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(0);
         expect(updateSpy).toHaveBeenCalledTimes(0);
+        done();
       });
     });
-    it('should handle API down with no DB data', () => {
+    it('should handle API down with no DB data', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return of([]);
       });
@@ -130,6 +134,7 @@ describe('ClanDetailsService', () => {
         (error: HttpErrorResponse) => {
           expect(error.status).toEqual(404);
           expect(error.error).toContain('404 error');
+          done();
         }
       );
     });
