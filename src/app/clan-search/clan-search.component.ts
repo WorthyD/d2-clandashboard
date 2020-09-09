@@ -51,7 +51,6 @@ export class ClanSearchComponent implements OnInit {
     }),
     shareReplay(1),
     catchError((err) => {
-      console.log(err);
       this.loading = false;
       // Just remapping the data to show the error
       // There are better ways of doing this

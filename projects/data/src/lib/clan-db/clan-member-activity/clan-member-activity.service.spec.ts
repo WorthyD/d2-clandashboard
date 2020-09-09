@@ -97,7 +97,6 @@ describe('ClanMemberActivityService', () => {
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
-        console.log(x);
         //expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(3);
         //expect(updateSpy).toHaveBeenCalledTimes(1);

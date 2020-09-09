@@ -123,9 +123,6 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
     const categories = [...Array(categoriesCount)].map((_, i) => {
       const upperBound = (86400 / categoriesCount) * (i + 1);
       const lowerBound = (86400 / categoriesCount) * i;
-      //console.log(d3.interpolateBuGn(upperBound / 86400));
-      console.log('upper ' + upperBound / 86400);
-      console.log('lower ' + lowerBound);
 
       return {
         upperBound,

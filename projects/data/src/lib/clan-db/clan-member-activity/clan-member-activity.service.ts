@@ -120,7 +120,6 @@ export class ClanMemberActivityService extends BaseClanService {
   getMemberCharacterActivitySerialized(clanId: number, member: MemberProfile, characterId: number) {
     return this.getMemberCharacterActivity(clanId, member, characterId).pipe(
       map((activity) => {
-        console.log(activity);
         return {
           activities: activity.map((a) => clanMemberActivitySerializer(a))
         };
