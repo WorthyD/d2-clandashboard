@@ -10,6 +10,7 @@ export * from './lib/clan-member/character-card';
 export * from './lib/clan-member/member-overview';
 export * from './lib/clan-member/season-pass';
 export * from './lib/clan-search/featured-clan-card';
+export * from './lib/clan-member/member-activity-heat-map';
 export * from './lib/clan-weekly-progress';
 export * from './lib/clan-season-progress';
 export * from './lib/clan-members-card';

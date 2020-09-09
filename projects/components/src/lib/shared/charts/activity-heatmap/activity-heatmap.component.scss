@@ -1,0 +1,23 @@
+// .day {
+//   stroke: #666;
+// }
+// .month {
+//   fill: none;
+//   stroke: #000;
+//   stroke-width: 2px;
+// }
+
+.day.active:hover {
+  cursor: pointer;
+}
+.heatmap-tooltip {
+  //position: absolute;
+  position: fixed;
+  transition: opacity 0.2s;
+  border: 0px;
+  padding: 2px;
+  border-radius: 8px;
+  pointer-events: none;
+  background: #fff;
+  font-size: 0.8em;
+}
