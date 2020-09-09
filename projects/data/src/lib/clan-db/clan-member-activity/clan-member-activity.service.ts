@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { Destiny2Service, DestinyHistoricalStatsDestinyActivityHistoryResults } from 'bungie-api';
+import {
+  Destiny2Service,
+  DestinyHistoricalStatsDestinyActivityHistoryResults,
+  DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup
+} from 'bungie-api';
 import { BaseClanService } from '../base-clan.service';
 import { ClanDatabase } from '../ClanDatabase';
 import { MemberProfile, MemberActivityStats } from 'bungie-models';
@@ -37,13 +41,12 @@ export class ClanMemberActivityService extends BaseClanService {
     );
   }
 
+  // TODO: Figure out how to concurrently fire off more than 1 request at a time.
   getAllRecentActivity(member: MemberProfile, characterId: number): Observable<ActivityCollection> {
     const startYear = new Date().getFullYear() - 2;
-
     //const that = this;
     const fetchPage = (page = 0) => {
       return this.getMemberCharacterActivityFromAPI(member, characterId, page).pipe(
-        //tap(() => console.log(`-> fetched page ${page}`)),
         map((x) => {
           const nextPage =
             this.activitiesContainExpiredYear(x?.Response?.activities, startYear) || page >= this.MAX_REQUEST_COUNT
@@ -79,7 +82,7 @@ export class ClanMemberActivityService extends BaseClanService {
     }
     return !!activities.find((x) => {
       const activityYear = new Date(x.period).getFullYear();
-      // console.log(`${activityYear} ${expiredYear}`, activityYear <= expiredYear);
+      console.log(`${activityYear} ${expiredYear}`, activityYear <= expiredYear);
       return activityYear <= expiredYear;
     });
   }
@@ -88,7 +91,7 @@ export class ClanMemberActivityService extends BaseClanService {
     clanId: number,
     member: MemberProfile,
     characterId: number
-  ): Observable<DestinyHistoricalStatsDestinyActivityHistoryResults> {
+  ): Observable<Array<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup>> {
     const characterActivityId = this.getMemberActivityId(member, characterId);
     return from(this.getDataFromCache(clanId.toString(), characterActivityId)).pipe(
       mergeMap((cachedData) => {
@@ -117,8 +120,9 @@ export class ClanMemberActivityService extends BaseClanService {
   getMemberCharacterActivitySerialized(clanId: number, member: MemberProfile, characterId: number) {
     return this.getMemberCharacterActivity(clanId, member, characterId).pipe(
       map((activity) => {
+        console.log(activity);
         return {
-          activities: activity.activities.map((a) => clanMemberActivitySerializer(a))
+          activities: activity.map((a) => clanMemberActivitySerializer(a))
         };
       })
     );
