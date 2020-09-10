@@ -148,9 +148,6 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       .selectAll('text')
       .data(categories)
       .join('text')
-      //.attr('transform', 'rotate(90)')
-      //.attr('y', (d, i) => legendWidth * i)
-      //.attr('dy', -30)
       .attr('x', (d, i) => legendWidth * i)
       .attr('y', 30)
       .attr('class', 'legend-key')
@@ -158,17 +155,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       .text((d) => `${d.lowerBound.toFixed(2) / 3600} - ${d.upperBound.toFixed(2) / 3600}`);
 
     legend.append('text').attr('dy', -5).attr('class', 'legend-desc').text('Hours Played');
-    //   legend
-    //     .append('text')
-    //     .attr('class', 'mono')
-    //     .text(function (d) {
-    //       return '≥ ' + Math.round(d);
-    //     })
-    //     .attr('x', function (d, i) {
-    //       return 40 * i;
-    //     })
-    //     .attr('y', 8);
-  }
+ }
 
   private addYearLabels() {
     this.svg
@@ -336,25 +323,12 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       activeCells
         .on('mouseover', (d) => {
           const data = this.data[d];
-          //console.log(this.data[d]);
           this.tooltip.style('opacity', 0.9);
           this.tooltip.html(
             `Date: ${moment(d).format('M-D-YYYY')}<br/> Time:  ${this.formatActivityDuration(data.seconds)}`
           );
         })
         .on('mousemove', () => {
-          //console.log();
-          //console.log("left", (d3.mouse(this)[0]+70) + "px")
-          //console.log('left', d3.event.pageX + 70 + 'px');
-          //console.log('top', d3.event.pageY  + 'px');
-
-          //.style("top", (d3.mouse(this)[1]) + "px")
-          //console.log(this);
-          //console.log(d3.select(this).attr('cx'));
-          //console.log(d3.select(this).attr('cy'));
-
-          //that.tooltip.style('left', d3.select(this).attr("cx") + 'px').style('top', d3.select(this).attr("cy") - 40 + 'px');
-          //that.tooltip.style('left', d3.mouse(this)[0] + 70 + 'px').style('top', d3.mouse(this)[1] + 'px');
           that.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');
         })
         .on('mouseout', (d) => {
@@ -365,7 +339,6 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       //     return 'value : ' + this.data[d];
       //   });
       //this.rect.on('mouseover', (d) => {
-      // console.log(this.data[d]);
       // div.transition().duration(200).style('opacity', 0.9);
       // div
       //   .html(formatTime(d.date) + '<br/>' + d.close)
@@ -379,7 +352,6 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
     // rect.on('click', click);
     // rect.on('mouseover', mouseover);
     // function mouseover(d) {
-    //   console.log(d);
     // }
   }
   private formatActivityDuration(seconds) {
