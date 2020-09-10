@@ -6,6 +6,7 @@
 
 @import './app/clan-search/clan-search.component.scss-theme.scss';
 @import './app/app.component.scss-theme.scss';
+@import '../projects/components/src/lib/shared/charts/activity-heatmap/activity-heatmap.component.scss-theme.scss';
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -35,6 +36,7 @@
 @mixin custom-components-theme($theme) {
   @include app-component-theme($theme);
   //@include clan-search-component-theme($theme);
+  @include activity-heatmap-component-theme($theme);
 }
 
 .light-theme {

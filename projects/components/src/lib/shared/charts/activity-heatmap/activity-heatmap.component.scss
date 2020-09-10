@@ -1,12 +1,22 @@
-// .day {
-//   stroke: #666;
-// }
-// .month {
-//   fill: none;
-//   stroke: #000;
-//   stroke-width: 2px;
-// }
+.activity-heatmap {
+  display: block;
+  .year-label {
+    font-size: 10px;
+  }
+  .day-label {
+    font-size: 10px;
+  }
+  .month-label {
+    font-size: 10px;
+  }
+  .legend-key {
+    font-size: 10px;
+  }
 
+  .legend-desc {
+    font-size: 12px;
+  }
+}
 .day.active:hover {
   cursor: pointer;
 }

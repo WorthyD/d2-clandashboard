@@ -82,7 +82,6 @@ export class ClanMemberActivityService extends BaseClanService {
     }
     return !!activities.find((x) => {
       const activityYear = new Date(x.period).getFullYear();
-      console.log(`${activityYear} ${expiredYear}`, activityYear <= expiredYear);
       return activityYear <= expiredYear;
     });
   }
