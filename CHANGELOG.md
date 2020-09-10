@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/WorthyD/d2-clandashboard/compare/v0.1.2...v0.1.3) (2020-09-10)
+
+
+### Features
+
+* Adding dark mode to heatmap ([93352a7](https://github.com/WorthyD/d2-clandashboard/commit/93352a7a69adc16cb9d30730c633a8d8bb4c331c))
+
 ### [0.1.2](https://github.com/WorthyD/d2-clandashboard/compare/v0.1.1...v0.1.2) (2020-09-09)
 
 ### [0.1.1](https://github.com/WorthyD/d2-clandashboard/compare/v0.0.12...v0.1.1) (2020-09-09)
