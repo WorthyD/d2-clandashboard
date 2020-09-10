@@ -18,6 +18,6 @@ export const withTheme = (story, context) => {
         theme: select('Theme', themes, DEFAULT_THEME)
       }
     },
-    template: `<div data-theme-decorator [ngClass]="theme">${storyWithKnobs.template}</div>`
+    template: `<div data-theme-decorator [ngClass]="theme"><div class="content-wrapper">${storyWithKnobs.template}</div></div>`
   };
 };

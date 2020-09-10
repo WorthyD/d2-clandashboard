@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+
+@mixin activity-heatmap-component-theme($theme) {
+  $bg: map-get($theme, background);
+  $fg: map-get($theme, foreground);
+  // .content-wrapper {
+  //   background: mat-color($bg, background);
+  //   color: mat-color($fg, text);
+  // }
+  .activity-heatmap {
+    //  display: block;
+    .year-label {
+      fill: mat-color($fg, text);
+    }
+    .day-label {
+      fill: mat-color($fg, text);
+    }
+    .month-label {
+      fill: mat-color($fg, text);
+    }
+    .legend-key {
+      fill: mat-color($fg, text);
+    }
+
+    .legend-desc {
+      fill: mat-color($fg, text);
+    }
+  }
+}
