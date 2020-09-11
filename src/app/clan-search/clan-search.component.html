@@ -1,4 +1,4 @@
-<div class="search-page">
+<!-- <div class="search-page">
   <div class="header">
     <h1>
       Destiny 2 Clan Dashboard
@@ -17,7 +17,6 @@
     <mat-form-field appearance="outline" class="search">
       <input matInput autofocus #clanInput (keyup.Enter)="open(clanInput.value)" [matAutocomplete]="auto"
         [formControl]="autocompleteControl" placeholder="Search by name, Clan Id, or Bungie Clan URL">
-      <!-- <i matSuffix class="material-icons">mode_edit</i> -->
       <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="true"
         (optionSelected)="autocompleteSelected($event)">
         <ng-container *ngIf="(autocompleteResult$ | async) as clans">
@@ -44,4 +43,4 @@
   <div class="footer">
     <app-footer></app-footer>
   </div>
-</div>
+</div> -->

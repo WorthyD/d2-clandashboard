@@ -12,7 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { SavedClansModule } from './saved-clans/saved-clans.module';
 import { ClanSearchState, ClanSearchEffects, reducers } from './state/clan-search.state';
 import { CLAN_SEARCH_FEATURE } from './state/clan-search.selectors';
-
+import { ClanSearchModule } from './clan-search/clan-search.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -20,6 +20,7 @@ import { CLAN_SEARCH_FEATURE } from './state/clan-search.selectors';
     CommonModule,
     CoreModule,
     RouterModule,
+    ClanSearchModule,
     MaterialModule,
     SharedModule,
     SavedClansModule,
