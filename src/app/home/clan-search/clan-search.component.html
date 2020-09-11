@@ -1,0 +1,20 @@
+<mat-form-field appearance="outline" class="search">
+  <input matInput autofocus #clanInput (keyup.Enter)="open(clanInput.value)" [matAutocomplete]="auto"
+    [formControl]="autocompleteControl" placeholder="Search by name, Clan Id, or Bungie Clan URL">
+  <!-- <i matSuffix class="material-icons">mode_edit</i> -->
+  <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="true"
+    (optionSelected)="autocompleteSelected($event)">
+    <ng-container *ngIf="(autocompleteResult$ | async) as clans">
+      <mat-option disabled class="loading" *ngIf="loading">
+
+        <lib-loading matSuffix diameter='35'></lib-loading>
+      </mat-option>
+      <mat-option *ngFor="let clan of clans" [value]="clan">
+        {{clan.name}}
+      </mat-option>
+      <mat-option disabled *ngIf="clans.length === 0 && !loading">
+        Clan Not Found
+      </mat-option>
+    </ng-container>
+  </mat-autocomplete>
+</mat-form-field>
