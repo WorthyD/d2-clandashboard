@@ -57,6 +57,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
+  //TODO: change this.
   ngOnChanges(changes: SimpleChanges) {
     if (changes.events) {
       this.updateChart(changes.events.currentValue);
