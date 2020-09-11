@@ -8,7 +8,7 @@ import {
 import { BaseClanService } from '../base-clan.service';
 import { ClanDatabase } from '../ClanDatabase';
 import { MemberProfile, MemberActivityStats } from 'bungie-models';
-import { from, of, Observable, defer, concat, EMPTY } from 'rxjs';
+import { from, of, Observable, defer, concat, EMPTY, forkJoin } from 'rxjs';
 import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo } from 'rxjs/operators';
 
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
@@ -43,6 +43,8 @@ export class ClanMemberActivityService extends BaseClanService {
 
   // TODO: Figure out how to concurrently fire off more than 1 request at a time.
   getAllRecentActivity(member: MemberProfile, characterId: number): Observable<ActivityCollection> {
+  //getAllRecentActivity(member: MemberProfile, characterId: number): Observable<any> {
+    const maxConcurrentCount = 4;
     const startYear = new Date().getFullYear() - 2;
     //const that = this;
     const fetchPage = (page = 0) => {
@@ -51,7 +53,7 @@ export class ClanMemberActivityService extends BaseClanService {
           const nextPage =
             this.activitiesContainExpiredYear(x?.Response?.activities, startYear) || page >= this.MAX_REQUEST_COUNT
               ? null
-              : page + 1;
+              : page + maxConcurrentCount;
 
           const activities = x?.Response?.activities || [];
           return { activities, nextPage };
@@ -68,10 +70,18 @@ export class ClanMemberActivityService extends BaseClanService {
         })
       );
 
-    return getItems(0).pipe(
-      toArray(),
-      map((activities) => {
-        return { activities };
+    const batchedRequest = [];
+    for (let i = 0; i < maxConcurrentCount; i++) {
+      batchedRequest.push(getItems(i).pipe(toArray()));
+    }
+    console.log(batchedRequest)
+
+    return forkJoin(batchedRequest).pipe(
+      map((x: any) => {
+        //console.log(x.flat());
+        return {
+          activities: x.flat()
+        };
       })
     );
   }

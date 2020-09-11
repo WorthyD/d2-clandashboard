@@ -4,7 +4,7 @@ import { ClanMemberActivityService } from './clan-member-activity.service';
 import { ClanDatabase } from '../ClanDatabase';
 import { Destiny2Service } from 'bungie-api';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { of, defer } from 'rxjs';
+import { of, defer, forkJoin } from 'rxjs';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 import { MemberProfile } from 'bungie-models';
@@ -65,10 +65,11 @@ describe('ClanMemberActivityService', () => {
         expect(updateSpy).toHaveBeenCalledTimes(1);
       });
     });
-    it('should get all recent activity', () => {
+    fit('should get all recent activity', () => {
       // const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
         (charId, memberId, memberType, getCount, something, pageNumber) => {
+          console.log('page nubmer ', pageNumber);
           switch (pageNumber) {
             case 0:
               return of({
@@ -97,10 +98,8 @@ describe('ClanMemberActivityService', () => {
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
-        //expect(dbGetSpy).toHaveBeenCalledTimes(1);
+        console.log(x);
         expect(serviceSpy).toHaveBeenCalledTimes(3);
-        //expect(updateSpy).toHaveBeenCalledTimes(1);
-        //expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES.activities.length);
       });
     });
     it('should get all recent activity and stop when done', () => {
