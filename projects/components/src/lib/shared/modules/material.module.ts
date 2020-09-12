@@ -7,15 +7,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 const componentModules = [
   MatButtonModule,
   MatProgressSpinnerModule,
   MatMenuModule,
   MatIconModule,
   MatExpansionModule,
+  MatTooltipModule,
   MatCardModule,
   MatTableModule,
   MatSortModule,

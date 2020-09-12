@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col">
+    <lib-featured-clan-card [cardTitle]="'DoD Clans'" [featuredClans]="dodClans" (viewClan)="viewClan($event)">
+    </lib-featured-clan-card>
+  </div>
+
+  <div class="col">
+    <lib-featured-clan-card [cardTitle]="'Redjack Network'" [featuredClans]="rjnClans" (viewClan)="viewClan($event)">
+    </lib-featured-clan-card>
+  </div>
+  <div class="col">
+    <lib-featured-clan-card [cardTitle]="'Other Clans'" [featuredClans]="otherClans" (viewClan)="viewClan($event)">
+    </lib-featured-clan-card>
+  </div>
+</div>
