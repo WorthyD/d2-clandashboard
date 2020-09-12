@@ -79,7 +79,6 @@
         </div>
       </div>
     </div>
-
   </div>
   <div class="clan-search">
     <h2>Find Your Clan<i class="material-icons"
@@ -87,33 +86,14 @@
         help
       </i></h2>
     <app-clan-search></app-clan-search>
-    <!-- <mat-form-field appearance="outline" class="search">
-      <input matInput autofocus #clanInput (keyup.Enter)="open(clanInput.value)" [matAutocomplete]="auto"
-        [formControl]="autocompleteControl" placeholder="Search by name, Clan Id, or Bungie Clan URL">
-      <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="true"
-        (optionSelected)="autocompleteSelected($event)">
-        <ng-container *ngIf="(autocompleteResult$ | async) as clans">
-          <mat-option disabled class="loading" *ngIf="loading">
-
-            <lib-loading matSuffix diameter='35'></lib-loading>
-          </mat-option>
-          <mat-option *ngFor="let clan of clans" [value]="clan">
-            {{clan.name}}
-          </mat-option>
-          <mat-option disabled *ngIf="clans.length === 0 && !loading">
-            Clan Not Found
-          </mat-option>
-        </ng-container>
-      </mat-autocomplete>
-    </mat-form-field> -->
     <div>
-      <!-- <app-saved-clans></app-saved-clans> -->
+      <app-saved-clans></app-saved-clans>
     </div>
-    <div>
-      <!-- <app-featured-clans></app-featured-clans> -->
+    <div class="container">
+      <app-featured-clans></app-featured-clans>
     </div>
   </div>
   <div class="footer">
-    <!-- <app-footer></app-footer> -->
+    <app-footer></app-footer>
   </div>
 </div>

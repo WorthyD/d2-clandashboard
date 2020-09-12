@@ -14,25 +14,12 @@ import { LocalStorageService } from '../../core/services/local-storage.service';
 // import { AnimationsService } from '../animations/animations.service';
 // import { TitleService } from '../title/title.service';
 
-import {
-  // actionSettingsChangeAnimationsElements,
-  // actionSettingsChangeAnimationsPage,
-  // actionSettingsChangeAnimationsPageDisabled,
-  // actionSettingsChangeAutoNightMode,
-  // actionSettingsChangeLanguage,
-  actionSettingsChangeTheme
-  // actionSettingsChangeStickyHeader,
-  // actionSettingsChangeHour
-} from './settings.actions';
-import {
-  selectEffectiveTheme
-  // selectSettingsLanguage,
-  // selectPageAnimations,
-  // selectElementsAnimations
-} from './settings.selectors';
+import { actionSettingsChangeTheme } from './settings.actions';
+
+import { selectEffectiveTheme } from './settings.selectors';
 import { State } from './settings.model';
 
-export const SETTINGS_KEY = 'SETTINGS';
+export const SETTINGS_KEY = 'settings';
 
 const INIT = of('destiny-init-effect-trigger');
 
@@ -43,10 +30,8 @@ export class SettingsEffects {
     private store: Store<State>,
     //  private router: Router,
     private overlayContainer: OverlayContainer,
-    private localStorageService: LocalStorageService // private titleService: TitleService, //private animationsService: AnimationsService,
-  ) //private translateService: TranslateService,
-  //private ngZone: NgZone
-  {}
+    private localStorageService: LocalStorageService // private titleService: TitleService, //private animationsService: AnimationsService, //private translateService: TranslateService, //private ngZone: NgZone
+  ) {}
 
   // hour = 0;
   // changeHour = this.ngZone.runOutsideAngular(() =>
@@ -64,15 +49,7 @@ export class SettingsEffects {
   persistSettings = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(
-          // actionSettingsChangeAnimationsElements,
-          // actionSettingsChangeAnimationsPage,
-          // actionSettingsChangeAnimationsPageDisabled,
-          // actionSettingsChangeAutoNightMode,
-          // actionSettingsChangeLanguage,
-          // actionSettingsChangeStickyHeader,
-          actionSettingsChangeTheme
-        ),
+        ofType(actionSettingsChangeTheme),
         withLatestFrom(this.store.pipe(select(selectSettingsState))),
         tap(([action, settings]) => this.localStorageService.setItem(SETTINGS_KEY, settings))
       ),

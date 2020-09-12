@@ -13,6 +13,7 @@ import { SavedClansModule } from './saved-clans/saved-clans.module';
 import { ClanSearchState, ClanSearchEffects, reducers } from './state/clan-search.state';
 import { CLAN_SEARCH_FEATURE } from './state/clan-search.selectors';
 import { ClanSearchModule } from './clan-search/clan-search.module';
+import { FeaturedClansModule } from './featured-clans/featured-clans.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -24,6 +25,7 @@ import { ClanSearchModule } from './clan-search/clan-search.module';
     MaterialModule,
     SharedModule,
     SavedClansModule,
+    FeaturedClansModule,
     StoreModule.forFeature(CLAN_SEARCH_FEATURE, reducers),
     EffectsModule.forFeature(ClanSearchEffects)
   ]
