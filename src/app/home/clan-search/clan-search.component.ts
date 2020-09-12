@@ -6,8 +6,11 @@ import { Subscription, Observable, of } from 'rxjs';
 
 import { GroupV2Service } from 'bungie-api';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-
+import { Router } from '@angular/router';
 import { map, sampleTime, shareReplay, switchMap, tap, catchError } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { addClan } from '../state/loaded-clans/loaded-clans.actions';
+import { ClanSearchState } from 'src/app/clan-search/state/clan-search.state';
 
 @Component({
   selector: 'app-clan-search',
@@ -19,7 +22,7 @@ export class ClanSearchComponent implements OnInit {
   loadSubscription: Subscription;
   loading: boolean;
 
-  constructor(private groupService: GroupV2Service) {}
+  constructor(private groupService: GroupV2Service, private router: Router, private store: Store<ClanSearchState>) {}
 
   autocompleteControl = new FormControl('');
 
@@ -79,6 +82,19 @@ export class ClanSearchComponent implements OnInit {
           return clanList.slice(0, 10);
         })
       );
+  }
+  /** Navigate to the select location from the autocomplete options. */
+  autocompleteSelected(event: MatAutocompleteSelectedEvent) {
+    this.persistSelection(event.option.value);
+    this.open(event.option.value);
+  }
+
+  persistSelection(group: any) {
+    this.store.dispatch(addClan({ clan: { name: group.name, id: group.groupId } }));
+  }
+
+  open(group: any) {
+    this.router.navigate(['clan', group.groupId]);
   }
 
   ngOnInit(): void {}
