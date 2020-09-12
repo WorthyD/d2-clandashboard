@@ -1,6 +1,6 @@
 {
   "name": "destiny-dashboard",
-  "version": "0.1.4",
+  "version": "0.2.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4321 --open",
