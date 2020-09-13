@@ -84,6 +84,7 @@ export class ActivityBarChartComponent implements OnInit {
       .attr('class', 'activity-heatmap')
       .append('svg')
       .attr('width', '100%')
+      .attr('viewBox', '0 0 500 100')
       .attr('height', this.chartHeight)
       //.attr('data-height', '0.5678')
       .append('g');
@@ -94,7 +95,6 @@ export class ActivityBarChartComponent implements OnInit {
     //this.x = d3.scale.ordinal().rangeRoundBands([0, 1000], 0.05);
     this.x = d3.scaleBand().range([0, 1000], 0.05);
     this.y = d3.scaleLinear().range([this.chartHeight, 0]);
-    console.log(this.hostElement);
   }
 
   private processData(sourceData) {
@@ -121,7 +121,6 @@ export class ActivityBarChartComponent implements OnInit {
         })
       ]);
 
-      console.log(this.x);
       this.svg
         .selectAll('bar')
         .data(sourceData)
