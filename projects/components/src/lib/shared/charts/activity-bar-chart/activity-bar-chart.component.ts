@@ -13,6 +13,7 @@ import {
 //import { SVGGraph, CanvasGraph, StrGraph } from 'calendar-graph';
 import * as d3 from 'd3';
 import * as moment from 'moment';
+import { SECONDS_IN_HOUR } from '@destiny/models/constants';
 
 @Component({
   selector: 'lib-activity-bar-chart',
@@ -27,10 +28,11 @@ export class ActivityBarChartComponent implements OnInit {
   data;
   x;
   y;
+  tooltip;
 
   chartHeight = 100;
   chartWidth = 1000;
-  thresHold = 5000;
+  threshHold = SECONDS_IN_HOUR * 20;
   color = d3.scaleLinear().range(['#00ff00', '#ff0000']).domain([0, 1]);
 
   @Input()
@@ -57,7 +59,6 @@ export class ActivityBarChartComponent implements OnInit {
   ngOnInit(): void {}
 
   private createChart(eventData) {
-    console.log('creating chart');
     this.removeExistingChartFromParent();
     this.setChartDimentions();
     // this.addYearLabels();
@@ -65,7 +66,7 @@ export class ActivityBarChartComponent implements OnInit {
     // this.addDayRectangles();
     // this.addLegend();
     // this.addLegendScale();
-    //this.addToolTip();
+    this.addToolTip();
     //this.addMonthLabels();
     //this.addMonthBoundaries();
 
@@ -99,40 +100,22 @@ export class ActivityBarChartComponent implements OnInit {
     this.x = d3.scaleBand().range([0, this.chartWidth], 0.05);
     this.y = d3.scaleLinear().range([this.chartHeight, 0]);
   }
-
+  private addToolTip() {
+    this.tooltip = d3.select(this.hostElement).append('div').attr('class', 'activity-tooltip');
+  }
   private processData(sourceData) {
     if (sourceData) {
-      // this.data = d3
-      //   .nest()
-      //   .key(function (d) {
-      //     return d.date;
-      //   })
-      //   .rollup(function (d) {
-      //     const seconds = d[0].seconds;
-      //     return { seconds, value: Math.sqrt(d[0].seconds / 86400) };
-      //   })
-      //   .object(sourceData);
       this.x.domain(
         sourceData.map(function (d) {
           return d.date;
         })
       );
-      this.y.domain([
-        0,
-        d3.max(sourceData, function (d) {
-          return d.seconds;
-        })
-      ]);
+      this.y.domain([0, this.threshHold]);
 
-      this.svg
-        .selectAll('bar')
-        .data(sourceData)
-        .enter()
-        .append('rect')
-        .style('fill', (d) => {
-          return this.color(d.seconds / 6000);
-        })
-        //.style('fill', 'steelblue')
+      const bars = this.svg.selectAll('bar').data(sourceData).enter().append('rect');
+
+      bars
+        .attr('class', 'activity-bar')
         .attr('x', (d) => {
           return this.x(d.date);
         })
@@ -143,6 +126,23 @@ export class ActivityBarChartComponent implements OnInit {
         .attr('height', (d) => {
           return this.chartHeight - this.y(d.seconds);
         });
+
+      bars
+        .on('mouseover', (d) => {
+          this.tooltip.style('opacity', 0.9);
+          this.tooltip.html(
+            `Week Starting: ${moment(d.date).format('M-D-YYYY')}<br/> Time:  ${this.formatActivityDuration(d.seconds)}`
+          );
+        })
+        .on('mousemove', () => {
+          this.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');
+        })
+        .on('mouseout', (d) => {
+          this.tooltip.style('opacity', 0);
+        });
     }
+  }
+  private formatActivityDuration(seconds) {
+    return moment().startOf('day').seconds(seconds).format('H:mm');
   }
 }

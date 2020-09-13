@@ -26,4 +26,8 @@
       fill: mat-color($fg, text);
     }
   }
+
+  .heatmap-tooltip {
+    background: mat-color($bg, background);
+  }
 }

@@ -7,6 +7,16 @@
   //   background: mat-color($bg, background);
   //   color: mat-color($fg, text);
   // }
+
+  .activity-bar {
+    opacity: 0.6;
+    fill: mat-color($fg, text);
+
+    transition: opacity .5s;
+    &:hover {
+      opacity: 1;
+    }
+  }
   .activity-bar-chart {
     //  display: block;
     .year-label {
@@ -25,5 +35,8 @@
     .legend-desc {
       fill: mat-color($fg, text);
     }
+  }
+  .activity-tooltip {
+    background: mat-color($bg, background);
   }
 }
