@@ -12,7 +12,8 @@ import { RootStoreModule } from './root-store/root-store.module';
 
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ClanSearchModule } from './clan-search/clan-search.module';
+//import { ClanSearchModule } from './clan-search/clan-search.module';
+import {HomeModule} from './home/home.module';
 import { ManifestService } from './services/manifest.service';
 
 export function initConfig(appConfig: ManifestService) {
@@ -33,7 +34,7 @@ export function initConfig(appConfig: ManifestService) {
     //   disableConsoleLogging: false
     // }),
     BrowserAnimationsModule,
-    ClanSearchModule
+    HomeModule,
   ],
   providers: [
     {

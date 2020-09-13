@@ -1,0 +1,83 @@
+:host {
+  // display: flex;
+  // align-items: center;
+  // flex-direction: column;
+  // justify-content: center;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+  //display: block;
+  //padding: 64px;
+  //overflow: auto;
+}
+
+.home-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media (min-width: 48em) {
+    height: 200px;
+  }
+  @media (min-width: 96em) {
+    height: 400px;
+  }
+  &::before {
+    content: ' ';
+    background: #000;
+    display: block;
+    height: 100%;
+    opacity: 0.8;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .info {
+    position: relative;
+    z-index: 10;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+  }
+}
+.bg {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bg-1 {
+  background-image: url('/assets/backgrounds/1.jpg');
+}
+.bg-2 {
+  background-image: url('/assets/backgrounds/2.jpg');
+}
+.bg-3 {
+  background-image: url('/assets/backgrounds/3.jpg');
+}
+
+.header {
+  text-align: center;
+}
+.features {
+  .material-icons {
+    font-size: 2rem;
+  }
+}
+.clan-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  justify-content: center;
+}
+.footer {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  flex: 0;
+}

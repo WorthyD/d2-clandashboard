@@ -43,6 +43,10 @@ export class ClanRaidStatTableComponent implements OnInit {
     this.updateColumns();
   }
 
+  getTotals(){
+    console.log('testing');
+  }
+
   getRaids() {
     return AllRaids.filter((x) => {
       if (this.showGG === false) {
