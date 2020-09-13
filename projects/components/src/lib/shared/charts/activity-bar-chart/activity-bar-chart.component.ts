@@ -29,6 +29,9 @@ export class ActivityBarChartComponent implements OnInit {
   y;
 
   chartHeight = 100;
+  chartWidth = 1000;
+  thresHold = 5000;
+  color = d3.scaleLinear().range(['#00ff00', '#ff0000']).domain([0, 1]);
 
   @Input()
   events: [];
@@ -84,8 +87,8 @@ export class ActivityBarChartComponent implements OnInit {
       .attr('class', 'activity-heatmap')
       .append('svg')
       .attr('width', '100%')
-      .attr('viewBox', '0 0 500 100')
-      .attr('height', this.chartHeight)
+      .attr('viewBox', `0 0 ${this.chartWidth} ${this.chartHeight}`)
+      //.attr('height', this.chartHeight)
       //.attr('data-height', '0.5678')
       .append('g');
     // .attr(
@@ -93,7 +96,7 @@ export class ActivityBarChartComponent implements OnInit {
     //   'translate(' + (this.width - this.cellSize * 53) / 2 + ',' + (this.height - this.cellSize * 7 - 1) + ')'
     // );
     //this.x = d3.scale.ordinal().rangeRoundBands([0, 1000], 0.05);
-    this.x = d3.scaleBand().range([0, 1000], 0.05);
+    this.x = d3.scaleBand().range([0, this.chartWidth], 0.05);
     this.y = d3.scaleLinear().range([this.chartHeight, 0]);
   }
 
@@ -126,7 +129,10 @@ export class ActivityBarChartComponent implements OnInit {
         .data(sourceData)
         .enter()
         .append('rect')
-        .style('fill', 'steelblue')
+        .style('fill', (d) => {
+          return this.color(d.seconds / 6000);
+        })
+        //.style('fill', 'steelblue')
         .attr('x', (d) => {
           return this.x(d.date);
         })
