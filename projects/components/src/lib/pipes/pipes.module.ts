@@ -8,6 +8,7 @@ import { RaidReportUrlPipe } from './raid-report-url/raid-report-url.pipe';
 import { DestinyTrackerUrlPipe } from './destiny-tracker-url/destiny-tracker-url.pipe';
 import { BungieProfileUrlPipe } from './bungie-profile-url/bungie-profile-url.pipe';
 import { RaidReportProfileUrlPipe } from './raid-report-url/raid-report-profile-url.pipe';
+import { PlaytimePipe } from './playtime/playtime.pipe';
 
 const pipes = [
   DateAgoPipe,
@@ -17,7 +18,8 @@ const pipes = [
   RaidReportUrlPipe,
   DestinyTrackerUrlPipe,
   BungieProfileUrlPipe,
-  RaidReportProfileUrlPipe
+  RaidReportProfileUrlPipe,
+  PlaytimePipe
 ];
 
 @NgModule({
