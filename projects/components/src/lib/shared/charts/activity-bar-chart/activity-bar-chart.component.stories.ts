@@ -24,6 +24,10 @@ export const base = () => ({
   template: `
   <div>
         <lib-activity-bar-chart [events]="allEvents[eventIndex]" (cellSelect)="cellSelect($event)"></lib-activity-bar-chart>
+        <hr>
+        <textarea style="width:100%; height:500px">
+        {{allEvents[eventIndex] | json}}
+        </textarea>
   </div>
    `,
   props: {

@@ -14,6 +14,7 @@ import {
 import * as d3 from 'd3';
 import * as moment from 'moment';
 import { SECONDS_IN_HOUR } from '@destiny/models/constants';
+import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
 
 @Component({
   selector: 'lib-activity-bar-chart',
@@ -34,6 +35,8 @@ export class ActivityBarChartComponent implements OnInit {
   chartWidth = 1000;
   threshHold = SECONDS_IN_HOUR * 20;
   color = d3.scaleLinear().range(['#00ff00', '#ff0000']).domain([0, 1]);
+
+  formatPipe = new PlaytimePipe();
 
   @Input()
   events: [];
@@ -131,7 +134,7 @@ export class ActivityBarChartComponent implements OnInit {
         .on('mouseover', (d) => {
           this.tooltip.style('opacity', 0.9);
           this.tooltip.html(
-            `Week Starting: ${moment(d.date).format('M-D-YYYY')}<br/> Time:  ${this.formatActivityDuration(d.seconds)}`
+            `Week Starting: ${moment(d.date).format('M-D-YYYY')}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`
           );
         })
         .on('mousemove', () => {

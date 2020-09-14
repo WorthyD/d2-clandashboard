@@ -1,4 +1,4 @@
-import { SECONDS_IN_WEEK } from '@destiny/models/constants';
+import { SECONDS_IN_WEEK, SECONDS_IN_DAY } from '@destiny/models/constants';
 import * as moment from 'moment';
 export const MOCK_ROSTER_ACTIVITY = [];
 const stats = [];
@@ -10,7 +10,7 @@ today.add(-26, 'w');
 for (let i = 0; i < 26; i++) {
   stats.push({
     date: today.format('YYYY-MM-DD'),
-    seconds: Math.floor(Math.random() * SECONDS_IN_WEEK + 1)
+    seconds: Math.floor(Math.random() * SECONDS_IN_DAY + 1)
   });
   today.add(7, 'd');
 }
