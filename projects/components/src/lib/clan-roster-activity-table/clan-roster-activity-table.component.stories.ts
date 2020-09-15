@@ -22,3 +22,14 @@ export const base = () => ({
     memberStats: MOCK_ROSTER_ACTIVITY
   }
 });
+const loadingVar = MOCK_ROSTER_ACTIVITY.map((x) => {
+  return { ...x, stats: undefined };
+});
+
+export const loading = () => ({
+  component: ClanRosterActivityTableComponent,
+  template: `<lib-clan-roster-activity-table [memberActivityStats]="memberStats" [isLoading]="false"></lib-clan-roster-activity-table>`,
+  props: {
+    memberStats: loadingVar
+  }
+});
