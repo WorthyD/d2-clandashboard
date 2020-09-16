@@ -24,12 +24,19 @@ export class BaseClanService {
     return this.clanDbBase.getById(clanId, this.tableNameBase, rowId);
   }
 
+  // TODO: Refactor with fewer if statements
   isCacheValid(cachedData: DBObject, minuteExpiration: number, lastActivity?: Date) {
     if (cachedData && cachedData.createDate) {
       const cacheDate = moment(cachedData.createDate);
       let expireDate;
       if (_.isDate(lastActivity)) {
-        expireDate = moment(lastActivity);
+        if (minuteExpiration === 0) {
+          expireDate = moment(lastActivity);
+        } else {
+          const minuteXP = moment().add(-minuteExpiration, 'minutes');
+          const lastActivityXP = moment(lastActivity);
+          expireDate = minuteXP.isAfter(lastActivityXP) ? lastActivityXP : minuteXP;
+        }
       } else {
         expireDate = moment().add(-minuteExpiration, 'minutes');
       }

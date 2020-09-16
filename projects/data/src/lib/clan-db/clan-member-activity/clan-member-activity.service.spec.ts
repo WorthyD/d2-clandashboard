@@ -18,7 +18,7 @@ import {
 } from '../../testing-utils/objects/member-activities.mock';
 import { HttpErrorResponse } from '@angular/common/http';
 
-describe('ClanMemberActivityService', () => {
+fdescribe('ClanMemberActivityService', () => {
   let service: ClanMemberActivityService;
   let dbService: ClanDatabase;
   let d2Service: Destiny2Service;
@@ -59,17 +59,16 @@ describe('ClanMemberActivityService', () => {
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
-        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_COMBINED.activities.length);
+        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_COMBINED.activities.length * 34);
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
-        expect(serviceSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(34);
         expect(updateSpy).toHaveBeenCalledTimes(1);
       });
     });
-    fit('should get all recent activity', () => {
+    it('should get all recent activity', () => {
       // const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
         (charId, memberId, memberType, getCount, something, pageNumber) => {
-          console.log('page nubmer ', pageNumber);
           switch (pageNumber) {
             case 0:
               return of({
@@ -98,8 +97,7 @@ describe('ClanMemberActivityService', () => {
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
-        console.log(x);
-        expect(serviceSpy).toHaveBeenCalledTimes(3);
+        expect(serviceSpy).toHaveBeenCalledTimes(7);
       });
     });
     it('should get all recent activity and stop when done', () => {
@@ -134,7 +132,7 @@ describe('ClanMemberActivityService', () => {
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
-        expect(serviceSpy).toHaveBeenCalledTimes(3);
+        expect(serviceSpy).toHaveBeenCalledTimes(6);
         //expect(updateSpy).toHaveBeenCalledTimes(1);
         expect(x.activities.length).toBe(4);
       });
@@ -144,7 +142,7 @@ describe('ClanMemberActivityService', () => {
       const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
         (charId, memberId, memberType, getCount, something, pageNumber) => {
           return of({
-            Response: MOCK_RESP_ACTIVITIES_PAGE1
+            Response: MOCK_RESP_ACTbIVITIES_PAGE1
           });
         }
       );
@@ -154,13 +152,13 @@ describe('ClanMemberActivityService', () => {
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
-        expect(serviceSpy).toHaveBeenCalledTimes(31);
+        expect(serviceSpy).toHaveBeenCalledTimes(34);
         //expect(updateSpy).toHaveBeenCalledTimes(1);
-        expect(x.activities.length).toBe(62);
+        expect(x.activities.length).toBe(68);
       });
     });
 
-    it('should get profile from DB and not call service if cache is good', () => {
+    fit('should get profile from DB and not call service if cache is good', async (done) => {
       const mockDBItem = {
         ...MOCK_DB_ACTIVITIES[0],
         createDate: new Date(moment(new Date()).add(-10, 'days').valueOf())
@@ -195,6 +193,7 @@ describe('ClanMemberActivityService', () => {
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(0);
         expect(updateSpy).toHaveBeenCalledTimes(0);
+        done();
       });
     });
     it('should call service if not in DB', () => {
