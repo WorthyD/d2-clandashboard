@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { MemberProfile } from 'bungie-models';
 
 export interface ActivityTableItem {
@@ -30,6 +30,7 @@ export class ClanRosterActivityTableComponent implements OnInit {
     this.sortedData = value.slice();
   }
 
+  @Output() viewMember = new EventEmitter<MemberProfile>();
   sortedData: ActivityTableItem[];
 
   calculatedColumns = ['lastNinteyDays', 'lastMonth', 'lastWeek'];
@@ -39,4 +40,8 @@ export class ClanRosterActivityTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  memberClick(m: ActivityTableItem) {
+    this.viewMember.emit(m.profile);
+  }
 }

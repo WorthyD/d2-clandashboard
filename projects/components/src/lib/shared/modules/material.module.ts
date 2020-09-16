@@ -11,6 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 const componentModules = [
   MatButtonModule,
@@ -21,6 +22,7 @@ const componentModules = [
   MatTooltipModule,
   MatCardModule,
   MatTableModule,
+  MatProgressBarModule,
   MatSortModule,
   MatCheckboxModule,
   MatListModule
