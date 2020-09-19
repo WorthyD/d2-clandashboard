@@ -18,7 +18,7 @@ import {
 } from '../../testing-utils/objects/member-activities.mock';
 import { HttpErrorResponse } from '@angular/common/http';
 
-fdescribe('ClanMemberActivityService', () => {
+describe('ClanMemberActivityService', () => {
   let service: ClanMemberActivityService;
   let dbService: ClanDatabase;
   let d2Service: Destiny2Service;

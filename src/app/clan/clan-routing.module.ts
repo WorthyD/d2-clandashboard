@@ -24,6 +24,11 @@ const routes: Routes = [
         loadChildren: () => import('./member-details/member-details.module').then((m) => m.MemberDetailsModule)
       },
       {
+        path: 'member-activity',
+        loadChildren: () =>
+          import('./clan-member-activity/clan-member-activity.module').then((m) => m.ClanMemberActivityModule)
+      },
+      {
         path: 'seals',
         loadChildren: () => import('./seals/seals.module').then((module) => module.SealsModule)
       },

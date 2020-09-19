@@ -8,9 +8,9 @@ import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo } from '
 import { MemberActivityStats, MemberProfile } from 'bungie-models';
 import { clanMemberRecentActivitySerializer } from './clan-member-recent-activity.serializer';
 
-
 @Injectable()
 export class ClanMemberRecentActivityService extends BaseMemberActivityService {
+  private concurrentRequests = 20;
   constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
     super(
       clanDB,
@@ -47,7 +47,16 @@ export class ClanMemberRecentActivityService extends BaseMemberActivityService {
     );
   }
 
-  getSerializedProfiles(clanId:string, members:MemberProfile[]){
-
+  getSerializedProfilesActivity(clanId: number, members: MemberProfile[]) {
+    return from(members).pipe(
+      mergeMap((member) => this.getSerializedProfileActivity(clanId, member), this.concurrentRequests)
+    );
+  }
+  getSerializedProfileActivity(clanId: number, member: MemberProfile): Observable<MemberActivityStats> {
+    return this.getMemberActivity(clanId, member).pipe(
+      map((profileActivity) => {
+        return profileActivity;
+      })
+    );
   }
 }

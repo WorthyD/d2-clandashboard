@@ -35,6 +35,10 @@ import * as raidState from './raids/raid.state';
 import * as raidReducer from './raids/raid.reducer';
 import { RaidEffects } from './raids/raid.effects';
 
+import * as recentActivityState from './member-recent-activities/member-recent-activities.state';
+import * as recentActivityReducer from './member-recent-activities/member-recent-activities.reducers';
+import { MemberRecentStatEffects } from './member-recent-activities/member-recent-activities.effects';
+
 export interface ClanState {
   clanId: number;
   clanDetails: clanDetailState.ClanDetailState;
@@ -45,6 +49,7 @@ export interface ClanState {
   // clanCache: clanCacheState.CacheDetailState;
   seals: sealState.SealState;
   raidStats: raidState.RaidState;
+  memberRecentActivities: recentActivityState.MemberRecentActivityStatState;
 }
 
 export const reducers: ActionReducerMap<ClanState> = {
@@ -56,7 +61,8 @@ export const reducers: ActionReducerMap<ClanState> = {
   memberActivities: memberActivityReducer.MemberProfileReducer,
   //   clanCache: clanCacheReducer.ClanCacheReducer,
   seals: sealReducer.SealReducer,
-  raidStats: raidReducer.RaidReducer
+  raidStats: raidReducer.RaidReducer,
+  memberRecentActivities: recentActivityReducer.MemberProfileReducer
 };
 
 export const ClanEffects = [
@@ -67,6 +73,7 @@ export const ClanEffects = [
   //  ClanCacheEffects,
   ClanRewardEffects,
   SealEffects,
-  RaidEffects
+  RaidEffects,
+  MemberRecentStatEffects
 ];
 // export const ClanEffects = [ClanDetailEffects, ClanMemberEffects];
