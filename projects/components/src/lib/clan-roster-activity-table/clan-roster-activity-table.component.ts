@@ -4,7 +4,7 @@ import { MemberProfile } from 'bungie-models';
 export interface ActivityTableItem {
   profile: MemberProfile;
   isLoadingStats: boolean;
-  lastNinteyDays: number;
+  lastNinetyDays: number;
   lastMonth: number;
   lastWeek: number;
   stats: any[];

@@ -5,8 +5,9 @@ import { StoreId } from '../app-indexed-db';
 import { Destiny2Service } from 'bungie-api';
 import { from, of, Observable, defer, concat, EMPTY, forkJoin } from 'rxjs';
 import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo } from 'rxjs/operators';
-import { MemberActivityStats, MemberProfile } from 'bungie-models';
+import { MemberActivityStats, MemberProfile, MemberActivityRecentStats } from 'bungie-models';
 import { clanMemberRecentActivitySerializer } from './clan-member-recent-activity.serializer';
+import { clanMemberActivitySerializer } from '../clan-member-activity/clan-member-activity.serializer';
 
 @Injectable()
 export class ClanMemberRecentActivityService extends BaseMemberActivityService {
@@ -25,7 +26,7 @@ export class ClanMemberRecentActivityService extends BaseMemberActivityService {
     return this.getMemberCharacterActivity(clanId, member, characterId).pipe(
       map((activity) => {
         return {
-          activities: activity.map((a) => clanMemberRecentActivitySerializer(a))
+          activities: activity.map((a) => clanMemberActivitySerializer(a))
         };
       })
     );
@@ -53,10 +54,10 @@ export class ClanMemberRecentActivityService extends BaseMemberActivityService {
       mergeMap((member) => this.getSerializedProfileActivity(clanId, member), this.concurrentRequests)
     );
   }
-  getSerializedProfileActivity(clanId: number, member: MemberProfile): Observable<MemberActivityStats> {
+  getSerializedProfileActivity(clanId: number, member: MemberProfile): Observable<MemberActivityRecentStats> {
     return this.getMemberActivity(clanId, member).pipe(
       map((profileActivity) => {
-        return profileActivity;
+        return clanMemberRecentActivitySerializer(profileActivity);
       })
     );
   }

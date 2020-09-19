@@ -1,18 +1,18 @@
-import { MemberActivityStat } from 'bungie-models';
+import { MemberActivityStats, MemberActivityRecentStats } from 'bungie-models';
 import { DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api';
 import * as _ from 'lodash';
 
 //DestinyHistoricalStatsDestinyActivityHistoryResults
 
 export function clanMemberRecentActivitySerializer(
-  activity: DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup
-): DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup {
-  return {
-    period: activity.period,
-    activityDetails: activity.activityDetails,
-    values: {
-      activityDurationSeconds: _.get(activity, 'values.activityDurationSeconds'),
-      completed: _.get(activity, 'values.completed')
-    }
-  };
+  activity: MemberActivityStats
+): MemberActivityRecentStats {
+ // return
+ const day = new Date();
+// day.set
+
+
+
+
+ return null;
 }
