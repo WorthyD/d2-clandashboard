@@ -1,15 +1,15 @@
 // import {ClanDetails} from 'bungie-models';
-import { MemberActivityStat, MemberActivityStats } from 'bungie-models';
+import { MemberActivityStat, MemberActivityRecentStats } from 'bungie-models';
 
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-export interface MemberRecentActivityStatState extends EntityState<MemberActivityStats> {
+export interface MemberRecentActivityStatState extends EntityState<MemberActivityRecentStats> {
     loaded: boolean;
     loading: boolean;
 }
 
-export const MemberRecentActivityStatAdapter: EntityAdapter<MemberActivityStats> = createEntityAdapter<MemberActivityStats>({
-    selectId: (cm: MemberActivityStats) => cm.id,
+export const MemberRecentActivityStatAdapter: EntityAdapter<MemberActivityRecentStats> = createEntityAdapter<MemberActivityRecentStats>({
+    selectId: (cm: MemberActivityRecentStats) => cm.id,
     sortComparer: false
 });
 

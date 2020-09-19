@@ -10,5 +10,7 @@ import { ClanMemberActivityService } from './clan-member-activity.service';
 export class ClanMemberActivityComponent implements OnInit {
   constructor(public clanMemberActivityService: ClanMemberActivityService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.clanMemberActivityService.loadMemberActivity();
+  }
 }

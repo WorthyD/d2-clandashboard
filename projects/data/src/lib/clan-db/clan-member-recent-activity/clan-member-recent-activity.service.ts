@@ -10,14 +10,15 @@ import { clanMemberRecentActivitySerializer } from './clan-member-recent-activit
 
 @Injectable()
 export class ClanMemberRecentActivityService extends BaseMemberActivityService {
-  private concurrentRequests = 20;
+  private concurrentRequests = 5;
   constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
     super(
       clanDB,
       StoreId.MemberRecentActivities,
       d2Service,
       new Date(new Date().setDate(new Date().getDate() + ((2 + 7 - new Date().getDay()) % 7) - 189)),
-      10
+      //10
+      3
     );
   }
   getMemberCharacterActivitySerialized(clanId: number, member: MemberProfile, characterId: number) {
