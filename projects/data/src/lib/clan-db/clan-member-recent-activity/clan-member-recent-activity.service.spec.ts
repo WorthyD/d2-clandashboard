@@ -17,7 +17,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of, defer, forkJoin } from 'rxjs';
 
 
-fdescribe('ClanMemberRecentActivityService', () => {
+describe('ClanMemberRecentActivityService', () => {
   let service: ClanMemberRecentActivityService;
   let dbService: ClanDatabase;
   let d2Service: Destiny2Service

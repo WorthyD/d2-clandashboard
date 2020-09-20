@@ -37,7 +37,7 @@ const _MOCK_DATA = [
     }
   }
 ];
-fdescribe('Group activities by date', () => {
+describe('Group activities by date', () => {
   it('should group activities by date', () => {
     const formatted = groupActivitiesByDate(_MOCK_DATA);
     expect(formatted.length).toEqual(2);
