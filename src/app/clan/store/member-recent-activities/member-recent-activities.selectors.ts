@@ -4,7 +4,7 @@ import { getClanState } from '../clan-state.selector';
 import * as memberActivityStatState from './member-recent-activities.state';
 import { getSelectedClanMemberId } from '../clan-members/clan-members.selectors';
 
-export const getMemberProfileEntityState = createSelector(getClanState, (state) => state.memberActivities);
+export const getMemberProfileEntityState = createSelector(getClanState, (state) => state.memberRecentActivities);
 
 export const {
   selectIds: getMemberIds,

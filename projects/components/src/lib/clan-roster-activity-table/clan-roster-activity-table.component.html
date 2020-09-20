@@ -5,14 +5,14 @@
 
       <ng-container matColumnDef="displayName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Display Name</th>
-        <td mat-cell *matCellDef="let element">{{element.memberProfile.profile.data.userInfo.displayName}}</td>
+        <td mat-cell *matCellDef="let element">{{element.profile.data.userInfo.displayName}}</td>
       </ng-container>
 
       <ng-container matColumnDef="activityChart">
         <th mat-header-cell *matHeaderCellDef>26 week activity</th>
         <td mat-cell *matCellDef="let element" class="activity-cell">
           <div class="mx-1">
-            <lib-activity-bar-chart [events]="element.stats" *ngIf="element.stats; else loadingActivities"></lib-activity-bar-chart>
+            <lib-activity-bar-chart [events]="element.activities" *ngIf="element.activities; else loadingActivities"></lib-activity-bar-chart>
           </div>
         </td>
       </ng-container>

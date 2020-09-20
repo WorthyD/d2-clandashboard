@@ -24,7 +24,8 @@ export class ClanMemberActivityService {
 
   memberProfileActivities$ = combineLatest(this.clanMemberProfiles$, this.memberActivities$, (members, activities) => {
     return members.map((x) => {
-      return { member: x, stats: activities[x.id] };
+      //console.log(x);
+      return { ...x, ...activities[getMemberProfileId(x)] };
     });
   });
 

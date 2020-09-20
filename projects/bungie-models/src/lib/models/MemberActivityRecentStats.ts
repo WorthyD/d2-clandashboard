@@ -3,8 +3,12 @@ interface MemberActivityStat extends DestinyHistoricalStatsDestinyHistoricalStat
 
 export interface MemberActivityRecentStats {
   id: string;
-  activities: MemberActivityStat[];
+  activities: MemberActivityRecentStatsActivity[];
   lastNinetyDays: number;
   lastMonth: number;
   lastWeek: number;
+}
+export interface MemberActivityRecentStatsActivity {
+  date: string;
+  seconds: number;
 }

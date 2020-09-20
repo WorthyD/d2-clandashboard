@@ -15,6 +15,7 @@ import * as d3 from 'd3';
 import * as moment from 'moment';
 import { SECONDS_IN_HOUR } from '@destiny/models/constants';
 import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
+import { compare } from '../../../utilities/compare';
 
 @Component({
   selector: 'lib-activity-bar-chart',
@@ -108,14 +109,17 @@ export class ActivityBarChartComponent implements OnInit {
   }
   private processData(sourceData) {
     if (sourceData) {
+      const cleanedData = this.prepData(sourceData);
+
+      console.log(sourceData);
       this.x.domain(
-        sourceData.map(function (d) {
+        cleanedData.map(function (d) {
           return d.date;
         })
       );
       this.y.domain([0, this.threshHold]);
 
-      const bars = this.svg.selectAll('bar').data(sourceData).enter().append('rect');
+      const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
 
       bars
         .attr('class', 'activity-bar')
@@ -147,5 +151,27 @@ export class ActivityBarChartComponent implements OnInit {
   }
   private formatActivityDuration(seconds) {
     return moment().startOf('day').seconds(seconds).format('H:mm');
+  }
+
+  private prepData(sourceData) {
+    const preppedData = sourceData.sort((a, b) => {
+      return compare(a.data, b.date, false);
+    });
+
+    const startDate = new Date(preppedData[0].date);
+    const endDate = new Date(preppedData[preppedData.length - 1].date);
+
+    for (let i = 1; i < 100; i++) {
+      const d = new Date(startDate.setDate(startDate.getDate() + i * 7));
+      console.log(d);
+      // if (d > endDate){
+      //   break;
+      // }
+      // const formattedDate =
+    }
+
+    console.log(new Date(startDate) + ' ' + endDate);
+
+    return preppedData;
   }
 }

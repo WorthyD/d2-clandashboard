@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { MemberProfile } from 'bungie-models';
 
-export interface ActivityTableItem {
+export interface MemberActivityRecentStats {
   profile: MemberProfile;
   isLoadingStats: boolean;
   lastNinetyDays: number;
   lastMonth: number;
   lastWeek: number;
-  stats: any[];
+  activities: any[];
 }
 
 @Component({
@@ -22,7 +22,7 @@ export class ClanRosterActivityTableComponent implements OnInit {
 
   _memberActivityStats;
   @Input()
-  get memberActivityStats(): ActivityTableItem[] {
+  get memberActivityStats(): MemberActivityRecentStats[] {
     return this._memberActivityStats;
   }
   set memberActivityStats(value) {
@@ -31,7 +31,7 @@ export class ClanRosterActivityTableComponent implements OnInit {
   }
 
   @Output() viewMember = new EventEmitter<MemberProfile>();
-  sortedData: ActivityTableItem[];
+  sortedData: MemberActivityRecentStats[];
 
   calculatedColumns = ['lastNinteyDays', 'lastMonth', 'lastWeek'];
 
@@ -41,7 +41,7 @@ export class ClanRosterActivityTableComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  memberClick(m: ActivityTableItem) {
+  memberClick(m: MemberActivityRecentStats) {
     this.viewMember.emit(m.profile);
   }
 }

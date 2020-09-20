@@ -33,6 +33,7 @@ export class MemberRecentStatEffects {
       ),
       switchMap(([action, clanId, memberProfiles]) => {
         //switchMap((action) => {
+          memberProfiles = memberProfiles.slice(0, 4);
         return this.memberActivityService.getSerializedProfilesActivity(clanId, memberProfiles).pipe(
           tap((x) => {
             this.store.dispatch(memberActivityActions.loadMemberRecentActivitiesSuccess({ memberActivities: x }));

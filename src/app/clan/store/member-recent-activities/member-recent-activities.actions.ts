@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { MemberProfile, MemberActivityStat, MemberActivityStats } from 'bungie-models';
+import { MemberProfile, MemberActivityStat, MemberActivityStats, MemberActivityRecentStats } from 'bungie-models';
 
 const base = '[MemberRecentActivities] - ';
 
@@ -15,6 +15,6 @@ export const loadMemberActivitiesEmpty = createAction(`${base} Load MemberRecent
 
 export const loadMemberRecentActivitiesSuccess = createAction(
   `${base} Load Clan Members Success`,
-  props<{ memberActivities: MemberActivityStats }>()
+  props<{ memberActivities: MemberActivityRecentStats }>()
 );
 export const loadClanMemberFailure = createAction(`${base} Load Clan Members Failure`, props<{ error: any }>());
