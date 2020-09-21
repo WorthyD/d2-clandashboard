@@ -42,6 +42,9 @@ export class ActivityBarChartComponent implements OnInit {
   @Input()
   events: [];
 
+  @Input()
+  maxBarCount = 25;
+
   constructor(private elRef: ElementRef) {
     this.hostElement = this.elRef.nativeElement;
   }
@@ -110,12 +113,6 @@ export class ActivityBarChartComponent implements OnInit {
   private processData(sourceData) {
     if (sourceData) {
       const cleanedData = this.prepData(sourceData);
-      const x = cleanedData.sort((a, b) => {
-        return compare(a.date, b.date, false);
-      });
-      console.log(x);
-      console.log('Source ', sourceData);
-      console.log('cleaned', cleanedData);
       this.x.domain(
         cleanedData.map(function (d) {
           return d.date;
@@ -167,37 +164,26 @@ export class ActivityBarChartComponent implements OnInit {
     const startDate = new Date(preppedData[0].date);
     const endDate = new Date(preppedData[preppedData.length - 1].date);
 
-    console.log(startDate);
     for (let i = 1; i < 52; i++) {
       // Needing to add 1 because of utc conversion i think.
       const d = new Date(new Date(startDate).setDate(startDate.getDate() + i * 7 + 1));
       if (d > endDate) {
-        console.log('breaking');
         break;
       }
       const dFormatted = formatDate(d);
 
-      // console.log(dFormatted);
-      // console.log(preppedData.findIndex((x) => x.date === dFormatted));
       if (preppedData.findIndex((x) => x.date === dFormatted) === -1) {
         preppedData.push({ date: dFormatted, seconds: 0 });
       }
-      //   break;
-      // }
-      // const formattedDate =
     }
 
-    //    console.log(preppedData);
-
-    // const t = [...preppedData];
-    // t.sort((a, b) => {
-    //   console.log('sorting');
-    //   return compare(a.data, b.date, true);
-    // });
-    // console.log(t);
     preppedData.sort((a, b) => {
-      return compare(a.date, b.date, false);
+      return compare(a.date, b.date, true);
     });
+
+    if (this.maxBarCount > 0) {
+      return preppedData.slice(Math.max(preppedData.length - this.maxBarCount, 0));
+    }
 
     return preppedData;
   }

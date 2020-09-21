@@ -15,17 +15,11 @@ import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo } from '
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
 import { StoreId } from '../app-indexed-db';
 
-
-
 @Injectable()
 export class ClanMemberActivityService extends BaseMemberActivityService {
   constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
-    super(clanDB, StoreId.MemberActivities, d2Service, new Date(new Date().getFullYear() - 2, 1, 1), 30);
+    super(clanDB, StoreId.MemberActivities, d2Service, new Date(new Date().getFullYear() - 1, 0, 0), 30);
   }
-
-
-
-
 
   getMemberCharacterActivitySerialized(clanId: number, member: MemberProfile, characterId: number) {
     return this.getMemberCharacterActivity(clanId, member, characterId).pipe(

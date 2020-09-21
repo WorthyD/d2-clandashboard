@@ -16,13 +16,13 @@ export function clanMemberRecentActivitySerializer(activity: MemberActivityStats
     const actDate = new Date(x.period);
     const actSeconds = x.values.activityDurationSeconds.basic.value;
 
-    if (lwDate > actDate) {
+    if (lwDate < actDate) {
       lastWeek += actSeconds;
     }
-    if (lmDate > actDate) {
+    if (lmDate < actDate) {
       lastMonth += actSeconds;
     }
-    if (l90Date > actDate) {
+    if (l90Date < actDate) {
       lastNinety += actSeconds;
     }
   });

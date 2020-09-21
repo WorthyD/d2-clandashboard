@@ -21,6 +21,7 @@ export class ClanMemberRecentActivityService extends BaseMemberActivityService {
       //10
       3
     );
+    console.log('t', new Date(new Date().setDate(new Date().getDate() + ((2 + 7 - new Date().getDay()) % 7) - 189)));
   }
   getMemberCharacterActivitySerialized(clanId: number, member: MemberProfile, characterId: number) {
     return this.getMemberCharacterActivity(clanId, member, characterId).pipe(
@@ -50,6 +51,8 @@ export class ClanMemberRecentActivityService extends BaseMemberActivityService {
   }
 
   getSerializedProfilesActivity(clanId: number, members: MemberProfile[]) {
+    const s = members.find((x) => x.characters.privacy === 0);
+    console.log('members', s);
     return from(members).pipe(
       mergeMap((member) => this.getSerializedProfileActivity(clanId, member), this.concurrentRequests)
     );

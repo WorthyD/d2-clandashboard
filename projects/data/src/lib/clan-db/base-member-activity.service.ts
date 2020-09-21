@@ -35,6 +35,7 @@ export class BaseMemberActivityService extends BaseClanService {
     if (!activities) {
       return true;
     }
+
     return !!activities.find((x) => {
       const activityYear = new Date(x.period);
       return activityYear <= expiration;
@@ -106,7 +107,7 @@ export class BaseMemberActivityService extends BaseClanService {
             if (cachedData && cachedData.data) {
               return of(cachedData.data);
             }
-            throw error;
+            //throw error;
           })
         );
       })

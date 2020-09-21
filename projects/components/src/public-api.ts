@@ -16,6 +16,7 @@ export * from './lib/clan-season-progress';
 export * from './lib/clan-members-card';
 export * from './lib/clan-seal';
 export * from './lib/clan-raid-stat-table';
+export * from './lib/clan-roster-activity-table';
 
 export * from './lib/pipes/pipes.module';
 export * from './lib/shared/shared.module';
