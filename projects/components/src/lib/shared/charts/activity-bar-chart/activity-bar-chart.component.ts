@@ -45,8 +45,19 @@ export class ActivityBarChartComponent implements OnInit {
   @Input()
   maxBarCount = 25;
 
+  @Input()
+  startDate: Date;
+
+  @Input()
+  endDate: Date;
+
   constructor(private elRef: ElementRef) {
     this.hostElement = this.elRef.nativeElement;
+
+    const date = new Date();
+    const offset = date.getDay() >= 2 ? 2 : -5;
+    this.endDate = new Date(date.setDate(date.getDate() - date.getDay() + offset));
+    this.startDate = new Date(new Date().setDate(new Date(this.endDate).getDate() - 182));
   }
   ngOnChanges(changes: SimpleChanges) {
     if (changes.events) {
@@ -120,22 +131,35 @@ export class ActivityBarChartComponent implements OnInit {
       );
       this.y.domain([0, this.threshHold]);
 
-      const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
+      const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('g');
+
+     const bars2 = bars
+        .attr('class', 'activity-bar-sector')
+        .append('rect')
+        .attr('x', (d) => {
+          return this.x(d.date);
+        })
+        //.attr('fill', 'none')
+        .attr('y', '0')
+        .attr('width', this.x.bandwidth())
+        .attr('height', '100%');
+        console.log(bars2);
 
       bars
+        .append('rect')
         .attr('class', 'activity-bar')
         .attr('x', (d) => {
           return this.x(d.date);
         })
-        .attr('width', this.x.bandwidth())
         .attr('y', (d) => {
           return this.y(d.seconds);
         })
+        .attr('width', this.x.bandwidth())
         .attr('height', (d) => {
           return this.chartHeight - this.y(d.seconds);
         });
 
-      bars
+      bars2
         .on('mouseover', (d) => {
           this.tooltip.style('opacity', 0.9);
           this.tooltip.html(
@@ -155,25 +179,35 @@ export class ActivityBarChartComponent implements OnInit {
   }
 
   private prepData(sourceData) {
-    const preppedData = [...sourceData];
+    const preppedData = [];
+    // const preppedData = [...sourceData];
 
-    preppedData.sort((a, b) => {
-      return compare(a.data, b.date, false);
-    });
+    // preppedData.sort((a, b) => {
+    //   return compare(a.data, b.date, false);
+    // });
 
-    const startDate = new Date(preppedData[0].date);
-    const endDate = new Date(preppedData[preppedData.length - 1].date);
+    // const startDate = new Date(preppedData[0].date);
+    // const endDate = new Date(preppedData[preppedData.length - 1].date);
+    console.log(this.startDate);
+    console.log(this.endDate);
 
     for (let i = 1; i < 52; i++) {
       // Needing to add 1 because of utc conversion i think.
-      const d = new Date(new Date(startDate).setDate(startDate.getDate() + i * 7 + 1));
-      if (d > endDate) {
+      const d = new Date(new Date(this.startDate).setDate(this.startDate.getDate() + i * 7));
+      if (d > this.endDate) {
         break;
       }
-      const dFormatted = formatDate(d);
+      if (d >= this.startDate) {
+        const dFormatted = formatDate(d);
 
-      if (preppedData.findIndex((x) => x.date === dFormatted) === -1) {
-        preppedData.push({ date: dFormatted, seconds: 0 });
+        const data = sourceData.find((x) => x.date === dFormatted);
+
+        //if (preppedData.findIndex((x) => x.date === dFormatted) === -1) {
+        if (data) {
+          preppedData.push(data);
+        } else {
+          preppedData.push({ date: dFormatted, seconds: 0 });
+        }
       }
     }
 
@@ -181,9 +215,9 @@ export class ActivityBarChartComponent implements OnInit {
       return compare(a.date, b.date, true);
     });
 
-    if (this.maxBarCount > 0) {
-      return preppedData.slice(Math.max(preppedData.length - this.maxBarCount, 0));
-    }
+    // if (this.maxBarCount > 0) {
+    //   return preppedData.slice(Math.max(preppedData.length - this.maxBarCount, 0));
+    // }
 
     return preppedData;
   }

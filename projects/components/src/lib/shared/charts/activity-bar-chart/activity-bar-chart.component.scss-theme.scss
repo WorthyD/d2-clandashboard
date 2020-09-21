@@ -7,15 +7,16 @@
   //   background: mat-color($bg, background);
   //   color: mat-color($fg, text);
   // }
-
-  .activity-bar {
+  .activity-bar-sector {
     opacity: 0.6;
-    fill: mat-color($fg, text);
-
-    transition: opacity .5s;
+    transition: opacity 0.5s;
     &:hover {
       opacity: 1;
     }
+  }
+
+  .activity-bar {
+    fill: mat-color($fg, text);
   }
   .activity-bar-chart {
     //  display: block;
