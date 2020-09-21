@@ -110,8 +110,12 @@ export class ActivityBarChartComponent implements OnInit {
   private processData(sourceData) {
     if (sourceData) {
       const cleanedData = this.prepData(sourceData);
-
-      console.log(sourceData);
+      const x = cleanedData.sort((a, b) => {
+        return compare(a.date, b.date, false);
+      });
+      console.log(x);
+      console.log('Source ', sourceData);
+      console.log('cleaned', cleanedData);
       this.x.domain(
         cleanedData.map(function (d) {
           return d.date;
@@ -154,24 +158,63 @@ export class ActivityBarChartComponent implements OnInit {
   }
 
   private prepData(sourceData) {
-    const preppedData = sourceData.sort((a, b) => {
+    const preppedData = [...sourceData];
+
+    preppedData.sort((a, b) => {
       return compare(a.data, b.date, false);
     });
 
     const startDate = new Date(preppedData[0].date);
     const endDate = new Date(preppedData[preppedData.length - 1].date);
 
-    for (let i = 1; i < 100; i++) {
-      const d = new Date(startDate.setDate(startDate.getDate() + i * 7));
-      console.log(d);
-      // if (d > endDate){
+    console.log(startDate);
+    for (let i = 1; i < 52; i++) {
+      // Needing to add 1 because of utc conversion i think.
+      const d = new Date(new Date(startDate).setDate(startDate.getDate() + i * 7 + 1));
+      if (d > endDate) {
+        console.log('breaking');
+        break;
+      }
+      const dFormatted = formatDate(d);
+
+      // console.log(dFormatted);
+      // console.log(preppedData.findIndex((x) => x.date === dFormatted));
+      if (preppedData.findIndex((x) => x.date === dFormatted) === -1) {
+        preppedData.push({ date: dFormatted, seconds: 0 });
+      }
       //   break;
       // }
       // const formattedDate =
     }
 
-    console.log(new Date(startDate) + ' ' + endDate);
+    //    console.log(preppedData);
+
+    // const t = [...preppedData];
+    // t.sort((a, b) => {
+    //   console.log('sorting');
+    //   return compare(a.data, b.date, true);
+    // });
+    // console.log(t);
+    preppedData.sort((a, b) => {
+      return compare(a.date, b.date, false);
+    });
 
     return preppedData;
   }
+}
+
+function formatDate(date) {
+  const d = new Date(date);
+  let month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate();
+  const year = d.getFullYear();
+
+  if (month.length < 2) {
+    month = '0' + month;
+  }
+  if (day.length < 2) {
+    day = '0' + day;
+  }
+
+  return [year, month, day].join('-');
 }

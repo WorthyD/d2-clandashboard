@@ -42,10 +42,10 @@ export const REAL_DATA = [
     date: '2020-07-28',
     seconds: 17980
   },
-  {
-    date: '2020-07-21',
-    seconds: 19063
-  },
+  // {
+  //   date: '2020-07-21',
+  //   seconds: 19063
+  // },
   {
     date: '2020-07-14',
     seconds: 10799
