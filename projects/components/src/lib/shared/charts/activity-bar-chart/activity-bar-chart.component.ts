@@ -131,22 +131,21 @@ export class ActivityBarChartComponent implements OnInit {
       );
       this.y.domain([0, this.threshHold]);
 
-      const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('g');
+      const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
 
-     const bars2 = bars
-        .attr('class', 'activity-bar-sector')
-        .append('rect')
-        .attr('x', (d) => {
-          return this.x(d.date);
-        })
-        //.attr('fill', 'none')
-        .attr('y', '0')
-        .attr('width', this.x.bandwidth())
-        .attr('height', '100%');
-        console.log(bars2);
+      //  const bars2 = bars
+      //     .attr('class', 'activity-bar-sector')
+      //     .append('rect')
+      //     .attr('x', (d) => {
+      //       return this.x(d.date);
+      //     })
+      //     .attr('fill', 'transparent')
+      //     .attr('y', '0')
+      //     .attr('width', this.x.bandwidth())
+      //     .attr('height', '100%');
 
       bars
-        .append('rect')
+        //        .append('rect')
         .attr('class', 'activity-bar')
         .attr('x', (d) => {
           return this.x(d.date);
@@ -159,7 +158,7 @@ export class ActivityBarChartComponent implements OnInit {
           return this.chartHeight - this.y(d.seconds);
         });
 
-      bars2
+      bars
         .on('mouseover', (d) => {
           this.tooltip.style('opacity', 0.9);
           this.tooltip.html(
@@ -188,8 +187,6 @@ export class ActivityBarChartComponent implements OnInit {
 
     // const startDate = new Date(preppedData[0].date);
     // const endDate = new Date(preppedData[preppedData.length - 1].date);
-    console.log(this.startDate);
-    console.log(this.endDate);
 
     for (let i = 1; i < 52; i++) {
       // Needing to add 1 because of utc conversion i think.

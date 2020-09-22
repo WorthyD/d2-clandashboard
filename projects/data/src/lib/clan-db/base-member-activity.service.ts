@@ -107,7 +107,10 @@ export class BaseMemberActivityService extends BaseClanService {
             if (cachedData && cachedData.data) {
               return of(cachedData.data);
             }
-            //throw error;
+            if (error?.error?.ErrorStatus === 'DestinyPrivacyRestriction') {
+              return of([]);
+            }
+            throw error;
           })
         );
       })

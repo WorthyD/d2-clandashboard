@@ -24,7 +24,8 @@ export class MemberOverviewService {
   selectSeasonPass$: Observable<ClanMemberSeasonPassProgression> = this.selectedProfile$.pipe(
     map((member) => {
       const characterId = member?.profile?.data?.characterIds[0];
-      if (characterId > 0) {
+      if (characterId > 0 && member?.characterProgressions?.data[characterId]?.progressions) {
+        console.log(member);
         const characterProgressions = member?.characterProgressions?.data[characterId].progressions;
         return {
           progression: characterProgressions[AppConstants.SeasonRewardProgressionHash],

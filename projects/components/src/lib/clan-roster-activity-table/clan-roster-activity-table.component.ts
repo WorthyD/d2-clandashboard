@@ -33,7 +33,7 @@ export class ClanRosterActivityTableComponent implements OnInit {
   @Output() viewMember = new EventEmitter<MemberProfile>();
   sortedData: MemberActivityRecentStats[];
 
-  calculatedColumns = ['lastNinetyDays', 'lastMonth', 'lastWeek'];
+  calculatedColumns = ['lastWeek', 'lastMonth', 'lastNinetyDays'];
 
   displayedColumns: string[] = ['displayName', 'activityChart', ...this.calculatedColumns, 'activityLink'];
 
