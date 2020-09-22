@@ -10,4 +10,4 @@
 </textarea> -->
 
 <lib-clan-roster-activity-table [memberActivityStats]="clanMemberActivityService.memberProfileActivities$ | async"
-  [isLoading]="false"></lib-clan-roster-activity-table>
+  [isLoading]="clanMemberActivityService.areMembersLoading$ | async"></lib-clan-roster-activity-table>

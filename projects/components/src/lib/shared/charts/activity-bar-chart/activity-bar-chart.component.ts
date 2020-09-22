@@ -8,7 +8,8 @@ import {
   SimpleChanges,
   OnChanges,
   EventEmitter,
-  ViewEncapsulation
+  ViewEncapsulation,
+  ChangeDetectorRef
 } from '@angular/core';
 //import { SVGGraph, CanvasGraph, StrGraph } from 'calendar-graph';
 import * as d3 from 'd3';
@@ -24,7 +25,7 @@ import { compare } from '../../../utilities/compare';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class ActivityBarChartComponent implements OnInit {
+export class ActivityBarChartComponent implements OnInit, OnChanges {
   hostElement;
   svg;
   data;
@@ -39,8 +40,19 @@ export class ActivityBarChartComponent implements OnInit {
 
   formatPipe = new PlaytimePipe();
 
+  _events;
   @Input()
-  events: [];
+  get events(): [] {
+    return this._events;
+  }
+
+  set events(value) {
+    if (value && value.length) {
+      // console.log('Events', this._events);
+      // console.log('Value', value);
+      this._events = value;
+    }
+  }
 
   @Input()
   maxBarCount = 25;
@@ -51,19 +63,24 @@ export class ActivityBarChartComponent implements OnInit {
   @Input()
   endDate: Date;
 
-  constructor(private elRef: ElementRef) {
+  constructor(private elRef: ElementRef, private cd: ChangeDetectorRef) {
+    console.log('stuff');
     this.hostElement = this.elRef.nativeElement;
+    this.cd.detach();
 
     const date = new Date();
     const offset = date.getDay() >= 2 ? 2 : -5;
     this.endDate = new Date(date.setDate(date.getDate() - date.getDay() + offset));
     this.startDate = new Date(new Date().setDate(new Date(this.endDate).getDate() - 182));
   }
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.events) {
-      this.updateChart(changes.events.currentValue);
-    }
-  }
+
+  // ngOnChanges(changes: SimpleChanges) {
+  //   if (changes.events) {
+  //     console.log('render', this.events);
+  //     console.log('render', changes);
+  //     this.updateChart(changes.events.currentValue);
+  //   }
+  // }
 
   private updateChart(eventData) {
     if (!this.svg) {

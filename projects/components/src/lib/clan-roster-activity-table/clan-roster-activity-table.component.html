@@ -12,8 +12,11 @@
         <th mat-header-cell *matHeaderCellDef>26 week activity</th>
         <td mat-cell *matCellDef="let element" class="activity-cell">
           <div class="mx-1">
-            <lib-activity-bar-chart [events]="element.activities" *ngIf="element.activities; else loadingActivities">
-            </lib-activity-bar-chart>
+
+            <div *ngIf="element.activities; else loadingActivities">
+              <lib-activity-bar-chart [events]="element.activities">
+              </lib-activity-bar-chart>
+            </div>
           </div>
         </td>
       </ng-container>
@@ -23,7 +26,7 @@
           {{calculation}}
         </th>
         <td mat-cell *matCellDef="let element" class="calc-cell">
-           {{element[calculation] | playtime}}
+          {{element[calculation] | playtime}}
         </td>
       </ng-container>
 

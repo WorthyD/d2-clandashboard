@@ -27,7 +27,9 @@ export class ClanRosterActivityTableComponent implements OnInit {
   }
   set memberActivityStats(value) {
     this._memberActivityStats = value;
-    this.sortedData = value.slice();
+    if (value) {
+      this.sortedData = value.slice();
+    }
   }
 
   @Output() viewMember = new EventEmitter<MemberProfile>();

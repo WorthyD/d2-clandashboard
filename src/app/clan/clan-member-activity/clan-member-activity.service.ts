@@ -10,7 +10,8 @@ import { filter, take } from 'rxjs/operators';
 import {
   getMemberProfileEntities,
   getAllMembers,
-  getIsMembersProfilesLoaded
+  getIsMembersProfilesLoaded,
+  getIsMembersProfilesLoading
 } from '../store/member-profiles/member-profiles.selectors';
 import { getMemberProfileId } from '@destiny/data';
 
@@ -20,14 +21,21 @@ export class ClanMemberActivityService {
 
   clanMemberProfiles$ = this.store.pipe(select(getAllMembers));
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
+  areMembersLoading$ = this.store.pipe(select(getIsMembersProfilesLoading));
   memberActivities$ = this.store.pipe(select(getMemberActivityEntities));
 
-  memberProfileActivities$ = combineLatest(this.clanMemberProfiles$, this.memberActivities$, (members, activities) => {
-    return members.map((x) => {
-      //console.log(x);
-      return { ...x, ...activities[getMemberProfileId(x)] };
-    });
-  });
+  memberProfileActivities$ = combineLatest(
+    this.isMembersLoaded$,
+    this.clanMemberProfiles$,
+    this.memberActivities$,
+    (loaded, members, activities) => {
+      if (loaded === true) {
+        return members.map((x) => {
+          return { ...x, ...activities[getMemberProfileId(x)] };
+        });
+      }
+    }
+  );
 
   loadMemberActivity() {
     this.isMembersLoaded$
