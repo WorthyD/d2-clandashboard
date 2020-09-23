@@ -25,7 +25,7 @@ import { compare } from '../../../utilities/compare';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class ActivityBarChartComponent implements OnInit, OnChanges {
+export class ActivityBarChartComponent implements OnInit {
   hostElement;
   svg;
   data;

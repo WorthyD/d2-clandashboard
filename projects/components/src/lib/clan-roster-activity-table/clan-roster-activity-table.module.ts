@@ -5,11 +5,12 @@ import { MaterialModule } from '../shared/modules/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { ActivityBarChartModule } from '../shared/charts/activity-bar-chart/activity-bar-chart.module';
+import { DirectivesModule } from '../shared/directives/directives.module';
 
 @NgModule({
   declarations: [ClanRosterActivityTableComponent],
 
-  imports: [CommonModule, MaterialModule, SharedModule, PipesModule, ActivityBarChartModule],
+  imports: [CommonModule, MaterialModule, SharedModule, PipesModule, ActivityBarChartModule, DirectivesModule],
   exports: [ClanRosterActivityTableComponent]
 })
 export class ClanRosterActivityTableModule {}

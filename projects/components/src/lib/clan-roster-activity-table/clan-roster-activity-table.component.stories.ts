@@ -17,14 +17,14 @@ export default {
 
 export const base = () => ({
   component: ClanRosterActivityTableComponent,
-  template: `<lib-clan-roster-activity-table [memberActivityStats]="memberStats" [isLoading]="false"></lib-clan-roster-activity-table>`,
+  template: `<lib-clan-roster-activity-table [memberProfiles]="memberStats" [isLoading]="false"></lib-clan-roster-activity-table>`,
   props: {
     memberStats: MOCK_ROSTER_ACTIVITY
   }
 });
 export const loadingTable = () => ({
   component: ClanRosterActivityTableComponent,
-  template: `<lib-clan-roster-activity-table [memberActivityStats]="memberStats" [isLoading]="true"></lib-clan-roster-activity-table>`,
+  template: `<lib-clan-roster-activity-table [memberProfiles]="memberStats" [isLoading]="true"></lib-clan-roster-activity-table>`,
   props: {
     memberStats: MOCK_ROSTER_ACTIVITY
   }
@@ -36,15 +36,15 @@ const loadingVar = MOCK_ROSTER_ACTIVITY.map((x) => {
 
 export const loadingMembers = () => ({
   component: ClanRosterActivityTableComponent,
-  template: `<lib-clan-roster-activity-table [memberActivityStats]="memberStats" [isLoading]="false"></lib-clan-roster-activity-table>`,
+  template: `<lib-clan-roster-activity-table [memberProfiles]="memberStats" [isLoading]="false"></lib-clan-roster-activity-table>`,
   props: {
     memberStats: loadingVar
   }
 });
 export const realData = () => ({
   component: ClanRosterActivityTableComponent,
-  template: `<lib-clan-roster-activity-table [memberActivityStats]="memberStats" [isLoading]="false"></lib-clan-roster-activity-table>`,
+  template: `<lib-clan-roster-activity-table [memberProfiles]="memberStats" [isLoading]="false"></lib-clan-roster-activity-table>`,
   props: {
-    memberStats: REAL_DATA
+    memberStats: REAL_DATA.map(x => x.profile)
   }
 });

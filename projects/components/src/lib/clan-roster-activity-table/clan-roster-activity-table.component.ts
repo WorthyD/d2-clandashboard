@@ -20,20 +20,34 @@ export class ClanRosterActivityTableComponent implements OnInit {
   @Input()
   isLoading: boolean = true;
 
-  _memberActivityStats;
+  // _memberActivityStats;
+  // @Input()
+  // get memberActivityStats(): MemberActivityRecentStats[] {
+  //   return this._memberActivityStats;
+  // }
+  // set memberActivityStat(value) {
+  //   this._memberActivityStats = value;
+  //   if (value) {
+  //     this.sortedData = value.slice();
+  //   }
+  // }
+
+  _members;
   @Input()
-  get memberActivityStats(): MemberActivityRecentStats[] {
-    return this._memberActivityStats;
+  get memberProfiles(): MemberProfile[] {
+    return this._members;
   }
-  set memberActivityStats(value) {
-    this._memberActivityStats = value;
+  set memberProfiles(value) {
+    this._members = value;
     if (value) {
+      console.log('stuff');
       this.sortedData = value.slice();
     }
   }
 
+
   @Output() viewMember = new EventEmitter<MemberProfile>();
-  sortedData: MemberActivityRecentStats[];
+  sortedData: MemberProfile[];
 
   calculatedColumns = ['lastWeek', 'lastMonth', 'lastNinetyDays'];
 

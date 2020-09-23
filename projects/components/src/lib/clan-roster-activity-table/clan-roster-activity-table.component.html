@@ -1,23 +1,26 @@
 <ng-container *ngIf="!isLoading; else loading">
-  <ng-container *ngIf="memberActivityStats">
+  <ng-container *ngIf="memberProfiles">
     <table mat-table [dataSource]="sortedData" matSort class="mat-elevation-z8" matSortStart="desc"
       (matSortChange)="sortData($event)">
 
       <ng-container matColumnDef="displayName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Display Name</th>
-        <td mat-cell *matCellDef="let element">{{element.profile.data.userInfo.displayName}}</td>
+        <td mat-cell *matCellDef="let element">{{element.data.userInfo.displayName}}</td>
       </ng-container>
 
       <ng-container matColumnDef="activityChart">
         <th mat-header-cell *matHeaderCellDef>26 week activity</th>
         <td mat-cell *matCellDef="let element" class="activity-cell">
-          <div class="mx-1">
+          <div *ngVar="true as x">
+            {{x}}
+          </div>
+          <!-- <div class="mx-1">
 
             <div *ngIf="element.activities; else loadingActivities">
               <lib-activity-bar-chart [events]="element.activities">
               </lib-activity-bar-chart>
             </div>
-          </div>
+          </div> -->
         </td>
       </ng-container>
 
@@ -26,7 +29,7 @@
           {{calculation}}
         </th>
         <td mat-cell *matCellDef="let element" class="calc-cell">
-          {{element[calculation] | playtime}}
+          <!-- {{element[calculation] | playtime}} -->
         </td>
       </ng-container>
 
@@ -44,6 +47,7 @@
     </table>
   </ng-container>
 </ng-container>
+{{sortedData | json}}
 <ng-template #loading>
 
   <div class="text-center m-5">
