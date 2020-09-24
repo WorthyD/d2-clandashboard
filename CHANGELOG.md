@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.2.1...v0.4.0) (2020-09-24)
+
+
+### Features
+
+* Adding new roster list ([8177f5c](https://github.com/WorthyD/d2-clandashboard/commit/8177f5ca5635b0b5043ba534cc135f0dd85f4921))
+* Adding raid counters ([847476c](https://github.com/WorthyD/d2-clandashboard/commit/847476c5c87279e6bd7f3f963a1aef4d7cb58543))
+
 ### [0.3.3](https://github.com/WorthyD/d2-clandashboard/compare/v0.3.2...v0.3.3) (2020-09-13)
 
 ### [0.3.2](https://github.com/WorthyD/d2-clandashboard/compare/v0.3.1...v0.3.2) (2020-09-13)
