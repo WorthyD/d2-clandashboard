@@ -1,5 +1,15 @@
 import { Injectable } from '@angular/core';
-import { profileHashes } from '../../../../../src/assets/configs/profile-hashes.js';
+const hashes = {
+  seasonRewardProgressionHash: 1627914615,
+  seasonPrestigeProgressionHash: 4021269753
+};
+
+export const profileHashes = {
+  profileHashes: {
+    ...hashes
+  },
+  allHashes: [hashes.seasonRewardProgressionHash, hashes.seasonPrestigeProgressionHash]
+};
 
 /*
 Eventually want to convert this into a more dynamic mode so it is easier to maintain.

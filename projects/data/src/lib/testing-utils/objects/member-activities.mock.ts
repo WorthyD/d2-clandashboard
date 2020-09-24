@@ -252,7 +252,7 @@ export const MOCK_RESP_ACTIVITIES_PAGE3 = {
       values: { ...mockValues }
     },
     {
-      period: new Date(currentYear - 2, 1, 2).toJSON(),
+      period: new Date(currentYear - 2, 11, 25).toJSON(),
       activityDetails: {
         referenceId: 1073289414,
         directorActivityHash: 1073289414,

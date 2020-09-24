@@ -1,0 +1,18 @@
+<!-- <p>clan-member-activity works!</p>
+<textarea style="width:100%; height:200px;">
+  {{(clanMemberActivityService.clanMemberProfiles$ | async) | json}}
+</textarea>
+<textarea style="width:100%; height:200px;">
+  {{(clanMemberActivityService.memberActivities$ | async) | json}}
+</textarea> -->
+<!--
+<textarea style="width:100%; height:200px;">
+  {{(clanMemberActivityService.memberProfileActivities$ | async) | json}}
+</textarea> -->
+
+<!-- <lib-clan-roster-activity-table [memberActivityStats]="clanMemberActivityService.memberProfileActivities$ | async"
+  [isLoading]="clanMemberActivityService.areMembersLoading$ | async"></lib-clan-roster-activity-table> -->
+  <h3>Preview Feature</h3>
+<lib-clan-roster-activity-table [memberProfiles]="clanMemberActivityService.clanMemberProfiles$ | async"
+  [memberActivities]="clanMemberActivityService.memberActivities$ | async"
+  [isLoading]="clanMemberActivityService.areMembersLoading$ | async"  (viewMember)="viewMember($event)"></lib-clan-roster-activity-table>

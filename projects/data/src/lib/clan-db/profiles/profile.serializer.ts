@@ -31,10 +31,23 @@ function getCharacterProgressions(data, progressionHashes) {
     for (const [key, value] of Object.entries(data)) {
       const progressions = {};
       progressionHashes.forEach((ph) => {
-        progressions[ph] = value['progressions'][ph];
+        progressions[ph] = getProgressionValues(value['progressions'][ph]);
       });
       characterProgressions[key] = { progressions };
     }
   }
   return characterProgressions;
+}
+
+// TODO: Track these somewhere.
+function getProgressionValues(prog) {
+  return {
+    dailyProgress: prog.dailyProgress,
+    weeklyProgress: prog.weeklyProgress,
+    currentProgress: prog.currentProgress,
+    level: prog.level,
+    levelCap: prog.levelCap,
+    progressToNextLevel: prog.progressToNextLevel,
+    nextLevelAt: prog.nextLevelAt
+  };
 }

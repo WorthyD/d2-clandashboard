@@ -47,6 +47,9 @@
       ],
       "@destiny/models/enums": [
         "projects/bungie-models/src/lib/enums/public-api"
+      ],
+      "@destiny/models/constants": [
+        "projects/bungie-models/src/lib/constants/public-api"
       ]
     }
   }
