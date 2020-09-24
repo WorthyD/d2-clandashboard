@@ -3,7 +3,7 @@ import { ClanState } from '../store/clan-state.state';
 
 import { Store, select } from '@ngrx/store';
 import { loadClanMembersActivities } from '../store/member-recent-activities/member-recent-activities.actions';
-import { getMemberActivityEntities } from '../store/member-recent-activities/member-recent-activities.selectors';
+import { getMemberActivityEntities, getAllMemberActivities } from '../store/member-recent-activities/member-recent-activities.selectors';
 
 import { Observable, combineLatest, of } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
@@ -22,20 +22,20 @@ export class ClanMemberActivityService {
   clanMemberProfiles$ = this.store.pipe(select(getAllMembers));
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
   areMembersLoading$ = this.store.pipe(select(getIsMembersProfilesLoading));
-  memberActivities$ = this.store.pipe(select(getMemberActivityEntities));
+  memberActivities$ = this.store.pipe(select(getAllMemberActivities));
 
-  memberProfileActivities$ = combineLatest(
-    this.isMembersLoaded$,
-    this.clanMemberProfiles$,
-    this.memberActivities$,
-    (loaded, members, activities) => {
-      if (loaded === true) {
-        return members.map((x) => {
-          return { ...x, ...activities[getMemberProfileId(x)] };
-        });
-      }
-    }
-  );
+  // memberProfileActivities$ = combineLatest(
+  //   this.isMembersLoaded$,
+  //   this.clanMemberProfiles$,
+  //   this.memberActivities$,
+  //   (loaded, members, activities) => {
+  //     if (loaded === true) {
+  //       return members.map((x) => {
+  //         return { ...x, ...activities[getMemberProfileId(x)] };
+  //       });
+  //     }
+  //   }
+  // );
 
   loadMemberActivity() {
     this.isMembersLoaded$

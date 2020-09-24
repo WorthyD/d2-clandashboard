@@ -40,11 +40,21 @@ export class ClanRosterActivityTableComponent implements OnInit {
   set memberProfiles(value) {
     this._members = value;
     if (value) {
-      console.log('stuff');
       this.sortedData = value.slice();
     }
   }
 
+  _memberActivities;
+  @Input()
+  get memberActivities(): MemberActivityRecentStats[] {
+    return this._memberActivities;
+  }
+  set memberActivities(value) {
+    this._memberActivities = value;
+    // if (value) {
+    //   this.sortedData = value.slice();
+    // }
+  }
 
   @Output() viewMember = new EventEmitter<MemberProfile>();
   sortedData: MemberProfile[];
@@ -57,7 +67,7 @@ export class ClanRosterActivityTableComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  memberClick(m: MemberActivityRecentStats) {
-    this.viewMember.emit(m.profile);
+  memberClick(m: any) {
+    this.viewMember.emit(m);
   }
 }

@@ -18,8 +18,7 @@ export class ClanMemberRecentActivityService extends BaseMemberActivityService {
       StoreId.MemberRecentActivities,
       d2Service,
       new Date(new Date().setDate(new Date().getDate() + ((2 + 7 - new Date().getDay()) % 7) - 189)),
-      //10
-      3
+      10
     );
   }
   getMemberCharacterActivitySerialized(clanId: number, member: MemberProfile, characterId: number) {

@@ -43,8 +43,13 @@ export const loadingMembers = () => ({
 });
 export const realData = () => ({
   component: ClanRosterActivityTableComponent,
-  template: `<lib-clan-roster-activity-table [memberProfiles]="memberStats" [isLoading]="false"></lib-clan-roster-activity-table>`,
+  template: `<lib-clan-roster-activity-table [memberProfiles]="memberStats" [memberActivities]="activities" [isLoading]="false"></lib-clan-roster-activity-table>`,
   props: {
-    memberStats: REAL_DATA.map(x => x.profile)
+    memberStats: REAL_DATA.map((x) => {
+      return {
+        profile: x.profile
+      };
+    }).slice(0, 5),
+    activities: REAL_DATA
   }
 });

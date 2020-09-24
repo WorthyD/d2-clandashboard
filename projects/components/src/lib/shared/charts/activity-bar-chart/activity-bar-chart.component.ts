@@ -47,10 +47,9 @@ export class ActivityBarChartComponent implements OnInit {
   }
 
   set events(value) {
-    if (value && value.length) {
-      // console.log('Events', this._events);
-      // console.log('Value', value);
+    if (value && value.length && value !== this._events) {
       this._events = value;
+      this.updateChart(this._events);
     }
   }
 
@@ -64,7 +63,6 @@ export class ActivityBarChartComponent implements OnInit {
   endDate: Date;
 
   constructor(private elRef: ElementRef, private cd: ChangeDetectorRef) {
-    console.log('stuff');
     this.hostElement = this.elRef.nativeElement;
     this.cd.detach();
 
