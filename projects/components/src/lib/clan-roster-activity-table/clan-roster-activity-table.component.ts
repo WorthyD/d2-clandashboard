@@ -69,23 +69,26 @@ export class ClanRosterActivityTableComponent implements OnInit {
 
   updateViewModel() {
     if (this.memberProfiles.length > 0) {
+      //console.log(`start ${this.memberProfiles?.length} ${this.memberActivities?.length}`);
       if (this.memberProfiles.length !== this.viewModel.length) {
         this.viewModel = this.memberProfiles.map((x) => {
-          console.log(x);
           return { profile: x, id: getMemberProfileId(x) };
         });
       }
 
-      this.memberActivities.forEach((x) => {
-        const vmIndex = this.viewModel.findIndex((vm) => vm.id === x.id);
-        if (vmIndex > -1 && !this.viewModel[vmIndex].activities) {
-          const vm = this.viewModel[vmIndex];
-          vm.lastMonth = x.lastMonth;
-          vm.lastNinetyDays = x.lastNinetyDays;
-          vm.lastWeek = x.lastWeek;
-          vm.activities = x.activities;
-        }
-      });
+      if (this.memberActivities) {
+        this.memberActivities.forEach((x) => {
+          const vmIndex = this.viewModel.findIndex((vm) => vm.id === x.id);
+          if (vmIndex > -1) {
+            const vm = this.viewModel[vmIndex];
+            vm.lastMonth = x.lastMonth ?? 0;
+            vm.lastNinetyDays = x.lastNinetyDays ?? 0;
+            vm.lastWeek = x.lastWeek ?? 0;
+            vm.activities = x.activities;
+          }
+        });
+      }
+      //console.log(`done ${this.memberProfiles?.length} ${this.memberActivities?.length}`);
     }
   }
 

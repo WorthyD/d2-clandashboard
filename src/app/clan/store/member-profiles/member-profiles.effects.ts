@@ -55,8 +55,7 @@ export class MemberProfileEffects {
     this.actions$.pipe(
       ofType(memberProfileActions.loadMemberProfiles),
       switchMap(({ clanId, clanMembers }) => {
-
-        // clanMembers = clanMembers.slice(0,10);
+        clanMembers = clanMembers.slice(0, 10);
 
         return this.profileService.getSerializedProfiles(clanId.toString(), clanMembers).pipe(
           tap((x) => {
