@@ -1,13 +1,15 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { getMemberProfileId } from '@destiny/data';
 import { MemberProfile } from 'bungie-models';
 
 export interface MemberActivityRecentStats {
   profile: MemberProfile;
-  isLoadingStats: boolean;
-  lastNinetyDays: number;
-  lastMonth: number;
-  lastWeek: number;
-  activities: any[];
+  id: string;
+  isLoadingStats?: boolean;
+  lastNinetyDays?: number;
+  lastMonth?: number;
+  lastWeek?: number;
+  activities?: any[];
 }
 
 @Component({
@@ -32,6 +34,8 @@ export class ClanRosterActivityTableComponent implements OnInit {
   //   }
   // }
 
+  viewModel: MemberActivityRecentStats[] = [];
+
   _members;
   @Input()
   get memberProfiles(): MemberProfile[] {
@@ -39,9 +43,7 @@ export class ClanRosterActivityTableComponent implements OnInit {
   }
   set memberProfiles(value) {
     this._members = value;
-    if (value) {
-      this.sortedData = value.slice();
-    }
+    this.updateViewModel();
   }
 
   _memberActivities;
@@ -51,9 +53,7 @@ export class ClanRosterActivityTableComponent implements OnInit {
   }
   set memberActivities(value) {
     this._memberActivities = value;
-    // if (value) {
-    //   this.sortedData = value.slice();
-    // }
+    this.updateViewModel();
   }
 
   @Output() viewMember = new EventEmitter<MemberProfile>();
@@ -66,6 +66,28 @@ export class ClanRosterActivityTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  updateViewModel() {
+    if (this.memberProfiles.length > 0) {
+      if (this.memberProfiles.length !== this.viewModel.length) {
+        this.viewModel = this.memberProfiles.map((x) => {
+          console.log(x);
+          return { profile: x, id: getMemberProfileId(x) };
+        });
+      }
+
+      this.memberActivities.forEach((x) => {
+        const vmIndex = this.viewModel.findIndex((vm) => vm.id === x.id);
+        if (vmIndex > -1 && !this.viewModel[vmIndex].activities) {
+          const vm = this.viewModel[vmIndex];
+          vm.lastMonth = x.lastMonth;
+          vm.lastNinetyDays = x.lastNinetyDays;
+          vm.lastWeek = x.lastWeek;
+          vm.activities = x.activities;
+        }
+      });
+    }
+  }
 
   memberClick(m: any) {
     this.viewMember.emit(m);

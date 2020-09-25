@@ -1,6 +1,6 @@
 <ng-container *ngIf="!isLoading; else loading">
   <ng-container *ngIf="memberProfiles">
-    <table mat-table [dataSource]="sortedData" matSort class="mat-elevation-z8" matSortStart="desc"
+    <table mat-table [dataSource]="viewModel" matSort class="mat-elevation-z8" matSortStart="desc"
       (matSortChange)="sortData($event)">
 
       <ng-container matColumnDef="displayName">
@@ -21,7 +21,6 @@
         </td>
       </ng-container>
 
-      <!-- TODO: FInd better way to determine this wihtout lookup  -->
       <ng-container *ngFor="let calculation of calculatedColumns; let colIndex = index" matColumnDef="{{calculation}}">
         <!-- <th mat-header-cell *matHeaderCellDef mat-sort-header class="calc-header"> -->
         <th mat-header-cell *matHeaderCellDef class="calc-header">
@@ -70,3 +69,80 @@
 <ng-template #loadingActivities>
   <lib-loading-bar></lib-loading-bar>
 </ng-template>
+
+
+
+
+<!--
+
+
+<ng-container *ngIf="!isLoading; else loading">
+  <ng-container *ngIf="memberProfiles">
+    <table mat-table [dataSource]="sortedData" matSort class="mat-elevation-z8" matSortStart="desc"
+      (matSortChange)="sortData($event)">
+
+      <ng-container matColumnDef="displayName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Display Name</th>
+        <td mat-cell *matCellDef="let element">{{element.profile.data?.userInfo?.displayName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="activityChart">
+        <th mat-header-cell *matHeaderCellDef>26 week activity</th>
+        <td mat-cell *matCellDef="let element" class="activity-cell">
+
+          <div class="mx-1">
+            <div *ngIf="(memberActivities | activitySelector : element) as e; else loadingActivities">
+              <lib-activity-bar-chart [events]="e.activities">
+              </lib-activity-bar-chart>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container *ngFor="let calculation of calculatedColumns; let colIndex = index" matColumnDef="{{calculation}}">
+        <th mat-header-cell *matHeaderCellDef class="calc-header">
+          {{calculation}}
+        </th>
+        <td mat-cell *matCellDef="let element" class="calc-cell">
+
+          <div *ngIf="(memberActivities | activitySelector : element) as e; else loadingNumbers">
+            {{e[calculation] | playtime}}
+          </div>
+
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="activityLink">
+        <th mat-header-cell *matHeaderCellDef>Activity LInk</th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="memberClick(element)">View</button>
+        </td>
+      </ng-container>
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </ng-container>
+</ng-container>
+
+<ng-template #loading>
+
+  <div class="text-center m-5">
+    <h2>
+      Activity Stats...
+    </h2>
+    <p>
+
+    </p>
+    <lib-loading></lib-loading>
+  </div>
+</ng-template>
+<ng-template #loadingNumbers>
+  <lib-loading diameter="25"></lib-loading>
+</ng-template>
+
+<ng-template #loadingActivities>
+  <lib-loading-bar></lib-loading-bar>
+</ng-template> -->
