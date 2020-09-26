@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { Sort } from '@angular/material/sort';
 import { getMemberProfileId } from '@destiny/data';
 import { MemberProfile } from 'bungie-models';
+import { compare } from '../utilities/compare';
 
 export interface MemberActivityRecentStats {
   profile: MemberProfile;
@@ -59,9 +61,18 @@ export class ClanRosterActivityTableComponent implements OnInit {
   @Output() viewMember = new EventEmitter<MemberProfile>();
   sortedData: MemberProfile[];
 
-  calculatedColumns = ['lastWeek', 'lastMonth', 'lastNinetyDays'];
+  calculatedColumns = [
+    { key: 'lastWeek', value: 'Last Week' },
+    { key: 'lastMonth', value: 'Last Month' },
+    { key: 'lastNinetyDays', value: 'Last 90 Days' }
+  ];
 
-  displayedColumns: string[] = ['displayName', 'activityChart', ...this.calculatedColumns, 'activityLink'];
+  displayedColumns: string[] = [
+    'displayName',
+    'activityChart',
+    ...this.calculatedColumns.map((x) => x.key),
+    'activityLink'
+  ];
 
   constructor() {}
 
@@ -94,5 +105,30 @@ export class ClanRosterActivityTableComponent implements OnInit {
 
   memberClick(m: any) {
     this.viewMember.emit(m);
+  }
+  sortData(sort: Sort) {
+    const data = this.viewModel.slice();
+    if (!sort.active || sort.direction === '') {
+      this.viewModel = data;
+      return;
+    }
+
+    this.viewModel = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'displayName':
+          return compare(
+            a.profile.profile.data.userInfo.displayName.toLowerCase(),
+            b.profile.profile.data.userInfo.displayName.toLowerCase(),
+            isAsc
+          );
+        case 'lastWeek':
+        case 'lastMonth':
+        case 'lastNinetyDays':
+          return compare(a[sort.active] ?? 0, b[sort.active], isAsc);
+        default:
+          return 0;
+      }
+    });
   }
 }

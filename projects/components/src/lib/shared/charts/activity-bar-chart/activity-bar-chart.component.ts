@@ -48,7 +48,7 @@ export class ActivityBarChartComponent implements OnInit {
 
   set events(value) {
     if (value && value.length && value !== this._events) {
-      console.log('render');
+      //console.log('render');
       this._events = value;
       this.updateChart(this._events);
     }
