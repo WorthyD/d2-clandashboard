@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.4.0...v0.5.0) (2020-09-26)
+
+
+### Features
+
+* heatmap optimixation ([0c986cd](https://github.com/WorthyD/d2-clandashboard/commit/0c986cd46d3ada3f39fd13a2aa9c9543ad3a4bef))
+
 ### [0.4.1](https://github.com/WorthyD/d2-clandashboard/compare/v0.4.0...v0.4.1) (2020-09-24)
 
 ## [0.4.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.2.1...v0.4.0) (2020-09-24)
