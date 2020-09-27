@@ -3,22 +3,17 @@
 @mixin activity-bar-chart-component-theme($theme) {
   $bg: map-get($theme, background);
   $fg: map-get($theme, foreground);
-  // .content-wrapper {
-  //   background: mat-color($bg, background);
-  //   color: mat-color($fg, text);
-  // }
 
   .activity-bar {
     opacity: 0.6;
     fill: mat-color($fg, text);
 
-    transition: opacity .5s;
+    transition: opacity 0.5s;
     &:hover {
       opacity: 1;
     }
   }
   .activity-bar-chart {
-    //  display: block;
     .year-label {
       fill: mat-color($fg, text);
     }

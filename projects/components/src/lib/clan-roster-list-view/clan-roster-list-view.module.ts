@@ -6,9 +6,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { ClassCellComponent, ClassIconPipe } from './class-cell.component';
 
 import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from '../shared/modules/material.module';
 @NgModule({
-    declarations: [ClanRosterListViewComponent, ClassCellComponent, ClassIconPipe ],
-    exports: [ClanRosterListViewComponent, ClassIconPipe],
-    imports: [CommonModule, MatTableModule, MatSortModule, MatIconModule]
+  declarations: [ClanRosterListViewComponent, ClassCellComponent, ClassIconPipe],
+  exports: [ClanRosterListViewComponent, ClassIconPipe],
+  imports: [CommonModule, MatTableModule, MatSortModule, MatIconModule, MaterialModule]
 })
 export class ClanRosterListViewModule {}

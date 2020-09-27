@@ -5,11 +5,10 @@ import { MOCK_CLAN_SEAL } from './_MOCK_CLAN_SEAL';
 import { ClanSealModule } from './clan-seal.module';
 import { ClanSealComponent } from './clan-seal.component';
 
-//import { withKnobs, select } from '@storybook/addon-knobs';
 
 
 export default {
-  title: 'Clan Seal',
+  title: 'Clan / Clan Seal',
   decorators: [
     moduleMetadata({
       imports: [StorybookModule, ClanSealModule]

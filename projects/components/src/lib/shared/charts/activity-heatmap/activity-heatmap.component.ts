@@ -10,7 +10,6 @@ import {
   EventEmitter,
   ViewEncapsulation
 } from '@angular/core';
-//import { SVGGraph, CanvasGraph, StrGraph } from 'calendar-graph';
 import * as d3 from 'd3';
 import * as moment from 'moment';
 
@@ -39,8 +38,6 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
 
   week_days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  //color = d3.scaleLinear().range(['#dae289', '#3b6427']).domain([0, 1]);
-  //color = d3.scaleLinear().range(['#00ff00', '#ffff00', '#ff0000']).domain([0, 1]);
   color = d3.scaleLinear().range(['#00ff00', '#ff0000']).domain([0, 1]);
   emptyFill = '#fff';
   labelFontSize = '10px';
@@ -113,7 +110,6 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       .append('svg')
       .attr('width', '100%')
       .attr('viewBox', '0 0 900 105')
-      //.attr('title', 'legend')
       .append('g')
       .attr(
         'transform',
@@ -143,7 +139,6 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       .attr('x', (d, i) => legendWidth * i)
       .attr('width', legendWidth)
       .attr('height', 15);
-    //  .on('click', toggle);
 
     legend
       .selectAll('text')
@@ -156,7 +151,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       .text((d) => `${d.lowerBound.toFixed(2) / 3600} - ${d.upperBound.toFixed(2) / 3600}`);
 
     legend.append('text').attr('dy', -5).attr('class', 'legend-desc').text('Hours Played');
- }
+  }
 
   private addYearLabels() {
     this.svg
@@ -164,7 +159,6 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
       .attr('class', 'year-label')
       .attr('transform', 'translate(-38,' + this.cellSize * 3.5 + ')rotate(-90)')
       .style('text-anchor', 'middle')
-      //.style('font-size', this.labelFontSize)
       .text(function (d) {
         return d;
       });
@@ -335,25 +329,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
         .on('mouseout', (d) => {
           this.tooltip.style('opacity', 0);
         });
-
-      //   .append('svg:title', (d) => {
-      //     return 'value : ' + this.data[d];
-      //   });
-      //this.rect.on('mouseover', (d) => {
-      // div.transition().duration(200).style('opacity', 0.9);
-      // div
-      //   .html(formatTime(d.date) + '<br/>' + d.close)
-      //   .style('left', d3.event.pageX + 'px')
-      //   .style('top', d3.event.pageY - 28 + 'px');
-      // });
-      //.on('mouseout', function (d) {
-      //div.transition().duration(500).style('opacity', 0);
-      //});
     }
-    // rect.on('click', click);
-    // rect.on('mouseover', mouseover);
-    // function mouseover(d) {
-    // }
   }
   private formatActivityDuration(seconds) {
     return moment().startOf('day').seconds(seconds).format('H:mm:ss');

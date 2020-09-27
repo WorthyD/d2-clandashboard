@@ -13,13 +13,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Sort } from '@angular/material/sort';
 import { ClanMemberListItem } from '../models/ClanMemberListItem';
+import { compare } from '../utilities/compare';
 
 export { ClanMemberListItem } from '../models/ClanMemberListItem';
 
-// export interface ClanMemberListItem {
-//     member: ClanMember;
-//     profile: MemberProfile;
-// }
 
 @Component({
     selector: 'lib-clan-roster-list-view',
@@ -104,7 +101,4 @@ export class ClanRosterListViewComponent {
     memberClick(m: ClanMemberListItem) {
         this.viewMember.emit(m.member);
     }
-}
-function compare(a: number | string | Date, b: number | string | Date, isAsc: boolean) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
