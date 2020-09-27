@@ -26,16 +26,9 @@ export class ClanRaidStatTableComponent implements OnInit {
   showGG = false;
   sortedData: MemberRaidStats[];
 
-  // allRaids = AllRaids.filter((x) => {
-  //   console.log('filtering');
-  //   if (this.showGG === false) {
-  //     return x.isGuidedGames === false;
-  //   }
-  //   return true;
-  // }).sort((a, b) => a.sortOrder - b.sortOrder);
   allRaids;
-  raidColumnsKeys: string[]; // = this.allRaids.map((r) => r.key);
-  displayedColumns: string[]; // = ['displayName', ...this.raidColumnsKeys];
+  raidColumnsKeys: string[];
+  displayedColumns: string[];
 
   constructor() {}
 
@@ -43,7 +36,7 @@ export class ClanRaidStatTableComponent implements OnInit {
     this.updateColumns();
   }
 
-  getTotals(){
+  getTotals() {
     console.log('testing');
   }
 

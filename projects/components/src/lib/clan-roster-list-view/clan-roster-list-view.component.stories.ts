@@ -4,11 +4,10 @@ import { moduleMetadata } from '@storybook/angular';
 import { ClanRosterListViewModule } from './clan-roster-list-view.module';
 import { ClanRosterListViewComponent } from './clan-roster-list-view.component';
 import { MEMBERS } from './_MOCK_ROSTER_LIST';
-import { StorybookService } from '../storybook/storybook.service';
 import { StorybookModule } from '../storybook/storybook.module';
 
 export default {
-    title: 'Member Roster',
+    title: 'Clan / Member Roster',
     decorators: [
         moduleMetadata({
             imports: [StorybookModule, ClanRosterListViewModule ]

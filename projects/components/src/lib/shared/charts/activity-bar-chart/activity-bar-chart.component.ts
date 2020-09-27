@@ -48,7 +48,6 @@ export class ActivityBarChartComponent implements OnInit {
 
   set events(value) {
     if (value && value.length && value !== this._events) {
-      //console.log('render');
       this._events = value;
       this.updateChart(this._events);
     }
@@ -73,21 +72,11 @@ export class ActivityBarChartComponent implements OnInit {
     this.startDate = new Date(new Date().setDate(new Date(this.endDate).getDate() - 182));
   }
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if (changes.events) {
-  //     console.log('render', this.events);
-  //     console.log('render', changes);
-  //     this.updateChart(changes.events.currentValue);
-  //   }
-  // }
-
   private updateChart(eventData) {
     if (!this.svg) {
       this.createChart(eventData);
       return;
     }
-    //this.processData(eventData);
-    //this.updateHeatMapActiveCells();
   }
 
   ngOnInit(): void {}
@@ -95,17 +84,10 @@ export class ActivityBarChartComponent implements OnInit {
   private createChart(eventData) {
     this.removeExistingChartFromParent();
     this.setChartDimentions();
-    // this.addYearLabels();
-    // this.addDayLabels();
-    // this.addDayRectangles();
-    // this.addLegend();
-    // this.addLegendScale();
+
     this.addToolTip();
-    //this.addMonthLabels();
-    //this.addMonthBoundaries();
 
     this.processData(eventData);
-    //this.createHeatMapActiveCells();
   }
 
   private removeExistingChartFromParent() {
@@ -123,14 +105,7 @@ export class ActivityBarChartComponent implements OnInit {
       .append('svg')
       .attr('width', '100%')
       .attr('viewBox', `0 0 ${this.chartWidth} ${this.chartHeight}`)
-      //.attr('height', this.chartHeight)
-      //.attr('data-height', '0.5678')
       .append('g');
-    // .attr(
-    //   'transform',
-    //   'translate(' + (this.width - this.cellSize * 53) / 2 + ',' + (this.height - this.cellSize * 7 - 1) + ')'
-    // );
-    //this.x = d3.scale.ordinal().rangeRoundBands([0, 1000], 0.05);
     this.x = d3.scaleBand().range([0, this.chartWidth], 0.05);
     this.y = d3.scaleLinear().range([this.chartHeight, 0]);
   }
@@ -149,19 +124,7 @@ export class ActivityBarChartComponent implements OnInit {
 
       const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
 
-      //  const bars2 = bars
-      //     .attr('class', 'activity-bar-sector')
-      //     .append('rect')
-      //     .attr('x', (d) => {
-      //       return this.x(d.date);
-      //     })
-      //     .attr('fill', 'transparent')
-      //     .attr('y', '0')
-      //     .attr('width', this.x.bandwidth())
-      //     .attr('height', '100%');
-
       bars
-        //        .append('rect')
         .attr('class', 'activity-bar')
         .attr('x', (d) => {
           return this.x(d.date);
@@ -195,14 +158,6 @@ export class ActivityBarChartComponent implements OnInit {
 
   private prepData(sourceData) {
     const preppedData = [];
-    // const preppedData = [...sourceData];
-
-    // preppedData.sort((a, b) => {
-    //   return compare(a.data, b.date, false);
-    // });
-
-    // const startDate = new Date(preppedData[0].date);
-    // const endDate = new Date(preppedData[preppedData.length - 1].date);
 
     for (let i = 1; i < 52; i++) {
       // Needing to add 1 because of utc conversion i think.
@@ -215,7 +170,6 @@ export class ActivityBarChartComponent implements OnInit {
 
         const data = sourceData.find((x) => x.date === dFormatted);
 
-        //if (preppedData.findIndex((x) => x.date === dFormatted) === -1) {
         if (data) {
           preppedData.push(data);
         } else {
@@ -227,10 +181,6 @@ export class ActivityBarChartComponent implements OnInit {
     preppedData.sort((a, b) => {
       return compare(a.date, b.date, true);
     });
-
-    // if (this.maxBarCount > 0) {
-    //   return preppedData.slice(Math.max(preppedData.length - this.maxBarCount, 0));
-    // }
 
     return preppedData;
   }

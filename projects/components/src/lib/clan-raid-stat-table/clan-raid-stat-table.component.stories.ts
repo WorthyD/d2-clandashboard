@@ -6,7 +6,7 @@ import { ClanRaidStatTableModule } from './clan-raid-stat-table.module';
 import { ClanRaidStatTableComponent } from './clan-raid-stat-table.component';
 
 export default {
-  title: 'Clan Raid Stats',
+  title: 'Clan / Clan Raid Stats',
   decorators: [
     moduleMetadata({
       imports: [StorybookModule, ClanRaidStatTableModule]

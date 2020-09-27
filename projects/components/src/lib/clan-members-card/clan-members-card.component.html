@@ -1,24 +1,16 @@
 <mat-card>
-    <mat-card-title>{{cardTitle}}</mat-card-title>
-    <mat-card-content>
-        <mat-action-list>
-            <button mat-list-item *ngFor="let member of members; let idx = index" (click)="memberClick(member)">
-                <div class="member-info">
-                    <div class="member-name">
-                        {{member.member.destinyUserInfo.displayName}}
-                    </div>
-                    <ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ $implicit: member }">
-                    </ng-container>
-                </div>
-
-                <!-- <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: member, index: idx}">
-
-                </ng-container> -->
-            </button>
-            <!-- <mat-list-item>
-                <mat-icon matListIcon>people</mat-icon>
-                <h3 matLine>{{clanDetails.memberCount}}</h3>
-            </mat-list-item> -->
-        </mat-action-list>
-    </mat-card-content>
+  <mat-card-title>{{cardTitle}}</mat-card-title>
+  <mat-card-content>
+    <mat-action-list>
+      <button mat-list-item *ngFor="let member of members; let idx = index" (click)="memberClick(member)">
+        <div class="member-info">
+          <div class="member-name">
+            {{member.member.destinyUserInfo.displayName}}
+          </div>
+          <ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ $implicit: member }">
+          </ng-container>
+        </div>
+      </button>
+    </mat-action-list>
+  </mat-card-content>
 </mat-card>

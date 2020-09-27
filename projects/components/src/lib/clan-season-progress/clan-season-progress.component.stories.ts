@@ -7,7 +7,7 @@ import { ClanSeasonProgressComponent } from './clan-season-progress.component';
 import { MOCK_PROGRESS1 } from './_MOCK_CLAN_PROGRESS';
 
 export default {
-    title: 'Clan Season Progress',
+    title: 'Clan / Clan Season Progress',
     decorators: [
         moduleMetadata({
             imports: [ClanSeasonProgressModule, StorybookModule],

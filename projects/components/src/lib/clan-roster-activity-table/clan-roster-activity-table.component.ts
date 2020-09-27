@@ -80,7 +80,6 @@ export class ClanRosterActivityTableComponent implements OnInit {
 
   updateViewModel() {
     if (this.memberProfiles.length > 0) {
-      //console.log(`start ${this.memberProfiles?.length} ${this.memberActivities?.length}`);
       if (this.memberProfiles.length !== this.viewModel.length) {
         this.viewModel = this.memberProfiles.map((x) => {
           return { profile: x, id: getMemberProfileId(x) };
@@ -99,12 +98,11 @@ export class ClanRosterActivityTableComponent implements OnInit {
           }
         });
       }
-      //console.log(`done ${this.memberProfiles?.length} ${this.memberActivities?.length}`);
     }
   }
 
   memberClick(m: any) {
-    this.viewMember.emit(m);
+    this.viewMember.emit(m.profile);
   }
   sortData(sort: Sort) {
     const data = this.viewModel.slice();
