@@ -50,7 +50,7 @@ describe('ClanMemberActivityService', () => {
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(() => {
         return of({
-          Response: MOCK_RESP_ACTIVITIES_COMBINED
+          Response: { activities: MOCK_RESP_ACTIVITIES_COMBINED }
         });
       });
 
@@ -59,9 +59,9 @@ describe('ClanMemberActivityService', () => {
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
-        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_COMBINED.activities.length * 34);
+        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_COMBINED.length * 4);
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
-        expect(serviceSpy).toHaveBeenCalledTimes(34);
+        expect(serviceSpy).toHaveBeenCalledTimes(4);
         expect(updateSpy).toHaveBeenCalledTimes(1);
       });
     });
@@ -158,9 +158,8 @@ describe('ClanMemberActivityService', () => {
       });
     });
 
-    /*
     // todo: Fix later
-    fit('should get profile from DB and not call service if cache is good', async (done) => {
+    it('should get profile from DB and not call service if cache is good', async (done) => {
       const mockDBItem = {
         ...MOCK_DB_ACTIVITIES[0],
         createDate: new Date(moment(new Date()).add(-10, 'days').valueOf())
@@ -191,14 +190,14 @@ describe('ClanMemberActivityService', () => {
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
-        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_COMBINED.activities.length);
+        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_COMBINED.length);
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(0);
         expect(updateSpy).toHaveBeenCalledTimes(0);
         done();
       });
     });
-    */
+
     it('should call service if not in DB', () => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return of([]);
@@ -232,7 +231,7 @@ describe('ClanMemberActivityService', () => {
         expect(updateSpy).toHaveBeenCalledTimes(1);
       });
     });
-    it('should handle API down with DB data', () => {
+    it('should handle API down with DB data', async (done) => {
       const mockDBItem = {
         ...MOCK_DB_ACTIVITIES[0],
         createDate: new Date(moment(new Date()).add(-10, 'days').valueOf())
@@ -256,14 +255,15 @@ describe('ClanMemberActivityService', () => {
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
-        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_COMBINED.activities.length);
+        expect(x.activities.length).toBe(MOCK_RESP_ACTIVITIES_COMBINED.length);
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
-        expect(serviceSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(4);
         expect(updateSpy).toHaveBeenCalledTimes(0);
+        done();
       });
     });
 
-    it('should handle API down with no DB data', () => {
+    it('should handle API down with no DB data', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return of([]);
       });
@@ -286,6 +286,7 @@ describe('ClanMemberActivityService', () => {
         (error: HttpErrorResponse) => {
           expect(error.status).toEqual(404);
           expect(error.error).toContain('404 error');
+          done();
         }
       );
     });

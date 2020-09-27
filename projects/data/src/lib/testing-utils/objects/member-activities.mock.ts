@@ -266,13 +266,11 @@ export const MOCK_RESP_ACTIVITIES_PAGE3 = {
     }
   ]
 };
-export const MOCK_RESP_ACTIVITIES_COMBINED = {
-  activities: [
-    ...MOCK_RESP_ACTIVITIES_PAGE1.activities,
-    ...MOCK_RESP_ACTIVITIES_PAGE2.activities,
-    ...MOCK_RESP_ACTIVITIES_PAGE3.activities
-  ]
-};
+export const MOCK_RESP_ACTIVITIES_COMBINED = [
+  ...MOCK_RESP_ACTIVITIES_PAGE1.activities,
+  ...MOCK_RESP_ACTIVITIES_PAGE2.activities,
+  ...MOCK_RESP_ACTIVITIES_PAGE3.activities
+];
 
 export const MOCK_DB_ACTIVITIES: DBObject[] = [
   {
