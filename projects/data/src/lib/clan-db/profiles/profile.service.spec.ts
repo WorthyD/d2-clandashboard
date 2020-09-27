@@ -91,7 +91,7 @@ describe('ProfileService', () => {
       });
     });
 
-    it('should handle API down with DB data', () => {
+    it('should handle API down with DB data', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((a, b, id) => {
         return of(MOCK_DB_PROFILES.find((x) => x.id === id));
       });
@@ -110,9 +110,10 @@ describe('ProfileService', () => {
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(1);
         expect(updateSpy).toHaveBeenCalledTimes(0);
+        done();
       });
     });
-    it('should handle API down with no DB data', () => {
+    it('should handle API down with no DB data', async(done) => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return of([]);
       });
@@ -131,6 +132,7 @@ describe('ProfileService', () => {
         (error: HttpErrorResponse) => {
           expect(error.status).toEqual(404);
           expect(error.error).toContain('404 error');
+          done();
         }
       );
     });

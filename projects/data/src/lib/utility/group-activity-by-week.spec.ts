@@ -13,7 +13,6 @@ const _MOCK_DATA = [
     }
   },
 
-
   {
     period: '2020-08-25T01:38:09Z',
     activityDetails: {},
@@ -64,7 +63,7 @@ const _MOCK_DATA = [
     }
   }
 ];
-fdescribe('Group activities by week', () => {
+describe('Group activities by week', () => {
   it('should group activities by week', () => {
     const formatted = groupActivitiesByWeek(_MOCK_DATA);
     expect(formatted.length).toEqual(2);

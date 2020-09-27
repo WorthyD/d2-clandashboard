@@ -82,7 +82,6 @@ describe('ClanRaidsService', () => {
       });
 
       service.getClanRaidStats(2, MOCK_MEMBERS).subscribe((x) => {
-        console.log(x);
         expect(x).toBeTruthy();
         //console.log(x);
       });

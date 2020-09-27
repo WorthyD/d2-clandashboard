@@ -33,6 +33,7 @@ export class ClanRewardsService extends BaseClanService {
           }),
           catchError((error) => {
             if (cachedData && cachedData.data) {
+
               return of(cachedData.data);
             }
             throw error;
