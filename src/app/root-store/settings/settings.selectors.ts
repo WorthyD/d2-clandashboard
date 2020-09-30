@@ -18,6 +18,7 @@ export const selectSettings = createSelector(selectSettingsState, (state: Settin
 // );
 
 export const selectTheme = createSelector(selectSettings, (settings) => settings.theme);
+export const selectSelectedClanId = createSelector(selectSettings, (settings) => settings.selectedClan);
 
 // export const selectPageAnimations = createSelector(
 //   selectSettings,
