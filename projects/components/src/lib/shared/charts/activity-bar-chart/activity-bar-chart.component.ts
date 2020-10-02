@@ -69,7 +69,7 @@ export class ActivityBarChartComponent implements OnInit {
     const date = new Date();
     const offset = date.getDay() >= 2 ? 2 : -5;
     this.endDate = new Date(date.setDate(date.getDate() - date.getDay() + offset));
-    this.startDate = new Date(new Date().setDate(new Date(this.endDate).getDate() - 182));
+    this.startDate = new Date(new Date(this.endDate).setDate(new Date(this.endDate).getDate() - 182));
   }
 
   private updateChart(eventData) {
@@ -169,6 +169,9 @@ export class ActivityBarChartComponent implements OnInit {
         const dFormatted = formatDate(d);
 
         const data = sourceData.find((x) => x.date === dFormatted);
+        // console.log(d);
+        // console.log(dFormatted);
+        // console.log(sourceData.find((x) => x.date === dFormatted));
 
         if (data) {
           preppedData.push(data);
