@@ -10,7 +10,7 @@ import { GroupV2Service } from 'bungie-api';
 
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
 import { ClanMember } from 'bungie-models';
-import { loadMemberProfiles } from '../member-profiles/member-profiles.actions';
+import { initLoadMemberProfiles } from '../member-profiles/member-profiles.actions';
 
 // import { ClanDatabase } from '../../../services/ClanDatabase';
 // import { Updater } from '../../services/updater';
@@ -48,7 +48,7 @@ export class ClanMemberEffects {
       switchMap(({ clanId }) => {
         return this.clanMemberService.getClanMembersSerialized(clanId).pipe(
           map((clanMembers) => {
-            this.store.dispatch(loadMemberProfiles({ clanId, clanMembers }));
+            this.store.dispatch(initLoadMemberProfiles({ clanId, clanMembers }));
             return clanMemberActions.loadClanMembersSuccess({
               clanMembers
             });

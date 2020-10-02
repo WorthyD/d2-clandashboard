@@ -35,7 +35,8 @@ import {
   concatAll,
   mergeMapTo,
   toArray,
-  combineAll
+  combineAll,
+  bufferTime
 } from 'rxjs/operators';
 import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
@@ -53,13 +54,22 @@ export class MemberProfileEffects {
 
   loadProfiles$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(memberProfileActions.loadMemberProfiles),
+      ofType(memberProfileActions.initLoadMemberProfiles),
       switchMap(({ clanId, clanMembers }) => {
-       // clanMembers = clanMembers.slice(0, 10);
+        // clanMembers = clanMembers.slice(0, 10);
 
         return this.profileService.getSerializedProfiles(clanId.toString(), clanMembers).pipe(
-          tap((x) => {
-            this.store.dispatch(memberProfileActions.loadMemberProfile({ memberProfile: x }));
+          // tap((x) => {
+          //   this.store.dispatch(memberProfileActions.loadMemberProfile({ memberProfile: x }));
+          // }),
+          bufferTime(500, undefined, 10),
+          /**
+           * Don't continue processing if the timer in `bufferTime` was reached and
+           *   there are no buffered companies.
+           */
+          mergeMap((members) => {
+            this.store.dispatch(memberProfileActions.loadMemberProfiles({ memberProfiles: members }));
+            return members;
           }),
           toArray(),
           map((x) => {
