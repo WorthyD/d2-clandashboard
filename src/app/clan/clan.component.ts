@@ -15,7 +15,7 @@ import * as clanRewardActions from './store/clan-rewards/clan-rewards.actions';
 import * as memberProfileActions from './store/member-profiles/member-profiles.actions';
 
 import * as routerStore from '../root-store/router/router.selectors';
-import { actionSettingsChangeTheme } from '../root-store/settings/settings.actions';
+import { actionSettingsChangeClan, actionSettingsChangeTheme } from '../root-store/settings/settings.actions';
 
 // import { Clan } from 'bungie-parse';
 import { Store, select } from '@ngrx/store';
@@ -69,6 +69,11 @@ export class ClanComponent implements OnInit, OnDestroy {
     this.store.dispatch(clanIdActions.setClanId({ clanId: clanId }));
     this.store.dispatch(clanDetailActions.loadClan({ clanId: clanId }));
     this.store.dispatch(clanMemberActions.loadClanMembers({ clanId: clanId }));
+  }
+
+  goHome(){
+    this.store.dispatch(actionSettingsChangeClan({ selectedClanId: 0 }));
+      this.router.navigate(['/']);
   }
 
   resetDatabase() {

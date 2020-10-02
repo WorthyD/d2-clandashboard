@@ -1,8 +1,3 @@
-<!-- <mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <span *ngIf="clanDetails$ | async as clanDetails">{{clanDetails.name}}</span>
-    </mat-toolbar-row>
-</mat-toolbar> -->
 <div class="main-container">
   <lib-navbar [clanDetails]="clanDetails$ | async" [versionNumber]="versionNumber"
     (selectThemeOutput)="changeTheme($event)" (openLink)="openLink($event)" (openAbout)="openAbout()"
@@ -16,60 +11,9 @@
           <a mat-list-item routerLink="member-activity" routerLinkActive="active"> Member Activity </a>
           <a mat-list-item routerLink="seals" routerLinkActive="active"> Seals </a>
           <a mat-list-item routerLink="raids" routerLinkActive="active"> Raids </a>
-          <a mat-list-item routerLink="/">Home</a>
+          <a mat-list-item (click)="goHome()">Home</a>
         </div>
-        <!-- <a mat-list-item [matMenuTriggerFor]="appMenu">
-          <mat-icon>
-            settings
-          </mat-icon>
-          <span>
-            App Info
-          </span>
-        </a>
-        <mat-menu #appMenu="matMenu" xPosition="before" yPosition="above">
-
-          <button mat-menu-item (click)="openLink('https://github.com/WorthyD/d2-clandashboard/issues')">
-            <mat-icon>
-              bug_report
-            </mat-icon>
-            <span> Report a Bug</span>
-          </button>
-          <button mat-menu-item (click)="openLink('https://github.com/WorthyD/d2-clandashboard')">
-            <mat-icon>
-              code
-            </mat-icon>
-            <span> Source Code</span>
-          </button>
-          <button mat-menu-item (click)="openLink('https://twitter.com/worthyd')">
-            <mat-icon>
-              keyboard
-            </mat-icon>
-            <span> Developer</span>
-          </button>
-          <button mat-menu-item (click)="openAbout()">
-            <mat-icon>
-              help
-            </mat-icon>
-            <span> About App</span>
-          </button>
-          <button mat-menu-item (click)="resetDatabase()">
-            <mat-icon>
-              delete
-            </mat-icon>
-            <span> Reset Data</span>
-          </button>
-
-          <button mat-menu-item>
-            <mat-icon>
-              info
-            </mat-icon>
-            <span>
-              v {{versionNumber}}
-            </span>
-          </button>
-        </mat-menu> -->
       </mat-nav-list>
-
     </mat-sidenav>
     <mat-sidenav-content>
       <router-outlet></router-outlet>

@@ -14,7 +14,7 @@ export const actionSettingsChangeTheme = createAction(
 
 export const actionSettingsChangeClan = createAction(
   '[Settings] Change Clan',
-  props<{ selectedClan: number }>()
+  props<{ selectedClanId: number }>()
 );
 
 // export const actionSettingsChangeAutoNightMode = createAction(

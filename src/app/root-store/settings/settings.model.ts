@@ -6,7 +6,7 @@ export type Language = 'en' | 'sk' | 'de' | 'fr' | 'es' | 'pt-br' | 'he';
 
 export interface SettingsState {
   //language: string;
-  selectedClan: number;
+  selectedClanId: number;
   theme: string;
   // autoNightMode: boolean;
   // nightTheme: string;

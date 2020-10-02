@@ -14,37 +14,14 @@ export class HomeGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    // if (!this.authService.isUserAuthenticated()) {
-    //     this.router.navigate(['/account', 'login'], { queryParams: { retUrl: state.url } });
-    //    return false;
-    // }
     return this.store.pipe(
       select(selectSelectedClanId),
-      map((x) => {
-        console.log(x);
+      map((clanId) => {
+        if (clanId && clanId > 0) {
+          this.router.navigate(['/clan', clanId]);
+        }
         return true;
       })
     );
-
-    // return this.checkStore().pipe(
-    //     switchMap(() => of(true)),
-    //     catchError(err => {
-    //         return of(false);
-    //     })
-    // );
   }
-
-  // checkStore(): Observable<boolean> {
-  //   // Dispatch
-
-  //   return this.store.pipe(
-  //     select(userSelectors.userLoaded),
-  //     tap((loaded) => {
-  //       if (!loaded) {
-  //         this.store.dispatch(new userActions.SetInitialSessionAction());
-  //       }
-  //     }),
-  //     map(() => true)
-  //   );
-  // }
 }

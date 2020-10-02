@@ -11,6 +11,7 @@ import { map, sampleTime, shareReplay, switchMap, tap, catchError } from 'rxjs/o
 import { Store } from '@ngrx/store';
 import { addClan } from '../state/loaded-clans/loaded-clans.actions';
 import { ClanSearchState } from 'src/app/clan-search/state/clan-search.state';
+import { actionSettingsChangeClan } from '../../root-store/settings/settings.actions';
 
 @Component({
   selector: 'app-clan-search',
@@ -94,6 +95,7 @@ export class ClanSearchComponent implements OnInit {
   }
 
   open(group: any) {
+    this.store.dispatch(actionSettingsChangeClan({ selectedClanId: group.groupId }));
     this.router.navigate(['clan', group.groupId]);
   }
 
