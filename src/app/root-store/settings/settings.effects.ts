@@ -3,18 +3,13 @@ import { Injectable, NgZone } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { select, Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-//import { TranslateService } from '@ngx-translate/core';
 import { combineLatest, merge, of } from 'rxjs';
 import { tap, withLatestFrom, distinctUntilChanged, filter } from 'rxjs/operators';
 
-//import { selectSettingsState } from '../core.state';
 import { selectSettingsState } from './settings.selectors';
 import { LocalStorageService } from '../../core/services/local-storage.service';
 
-// import { AnimationsService } from '../animations/animations.service';
-// import { TitleService } from '../title/title.service';
-
-import { actionSettingsChangeTheme } from './settings.actions';
+import { actionSettingsChangeTheme, actionSettingsChangeClan } from './settings.actions';
 
 import { selectEffectiveTheme } from './settings.selectors';
 import { State } from './settings.model';
@@ -28,9 +23,8 @@ export class SettingsEffects {
   constructor(
     private actions$: Actions,
     private store: Store<State>,
-    //  private router: Router,
     private overlayContainer: OverlayContainer,
-    private localStorageService: LocalStorageService // private titleService: TitleService, //private animationsService: AnimationsService, //private translateService: TranslateService, //private ngZone: NgZone
+    private localStorageService: LocalStorageService
   ) {}
 
   // hour = 0;
@@ -49,7 +43,7 @@ export class SettingsEffects {
   persistSettings = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(actionSettingsChangeTheme),
+        ofType(actionSettingsChangeTheme, actionSettingsChangeClan),
         withLatestFrom(this.store.pipe(select(selectSettingsState))),
         tap(([action, settings]) => this.localStorageService.setItem(SETTINGS_KEY, settings))
       ),

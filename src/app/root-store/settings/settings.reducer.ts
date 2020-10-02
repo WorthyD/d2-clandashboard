@@ -7,13 +7,15 @@ import {
   // actionSettingsChangeHour,
   // actionSettingsChangeLanguage,
   // actionSettingsChangeStickyHeader,
-  actionSettingsChangeTheme
+  actionSettingsChangeTheme,
+  actionSettingsChangeClan
 } from './settings.actions';
 import { Action, createReducer, on } from '@ngrx/store';
 
 export const initialState: SettingsState = {
   //  language: 'en',
-  theme: 'light-theme'
+  theme: 'light-theme',
+  selectedClanId: 0
   // autoNightMode: false,
   // nightTheme: NIGHT_MODE_THEME,
   // stickyHeader: true,
@@ -28,6 +30,7 @@ const reducer = createReducer(
   on(
     //actionSettingsChangeLanguage,
     actionSettingsChangeTheme,
+    actionSettingsChangeClan,
     // actionSettingsChangeAutoNightMode,
     // actionSettingsChangeStickyHeader,
     // actionSettingsChangeAnimationsPage,

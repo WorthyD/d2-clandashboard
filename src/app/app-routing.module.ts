@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ClanSearchComponent } from './clan-search/clan-search.component';
 import { HomeComponent } from './home/home.component';
+import { HomeGuard } from './home/home.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [HomeGuard] },
   { path: 'clan', loadChildren: () => import('./clan/clan.module').then((m) => m.ClanModule) }
 ];
 

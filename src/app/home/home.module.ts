@@ -14,6 +14,7 @@ import { ClanSearchState, ClanSearchEffects, reducers } from './state/clan-searc
 import { CLAN_SEARCH_FEATURE } from './state/clan-search.selectors';
 import { ClanSearchModule } from './clan-search/clan-search.module';
 import { FeaturedClansModule } from './featured-clans/featured-clans.module';
+import { HomeGuard } from './home.guard';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -28,6 +29,7 @@ import { FeaturedClansModule } from './featured-clans/featured-clans.module';
     FeaturedClansModule,
     StoreModule.forFeature(CLAN_SEARCH_FEATURE, reducers),
     EffectsModule.forFeature(ClanSearchEffects)
-  ]
+  ],
+  providers: [HomeGuard]
 })
 export class HomeModule {}

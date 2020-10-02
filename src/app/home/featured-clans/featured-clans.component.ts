@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { actionSettingsChangeClan } from '../../root-store/settings/settings.actions';
 
 @Component({
   selector: 'app-featured-clans',
@@ -7,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./featured-clans.component.scss']
 })
 export class FeaturedClansComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private store: Store<any>) {}
   dodClans = [
     // PC
     { name: 'DOD Paternal Chums', id: 2073131 },
@@ -63,6 +65,7 @@ export class FeaturedClansComponent implements OnInit {
     { name: 'Focused Fire Chat', id: 1595671 }
   ];
   viewClan(clan) {
+    this.store.dispatch(actionSettingsChangeClan({ selectedClanId: clan.id }));
     this.router.navigate(['clan', clan.id]);
   }
 

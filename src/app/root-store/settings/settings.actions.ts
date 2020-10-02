@@ -11,6 +11,12 @@ export const actionSettingsChangeTheme = createAction(
   '[Settings] Change Theme',
   props<{ theme: string }>()
 );
+
+export const actionSettingsChangeClan = createAction(
+  '[Settings] Change Clan',
+  props<{ selectedClanId: number }>()
+);
+
 // export const actionSettingsChangeAutoNightMode = createAction(
 //   '[Settings] Change Auto Night Mode',
 //   props<{ autoNightMode: boolean }>()
