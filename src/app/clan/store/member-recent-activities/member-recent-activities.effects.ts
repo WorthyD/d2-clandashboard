@@ -13,7 +13,19 @@ import { ClanMemberRecentActivityService, ClanRewardsService } from '@destiny/da
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
 import * as clanRewardActions from '../clan-rewards/clan-rewards.actions';
 
-import { catchError, map, switchMap, tap, distinctUntilChanged, first, filter, withLatestFrom, toArray } from 'rxjs/operators';
+import {
+  catchError,
+  map,
+  switchMap,
+  tap,
+  distinctUntilChanged,
+  first,
+  filter,
+  withLatestFrom,
+  toArray,
+  mergeMap,
+  bufferTime
+} from 'rxjs/operators';
 
 @Injectable()
 export class MemberRecentStatEffects {
@@ -33,10 +45,17 @@ export class MemberRecentStatEffects {
       ),
       switchMap(([action, clanId, memberProfiles]) => {
         //switchMap((action) => {
-          //memberProfiles = memberProfiles.slice(0, 4);
+        //memberProfiles = memberProfiles.slice(0, 4);
         return this.memberActivityService.getSerializedProfilesActivity(clanId, memberProfiles).pipe(
-          tap((x) => {
-            this.store.dispatch(memberActivityActions.loadMemberRecentActivitiesSuccess({ memberActivities: x }));
+          // tap((x) => {
+          //   this.store.dispatch(memberActivityActions.loadMemberRecentActivitiesSuccess({ memberActivities: x }));
+          // }),
+          bufferTime(500, undefined, 10),
+          mergeMap((members) => {
+            this.store.dispatch(
+              memberActivityActions.loadMembersRecentActivitiesSuccess({ memberActivities: members })
+            );
+            return members;
           }),
           toArray(),
           map((x) => {

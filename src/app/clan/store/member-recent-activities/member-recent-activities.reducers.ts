@@ -17,6 +17,13 @@ export const MemberProfileReducer = createReducer(
   //         );
   //     }
   // ),
+  on(MemberActivityActions.loadMembersRecentActivitiesSuccess, (state, { memberActivities }) => {
+    return MemberActivityState.MemberRecentActivityStatAdapter.upsertMany(memberActivities, {
+      ...state,
+      loaded: true,
+      loading: false
+    });
+  }),
   on(MemberActivityActions.loadMemberRecentActivitiesSuccess, (state, { memberActivities }) => {
     return MemberActivityState.MemberRecentActivityStatAdapter.upsertOne(memberActivities, {
       ...state,

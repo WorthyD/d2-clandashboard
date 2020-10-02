@@ -17,4 +17,8 @@ export const loadMemberRecentActivitiesSuccess = createAction(
   `${base} Load Clan Members Success`,
   props<{ memberActivities: MemberActivityRecentStats }>()
 );
+export const loadMembersRecentActivitiesSuccess = createAction(
+  `${base} Load Clan Members Activites Success`,
+  props<{ memberActivities: MemberActivityRecentStats[] }>()
+);
 export const loadClanMemberFailure = createAction(`${base} Load Clan Members Failure`, props<{ error: any }>());
