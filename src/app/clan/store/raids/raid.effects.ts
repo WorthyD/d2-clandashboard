@@ -52,24 +52,17 @@ export class RaidEffects {
         this.store.select(clanMemberProfileSelectors.getAllMembers)
       ),
       switchMap(([action, clanId, clanMembers]) => {
-        /// Temp
         return this.clanRaidsService.getClanRaidStatsAsync(clanId, clanMembers).pipe(
           bufferTime(500, undefined, 10),
           mergeMap((members) => {
             this.store.dispatch(loadRaidGroupSuccess({ raidStats: members }));
             return members;
           }),
-
+          toArray(),
           map((memberStats) => {
             return loadRaidSuccess();
           })
         );
-
-        // return this.clanRaidsService.getClanRaidStats(clanId, clanMembers).pipe(
-        //   map((memberStats) => {
-        //     return loadRaidSuccess({ raidStats: memberStats });
-        //   })
-        // );
       })
     )
   );

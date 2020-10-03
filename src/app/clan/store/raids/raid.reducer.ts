@@ -9,9 +9,9 @@ export const RaidReducer = createReducer(
     ...state,
     loading: true
   })),
-  on(loadRaidSuccess, (state, { raidStats }) => {
+  on(loadRaidSuccess, (state) => {
     //return RaidAdapter.addAll(raidStats, { ...state, loaded: true, loading: false });
-    return { ...state, loaded: true };
+    return { ...state, loaded: true, loading: false };
     //return RaidAdapter.addAll(raidStats, { ...state, loaded: true, loading: false });
   }),
   on(loadRaidGroupSuccess, (state, { raidStats }) => {
