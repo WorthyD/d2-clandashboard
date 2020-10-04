@@ -6,11 +6,13 @@ import { registerIcons } from 'projects/components/src/lib/icons/register-icons'
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectEffectiveTheme } from './root-store/settings/settings.selectors';
+import { routeAnimations } from './core/core.module';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [routeAnimations]
 })
 export class AppComponent implements OnInit {
   title = 'destiny-dashboard';
