@@ -13,6 +13,7 @@ const routes: Routes = [
     {
         path: '',
         component: MemberOverviewComponent,
+        data: { title: 'd2.clan.member.overview' }
     },
 ];
 

@@ -8,7 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: MemberActivityComponent
+    component: MemberActivityComponent,
+    data: { title: 'd2.clan.member.activity' }
   }
 ];
 @NgModule({ imports: [RouterModule.forChild(routes)], exports: [RouterModule] })

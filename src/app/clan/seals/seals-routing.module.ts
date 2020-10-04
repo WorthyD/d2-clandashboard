@@ -7,7 +7,8 @@ import { SealsComponent } from './seals.component';
 const routes: Routes = [
   {
     path: '',
-    component: SealsComponent
+    component: SealsComponent,
+    data: { title: 'd2.clan.seals' }
   }
 ];
 

@@ -20,7 +20,9 @@
   <mat-sidenav-content>
     <div>
     </div>
-    <router-outlet></router-outlet>
+    <div [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.data && o.activatedRoute.routeConfig.data.title" >
+      <router-outlet #o="outlet"></router-outlet>
+</div>
 
   </mat-sidenav-content>
 </mat-sidenav-container>
