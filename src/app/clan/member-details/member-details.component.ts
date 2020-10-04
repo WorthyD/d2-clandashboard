@@ -18,6 +18,7 @@ import * as memberProfileSelectors from '../store/member-profiles/member-profile
 
 import * as memberActivitySelectors from '../store/member-activities/member-activities.selectors';
 import * as memberActivityActions from '../store/member-activities/member-activities.actions';
+import { routeAnimations } from 'src/app/core/core.module';
 
 export const getRecentClanMemberActivities = memberId =>
     createSelector(memberActivitySelectors.getClanMemberActivities(memberId), activities => {
@@ -33,7 +34,8 @@ export const getRecentClanMemberActivities = memberId =>
 @Component({
     selector: 'app-member-details',
     templateUrl: './member-details.component.html',
-    styleUrls: ['./member-details.component.scss']
+    styleUrls: ['./member-details.component.scss'],
+    animations: [routeAnimations]
 })
 export class MemberDetailsComponent implements OnInit, OnDestroy {
     constructor(

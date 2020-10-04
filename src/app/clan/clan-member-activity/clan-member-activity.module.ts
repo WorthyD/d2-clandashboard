@@ -7,7 +7,8 @@ import { ClanRosterActivityTableModule } from '@destiny/components';
 const routes: Routes = [
   {
     path: '',
-    component: ClanMemberActivityComponent
+    component: ClanMemberActivityComponent,
+    data: { title: 'd2.clan.activity' }
   }
 ];
 

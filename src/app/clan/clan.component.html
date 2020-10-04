@@ -15,8 +15,10 @@
         </div>
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
+    <mat-sidenav-content >
+      <div [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.data && o.activatedRoute.routeConfig.data.title" >
+      <router-outlet #o="outlet"></router-outlet>
+</div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

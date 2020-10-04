@@ -8,7 +8,8 @@ import { RaidsComponent } from './raids.component';
 const routes: Routes = [
   {
     path: '',
-    component: RaidsComponent
+    component: RaidsComponent,
+    data: { title: 'd2.clan.raids' }
   }
 ];
 
