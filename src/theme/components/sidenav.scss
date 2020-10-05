@@ -1,8 +1,16 @@
 @mixin d2-side-menu-theme($theme) {
-    $accent: map-get($theme, accent);
-    .mat-nav-list .active-link {
-        background: mat-color($accent);;
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+  $primary: map-get($theme, primary);
+  .mat-nav-list .active-link {
+    //background: mat-color($accent);;
+    color: mat-color($primary, default-contrast);
+    background: mat-color($primary);
+
+    &:hover {
+      background-color: mat-color($primary, darker) !important;
     }
+  }
 }
 @mixin d2-side-menu-base() {
 }
