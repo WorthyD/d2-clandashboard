@@ -6,11 +6,11 @@
     <mat-sidenav mode="side" opened>
       <mat-nav-list class="clan-nav">
         <div class="section-nav">
-          <a mat-list-item routerLink="./" routerLinkActive="active"> Details </a>
-          <a mat-list-item routerLink="roster" routerLinkActive="active"> Roster </a>
-          <a mat-list-item routerLink="member-activity" routerLinkActive="active"> Member Activity </a>
-          <a mat-list-item routerLink="seals" routerLinkActive="active"> Seals </a>
-          <a mat-list-item routerLink="raids" routerLinkActive="active"> Raids </a>
+          <a mat-list-item routerLink="./" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"> Details </a>
+          <a mat-list-item routerLink="roster" routerLinkActive="active-link"> Roster </a>
+          <a mat-list-item routerLink="member-activity" routerLinkActive="active-link"> Member Activity </a>
+          <a mat-list-item routerLink="seals" routerLinkActive="active-link"> Seals </a>
+          <a mat-list-item routerLink="raids" routerLinkActive="active-link"> Raids </a>
           <a mat-list-item (click)="goHome()">Home</a>
         </div>
       </mat-nav-list>
