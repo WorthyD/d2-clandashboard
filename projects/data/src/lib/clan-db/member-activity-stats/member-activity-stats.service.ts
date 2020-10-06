@@ -48,6 +48,18 @@ export class MemberActivityStatsService extends BaseClanService {
     );
   }
 
+  getMemberCharacterActivityStatsSerializedGETALL(
+    clanId: number,
+    member: MemberProfile,
+    characterId: number,
+  ): Observable<DestinyHistoricalStatsDestinyAggregateActivityStats[]> {
+    return this.getMemberActivityStats(clanId, member, characterId).pipe(
+      map((activityStats) => {
+        return activityStats;
+      })
+    );
+  }
+
   getMemberCharacterActivityStatsSerialized(
     clanId: number,
     member: MemberProfile,
