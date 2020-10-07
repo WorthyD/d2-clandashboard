@@ -10,3 +10,4 @@ export * from './SealMembers';
 export * from './MemberAggregateActivityStat';
 export * from './MemberActivityRecentStats';
 export * from './RaidStats';
+export * from './ActivityStats';
