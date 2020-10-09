@@ -71,6 +71,9 @@ export class ProfileService {
             if (cachedData && cachedData.data) {
               return of(cachedData.data);
             }
+            if (error?.error?.ErrorStatus === 'DestinyAccountNotFound') {
+              return of();
+            }
             throw error;
           })
         );
