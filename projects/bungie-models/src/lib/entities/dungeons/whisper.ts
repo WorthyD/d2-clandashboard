@@ -1,6 +1,6 @@
-import { ActivityStats } from '../../models/ActivityStats';
+import { Activity } from '../../models/ActivityStats';
 
-export const Whisper: ActivityStats = {
+export const Whisper: Activity = {
   hashes: [74501540],
   key: 'wis',
   abbreviatedName: 'Whisper',
@@ -9,7 +9,7 @@ export const Whisper: ActivityStats = {
   isGuidedGames: false
 };
 
-export const WhisperHeroic: ActivityStats = {
+export const WhisperHeroic: Activity = {
   hashes: [1099555105],
   key: 'wis-h',
   abbreviatedName: 'Whisper - Heroic',

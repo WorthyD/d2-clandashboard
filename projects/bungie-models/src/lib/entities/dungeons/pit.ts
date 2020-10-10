@@ -1,6 +1,6 @@
-import { ActivityStats } from '../../models/ActivityStats';
+import { Activity } from '../../models/ActivityStats';
 
-export const PitOfHeresy: ActivityStats = {
+export const PitOfHeresy: Activity = {
   hashes: [1375089621],
   key: 'pit',
   abbreviatedName: 'Pit',

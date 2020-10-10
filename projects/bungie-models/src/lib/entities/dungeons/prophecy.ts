@@ -1,6 +1,6 @@
-import { ActivityStats } from '../../models/ActivityStats';
+import { Activity } from '../../models/ActivityStats';
 
-export const Prophecy: ActivityStats = {
+export const Prophecy: Activity = {
   hashes: [4148187374],
   key: 'proph',
   abbreviatedName: 'proph',
