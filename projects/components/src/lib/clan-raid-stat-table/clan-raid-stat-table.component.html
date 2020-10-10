@@ -6,7 +6,7 @@
       (matSortChange)="sortData($event)">
       <ng-container matColumnDef="loadingRow">
         <td mat-header-cell *matHeaderCellDef colspan="100">
-          Please note that the cost of items displayed are completely and totally made up.
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </td>
       </ng-container>
 
@@ -39,10 +39,8 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
 
-      <!-- <ng-container *ngIf="isLoading;">
-        <tr mat-header-row *matHeaderRowDef="['loadingRow'] ; sticky:true"></tr>
-      </ng-container>
- -->
+      <tr mat-header-row *matHeaderRowDef="['loadingRow'] ; sticky:true"
+        [ngClass]="{'loading': isLoading, 'loading-row': true}"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </ng-container>
