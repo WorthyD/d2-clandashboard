@@ -17,18 +17,23 @@ export const MemberProfileReducer = createReducer(
   //         );
   //     }
   // ),
+  on(MemberActivityActions.loadClanMembersActivitiesSuccess, (state) => ({
+    ...state,
+    loaded: true,
+    loading: false
+  })),
   on(MemberActivityActions.loadMembersRecentActivitiesSuccess, (state, { memberActivities }) => {
     return MemberActivityState.MemberRecentActivityStatAdapter.upsertMany(memberActivities, {
       ...state,
-      loaded: true,
-      loading: false
+      //loaded: true,
+      //loading: false
     });
   }),
   on(MemberActivityActions.loadMemberRecentActivitiesSuccess, (state, { memberActivities }) => {
     return MemberActivityState.MemberRecentActivityStatAdapter.upsertOne(memberActivities, {
       ...state,
-      loaded: true,
-      loading: false
+      //loaded: true,
+      //loading: false
     });
   })
 );
