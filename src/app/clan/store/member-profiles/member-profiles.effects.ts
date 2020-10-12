@@ -62,7 +62,7 @@ export class MemberProfileEffects {
           // tap((x) => {
           //   this.store.dispatch(memberProfileActions.loadMemberProfile({ memberProfile: x }));
           // }),
-          bufferTime(500, undefined, 10),
+          bufferTime(500, undefined, 20),
           /**
            * Don't continue processing if the timer in `bufferTime` was reached and
            *   there are no buffered companies.
