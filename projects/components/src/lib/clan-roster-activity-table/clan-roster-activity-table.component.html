@@ -1,54 +1,61 @@
-<ng-container *ngIf="!isLoading; else loading">
-  <ng-container *ngIf="memberProfiles">
-    <table mat-table [dataSource]="viewModel" matSort class="mat-elevation-z8" matSortStart="desc"
-      (matSortChange)="sortData($event)">
+<ng-container *ngIf="memberProfiles">
+  <table mat-table [dataSource]="viewModel" matSort class="mat-elevation-z8" matSortStart="desc"
+    (matSortChange)="sortData($event)">
 
-      <ng-container matColumnDef="displayName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Display Name</th>
-        <td mat-cell *matCellDef="let element">
-          {{element.profile.profile.data?.userInfo?.displayName}}
-        </td>
-      </ng-container>
+    <ng-container matColumnDef="loadingRow">
+      <td mat-header-cell *matHeaderCellDef colspan="100">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </td>
+    </ng-container>
 
-      <ng-container matColumnDef="activityChart">
-        <th mat-header-cell *matHeaderCellDef>26 week activity</th>
-        <td mat-cell *matCellDef="let element" class="activity-cell">
+    <ng-container matColumnDef="displayName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Display Name</th>
+      <td mat-cell *matCellDef="let element">
+        {{element.profile.profile.data?.userInfo?.displayName}}
+      </td>
+    </ng-container>
 
-          <div class="mx-1">
-            <div *ngIf="element.activities; else loadingActivities">
-              <lib-activity-bar-chart [events]="element.activities">
-              </lib-activity-bar-chart>
-            </div>
+    <ng-container matColumnDef="activityChart">
+      <th mat-header-cell *matHeaderCellDef>26 week activity</th>
+      <td mat-cell *matCellDef="let element" class="activity-cell">
+
+        <div class="mx-1">
+          <div *ngIf="element.activities; else loadingActivities">
+            <lib-activity-bar-chart [events]="element.activities">
+            </lib-activity-bar-chart>
           </div>
-        </td>
-      </ng-container>
+        </div>
+      </td>
+    </ng-container>
 
-      <ng-container *ngFor="let calculation of calculatedColumns; let colIndex = index"
-        matColumnDef="{{calculation.key}}" >
-        <!-- <th mat-header-cell *matHeaderCellDef mat-sort-header class="calc-header"> -->
-        <th mat-header-cell *matHeaderCellDef class="calc-header" mat-sort-header>
-          {{calculation.value}}
-        </th>
-        <td mat-cell *matCellDef="let element" class="calc-cell">
+    <ng-container *ngFor="let calculation of calculatedColumns; let colIndex = index"
+      matColumnDef="{{calculation.key}}">
+      <!-- <th mat-header-cell *matHeaderCellDef mat-sort-header class="calc-header"> -->
+      <th mat-header-cell *matHeaderCellDef class="calc-header" mat-sort-header>
+        {{calculation.value}}
+      </th>
+      <td mat-cell *matCellDef="let element" class="calc-cell">
 
-          <div *ngIf="element[calculation.key] || element[calculation.key] === 0; else loadingNumbers">
-            {{element[calculation.key] | playtime}}
-          </div>
+        <div *ngIf="element[calculation.key] || element[calculation.key] === 0; else loadingNumbers">
+          {{element[calculation.key] | playtime}}
+        </div>
 
-        </td>
-      </ng-container>
+      </td>
+    </ng-container>
 
-      <ng-container matColumnDef="activityLink">
-        <th mat-header-cell *matHeaderCellDef>Activity LInk</th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-stroked-button  (click)="memberClick(element)">View</button>
-        </td>
-      </ng-container>
+    <ng-container matColumnDef="activityLink">
+      <th mat-header-cell *matHeaderCellDef>Activity LInk</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-stroked-button (click)="memberClick(element)">View</button>
+      </td>
+    </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true;"></tr>
+    <tr mat-header-row *matHeaderRowDef="['loadingRow'] ; sticky:true"
+      [ngClass]="{'loading': isLoading, 'loading-row': true}"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </ng-container>
 
 <ng-template #loading>

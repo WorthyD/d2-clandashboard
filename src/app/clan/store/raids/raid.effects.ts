@@ -8,7 +8,7 @@ import { ClanRaidsService } from '@destiny/data';
 import { MemberProfile, SealMembers } from 'bungie-models';
 import { getAllMembers } from '../clan-members/clan-members.selectors';
 
-import { loadRaidFailure, loadRaidSuccess, loadRaids } from './raid.actions';
+import { loadRaidFailure, loadRaidSuccess, loadRaids, loadRaidGroupSuccess } from './raid.actions';
 import * as clanMemberActions from '../clan-members/clan-members.actions';
 //import * as clanMemberSelectors from '../clan-members/clan-members.selectors';
 import * as clanMemberProfileSelectors from '../member-profiles/member-profiles.selectors';
@@ -31,7 +31,8 @@ import {
   concatAll,
   mergeMapTo,
   toArray,
-  combineAll
+  combineAll,
+  bufferTime
 } from 'rxjs/operators';
 import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
@@ -51,25 +52,17 @@ export class RaidEffects {
         this.store.select(clanMemberProfileSelectors.getAllMembers)
       ),
       switchMap(([action, clanId, clanMembers]) => {
-        /// Temp
-
-        return this.clanRaidsService.getClanRaidStats(clanId, clanMembers).pipe(
+        return this.clanRaidsService.getClanRaidStatsAsync(clanId, clanMembers).pipe(
+          bufferTime(500, undefined, 10),
+          mergeMap((members) => {
+            this.store.dispatch(loadRaidGroupSuccess({ raidStats: members }));
+            return members;
+          }),
+          toArray(),
           map((memberStats) => {
-            return loadRaidSuccess({ raidStats: memberStats });
+            return loadRaidSuccess();
           })
         );
-        // return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), clanMembers, hashes).pipe(
-        //   map((sealProfiles) => {
-        //     const sealProfilesCleaned: SealMembers[] = sealProfiles.map((sealMember) => {
-        //       return {
-        //         seal: seals.find((seal) => sealMember.milestoneHash === seal.completionRecordHash),
-        //         members: sealMember.profiles
-        //       };
-        //     });
-
-        //     return loadSealSuccess({ sealMembers: sealProfilesCleaned });
-        //   })
-        // );
       })
     )
   );

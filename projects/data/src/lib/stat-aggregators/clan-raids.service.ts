@@ -25,6 +25,16 @@ export class ClanRaidsService {
 
   constructor(private memberActivityService: MemberActivityStatsService) {}
 
+  getClanRaidStatsAsync(clanId: number, clanMemberProfiles: MemberProfile[]) {
+    return from(clanMemberProfiles).pipe(
+      mergeMap((member) => {
+        return this.getMemberRaidStats(clanId, member);
+      }, this.CONCURRENT_COUNT),
+      //toArray()
+    );
+  }
+
+
   getClanRaidStats(clanId: number, clanMemberProfiles: MemberProfile[]) {
     return from(clanMemberProfiles).pipe(
       mergeMap((member) => {

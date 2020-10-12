@@ -22,7 +22,7 @@ import { SettingsEffects } from './settings/settings.effects';
       serializer: CustomSerializer
     }),
     StoreDevtoolsModule.instrument({
-      maxAge: 25 // Retains last 25 states
+      //maxAge: 25 // Retains last 25 states
     })
   ],
   declarations: []
