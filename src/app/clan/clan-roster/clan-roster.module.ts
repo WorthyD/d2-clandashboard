@@ -6,18 +6,20 @@ import { ClanRosterComponent } from './clan-roster.component';
 import { ClanRosterListViewModule } from '@destiny/components';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: ClanRosterComponent
-    }
+  {
+    path: '',
+
+    component: ClanRosterComponent,
+    data: { title: 'd2.clan.roster' }
+  }
 ];
 
 @NgModule({ imports: [RouterModule.forChild(routes)], exports: [RouterModule] })
 export class ClanRosterRoutingModule {}
 
 @NgModule({
-    declarations: [ClanRosterComponent],
-    imports: [CommonModule, ClanRosterListViewModule, ClanRosterRoutingModule],
-    exports: [ClanRosterComponent]
+  declarations: [ClanRosterComponent],
+  imports: [CommonModule, ClanRosterListViewModule, ClanRosterRoutingModule],
+  exports: [ClanRosterComponent]
 })
 export class ClanRosterModule {}

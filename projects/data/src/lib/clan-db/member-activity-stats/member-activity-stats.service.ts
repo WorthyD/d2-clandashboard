@@ -41,9 +41,24 @@ export class MemberActivityStatsService extends BaseClanService {
             if (cachedData && cachedData.data) {
               return of(cachedData.data);
             }
+            if (error?.error?.ErrorStatus === 'DestinyAccountNotFound') {
+              return of();
+            }
             throw error;
           })
         );
+      })
+    );
+  }
+
+  getMemberCharacterActivityStatsSerializedGETALL(
+    clanId: number,
+    member: MemberProfile,
+    characterId: number
+  ): Observable<DestinyHistoricalStatsDestinyAggregateActivityStats[]> {
+    return this.getMemberActivityStats(clanId, member, characterId).pipe(
+      map((activityStats) => {
+        return activityStats;
       })
     );
   }

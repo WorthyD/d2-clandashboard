@@ -1,5 +1,6 @@
 <div [class]="(theme$ | async)">
-  <div class="content-wrapper">
-    <router-outlet></router-outlet>
+  <div class="content-wrapper"
+    [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.data && o.activatedRoute.routeConfig.data.title">
+    <router-outlet #o="outlet"></router-outlet>
   </div>
 </div>

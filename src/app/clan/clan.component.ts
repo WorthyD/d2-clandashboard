@@ -27,11 +27,13 @@ import { ProfileService } from '@destiny/data';
 import { ClanDatabase } from '@destiny/data';
 import { AboutComponent } from '../about/about.component';
 import { MatDialog } from '@angular/material/dialog';
+import { routeAnimations } from '../core/core.module';
 
 @Component({
   selector: 'app-clan',
   templateUrl: './clan.component.html',
-  styleUrls: ['./clan.component.scss']
+  styleUrls: ['./clan.component.scss'],
+  animations: [routeAnimations]
 })
 export class ClanComponent implements OnInit, OnDestroy {
   versionNumber = environment.versions.app;
@@ -71,9 +73,9 @@ export class ClanComponent implements OnInit, OnDestroy {
     this.store.dispatch(clanMemberActions.loadClanMembers({ clanId: clanId }));
   }
 
-  goHome(){
+  goHome() {
     this.store.dispatch(actionSettingsChangeClan({ selectedClanId: 0 }));
-      this.router.navigate(['/']);
+    this.router.navigate(['/']);
   }
 
   resetDatabase() {

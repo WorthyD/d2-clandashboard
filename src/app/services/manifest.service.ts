@@ -1,6 +1,16 @@
 import { Injectable } from '@angular/core';
 
-import { catchError, map, switchMap, tap, distinctUntilChanged, first, take, filter, withLatestFrom } from 'rxjs/operators';
+import {
+  catchError,
+  map,
+  switchMap,
+  tap,
+  distinctUntilChanged,
+  first,
+  take,
+  filter,
+  withLatestFrom
+} from 'rxjs/operators';
 import {
   DataService,
   MilestoneDefinitionService,
@@ -26,7 +36,7 @@ export class ManifestService {
     const tables = [
       //            'DestinyChecklistDefinition',
       //            'DestinyObjectiveDefinition',
-      //            'DestinyStatDefinition',
+      //'DestinyStatDefinition',
       //            'DestinyVendorDefinition',
       //            'DestinyInventoryItemDefinition',
       //            'DestinyClassDefinition',

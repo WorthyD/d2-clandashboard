@@ -14,6 +14,7 @@ const routes: Routes = [
       {
         path: '',
         component: ClanDetailComponent
+        , data: { title: 'd2.clan.clan-details' }
       },
       {
         path: 'roster',

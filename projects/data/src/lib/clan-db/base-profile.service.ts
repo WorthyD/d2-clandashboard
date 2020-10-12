@@ -55,6 +55,9 @@ export class BaseProfileService extends BaseClanService {
             if (cachedData && cachedData.data) {
               return of(cachedData.data);
             }
+            if (error?.error?.ErrorStatus === 'DestinyAccountNotFound') {
+              return of();
+            }
             throw error;
           })
         );
