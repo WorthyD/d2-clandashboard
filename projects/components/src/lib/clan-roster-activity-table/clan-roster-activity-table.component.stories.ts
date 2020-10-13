@@ -18,11 +18,12 @@ export default {
 
 export const base = () => ({
   component: ClanRosterActivityTableComponent,
-  template: `<lib-clan-roster-activity-table [memberProfiles]="memberStats" [memberActivities]="activities" [isLoading]="isLoading"></lib-clan-roster-activity-table>`,
+  template: `<lib-clan-roster-activity-table [memberProfiles]="memberStats" [memberActivities]="activities" [isLoading]="isLoading" [memberProfilesLoading]="isProfileLoading"></lib-clan-roster-activity-table>`,
   props: {
     memberStats: MOCK_ROSTER_ACTIVITY,
     activities: MOCK_ROSTER_ACTIVITIES,
-    isLoading: boolean('Is Loading', true)
+    isLoading: boolean('Is Loading', true),
+    isProfileLoading: boolean('Is Profile Loading', false)
   }
 });
 export const loadingTable = () => ({

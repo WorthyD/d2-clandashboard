@@ -22,6 +22,7 @@ export class ClanMemberActivityService {
   clanMemberProfiles$ = this.store.pipe(select(getAllMembers));
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
   areMembersLoading$ = this.store.pipe(select(getClanMemberActivitiesLoading));
+  areMemberProfilesLoading$ = this.store.pipe(select(getIsMembersProfilesLoading));
   memberActivities$ = this.store.pipe(select(getAllMemberActivities));
 
   // memberProfileActivities$ = combineLatest(
