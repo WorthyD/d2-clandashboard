@@ -1,4 +1,4 @@
-<ng-container *ngIf="memberProfiles">
+<ng-container *ngIf="!memberProfilesLoading; else loading">
   <table mat-table [dataSource]="viewModel" matSort class="mat-elevation-z8" matSortStart="desc"
     (matSortChange)="sortData($event)">
 
@@ -62,7 +62,7 @@
 
   <div class="text-center m-5">
     <h2>
-      Activity Stats...
+      Loading Members...
     </h2>
     <p>
 

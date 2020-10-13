@@ -108,6 +108,7 @@ export class BaseMemberActivityService extends BaseClanService {
               return of(cachedData.data);
             }
             if (error?.error?.ErrorStatus === 'DestinyPrivacyRestriction') {
+              this.updateDB(clanId, characterActivityId, []);
               return of([]);
             }
             throw error;

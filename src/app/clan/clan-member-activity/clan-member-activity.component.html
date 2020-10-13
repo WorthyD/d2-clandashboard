@@ -14,4 +14,4 @@
   [isLoading]="clanMemberActivityService.areMembersLoading$ | async"></lib-clan-roster-activity-table> -->
 <lib-clan-roster-activity-table [memberProfiles]="clanMemberActivityService.clanMemberProfiles$ | async"
   [memberActivities]="clanMemberActivityService.memberActivities$ | async"
-  [isLoading]="clanMemberActivityService.areMembersLoading$ | async"  (viewMember)="viewMember($event)"></lib-clan-roster-activity-table>
+  [isLoading]="clanMemberActivityService.areMembersLoading$ | async" [memberProfilesLoading]="clanMemberActivityService.areMemberProfilesLoading$ | async"  (viewMember)="viewMember($event)"></lib-clan-roster-activity-table>
