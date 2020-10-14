@@ -3,7 +3,7 @@ import { map, take } from 'rxjs/operators';
 import { DBObject, StoreId } from './app-indexed-db';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
-import * as _ from 'lodash';
+import { isValidDate } from '../utility/date-utils';
 
 export class BaseClanService {
   tableName;
@@ -12,15 +12,6 @@ export class BaseClanService {
   }
 
   getDataFromCache(clanId: string, rowId: string): Promise<DBObject> {
-    // return this.clanDbBase.getValues(clanId)[this.tableNameBase].pipe(
-    //   map((rows: DBObject[]) => {
-    //     if (rows && rows.length > 0) {
-    //       return rows.find((m) => m.id === rowId);
-    //     }
-    //     return undefined;
-    //   }),
-    //   take(1)
-    // );
     return this.clanDbBase.getById(clanId, this.tableNameBase, rowId);
   }
 
@@ -29,7 +20,7 @@ export class BaseClanService {
     if (cachedData && cachedData.createDate) {
       const cacheDate = moment(cachedData.createDate);
       let expireDate;
-      if (_.isDate(lastActivity)) {
+      if (isValidDate(lastActivity)) {
         if (minuteExpiration === 0) {
           expireDate = moment(lastActivity);
         } else {

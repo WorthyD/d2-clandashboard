@@ -6,7 +6,6 @@ import { Destiny2Service } from 'bungie-api';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of, defer, forkJoin } from 'rxjs';
 import * as moment from 'moment';
-import * as _ from 'lodash';
 import { MemberProfile } from 'bungie-models';
 import { MOCK_WORTHY_PROFILE } from '../../testing-utils/objects/profiles.mock';
 import {
@@ -55,7 +54,7 @@ describe('ClanMemberActivityService', () => {
       });
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
@@ -93,7 +92,7 @@ describe('ClanMemberActivityService', () => {
       );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
@@ -128,7 +127,8 @@ describe('ClanMemberActivityService', () => {
       );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
+
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
@@ -148,7 +148,7 @@ describe('ClanMemberActivityService', () => {
       );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
@@ -186,7 +186,7 @@ describe('ClanMemberActivityService', () => {
       );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date(moment(new Date()).add(-100, 'days').valueOf()));
+      memberProfile.profile.data.dateLastPlayed = new Date(moment(new Date()).add(-100, 'days').valueOf());
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
@@ -221,7 +221,7 @@ describe('ClanMemberActivityService', () => {
       );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
@@ -251,7 +251,7 @@ describe('ClanMemberActivityService', () => {
       });
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
@@ -278,7 +278,7 @@ describe('ClanMemberActivityService', () => {
       });
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe(
