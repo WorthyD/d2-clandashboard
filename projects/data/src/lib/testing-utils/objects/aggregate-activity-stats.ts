@@ -1,5 +1,4 @@
 import { DBObject } from '../../clan-db/app-indexed-db';
-import * as moment from 'moment';
 
 export const MOCK_AGGREGATE_ACTIVITY_STATS = {
   activities: [

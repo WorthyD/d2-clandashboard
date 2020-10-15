@@ -1,4 +1,5 @@
 import { SECONDS_IN_WEEK, SECONDS_IN_DAY } from '@destiny/models/constants';
+// TODO: remove
 import * as moment from 'moment';
 const stats = [];
 const today = moment();

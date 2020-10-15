@@ -1,5 +1,6 @@
 import { DBObject } from '../../clan-db/app-indexed-db';
 import * as moment from 'moment';
+import { nowPlusDays } from '../../utility/date-utils';
 
 // export const MOCK_RESP_ACTIVITIES = {
 //   activities: [
@@ -285,7 +286,7 @@ export const MOCK_DB_ACTIVITIES: DBObject[] = [
   },
   {
     id: '3-4611686018467238913-2305843009319768858',
-    createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()),
+    createDate: nowPlusDays(-10),
     data: MOCK_RESP_ACTIVITIES_COMBINED
   }
 ];

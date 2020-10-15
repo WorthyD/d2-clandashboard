@@ -7,6 +7,7 @@ import { Observable, from, of } from 'rxjs';
 
 import { DBObject, StoreId } from '../app-indexed-db';
 
+// TODO: remove
 import * as moment from 'moment';
 
 import { profileSerializer } from './profile.serializer';

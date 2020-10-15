@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { MemberActivityStat } from 'bungie-models';
+// TODO: Remove
 import * as moment from 'moment';
+import { formatDate } from 'projects/data/src/lib/utility/format-date';
 @Component({
   selector: 'lib-member-activity-heat-map',
   templateUrl: './member-activity-heat-map.component.html',
@@ -33,7 +35,7 @@ export class MemberActivityHeatMapComponent implements OnInit, OnChanges {
 
   processData(changes) {
     const raw = changes.map((x) => {
-      return { date: moment(x.period).format('YYYY-MM-DD'), seconds: x.values.activityDurationSeconds.basic.value };
+      return { date: formatDate(x.period), seconds: x.values.activityDurationSeconds.basic.value };
     });
 
     // Todo: Find better way to handle this.

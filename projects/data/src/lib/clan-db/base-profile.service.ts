@@ -5,6 +5,7 @@ import { Destiny2Service } from 'bungie-api';
 import { ClanMember } from 'bungie-models';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { Observable, of, from } from 'rxjs';
+// TODO: Remove
 import * as moment from 'moment';
 
 export class BaseProfileService extends BaseClanService {

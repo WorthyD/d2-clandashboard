@@ -1,5 +1,6 @@
 import { DBObject } from '../../clan-db/app-indexed-db';
 import * as moment from 'moment';
+import { nowPlusDays } from '../../utility/date-utils';
 
 export const MOCK_ZONED_MEMBER = {
   memberType: 5,
@@ -98,7 +99,7 @@ export const MOCK_DB_MEMBERS: DBObject[] = [
   },
   {
     id: '3-4611686018467238913',
-    createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()),
+    createDate: nowPlusDays(-10),
     data: MOCK_WORTHY_MEMBER
   }
 ];

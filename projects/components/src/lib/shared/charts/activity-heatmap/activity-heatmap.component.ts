@@ -11,6 +11,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import * as d3 from 'd3';
+// TODO: remove
 import * as moment from 'moment';
 
 @Component({

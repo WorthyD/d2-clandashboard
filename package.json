@@ -67,7 +67,6 @@
     "@storybook/angular": "^6.0.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
-    "@types/lodash": "^4.14.159",
     "@types/node": "^12.12.28",
     "babel-loader": "^8.0.6",
     "codelyzer": "^6.0.0",

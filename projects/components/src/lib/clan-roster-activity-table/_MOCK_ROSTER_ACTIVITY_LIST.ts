@@ -1,4 +1,5 @@
 import { SECONDS_IN_WEEK, SECONDS_IN_DAY } from '@destiny/models/constants';
+// TODO: Remove
 import * as moment from 'moment';
 export const MOCK_ROSTER_ACTIVITY = [];
 export const MOCK_ROSTER_ACTIVITIES = [];

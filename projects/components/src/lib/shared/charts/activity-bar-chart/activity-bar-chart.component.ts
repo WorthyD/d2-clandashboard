@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 //import { SVGGraph, CanvasGraph, StrGraph } from 'calendar-graph';
 import * as d3 from 'd3';
+// TODO: Remove
 import * as moment from 'moment';
 import { SECONDS_IN_HOUR } from '@destiny/models/constants';
 import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
