@@ -1,9 +1,9 @@
 
-import * as moment from 'moment';
+import { formatDate } from './format-date';
 
 export function groupActivitiesByDate(data) {
   const raw = data.map((x) => {
-    return { date: moment(x.period).format('YYYY-MM-DD'), seconds: x.values.activityDurationSeconds.basic.value };
+    return { date: formatDate(x.period), seconds: x.values.activityDurationSeconds.basic.value };
   });
 
   // Todo: Find better way to handle this.

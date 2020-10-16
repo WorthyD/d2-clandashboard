@@ -9,7 +9,7 @@ import {
   getSelectedClanMemberActivities,
   getClanMemberActivitiesLoading
 } from '../../store/member-activities/member-activities.selectors';
-import * as moment from 'moment';
+import { formatDate } from 'projects/data/src/lib/utility/format-date';
 
 @Injectable()
 export class MemberActivityService {
@@ -30,7 +30,7 @@ export class MemberActivityService {
     (pActivities, selectedDate) => {
       if (pActivities && selectedDate) {
         // I want to move the format out of the filter. Selected date is already locally formatted and can't format it back to UTC
-        const activitiesOfDay = pActivities.filter((x) => moment(x.period).format('YYYY-MM-DD') === selectedDate);
+        const activitiesOfDay = pActivities.filter((x) => formatDate(x.period) === selectedDate);
         return this.addDefinitions(activitiesOfDay);
       }
       return null;

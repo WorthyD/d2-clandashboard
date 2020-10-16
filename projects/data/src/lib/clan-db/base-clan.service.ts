@@ -1,9 +1,6 @@
 import { ClanDatabase } from './ClanDatabase';
-import { map, take } from 'rxjs/operators';
 import { DBObject, StoreId } from './app-indexed-db';
-import { Observable } from 'rxjs';
-import * as moment from 'moment';
-import * as _ from 'lodash';
+import { isValidDate, nowPlusMinutes } from '../utility/date-utils';
 
 export class BaseClanService {
   tableName;
@@ -12,35 +9,25 @@ export class BaseClanService {
   }
 
   getDataFromCache(clanId: string, rowId: string): Promise<DBObject> {
-    // return this.clanDbBase.getValues(clanId)[this.tableNameBase].pipe(
-    //   map((rows: DBObject[]) => {
-    //     if (rows && rows.length > 0) {
-    //       return rows.find((m) => m.id === rowId);
-    //     }
-    //     return undefined;
-    //   }),
-    //   take(1)
-    // );
     return this.clanDbBase.getById(clanId, this.tableNameBase, rowId);
   }
 
-  // TODO: Refactor with fewer if statements
   isCacheValid(cachedData: DBObject, minuteExpiration: number, lastActivity?: Date) {
     if (cachedData && cachedData.createDate) {
-      const cacheDate = moment(cachedData.createDate);
+      const cacheDate = cachedData.createDate;
       let expireDate;
-      if (_.isDate(lastActivity)) {
+      if (isValidDate(lastActivity)) {
         if (minuteExpiration === 0) {
-          expireDate = moment(lastActivity);
+          expireDate = lastActivity;
         } else {
-          const minuteXP = moment().add(-minuteExpiration, 'minutes');
-          const lastActivityXP = moment(lastActivity);
-          expireDate = minuteXP.isAfter(lastActivityXP) ? lastActivityXP : minuteXP;
+          const minuteXP = nowPlusMinutes(-minuteExpiration);
+          const lastActivityXP = lastActivity;
+          expireDate = minuteXP > lastActivityXP ? lastActivityXP : minuteXP;
         }
       } else {
-        expireDate = moment().add(-minuteExpiration, 'minutes');
+        expireDate = nowPlusMinutes(-minuteExpiration);
       }
-      return cacheDate.isAfter(expireDate);
+      return cacheDate > expireDate;
     }
     return false;
   }

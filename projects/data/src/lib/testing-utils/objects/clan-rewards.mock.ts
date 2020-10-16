@@ -1,5 +1,5 @@
 import { DBObject } from '../../clan-db/app-indexed-db';
-import * as moment from 'moment';
+import { nowPlusDays } from '../../utility/date-utils';
 
 export const MOCK_CLAN_REWARDS = {
   milestoneHash: 4253138191,
@@ -62,7 +62,7 @@ export const MOCK_CLAN_REWARDS = {
 export const MOCK_DB_CLAN_REWARDS: DBObject[] = [
   {
     id: 'ClanRewards',
-    createDate:  new Date(moment(new Date()).add(-10, 'days').valueOf()),
+    createDate: nowPlusDays(-10),
     data: MOCK_CLAN_REWARDS
   }
 ]

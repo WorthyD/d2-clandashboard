@@ -7,10 +7,10 @@ import { Observable, from, of } from 'rxjs';
 
 import { DBObject, StoreId } from '../app-indexed-db';
 
-import * as moment from 'moment';
 
 import { profileSerializer } from './profile.serializer';
 import { ContentHashService } from '../../services/content-hash.service';
+import { unixTimeStampToDate } from '../../utility/date-utils';
 
 @Injectable()
 export class ProfileService {
@@ -47,9 +47,9 @@ export class ProfileService {
     return from(this.getProfileFromCache(clanId, member)).pipe(
       mergeMap((cachedData) => {
         if (cachedData && cachedData.createDate) {
-          const cacheDate = moment(cachedData.createDate);
-          const lastStatusChange = moment.unix(member.lastOnlineStatusChange);
-          if (cacheDate.isAfter(lastStatusChange)) {
+          const cacheDate = cachedData.createDate;
+          const lastStatusChange = unixTimeStampToDate(member.lastOnlineStatusChange);
+          if (cacheDate > lastStatusChange) {
             return of(cachedData?.data);
           }
         }
