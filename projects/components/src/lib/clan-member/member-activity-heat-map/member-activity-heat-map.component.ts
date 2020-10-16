@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { MemberActivityStat } from 'bungie-models';
-// TODO: Remove
-import * as moment from 'moment';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
 @Component({
   selector: 'lib-member-activity-heat-map',

@@ -1,5 +1,4 @@
 import { DBObject } from '../../clan-db/app-indexed-db';
-import * as moment from 'moment';
 import { nowPlusDays } from '../../utility/date-utils';
 
 // export const MOCK_RESP_ACTIVITIES = {
