@@ -1,4 +1,4 @@
-import { isValidDate } from './date-utils';
+import { isValidDate, dateToUnixTimeStamp, unixTimeStampToDate } from './date-utils';
 
 describe('Date Utils', () => {
   describe('isValidDate', () => {
@@ -25,6 +25,20 @@ describe('Date Utils', () => {
     it('should not work with undefined', () => {
       const d = undefined;
       expect(isValidDate(d)).toEqual(false);
+    });
+  });
+
+  describe('dateToUnixTimeStamp', () => {
+    it('should convert date to unix timestamp', () => {
+      const d = new Date('2000-01-01T00:00:00+00:00');
+      expect(dateToUnixTimeStamp(d)).toEqual(946684800);
+    });
+  });
+  describe('unixTimeStampToDate', () => {
+    it('should convert unix timestamp to date', () => {
+      const uxts = 946684800;
+      const d = new Date('2000-01-01T00:00:00+00:00');
+      expect(unixTimeStampToDate(uxts)).toEqual(d);
     });
   });
 });

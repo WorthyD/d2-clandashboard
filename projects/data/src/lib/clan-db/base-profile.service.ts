@@ -5,8 +5,7 @@ import { Destiny2Service } from 'bungie-api';
 import { ClanMember } from 'bungie-models';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { Observable, of, from } from 'rxjs';
-// TODO: Remove
-import * as moment from 'moment';
+import { unixTimeStampToDate } from '../utility/date-utils';
 
 export class BaseProfileService extends BaseClanService {
   constructor(
@@ -33,7 +32,7 @@ export class BaseProfileService extends BaseClanService {
   getProfile(clanId: string, member: ClanMember): Observable<any> {
     return from(this.getDataFromCache(clanId, this.getProfileId(member))).pipe(
       mergeMap((cachedData) => {
-        const lastActivity = moment.unix(member.lastOnlineStatusChange).toDate();
+        const lastActivity = unixTimeStampToDate(member.lastOnlineStatusChange);
         if (this.isCacheValid(cachedData, 0, lastActivity)) {
           return of(cachedData.data);
         }
