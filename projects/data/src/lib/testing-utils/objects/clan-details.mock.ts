@@ -2,7 +2,7 @@
 // import { MOCK_OMEGA_PROFILE } from './profile.omega.mock';
 // import { MOCK_ZONED_PROFILE } from './profile.zoned.mock';
 import { DBObject } from '../../clan-db/app-indexed-db';
-import * as moment from 'moment';
+import { nowPlusDays } from '../../utility/date-utils';
 
 export const  MOCK_CLAN_OVERVIEW = {
   groupId: '2073131',
@@ -116,7 +116,7 @@ export const  MOCK_CLAN_OVERVIEW = {
 export const MOCK_DB_CLAN_DETAILS: DBObject[] = [
   {
     id: 'ClanDetails',
-    createDate:  new Date(moment(new Date()).add(-10, 'days').valueOf()),
+    createDate: nowPlusDays(-10),
     data: MOCK_CLAN_OVERVIEW
   }
 ]

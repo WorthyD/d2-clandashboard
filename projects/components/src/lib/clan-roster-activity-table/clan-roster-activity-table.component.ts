@@ -23,6 +23,8 @@ export interface MemberActivityRecentStats {
 export class ClanRosterActivityTableComponent implements OnInit {
   @Input()
   isLoading: boolean = true;
+  @Input()
+  memberProfilesLoading: boolean;
 
   // _memberActivityStats;
   // @Input()

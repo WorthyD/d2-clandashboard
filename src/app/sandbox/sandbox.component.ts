@@ -34,12 +34,22 @@ export class SandboxComponent implements OnInit {
     }
   } as unknown) as MemberProfile;
 
+<<<<<<< HEAD
   user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, 305843009310516628);
+=======
+  //user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, '2305843009310516628');
+  user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, 2305843009310516628);
+>>>>>>> origin/main
   rootSealNode = this.presentationNodeService.getDefinitions();
 
   prophecy = this.user.pipe(
     map((x) => {
+<<<<<<< HEAD
       ///return x.activities.find((y) => y.activityHash === 4148187374);
+=======
+      //return x.activities.find((y) => y.activityHash === 4148187374);
+      return x;
+>>>>>>> origin/main
     })
   );
 
@@ -47,7 +57,11 @@ export class SandboxComponent implements OnInit {
     map((x) => {
       //console.log(x);
 
+<<<<<<< HEAD
       // const retVal = [];
+=======
+      const retVal = [];
+>>>>>>> origin/main
       // x.activities.forEach((stat) => {
       //   retVal.push({
       //     user: this.rootSealNode[stat.activityHash]?.displayProperties.name,
@@ -55,6 +69,7 @@ export class SandboxComponent implements OnInit {
       //   });
       // });
 
+<<<<<<< HEAD
       // if (this.rootSealNode[x.activityHash]) {
       //   return {
       //     name: this.rootSealNode[x.activityHash]
@@ -62,9 +77,11 @@ export class SandboxComponent implements OnInit {
       // }
       //return retVal;
       return null;
+=======
+      return retVal;
+>>>>>>> origin/main
     })
   );
-  //rootSealNode = this.presentationNodeService.getDefinitions(2163254576);
 
   ngOnInit(): void {}
 }

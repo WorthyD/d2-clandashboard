@@ -28,9 +28,10 @@ describe('ClanDetailsService', () => {
   });
 
   describe('clanDetails', () => {
+    // Broken for some reason
     it('should get profile from DB, but call service if expired', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
-        return of(MOCK_DB_CLAN_DETAILS.find((x) => x.id === id));
+        return of({ ...MOCK_DB_CLAN_DETAILS.find((x) => x.id === id) });
       });
       const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2GroupService, 'groupV2GetGroup').and.callFake(() => {
@@ -48,10 +49,10 @@ describe('ClanDetailsService', () => {
       });
     });
 
-    it('should get profile from DB and not call service if cache is good', async(done) => {
+    it('should get profile from DB and not call service if cache is good', async (done) => {
       const mockDBItem = [{ ...MOCK_DB_CLAN_DETAILS[0], createDate: new Date() }];
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((repo, store, id) => {
-        const m = MOCK_DB_CLAN_DETAILS.find((x) => x.id === id);
+        const m = { ...MOCK_DB_CLAN_DETAILS.find((x) => x.id === id) };
         m.createDate = new Date();
         return of(m);
       });

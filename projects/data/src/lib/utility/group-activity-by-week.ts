@@ -1,4 +1,3 @@
-import * as moment from 'moment';
 import { formatDate } from './format-date';
 import { MemberActivityRecentStatsActivity } from 'bungie-models';
 

@@ -2,7 +2,8 @@ import { MOCK_WORTHY_PROFILE } from './profile.worthy.mock';
 import { MOCK_OMEGA_PROFILE } from './profile.omega.mock';
 import { MOCK_ZONED_PROFILE } from './profile.zoned.mock';
 import { DBObject } from '../../clan-db/app-indexed-db';
-import * as moment from 'moment';
+
+import { nowPlusDays } from '../../utility/date-utils';
 
 export * from './profile.worthy.mock';
 export * from './profile.zoned.mock';
@@ -23,7 +24,7 @@ export const MOCK_DB_PROFILES: DBObject[] = [
   },
   {
     id: '3-4611686018467238913',
-    createDate: new Date(moment(new Date()).add(-10, 'days').valueOf()),
+    createDate: nowPlusDays(-10),
     data: MOCK_WORTHY_PROFILE
   }
 ];

@@ -8,19 +8,21 @@ export function memberActivityStatSerializer(
 ): DestinyHistoricalStatsDestinyAggregateActivityStats[] {
   const activities = [];
 
-  recordHashes.forEach((recordHash) => {
-    const record = records.find((x) => x.activityHash === recordHash);
-    if (record) {
-      const recordValues = {};
-      trackedStats.forEach((stat) => {
-        recordValues[stat] = record.values[stat];
-      });
-      activities.push({
-        activityHash: record.activityHash,
-        values: recordValues
-      });
-    }
-  });
+  if (records) {
+    recordHashes.forEach((recordHash) => {
+      const record = records.find((x) => x.activityHash === recordHash);
+      if (record) {
+        const recordValues = {};
+        trackedStats.forEach((stat) => {
+          recordValues[stat] = record.values[stat];
+        });
+        activities.push({
+          activityHash: record.activityHash,
+          values: recordValues
+        });
+      }
+    });
+  }
 
   return activities;
 }

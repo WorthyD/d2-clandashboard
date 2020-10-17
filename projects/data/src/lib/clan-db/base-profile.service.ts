@@ -5,7 +5,7 @@ import { Destiny2Service } from 'bungie-api';
 import { ClanMember } from 'bungie-models';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { Observable, of, from } from 'rxjs';
-import * as moment from 'moment';
+import { unixTimeStampToDate } from '../utility/date-utils';
 
 export class BaseProfileService extends BaseClanService {
   constructor(
@@ -32,7 +32,7 @@ export class BaseProfileService extends BaseClanService {
   getProfile(clanId: string, member: ClanMember): Observable<any> {
     return from(this.getDataFromCache(clanId, this.getProfileId(member))).pipe(
       mergeMap((cachedData) => {
-        const lastActivity = moment.unix(member.lastOnlineStatusChange).toDate();
+        const lastActivity = unixTimeStampToDate(member.lastOnlineStatusChange);
         if (this.isCacheValid(cachedData, 0, lastActivity)) {
           return of(cachedData.data);
         }
@@ -54,6 +54,9 @@ export class BaseProfileService extends BaseClanService {
           catchError((error) => {
             if (cachedData && cachedData.data) {
               return of(cachedData.data);
+            }
+            if (error?.error?.ErrorStatus === 'DestinyAccountNotFound') {
+              return of();
             }
             throw error;
           })

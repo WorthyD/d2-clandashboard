@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.11.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.10.1...v0.11.0) (2020-10-16)
+
+### [0.10.1](https://github.com/WorthyD/d2-clandashboard/compare/v0.10.0...v0.10.1) (2020-10-13)
+
+## [0.10.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.9.2...v0.10.0) (2020-10-12)
+
+
+### Features
+
+* Adding better loading to raid activity ([d8c8872](https://github.com/WorthyD/d2-clandashboard/commit/d8c8872f62715eb04c26f9ac1190a502e8c6d269))
+
+### [0.9.2](https://github.com/WorthyD/d2-clandashboard/compare/v0.9.1...v0.9.2) (2020-10-09)
+
+### [0.9.1](https://github.com/WorthyD/d2-clandashboard/compare/v0.9.0...v0.9.1) (2020-10-09)
+
 ## [0.9.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.8.0...v0.9.0) (2020-10-05)
 
 

@@ -3,7 +3,6 @@ import { Destiny2Service, GroupV2Service } from 'bungie-api';
 import { DBObject, StoreId } from '../app-indexed-db';
 
 import { map, take, catchError, mergeMap, switchMap } from 'rxjs/operators';
-import * as moment from 'moment';
 import { ClanDatabase } from '../ClanDatabase';
 import { of, from } from 'rxjs';
 import { BaseClanService } from '../base-clan.service';

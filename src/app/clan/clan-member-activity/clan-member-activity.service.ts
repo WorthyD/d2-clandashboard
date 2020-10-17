@@ -3,7 +3,7 @@ import { ClanState } from '../store/clan-state.state';
 
 import { Store, select } from '@ngrx/store';
 import { loadClanMembersActivities } from '../store/member-recent-activities/member-recent-activities.actions';
-import { getMemberActivityEntities, getAllMemberActivities } from '../store/member-recent-activities/member-recent-activities.selectors';
+import { getMemberActivityEntities, getAllMemberActivities,getClanMemberActivitiesLoading } from '../store/member-recent-activities/member-recent-activities.selectors';
 
 import { Observable, combineLatest, of } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
@@ -21,7 +21,8 @@ export class ClanMemberActivityService {
 
   clanMemberProfiles$ = this.store.pipe(select(getAllMembers));
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
-  areMembersLoading$ = this.store.pipe(select(getIsMembersProfilesLoading));
+  areMembersLoading$ = this.store.pipe(select(getClanMemberActivitiesLoading));
+  areMemberProfilesLoading$ = this.store.pipe(select(getIsMembersProfilesLoading));
   memberActivities$ = this.store.pipe(select(getAllMemberActivities));
 
   // memberProfileActivities$ = combineLatest(

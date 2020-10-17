@@ -11,7 +11,8 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import * as d3 from 'd3';
-import * as moment from 'moment';
+import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
+import { formatDate } from 'projects/data/src/lib/utility/format-date';
 
 @Component({
   selector: 'lib-activity-heatmap',
@@ -41,6 +42,8 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
   color = d3.scaleLinear().range(['#00ff00', '#ff0000']).domain([0, 1]);
   emptyFill = '#fff';
   labelFontSize = '10px';
+
+  formatPipe = new PlaytimePipe();
 
   @Input()
   events: [];
@@ -320,7 +323,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
           const data = this.data[d];
           this.tooltip.style('opacity', 0.9);
           this.tooltip.html(
-            `Date: ${moment(d).format('M-D-YYYY')}<br/> Time:  ${this.formatActivityDuration(data.seconds)}`
+            `Date: ${formatDate(d)}<br/> Time:  ${this.formatActivityDuration(data.seconds)}`
           );
         })
         .on('mousemove', () => {
@@ -332,6 +335,6 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
     }
   }
   private formatActivityDuration(seconds) {
-    return moment().startOf('day').seconds(seconds).format('H:mm:ss');
+    return this.formatPipe.transform(seconds);
   }
 }

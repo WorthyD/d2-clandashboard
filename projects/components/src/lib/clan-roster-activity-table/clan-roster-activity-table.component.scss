@@ -8,3 +8,10 @@ table {
 .calc-header,
 .calc-cell{
 }
+.loading-row {
+  display: none;
+  height:auto;
+}
+.loading {
+  display: table-row;
+}

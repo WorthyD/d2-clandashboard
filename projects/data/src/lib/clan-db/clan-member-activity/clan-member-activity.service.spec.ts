@@ -5,8 +5,6 @@ import { ClanDatabase } from '../ClanDatabase';
 import { Destiny2Service } from 'bungie-api';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of, defer, forkJoin } from 'rxjs';
-import * as moment from 'moment';
-import * as _ from 'lodash';
 import { MemberProfile } from 'bungie-models';
 import { MOCK_WORTHY_PROFILE } from '../../testing-utils/objects/profiles.mock';
 import {
@@ -17,6 +15,7 @@ import {
   MOCK_RESP_ACTIVITIES_PAGE3
 } from '../../testing-utils/objects/member-activities.mock';
 import { HttpErrorResponse } from '@angular/common/http';
+import { nowPlusDays } from '../../utility/date-utils';
 
 describe('ClanMemberActivityService', () => {
   let service: ClanMemberActivityService;
@@ -41,7 +40,7 @@ describe('ClanMemberActivityService', () => {
     it('should get profile from DB, but call service if expired', () => {
       const mockDBItem = {
         ...MOCK_DB_ACTIVITIES[0],
-        createDate: new Date(moment(new Date()).add(-10, 'days').valueOf())
+        createDate: nowPlusDays(-10),
       };
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return of(mockDBItem);
@@ -55,7 +54,7 @@ describe('ClanMemberActivityService', () => {
       });
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
@@ -93,7 +92,7 @@ describe('ClanMemberActivityService', () => {
       );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
@@ -128,7 +127,8 @@ describe('ClanMemberActivityService', () => {
       );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
+
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
@@ -148,7 +148,7 @@ describe('ClanMemberActivityService', () => {
       );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getAllRecentActivity(memberProfile, defaultCharacterId).subscribe((x) => {
@@ -162,7 +162,7 @@ describe('ClanMemberActivityService', () => {
     it('should get profile from DB and not call service if cache is good', async (done) => {
       const mockDBItem = {
         ...MOCK_DB_ACTIVITIES[0],
-        createDate: new Date(moment(new Date()).add(-10, 'days').valueOf())
+        createDate: nowPlusDays(-10)
       };
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return of(mockDBItem);
@@ -186,7 +186,7 @@ describe('ClanMemberActivityService', () => {
       );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date(moment(new Date()).add(-100, 'days').valueOf()));
+      memberProfile.profile.data.dateLastPlayed = nowPlusDays(-100);
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
@@ -221,7 +221,7 @@ describe('ClanMemberActivityService', () => {
       );
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
@@ -234,7 +234,7 @@ describe('ClanMemberActivityService', () => {
     it('should handle API down with DB data', async (done) => {
       const mockDBItem = {
         ...MOCK_DB_ACTIVITIES[0],
-        createDate: new Date(moment(new Date()).add(-10, 'days').valueOf())
+        createDate: nowPlusDays(-10)
       };
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return of(mockDBItem);
@@ -251,7 +251,7 @@ describe('ClanMemberActivityService', () => {
       });
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe((x) => {
@@ -278,7 +278,7 @@ describe('ClanMemberActivityService', () => {
       });
 
       const memberProfile = ({ ...MOCK_WORTHY_PROFILE } as unknown) as MemberProfile;
-      _.set(memberProfile, 'profile.data.dateLastPlayed', new Date());
+      memberProfile.profile.data.dateLastPlayed = new Date();
       const defaultCharacterId = memberProfile.profile.data.characterIds[0];
 
       service.getMemberCharacterActivitySerialized(1, memberProfile, defaultCharacterId).subscribe(

@@ -4,7 +4,7 @@ import * as MemberActivityActions from './member-recent-activities.actions';
 
 export const MemberProfileReducer = createReducer(
   MemberActivityState.MemberActivityStatInitialState,
-  on(MemberActivityActions.loadMemberActivities, (state) => ({
+  on(MemberActivityActions.loadClanMembersActivities, (state) => ({
     ...state,
     loading: true
   })),
@@ -17,18 +17,19 @@ export const MemberProfileReducer = createReducer(
   //         );
   //     }
   // ),
+  on(MemberActivityActions.loadClanMembersActivitiesSuccess, (state) => ({
+    ...state,
+    loaded: true,
+    loading: false
+  })),
   on(MemberActivityActions.loadMembersRecentActivitiesSuccess, (state, { memberActivities }) => {
     return MemberActivityState.MemberRecentActivityStatAdapter.upsertMany(memberActivities, {
       ...state,
-      loaded: true,
-      loading: false
     });
   }),
   on(MemberActivityActions.loadMemberRecentActivitiesSuccess, (state, { memberActivities }) => {
     return MemberActivityState.MemberRecentActivityStatAdapter.upsertOne(memberActivities, {
       ...state,
-      loaded: true,
-      loading: false
     });
   })
 );

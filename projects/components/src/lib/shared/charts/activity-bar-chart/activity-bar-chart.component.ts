@@ -11,9 +11,7 @@ import {
   ViewEncapsulation,
   ChangeDetectorRef
 } from '@angular/core';
-//import { SVGGraph, CanvasGraph, StrGraph } from 'calendar-graph';
 import * as d3 from 'd3';
-import * as moment from 'moment';
 import { SECONDS_IN_HOUR } from '@destiny/models/constants';
 import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
 import { compare } from '../../../utilities/compare';
@@ -141,7 +139,7 @@ export class ActivityBarChartComponent implements OnInit {
         .on('mouseover', (d) => {
           this.tooltip.style('opacity', 0.9);
           this.tooltip.html(
-            `Week Starting: ${moment(d.date).format('M-D-YYYY')}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`
+            `Week Starting: ${formatDate(d.date)}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`
           );
         })
         .on('mousemove', () => {
@@ -151,9 +149,6 @@ export class ActivityBarChartComponent implements OnInit {
           this.tooltip.style('opacity', 0);
         });
     }
-  }
-  private formatActivityDuration(seconds) {
-    return moment().startOf('day').seconds(seconds).format('H:mm');
   }
 
   private prepData(sourceData) {
