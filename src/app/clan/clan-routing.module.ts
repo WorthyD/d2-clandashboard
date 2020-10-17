@@ -13,8 +13,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ClanDetailComponent
-        , data: { title: 'd2.clan.clan-details' }
+        component: ClanDetailComponent,
+        data: { title: 'd2.clan.clan-details' }
       },
       {
         path: 'roster',
@@ -36,6 +36,10 @@ const routes: Routes = [
       {
         path: 'raids',
         loadChildren: () => import('./raids/raids.module').then((module) => module.RaidsModule)
+      },
+      {
+        path: 'dungeons',
+        loadChildren: () => import('./dungeons/dungeons.module').then((module) => module.DungeonsModule)
       }
     ]
   } ///,

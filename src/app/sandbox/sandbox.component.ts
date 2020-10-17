@@ -34,12 +34,12 @@ export class SandboxComponent implements OnInit {
     }
   } as unknown) as MemberProfile;
 
-  user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, '2305843009310516628');
+  user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, 305843009310516628);
   rootSealNode = this.presentationNodeService.getDefinitions();
 
   prophecy = this.user.pipe(
     map((x) => {
-      return x.activities.find((y) => y.activityHash === 4148187374);
+      ///return x.activities.find((y) => y.activityHash === 4148187374);
     })
   );
 
@@ -47,20 +47,21 @@ export class SandboxComponent implements OnInit {
     map((x) => {
       //console.log(x);
 
-      const retVal = [];
-      x.activities.forEach((stat) => {
-        retVal.push({
-          user: this.rootSealNode[stat.activityHash]?.displayProperties.name,
-          id: stat.activityHash
-        });
-      });
+      // const retVal = [];
+      // x.activities.forEach((stat) => {
+      //   retVal.push({
+      //     user: this.rootSealNode[stat.activityHash]?.displayProperties.name,
+      //     id: stat.activityHash
+      //   });
+      // });
 
       // if (this.rootSealNode[x.activityHash]) {
       //   return {
       //     name: this.rootSealNode[x.activityHash]
       //   };
       // }
-      return retVal;
+      //return retVal;
+      return null;
     })
   );
   //rootSealNode = this.presentationNodeService.getDefinitions(2163254576);
