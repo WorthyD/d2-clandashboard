@@ -59,18 +59,12 @@ export class DungeonsService {
       return this.clanDunegonService.getClanDungeonStats(id, clanMembers).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
-          console.log('merging', members);
           this.dungeonStats = this.dungeonStats.concat(members);
           return members;
         }),
         toArray(),
-
-        map((stats) => {
-          //   console.log('done', stats);
-          return 'stuff';
-        })
+        map((stats) => {})
       );
-      //    return id;
     })
   );
 

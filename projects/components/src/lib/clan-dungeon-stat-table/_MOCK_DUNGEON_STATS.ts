@@ -1,11 +1,11 @@
 const users = ['WorthyD', 'Zoned', 'Omega', 'ted', 'frank', 'tacos'];
-export const MOCK_DUNEGON_STATS = [];
+export const MOCK_DUNGEON_STATS = [];
 function getRandomNumber() {
   Math.floor(Math.random() * 100 + 1);
 }
 
 users.forEach((u) => {
-  MOCK_DUNEGON_STATS.push({
+  MOCK_DUNGEON_STATS.push({
     memberProfile: {
       profile: {
         data: {
