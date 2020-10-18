@@ -52,22 +52,23 @@ export class DungeonsService {
   );
 
   stats$ = this.preloadedInfo$;
-  dungeonStats =[];
+  dungeonStats = [];
   dungeonStats$ = this.preloadedInfo$.pipe(
     switchMap(([isMemberLoaded, id, clanMembers]) => {
       console.log(id);
       return this.clanDunegonService.getClanDungeonStats(id, clanMembers).pipe(
-        bufferTime(500, undefined, 10),
+        bufferTime(500, undefined, 20),
         mergeMap((members) => {
-          console.log('merging');
-          this.dungeonStats.push(...members);
+          console.log('merging', members);
+          this.dungeonStats = this.dungeonStats.concat(members);
           return members;
-        })//,
-        // toArray(),
-        // map((stats) => {
-        //   console.log('done', stats);
-        //   return 'stuff';
-        // })
+        }),
+        toArray(),
+
+        map((stats) => {
+          //   console.log('done', stats);
+          return 'stuff';
+        })
       );
       //    return id;
     })

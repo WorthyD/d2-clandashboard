@@ -11,7 +11,7 @@ export const Whisper: Activity = {
 
 export const WhisperHeroic: Activity = {
   hashes: [1099555105],
-  key: 'wis-h',
+  key: 'wish',
   abbreviatedName: 'Whisper - Heroic',
   displayName: 'The Whisper (Heroic)',
   sortOrder: 7,

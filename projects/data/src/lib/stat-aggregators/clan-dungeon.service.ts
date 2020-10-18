@@ -23,7 +23,6 @@ export class ClanDungeonService {
       mergeMap((member) => {
         return this.getMemberDungeonStats(clanId, member);
       }, this.CONCURRENT_COUNT),
-      toArray()
     );
   }
 

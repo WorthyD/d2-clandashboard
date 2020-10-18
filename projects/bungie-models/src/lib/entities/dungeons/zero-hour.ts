@@ -11,7 +11,7 @@ export const ZeroHour: Activity = {
 
 export const ZeroHourHeroic: Activity = {
   hashes: [2731208666],
-  key: 'zero-h',
+  key: 'zeroh',
   abbreviatedName: 'Zero Hour (Heroic)',
   displayName: 'Zero Hour (Heroic)',
   sortOrder: 9,
