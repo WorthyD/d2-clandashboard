@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 
 import { Subscription, Observable, of } from 'rxjs';
 
-import { GroupV2Service } from 'bungie-api';
+import { GroupV2Service, Destiny2Service } from 'bungie-api';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Router } from '@angular/router';
 import { map, sampleTime, shareReplay, switchMap, tap, catchError } from 'rxjs/operators';
@@ -23,7 +23,12 @@ export class ClanSearchComponent implements OnInit {
   loadSubscription: Subscription;
   loading: boolean;
 
-  constructor(private groupService: GroupV2Service, private router: Router, private store: Store<ClanSearchState>) {}
+  constructor(
+    private groupService: GroupV2Service,
+    private destiny2Service: Destiny2Service,
+    private router: Router,
+    private store: Store<ClanSearchState>
+  ) {}
 
   autocompleteControl = new FormControl('');
 
@@ -84,6 +89,15 @@ export class ClanSearchComponent implements OnInit {
         })
       );
   }
+
+  textPlayerSearch(currentQuery) {
+    return this.destiny2Service.destiny2SearchDestinyPlayer(currentQuery, -1, true).pipe(
+      map((searchResults) => {
+        return null;
+      })
+    );
+  }
+
   /** Navigate to the select location from the autocomplete options. */
   autocompleteSelected(event: MatAutocompleteSelectedEvent) {
     this.persistSelection(event.option.value);
