@@ -52,10 +52,11 @@ export class DungeonsService {
   );
 
   stats$ = this.preloadedInfo$;
+  isLoading = true;
   dungeonStats = [];
   dungeonStats$ = this.preloadedInfo$.pipe(
     switchMap(([isMemberLoaded, id, clanMembers]) => {
-      console.log(id);
+      this.isLoading = true;
       return this.clanDunegonService.getClanDungeonStats(id, clanMembers).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
@@ -63,7 +64,9 @@ export class DungeonsService {
           return members;
         }),
         toArray(),
-        map((stats) => {})
+        map((stats) => {
+          this.isLoading = false;
+        })
       );
     })
   );

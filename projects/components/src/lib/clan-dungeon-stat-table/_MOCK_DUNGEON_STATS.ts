@@ -1,7 +1,7 @@
 const users = ['WorthyD', 'Zoned', 'Omega', 'ted', 'frank', 'tacos'];
 export const MOCK_DUNGEON_STATS = [];
 function getRandomNumber() {
-  Math.floor(Math.random() * 100 + 1);
+  return Math.floor(Math.random() * 100 + 1);
 }
 
 users.forEach((u) => {
@@ -40,7 +40,11 @@ users.forEach((u) => {
       },
       zeroh: {
         activityCompletions: getRandomNumber()
+      },
+      labs: {
+        activityCompletions: getRandomNumber()
       }
     }
   });
 });
+console.log(MOCK_DUNGEON_STATS);
