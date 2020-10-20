@@ -34,7 +34,7 @@ export class ClanSearchComponent implements OnInit {
 
   autocompleteResult$ = this.autocompleteControl.valueChanges.pipe(
     tap(() => (this.loading = true)),
-    sampleTime(500),
+    sampleTime(1000),
     switchMap((currentQuery) => {
       if (!currentQuery) {
         this.loading = false;
@@ -46,7 +46,8 @@ export class ClanSearchComponent implements OnInit {
         const clanId = currentQuery.split('=')[1];
         return this.numericClanSearch(clanId);
       } else {
-        return this.textClanSearch(currentQuery);
+        //return this.textClanSearch(currentQuery);
+        return this.textPlayerSearch(currentQuery);
       }
     }),
     shareReplay(1),
@@ -93,7 +94,15 @@ export class ClanSearchComponent implements OnInit {
   textPlayerSearch(currentQuery) {
     return this.destiny2Service.destiny2SearchDestinyPlayer(currentQuery, -1, true).pipe(
       map((searchResults) => {
-        return null;
+        console.log(searchResults.Response);
+        return searchResults.Response.slice(0, 10).map((profile) => {
+          return {
+            iconPath: profile.iconPath,
+            name: profile.displayName,
+            membershipType: profile.membershipType,
+            membershipId: profile.membershipId
+          };
+        });
       })
     );
   }
