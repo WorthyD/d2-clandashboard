@@ -10,7 +10,9 @@
         <lib-loading matSuffix diameter='35'></lib-loading>
       </mat-option>
       <mat-option *ngFor="let clan of clans" [value]="clan">
-        <mat-icon [svgIcon]="clan.iconName"></mat-icon>
+        <!-- <mat-icon [svgIcon]="clan.iconName"></mat-icon> -->
+        <mat-icon>{{clan.iconName}}</mat-icon>
+
         <!-- <img src="https://bungie.net{{clan.iconPath}}" *ngIf="clan.iconPath" class="mr-3" height="25" /> {{clan.name}} -->
         {{clan.name}}
       </mat-option>
