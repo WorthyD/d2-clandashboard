@@ -10,8 +10,9 @@
         <lib-loading matSuffix diameter='35'></lib-loading>
       </mat-option>
       <mat-option *ngFor="let clan of clans" [value]="clan">
-        <mat-icon [svgIcon]="'steam'"></mat-icon>
-        <img src="https://bungie.net{{clan.iconPath}}" *ngIf="clan.iconPath" class="mr-3" height="25" /> {{clan.name}}
+        <mat-icon [svgIcon]="clan.iconName"></mat-icon>
+        <!-- <img src="https://bungie.net{{clan.iconPath}}" *ngIf="clan.iconPath" class="mr-3" height="25" /> {{clan.name}} -->
+        {{clan.name}}
       </mat-option>
       <mat-option disabled *ngIf="clans.length === 0 && !loading">
         Clan Not Found

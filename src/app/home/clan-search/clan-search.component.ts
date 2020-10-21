@@ -97,20 +97,41 @@ export class ClanSearchComponent implements OnInit {
         console.log(searchResults.Response);
         return searchResults.Response.slice(0, 10).map((profile) => {
           return {
-            iconPath: profile.iconPath,
+            iconName: this.getIcon(profile.membershipType),
             name: profile.displayName,
             membershipType: profile.membershipType,
-            membershipId: profile.membershipId
+            membershipId: profile.membershipId,
+            type: 'player'
           };
         });
       })
     );
   }
+  getIcon(type: number) {
+    switch (type) {
+      case -1:
+        return 'people';
+      case 1:
+        return 'xbox';
+      case 2:
+        return 'playstation';
+      case 3:
+        return 'steam';
+      default:
+        return 'sports_esports';
+    }
+  }
 
   /** Navigate to the select location from the autocomplete options. */
   autocompleteSelected(event: MatAutocompleteSelectedEvent) {
-    this.persistSelection(event.option.value);
-    this.open(event.option.value);
+    const selectedItem = event.option.value;
+
+    if (selectedItem.type === 'player') {
+      //{{base_url}}/GroupV2/User/3/4611686018467239000/0/1
+    } else {
+      this.persistSelection(event.option.value);
+      this.open(event.option.value);
+    }
   }
 
   persistSelection(group: any) {
