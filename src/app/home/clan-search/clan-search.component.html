@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline" class="search">
   <input matInput autofocus #clanInput (keyup.Enter)="open(clanInput.value)" [matAutocomplete]="auto"
-    [formControl]="autocompleteControl" placeholder="Search by name, Clan Id, or Bungie Clan URL">
+    [formControl]="autocompleteControl" placeholder="Search by Player Name, Clan Name, Clan Id, or Bungie Clan URL">
   <!-- <i matSuffix class="material-icons">mode_edit</i> -->
   <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption="true"
     (optionSelected)="autocompleteSelected($event)">
