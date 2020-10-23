@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { FormControl } from '@angular/forms';
 
-import { Subscription, Observable, of } from 'rxjs';
+import { Subscription, Observable, of, forkJoin } from 'rxjs';
 
 import { GroupV2Service, Destiny2Service } from 'bungie-api';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -47,7 +47,7 @@ export class ClanSearchComponent implements OnInit {
         return this.numericClanSearch(clanId);
       } else {
         //return this.textClanSearch(currentQuery);
-        return this.textPlayerSearch(currentQuery);
+        return this.combinedSearch(currentQuery);
       }
     }),
     shareReplay(1),
@@ -68,6 +68,19 @@ export class ClanSearchComponent implements OnInit {
     );
   }
 
+  combinedSearch(currentQuery) {
+    const clanSearch = this.textClanSearch(currentQuery);
+    const playerSearch = this.textPlayerSearch(currentQuery);
+
+    return forkJoin([clanSearch, playerSearch]).pipe(
+      map(([clanSearchResults, playerSearchResults]) => {
+        console.log(clanSearchResults);
+        console.log(playerSearchResults);
+        return [...clanSearchResults, ...playerSearchResults];
+      })
+    );
+  }
+
   textClanSearch(currentQuery) {
     return this.groupService
       .groupV2GroupSearch({
@@ -82,11 +95,14 @@ export class ClanSearchComponent implements OnInit {
           this.loading = false;
           const currentQuery = this.autocompleteControl.value;
           const clanList = clanListResults.Response.results;
-          if (!currentQuery || clanList.find((repo) => repo.name.toUpperCase() === currentQuery.toUpperCase())) {
-            return clanList;
-          }
+          //console.log(clanListResults);
+          // if (!currentQuery || clanList.find((repo) => repo.name.toUpperCase() === currentQuery.toUpperCase())) {
+          //   return [{ iconName: this.getIcon(-1), ...clanList }];
+          // }
 
-          return clanList.slice(0, 10);
+          return clanList.slice(0, 10).map((c) => {
+            return { iconName: this.getIcon(-1), ...c };
+          });
         })
       );
   }
@@ -127,11 +143,28 @@ export class ClanSearchComponent implements OnInit {
     const selectedItem = event.option.value;
 
     if (selectedItem.type === 'player') {
-      //{{base_url}}/GroupV2/User/3/4611686018467239000/0/1
+      this.findPlayerClan(selectedItem).then((result) => {
+        this.persistSelection(result);
+        this.open(result);
+      });
     } else {
       this.persistSelection(event.option.value);
       this.open(event.option.value);
     }
+  }
+  findPlayerClan(selectedItem) {
+    return this.groupService
+      .groupV2GetGroupsForMember(0, 1, selectedItem.membershipId, selectedItem.membershipType)
+      .toPromise()
+      .then(({ Response }) => {
+        if (Response.totalResults === 1) {
+          return Response.results[0]?.group;
+        } else if (Response.totalResults > 1) {
+          // Show more than one group
+        } else {
+          // group not found
+        }
+      });
   }
 
   persistSelection(group: any) {
