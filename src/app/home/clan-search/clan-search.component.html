@@ -10,7 +10,9 @@
         <lib-loading matSuffix diameter='35'></lib-loading>
       </mat-option>
       <mat-option *ngFor="let clan of clans" [value]="clan">
-        <mat-icon [svgIcon]="clan.iconName"></mat-icon>
+        <ng-container *ngIf="clan.type === 'player'; else group">
+          <mat-icon [svgIcon]="clan.iconName"></mat-icon>
+        </ng-container>
         <!-- <img src="https://bungie.net{{clan.iconPath}}" *ngIf="clan.iconPath" class="mr-3" height="25" /> {{clan.name}} -->
         {{clan.name}}
       </mat-option>
@@ -20,3 +22,7 @@
     </ng-container>
   </mat-autocomplete>
 </mat-form-field>
+
+<ng-template #group>
+  <mat-icon>people</mat-icon>
+</ng-template>
