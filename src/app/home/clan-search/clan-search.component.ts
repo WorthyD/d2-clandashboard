@@ -1,3 +1,7 @@
+/*
+TODO: Export most of this functionality into a service.
+
+*/
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { FormControl } from '@angular/forms';
@@ -12,6 +16,8 @@ import { Store } from '@ngrx/store';
 import { addClan } from '../state/loaded-clans/loaded-clans.actions';
 import { ClanSearchState } from 'src/app/clan-search/state/clan-search.state';
 import { actionSettingsChangeClan } from '../../root-store/settings/settings.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { SearchErrorDialogComponent } from './search-error-dialog/search-error-dialog.component';
 
 @Component({
   selector: 'app-clan-search',
@@ -27,7 +33,8 @@ export class ClanSearchComponent implements OnInit {
     private groupService: GroupV2Service,
     private destiny2Service: Destiny2Service,
     private router: Router,
-    private store: Store<ClanSearchState>
+    private store: Store<ClanSearchState>,
+    public dialog: MatDialog
   ) {}
 
   autocompleteControl = new FormControl('');
@@ -74,8 +81,6 @@ export class ClanSearchComponent implements OnInit {
 
     return forkJoin([clanSearch, playerSearch]).pipe(
       map(([clanSearchResults, playerSearchResults]) => {
-        console.log(clanSearchResults);
-        console.log(playerSearchResults);
         return [...clanSearchResults, ...playerSearchResults];
       })
     );
@@ -144,8 +149,11 @@ export class ClanSearchComponent implements OnInit {
 
     if (selectedItem.type === 'player') {
       this.findPlayerClan(selectedItem).then((result) => {
-        this.persistSelection(result);
-        this.open(result);
+        if (result) {
+
+          this.persistSelection(result);
+          this.open(result);
+        }
       });
     } else {
       this.persistSelection(event.option.value);
@@ -158,11 +166,30 @@ export class ClanSearchComponent implements OnInit {
       .toPromise()
       .then(({ Response }) => {
         if (Response.totalResults === 1) {
+          return this.dialog
+            .open(SearchErrorDialogComponent, { data: 'No group foundd.' })
+            .afterClosed()
+            .pipe(
+              map(() => {
+                return Response.results[0]?.group;
+              })
+            );
+
           return Response.results[0]?.group;
+
         } else if (Response.totalResults > 1) {
           // Show more than one group
+          return this.dialog
+            .open(SearchErrorDialogComponent, { data: 'No group found.' })
+            .afterClosed()
+            .pipe(
+              map(() => {
+                return Response.results[0]?.group;
+              })
+            );
         } else {
           // group not found
+          this.dialog.open(SearchErrorDialogComponent, { data: 'No group found.' });
         }
       });
   }

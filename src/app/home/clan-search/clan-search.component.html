@@ -13,8 +13,7 @@
         <ng-container *ngIf="clan.type === 'player'; else group">
           <mat-icon [svgIcon]="clan.iconName"></mat-icon>
         </ng-container>
-        <!-- <img src="https://bungie.net{{clan.iconPath}}" *ngIf="clan.iconPath" class="mr-3" height="25" /> {{clan.name}} -->
-        {{clan.name}}
+{{clan.name}}
       </mat-option>
       <mat-option disabled *ngIf="clans.length === 0 && !loading">
         Clan Not Found
