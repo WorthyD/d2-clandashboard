@@ -167,7 +167,7 @@ export class ClanSearchComponent implements OnInit {
       .then(({ Response }) => {
         if (Response.totalResults === 1) {
           return this.dialog
-            .open(SearchErrorDialogComponent, { data: 'No group foundd.' })
+            .open(SearchErrorDialogComponent, { data: 'No group found.' })
             .afterClosed()
             .pipe(
               map(() => {
@@ -184,6 +184,7 @@ export class ClanSearchComponent implements OnInit {
             .afterClosed()
             .pipe(
               map(() => {
+                // TODO : Open here
                 return Response.results[0]?.group;
               })
             );
