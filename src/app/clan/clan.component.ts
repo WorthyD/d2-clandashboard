@@ -28,6 +28,7 @@ import { ClanDatabase } from '@destiny/data';
 import { AboutComponent } from '../about/about.component';
 import { MatDialog } from '@angular/material/dialog';
 import { routeAnimations } from '../core/core.module';
+import { logoutClan } from '../root-store/meta-reducers/logout.reducer';
 
 @Component({
   selector: 'app-clan',
@@ -75,6 +76,7 @@ export class ClanComponent implements OnInit, OnDestroy {
 
   goHome() {
     this.store.dispatch(actionSettingsChangeClan({ selectedClanId: 0 }));
+    this.store.dispatch(logoutClan());
     this.router.navigate(['/']);
   }
 
