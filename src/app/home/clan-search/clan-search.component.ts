@@ -97,12 +97,7 @@ export class ClanSearchComponent implements OnInit {
       .pipe(
         map((clanListResults) => {
           this.loading = false;
-          const currentQuery = this.autocompleteControl.value;
           const clanList = clanListResults.Response.results;
-          //console.log(clanListResults);
-          // if (!currentQuery || clanList.find((repo) => repo.name.toUpperCase() === currentQuery.toUpperCase())) {
-          //   return [{ iconName: this.getIcon(-1), ...clanList }];
-          // }
 
           return clanList.slice(0, 10).map((c) => {
             return { iconName: this.getIcon(-1), ...c };
@@ -162,8 +157,6 @@ export class ClanSearchComponent implements OnInit {
         if (Response.totalResults === 1) {
           this.persistSelection(Response.results[0]?.group);
           this.open(Response.results[0]?.group);
-
-          // return Response.results[0]?.group;
         } else if (Response.totalResults > 1) {
           // Show more than one group
           const d = this.dialog.open(SearchErrorDialogComponent, {
@@ -174,7 +167,6 @@ export class ClanSearchComponent implements OnInit {
             this.open(Response.results[0]?.group);
           });
         } else {
-          // group not found
           this.dialog.open(SearchErrorDialogComponent, { data: 'No clan found for the user.' });
         }
       });
