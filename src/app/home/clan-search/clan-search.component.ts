@@ -43,13 +43,12 @@ export class ClanSearchComponent implements OnInit {
     tap(() => (this.loading = true)),
     sampleTime(1000),
     switchMap((currentQuery) => {
-      if (!currentQuery) {
+      if (!currentQuery || currentQuery.name) {
         this.loading = false;
         return of([]);
-      }
-      if (!isNaN(currentQuery)) {
+      } else if (!isNaN(currentQuery)) {
         return this.numericClanSearch(currentQuery);
-      } else if (currentQuery.indexOf('https://www.bungie.net/') > -1) {
+      } else if (currentQuery.indexOf && currentQuery.indexOf('https://www.bungie.net/') > -1) {
         const clanId = currentQuery.split('=')[1];
         return this.numericClanSearch(clanId);
       } else {
@@ -57,12 +56,12 @@ export class ClanSearchComponent implements OnInit {
         return this.combinedSearch(currentQuery);
       }
     }),
-    shareReplay(1),
+    //shareReplay(1),
     catchError((err) => {
       this.loading = false;
       // Just remapping the data to show the error
       // There are better ways of doing this
-      return of([{ login: 'Error from server' }]);
+      return of([]);
     })
   );
 
@@ -115,7 +114,6 @@ export class ClanSearchComponent implements OnInit {
   textPlayerSearch(currentQuery) {
     return this.destiny2Service.destiny2SearchDestinyPlayer(currentQuery, -1, true).pipe(
       map((searchResults) => {
-        console.log(searchResults.Response);
         return searchResults.Response.slice(0, 10).map((profile) => {
           return {
             iconName: this.getIcon(profile.membershipType),
@@ -144,17 +142,13 @@ export class ClanSearchComponent implements OnInit {
   }
 
   /** Navigate to the select location from the autocomplete options. */
-  autocompleteSelected(event: MatAutocompleteSelectedEvent) {
+  autocompleteSelected(event: MatAutocompleteSelectedEvent, input: HTMLInputElement) {
     const selectedItem = event.option.value;
+    input.value = '';
+    input.blur();
 
     if (selectedItem.type === 'player') {
-      this.findPlayerClan(selectedItem).then((result) => {
-        if (result) {
-
-          this.persistSelection(result);
-          this.open(result);
-        }
-      });
+      this.findPlayerClan(selectedItem).then((result) => {});
     } else {
       this.persistSelection(event.option.value);
       this.open(event.option.value);
@@ -166,33 +160,27 @@ export class ClanSearchComponent implements OnInit {
       .toPromise()
       .then(({ Response }) => {
         if (Response.totalResults === 1) {
-          return this.dialog
-            .open(SearchErrorDialogComponent, { data: 'No group found.' })
-            .afterClosed()
-            .pipe(
-              map(() => {
-                return Response.results[0]?.group;
-              })
-            );
+          this.persistSelection(Response.results[0]?.group);
+          this.open(Response.results[0]?.group);
 
-          return Response.results[0]?.group;
-
+          // return Response.results[0]?.group;
         } else if (Response.totalResults > 1) {
           // Show more than one group
-          return this.dialog
-            .open(SearchErrorDialogComponent, { data: 'No group found.' })
-            .afterClosed()
-            .pipe(
-              map(() => {
-                // TODO : Open here
-                return Response.results[0]?.group;
-              })
-            );
+          const d = this.dialog.open(SearchErrorDialogComponent, {
+            data: `Looks like you have multiple groups.  This normally doesn't happen. We're going to send you to the first one we got. Contact support so they can work through this scenario.`
+          });
+          d.afterClosed().subscribe(() => {
+            this.persistSelection(Response.results[0]?.group);
+            this.open(Response.results[0]?.group);
+          });
         } else {
           // group not found
-          this.dialog.open(SearchErrorDialogComponent, { data: 'No group found.' });
+          this.dialog.open(SearchErrorDialogComponent, { data: 'No clan found for the user.' });
         }
       });
+  }
+  displayFn(item): string {
+    return null;
   }
 
   persistSelection(group: any) {
