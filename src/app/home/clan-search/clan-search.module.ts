@@ -8,9 +8,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule, SharedModule } from '@destiny/components';
+import { SearchErrorDialogComponent } from './search-error-dialog/search-error-dialog.component';
 
 @NgModule({
-  declarations: [ClanSearchComponent],
+  declarations: [ClanSearchComponent, SearchErrorDialogComponent],
   exports: [ClanSearchComponent],
   imports: [
     CommonModule,

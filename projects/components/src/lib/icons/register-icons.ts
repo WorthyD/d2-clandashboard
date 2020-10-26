@@ -5,6 +5,9 @@ const svgIcons = {
     titan: '/assets/icons/titan.svg',
     hunter: '/assets/icons/hunter.svg',
     warlock: '/assets/icons/warlock.svg',
+    steam: '/assets/icons/steam.svg',
+    playstation: '/assets/icons/playstation.svg',
+    xbox: '/assets/icons/xbox.svg',
 };
 
 export const registerIcons = (registry: MatIconRegistry, domSanitizer: DomSanitizer) => {
