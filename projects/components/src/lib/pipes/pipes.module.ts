@@ -11,6 +11,7 @@ import { RaidReportProfileUrlPipe } from './raid-report-url/raid-report-profile-
 import { PlaytimePipe } from './playtime/playtime.pipe';
 import { DungeonReportUrlPipe } from './dungeon-report-url/dungeon-report-url.pipe';
 import { DungeonReportProfileUrlPipe } from './dungeon-report-url/dungeon-report-profile-url.pipe';
+import { MemberTypePipe } from './member-type/member-type.pipe';
 
 const pipes = [
   DateAgoPipe,
@@ -23,7 +24,8 @@ const pipes = [
   RaidReportProfileUrlPipe,
   PlaytimePipe,
   DungeonReportUrlPipe,
-  DungeonReportProfileUrlPipe
+  DungeonReportProfileUrlPipe,
+  MemberTypePipe
 ];
 
 @NgModule({
