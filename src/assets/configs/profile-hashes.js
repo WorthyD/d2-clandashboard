@@ -1,3 +1,4 @@
+// TODO: Move to models
 const hashes = {
   seasonRewardProgressionHash: 1627914615,
   seasonPrestigeProgressionHash: 4021269753
