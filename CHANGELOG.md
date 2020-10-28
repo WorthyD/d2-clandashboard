@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.13.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.12.0...v0.13.0) (2020-10-28)
+
+
+### Features
+
+* clan search by player namee ([32be07c](https://github.com/WorthyD/d2-clandashboard/commit/32be07c8d30e928ee74e9485ff9d178bb3461161))
+
 ## [0.12.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.11.0...v0.12.0) (2020-10-19)
 
 ### [0.0.5](https://github.com/WorthyD/d2-clandashboard/compare/v0.0.4...v0.0.5) (2020-07-31)
