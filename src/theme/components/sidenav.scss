@@ -4,10 +4,10 @@
   $primary: map-get($theme, primary);
   .mat-nav-list .active-link {
     //background: mat-color($accent);;
-    color: mat-color($primary, default-contrast);
+    color: mat-color($primary, default-contrast) !important;
     background: mat-color($primary);
 
-    &:hover {
+    &:hover, &:focus {
       background-color: mat-color($primary, darker) !important;
     }
   }
