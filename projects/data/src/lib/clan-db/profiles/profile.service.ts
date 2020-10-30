@@ -43,7 +43,7 @@ export class ProfileService {
     );
   }
 
-  private getProfile(clanId: string, member: ClanMember): Observable<any> {
+  getProfile(clanId: string, member: ClanMember): Observable<any> {
     return from(this.getProfileFromCache(clanId, member)).pipe(
       mergeMap((cachedData) => {
         if (cachedData && cachedData.createDate) {
