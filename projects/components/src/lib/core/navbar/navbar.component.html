@@ -1,7 +1,10 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <div class="clan-name">
-      <span *ngIf="clanDetails"> {{clanDetails.name}}</span>
+    <button mat-icon-button class="d-md-none" (click)="sidenav.open()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="clan-name"  >
+      <span *ngIf=" clanDetails"> {{clanDetails.name}}</span>
     </div>
     <button mat-icon-button [matMenuTriggerFor]="themePicker">
       <mat-icon>
