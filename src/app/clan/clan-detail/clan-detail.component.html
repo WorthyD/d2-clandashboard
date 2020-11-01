@@ -1,10 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col m-3">
-      <lib-clan-overview [clanDetails]="clanDetails$ | async" [isLoading]="clanDetails.clanDetailsLoading$ | async">
-      </lib-clan-overview>
+    <div class="col-12 col-md-6">
+      <div class="m-3">
+        <lib-clan-overview [clanDetails]="clanDetails$ | async" [isLoading]="clanDetails.clanDetailsLoading$ | async">
+        </lib-clan-overview>
+      </div>
     </div>
-    <div class="col">
+    <div class="col-12 col-md-6">
       <div class="m-3">
         <lib-clan-weekly-progress [clanRewards]="clanDetails.clanWeekRewards$ | async"
           [isLoading]="clanDetails.clanWeekRewardsLoading$ | async"></lib-clan-weekly-progress>
