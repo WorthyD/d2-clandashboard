@@ -25,11 +25,13 @@ const pipes = [
   RaidReportProfileUrlPipe,
   PlaytimePipe,
   DungeonReportUrlPipe,
-  DungeonReportProfileUrlPipe
+  DungeonReportProfileUrlPipe,
+  BungieDatePipe,
+  BungieDateTimePipe
 ];
 
 @NgModule({
-  declarations: [...pipes, BungieDatePipe, BungieDateTimePipe],
+  declarations: [...pipes],
   exports: [...pipes],
   imports: [CommonModule]
 })

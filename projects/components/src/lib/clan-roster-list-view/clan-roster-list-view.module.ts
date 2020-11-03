@@ -7,9 +7,10 @@ import { ClassCellComponent, ClassIconPipe } from './class-cell.component';
 
 import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
 import { MaterialModule } from '../shared/modules/material.module';
+import { PipesModule } from '../pipes/pipes.module';
 @NgModule({
   declarations: [ClanRosterListViewComponent, ClassCellComponent, ClassIconPipe],
   exports: [ClanRosterListViewComponent, ClassIconPipe],
-  imports: [CommonModule, MatTableModule, MatSortModule, MatIconModule, MaterialModule]
+  imports: [CommonModule, MatTableModule, MatSortModule, MatIconModule, MaterialModule, PipesModule]
 })
 export class ClanRosterListViewModule {}

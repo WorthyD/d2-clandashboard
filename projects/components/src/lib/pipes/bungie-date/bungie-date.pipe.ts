@@ -1,17 +1,16 @@
 import { DatePipe } from '@angular/common';
 import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
-import { formatDate } from 'projects/data/src/lib/utility/format-date';
 
 @Pipe({
   name: 'bungieDate'
 })
-export class BungieDatePipe implements PipeTransform {
-  constructor(@Inject(LOCALE_ID) private _locale: string) {}
+export class BungieDatePipe extends DatePipe implements PipeTransform {
 
-  datePipe = new DatePipe(this._locale);
+  constructor(@Inject(LOCALE_ID) locale: string) {
+    super(locale);
+  }
 
-  transform(date: Date): unknown {
-    console.log(date);
-    return this.datePipe.transform(date, '');
+  transform(date: Date): string {
+    return super.transform(date, 'yyyy-MM-dd');
   }
 }
