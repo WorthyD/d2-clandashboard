@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'lib-loading',
@@ -19,7 +19,8 @@ import { Component, OnInit, Input } from '@angular/core';
         width: 100%;
       }
     `
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoadingComponent implements OnInit {
   @Input()

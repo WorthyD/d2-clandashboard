@@ -6,7 +6,7 @@
     <title>Destiny Clan Dashboard</title>
     <base href="/">
     <meta property="og:url" content="https://destinyclandashboard.com/">
-    <meta property="og:type" content="website"/>
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="Destiny Clan Dashboard">
     <meta property="og:description" content="Monitor your Destiny clan activity">
     <!-- <meta property="og:image" content="https://www.d2checklist.com/assets/share-logo.png"/> -->
@@ -29,6 +29,16 @@
         align-items: center;
         justify-content: center;
         height: 100%;
+
+      }
+
+      .app-loading h3 {
+        color: rgba(0, 0, 0, .87);
+        margin-bottom: 2rem;
+      }
+
+      .app-loading .logo {
+        height: 200px
       }
 
       .app-loading .spinner {
@@ -49,7 +59,7 @@
         stroke-dashoffset: 0;
         animation: dash 1.5s ease-in-out infinite;
         stroke-linecap: round;
-        stroke: #ddd;
+        stroke: #607d8b;
       }
 
       @keyframes rotate {
@@ -81,6 +91,7 @@
   <body>
     <app-root>
       <div class="app-loading">
+        <h3>Loading Manifest Data</h3>
         <div class="logo">
           <svg class="spinner" viewBox="25 25 50 50">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />

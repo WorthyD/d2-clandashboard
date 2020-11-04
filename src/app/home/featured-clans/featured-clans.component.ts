@@ -49,10 +49,12 @@ export class FeaturedClansComponent implements OnInit {
   rjnClans = [
     { name: 'SIGMA ', id: 4106667 },
     { name: 'RHO ', id: 4153229 },
+    { name: 'UPSILON', id: 4273866 },
+    { name: 'XI ', id: 4124266 },
+    { name: 'LAMBDA', id: 4276903 },
     { name: 'ZETA ', id: 4117920 },
     { name: 'TAU ', id: 4134634 },
-    { name: 'OMEGA ', id: 4182341 },
-    { name: 'XI ', id: 4124266 }
+    { name: 'OMEGA ', id: 4182341 }
   ];
 
   loreNetwork = [
