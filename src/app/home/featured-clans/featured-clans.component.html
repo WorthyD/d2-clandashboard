@@ -1,15 +1,19 @@
 <div class="row">
   <div class="col">
-    <lib-featured-clan-card [cardTitle]="'DoD Clans'" [featuredClans]="dodClans" (viewClan)="viewClan($event)">
+    <lib-featured-clan-card [cardTitle]="'DoD Clans'" [cardTip]="'Dads of Destiny clans. Developer is a member of the group.'" [featuredClans]="dodClans" (viewClan)="viewClan($event)">
     </lib-featured-clan-card>
   </div>
 
   <div class="col">
-    <lib-featured-clan-card [cardTitle]="'Redjack Network'" [featuredClans]="rjnClans" (viewClan)="viewClan($event)">
+    <lib-featured-clan-card [cardTitle]="'Redjack Network'" [cardTip]="'RJN is an active gaming community that is accepting of all people'" [featuredClans]="rjnClans" (viewClan)="viewClan($event)">
     </lib-featured-clan-card>
+    <div class="py-3">
+      <lib-featured-clan-card [cardTitle]="'Lore Network'" [cardTip]="'Clans that some of the podcasters from The Lore Network are apart of.'" [featuredClans]="loreNetwork" (viewClan)="viewClan($event)">
+      </lib-featured-clan-card>
+    </div>
   </div>
   <div class="col">
-    <lib-featured-clan-card [cardTitle]="'Other Clans'" [featuredClans]="otherClans" (viewClan)="viewClan($event)">
+    <lib-featured-clan-card [cardTitle]="'Other Clans'" [cardTip]="'Collection of other popular clans'" [featuredClans]="otherClans" (viewClan)="viewClan($event)">
     </lib-featured-clan-card>
   </div>
 </div>

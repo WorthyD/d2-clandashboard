@@ -10,6 +10,10 @@ export class FeaturedClanCardComponent implements OnInit {
   cardTitle: string;
 
   @Input()
+  cardTip: string;
+
+
+  @Input()
   featuredClans: any[];
 
   @Output() viewClan = new EventEmitter<number>();

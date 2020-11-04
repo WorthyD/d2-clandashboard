@@ -1,10 +1,10 @@
 <div *ngIf="clanDetails.lastLoginMembers$ | async as lastLoginMembers">
-    <lib-clan-members-card [cardTitle]="'Recently Active Members'" [members]="lastLoginMembers"  (viewMember)="viewMember($event)"
-        [itemTemplate]="itemTemplate">
-        <ng-template let-member #itemTemplate>
-            <div>
-                {{member.profile?.profile.data.dateLastPlayed| date: 'short'}}
-            </div>
-        </ng-template>
-    </lib-clan-members-card>
+  <lib-clan-members-card [cardTitle]="'Recently Active Members'" [members]="lastLoginMembers"
+    (viewMember)="viewMember($event)" [itemTemplate]="itemTemplate">
+    <ng-template let-member #itemTemplate>
+      <div>
+        {{member.profile?.profile.data.dateLastPlayed |  bungieDateTime}}
+      </div>
+    </ng-template>
+  </lib-clan-members-card>
 </div>

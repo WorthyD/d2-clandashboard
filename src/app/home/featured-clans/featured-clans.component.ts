@@ -56,14 +56,23 @@ export class FeaturedClansComponent implements OnInit {
     { name: 'TAU ', id: 4134634 },
     { name: 'OMEGA ', id: 4182341 }
   ];
+
+  loreNetwork = [
+    { name: 'Focused Fire Chat', id: 1595671 },
+    { name: 'Dredgens of Lore', id: 3060397 }, // Ellimist
+    { name: 'Flavored Milk', id: 3913441 }, // Double check this one orchid
+    { name: 'Wizards Asylum', id: 2417902 }, // Anonpig
+    { name: `Tommy's Ghosts`, id: 4331196 }, // Taylor B
+    { name: 'TheNorthernResistance', id: 1784989 } // Kaz PHD
+  ];
+
   otherClans = [
     { name: 'Tiger Style Clan', id: 2071016 },
     { name: 'Redeem', id: 817426 },
     { name: 'Math Class', id: 881267 },
     { name: 'Primal ', id: 1362153 },
     { name: 'My Dad is Bungie', id: 2071523 },
-    { name: 'The Raid Parade', id: 2956384 },
-    { name: 'Focused Fire Chat', id: 1595671 }
+    { name: 'The Raid Parade', id: 2956384 }
   ];
   viewClan(clan) {
     this.store.dispatch(actionSettingsChangeClan({ selectedClanId: clan.id }));
