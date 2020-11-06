@@ -13,9 +13,10 @@ import { RootStoreModule } from './root-store/root-store.module';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { ClanSearchModule } from './clan-search/clan-search.module';
-import {HomeModule} from './home/home.module';
+import { HomeModule } from './home/home.module';
 import { ManifestService } from './services/manifest.service';
 
+import { MaterialModule } from '@destiny/components';
 export function initConfig(appConfig: ManifestService) {
   return () => appConfig.loadManifest();
 }
@@ -28,13 +29,14 @@ export function initConfig(appConfig: ManifestService) {
     HttpClientModule,
     ClanModule,
     RootStoreModule,
+    MaterialModule,
     // LoggerModule.forRoot({
     //   level: NgxLoggerLevel.TRACE,
     //   serverLogLevel: NgxLoggerLevel.ERROR,
     //   disableConsoleLogging: false
     // }),
     BrowserAnimationsModule,
-    HomeModule,
+    HomeModule
   ],
   providers: [
     {
