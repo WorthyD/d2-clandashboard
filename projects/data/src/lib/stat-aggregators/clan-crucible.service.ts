@@ -41,7 +41,8 @@ export class ClanCrucibleService {
         return {
           memberProfile: { profile: x.profile },
           stats: {
-            valorPoints: this.getValorPoints(x)
+            valorPoints: this.getValorPoints(x),
+            gloryPoints:
           }
         };
       })
@@ -49,8 +50,15 @@ export class ClanCrucibleService {
   }
 
   private getValorPoints(mp: MemberProfile) {
+    return this.getPoints(mp, ActivityHashes.valorRank);
+  }
+  private getGloryPoints(mp: MemberProfile){
+    return this.getPoints(mp, ActivityHashes.gloryRank);
+  }
+  private getPoints(mp: MemberProfile, hash){
     const firstCharacterId = mp.profile.data.characterIds[0];
-    return mp.characterProgressions.data[firstCharacterId].progressions[ActivityHashes.valorRank].currentProgress;
+    return mp.characterProgressions.data[firstCharacterId].progressions[hash].currentProgress;
+
   }
 
   private getCharacterCrucibleStats(clanId: number, memberProfile: MemberProfile, characterId: number) {
