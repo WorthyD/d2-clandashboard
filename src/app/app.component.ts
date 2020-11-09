@@ -7,6 +7,8 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectEffectiveTheme } from './root-store/settings/settings.selectors';
 import { routeAnimations } from './core/core.module';
+import { AlertComponent } from './alert/alert.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -18,10 +20,22 @@ export class AppComponent implements OnInit {
   title = 'destiny-dashboard';
   hideDisclaimer;
   theme$: Observable<string>;
-  constructor(iconRegistry: MatIconRegistry, domSanitizer: DomSanitizer, private store: Store) {
+  constructor(
+    iconRegistry: MatIconRegistry,
+    domSanitizer: DomSanitizer,
+    private store: Store,
+    public dialog: MatDialog
+  ) {
     registerIcons(iconRegistry, domSanitizer);
   }
   ngOnInit(): void {
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
+    const hasViews = window.sessionStorage.getItem('season');
+    if (!hasViews) {
+      const dialogRef = this.dialog.open(AlertComponent);
+      dialogRef.afterClosed().subscribe((result) => {
+        window.sessionStorage.setItem('season', 'true');
+      });
+    }
   }
 }

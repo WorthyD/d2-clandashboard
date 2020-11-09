@@ -1,13 +1,27 @@
-<p>sandbox works!</p>
+<table>
+  <thead>
+    <td>
+      hash
+    </td>
+    <td>
+      Activity Name
+    </td>
 
-<!-- <pre><code>
-{{rootSealNode.displayProperties.name | json}}
-</code></pre> -->
-<hr>
+  </thead>
+  <tr *ngFor="let node of rootSealNode">
+    <td>
+      {{node.hash}}
+    </td>
+    <td>
+      {{node.displayProperties.name}}
+    </td>
+
+  </tr>
+</table>
 
 <!-- <pre><code>
 {{(stuff | async) | json}}
 </code></pre> -->
-<pre><code>
+<!-- <pre><code>
 {{(prophecy | async) | json}}
-</code></pre>
+</code></pre> -->

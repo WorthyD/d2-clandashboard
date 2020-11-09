@@ -17,6 +17,9 @@ import { HomeModule } from './home/home.module';
 import { ManifestService } from './services/manifest.service';
 
 import { MaterialModule } from '@destiny/components';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AlertModule } from './alert/alert.module';
+//import { MaterialModule } from '@destiny/components';
 export function initConfig(appConfig: ManifestService) {
   return () => appConfig.loadManifest();
 }
@@ -28,8 +31,10 @@ export function initConfig(appConfig: ManifestService) {
     AppRoutingModule,
     HttpClientModule,
     ClanModule,
+    MatDialogModule,
     RootStoreModule,
     MaterialModule,
+    AlertModule,
     // LoggerModule.forRoot({
     //   level: NgxLoggerLevel.TRACE,
     //   serverLogLevel: NgxLoggerLevel.ERROR,
