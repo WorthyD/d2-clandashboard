@@ -8,6 +8,7 @@ import { InactiveMembersComponent } from './inactive-members/inactive-members.co
 import { HighestpowerMembersComponent } from './highestpower-members/highestpower-members.component';
 import { RecentlyActiveMembersComponent } from './recently-active-members/recently-active-members.component';
 import { BaseMemberCardComponent } from './base-member-card/base-member-card.component';
+import { PipesModule } from '@destiny/components';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,13 @@ import { BaseMemberCardComponent } from './base-member-card/base-member-card.com
     RecentlyActiveMembersComponent,
     BaseMemberCardComponent
   ],
-  imports: [CommonModule, ClanWeeklyProgressModule, ClanOverviewModule, ClanSeasonProgressModule, ClanMembersCardModule]
+  imports: [
+    CommonModule,
+    ClanWeeklyProgressModule,
+    ClanOverviewModule,
+    ClanSeasonProgressModule,
+    ClanMembersCardModule,
+    PipesModule
+  ]
 })
 export class ClanDetailModule {}

@@ -11,6 +11,8 @@ import { RaidReportProfileUrlPipe } from './raid-report-url/raid-report-profile-
 import { PlaytimePipe } from './playtime/playtime.pipe';
 import { DungeonReportUrlPipe } from './dungeon-report-url/dungeon-report-url.pipe';
 import { DungeonReportProfileUrlPipe } from './dungeon-report-url/dungeon-report-profile-url.pipe';
+import { BungieDatePipe } from './bungie-date/bungie-date.pipe';
+import { BungieDateTimePipe } from './bungie-date/bungie-date-time.pipe';
 import { MemberTypePipe } from './member-type/member-type.pipe';
 
 const pipes = [
@@ -25,6 +27,8 @@ const pipes = [
   PlaytimePipe,
   DungeonReportUrlPipe,
   DungeonReportProfileUrlPipe,
+  BungieDatePipe,
+  BungieDateTimePipe,
   MemberTypePipe
 ];
 

@@ -1,7 +1,10 @@
 <mat-card>
-  <mat-card-title>{{cardTitle}}</mat-card-title>
-  <mat-card-content>
-    <button mat-stroked-button color="primary" *ngFor="let clan of featuredClans; let idx = index" class="m-1"
-      (click)="clanClick(clan)">{{clan.name}}</button>
-  </mat-card-content>
+  <mat-card-title>{{cardTitle}}<i *ngIf="cardTip" class="material-icons mx-3"
+      matTooltip="{{cardTip}}">
+      help
+    </i>
+    </mat-card-title> <mat-card-content>
+      <button mat-stroked-button color="primary" *ngFor="let clan of featuredClans; let idx = index" class="m-1"
+        (click)="clanClick(clan)">{{clan.name}}</button>
+      </mat-card-content>
 </mat-card>

@@ -13,11 +13,11 @@ export class NavbarComponent implements OnInit {
   @Input()
   versionNumber: string;
 
-
   @Output() selectThemeOutput = new EventEmitter<String>();
   @Output() openLink = new EventEmitter<string>();
   @Output() openAbout = new EventEmitter<string>();
   @Output() resetDatabase = new EventEmitter<string>();
+  @Output() toggleMenu = new EventEmitter<string>();
 
   themes = [
     { name: 'Light', value: 'light-theme' },
@@ -28,6 +28,9 @@ export class NavbarComponent implements OnInit {
 
   themeSelect(themeValue) {
     this.selectThemeOutput.emit(themeValue);
+  }
+  toggleMenuEvent() {
+    this.toggleMenu.emit();
   }
 
   ngOnInit(): void {}

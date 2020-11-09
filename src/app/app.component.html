@@ -3,4 +3,11 @@
     [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.data && o.activatedRoute.routeConfig.data.title">
     <router-outlet #o="outlet"></router-outlet>
   </div>
+  <div class="mobile-disclaimer" *ngIf="!hideDisclaimer">
+    This site is currently not mobile optimized. Use a larger screen for optimal experience.
+    <button mat-icon-button (click)="hideDisclaimer = true;">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+
 </div>

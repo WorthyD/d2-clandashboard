@@ -1,9 +1,9 @@
 <div class="main-container">
   <lib-navbar [clanDetails]="clanDetails$ | async" [versionNumber]="versionNumber"
     (selectThemeOutput)="changeTheme($event)" (openLink)="openLink($event)" (openAbout)="openAbout()"
-    (resetDatabase)="resetDatabase()"></lib-navbar>
+    (resetDatabase)="resetDatabase()" (toggleMenu)="sidenav.open()"></lib-navbar>
   <mat-sidenav-container>
-    <mat-sidenav mode="side" opened>
+    <mat-sidenav [appResponsiveSidebar]="960" #sidenav mode="side" opened>
       <mat-nav-list class="clan-nav">
         <div class="section-nav">
           <a mat-list-item routerLink="./" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"> Details </a>

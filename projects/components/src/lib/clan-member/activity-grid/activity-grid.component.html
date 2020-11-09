@@ -39,7 +39,7 @@
     <ng-container matColumnDef="when">
         <th mat-header-cell *matHeaderCellDef> Date </th>
         <td mat-cell *matCellDef="let element">
-            {{element.playerActivity.period | date: 'short'}}
+            {{element.playerActivity.period | bungieDateTime}}
         </td>
     </ng-container>
 

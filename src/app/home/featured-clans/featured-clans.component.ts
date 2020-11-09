@@ -49,10 +49,21 @@ export class FeaturedClansComponent implements OnInit {
   rjnClans = [
     { name: 'SIGMA ', id: 4106667 },
     { name: 'RHO ', id: 4153229 },
+    { name: 'UPSILON', id: 4273866 },
+    { name: 'XI ', id: 4124266 },
+    { name: 'LAMBDA', id: 4276903 },
     { name: 'ZETA ', id: 4117920 },
     { name: 'TAU ', id: 4134634 },
-    { name: 'OMEGA ', id: 4182341 },
-    { name: 'XI ', id: 4124266 }
+    { name: 'OMEGA ', id: 4182341 }
+  ];
+
+  loreNetwork = [
+    { name: 'Focused Fire Chat', id: 1595671 },
+    { name: 'Dredgens of Lore', id: 3060397 }, // Ellimist
+    { name: 'Flavored Milk', id: 3913441 }, // Double check this one orchid
+    { name: 'Wizards Asylum', id: 2417902 }, // Anonpig
+    { name: `Tommy's Ghosts`, id: 4331196 }, // Taylor B
+    { name: 'TheNorthernResistance', id: 1784989 } // Kaz PHD
   ];
 
   otherClans = [
@@ -61,8 +72,7 @@ export class FeaturedClansComponent implements OnInit {
     { name: 'Math Class', id: 881267 },
     { name: 'Primal ', id: 1362153 },
     { name: 'My Dad is Bungie', id: 2071523 },
-    { name: 'The Raid Parade', id: 2956384 },
-    { name: 'Focused Fire Chat', id: 1595671 }
+    { name: 'The Raid Parade', id: 2956384 }
   ];
   viewClan(clan) {
     this.store.dispatch(actionSettingsChangeClan({ selectedClanId: clan.id }));

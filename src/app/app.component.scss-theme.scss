@@ -7,4 +7,9 @@
     background: mat-color($bg, background);
     color: mat-color($fg, text);
   }
+  .mobile-disclaimer{
+    background: mat-color($bg, background);
+    color: mat-color($fg, text);
+    display: block;
+  }
 }
