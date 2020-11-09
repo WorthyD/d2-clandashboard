@@ -6,10 +6,9 @@ import { map, take, catchError, mergeMap } from 'rxjs/operators';
 import { Observable, from, of } from 'rxjs';
 
 import { DBObject, StoreId } from '../app-indexed-db';
-
+import { latestSeason } from '@destiny/models';
 
 import { profileSerializer } from './profile.serializer';
-import { ContentHashService } from '../../services/content-hash.service';
 import { unixTimeStampToDate } from '../../utility/date-utils';
 
 @Injectable()
@@ -84,7 +83,6 @@ export class ProfileService {
   constructor(
     private d2Service: Destiny2Service,
     private clanDb: ClanDatabase,
-    private contentHashService: ContentHashService
   ) {}
 
   getSerializedProfiles(clanId: string, members: ClanMember[]): Observable<MemberProfile> {
@@ -94,7 +92,10 @@ export class ProfileService {
   getSerializedProfile(clanId: string, member: ClanMember): Observable<MemberProfile> {
     return this.getProfile(clanId, member).pipe(
       map((profile) => {
-        return (profileSerializer(profile, this.contentHashService.getProfileHashes()) as unknown) as MemberProfile;
+        return (profileSerializer(profile, [
+          latestSeason.seasonRewardProgressionHash,
+          latestSeason.seasonPrestigeProgressionHash
+        ]) as unknown) as MemberProfile;
       })
     );
   }

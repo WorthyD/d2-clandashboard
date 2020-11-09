@@ -13,6 +13,7 @@ import { AppConstants } from '../../app.constants';
 import { getClanMemberEntities, getAllMembers } from '../store/clan-members/clan-members.selectors';
 import { getMemberProfileEntities } from '../store/member-profiles/member-profiles.selectors';
 import { getClanMemberId } from '@destiny/data';
+import { ClanHashes } from '@destiny/models';
 @Injectable()
 export class ClanDetailService {
   constructor(
@@ -97,8 +98,8 @@ export class ClanDetailService {
 
   clanSeasonalProgression$: Observable<ClanProgress> = this.clanDetails$.pipe(
     map((clan) => {
-      if (clan?.clanInfo?.d2ClanProgressions && clan?.clanInfo?.d2ClanProgressions[AppConstants.SeasonHash]) {
-        return clan?.clanInfo?.d2ClanProgressions[AppConstants.SeasonHash];
+      if (clan?.clanInfo?.d2ClanProgressions && clan?.clanInfo?.d2ClanProgressions[ClanHashes.ClanLevel]) {
+        return clan?.clanInfo?.d2ClanProgressions[ClanHashes.ClanLevel];
       }
       return null;
     })
