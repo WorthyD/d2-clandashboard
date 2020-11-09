@@ -1,7 +1,12 @@
-.mobile-disclaimer{
-  bottom:0;
-  position:absolute;
+.mobile-disclaimer {
+  bottom: 0;
+  padding: 1rem;
+  position: absolute;
   text-align: center;
-  width:100%;
+  width: 100%;
   z-index: 999;
+
+  @media (min-width: 48em) {
+    display: none;
+  }
 }

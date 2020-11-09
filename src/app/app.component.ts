@@ -16,6 +16,7 @@ import { routeAnimations } from './core/core.module';
 })
 export class AppComponent implements OnInit {
   title = 'destiny-dashboard';
+  hideDisclaimer;
   theme$: Observable<string>;
   constructor(iconRegistry: MatIconRegistry, domSanitizer: DomSanitizer, private store: Store) {
     registerIcons(iconRegistry, domSanitizer);
