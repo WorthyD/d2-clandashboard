@@ -34,7 +34,6 @@ export class ClanDungeonService {
       }),
       toArray(),
       map((characterStats) => {
-        //        console.log(characterStats);
         return {
           memberProfile: { profile: member.profile },
           stats: this.combineCharacterActivityStats(characterStats)

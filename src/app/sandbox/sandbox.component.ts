@@ -11,7 +11,15 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./sandbox.component.scss']
 })
 export class SandboxComponent implements OnInit {
-  constructor(private x: MemberActivityStatsService, private presentationNodeService: ActivitiesService) {}
+  rootSealNode = [];
+  constructor(private x: MemberActivityStatsService, private presentationNodeService: ActivitiesService) {
+    const defs = this.presentationNodeService.getDefinitions();
+
+      // tslint:disable-next-line:forin
+      for (const prop in defs) {
+        this.rootSealNode.push(defs[prop]);
+      }
+  }
 
   profile = ({
     profile: {
@@ -35,7 +43,6 @@ export class SandboxComponent implements OnInit {
   } as unknown) as MemberProfile;
 
   user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, 305843009310516628);
-  rootSealNode = this.presentationNodeService.getDefinitions();
 
   prophecy = this.user.pipe(
     map((x) => {

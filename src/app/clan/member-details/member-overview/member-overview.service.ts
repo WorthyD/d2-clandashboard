@@ -8,8 +8,8 @@ import { getClanMemberById } from '../../store/member-profiles/member-profiles.s
 import { map, switchMap } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { ClanMemberSeasonPassProgression } from '@destiny/components';
-import { AppConstants } from 'src/app/app.constants';
 import { getClanMemberId } from '@destiny/data';
+import { latestSeason } from '@destiny/models';
 @Injectable()
 export class MemberOverviewService {
   constructor(private memberStore: Store<ClanMemberState>, private profileStore: Store<MemberProfileState>) {}
@@ -25,11 +25,10 @@ export class MemberOverviewService {
     map((member) => {
       const characterId = member?.profile?.data?.characterIds[0];
       if (characterId > 0 && member?.characterProgressions?.data[characterId]?.progressions) {
-        console.log(member);
         const characterProgressions = member?.characterProgressions?.data[characterId].progressions;
         return {
-          progression: characterProgressions[AppConstants.SeasonRewardProgressionHash],
-          prestigeProgression: characterProgressions[AppConstants.SeasonPrestigeProgressionHash]
+          progression: characterProgressions[latestSeason.seasonRewardProgressionHash.toString()],
+          prestigeProgression: characterProgressions[latestSeason.seasonPrestigeProgressionHash.toString()]
         };
       }
     })
