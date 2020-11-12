@@ -7,7 +7,7 @@
         <mat-progress-bar mode="determinate" [value]="seasonProgress"></mat-progress-bar>
         <div>
             Progress to next level:
-            <div class="float-right" *ngIf="clanProgress?.progressToNextLevel > 0; else maxLevel">
+            <div class="float-right" *ngIf="clanProgress?.levelCap !== clanProgress?.level; else maxLevel">
                 {{clanProgress?.progressToNextLevel}} /
                 {{clanProgress?.nextLevelAt}}</div>
         </div>

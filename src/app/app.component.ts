@@ -30,12 +30,12 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
-    const hasViews = window.sessionStorage.getItem('season');
-    if (!hasViews) {
-      const dialogRef = this.dialog.open(AlertComponent);
-      dialogRef.afterClosed().subscribe((result) => {
-        window.sessionStorage.setItem('season', 'true');
-      });
-    }
+    // const hasViews = window.sessionStorage.getItem('season');
+    // if (!hasViews) {
+    //   const dialogRef = this.dialog.open(AlertComponent);
+    //   dialogRef.afterClosed().subscribe((result) => {
+    //     window.sessionStorage.setItem('season', 'true');
+    //   });
+    // }
   }
 }
