@@ -58,7 +58,6 @@ export class SealEffects {
       ),
       switchMap(([{ seals }, clanId, clanMembers]) => {
         const hashes = seals.map((x) => x.completionRecordHash);
-        clanMembers = clanMembers.slice(0, 10);
         return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), clanMembers, hashes).pipe(
           map((sealProfiles) => {
             const sealProfilesCleaned: SealMembers[] = sealProfiles.map((sealMember) => {
