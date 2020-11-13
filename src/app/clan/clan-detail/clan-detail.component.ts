@@ -3,7 +3,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Event, NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 
 import { ClanDetails, ClanMember } from 'bungie-models';
-// import { GroupV2Service } from 'bungie-api';
 // import { GroupV2Service } from 'projects/bungie-api/src/lib';
 import * as clanDetailSelectors from '../store/clan-detail/clan-detail.selectors';
 import * as clanDetailStore from '../store/clan-detail/clan-detail.state';

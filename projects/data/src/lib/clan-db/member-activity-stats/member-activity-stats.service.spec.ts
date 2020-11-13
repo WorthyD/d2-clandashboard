@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { MemberActivityStatsService } from './member-activity-stats.service';
 import { ClanDatabase } from '../ClanDatabase';
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service } from 'bungie-api-angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {
   MOCK_AGGREGATE_ACTIVITY_STATS,

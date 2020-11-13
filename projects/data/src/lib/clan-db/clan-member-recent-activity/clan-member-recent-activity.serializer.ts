@@ -1,5 +1,5 @@
 import { MemberActivityStats, MemberActivityRecentStats } from 'bungie-models';
-import { DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api';
+import { DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api-angular';
 import { groupActivitiesByWeek } from '../../utility/group-activity-by-week';
 
 

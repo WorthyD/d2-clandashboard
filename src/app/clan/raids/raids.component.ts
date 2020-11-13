@@ -9,7 +9,7 @@ import { getMemberProfileEntities, getAllMembers } from '../store/member-profile
 import { switchMap, take, takeUntil, filter, withLatestFrom, mergeMap, toArray, map } from 'rxjs/operators';
 import { Actions, ofType } from '@ngrx/effects';
 import { loadMemberProfileSuccess } from '../store/member-profiles/member-profiles.actions';
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service } from 'bungie-api-angular';
 import { RaidsService } from './raids.service';
 
 @Component({

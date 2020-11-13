@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseClanService } from '../base-clan.service';
 import { BaseProfileService } from '../base-profile.service';
 import { ClanDatabase } from '../ClanDatabase';
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service } from 'bungie-api-angular';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { Observable, from } from 'rxjs';
 import { mergeMap, map, toArray } from 'rxjs/operators';

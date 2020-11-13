@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { ClanRewardsService } from './clan-rewards.service';
 import { ClanDatabase } from '../ClanDatabase';
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service } from 'bungie-api-angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of, defer } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';

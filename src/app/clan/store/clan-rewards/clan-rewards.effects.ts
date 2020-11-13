@@ -8,7 +8,6 @@ import { take, withLatestFrom, delay } from 'rxjs/operators';
 //import * as clanDetailActions from './clan-detail.actions';
 import * as clanRewardActions from './clan-rewards.actions';
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
-// import { GroupV2Service } from 'bungie-api';
 
 // import { ClanParseService } from '../../../parser/parsers/clan-parse.service';
 

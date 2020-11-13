@@ -1,7 +1,7 @@
 import {
     DestinyDefinitionsMilestonesDestinyMilestoneDefinition,
     DestinyDefinitionsMilestonesDestinyMilestoneRewardCategoryDefinition
-} from 'bungie-api';
+} from 'bungie-api-angular';
 export interface MilestoneDefinition
     extends DestinyDefinitionsMilestonesDestinyMilestoneDefinition {}
 

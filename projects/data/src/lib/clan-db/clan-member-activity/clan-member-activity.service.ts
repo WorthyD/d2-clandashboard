@@ -4,7 +4,7 @@ import {
   Destiny2Service,
   DestinyHistoricalStatsDestinyActivityHistoryResults,
   DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup
-} from 'bungie-api';
+} from 'bungie-api-angular';
 import { BaseClanService } from '../base-clan.service';
 import { BaseMemberActivityService } from '../base-member-activity.service';
 import { ClanDatabase } from '../ClanDatabase';

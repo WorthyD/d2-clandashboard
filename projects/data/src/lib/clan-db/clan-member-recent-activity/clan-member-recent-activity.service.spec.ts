@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ClanMemberRecentActivityService } from './clan-member-recent-activity.service';
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service } from 'bungie-api-angular';
 import { MemberProfile } from 'bungie-models';
 import { MOCK_WORTHY_PROFILE } from '../../testing-utils/objects/profiles.mock';
 import {

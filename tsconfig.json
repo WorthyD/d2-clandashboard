@@ -6,8 +6,7 @@
 */
 {
   "files": [],
-  "references": [
-    {
+  "references": [{
       "path": "./src/tsconfig.app.json"
     },
     {
@@ -15,12 +14,6 @@
     },
     {
       "path": "./e2e/tsconfig.e2e.json"
-    },
-    {
-      "path": "./projects/bungie-api/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/bungie-api/tsconfig.spec.json"
     },
     {
       "path": "./projects/bungie-models/tsconfig.lib.json"

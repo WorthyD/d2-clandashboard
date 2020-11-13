@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { GroupV2Service } from 'bungie-api';
+import { GroupV2Service } from 'bungie-api-angular';
 
 import { ClanDetails } from 'bungie-models';
 import { Subscription, Observable, of } from 'rxjs';

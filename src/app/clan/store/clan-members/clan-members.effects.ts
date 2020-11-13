@@ -6,7 +6,7 @@ import { empty, of } from 'rxjs';
 
 import * as clanMemberActions from './clan-members.actions';
 import * as memberProfileActions from '../member-profiles/member-profiles.actions';
-import { GroupV2Service } from 'bungie-api';
+import { GroupV2Service } from 'bungie-api-angular';
 
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
 import { ClanMember } from 'bungie-models';

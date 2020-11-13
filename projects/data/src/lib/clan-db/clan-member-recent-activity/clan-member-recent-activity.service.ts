@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseMemberActivityService } from '../base-member-activity.service';
 import { ClanDatabase } from '../ClanDatabase';
 import { StoreId } from '../app-indexed-db';
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service } from 'bungie-api-angular';
 import { from, of, Observable, defer, concat, EMPTY, forkJoin } from 'rxjs';
 import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo } from 'rxjs/operators';
 import { MemberActivityStats, MemberProfile, MemberActivityRecentStats } from 'bungie-models';

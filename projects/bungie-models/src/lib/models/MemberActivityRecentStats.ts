@@ -1,4 +1,4 @@
-import { DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api';
+import { DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api-angular';
 interface MemberActivityStat extends DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup {}
 
 export interface MemberActivityRecentStats {

@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 
 import { Subscription, Observable, of, forkJoin } from 'rxjs';
 
-import { GroupV2Service, Destiny2Service } from 'bungie-api';
+import { GroupV2Service, Destiny2Service } from 'bungie-api-angular';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Router } from '@angular/router';
 import { map, sampleTime, shareReplay, switchMap, tap, catchError } from 'rxjs/operators';

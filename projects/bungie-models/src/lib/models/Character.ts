@@ -1,4 +1,4 @@
-import { DestinyEntitiesCharactersDestinyCharacterComponent } from 'bungie-api';
+import { DestinyEntitiesCharactersDestinyCharacterComponent } from 'bungie-api-angular';
 
 // import {} from '';
  export interface Character extends DestinyEntitiesCharactersDestinyCharacterComponent{

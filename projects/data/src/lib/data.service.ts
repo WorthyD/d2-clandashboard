@@ -13,7 +13,7 @@ import {
   withLatestFrom
 } from 'rxjs/operators';
 
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service } from 'bungie-api-angular';
 import { ManifestDatabaseService } from './services/manifest-database.service';
 
 // import { requireDatabase, getAllRecords } from './database';
