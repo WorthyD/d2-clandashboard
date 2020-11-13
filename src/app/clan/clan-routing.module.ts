@@ -30,6 +30,10 @@ const routes: Routes = [
           import('./clan-member-activity/clan-member-activity.module').then((m) => m.ClanMemberActivityModule)
       },
       {
+        path: 'crucible',
+        loadChildren: () => import('./crucible/crucible.module').then((module) => module.CrucibleModule)
+      },
+      {
         path: 'seals',
         loadChildren: () => import('./seals/seals.module').then((module) => module.SealsModule)
       },
