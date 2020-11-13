@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Destiny2Service, DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api';
+import { Destiny2Service, DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api-angular';
 import { ClanDatabase } from '../ClanDatabase';
 import { from, of, Observable } from 'rxjs';
 import { BaseClanService } from '../base-clan.service';

@@ -1,7 +1,7 @@
 import { BaseClanService } from './base-clan.service';
 import { ClanDatabase } from './ClanDatabase';
 import { StoreId } from './app-indexed-db';
-import { Destiny2Service, DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api';
+import { Destiny2Service, DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api-angular';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { mergeMap, map, catchError, toArray } from 'rxjs/operators';
 import { Observable, of, from, defer, concat, EMPTY, forkJoin } from 'rxjs';

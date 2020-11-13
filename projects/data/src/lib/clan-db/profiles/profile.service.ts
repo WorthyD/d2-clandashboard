@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service } from 'bungie-api-angular';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { ClanDatabase } from '../ClanDatabase';
 import { map, take, catchError, mergeMap } from 'rxjs/operators';

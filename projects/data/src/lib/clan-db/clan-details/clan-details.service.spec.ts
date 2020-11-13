@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ClanDetailsService } from './clan-details.service';
 import { ClanDatabase } from '../ClanDatabase';
-import { GroupV2Service } from 'bungie-api';
+import { GroupV2Service } from 'bungie-api-angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of, defer } from 'rxjs';
 import { MOCK_DB_CLAN_DETAILS, MOCK_CLAN_OVERVIEW } from '../../testing-utils/objects/clan-details.mock';

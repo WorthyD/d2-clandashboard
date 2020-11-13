@@ -1,5 +1,5 @@
 import { MemberProfile } from 'bungie-models';
-import { DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api';
+import { DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api-angular';
 
 export function memberActivityStatSerializer(
   records: DestinyHistoricalStatsDestinyAggregateActivityStats[],

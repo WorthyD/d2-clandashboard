@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Destiny2Service, GroupV2Service } from 'bungie-api';
+import { Destiny2Service, GroupV2Service } from 'bungie-api-angular';
 import { DBObject, StoreId } from '../app-indexed-db';
 
 import { map, take, catchError, mergeMap, switchMap } from 'rxjs/operators';

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AllRaids, MemberRaidStats } from '@destiny/models';
 import { MemberProfile } from 'bungie-models';
 
-import { DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api';
+import { DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api-angular';
 import { from, of, Observable } from 'rxjs';
 import { switchMap, take, takeUntil, filter, withLatestFrom, mergeMap, toArray, map } from 'rxjs/operators';
 import { MemberActivityStatsService } from '../clan-db/member-activity-stats/member-activity-stats.service';

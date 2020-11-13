@@ -4,7 +4,7 @@ import { ClanRaidsService } from './clan-raids.service';
 import { MOCK_PROFILES } from '../testing-utils/objects/profiles.mock';
 import { MemberProfile } from 'bungie-models';
 import { MemberActivityStatsService } from '../clan-db/member-activity-stats/member-activity-stats.service';
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service } from 'bungie-api-angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ClanDatabase } from '../clan-db';
 import { of } from 'rxjs';

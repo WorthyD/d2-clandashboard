@@ -3,7 +3,7 @@ import { TestScheduler } from 'rxjs/testing';
 import { ProfileService, ClanDatabase } from '@destiny/data';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { Destiny2Service } from 'bungie-api';
+import { Destiny2Service } from 'bungie-api-angular';
 import { loadMemberProfiles } from './member-profiles.actions';
 import { Actions } from '@ngrx/effects';
 import { MemberProfileEffects } from './member-profiles.effects';

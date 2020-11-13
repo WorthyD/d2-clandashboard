@@ -1,4 +1,4 @@
-import { DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api';
+import { DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api-angular';
 
 export interface MemberAggregateActivityStats {
   member: any;
