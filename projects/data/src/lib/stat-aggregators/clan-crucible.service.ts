@@ -35,7 +35,6 @@ export class ClanCrucibleService {
     //     };
     //   })
     // );
-    console.log(member);
 
     return this.profileService.getProfile(clanId.toString(), member).pipe(
       map((x) => {
@@ -58,7 +57,11 @@ export class ClanCrucibleService {
   }
   private getPoints(mp: MemberProfile, hash) {
     const firstCharacterId = mp.profile.data.characterIds[0];
-    return mp.characterProgressions.data[firstCharacterId].progressions[hash].currentProgress;
+    if (mp.characterProgressions.data) {
+      return mp.characterProgressions.data[firstCharacterId].progressions[hash].currentProgress;
+    } else {
+      return 'Private';
+    }
   }
 
   private getCharacterCrucibleStats(clanId: number, memberProfile: MemberProfile, characterId: number) {
