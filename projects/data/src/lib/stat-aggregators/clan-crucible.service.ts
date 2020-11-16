@@ -35,6 +35,7 @@ export class ClanCrucibleService {
     //     };
     //   })
     // );
+    console.log(member);
 
     return this.profileService.getProfile(clanId.toString(), member).pipe(
       map((x) => {
