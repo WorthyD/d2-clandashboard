@@ -60,7 +60,7 @@ export class ClanCrucibleService {
     if (mp.characterProgressions.data) {
       return mp.characterProgressions.data[firstCharacterId].progressions[hash].currentProgress;
     } else {
-      return 'Private';
+      return -1;
     }
   }
 

@@ -1,4 +1,4 @@
-<p>crucible works!</p>
+<!-- <p>crucible works!</p>
 
 <div>
   <ng-container *ngFor="let c of crucibleService.crucibleStats">
@@ -9,4 +9,9 @@
 </div>
 <pre>
   {{ crucibleService.crucibleStats | json}}
-  </pre>
+  </pre> -->
+  <lib-clan-crucible-stats-table [memberCrucibleStats]="crucibleService.crucibleStats" [isLoading]="crucibleService.isLoading">
+  </lib-clan-crucible-stats-table>
+
+
+

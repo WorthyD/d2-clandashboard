@@ -3,12 +3,12 @@ import { StorybookService } from '../storybook/storybook.service';
 import { StorybookModule } from '../storybook/storybook.module';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 
-import { ClanCrucibleStatsModule } from './clan-crucible-stats.module';
-import { ClanCrucibleStatsComponent } from './clan-crucible-stats.component';
+import { ClanCrucibleStatsModule } from './clan-crucible-stats-table.module';
+import { ClanCrucibleStatsTableComponent } from './clan-crucible-stats-table.component';
 import { MOCK_CRUCIBLE_STATS } from './_MOCK_CRUCIBLE_STATS';
 
 export default {
-  title: 'Clan / Clan Crucible Stats',
+  title: 'Clan / Clan Crucible Stats Table',
   decorators: [
     withKnobs,
     moduleMetadata({
@@ -17,8 +17,8 @@ export default {
   ]
 };
 export const base = () => ({
-  component: ClanCrucibleStatsComponent,
-  template: `<lib-clan-crucible-stat-table [memberCrucibleStats]="crucibleStats" [isLoading]="isLoading"></lib-clan-crucible-stat-table>`,
+  component: ClanCrucibleStatsTableComponent,
+  template: `<lib-clan-crucible-stats-table [memberCrucibleStats]="crucibleStats" [isLoading]="isLoading"></lib-clan-crucible-stats-table>`,
   props: {
     crucibleStats: MOCK_CRUCIBLE_STATS,
     isLoading: boolean('Is Loading', false)

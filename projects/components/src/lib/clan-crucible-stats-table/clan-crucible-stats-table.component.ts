@@ -5,12 +5,12 @@ import { compare } from '../utilities/compare';
 import { ActivityStats } from 'bungie-models';
 
 @Component({
-  selector: 'lib-clan-crucible-stats',
-  templateUrl: './clan-crucible-stats.component.html',
-  styleUrls: ['./clan-crucible-stats.component.scss'],
+  selector: 'lib-clan-crucible-stats-table',
+  templateUrl: './clan-crucible-stats-table.component.html',
+  styleUrls: ['./clan-crucible-stats-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ClanCrucibleStatsComponent implements OnInit {
+export class ClanCrucibleStatsTableComponent implements OnInit {
   _memberCrucibleStats;
   @Input()
   get memberCrucibleStats(): ActivityStats[] {
