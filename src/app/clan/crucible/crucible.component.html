@@ -1,0 +1,17 @@
+<!-- <p>crucible works!</p>
+
+<div>
+  <ng-container *ngFor="let c of crucibleService.crucibleStats">
+    <div>
+      {{c.memberProfile.profile.data.userInfo.displayName}} | {{c.stats.valorPoints}} | {{c.stats.gloryPoints}}
+    </div>
+  </ng-container>
+</div>
+<pre>
+  {{ crucibleService.crucibleStats | json}}
+  </pre> -->
+  <lib-clan-crucible-stats-table [memberCrucibleStats]="crucibleService.crucibleStats" [isLoading]="crucibleService.isLoading">
+  </lib-clan-crucible-stats-table>
+
+
+

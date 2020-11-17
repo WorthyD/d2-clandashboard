@@ -57,7 +57,11 @@ export class ClanCrucibleService {
   }
   private getPoints(mp: MemberProfile, hash) {
     const firstCharacterId = mp.profile.data.characterIds[0];
-    return mp.characterProgressions.data[firstCharacterId].progressions[hash].currentProgress;
+    if (mp.characterProgressions.data) {
+      return mp.characterProgressions.data[firstCharacterId].progressions[hash].currentProgress;
+    } else {
+      return -1;
+    }
   }
 
   private getCharacterCrucibleStats(clanId: number, memberProfile: MemberProfile, characterId: number) {
