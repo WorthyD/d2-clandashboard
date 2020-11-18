@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivityStats, MemberProfile, ClanMember } from 'bungie-models';
-import { from, Observable } from 'rxjs';
+import { forkJoin, from, Observable } from 'rxjs';
 import { map, mergeMap, toArray } from 'rxjs/operators';
 import { ProfileService } from '../clan-db/profiles/profile.service';
 import { ActivityHashes } from '@destiny/models';
+import { ProfileMilestonesService } from '../clan-db/profile-milestones/profile-milestones.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { ActivityHashes } from '@destiny/models';
 export class ClanCrucibleService {
   readonly CONCURRENT_COUNT = 10;
 
-  constructor(private profileService: ProfileService) {}
+  constructor(private profileService: ProfileService, private profileMilestonesService: ProfileMilestonesService) {}
 
   getClanCrucibleStats(clanId: number, clanMemberProfiles: ClanMember[]) {
     return from(clanMemberProfiles).pipe(
@@ -36,13 +37,16 @@ export class ClanCrucibleService {
     //   })
     // );
 
-    return this.profileService.getProfile(clanId.toString(), member).pipe(
-      map((x) => {
+    return forkJoin([
+      this.profileService.getProfile(clanId.toString(), member),
+      this.profileMilestonesService.getSerializedProfile(clanId.toString(), member)
+    ]).pipe(
+      map(([profileResponse, memberResponse]) => {
         return {
-          memberProfile: { profile: x.profile },
+          memberProfile: { profile: profileResponse.profile },
           stats: {
-            valorPoints: this.getValorPoints(x),
-            gloryPoints: this.getGloryPoints(x)
+            valorPoints: this.getValorPoints(profileResponse),
+            gloryPoints: this.getGloryPoints(profileResponse)
           }
         };
       })
