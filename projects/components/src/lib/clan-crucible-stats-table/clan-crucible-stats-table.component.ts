@@ -25,7 +25,7 @@ export class ClanCrucibleStatsTableComponent implements OnInit {
   isLoading = true;
 
   sortedData: ActivityStats[];
-  displayedColumns: string[] = ['displayName', 'valorPoints', 'gloryPoints'];
+  displayedColumns: string[] = ['displayName', 'valorPoints', 'valorResets', 'gloryPoints'];
 
   constructor() {}
 
