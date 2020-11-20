@@ -3,8 +3,9 @@ import { ActivityStats, MemberProfile, ClanMember } from 'bungie-models';
 import { forkJoin, from, Observable } from 'rxjs';
 import { map, mergeMap, toArray } from 'rxjs/operators';
 import { ProfileService } from '../clan-db/profiles/profile.service';
-import { ActivityHashes } from '@destiny/models';
+import { ActivityHashes, RecordHashes } from '@destiny/models';
 import { ProfileMilestonesService } from '../clan-db/profile-milestones/profile-milestones.service';
+import { SingleComponentResponseOfDestinyProfileRecordsComponent } from 'bungie-api-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -39,13 +40,14 @@ export class ClanCrucibleService {
 
     return forkJoin([
       this.profileService.getProfile(clanId.toString(), member),
-      this.profileMilestonesService.getSerializedProfile(clanId.toString(), member)
+      this.profileMilestonesService.getSerializedProfile(clanId.toString(), member, [RecordHashes.ValorResetHash])
     ]).pipe(
       map(([profileResponse, memberResponse]) => {
         return {
           memberProfile: { profile: profileResponse.profile },
           stats: {
             valorPoints: this.getValorPoints(profileResponse),
+            valorResets: this.getValorResets(memberResponse.profileRecords),
             gloryPoints: this.getGloryPoints(profileResponse)
           }
         };
@@ -66,6 +68,13 @@ export class ClanCrucibleService {
     } else {
       return -1;
     }
+  }
+  private getValorResets(records: SingleComponentResponseOfDestinyProfileRecordsComponent) {
+    return (
+      records?.data?.records[RecordHashes.ValorResetHash]?.objectives.find(
+        (x) => x.objectiveHash === RecordHashes.ValorResetHashObjective
+      )?.progress || 0
+    );
   }
 
   private getCharacterCrucibleStats(clanId: number, memberProfile: MemberProfile, characterId: number) {
