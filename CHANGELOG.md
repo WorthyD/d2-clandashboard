@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.24.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.22.0...v0.24.0) (2020-11-22)
+
+
+### Features
+
+* Adding Dungeon Vaulted Filter ([00909ba](https://github.com/WorthyD/d2-clandashboard/commit/00909ba4157b74796058c4f2e365c6f8fe9db974))
+
 ## [0.22.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.21.0...v0.22.0) (2020-11-22)
 
 
