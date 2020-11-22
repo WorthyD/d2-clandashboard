@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.21.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.20.0...v0.21.0) (2020-11-22)
+
+
+### Features
+
+* Deep Stone Crypt Addition ([598ae32](https://github.com/WorthyD/d2-clandashboard/commit/598ae32424c0c8b954035faf44ce8983aa7ebdc5))
+
 ## [0.20.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.19.0...v0.20.0) (2020-11-20)
 
 ## [0.19.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.18.0...v0.19.0) (2020-11-17)
