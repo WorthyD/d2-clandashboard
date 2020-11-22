@@ -1,6 +1,7 @@
 <ng-container>
   <!-- <ng-container *ngIf="!isLoading; else loading"> -->
   <ng-container *ngIf="memberDungeonStats">
+    <mat-checkbox class="m-3" color="primary" (change)="changeVaulted($event)">Show Vaulted Content</mat-checkbox>
     <table mat-table [dataSource]="sortedData" matSort class="mat-elevation-z8" matSortStart="desc"
       (matSortChange)="sortData($event)">
       <ng-container matColumnDef="loadingRow">

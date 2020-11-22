@@ -6,7 +6,8 @@ export const Whisper: Activity = {
   abbreviatedName: 'Whisper',
   displayName: 'The Whisper',
   sortOrder: 6,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: true
 };
 
 export const WhisperHeroic: Activity = {
@@ -15,5 +16,6 @@ export const WhisperHeroic: Activity = {
   abbreviatedName: 'Whisper - Heroic',
   displayName: 'The Whisper (Heroic)',
   sortOrder: 7,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: true
 }

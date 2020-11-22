@@ -6,5 +6,6 @@ export const ShatteredThrone: Activity = {
   abbreviatedName: 'Throne',
   displayName: 'Shattered Throne',
   sortOrder: 1,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: false
 };
