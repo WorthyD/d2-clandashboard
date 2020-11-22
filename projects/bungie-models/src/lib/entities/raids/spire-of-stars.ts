@@ -6,7 +6,8 @@ export const SpireOfStars: Raid = {
   abbreviatedName: 'Spire',
   displayName: 'Spire of Stars',
   sortOrder: 7,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: true
 };
 
 export const SpireOfStarsPrestige: Raid = {
@@ -15,7 +16,8 @@ export const SpireOfStarsPrestige: Raid = {
   abbreviatedName: 'Spire Pres',
   displayName: 'Spire of Stars Prestige',
   sortOrder: 8,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: true
 };
 
 export const SpireOfStarsGG: Raid = {
@@ -24,5 +26,6 @@ export const SpireOfStarsGG: Raid = {
   abbreviatedName: 'Spire Guided',
   displayName: 'Spire of Stars Guided Games',
   sortOrder: 9,
-  isGuidedGames: true
+  isGuidedGames: true,
+  isVaulted: true
 };

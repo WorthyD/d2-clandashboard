@@ -6,7 +6,8 @@ export const CrownOfSorrow: Raid = {
   abbreviatedName: 'CoS',
   displayName: 'Crown Of Sorrow',
   sortOrder: 14,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: true
 };
 
 export const CrownOfSorrowGG: Raid = {
@@ -15,5 +16,6 @@ export const CrownOfSorrowGG: Raid = {
   abbreviatedName: 'CoS GG',
   displayName: 'Crown of Sorrow Guided Games',
   sortOrder: 15,
-  isGuidedGames: true
+  isGuidedGames: true,
+  isVaulted: true
 };

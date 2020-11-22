@@ -6,7 +6,8 @@ export const GardenOfSalvation: Raid = {
   abbreviatedName: 'GoS',
   displayName: 'Garden of Salvation',
   sortOrder: 16,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: false
 };
 
 export const GardenOfSalvationGG: Raid = {
@@ -15,5 +16,6 @@ export const GardenOfSalvationGG: Raid = {
   abbreviatedName: 'GoS GG',
   displayName: 'Garden of Salvation Guided Games',
   sortOrder: 17,
-  isGuidedGames: true
+  isGuidedGames: true,
+  isVaulted: false
 };

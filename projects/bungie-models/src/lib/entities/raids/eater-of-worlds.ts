@@ -6,7 +6,8 @@ export const EaterOfWorlds: Raid = {
   abbreviatedName: 'EoW',
   displayName: 'Eater of Worlds',
   sortOrder: 4,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: true
 };
 
 export const EaterOfWorldsPrestige: Raid = {
@@ -15,7 +16,8 @@ export const EaterOfWorldsPrestige: Raid = {
   abbreviatedName: 'EoW Pres',
   displayName: 'Eater of Worlds Prestige',
   sortOrder: 5,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: true
 };
 
 export const EaterOfWorldsGG: Raid = {
@@ -24,5 +26,6 @@ export const EaterOfWorldsGG: Raid = {
   abbreviatedName: 'EoW Guided',
   displayName: 'Eater of Worlds Guided Games',
   sortOrder: 6,
-  isGuidedGames: true
+  isGuidedGames: true,
+  isVaulted: true
 };
