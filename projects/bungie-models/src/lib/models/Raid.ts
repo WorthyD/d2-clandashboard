@@ -5,4 +5,5 @@ export interface Raid {
   hashes: number[];
   sortOrder: number;
   isGuidedGames: boolean;
+  isVaulted: boolean;
 }

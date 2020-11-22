@@ -5,7 +5,8 @@ export const Leviathan: Raid = {
   abbreviatedName: 'Levi',
   displayName: 'Leviathan',
   sortOrder: 1,
-  isGuidedGames: false
+  isGuidedGames: false,  isVaulted: true
+
 };
 
 export const LeviathanPrestige: Raid = {
@@ -14,7 +15,8 @@ export const LeviathanPrestige: Raid = {
   abbreviatedName: 'Levi Pres',
   displayName: 'Leviathan Prestige',
   sortOrder: 2,
-  isGuidedGames: false
+  isGuidedGames: false,  isVaulted: true
+
 };
 
 export const LeviathanGuidedGames: Raid = {
@@ -23,5 +25,6 @@ export const LeviathanGuidedGames: Raid = {
   abbreviatedName: 'Levi Guided',
   displayName: 'Leviathan Guided Games',
   sortOrder: 3,
-  isGuidedGames: true
+  isGuidedGames: true,  isVaulted: true
+
 };

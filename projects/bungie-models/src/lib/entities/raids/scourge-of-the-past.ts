@@ -6,7 +6,8 @@ export const ScourgeOfThePast: Raid = {
   abbreviatedName: 'SotP',
   displayName: 'Scourge of the Past',
   sortOrder: 12,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: true
 };
 
 export const ScourgeOfThePastGG: Raid = {
@@ -15,5 +16,6 @@ export const ScourgeOfThePastGG: Raid = {
   abbreviatedName: 'SotP GG',
   displayName: 'Scourge of the Past Guided Games',
   sortOrder: 13,
-  isGuidedGames: true
+  isGuidedGames: true,
+  isVaulted: true
 };

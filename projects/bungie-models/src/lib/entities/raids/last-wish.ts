@@ -6,7 +6,8 @@ export const LastWish: Raid = {
   abbreviatedName: 'Last Wish',
   displayName: 'Last Wish',
   sortOrder: 10,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: false
 };
 
 export const LastWishGG: Raid = {
@@ -15,5 +16,6 @@ export const LastWishGG: Raid = {
   abbreviatedName: 'Last Wish GG',
   displayName: 'Last Wish Guided Games',
   sortOrder: 11,
-  isGuidedGames: true
+  isGuidedGames: true,
+  isVaulted: false
 };

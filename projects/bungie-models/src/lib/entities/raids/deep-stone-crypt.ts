@@ -1,4 +1,3 @@
-
 import { Raid } from '../../models/Raid';
 
 export const DeepStoneCrypt: Raid = {
@@ -7,7 +6,8 @@ export const DeepStoneCrypt: Raid = {
   abbreviatedName: 'DSC',
   displayName: 'Deep Stone Crypt',
   sortOrder: 18,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: false
 };
 
 export const DeepStoneCryptGG: Raid = {
@@ -16,7 +16,8 @@ export const DeepStoneCryptGG: Raid = {
   abbreviatedName: 'DSC GG',
   displayName: 'Deep Stone Crypt Guided Games',
   sortOrder: 19,
-  isGuidedGames: true
+  isGuidedGames: true,
+  isVaulted: false
 };
 
 //910380154

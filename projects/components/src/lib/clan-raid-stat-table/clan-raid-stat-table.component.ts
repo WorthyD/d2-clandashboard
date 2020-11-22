@@ -24,6 +24,7 @@ export class ClanRaidStatTableComponent implements OnInit {
   isLoading: boolean = true;
 
   showGG = false;
+  showVaultedContent = false;
   sortedData: MemberRaidStats[];
 
   allRaids;
@@ -46,7 +47,14 @@ export class ClanRaidStatTableComponent implements OnInit {
         return x.isGuidedGames === false;
       }
       return true;
-    }).sort((a, b) => a.sortOrder - b.sortOrder);
+    })
+      .filter((x) => {
+        if (this.showVaultedContent === false) {
+          return x.isVaulted === false;
+        }
+        return true;
+      })
+      .sort((a, b) => a.sortOrder - b.sortOrder);
   }
   updateColumns() {
     this.allRaids = this.getRaids();
@@ -75,6 +83,10 @@ export class ClanRaidStatTableComponent implements OnInit {
   }
   changeGG(event) {
     this.showGG = event.checked;
+    this.updateColumns();
+  }
+  changeVaulted(event) {
+    this.showVaultedContent = event.checked;
     this.updateColumns();
   }
 }
