@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.22.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.21.0...v0.22.0) (2020-11-22)
+
+
+### Features
+
+* Is Vaulted Raid Filter ([fb442fd](https://github.com/WorthyD/d2-clandashboard/commit/fb442fd7758aa5fd1c02bf2a6b449e3ba8521bba))
+
 ## [0.21.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.20.0...v0.21.0) (2020-11-22)
 
 
