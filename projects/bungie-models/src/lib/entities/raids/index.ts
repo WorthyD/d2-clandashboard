@@ -19,6 +19,8 @@ export * from './crown-of-sorrow';
 import { GardenOfSalvation, GardenOfSalvationGG } from './garden-of-salvation';
 export * from './garden-of-salvation';
 
+import { DeepStoneCrypt, DeepStoneCryptGG } from './deep-stone-crypt';
+
 export const AllRaids = [
   Leviathan,
   LeviathanGuidedGames,
@@ -36,5 +38,7 @@ export const AllRaids = [
   CrownOfSorrow,
   CrownOfSorrowGG,
   GardenOfSalvation,
-  GardenOfSalvationGG
+  GardenOfSalvationGG,
+  DeepStoneCrypt,
+  DeepStoneCryptGG
 ];
