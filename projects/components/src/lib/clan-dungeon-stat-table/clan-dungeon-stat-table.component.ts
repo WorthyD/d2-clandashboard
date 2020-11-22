@@ -16,16 +16,16 @@ export class ClanDungeonStatTableComponent implements OnInit {
   get memberDungeonStats(): ActivityStats[] {
     return this._memberDungeonStats;
   }
-  set  memberDungeonStats(value){
+  set memberDungeonStats(value) {
     this._memberDungeonStats = value;
     this.sortedData = value.slice();
   }
 
   @Input()
   isLoading: boolean = true;
-
+  showVaultedContent = false;
+  allDungeons;
   sortedData: ActivityStats[];
-  allDungeons = AllDungeons;
   raidColumnsKeys: string[];
   displayedColumns: string[];
 
@@ -35,9 +35,17 @@ export class ClanDungeonStatTableComponent implements OnInit {
     this.updateColumns();
   }
   updateColumns() {
+    this.allDungeons = this.getDungeons();
     this.displayedColumns = ['displayName', ...this.allDungeons.map((x) => x.key), 'dungeonLink'];
   }
-
+  getDungeons() {
+    return AllDungeons.filter((x) => {
+      if (this.showVaultedContent === false) {
+        return x.isVaulted === false;
+      }
+      return true;
+    }).sort((a, b) => a.sortOrder - b.sortOrder);
+  }
   sortData(sort: Sort) {
     const data = this.memberDungeonStats.slice();
     if (!sort.active || sort.direction === '') {
@@ -58,6 +66,8 @@ export class ClanDungeonStatTableComponent implements OnInit {
       }
     });
   }
-
-
+  changeVaulted(event) {
+    this.showVaultedContent = event.checked;
+    this.updateColumns();
+  }
 }

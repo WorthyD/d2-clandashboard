@@ -7,6 +7,7 @@ export interface Activity {
   hashes: number[];
   sortOrder: number;
   isGuidedGames: boolean;
+  isVaulted?: boolean;
 }
 export interface ActivityStats {
   memberProfile: MemberProfile;

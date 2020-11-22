@@ -3,8 +3,15 @@ export const MOCK_DUNGEON_STATS = [];
 function getRandomNumber() {
   return Math.floor(Math.random() * 100 + 1);
 }
-
+import { AllDungeons } from 'bungie-models';
 users.forEach((u) => {
+  const stats = {};
+  AllDungeons.forEach((r) => {
+    stats[r.key] = {
+      activityCompletions: getRandomNumber()
+    };
+  });
+
   MOCK_DUNGEON_STATS.push({
     memberProfile: {
       profile: {
@@ -19,32 +26,7 @@ users.forEach((u) => {
         }
       }
     },
-    stats: {
-      shat: {
-        activityCompletions: getRandomNumber()
-      },
-      pit: {
-        activityCompletions: getRandomNumber()
-      },
-      proph: {
-        activityCompletions: getRandomNumber()
-      },
-      wis: {
-        activityCompletions: getRandomNumber()
-      },
-      wish: {
-        activityCompletions: getRandomNumber()
-      },
-      zero: {
-        activityCompletions: getRandomNumber()
-      },
-      zeroh: {
-        activityCompletions: getRandomNumber()
-      },
-      labs: {
-        activityCompletions: getRandomNumber()
-      }
-    }
+    stats
   });
 });
 console.log(MOCK_DUNGEON_STATS);

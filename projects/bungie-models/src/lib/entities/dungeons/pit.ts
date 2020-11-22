@@ -6,5 +6,6 @@ export const PitOfHeresy: Activity = {
   abbreviatedName: 'Pit',
   displayName: 'Pit of Heresy',
   sortOrder: 2,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: false
 };

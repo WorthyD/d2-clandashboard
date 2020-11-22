@@ -6,5 +6,6 @@ export const Prophecy: Activity = {
   abbreviatedName: 'Prophecy',
   displayName: 'Prophecy',
   sortOrder: 3,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: false
 };

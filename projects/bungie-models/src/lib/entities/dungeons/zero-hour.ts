@@ -6,7 +6,8 @@ export const ZeroHour: Activity = {
   abbreviatedName: 'Zero Hour',
   displayName: 'Zero Hour',
   sortOrder: 8,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: true
 };
 
 export const ZeroHourHeroic: Activity = {
@@ -15,5 +16,6 @@ export const ZeroHourHeroic: Activity = {
   abbreviatedName: 'Zero Hour (Heroic)',
   displayName: 'Zero Hour (Heroic)',
   sortOrder: 9,
-  isGuidedGames: false
+  isGuidedGames: false,
+  isVaulted: true
 };
