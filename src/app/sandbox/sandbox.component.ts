@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivitiesService, PresentationNodeDefinitionService } from '@destiny/data';
+import { ActivitiesService, PresentationNodeDefinitionService, ProgressDefinitionService } from '@destiny/data';
 import { MemberProfile } from 'bungie-models';
 import { MemberActivityStatsService } from 'projects/data/src/lib/clan-db/member-activity-stats/member-activity-stats.service';
 import { combineLatest } from 'rxjs';
@@ -12,13 +12,19 @@ import { map } from 'rxjs/operators';
 })
 export class SandboxComponent implements OnInit {
   rootSealNode = [];
-  constructor(private x: MemberActivityStatsService, private presentationNodeService: ActivitiesService) {
-    const defs = this.presentationNodeService.getDefinitions();
+  constructor(
+    private x: MemberActivityStatsService,
+    private presentationNodeService: ActivitiesService,
+    private progressDefinitionService: ProgressDefinitionService
+  ) {
+    //const defs = this.presentationNodeService.getDefinitions();
+    const defs = this.progressDefinitionService.getDefinitions();
+    console.log(defs);
 
-      // tslint:disable-next-line:forin
-      for (const prop in defs) {
-        this.rootSealNode.push(defs[prop]);
-      }
+    // tslint:disable-next-line:forin
+    for (const prop in defs) {
+      this.rootSealNode.push(defs[prop]);
+    }
   }
 
   profile = ({
@@ -42,25 +48,30 @@ export class SandboxComponent implements OnInit {
     }
   } as unknown) as MemberProfile;
 
-  user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, 305843009310516628);
+//  https://www.bungie.net/Platform/Destiny2/3/Account/4611686018467238913/Character/305843009310516628/Stats/AggregateActivityStats/
+//{{base_url}}/Destiny2/3/Account/4611686018467238913/Character/2305843009310516628/Stats/AggregateActivityStats/
+//net/Platform/Destiny2/3/Account/4611686018467238913/Character/305843009310516628/Stats/AggregateActivityStats/
+  user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, '2305843009310516628' as unknown as number);
 
-  prophecy = this.user.pipe(
-    map((x) => {
-      ///return x.activities.find((y) => y.activityHash === 4148187374);
-    })
-  );
+  // prophecy = this.user.pipe(
+  //   map((x) => {
+
+  //     //return x.activities.find((y) => y.activityHash === 4148187374);
+  //   })
+  // );
 
   stuff = this.user.pipe(
     map((x) => {
+      console.log(x);
       //console.log(x);
 
-      // const retVal = [];
-      // x.activities.forEach((stat) => {
-      //   retVal.push({
-      //     user: this.rootSealNode[stat.activityHash]?.displayProperties.name,
-      //     id: stat.activityHash
-      //   });
-      // });
+      const retVal = [];
+       x.activities.forEach((stat) => {
+         retVal.push({
+           user: this.rootSealNode[stat.activityHash]?.displayProperties.name,
+           id: stat.activityHash
+         });
+       });
 
       // if (this.rootSealNode[x.activityHash]) {
       //   return {

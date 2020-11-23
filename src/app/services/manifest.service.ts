@@ -16,7 +16,9 @@ import {
   MilestoneDefinitionService,
   ActivitiesService,
   ActivityModeService,
-  PresentationNodeDefinitionService
+  PresentationNodeDefinitionService,
+  ProgressDefinitionService,
+  StatsDefinitionService
 } from '@destiny/data';
 
 @Injectable({
@@ -28,7 +30,9 @@ export class ManifestService {
     private activityService: ActivitiesService,
     private activityModeService: ActivityModeService,
     private milestoneDefinitionService: MilestoneDefinitionService,
-    private presentationNodeDefinitionService: PresentationNodeDefinitionService
+    private presentationNodeDefinitionService: PresentationNodeDefinitionService,
+    private progressDefinitionService: ProgressDefinitionService,
+    private statsDefinitionService: StatsDefinitionService
   ) {}
 
   // TODO: Call for api/settings and look at destiny2CoreSettings
@@ -36,7 +40,7 @@ export class ManifestService {
     const tables = [
       //            'DestinyChecklistDefinition',
       //            'DestinyObjectiveDefinition',
-      //'DestinyStatDefinition',
+      'DestinyStatDefinition',
       //            'DestinyVendorDefinition',
       //            'DestinyInventoryItemDefinition',
       //            'DestinyClassDefinition',
@@ -47,6 +51,7 @@ export class ManifestService {
       //'DestinyRecordDefinition',
       'DestinySeasonDefinition',
       //'DestinySeasonPassDefinition',
+      'DestinyProgressionDefinition',
       'DestinyMilestoneDefinition',
       'DestinyActivityDefinition',
       'DestinyActivityModeDefinition'
@@ -71,6 +76,9 @@ export class ManifestService {
           }
           if (x.data.DestinyPresentationNodeDefinition) {
             this.presentationNodeDefinitionService.initializeCache(x.data.DestinyPresentationNodeDefinition);
+          }
+          if (x.data.DestinyProgressionDefinition) {
+            this.progressDefinitionService.initializeCache(x.data.DestinyProgressionDefinition);
           }
         }
         return true;
