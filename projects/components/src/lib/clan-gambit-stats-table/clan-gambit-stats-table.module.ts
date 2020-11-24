@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClanGambitStatsTableComponent } from './clan-crucible-stats-table.component';
+import { ClanGambitStatsTableComponent } from './clan-gambit-stats-table.component';
 import { MaterialModule } from '../shared/modules/material.module';
 import { SharedModule } from '../shared/shared.module';
 

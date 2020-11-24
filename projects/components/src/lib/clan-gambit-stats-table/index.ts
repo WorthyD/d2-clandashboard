@@ -1,2 +1,2 @@
-export { ClanCrucibleStatsTableComponent } from './clan-crucible-stats-table.component';
-export { ClanCrucibleStatsModule } from './clan-crucible-stats-table.module';
+export { ClanGambitStatsTableComponent } from './clan-gambit-stats-table.component';
+export { ClanGambitStatsModule } from './clan-gambit-stats-table.module';
