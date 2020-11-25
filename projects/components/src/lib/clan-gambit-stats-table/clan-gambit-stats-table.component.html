@@ -1,0 +1,36 @@
+<ng-container>
+  <ng-container *ngIf="memberGambitStats">
+    <table mat-table [dataSource]="sortedData" matSort class="mat-elevation-z8" matSortStart="desc"
+      (matSortChange)="sortData($event)">
+      <ng-container matColumnDef="loadingRow">
+        <td mat-header-cell *matHeaderCellDef colspan="100">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="displayName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Display Name</th>
+        <td mat-cell *matCellDef="let element">{{element.memberProfile.profile.data.userInfo.displayName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="infamyPoints">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Infamy Points</th>
+        <td mat-cell *matCellDef="let element">{{element.stats.infamyPoints}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="infamyResets">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Infamy Resets</th>
+        <td mat-cell *matCellDef="let element">{{element.stats.infamyResets}}</td>
+      </ng-container>
+
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+
+      <tr mat-header-row *matHeaderRowDef="['loadingRow'] ; sticky:true"
+        [ngClass]="{'loading': isLoading, 'loading-row': true}"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </ng-container>
+</ng-container>

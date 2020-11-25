@@ -10,6 +10,7 @@ import { CrucibleService } from './crucible.service';
 export class CrucibleComponent implements OnInit {
   constructor(public crucibleService: CrucibleService) {}
 
+  // TODO: On Destroy
   ngOnInit(): void {
     this.crucibleService.loadStats();
   }

@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ClanDetailComponent } from './clan-detail/clan-detail.component';
-// import { ClanSearchComponent } from './clan-search/clan-search.component';
-// import { ClanDetailGuard } from './clan-detail/clan-detail.guard';
 import { ClanComponent } from './clan.component';
 
 const routes: Routes = [
@@ -32,6 +30,10 @@ const routes: Routes = [
       {
         path: 'crucible',
         loadChildren: () => import('./crucible/crucible.module').then((module) => module.CrucibleModule)
+      },
+      {
+        path: 'gambit',
+        loadChildren: () => import('./gambit/gambit.module').then((module) => module.GambitModule)
       },
       {
         path: 'seals',
