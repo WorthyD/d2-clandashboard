@@ -44,6 +44,6 @@ export class CrucibleService {
   );
 
   loadStats() {
-    this.crucibleStats$.subscribe();
+    this.crucibleStats$.pipe(take(1)).subscribe();
   }
 }

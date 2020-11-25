@@ -42,6 +42,6 @@ export class GambitService {
   );
 
   loadStats() {
-    this.gambitStats$.subscribe();
+    this.gambitStats$.pipe(take(1)).subscribe();
   }
 }
