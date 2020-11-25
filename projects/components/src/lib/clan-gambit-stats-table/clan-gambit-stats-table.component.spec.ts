@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClanCrucibleStatsTableComponent } from './clan-crucible-stats-table.component';
+import { ClanGambitStatsTableComponent } from './clan-gambit-stats-table.component';
 
-describe('ClanCrucibleStatsComponent', () => {
-  let component: ClanCrucibleStatsTableComponent;
-  let fixture: ComponentFixture<ClanCrucibleStatsTableComponent>;
+describe('ClanGambitStatsComponent', () => {
+  let component: ClanGambitStatsTableComponent;
+  let fixture: ComponentFixture<ClanGambitStatsTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClanCrucibleStatsTableComponent ]
+      declarations: [ ClanGambitStatsTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClanCrucibleStatsTableComponent);
+    fixture = TestBed.createComponent(ClanGambitStatsTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

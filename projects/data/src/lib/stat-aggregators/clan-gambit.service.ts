@@ -40,7 +40,7 @@ export class ClanGambitService {
 
     return forkJoin([
       this.profileService.getProfile(clanId.toString(), member),
-      this.profileMilestonesService.getSerializedProfile(clanId.toString(), member, [RecordHashes.ValorResetHash])
+      this.profileMilestonesService.getSerializedProfile(clanId.toString(), member, [RecordHashes.InfamyResetHash])
     ]).pipe(
       map(([profileResponse, memberResponse]) => {
         return {
