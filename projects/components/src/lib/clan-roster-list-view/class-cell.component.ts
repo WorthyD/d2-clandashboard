@@ -3,9 +3,27 @@ import { MemberProfile, ClanMember } from 'bungie-models';
 @Component({
   selector: 'lib-class-cell',
   template: `
-     <mat-icon [svgIcon]="(profile?.characters.data)[characterHash].classType | classicon"></mat-icon>
-    {{ (profile?.characters.data)[characterHash].light }}
+    <div [ngClass]="(profile?.characters.data)[characterHash].classType | classicon">
+      {{ (profile?.characters.data)[characterHash].light }}
+    </div>
   `,
+  styles: [
+    `
+      :host {
+        display: flex;
+        flex: 1 1 33.33%;
+        align-items: center;
+      }
+      :host > div {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        justify-content:center;
+      }
+    `
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClassCellComponent implements OnInit {
@@ -39,11 +57,11 @@ export class ClassIconPipe implements PipeTransform {
   transform(classType: number): any {
     switch (classType) {
       case 0:
-        return 'titan';
+        return 'titan-cell';
       case 1:
-        return 'hunter';
+        return 'hunter-cell';
       case 2:
-        return 'warlock';
+        return 'warlock-cell';
     }
   }
 }

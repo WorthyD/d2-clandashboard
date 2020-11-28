@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+@mixin class-cell-component-theme($theme) {
+  .titan-cell {
+    background: rgba(100, 47, 47, 0.5) !important;
+    color: rgba(100, 47, 47, 1) !important;
+  }
+  .hunter-cell {
+    background: rgba(30, 66, 99, 0.5) !important;
+    color: rgba(30, 66, 99, 1) !important;
+  }
+  .warlock-cell {
+    background: rgba(132, 108, 24, 0.5) !important;
+    color: rgba(132, 108, 24, 1) !important;
+  }
+}
