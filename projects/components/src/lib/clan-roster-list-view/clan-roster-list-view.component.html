@@ -34,6 +34,12 @@
       <!-- </div> -->
     </mat-cell>
   </ng-container>
+  <ng-container matColumnDef="bungieDisplayName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Bungie Display Name </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.member.bungieNetUserInfo?.displayName}} </mat-cell>
+  </ng-container>
+
+
 
   <ng-container matColumnDef="powerBonus">
     <mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Power Bonus">
@@ -47,7 +53,7 @@
   </ng-container>
 
   <ng-container matColumnDef="displayName" sticky>
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Display Name </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Destiny Display Name </mat-header-cell>
     <mat-cell *matCellDef="let element">{{element.member.destinyUserInfo.displayName}} </mat-cell>
   </ng-container>
 

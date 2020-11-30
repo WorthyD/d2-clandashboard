@@ -4,8 +4,7 @@ mat-table {
 }
 mat-row {
 }
-.class-cell,
-.power-cell {
+.class-cell {
   display: flex;
   flex: 1 1 100%;
   align-self: stretch;
@@ -15,8 +14,13 @@ mat-row {
   width: 100%;
   height: 100%;
 }
-.power-cell{
-  height:auto;
+.power-cell {
+  display: flex;
+  height: auto;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 .mat-header-cell {
@@ -32,6 +36,11 @@ mat-row {
   flex: 2 0 0;
   min-width: 150px;
   padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.mat-column-bungiedisplayName {
+  flex: 1 0 100px;
+  min-width: 150px;
   padding-right: 0.75rem;
 }
 .mat-column-characters {

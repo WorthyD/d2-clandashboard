@@ -9,6 +9,7 @@
 @import '../projects/components/src/lib/shared/charts/activity-heatmap/activity-heatmap.component.scss-theme.scss';
 @import '../projects/components/src/lib/shared/charts/activity-bar-chart/activity-bar-chart.component.scss-theme.scss';
 @import '../projects/components/src/lib/clan-roster-list-view/class-cell.componen.scss-theme.scss';
+@import './theme/components/mat-table.scss';
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -37,6 +38,7 @@
 // that you are using.
 @mixin custom-components-theme($theme) {
   @include app-component-theme($theme);
+  @include d2-mat-table-theme($theme);
   //@include clan-search-component-theme($theme);
   @include activity-heatmap-component-theme($theme);
   @include activity-heatmap-component-theme($theme);
