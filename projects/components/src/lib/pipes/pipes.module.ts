@@ -14,6 +14,7 @@ import { DungeonReportProfileUrlPipe } from './dungeon-report-url/dungeon-report
 import { BungieDatePipe } from './bungie-date/bungie-date.pipe';
 import { BungieDateTimePipe } from './bungie-date/bungie-date-time.pipe';
 import { MemberTypePipe } from './member-type/member-type.pipe';
+import { SortByClassPipe } from './sortByClass/sort-by-class.pipe';
 
 const pipes = [
   DateAgoPipe,
@@ -29,7 +30,8 @@ const pipes = [
   DungeonReportProfileUrlPipe,
   BungieDatePipe,
   BungieDateTimePipe,
-  MemberTypePipe
+  MemberTypePipe,
+  SortByClassPipe
 ];
 
 @NgModule({

@@ -19,6 +19,7 @@ export class ClanRosterListViewComponent {
   displayedColumns: string[] = [
     'memberType',
     'displayName',
+    'bungieDisplayName',
     'characters',
     'powerBonus',
     'joinDate',
@@ -53,6 +54,13 @@ export class ClanRosterListViewComponent {
     this.sortedData = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
+        case 'bungieDisplayName':
+          return compare(
+            a.member.bungieNetUserInfo?.displayName?.toLowerCase(), // TODO make sure this doesn't break.
+            b.member.bungieNetUserInfo?.displayName?.toLowerCase(),
+            isAsc
+          );
+
         case 'displayName':
           return compare(
             a.member.destinyUserInfo.displayName.toLowerCase(), // TODO make sure this doesn't break.
