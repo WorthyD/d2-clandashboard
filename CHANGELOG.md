@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.26.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.25.0...v0.26.0) (2020-11-30)
+
+
+### Features
+
+* roster table enhacement ([bcb9546](https://github.com/WorthyD/d2-clandashboard/commit/bcb9546d3285c98c412c201a4869552c165c0ee6))
+
 ## [0.25.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.24.0...v0.25.0) (2020-11-25)
 
 ## [0.24.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.22.0...v0.24.0) (2020-11-22)
