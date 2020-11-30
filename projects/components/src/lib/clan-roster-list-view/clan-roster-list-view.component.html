@@ -16,19 +16,19 @@
   <ng-container matColumnDef="characters">
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       Characters
-      <div class="titan-cell">
+      <div class="titan-cell p-2">
         <mat-icon [svgIcon]="'titan'"></mat-icon>
       </div>
-      <div class="hunter-cell">
+      <div class="hunter-cell p-2">
         <mat-icon [svgIcon]="'hunter'"></mat-icon>
       </div>
-      <div class="warlock-cell">
+      <div class="warlock-cell p-2">
         <mat-icon [svgIcon]="'warlock'"></mat-icon>
       </div>
     </mat-header-cell>
     <mat-cell *matCellDef="let element">
       <!-- <div class="class-cell"> -->
-      <ng-container *ngFor="let char of element.profile?.profile?.data?.characterIds | sortByClass : element.profile">
+      <ng-container *ngFor="let char of element.profile?.profile?.data?.characterIds">
         <lib-class-cell [characterHash]="char" [profile]="element.profile"></lib-class-cell>
       </ng-container>
       <!-- </div> -->
@@ -40,7 +40,9 @@
       <mat-icon>add</mat-icon>
     </mat-header-cell>
     <mat-cell *matCellDef="let element" [ngClass]="'center'">
-      {{element.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus}}
+      <div class="power-cell">
+        {{element.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus}}
+      </div>
     </mat-cell>
   </ng-container>
 
