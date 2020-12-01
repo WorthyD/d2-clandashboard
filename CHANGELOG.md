@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.29.1](https://github.com/WorthyD/d2-clandashboard/compare/v0.29.0...v0.29.1) (2020-12-01)
+
+
+### Bug Fixes
+
+* fixing search ([2c911d8](https://github.com/WorthyD/d2-clandashboard/commit/2c911d8e48b69255a5643037a5ace978cace44b6))
+
 ## [0.29.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.28.0...v0.29.0) (2020-12-01)
 
 ## [0.28.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.27.0...v0.28.0) (2020-12-01)
