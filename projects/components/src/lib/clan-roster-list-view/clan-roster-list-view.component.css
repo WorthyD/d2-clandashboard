@@ -46,22 +46,33 @@ mat-row {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
-.mat-column-bungiedisplayName {
+.mat-column-bungieDisplayName {
   flex: 1 0 100px;
   min-width: 150px;
   padding-right: 0.75rem;
 }
 .mat-column-characters {
-  flex: 1 0 150px;
+  flex: 0 0 200px;
   justify-content: space-around;
   align-items: stretch;
 }
 
 .mat-column-powerBonus {
-  flex: 0 0 75px;
+  flex: 0 0 50px;
   justify-content: space-around;
   align-items: stretch;
 }
+
+.mat-column-activeScore {
+  flex: 0 0 75px;
+  justify-content: space-around;
+}
+
+.mat-column-lifetimeScore {
+  flex: 0 0 75px;
+  justify-content: space-around;
+}
+
 
 .mat-column-joinDate {
   flex: 0 0 100px;

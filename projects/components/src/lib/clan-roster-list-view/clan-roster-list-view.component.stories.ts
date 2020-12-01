@@ -14,6 +14,8 @@ import { PipesModule } from '../pipes/pipes.module';
 import { ClassCellComponent, ClassIconPipe } from './class-cell.component';
 
 import { withKnobs, boolean } from '@storybook/addon-knobs';
+import { ClanListViewStoryComponent } from './clan-roster-list-view.component-story.stories';
+
 export default {
   title: 'Clan / Member Roster',
   decorators: [
@@ -26,11 +28,19 @@ export default {
         MatIconModule,
         MaterialModule,
         IconsModule,
-        PipesModule
+        PipesModule,
+        ClanRosterListViewModule
       ],
-      declarations: [ClanRosterListViewComponent, ClassCellComponent, ClassIconPipe]
+      declarations: [ClanListViewStoryComponent]
     })
   ]
+};
+
+let members = MEMBERS;
+
+const addRow = () => {
+  members = members.concat([MEMBERS[0]]);
+  console.log(members);
 };
 
 export const base = () => ({
@@ -39,7 +49,19 @@ export const base = () => ({
     <lib-clan-roster-list-view [members]="roster"  [isLoading]="isLoading"></lib-clan-roster-list-view>
    `,
   props: {
-    roster: MEMBERS,
-    isLoading: boolean('Is Loading', true)
+    roster: members,
+    isLoading: boolean('Is Loading', false),
+    click: addRow
+  }
+});
+export const dynamic = () => ({
+  component: ClanRosterListViewComponent,
+  template: `
+    <lib-clan-roster-list-view-story [members]="roster"  [isLoading]="isLoading"></lib-clan-roster-list-view-story>
+   `,
+  props: {
+    roster: members,
+    isLoading: boolean('Is Loading', false),
+    click: addRow
   }
 });
