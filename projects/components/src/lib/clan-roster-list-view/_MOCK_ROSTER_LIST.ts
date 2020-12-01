@@ -12,7 +12,6 @@ const names = [
   'Veronica Pitt3'
 ];
 for (let i = 0; i < 10; i++) {
-
   MEMBERS.push({
     member: {
       memberType: 1,
@@ -43,6 +42,13 @@ for (let i = 0; i < 10; i++) {
       id: '4611686018429412112'
     },
     profile: {
+      profileRecords: {
+        data: {
+          score: 1000,
+          activeScore: 1000,
+          lifetimeScore: 1000
+        }
+      },
       profile: {
         data: {
           userInfo: {
@@ -59,6 +65,7 @@ for (let i = 0; i < 10; i++) {
           seasonHashes: [3612906877, 2007338097, 4035491417, 248573323],
           currentSeasonHash: 4035491417
         },
+
         privacy: 1
       },
       profileProgression: {

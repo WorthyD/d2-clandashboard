@@ -1,5 +1,8 @@
 <mat-table [dataSource]="sortedData" matSort class="mat-elevation-z8" (matSortChange)="sortData($event)">
   <ng-container matColumnDef="memberType">
+
+
+
     <mat-header-cell *matHeaderCellDef>
       <mat-icon>videogame_asset</mat-icon>
     </mat-header-cell>
@@ -7,6 +10,11 @@
 
       <lib-member-type [type]="element.member.destinyUserInfo.membershipType"></lib-member-type>
     </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="loadingRow">
+    <mat-header-cell *matHeaderCellDef>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-header-cell>
   </ng-container>
 
   <!-- <ng-container matColumnDef="displayName">
@@ -52,6 +60,27 @@
     </mat-cell>
   </ng-container>
 
+
+  <ng-container matColumnDef="activeScore">
+    <mat-header-cell *matHeaderCellDef mat-sort-header >Active Score
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" [ngClass]="'center'">
+      <div class="score-cell">
+        {{element.profile?.profileRecords?.data?.activeScore}}
+      </div>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="lifetimeScore">
+    <mat-header-cell *matHeaderCellDef mat-sort-header >
+      Lifetime Score
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" [ngClass]="'center'">
+      <div class="score-cell">
+        {{element.profile?.profileRecords?.data?.lifetimeScore}}
+      </div>
+    </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="displayName" sticky>
     <mat-header-cell *matHeaderCellDef mat-sort-header> Destiny Display Name </mat-header-cell>
     <mat-cell *matCellDef="let element">{{element.member.destinyUserInfo.displayName}} </mat-cell>
@@ -76,5 +105,7 @@
 
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="['loadingRow'] ; sticky:true"
+    [ngClass]="{'loading': isLoading, 'loading-row': true}"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>

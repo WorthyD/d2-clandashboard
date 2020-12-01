@@ -13,11 +13,21 @@ import { IconsModule } from '../icons/icons.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { ClassCellComponent, ClassIconPipe } from './class-cell.component';
 
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 export default {
   title: 'Clan / Member Roster',
   decorators: [
+    withKnobs,
     moduleMetadata({
-      imports: [StorybookModule, MatTableModule, MatSortModule, MatIconModule, MaterialModule, IconsModule, PipesModule],
+      imports: [
+        StorybookModule,
+        MatTableModule,
+        MatSortModule,
+        MatIconModule,
+        MaterialModule,
+        IconsModule,
+        PipesModule
+      ],
       declarations: [ClanRosterListViewComponent, ClassCellComponent, ClassIconPipe]
     })
   ]
@@ -26,9 +36,10 @@ export default {
 export const base = () => ({
   component: ClanRosterListViewComponent,
   template: `
-    <lib-clan-roster-list-view [members]="roster"></lib-clan-roster-list-view>
+    <lib-clan-roster-list-view [members]="roster"  [isLoading]="isLoading"></lib-clan-roster-list-view>
    `,
   props: {
-    roster: MEMBERS
+    roster: MEMBERS,
+    isLoading: boolean('Is Loading', true)
   }
 });
