@@ -14,6 +14,8 @@ export function profileMilestoneSerializer(p: MemberProfile, profileRecords: any
     profileRecords: {
       data: {
         score: p.profileRecords?.data?.score,
+        activeScore: p.profileRecords?.data?.activeScore,
+        lifetimeScore: p.profileRecords?.data?.lifetimeScore,
         records: getProfileRecords(p.profileRecords?.data?.records, profileRecords)
       }
     }

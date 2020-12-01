@@ -22,6 +22,8 @@ export class ClanRosterListViewComponent {
     'bungieDisplayName',
     'characters',
     'powerBonus',
+    'activeScore',
+    'lifetimeScore',
     'joinDate',
     'dateLastPlayed',
     'controls'
@@ -29,6 +31,11 @@ export class ClanRosterListViewComponent {
   sortedData: ClanMemberListItem[];
 
   _members: ClanMemberListItem[];
+
+  @Input()
+  isLoading: boolean = true;
+  @Input()
+  memberProfilesLoading: boolean;
 
   @Input()
   get members(): ClanMemberListItem[] {
@@ -69,6 +76,19 @@ export class ClanRosterListViewComponent {
           );
         case 'dateLastPlayed':
           return compare(a.profile?.profile.data.dateLastPlayed, b.profile?.profile.data.dateLastPlayed, isAsc);
+
+        case 'activeScore':
+          return compare(
+            a.profile?.profileRecords.data.activeScore ?? 0,
+            b.profile?.profileRecords.data.activeScore ?? 0,
+            isAsc
+          );
+        case 'lifetimeScore':
+          return compare(
+            a.profile?.profileRecords.data.lifetimeScore ?? 0,
+            b.profile?.profileRecords.data.lifetimeScore ?? 0,
+            isAsc
+          );
         case 'powerBonus':
           return compare(
             a.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus ?? 0,

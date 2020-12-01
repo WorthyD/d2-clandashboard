@@ -22,6 +22,14 @@ mat-row {
   text-align: center;
   width: 100%;
 }
+.score-cell {
+  display: flex;
+  height: auto;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
 
 .mat-header-cell {
   text-align: left;
@@ -66,4 +74,15 @@ mat-row {
 .mat-column-controls {
   flex: 0 0 75px;
   padding-right: 0.75rem;
+}
+.loading-row {
+  display: none;
+  height: 5px;
+  min-height: auto;
+}
+.loading {
+  display: block;
+}
+.mat-column-loadingRow {
+  padding: 0;
 }
