@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Sort } from '@angular/material/sort';
 import { ClanMemberListItem } from '../models/ClanMemberListItem';
 import { compare } from '../utilities/compare';
+import { rowsAnimation } from '../core/animations/table-row';
 
 export { ClanMemberListItem } from '../models/ClanMemberListItem';
 
@@ -13,7 +14,8 @@ export { ClanMemberListItem } from '../models/ClanMemberListItem';
   selector: 'lib-clan-roster-list-view',
   templateUrl: './clan-roster-list-view.component.html',
   styleUrls: ['./clan-roster-list-view.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [rowsAnimation]
 })
 export class ClanRosterListViewComponent {
   displayedColumns: string[] = [

@@ -24,13 +24,13 @@
   <ng-container matColumnDef="characters">
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       Characters
-      <div class="titan-cell p-2">
+      <div class="titan-cell p-1 m-1">
         <mat-icon [svgIcon]="'titan'"></mat-icon>
       </div>
-      <div class="hunter-cell p-2">
+      <div class="hunter-cell p-1 m-1">
         <mat-icon [svgIcon]="'hunter'"></mat-icon>
       </div>
-      <div class="warlock-cell p-2">
+      <div class="warlock-cell p-1 m-1">
         <mat-icon [svgIcon]="'warlock'"></mat-icon>
       </div>
     </mat-header-cell>
@@ -107,5 +107,5 @@
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-header-row *matHeaderRowDef="['loadingRow'] ; sticky:true"
     [ngClass]="{'loading': isLoading, 'loading-row': true}"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" @rowsAnimation></mat-row>
 </mat-table>
