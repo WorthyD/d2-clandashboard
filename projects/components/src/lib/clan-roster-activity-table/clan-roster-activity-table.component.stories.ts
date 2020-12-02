@@ -5,7 +5,7 @@ import { StorybookModule } from '../storybook/storybook.module';
 import { ClanRosterActivityTableModule } from './clan-roster-activity-table.module';
 import { ClanRosterActivityTableComponent } from './clan-roster-activity-table.component';
 import { MOCK_ROSTER_ACTIVITY, MOCK_ROSTER_ACTIVITIES } from './_MOCK_ROSTER_ACTIVITY_LIST';
-import { withKnobs, boolean } from '@storybook/addon-knobs'
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 export default {
   title: 'Clan / Clan Activity Stats',
   decorators: [

@@ -1,0 +1,18 @@
+@mixin d2-mat-table-theme($theme) {
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+  $primary: map-get($theme, primary);
+  // .mat-nav-list .active-link {
+  //   //background: mat-color($accent);;
+  //   color: mat-color($primary, default-contrast) !important;
+  //   background: mat-color($primary);
+
+  //   &:hover, &:focus {
+  //     background-color: mat-color($primary, darker) !important;
+  //   }
+  // }
+  .mat-table .mat-row:hover {
+    transition: background-color 0.2s;
+    background-color: darken(mat-color($background, background), 5%);
+  }
+}

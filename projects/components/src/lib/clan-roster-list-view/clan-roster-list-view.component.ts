@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Sort } from '@angular/material/sort';
 import { ClanMemberListItem } from '../models/ClanMemberListItem';
 import { compare } from '../utilities/compare';
+import { rowsAnimation } from '../core/animations/table-row';
 
 export { ClanMemberListItem } from '../models/ClanMemberListItem';
 
@@ -13,14 +14,18 @@ export { ClanMemberListItem } from '../models/ClanMemberListItem';
   selector: 'lib-clan-roster-list-view',
   templateUrl: './clan-roster-list-view.component.html',
   styleUrls: ['./clan-roster-list-view.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [rowsAnimation]
 })
 export class ClanRosterListViewComponent {
   displayedColumns: string[] = [
     'memberType',
     'displayName',
+    'bungieDisplayName',
     'characters',
     'powerBonus',
+    'activeScore',
+    'lifetimeScore',
     'joinDate',
     'dateLastPlayed',
     'controls'
@@ -28,6 +33,11 @@ export class ClanRosterListViewComponent {
   sortedData: ClanMemberListItem[];
 
   _members: ClanMemberListItem[];
+
+  @Input()
+  isLoading: boolean = true;
+  @Input()
+  memberProfilesLoading: boolean;
 
   @Input()
   get members(): ClanMemberListItem[] {
@@ -53,6 +63,13 @@ export class ClanRosterListViewComponent {
     this.sortedData = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
+        case 'bungieDisplayName':
+          return compare(
+            a.member.bungieNetUserInfo?.displayName?.toLowerCase(), // TODO make sure this doesn't break.
+            b.member.bungieNetUserInfo?.displayName?.toLowerCase(),
+            isAsc
+          );
+
         case 'displayName':
           return compare(
             a.member.destinyUserInfo.displayName.toLowerCase(), // TODO make sure this doesn't break.
@@ -61,6 +78,19 @@ export class ClanRosterListViewComponent {
           );
         case 'dateLastPlayed':
           return compare(a.profile?.profile.data.dateLastPlayed, b.profile?.profile.data.dateLastPlayed, isAsc);
+
+        case 'activeScore':
+          return compare(
+            a.profile?.profileRecords.data.activeScore ?? 0,
+            b.profile?.profileRecords.data.activeScore ?? 0,
+            isAsc
+          );
+        case 'lifetimeScore':
+          return compare(
+            a.profile?.profileRecords.data.lifetimeScore ?? 0,
+            b.profile?.profileRecords.data.lifetimeScore ?? 0,
+            isAsc
+          );
         case 'powerBonus':
           return compare(
             a.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus ?? 0,

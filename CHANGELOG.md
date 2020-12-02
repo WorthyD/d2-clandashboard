@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.29.1](https://github.com/WorthyD/d2-clandashboard/compare/v0.29.0...v0.29.1) (2020-12-01)
+
+
+### Bug Fixes
+
+* fixing search ([2c911d8](https://github.com/WorthyD/d2-clandashboard/commit/2c911d8e48b69255a5643037a5ace978cace44b6))
+
+## [0.29.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.28.0...v0.29.0) (2020-12-01)
+
+## [0.28.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.27.0...v0.28.0) (2020-12-01)
+
+
+### Features
+
+* adding roster row animations ([e4244af](https://github.com/WorthyD/d2-clandashboard/commit/e4244af501c1059fa9e62d846593597c8da8ce84))
+
+## [0.27.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.26.0...v0.27.0) (2020-12-01)
+
+## [0.26.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.25.0...v0.26.0) (2020-11-30)
+
+
+### Features
+
+* roster table enhacement ([bcb9546](https://github.com/WorthyD/d2-clandashboard/commit/bcb9546d3285c98c412c201a4869552c165c0ee6))
+
 ## [0.25.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.24.0...v0.25.0) (2020-11-25)
 
 ## [0.24.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.22.0...v0.24.0) (2020-11-22)

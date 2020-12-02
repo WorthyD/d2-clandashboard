@@ -1,59 +1,111 @@
-<table mat-table [dataSource]="sortedData" matSort class="mat-elevation-z8" (matSortChange)="sortData($event)">
+<mat-table [dataSource]="sortedData" matSort class="mat-elevation-z8" (matSortChange)="sortData($event)">
   <ng-container matColumnDef="memberType">
-    <th mat-header-cell *matHeaderCellDef>
+
+
+
+    <mat-header-cell *matHeaderCellDef>
       <mat-icon>videogame_asset</mat-icon>
-    </th>
-    <td mat-cell *matCellDef="let element">
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
 
       <lib-member-type [type]="element.member.destinyUserInfo.membershipType"></lib-member-type>
-    </td>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="loadingRow">
+    <mat-header-cell *matHeaderCellDef>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-header-cell>
   </ng-container>
 
   <!-- <ng-container matColumnDef="displayName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> displayName </th>
-        <td mat-cell *matCellDef="let element"> {{element.member.bungieNetUserInfo?.displayName}}</td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> displayName </mat-header-cell>
+         <mat-cell *matCellDef="let element"> {{element.member.bungieNetUserInfo?.displayName}} </mat-cell>
     </ng-container> -->
-    <ng-container matColumnDef="characters">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Characters </th>
-        <td mat-cell *matCellDef="let element">
-            <div class="class-cell">
-                <ng-container *ngFor="let char of element.profile?.profile?.data?.characterIds">
-                    <lib-class-cell [characterHash]="char" [profile]="element.profile"></lib-class-cell>
-                </ng-container>
-            </div>
-        </td>
-    </ng-container>
-
-    <ng-container matColumnDef="powerBonus">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Power Bonus </th>
-        <td mat-cell *matCellDef="let element">
-                 {{element.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus}}
-        </td>
-    </ng-container>
-
-    <ng-container matColumnDef="displayName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Display Name </th>
-        <td mat-cell *matCellDef="let element">{{element.member.destinyUserInfo.displayName}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="dateLastPlayed">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Played </th>
-        <td mat-cell *matCellDef="let element">{{element.profile?.profile.data.dateLastPlayed  | bungieDateTime}}</td>
-    </ng-container>
-    <ng-container matColumnDef="joinDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Clan Join Date </th>
-        <td mat-cell *matCellDef="let element">{{element.member?.joinDate  | bungieDate}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="controls">
-        <th mat-header-cell *matHeaderCellDef> </th>
-        <td mat-cell *matCellDef="let element">
-            <button mat-stroked-button (click)="memberClick(element)">View</button>
-
-        </td>
-    </ng-container>
+  <ng-container matColumnDef="characters">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      Characters
+      <div class="titan-cell p-1 m-1">
+        <mat-icon [svgIcon]="'titan'"></mat-icon>
+      </div>
+      <div class="hunter-cell p-1 m-1">
+        <mat-icon [svgIcon]="'hunter'"></mat-icon>
+      </div>
+      <div class="warlock-cell p-1 m-1">
+        <mat-icon [svgIcon]="'warlock'"></mat-icon>
+      </div>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <!-- <div class="class-cell"> -->
+      <ng-container *ngFor="let char of element.profile?.profile?.data?.characterIds">
+        <lib-class-cell [characterHash]="char" [profile]="element.profile"></lib-class-cell>
+      </ng-container>
+      <!-- </div> -->
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="bungieDisplayName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Bungie Display Name </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.member.bungieNetUserInfo?.displayName}} </mat-cell>
+  </ng-container>
 
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+
+  <ng-container matColumnDef="powerBonus">
+    <mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Power Bonus">
+      <mat-icon>add</mat-icon>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" [ngClass]="'center'">
+      <div class="power-cell">
+        {{element.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus}}
+      </div>
+    </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="activeScore">
+    <mat-header-cell *matHeaderCellDef mat-sort-header >Active Score
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" [ngClass]="'center'">
+      <div class="score-cell">
+        {{element.profile?.profileRecords?.data?.activeScore}}
+      </div>
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="lifetimeScore">
+    <mat-header-cell *matHeaderCellDef mat-sort-header >
+      Lifetime Score
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" [ngClass]="'center'">
+      <div class="score-cell">
+        {{element.profile?.profileRecords?.data?.lifetimeScore}}
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="displayName" sticky>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Destiny Display Name </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.member.destinyUserInfo.displayName}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dateLastPlayed">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Last Played </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.profile?.profile.data.dateLastPlayed  | bungieDateTime}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="joinDate">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Clan Join Date </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.member?.joinDate  | bungieDate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="controls">
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-stroked-button (click)="memberClick(element)">View</button>
+
+    </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="['loadingRow'] ; sticky:true"
+    [ngClass]="{'loading': isLoading, 'loading-row': true}"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" @rowsAnimation></mat-row>
+</mat-table>
