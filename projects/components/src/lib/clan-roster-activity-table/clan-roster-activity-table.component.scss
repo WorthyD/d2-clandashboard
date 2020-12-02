@@ -1,17 +1,23 @@
 table {
   width: 100%;
 }
-.activity-cell{
-  width:50%;
-
+.mat-column-activityChart {
+  flex: 1 0 50%;
+  > div {
+    width: 100%;
+  }
 }
 .calc-header,
-.calc-cell{
+.calc-cell {
 }
 .loading-row {
   display: none;
-  height:auto;
+  height: 5px;
+  min-height: auto;
 }
 .loading {
-  display: table-row;
+  display: block;
+}
+.mat-column-loadingRow {
+  padding: 0;
 }

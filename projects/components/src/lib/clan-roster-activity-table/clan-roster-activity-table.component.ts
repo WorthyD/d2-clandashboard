@@ -4,6 +4,8 @@ import { getMemberProfileId } from '@destiny/data';
 import { MemberProfile } from 'bungie-models';
 import { compare } from '../utilities/compare';
 
+import { rowsAnimation } from '../core/animations/table-row';
+
 export interface MemberActivityRecentStats {
   profile: MemberProfile;
   id: string;
@@ -18,7 +20,8 @@ export interface MemberActivityRecentStats {
   selector: 'lib-clan-roster-activity-table',
   templateUrl: './clan-roster-activity-table.component.html',
   styleUrls: ['./clan-roster-activity-table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [rowsAnimation]
 })
 export class ClanRosterActivityTableComponent implements OnInit {
   @Input()

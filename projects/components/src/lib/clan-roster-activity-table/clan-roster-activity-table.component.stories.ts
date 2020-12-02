@@ -22,7 +22,7 @@ export const base = () => ({
   props: {
     memberStats: MOCK_ROSTER_ACTIVITY,
     activities: MOCK_ROSTER_ACTIVITIES,
-    isLoading: boolean('Is Loading', true),
+    isLoading: boolean('Is Loading', false),
     isProfileLoading: boolean('Is Profile Loading', false)
   }
 });
