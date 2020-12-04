@@ -5,6 +5,7 @@ import { MemberProfile } from 'bungie-models';
 import { compare } from '../utilities/compare';
 
 import { rowsAnimation } from '../core/animations/table-row';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 export interface MemberActivityRecentStats {
   profile: MemberProfile;
@@ -21,7 +22,20 @@ export interface MemberActivityRecentStats {
   templateUrl: './clan-roster-activity-table.component.html',
   styleUrls: ['./clan-roster-activity-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [rowsAnimation]
+  animations: [
+    rowsAnimation,
+    trigger('fadeInOut', [
+      transition(':enter', [
+        // :enter is alias to 'void => *'
+        style({ opacity: 0, height:'0' }),
+        animate(500, style({ opacity: 1, height:'200px' }))
+      ]),
+      transition(':leave', [
+        // :leave is alias to '* => void'
+        animate(500, style({ opacity: 0, height:0 }))
+      ])
+    ])
+  ]
 })
 export class ClanRosterActivityTableComponent implements OnInit {
   @Input()

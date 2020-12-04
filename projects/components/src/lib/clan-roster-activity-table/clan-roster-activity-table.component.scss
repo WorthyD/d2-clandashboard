@@ -1,12 +1,34 @@
-table {
-  width: 100%;
+mat-table {
+  max-width: 100%;
+  overflow: auto;
+}
+mat-row{
+//  transition: height 1s;
+transition: flex 0.3s ease-out
 }
 .mat-column-activityChart {
-  flex: 1 0 50%;
+  flex: 2 0 0;
+  min-width: 700px;
   > div {
     width: 100%;
   }
 }
+.mat-column-displayName {
+  align-self: stretch;
+  flex: 0 0 150px;
+}
+.mat-column-lastWeek,
+.mat-column-lastMonth,
+.mat-column-lastNinetyDays {
+  flex: 0 0 100px;
+  justify-content: space-around;
+}
+
+.mat-column-activityLink {
+  flex: 0 0 100px;
+  justify-content: space-around;
+}
+
 .calc-header,
 .calc-cell {
 }

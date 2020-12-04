@@ -40,9 +40,12 @@ const loadingVar = MOCK_ROSTER_ACTIVITY.map((x) => {
 
 export const loadingMembers = () => ({
   component: ClanRosterActivityTableComponent,
-  template: `<lib-clan-roster-activity-table [memberProfiles]="memberStats" [isLoading]="isLoading"></lib-clan-roster-activity-table>`,
+  template: `<lib-clan-roster-activity-table [memberProfiles]="(isLoadingMembers == true) ? memberStats : memberStats2" [isLoading]="isLoading"></lib-clan-roster-activity-table>`,
+
   props: {
     memberStats: loadingVar,
+    memberStats2: MOCK_ROSTER_ACTIVITY,
+    isLoadingMembers: boolean('Is Loading2', true),
     isLoading: boolean('Is Loading', true)
   }
 });
