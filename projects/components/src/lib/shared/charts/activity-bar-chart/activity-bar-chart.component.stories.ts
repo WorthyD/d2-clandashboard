@@ -4,9 +4,11 @@ import { action } from '@storybook/addon-actions';
 import { ActivityBarChartModule } from './activity-bar-chart.module';
 import { ActivityBarChartComponent } from './activity-bar-chart.component';
 
-import { withKnobs, select, object } from '@storybook/addon-knobs';
+import { withKnobs, select, object, boolean } from '@storybook/addon-knobs';
 import { MOCK_GRID_ITEMS, REAL_DATA } from './_MOCK_GRID_ITEMS';
-
+import { LoadingActivityComponent } from './activity-bar-chart.component-story.stories';
+import { MaterialModule } from '../../modules/material.module';
+import { LoadingModule } from '../../loading/loading.module';
 const events = [MOCK_GRID_ITEMS];
 
 export default {
@@ -14,7 +16,8 @@ export default {
   decorators: [
     withKnobs,
     moduleMetadata({
-      imports: [ActivityBarChartModule]
+      imports: [ActivityBarChartModule, MaterialModule, LoadingModule],
+      declarations: [LoadingActivityComponent]
     })
   ]
 };
@@ -48,6 +51,19 @@ export const realData = () => ({
   </div>
    `,
   props: {
+    events: REAL_DATA
+  }
+});
+
+export const loadingTest = () => ({
+  component: ActivityBarChartComponent,
+  template: `
+  <div>
+        <lib-activity-bar-chart-story [events]="events" [isLoading]="isLoading"></lib-activity-bar-chart-story>
+  </div>
+   `,
+  props: {
     events: REAL_DATA,
+    isLoading: boolean('Is Loading', true)
   }
 });
