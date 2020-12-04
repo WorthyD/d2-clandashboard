@@ -52,7 +52,7 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true;"></mat-header-row>
     <mat-header-row *matHeaderRowDef="['loadingRow'] ; sticky:true"
-      [ngClass]="{'loading': isLoading, 'loading-row': true}" ></mat-header-row>
+      [ngClass]="{'loading': isLoading, 'loading-row': true}"></mat-header-row>
 
     <mat-row *matRowDef="let row; columns: displayedColumns;" @rowsAnimation></mat-row>
   </mat-table>

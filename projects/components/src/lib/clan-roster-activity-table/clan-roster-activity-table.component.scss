@@ -2,9 +2,9 @@ mat-table {
   max-width: 100%;
   overflow: auto;
 }
-mat-row{
-//  transition: height 1s;
-transition: flex 0.3s ease-out
+mat-row {
+  //  transition: height 1s;
+  transition: flex 0.3s ease-out;
 }
 .mat-column-activityChart {
   flex: 2 0 0;
@@ -43,3 +43,4 @@ transition: flex 0.3s ease-out
 .mat-column-loadingRow {
   padding: 0;
 }
+
