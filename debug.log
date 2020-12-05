@@ -6,3 +6,12 @@
 [1114/193821.983:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1129/193656.386:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1203/203005.416:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1204/164147.770:ERROR:process_info.cc(329)] VirtualQueryEx: Access is denied. (0x5)
+[1204/164147.770:ERROR:process_info.cc(556)] ReadMemoryInfo failed
+[1204/164147.770:ERROR:process_memory_win.cc(39)] Failed to initialize ProcessInfo.
+[1204/164147.770:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[1204/164147.770:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1204/164147.770:ERROR:exception_snapshot_win.cc(99)] thread ID 8952 not found in process
+[1204/164147.801:ERROR:process_info.cc(329)] VirtualQueryEx: Access is denied. (0x5)
+[1204/164147.801:ERROR:process_info.cc(556)] ReadMemoryInfo failed
+[1204/164147.801:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
