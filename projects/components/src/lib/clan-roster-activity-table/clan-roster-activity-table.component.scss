@@ -1,6 +1,6 @@
 mat-table {
   max-width: 100%;
-  overflow: auto;
+  //overflow: auto;
 }
 mat-row {
   //  transition: height 1s;
@@ -8,14 +8,17 @@ mat-row {
 }
 .mat-column-activityChart {
   flex: 2 0 0;
-  min-width: 700px;
+  // Too wide and it breaks the whole experience.
+    min-width: 700px;
   > div {
     width: 100%;
+
+    max-width: 1000px;
   }
 }
 .mat-column-displayName {
   align-self: stretch;
-  flex: 0 0 150px;
+  flex: 1 0 150px;
 }
 .mat-column-lastWeek,
 .mat-column-lastMonth,
@@ -43,4 +46,3 @@ mat-row {
 .mat-column-loadingRow {
   padding: 0;
 }
-

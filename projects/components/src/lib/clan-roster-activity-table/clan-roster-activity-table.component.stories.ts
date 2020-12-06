@@ -4,7 +4,11 @@ import { StorybookModule } from '../storybook/storybook.module';
 
 import { ClanRosterActivityTableModule } from './clan-roster-activity-table.module';
 import { ClanRosterActivityTableComponent } from './clan-roster-activity-table.component';
-import { MOCK_ROSTER_ACTIVITY, MOCK_ROSTER_ACTIVITIES } from './_MOCK_ROSTER_ACTIVITY_LIST';
+import {
+  MOCK_ROSTER_ACTIVITY,
+  MOCK_ROSTER_ACTIVITIES,
+  MOCK_ROSTER_ACTIVITIES_COMBINE
+} from './_MOCK_ROSTER_ACTIVITY_LIST';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 export default {
   title: 'Clan / Clan Activity Stats',
@@ -18,34 +22,31 @@ export default {
 
 export const base = () => ({
   component: ClanRosterActivityTableComponent,
-  template: `<lib-clan-roster-activity-table [memberProfiles]="memberStats" [memberActivities]="activities" [isLoading]="isLoading" [memberProfilesLoading]="isProfileLoading"></lib-clan-roster-activity-table>`,
+  template: `<lib-clan-roster-activity-table [memberActivityStats]="memberStats"  [isLoading]="isLoading" [memberProfilesLoading]="areProfilesLoading" ></lib-clan-roster-activity-table>`,
   props: {
-    memberStats: MOCK_ROSTER_ACTIVITY,
-    activities: MOCK_ROSTER_ACTIVITIES,
-    isLoading: boolean('Is Loading', false),
-    isProfileLoading: boolean('Is Profile Loading', false)
+    memberStats: MOCK_ROSTER_ACTIVITIES_COMBINE,
+    areProfilesLoading: boolean('profiles Loading', false),
+    isLoading: boolean('Is Loading', false)
   }
 });
+
 export const loadingTable = () => ({
   component: ClanRosterActivityTableComponent,
-  template: `<lib-clan-roster-activity-table [memberProfiles]="memberStats" [isLoading]="true"></lib-clan-roster-activity-table>`,
+  template: `<lib-clan-roster-activity-table [memberActivityStats]="memberStats" [isLoading]="isLoading"  [memberProfilesLoading]="areProfilesLoading"></lib-clan-roster-activity-table>`,
   props: {
-    memberStats: MOCK_ROSTER_ACTIVITY
+    memberStats: MOCK_ROSTER_ACTIVITIES_COMBINE,
+
+    areProfilesLoading: boolean('profiles Loading', true),
+    isLoading: boolean('Is Loading', true)
   }
 });
-
-const loadingVar = MOCK_ROSTER_ACTIVITY.map((x) => {
-  return { ...x, stats: undefined };
-});
-
-export const loadingMembers = () => ({
+export const loadingProfilesTable = () => ({
   component: ClanRosterActivityTableComponent,
-  template: `<lib-clan-roster-activity-table [memberProfiles]="(isLoadingMembers == true) ? memberStats : memberStats2" [isLoading]="isLoading"></lib-clan-roster-activity-table>`,
-
+  template: `<lib-clan-roster-activity-table [memberActivityStats]="memberStats" [isLoading]="isLoading" [memberProfilesLoading]="areProfilesLoading"></lib-clan-roster-activity-table>`,
   props: {
-    memberStats: loadingVar,
-    memberStats2: MOCK_ROSTER_ACTIVITY,
-    isLoadingMembers: boolean('Is Loading2', true),
-    isLoading: boolean('Is Loading', true)
+    memberStats: MOCK_ROSTER_ACTIVITIES_COMBINE,
+
+    isLoading: boolean('Is Loading', false),
+    areProfilesLoading: boolean('profiles Loading', true)
   }
 });

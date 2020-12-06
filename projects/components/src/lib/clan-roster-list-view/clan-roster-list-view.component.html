@@ -62,7 +62,7 @@
 
 
   <ng-container matColumnDef="activeScore">
-    <mat-header-cell *matHeaderCellDef mat-sort-header >Active Score
+    <mat-header-cell *matHeaderCellDef mat-sort-header >Active Triumph
     </mat-header-cell>
     <mat-cell *matCellDef="let element" [ngClass]="'center'">
       <div class="score-cell">
@@ -72,7 +72,7 @@
   </ng-container>
   <ng-container matColumnDef="lifetimeScore">
     <mat-header-cell *matHeaderCellDef mat-sort-header >
-      Lifetime Score
+      Lifetime Triumph
     </mat-header-cell>
     <mat-cell *matCellDef="let element" [ngClass]="'center'">
       <div class="score-cell">
@@ -104,7 +104,7 @@
   </ng-container>
 
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true;"></mat-header-row>
   <mat-header-row *matHeaderRowDef="['loadingRow'] ; sticky:true"
     [ngClass]="{'loading': isLoading, 'loading-row': true}"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;" @rowsAnimation></mat-row>
