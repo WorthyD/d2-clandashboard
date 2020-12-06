@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.30.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.29.1...v0.30.0) (2020-12-06)
+
+
+### Features
+
+* Member Activity Table Loading Enhancements ([f7a20cc](https://github.com/WorthyD/d2-clandashboard/commit/f7a20ccbbd0e89b44ca8a7774ed9f75cbcee507b))
+
 ### [0.29.1](https://github.com/WorthyD/d2-clandashboard/compare/v0.29.0...v0.29.1) (2020-12-01)
 
 
