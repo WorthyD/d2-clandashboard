@@ -104,13 +104,14 @@ export class BaseMemberActivityService extends BaseClanService {
             }
           }),
           catchError((error) => {
-            if (cachedData && cachedData.data) {
-              return of(cachedData.data);
-            }
-            if (error?.error?.ErrorStatus === 'DestinyPrivacyRestriction') {
+            if (error.error?.ErrorStatus === 'DestinyPrivacyRestriction') {
               this.updateDB(clanId, characterActivityId, []);
               return of([]);
             }
+            if (cachedData && cachedData.data) {
+              return of(cachedData.data);
+            }
+
             throw error;
           })
         );

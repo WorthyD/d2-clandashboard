@@ -1,17 +1,48 @@
-table {
-  width: 100%;
+mat-table {
+  max-width: 100%;
+  //overflow: auto;
 }
-.activity-cell{
-  width:50%;
+mat-row {
+  //  transition: height 1s;
+  transition: flex 0.3s ease-out;
+}
+.mat-column-activityChart {
+  flex: 2 0 0;
+  // Too wide and it breaks the whole experience.
+    min-width: 700px;
+  > div {
+    width: 100%;
 
+    max-width: 1000px;
+  }
 }
+.mat-column-displayName {
+  align-self: stretch;
+  flex: 1 0 150px;
+}
+.mat-column-lastWeek,
+.mat-column-lastMonth,
+.mat-column-lastNinetyDays {
+  flex: 0 0 100px;
+  justify-content: space-around;
+}
+
+.mat-column-activityLink {
+  flex: 0 0 100px;
+  justify-content: space-around;
+}
+
 .calc-header,
-.calc-cell{
+.calc-cell {
 }
 .loading-row {
   display: none;
-  height:auto;
+  height: 5px;
+  min-height: auto;
 }
 .loading {
-  display: table-row;
+  display: block;
+}
+.mat-column-loadingRow {
+  padding: 0;
 }

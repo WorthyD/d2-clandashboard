@@ -44,7 +44,6 @@ export class DungeonsService {
   preloadedInfo$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMembers$]).pipe(
     filter(([isMembersLoaded, id, m]) => isMembersLoaded === true),
     tap(() => {
-      console.log('x');
     }),
     map((x) => {
       return x;
