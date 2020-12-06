@@ -6,7 +6,6 @@ import { ActivityBarChartComponent } from './activity-bar-chart.component';
 
 import { withKnobs, select, object, boolean } from '@storybook/addon-knobs';
 import { MOCK_GRID_ITEMS, REAL_DATA } from './_MOCK_GRID_ITEMS';
-import { LoadingActivityComponent } from './activity-bar-chart.component-story.stories';
 import { MaterialModule } from '../../modules/material.module';
 import { LoadingModule } from '../../loading/loading.module';
 const events = [MOCK_GRID_ITEMS];
@@ -17,7 +16,6 @@ export default {
     withKnobs,
     moduleMetadata({
       imports: [ActivityBarChartModule, MaterialModule, LoadingModule],
-      declarations: [LoadingActivityComponent]
     })
   ]
 };

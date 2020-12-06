@@ -18,13 +18,16 @@ import {
   getIsMembersProfilesLoaded,
   getIsMembersProfilesLoading
 } from '../store/member-profiles/member-profiles.selectors';
-import { ClanMemberRecentActivityService, getMemberProfileId } from '@destiny/data';
+import { ClanActivityService, getMemberProfileId } from '@destiny/data';
+
+import * as clanMemberSelectors from '../store/clan-members/clan-members.selectors';
 
 @Injectable()
 export class ClanMemberActivityService {
-  constructor(private store: Store<ClanState>, private memberActivityService: ClanMemberRecentActivityService) {}
+  constructor(private store: Store<ClanState>, private clanActivityService: ClanActivityService) {}
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);
+  clanMembers$ = this.store.select(clanMemberSelectors.getAllMembers);
 
   clanMemberProfiles$ = this.store.pipe(select(getAllMembers));
   areMembersLoading$ = this.store.pipe(select(getClanMemberActivitiesLoading));
@@ -42,27 +45,30 @@ export class ClanMemberActivityService {
   activityStats$ = this.preloadedInfo$.pipe(
     switchMap(([isMemberLoaded, id, clanMembers]) => {
       this.isLoading = true;
-      this.memberActivityService.getSerializedProfilesActivity(id, clanMembers).pipe(
+      return this.clanActivityService.getClanActivityStats(id, clanMembers).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
-          this.activityStats = this.activityStats.concat({
-          });
+          this.activityStats = this.activityStats.concat(members);
+          return members;
         }),
         toArray(),
-        map((stats) => {})
+        map((stats) => {
+          this.isLoading = false;
+        })
       );
     })
   );
 
   loadMemberActivity() {
-    this.isMembersLoaded$
-      .pipe(
-        filter((f) => f === true),
-        take(1)
-      )
-      .subscribe((x) => {
-        this.store.dispatch(loadClanMembersActivities());
-      });
+    // this.isMembersLoaded$
+    //   .pipe(
+    //     filter((f) => f === true),
+    //     take(1)
+    //   )
+    //   .subscribe((x) => {
+    //     this.store.dispatch(loadClanMembersActivities());
+    //   });
+    this.activityStats$.pipe(take(1)).subscribe();
   }
 
   //  activityStats$ = this.
