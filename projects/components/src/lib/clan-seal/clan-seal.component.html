@@ -1,3 +1,4 @@
+<!--
 <mat-expansion-panel>
   <mat-expansion-panel-header *ngIf="sealMembers">
     <mat-panel-title>
@@ -19,3 +20,37 @@
     </div>
   </ng-template>
 </mat-expansion-panel>
+-->
+
+
+
+<mat-card class="seal-card">
+  <mat-card-title>
+    {{sealMembers.seal.displayProperties.name}}
+  </mat-card-title>
+  <mat-card-subtitle>
+    {{sealMembers.seal.displayProperties.description}}
+  </mat-card-subtitle>
+  <div class="seal-image">
+    <img src="//bungie.net/{{sealMembers.seal.displayProperties.icon}}" alt="">
+  </div>
+  <mat-card-actions>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header *ngIf="sealMembers">
+        <mat-panel-title>
+          {{sealMembers.members | completion : sealMembers.seal.completionRecordHash }}
+        </mat-panel-title>
+        <mat-panel-description>
+          <div></div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div *ngFor="let member of sealMembers.members | completed : sealMembers.seal.completionRecordHash">
+          {{member.profile.data.userInfo.displayName}}
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+  </mat-card-actions>
+</mat-card>

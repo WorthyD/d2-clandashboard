@@ -1,18 +1,30 @@
-:host{
-  display:block;
+:host {
+  display: block;
 }
 .mat-expansion-panel-header-title {
   display: flex;
   align-items: center;
 }
-.seal-image {
-  display: inline-flex;
-  height: auto;
-  width: 35px;
-  margin-right: 1rem;
-}
+// .seal-image {
+//   display: inline-flex;
+//   height: auto;
+//   width: 35px;
+//   margin-right: 1rem;
+// }
 .mat-expansion-panel-header-description {
   justify-content: space-between;
 
   align-items: center;
+}
+
+.seal-card {
+  max-width: 300px;
+}
+
+.seal-image {
+  height: 126px;
+  > img {
+    display: block;
+    margin: 0 auto;
+  }
 }

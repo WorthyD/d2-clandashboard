@@ -17,10 +17,6 @@ export class SealsService {
   currentSealNodes = this.presentationNodeService.getDefinitionsByHash(616318467);
   allNodes = this.getNodes(this.currentSealNodes).concat(this.getNodes(this.legacySealNode));
 
-  //allSeals =
-  //1881970629
-  //616318467
-
   sealNodes = this.presentationNodeService.getDefinitionsGroupByHash(this.allNodes);
 
   sealsLoading$ = this.store.pipe(select(getClanSealLoading));
