@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.31.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.30.0...v0.31.0) (2020-12-08)
+
+
+### Features
+
+* Seal listing rework ([8f75186](https://github.com/WorthyD/d2-clandashboard/commit/8f751866b9540f8cbb717467475392f7ff18f5f5))
+
 ## [0.30.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.29.1...v0.30.0) (2020-12-06)
 
 
