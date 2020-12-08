@@ -20,7 +20,7 @@
       </mat-expansion-panel-header>
 
       <ng-template matExpansionPanelContent>
-        <div *ngFor="let member of sealMembers.members | completed : sealMembers.seal.completionRecordHash">
+        <div *ngFor="let member of members | completed : seal.completionRecordHash">
           {{member.profile.data.userInfo.displayName}}
         </div>
       </ng-template>

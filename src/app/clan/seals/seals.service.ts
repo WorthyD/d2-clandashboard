@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { PresentationNodeDefinitionService, ProfileMilestonesService } from '@destiny/data';
-import { switchMap, filter, take, map } from 'rxjs/operators';
-import { getClanIdState } from '../store/clan-id/clan-id.selector';
+import { switchMap, filter, take, map, tap } from 'rxjs/operators';
 import { ClanState } from '../store/clan-state.state';
-import { loadSeals } from '../store/seals/seal.actions';
 import { Store, select } from '@ngrx/store';
 import { combineLatest, of } from 'rxjs';
-import { getAllSeals, getClanSealLoading } from '../store/seals/seal.selectors';
 import { getIsMembersLoaded } from '../store/clan-members/clan-members.selectors';
 
 import * as clanMemberSelectors from '../store/clan-members/clan-members.selectors';
@@ -30,26 +27,38 @@ export class SealsService {
 
   clanMembers$ = this.store.select(clanMemberSelectors.getAllMembers);
 
-  sealsLoading$ = this.store.pipe(select(getClanSealLoading));
-  sealMembers$ = this.store.pipe(select(getAllSeals));
+  sealsLoading = true;
+
   isMembersLoaded$ = this.store.pipe(select(getIsMembersLoaded));
 
+  seals = [];
+
   preloadedInfo$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMembers$]).pipe(
-    filter(([isMembersLoaded, id, m]) => isMembersLoaded === true),
+    filter(([isMembersLoaded, id, m]) => {
+      return isMembersLoaded && m.length > 0;
+    }),
     map((x) => {
       return x;
     })
   );
+
   loadMemberSeals$ = this.preloadedInfo$.pipe(
     switchMap(([isMemberLoaded, clanId, clanMembers]) => {
+      this.sealsLoading = true;
+      this.seals = this.sealNodes.map((x) => {
+        return {
+          seal: x,
+          members: []
+        };
+      });
+
       const hashes = this.sealNodes.map((x) => x.completionRecordHash);
       return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), clanMembers, hashes).pipe(
         map((sealProfiles) => {
-          return sealProfiles.map((sealMember) => {
-            return {
-              // seal: this.sealsNodes.find((seal) => sealMember.milestoneHash === seal.completionRecordHash),
-              // members: sealMember.profiles
-            };
+          this.sealsLoading = false;
+
+          sealProfiles.forEach((x) => {
+            this.seals.find((seal) => seal.seal.completionRecordHash === x.milestoneHash).members = x.profiles;
           });
         })
       );
@@ -64,13 +73,6 @@ export class SealsService {
   }
 
   loadSeals() {
-    this.isMembersLoaded$
-      .pipe(
-        filter((f) => f === true),
-        take(1)
-      )
-      .subscribe((x) => {
-        this.store.dispatch(loadSeals({ seals: this.sealNodes }));
-      });
+    this.loadMemberSeals$.pipe(take(1)).subscribe();
   }
 }

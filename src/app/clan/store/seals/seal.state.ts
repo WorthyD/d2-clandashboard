@@ -1,18 +1,18 @@
-import { SealMembers } from 'bungie-models';
+// import { SealMembers } from 'bungie-models';
 
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+// import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-export interface SealState extends EntityState<SealMembers> {
-  loaded: boolean;
-  loading: boolean;
-}
+// export interface SealState extends EntityState<SealMembers> {
+//   loaded: boolean;
+//   loading: boolean;
+// }
 
-export const SealProfileAdapter: EntityAdapter<SealMembers> = createEntityAdapter<SealMembers>({
-  selectId: (cm: SealMembers) => cm.seal.hash,
-  sortComparer: false
-});
+// export const SealProfileAdapter: EntityAdapter<SealMembers> = createEntityAdapter<SealMembers>({
+//   selectId: (cm: SealMembers) => cm.seal.hash,
+//   sortComparer: false
+// });
 
-export const SealInitialState: SealState = SealProfileAdapter.getInitialState({
-  loaded: false,
-  loading: true
-});
+// export const SealInitialState: SealState = SealProfileAdapter.getInitialState({
+//   loaded: false,
+//   loading: true
+// });
