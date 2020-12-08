@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SealMembers } from 'bungie-models';
+import { MemberProfile, PresentationNodeDefinition, SealMembers } from 'bungie-models';
 
 @Component({
   selector: 'lib-clan-seal',
@@ -9,6 +9,15 @@ import { SealMembers } from 'bungie-models';
 export class ClanSealComponent implements OnInit {
   @Input()
   sealMembers: SealMembers;
+
+  @Input()
+  seal: PresentationNodeDefinition;
+
+  @Input()
+  members: MemberProfile[];
+
+  @Input()
+  isLoading: boolean;
 
   constructor() {}
 
