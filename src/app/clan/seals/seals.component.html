@@ -1,26 +1,13 @@
-<!-- <ng-container>
-<pre>
-{{sealService.sealNodes | json}}
-</pre>
-</ng-container> -->
-<!-- <ng-container *ngIf="sealService.rootSealNode">
-  <ng-container *ngFor="let seal of sealService.rootSealNode.children.presentationNodes">
-    <app-seal [presentationNode]="sealService.getChildNode(seal.presentationNodeHash)"></app-seal>
+<div *ngIf="(sealService.isMembersLoaded$ | async); else loading" class="clan-seal-container">
+  <ng-container *ngFor="let seal of sealService.seals">
+    <lib-clan-seal [seal]="seal.seal" [members]="seal.members" [isLoading]="sealService.sealsLoading"
+      class="m-3 clan-seal">
+    </lib-clan-seal>
   </ng-container>
-</ng-container> -->
-
-
-<ng-container *ngIf="!  (sealService.sealsLoading$ | async); else loading">
-  <ng-container *ngIf="sealService.sealMembers$ | async as sealNodes">
-    <ng-container *ngFor="let seal of sealNodes">
-      <lib-clan-seal [sealMembers]="seal" class="m-3"></lib-clan-seal>
-    </ng-container>
-  </ng-container>
-</ng-container>
+</div>
 <ng-template #loading>
   <div class="text-center m-5">
-    <h2>Loading Seals</h2>
-    <p>Hold tight. We're pulling a lot of data.</p>
+    <h2>Loading...</h2>
     <lib-loading></lib-loading>
   </div>
 </ng-template>

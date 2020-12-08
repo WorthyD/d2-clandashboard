@@ -1,21 +1,39 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header *ngIf="sealMembers">
-    <mat-panel-title>
-      <img src="//bungie.net/{{sealMembers.seal.displayProperties.icon}}" class="seal-image" alt="">
-      {{sealMembers.seal.displayProperties.name}}
-    </mat-panel-title>
-    <mat-panel-description>{{sealMembers.seal.displayProperties.description}}
-      <div>{{sealMembers.members | completion : sealMembers.seal.completionRecordHash }}</div>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
+<mat-card class="seal-card">
+  <mat-card-title>
+    {{seal.displayProperties.name}}
+  </mat-card-title>
+  <mat-card-subtitle>
+    {{seal.displayProperties.description}}
+  </mat-card-subtitle>
+  <div class="seal-image">
+    <img src="//bungie.net/{{seal.displayProperties.icon}}" alt="">
+  </div>
+  <mat-card-actions>
+    <mat-expansion-panel *ngIf="!isLoading; else loading">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{members | completion : seal.completionRecordHash }}
+        </mat-panel-title>
+        <mat-panel-description>
+          <div></div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
 
-  <ng-template matExpansionPanelContent>
-    <div class="row">
-      <div class="col-2" *ngFor="let member of sealMembers.members | completed : sealMembers.seal.completionRecordHash">
-        <mat-card class="m-1">
+      <ng-template matExpansionPanelContent>
+        <div *ngFor="let member of members | completed : seal.completionRecordHash">
           {{member.profile.data.userInfo.displayName}}
-        </mat-card>
-      </div>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+  </mat-card-actions>
+</mat-card>
+
+<ng-template #loading>
+  <div class="seal-loading">
+    <lib-loading diameter="25" class="loading-icon"></lib-loading>
+    <div class="loading-text">
+      Loading...
     </div>
-  </ng-template>
-</mat-expansion-panel>
+  </div>
+</ng-template>

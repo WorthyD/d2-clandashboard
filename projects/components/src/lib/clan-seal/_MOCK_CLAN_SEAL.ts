@@ -3,7 +3,7 @@ export const MOCK_CLAN_SEAL = {
     displayProperties: {
       description: 'Complete all Destination Triumphs.',
       name: 'Destinations',
-      icon: '/common/destiny2_content/icons/DestinyPresentationNodeDefinition_df1420c482f7575ab14447ab01f4cec0.png',
+      icon: '/common/destiny2_content/icons/1a32177bcc138ef0b98a447e7b1271b4.png',
       iconSequences: [
         {
           frames: [
