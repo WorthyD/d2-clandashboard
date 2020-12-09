@@ -5,6 +5,7 @@ import { LoadingModule } from './loading.module';
 import { LoadingBarComponent } from './loading-bar.component';
 import { LoadingComponent } from './loading.component';
 
+
 export default {
   title: 'Shared / Loading',
   decorators: [
