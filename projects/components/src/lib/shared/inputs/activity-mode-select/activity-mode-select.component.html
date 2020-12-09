@@ -1,8 +1,8 @@
-<mat-form-field appearance="fill">
-  <mat-label>Favorite food</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let food of foods" [value]="food.value">
-      {{food.viewValue}}
+<mat-form-field>
+  <mat-label>Activity Mode</mat-label>
+  <mat-select [(value)]="selected?.displayProperties?.name">
+    <mat-option *ngFor="let definition of definitions" [value]="definitions.modeType">
+      {{definition.displayProperties.name}}
     </mat-option>
   </mat-select>
 </mat-form-field>

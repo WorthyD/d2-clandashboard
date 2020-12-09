@@ -90,8 +90,10 @@ export const baseLoading = () => ({
   component: ActivityModeSelectComponent,
   template: `
   <div>
-    <lib-activity-mode-select></lib-activity-mode-select>
+    <lib-activity-mode-select [definitions]="defs"></lib-activity-mode-select>
   </div>
    `,
-  props: {}
+  props: {
+    defs: hashes
+  }
 });

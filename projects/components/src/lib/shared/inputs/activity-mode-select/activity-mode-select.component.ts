@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivityModeDefinition } from '@destiny/models/definitions';
 
 @Component({
   selector: 'lib-activity-mode-select',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./activity-mode-select.component.scss']
 })
 export class ActivityModeSelectComponent implements OnInit {
+  @Input()
+  definitions: ActivityModeDefinition[];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
