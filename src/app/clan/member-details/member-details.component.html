@@ -1,31 +1,34 @@
-<mat-sidenav-container>
-  <mat-sidenav mode="side" opened>
-    <mat-nav-list>
-      <a mat-list-item routerLink="./" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
-                true}">Player Overview</a>
-      <a mat-list-item routerLink="./activity" routerLinkActive="active-link">Activity</a>
-      <ng-container *ngIf="member$ | async as member">
-        <a mat-list-item href="{{member | bungieProfileUrl}}" target="_blank">Bungie Profile &nbsp;<mat-icon>open_in_new
-          </mat-icon></a>
+<mat-toolbar>
+  <button mat-button class="nav-button" routerLink="./" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+    true}">
+    Player Overview
+  </button>
+  <button mat-button class="nav-button" routerLink="./activity" routerLinkActive="active-link">
+    Activity
+  </button>
 
-        <a mat-list-item href="{{member | raidReportUrl}}" target="_blank">Raid Report &nbsp;<mat-icon>open_in_new
-          </mat-icon></a>
-        <a mat-list-item href="{{member | dungeonReportUrl}}" target="_blank">Dungeon Report &nbsp;<mat-icon>open_in_new
-          </mat-icon></a>
+  <ng-container *ngIf="member$ | async as member">
+    <a mat-button class="nav-button" href="{{member | bungieProfileUrl}}" target="_blank">Bungie Profile &nbsp;
+      <mat-icon>open_in_new
+      </mat-icon></a>
 
-          <a mat-list-item href="{{member | destinyTrackerUrl}}" target="_blank">Destiny Tracker &nbsp;<mat-icon>open_in_new
-          </mat-icon></a>
-        <!-- https://raid.report/pc/4611686018467238913 -->
-      </ng-container>
-    </mat-nav-list>
+    <a mat-button class="nav-button" href="{{member | raidReportUrl}}" target="_blank">Raid Report &nbsp;<mat-icon>
+        open_in_new
+      </mat-icon></a>
+    <a mat-button class="nav-button" href="{{member | dungeonReportUrl}}" target="_blank">Dungeon Report &nbsp;
+      <mat-icon>open_in_new
 
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div>
-    </div>
-    <div [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.data && o.activatedRoute.routeConfig.data.title" >
-      <router-outlet #o="outlet"></router-outlet>
+      </mat-icon></a>
+
+    <a mat-button class="nav-button" href="{{member | destinyTrackerUrl}}" target="_blank">Destiny Tracker &nbsp;
+      <mat-icon>
+        open_in_new
+      </mat-icon></a>
+    <!-- https://raid.report/pc/4611686018467238913 -->
+  </ng-container>
+</mat-toolbar>
+<div>
 </div>
-
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.data && o.activatedRoute.routeConfig.data.title">
+  <router-outlet #o="outlet"></router-outlet>
+</div>

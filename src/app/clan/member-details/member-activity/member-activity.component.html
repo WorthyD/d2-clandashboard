@@ -2,6 +2,8 @@
   {{(memberActivityService.playerActivities$ | async) | json}}
 </textarea> -->
 <div>
+  <lib-activity-mode-select [definitions]="memberActivityService.activityModeDefinitionOptions">
+  </lib-activity-mode-select>
   <lib-member-activity-heat-map [events]="memberActivityService.playerActivities$ | async"
     [isLoading]="memberActivityService.playerActivitiesLoading$ | async"
     (dateSelected)="memberActivityService.loadDate($event)"></lib-member-activity-heat-map>

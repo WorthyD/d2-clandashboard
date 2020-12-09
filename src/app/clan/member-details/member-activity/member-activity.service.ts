@@ -10,19 +10,39 @@ import {
   getClanMemberActivitiesLoading
 } from '../../store/member-activities/member-activities.selectors';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
+import { ActivityModeDefinition } from 'bungie-models';
+import * as clanIdSelectors from '../../store/clan-id/clan-id.selector';
 
 @Injectable()
 export class MemberActivityService {
+  activityModeDefinitionOptions: ActivityModeDefinition[];
+
   constructor(
     private store: Store<ClanMemberState>,
     private activityModeService: ActivityModeService,
     private activityService: ActivitiesService
-  ) {}
+  ) {
+    const activityModeDefinitions = this.activityModeService.getDefinitions();
+    const defArray = Object.keys(activityModeDefinitions).map((id) => activityModeDefinitions[id]);
+    const wantedTypes = [0, 2, 3, 4, 5, 6, 16, 17, 18, 63, 82, 84];
+    this.activityModeDefinitionOptions = wantedTypes.map((w) => {
+      return defArray.find((x) => x.modeType === w);
+    });
+  }
   selectedDate$ = new BehaviorSubject(null);
 
   selectedMember$ = this.store.pipe(select(getSelectedClanMember));
+
   playerActivities$ = this.store.pipe(select(getSelectedClanMemberActivities));
   playerActivitiesLoading$ = this.store.pipe(select(getClanMemberActivitiesLoading));
+  clanId$ = this.store.select(clanIdSelectors.getClanIdState);
+
+  // playerActivities2$ = combineLatest([ this.clanId$, this.clanMembers$]).pipe(
+  //   filter(([id, m]) => isMembersLoaded === true),
+  //   map((x) => {
+  //     return x;
+  //   })
+  // );
 
   activityDetails$: Observable<MemberActivityGridItem[]> = combineLatest(
     this.playerActivities$,

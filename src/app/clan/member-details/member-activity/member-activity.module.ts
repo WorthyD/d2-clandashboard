@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MemberActivityComponent } from './member-activity.component';
 
-import { ActivityGridModule, MemberActivityHeatMapModule } from '@destiny/components';
+import { ActivityGridModule, MemberActivityHeatMapModule, SharedModule } from '@destiny/components';
 
 import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
@@ -17,6 +17,6 @@ export class ActivityRoutingModule {}
 
 @NgModule({
   declarations: [MemberActivityComponent],
-  imports: [CommonModule, ActivityRoutingModule, MemberActivityHeatMapModule, ActivityGridModule]
+  imports: [CommonModule, ActivityRoutingModule, MemberActivityHeatMapModule, ActivityGridModule, SharedModule]
 })
 export class MemberActivityModule {}

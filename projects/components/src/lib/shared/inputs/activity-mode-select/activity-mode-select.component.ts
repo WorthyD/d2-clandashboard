@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivityModeDefinition } from '@destiny/models/definitions';
 
 @Component({
@@ -10,7 +10,14 @@ export class ActivityModeSelectComponent implements OnInit {
   @Input()
   definitions: ActivityModeDefinition[];
 
+  @Output() selectedMode = new EventEmitter<ActivityModeDefinition>();
+
+  selected;
+
   constructor() {}
 
   ngOnInit(): void {}
+  selectMode(event) {
+    this.selectedMode.emit(event.value);
+  }
 }

@@ -1,8 +1,8 @@
-<mat-form-field>
+<mat-form-field *ngIf="definitions">
   <mat-label>Activity Mode</mat-label>
-  <mat-select [(value)]="selected?.displayProperties?.name">
-    <mat-option *ngFor="let definition of definitions" [value]="definitions.modeType">
-      {{definition.displayProperties.name}}
+  <mat-select [(value)]="selected" (selectionChange)="selectMode($event)">
+    <mat-option *ngFor="let definition of definitions" [value]="definition">
+      {{definition?.displayProperties?.name}}
     </mat-option>
   </mat-select>
 </mat-form-field>
