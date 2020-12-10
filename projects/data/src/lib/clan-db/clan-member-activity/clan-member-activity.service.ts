@@ -21,19 +21,27 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     super(clanDB, StoreId.MemberActivities, d2Service, new Date(new Date().getFullYear() - 1, 0, 0), 30);
   }
 
-  getMemberCharacterActivitySerialized(clanId: number, member: MemberProfile, characterId: number) {
+  getMemberCharacterActivitySerialized(
+    clanId: number,
+    member: MemberProfile,
+    characterId: number,
+    activityMode: number = 0
+  ) {
     return this.getMemberCharacterActivity(clanId, member, characterId).pipe(
       map((activity) => {
+        if (activityMode > 0) {
+          activity = activity.filter((a) => a.activityDetails.modes.indexOf(activityMode) > -1);
+        }
         return {
           activities: activity.map((a) => clanMemberActivitySerializer(a))
         };
       })
     );
   }
-  getMemberActivity(clanId: number, member: MemberProfile): Observable<MemberActivityStats> {
+  getMemberActivity(clanId: number, member: MemberProfile, activityMode: number = 0): Observable<MemberActivityStats> {
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId) => {
-        return this.getMemberCharacterActivitySerialized(clanId, member, characterId);
+        return this.getMemberCharacterActivitySerialized(clanId, member, characterId, activityMode);
       }),
       map((x) => {
         return x.activities;
@@ -48,30 +56,3 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     );
   }
 }
-// const { defer, from, concat, EMPTY, timer } = rxjs; // = require("rxjs")
-// const { mergeMap, take, mapTo, tap } = rxjs.operators; // = require("rxjs/operators")
-
-// // simulate network request
-// function fetchPage(page=0) {
-//   return timer(100).pipe(
-//     tap(() => console.log(`-> fetched page ${page}`)),
-//     mapTo({
-//       items: Array.from({ length: 10 }).map((_, i) => page * 10 + i),
-//       nextPage: page + 1,
-//     })
-//   );
-// }
-
-// const getItems = page => defer(() => fetchPage(page)).pipe(
-//   mergeMap(({ items, nextPage }) => {
-//     const items$ = from(items);
-//     const next$ = nextPage ? getItems(nextPage) : EMPTY;
-//     return concat(items$, next$);
-//   })
-// );
-
-// // process only first 30 items, without fetching all of the data
-// getItems()
-//  .pipe(take(30))
-//  .subscribe(e => console.log(e));
-// <script src="htt

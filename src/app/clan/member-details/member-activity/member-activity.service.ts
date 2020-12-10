@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ClanMemberState } from '../../store/clan-members/clan-members.state';
-import { getSelectedClanMember } from '../../store/clan-members/clan-members.selectors';
+import { getSelectedClanMember, getSelectedClanMemberId } from '../../store/clan-members/clan-members.selectors';
 import { Store, select } from '@ngrx/store';
-import { ActivitiesService, ActivityModeService } from '@destiny/data';
+import { ActivitiesService, ActivityModeService, ClanMemberActivityService, getClanMemberId } from '@destiny/data';
 import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
 import { MemberActivityGridItem } from '@destiny/components';
 import {
@@ -12,6 +12,8 @@ import {
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
 import { ActivityModeDefinition } from 'bungie-models';
 import * as clanIdSelectors from '../../store/clan-id/clan-id.selector';
+import { filter, map, switchMap } from 'rxjs/operators';
+import * as memberProfileSelectors from '../../store/member-profiles/member-profiles.selectors';
 
 @Injectable()
 export class MemberActivityService {
@@ -20,7 +22,8 @@ export class MemberActivityService {
   constructor(
     private store: Store<ClanMemberState>,
     private activityModeService: ActivityModeService,
-    private activityService: ActivitiesService
+    private activityService: ActivitiesService,
+    private clanMemberActivityService: ClanMemberActivityService
   ) {
     const activityModeDefinitions = this.activityModeService.getDefinitions();
     const defArray = Object.keys(activityModeDefinitions).map((id) => activityModeDefinitions[id]);
@@ -32,17 +35,32 @@ export class MemberActivityService {
   selectedDate$ = new BehaviorSubject(null);
 
   selectedMember$ = this.store.pipe(select(getSelectedClanMember));
+  profilesLoaded$ = this.store.pipe(select(memberProfileSelectors.getIsMembersProfilesLoaded));
+
+  //selectedProfile$ = this.store.pipe(select(memberProfileSelectors.getClanMemberById(getSelectedClanMemberId)));
+  selectedProfile$ = this.selectedMember$.pipe(
+    filter((m) => !!m),
+    switchMap((x) => {
+      return this.store.pipe(select(memberProfileSelectors.getClanMemberById(getClanMemberId(x))));
+    })
+  );
 
   playerActivities$ = this.store.pipe(select(getSelectedClanMemberActivities));
   playerActivitiesLoading$ = this.store.pipe(select(getClanMemberActivitiesLoading));
+  playerActivitiesLoading = true;
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);
 
-  // playerActivities2$ = combineLatest([ this.clanId$, this.clanMembers$]).pipe(
-  //   filter(([id, m]) => isMembersLoaded === true),
-  //   map((x) => {
-  //     return x;
-  //   })
-  // );
+  playerActivities2$ = combineLatest([this.clanId$, this.selectedProfile$]).pipe(
+    filter(([id, m]) => !!m),
+    switchMap(([id, x]) => {
+      return this.clanMemberActivityService.getMemberActivity(id, x, 2);
+      //return this.store.pipe(select(memberProfileSelectors.getClanMemberById(getClanMemberId(x))));
+    }),
+    map((x) => {
+      this.playerActivitiesLoading = false;
+      return x.activities;
+    })
+  );
 
   activityDetails$: Observable<MemberActivityGridItem[]> = combineLatest(
     this.playerActivities$,

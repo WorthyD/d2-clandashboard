@@ -49,7 +49,6 @@ export class ClanMemberRecentActivityService extends BaseMemberActivityService {
   }
 
   getSerializedProfilesActivity(clanId: number, members: MemberProfile[]) {
-    const s = members.find((x) => x.characters.privacy === 0);
     return from(members).pipe(
       mergeMap((member) => this.getSerializedProfileActivity(clanId, member), this.concurrentRequests)
     );
