@@ -21,7 +21,12 @@ export class ClanMemberRecentActivityService extends BaseMemberActivityService {
       6
     );
   }
-  getMemberCharacterActivitySerialized(clanId: number, member: MemberProfile, characterId: number) {
+  getMemberCharacterActivitySerialized(
+    clanId: number,
+    member: MemberProfile,
+    characterId: number,
+    activityMode: number = 0
+  ) {
     return this.getMemberCharacterActivity(clanId, member, characterId).pipe(
       map((activity) => {
         return {
@@ -30,10 +35,10 @@ export class ClanMemberRecentActivityService extends BaseMemberActivityService {
       })
     );
   }
-  getMemberActivity(clanId: number, member: MemberProfile): Observable<MemberActivityStats> {
+  getMemberActivity(clanId: number, member: MemberProfile, activityMode: number = 0): Observable<MemberActivityStats> {
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId) => {
-        return this.getMemberCharacterActivitySerialized(clanId, member, characterId);
+        return this.getMemberCharacterActivitySerialized(clanId, member, characterId, activityMode);
       }),
       map((x) => {
         return x.activities;
@@ -48,13 +53,17 @@ export class ClanMemberRecentActivityService extends BaseMemberActivityService {
     );
   }
 
-  getSerializedProfilesActivity(clanId: number, members: MemberProfile[]) {
+  getSerializedProfilesActivity(clanId: number, members: MemberProfile[], activityMode: number = 0) {
     return from(members).pipe(
-      mergeMap((member) => this.getSerializedProfileActivity(clanId, member), this.concurrentRequests)
+      mergeMap((member) => this.getSerializedProfileActivity(clanId, member, activityMode), this.concurrentRequests)
     );
   }
-  getSerializedProfileActivity(clanId: number, member: MemberProfile): Observable<MemberActivityRecentStats> {
-    return this.getMemberActivity(clanId, member).pipe(
+  getSerializedProfileActivity(
+    clanId: number,
+    member: MemberProfile,
+    activityMode: number = 0
+  ): Observable<MemberActivityRecentStats> {
+    return this.getMemberActivity(clanId, member, activityMode).pipe(
       map((profileActivity) => {
         return clanMemberRecentActivitySerializer(profileActivity);
       })

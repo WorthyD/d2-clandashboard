@@ -11,16 +11,20 @@ export class ClanActivityService {
   readonly CONCURRENT_COUNT = 10;
   constructor(private profileService: ProfileService, private memberActivityService: ClanMemberRecentActivityService) {}
 
-  getClanActivityStats(clanId: number, clanMemberProfiles: MemberProfile[]) {
+  getClanActivityStats(clanId: number, clanMemberProfiles: MemberProfile[], activityMode: number = 0) {
     return from(clanMemberProfiles).pipe(
       mergeMap((member) => {
-        return this.getMemberActivityStats(clanId, member);
+        return this.getMemberActivityStats(clanId, member, activityMode);
       }, this.CONCURRENT_COUNT)
     );
   }
 
-  private getMemberActivityStats(clanId: number, member: MemberProfile): Observable<ActivityStats> {
-    return this.memberActivityService.getSerializedProfileActivity(clanId, member).pipe(
+  private getMemberActivityStats(
+    clanId: number,
+    member: MemberProfile,
+    activityMode: number = 0
+  ): Observable<ActivityStats> {
+    return this.memberActivityService.getSerializedProfileActivity(clanId, member, activityMode).pipe(
       map((memberActivityResponse) => {
         return {
           memberProfile: { profile: member.profile },
