@@ -5,10 +5,10 @@ import { Store, select } from '@ngrx/store';
 import { ActivitiesService, ActivityModeService, ClanMemberActivityService, getClanMemberId } from '@destiny/data';
 import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
 import { MemberActivityGridItem } from '@destiny/components';
-import {
-  getSelectedClanMemberActivities,
-  getClanMemberActivitiesLoading
-} from '../../store/member-activities/member-activities.selectors';
+// import {
+//   getSelectedClanMemberActivities,
+//   getClanMemberActivitiesLoading
+// } from '../../store/member-activities/member-activities.selectors';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
 import { ActivityModeDefinition } from 'bungie-models';
 import * as clanIdSelectors from '../../store/clan-id/clan-id.selector';
@@ -27,12 +27,13 @@ export class MemberActivityService {
   ) {
     const activityModeDefinitions = this.activityModeService.getDefinitions();
     const defArray = Object.keys(activityModeDefinitions).map((id) => activityModeDefinitions[id]);
-    const wantedTypes = [0, 2, 3, 4, 5, 6, 16, 17, 18, 63, 82, 84];
+    const wantedTypes = [0, 2, 3, 4, 5, 6,  18, 63, 82, 84];
     this.activityModeDefinitionOptions = wantedTypes.map((w) => {
       return defArray.find((x) => x.modeType === w);
     });
   }
   selectedDate$ = new BehaviorSubject(null);
+  selectedActivity$ = new BehaviorSubject(0);
 
   selectedMember$ = this.store.pipe(select(getSelectedClanMember));
   profilesLoaded$ = this.store.pipe(select(memberProfileSelectors.getIsMembersProfilesLoaded));
@@ -45,15 +46,15 @@ export class MemberActivityService {
     })
   );
 
-  playerActivities$ = this.store.pipe(select(getSelectedClanMemberActivities));
-  playerActivitiesLoading$ = this.store.pipe(select(getClanMemberActivitiesLoading));
+  // playerActivities$ = this.store.pipe(select(getSelectedClanMemberActivities));
+  // playerActivitiesLoading$ = this.store.pipe(select(getClanMemberActivitiesLoading));
   playerActivitiesLoading = true;
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);
 
-  playerActivities2$ = combineLatest([this.clanId$, this.selectedProfile$]).pipe(
-    filter(([id, m]) => !!m),
-    switchMap(([id, x]) => {
-      return this.clanMemberActivityService.getMemberActivity(id, x, 2);
+  playerActivities2$ = combineLatest([this.clanId$, this.selectedProfile$, this.selectedActivity$]).pipe(
+    filter(([id, m, sa]) => !!m),
+    switchMap(([id, x, sa]) => {
+      return this.clanMemberActivityService.getMemberActivity(id, x, sa);
       //return this.store.pipe(select(memberProfileSelectors.getClanMemberById(getClanMemberId(x))));
     }),
     map((x) => {
@@ -63,7 +64,7 @@ export class MemberActivityService {
   );
 
   activityDetails$: Observable<MemberActivityGridItem[]> = combineLatest(
-    this.playerActivities$,
+    this.playerActivities2$,
     this.selectedDate$,
     (pActivities, selectedDate) => {
       if (pActivities && selectedDate) {
@@ -97,6 +98,10 @@ export class MemberActivityService {
 
   loadDate(event) {
     this.selectedDate$.next(event);
+  }
+  selectEventMode(event){
+  //  console.log(event);
+    this.selectedActivity$.next(event.modeType);
   }
 }
 // TODO: Import from component libs

@@ -16,20 +16,20 @@ import * as clanMemberSelectors from '../store/clan-members/clan-members.selecto
 import * as clanMemberActions from '../store/clan-members/clan-members.actions';
 import * as memberProfileSelectors from '../store/member-profiles/member-profiles.selectors';
 
-import * as memberActivitySelectors from '../store/member-activities/member-activities.selectors';
-import * as memberActivityActions from '../store/member-activities/member-activities.actions';
+// import * as memberActivitySelectors from '../store/member-activities/member-activities.selectors';
+// import * as memberActivityActions from '../store/member-activities/member-activities.actions';
 import { routeAnimations } from 'src/app/core/core.module';
 
-export const getRecentClanMemberActivities = memberId =>
-    createSelector(memberActivitySelectors.getClanMemberActivities(memberId), activities => {
-        if (!memberId || !activities) {
-            return null;
-        }
+// export const getRecentClanMemberActivities = memberId =>
+//     createSelector(memberActivitySelectors.getClanMemberActivities(memberId), activities => {
+//         if (!memberId || !activities) {
+//             return null;
+//         }
 
-        return activities
-            .sort((a, b) => new Date(b.period).getTime() - new Date(a.period).getTime())
-            .slice(0, 250);
-    });
+//         return activities
+//             .sort((a, b) => new Date(b.period).getTime() - new Date(a.period).getTime())
+//             .slice(0, 250);
+//     });
 
 @Component({
     selector: 'app-member-details',
@@ -71,14 +71,14 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
         this.profile$ = this.store.pipe(select(memberProfileSelectors.getClanMemberById(memberId)));
         this.member$ = this.store.pipe(select(clanMemberSelectors.getClanMemberById(memberId)));
 
-        this.profile$
-            .pipe(
-                filter(loaded => !!loaded),
-                take(1)
-            )
-            .subscribe(x => {
-                this.store.dispatch(memberActivityActions.loadMemberActivities({ member: x }));
-            });
+        // this.profile$
+        //     .pipe(
+        //         filter(loaded => !!loaded),
+        //         take(1)
+        //     )
+        //     .subscribe(x => {
+        //         this.store.dispatch(memberActivityActions.loadMemberActivities({ member: x }));
+        //     });
     }
 
     ngOnDestroy() {

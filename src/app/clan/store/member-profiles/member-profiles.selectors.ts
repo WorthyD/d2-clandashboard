@@ -17,6 +17,5 @@ export const getIsMembersProfilesLoading = createSelector(getMemberProfileEntity
 
 export const getClanMemberById = (memberId) =>
   createSelector(getMemberProfileEntities, (entities) => {
-    console.log(memberId);
     return memberId && entities[memberId];
   });
