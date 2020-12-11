@@ -31,6 +31,7 @@ export class BaseMemberActivityService extends BaseClanService {
       pageNumber
     );
   }
+
   private activitiesContainExpiredYear(activities, expiration) {
     if (!activities) {
       return true;
@@ -41,7 +42,8 @@ export class BaseMemberActivityService extends BaseClanService {
       return activityYear <= expiration;
     });
   }
-  getAllRecentActivity(member: MemberProfile, characterId: number): Observable<ActivityCollection> {
+
+  private getAllRecentActivity(member: MemberProfile, characterId: number): Observable<ActivityCollection> {
     const maxConcurrentCount = 4;
     const fetchPage = (page = 0) => {
       return this.getMemberCharacterActivityFromAPI(member, characterId, page).pipe(
@@ -73,7 +75,6 @@ export class BaseMemberActivityService extends BaseClanService {
 
     return forkJoin(batchedRequest).pipe(
       map((x: any) => {
-        //console.log(x.flat());
         return {
           activities: x.flat()
         };
@@ -119,48 +120,4 @@ export class BaseMemberActivityService extends BaseClanService {
     );
   }
 
-  // private getProfileId(member: ClanMember) {
-  //   return `${member.destinyUserInfo.membershipType}-${member.destinyUserInfo.membershipId}`;
-  // }
-
-  // private getProfileFromAPI(member: ClanMember) {
-  //   return this.d2ServiceBase.destiny2GetProfile(
-  //     member.destinyUserInfo.membershipId,
-  //     member.destinyUserInfo.membershipType,
-  //     this.profileComponents
-  //   );
-  // }
-
-  // getProfile(clanId: string, member: ClanMember): Observable<any> {
-  //   return from(this.getDataFromCache(clanId, this.getProfileId(member))).pipe(
-  //     mergeMap((cachedData) => {
-  //       const lastActivity = moment.unix(member.lastOnlineStatusChange).toDate();
-  //       if (this.isCacheValid(cachedData, 0, lastActivity)) {
-  //         return of(cachedData.data);
-  //       }
-
-  //       return this.getProfileFromAPI(member).pipe(
-  //         map((memberProfileResponse) => {
-  //           if (memberProfileResponse.Response) {
-  //             this.clanDbPBase.update(clanId, this.tableName, [
-  //               {
-  //                 id: this.getProfileId(member),
-  //                 createDate: new Date(),
-  //                 data: memberProfileResponse.Response
-  //               }
-  //             ]);
-
-  //             return memberProfileResponse.Response;
-  //           }
-  //         }),
-  //         catchError((error) => {
-  //           if (cachedData && cachedData.data) {
-  //             return of(cachedData.data);
-  //           }
-  //           throw error;
-  //         })
-  //       );
-  //     })
-  //   );
-  // }
 }

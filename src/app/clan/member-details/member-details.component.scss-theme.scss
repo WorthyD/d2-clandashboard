@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+
+@mixin member-details-theme($theme) {
+  $accent: map-get($theme, accent);
+
+  button {
+    &.active-link {
+      color: mat-color($accent, default-contrast);
+      background-color: mat-color($accent);
+    }
+
+  }
+}

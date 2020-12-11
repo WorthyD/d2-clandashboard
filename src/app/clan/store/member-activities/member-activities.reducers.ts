@@ -1,30 +1,30 @@
-import { createReducer, on } from '@ngrx/store';
-import * as MemberActivityState from './member-activities.state';
-import * as MemberActivityActions from './member-activities.actions';
+// import { createReducer, on } from '@ngrx/store';
+// import * as MemberActivityState from './member-activities.state';
+// import * as MemberActivityActions from './member-activities.actions';
 
 
-export const MemberProfileReducer = createReducer(
-    MemberActivityState.MemberActivityStatInitialState,
-    on(MemberActivityActions.loadMemberActivities, state => ({
-        ...state,
-        loading: true
-    })),
-    // on(
-    //     MemberActivityActions.loadMemberActivitiesSuccess,
-    //     (state, { memberActivities }) => {
-    //         return MemberActivityState.MemberActivityStatAdapter.addAll(
-    //             memberActivities,
-    //             { ...state, loaded: true, loading: false }
-    //         );
-    //     }
-    // ),
-    on(
-        MemberActivityActions.loadMemberActivitiesSuccess,
-        (state, { memberActivities }) => {
-            return MemberActivityState.MemberActivityStatAdapter.upsertOne(
-                memberActivities,
-                { ...state, loaded: true, loading: false }
-            );
-        }
-    )
-);
+// export const MemberProfileReducer = createReducer(
+//     MemberActivityState.MemberActivityStatInitialState,
+//     on(MemberActivityActions.loadMemberActivities, state => ({
+//         ...state,
+//         loading: true
+//     })),
+//     // on(
+//     //     MemberActivityActions.loadMemberActivitiesSuccess,
+//     //     (state, { memberActivities }) => {
+//     //         return MemberActivityState.MemberActivityStatAdapter.addAll(
+//     //             memberActivities,
+//     //             { ...state, loaded: true, loading: false }
+//     //         );
+//     //     }
+//     // ),
+//     on(
+//         MemberActivityActions.loadMemberActivitiesSuccess,
+//         (state, { memberActivities }) => {
+//             return MemberActivityState.MemberActivityStatAdapter.upsertOne(
+//                 memberActivities,
+//                 { ...state, loaded: true, loading: false }
+//             );
+//         }
+//     )
+// );

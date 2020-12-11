@@ -68,6 +68,7 @@ export class ClanSearchComponent implements OnInit {
   }
 
   textClanSearch(currentQuery) {
+    console.log('stuff');
     return this.groupService
       .groupV2GroupSearch({
         name: currentQuery,

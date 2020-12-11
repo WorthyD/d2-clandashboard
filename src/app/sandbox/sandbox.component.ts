@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivitiesService, PresentationNodeDefinitionService } from '@destiny/data';
+import { ActivitiesService, ActivityModeService, PresentationNodeDefinitionService } from '@destiny/data';
 import { MemberProfile } from 'bungie-models';
 import { MemberActivityStatsService } from 'projects/data/src/lib/clan-db/member-activity-stats/member-activity-stats.service';
 import { combineLatest } from 'rxjs';
@@ -12,13 +12,30 @@ import { map } from 'rxjs/operators';
 })
 export class SandboxComponent implements OnInit {
   rootSealNode = [];
-  constructor(private x: MemberActivityStatsService, private presentationNodeService: ActivitiesService) {
+  rootSealNode2 = [];
+  constructor(
+    private x: MemberActivityStatsService,
+    private presentationNodeService: ActivitiesService,
+    private activityModeService: ActivityModeService
+  ) {
     const defs = this.presentationNodeService.getDefinitions();
+    // tslint:disable-next-line:forin
+    for (const prop in defs) {
+      this.rootSealNode.push(defs[prop]);
+    }
 
-      // tslint:disable-next-line:forin
-      for (const prop in defs) {
-        this.rootSealNode.push(defs[prop]);
-      }
+    const defs2 = this.activityModeService.getDefinitions();
+    console.log(defs2);
+
+    // tslint:disable-next-line:forin
+    for (const prop in defs2) {
+      this.rootSealNode2.push(defs2[prop]);
+    }
+
+    this.rootSealNode2.sort(function(a, b) {
+      return a.modeType - b.modeType;
+    });
+
   }
 
   profile = ({

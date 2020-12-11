@@ -15,9 +15,9 @@ import { MemberProfileEffects } from './member-profiles/member-profiles.effects'
 import * as memberProfileState from './member-profiles/member-profiles.state';
 import * as memberProfileReducer from './member-profiles/member-profiles.reducers';
 
-import { MemberStatEffects } from './member-activities/member-activities.effects';
-import * as memberActivityState from './member-activities/member-activities.state';
-import * as memberActivityReducer from './member-activities/member-activities.reducers';
+// import { MemberStatEffects } from './member-activities/member-activities.effects';
+// import * as memberActivityState from './member-activities/member-activities.state';
+// import * as memberActivityReducer from './member-activities/member-activities.reducers';
 
 // import * as clanCacheState from './clan-cache/clan-cache.state';
 // import * as clanCacheReducer from './clan-cache/clan-cache.reducers';
@@ -45,7 +45,7 @@ export interface ClanState {
   clanMembers: clanMemberState.ClanMemberState;
   clanRewards: clanRewardState.ClanRewardState;
   memberProfiles: memberProfileState.MemberProfileState;
-  memberActivities: memberActivityState.MemberActivityStatState;
+  //memberActivities: memberActivityState.MemberActivityStatState;
   // clanCache: clanCacheState.CacheDetailState;
  // seals: sealState.SealState;
   raidStats: raidState.RaidState;
@@ -58,7 +58,7 @@ export const reducers: ActionReducerMap<ClanState> = {
   clanRewards: clanRewardReducer.ClanRewardReducer,
   clanMembers: clanMemberReducer.ClanMemberReducer,
   memberProfiles: memberProfileReducer.MemberProfileReducer,
-  memberActivities: memberActivityReducer.MemberProfileReducer,
+//  memberActivities: memberActivityReducer.MemberProfileReducer,
   //   clanCache: clanCacheReducer.ClanCacheReducer,
  // seals: sealReducer.SealReducer,
   raidStats: raidReducer.RaidReducer,
@@ -69,7 +69,7 @@ export const ClanEffects = [
   ClanDetailEffects,
   ClanMemberEffects,
   MemberProfileEffects,
-  MemberStatEffects,
+//  MemberStatEffects,
   //  ClanCacheEffects,
   ClanRewardEffects,
  // SealEffects,

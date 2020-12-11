@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
   <thead>
     <td>
       hash
@@ -6,6 +6,10 @@
     <td>
       Activity Name
     </td>
+    <td>
+      Activity Mode
+    </td>
+
 
   </thead>
   <tr *ngFor="let node of rootSealNode">
@@ -17,7 +21,35 @@
     </td>
 
   </tr>
+</table> -->
+<table>
+  <thead>
+    <td>
+      hash
+    </td>
+    <td>
+      Activity Name
+    </td>
+
+  </thead>
+  <tr *ngFor="let node of rootSealNode2">
+    <td>
+      {{node.modeType}}
+    </td>
+    <td>
+      {{node.displayProperties.name}}
+    </td>
+    <td>
+      <textarea>
+      {{node | json}}
+</textarea>
+    </td>
+
+
+
+  </tr>
 </table>
+
 
 <!-- <pre><code>
 {{(stuff | async) | json}}

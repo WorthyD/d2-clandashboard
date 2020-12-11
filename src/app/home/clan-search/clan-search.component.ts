@@ -86,6 +86,7 @@ export class ClanSearchComponent implements OnInit {
   }
 
   textClanSearch(currentQuery) {
+    console.log(currentQuery);
     return this.groupService
       .groupV2GroupSearch({
         name: currentQuery,
@@ -96,6 +97,7 @@ export class ClanSearchComponent implements OnInit {
       })
       .pipe(
         map((clanListResults) => {
+          console.log(clanListResults);
           this.loading = false;
           const clanList = clanListResults.Response.results;
 
