@@ -1,3 +1,10 @@
+<div class="activity-filters">
+  <lib-activity-mode-select [definitions]="clanMemberActivityService.activityModeDefinitionOptions"
+    (selectedMode)="clanMemberActivityService.selectEventMode($event)">
+  </lib-activity-mode-select>
+</div>
+
+
 <lib-clan-roster-activity-table [memberActivityStats]="clanMemberActivityService.activityStats"
   [isLoading]="clanMemberActivityService.isLoading"
   [memberProfilesLoading]="clanMemberActivityService.areMemberProfilesLoading$ | async"
