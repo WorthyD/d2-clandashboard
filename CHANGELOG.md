@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.33.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.32.0...v0.33.0) (2020-12-13)
+
+
+### Features
+
+* Activity filer on recent activity ([4a0bdfc](https://github.com/WorthyD/d2-clandashboard/commit/4a0bdfc170867885131eaf483f5cb4da1bece953))
+* Adding mode type ddl to activity screen ([7b284cc](https://github.com/WorthyD/d2-clandashboard/commit/7b284cccd1a10aa08852d87afcda54f7cc403dfe))
+
 ## [0.32.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.31.0...v0.32.0) (2020-12-11)
 
 ## [0.31.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.30.0...v0.31.0) (2020-12-08)
