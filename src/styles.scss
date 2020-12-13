@@ -10,6 +10,7 @@
 @import '../projects/components/src/lib/shared/charts/activity-heatmap/activity-heatmap.component.scss-theme.scss';
 @import '../projects/components/src/lib/shared/charts/activity-bar-chart/activity-bar-chart.component.scss-theme.scss';
 @import '../projects/components/src/lib/clan-roster-list-view/class-cell.componen.scss-theme.scss';
+@import '../projects/components/src/lib/shared/table-search-bar/table-search-bar.component.scss-theme.scss';
 @import './theme/components/mat-table.scss';
 
 // Custom Theming for Angular Material
@@ -46,6 +47,7 @@
   @include activity-heatmap-component-theme($theme);
   @include activity-bar-chart-component-theme($theme);
   @include class-cell-component-theme($theme);
+  @include table-search-bar-theme($theme);
 }
 
 .light-theme {
