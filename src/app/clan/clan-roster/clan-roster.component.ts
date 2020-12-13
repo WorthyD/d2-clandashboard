@@ -15,16 +15,16 @@ import { getClanMemberId, ClanRosterService } from '@destiny/data';
 import { ClanMember } from 'bungie-models';
 import { bufferTime, filter, map, mergeMap, switchMap, take, toArray } from 'rxjs/operators';
 
-const clanMembers = createSelector(getAllMembers, getMemberProfileEntities, (members, profiles) => {
-  const allUsers: ClanMemberListItem[] = [];
-  members.forEach((x) => {
-    allUsers.push({
-      member: x,
-      profile: profiles[getClanMemberId(x)]
-    });
-  });
-  return allUsers;
-});
+// const clanMembers = createSelector(getAllMembers, getMemberProfileEntities, (members, profiles) => {
+//   const allUsers: ClanMemberListItem[] = [];
+//   members.forEach((x) => {
+//     allUsers.push({
+//       member: x,
+//       profile: profiles[getClanMemberId(x)]
+//     });
+//   });
+//   return allUsers;
+// });
 
 @Component({
   selector: 'app-clan-roster',
@@ -35,6 +35,9 @@ export class ClanRosterComponent implements OnInit {
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);
   clanMembers$ = this.store.select(clanMemberSelectors.getAllMembers);
+  clanMemberNames$ = this.clanMembers$.pipe(map(m => {
+    return m?.map(x => x.destinyUserInfo.displayName);
+  }));
 
   isLoading = true;
   members = [];

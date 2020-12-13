@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ClanRosterComponent } from './clan-roster.component';
 
-import { ClanRosterListViewModule } from '@destiny/components';
+import { ClanRosterListViewModule, SharedModule } from '@destiny/components';
 
 const routes: Routes = [
   {
@@ -19,7 +19,7 @@ export class ClanRosterRoutingModule {}
 
 @NgModule({
   declarations: [ClanRosterComponent],
-  imports: [CommonModule, ClanRosterListViewModule, ClanRosterRoutingModule],
+  imports: [CommonModule, ClanRosterListViewModule, ClanRosterRoutingModule, SharedModule],
   exports: [ClanRosterComponent]
 })
 export class ClanRosterModule {}

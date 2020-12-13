@@ -1,0 +1,29 @@
+<mat-form-field>
+  <mat-select (openedChange)="openedChange($event)" placeholder="Select" [formControl]="selectFormControl" multiple>
+    <mat-select-trigger>
+      {{selectFormControl.value ? selectFormControl.value[0] : ''}}
+      <span *ngIf="selectFormControl.value?.length > 1" class="additional-selection">
+        (+{{selectFormControl.value.length - 1}} {{selectFormControl.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+    </mat-select-trigger>
+    <div class="select-container">
+      <mat-optgroup>
+        <mat-form-field style="width:100%;">
+          <input #search autocomplete="off" placeholder="Search" aria-label="Search" matInput
+            [formControl]="searchTextBoxControl">
+          <button [disableRipple]="true" *ngIf="search.value" matSuffix mat-icon-button aria-label="Clear"
+            (click)="clearSearch($event)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-optgroup>
+      <mat-optgroup *ngIf="(filteredOptions | async).length == 0">
+        <div>No results found!</div>
+      </mat-optgroup>
+      <mat-option (onSelectionChange)="selectionChange($event)" *ngFor="let option of filteredOptions | async"
+        [value]="option">
+        {{option}}
+      </mat-option>
+    </div>
+  </mat-select>
+</mat-form-field>
