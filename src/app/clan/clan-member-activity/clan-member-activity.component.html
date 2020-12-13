@@ -1,8 +1,8 @@
-<div class="activity-filters">
+<lib-table-search-bar>
   <lib-activity-mode-select [definitions]="clanMemberActivityService.activityModeDefinitionOptions"
     (selectedMode)="clanMemberActivityService.selectEventMode($event)">
   </lib-activity-mode-select>
-</div>
+</lib-table-search-bar>
 
 
 <lib-clan-roster-activity-table [memberActivityStats]="clanMemberActivityService.activityStats"

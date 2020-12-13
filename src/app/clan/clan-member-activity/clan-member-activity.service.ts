@@ -49,7 +49,6 @@ export class ClanMemberActivityService {
     switchMap(([[isMemberLoaded, id, clanMembers], selectedActivity]) => {
       this.isLoading = true;
       this.activityStats = [];
-      console.log('updating', selectedActivity);
       return this.clanActivityService.getClanActivityStats(id, clanMembers, selectedActivity).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
@@ -65,10 +64,9 @@ export class ClanMemberActivityService {
   );
 
   loadMemberActivity() {
-    this.activityStats$.pipe(take(1)).subscribe();
+    this.activityStats$.subscribe();
   }
   selectEventMode(event) {
-    //  console.log(event);
     this.selectedActivity$.next(event.modeType);
   }
 }
