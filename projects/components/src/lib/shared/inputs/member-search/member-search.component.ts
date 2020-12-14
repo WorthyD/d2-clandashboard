@@ -55,7 +55,6 @@ export class MemberSearchComponent implements OnInit {
     if (event.isUserInput && event.source.selected === false) {
       const index = this.selectedValues.indexOf(event.source.value);
       this.selectedValues.splice(index, 1);
-      this.selection.emit(this.selectedValues);
     }
   }
 
@@ -65,6 +64,8 @@ export class MemberSearchComponent implements OnInit {
     // Focus to search textbox while clicking on selectbox
     if (e === true) {
       this.searchTextBox.nativeElement.focus();
+    } else {
+      this.selection.emit(this.selectedValues);
     }
   }
 
@@ -74,7 +75,6 @@ export class MemberSearchComponent implements OnInit {
   clearSearch(event) {
     event.stopPropagation();
     this.searchTextBoxControl.patchValue('');
-    this.selection.emit(this.selectedValues);
   }
 
   /**

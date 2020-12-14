@@ -20,10 +20,11 @@ export const baseLoading = () => ({
   component: MemberSearchComponent,
   template: `
   <div>
-    <lib-member-search [data]="data | async"></lib-member-search>
+    <lib-member-search [data]="data | async" (selection)="selection($event)"></lib-member-search>
   </div>
    `,
   props: {
+    selection: action(' select'),
     data: of(['Ted', 'Fred', 'Jed'])
     //  defs: hashes
   }
