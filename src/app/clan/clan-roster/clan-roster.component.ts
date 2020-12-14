@@ -35,10 +35,6 @@ export class ClanRosterComponent implements OnInit {
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);
   clanMembers$ = this.store.select(clanMemberSelectors.getAllMembers);
-  clanMemberNames$ = this.clanMembers$.pipe(map(m => {
-    return m?.map(x => x.destinyUserInfo.displayName);
-  }));
-
   isLoading = true;
   members = [];
   preloadedInfo$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMembers$]).pipe(
@@ -47,6 +43,13 @@ export class ClanRosterComponent implements OnInit {
       return x;
     })
   );
+  clanMemberNames$ = this.preloadedInfo$.pipe(
+    map(([isMemberLoaded, id, clanMembers]) => {
+      console.log(clanMembers.map((x) => x.destinyUserInfo.displayName));
+      return clanMembers.map((x) => x.destinyUserInfo.displayName);
+    })
+  );
+
   members$ = this.preloadedInfo$.pipe(
     switchMap(([isMemberLoaded, id, clanMembers]) => {
       this.isLoading = true;
@@ -68,6 +71,10 @@ export class ClanRosterComponent implements OnInit {
 
   ngOnInit() {
     this.members$.pipe(take(1)).subscribe();
+  }
+
+  memberSearch(stuff){
+    console.log(stuff);
   }
   viewMember(member: ClanMember) {
     this.router.navigate(['../../../member-details', getClanMemberId(member)], {

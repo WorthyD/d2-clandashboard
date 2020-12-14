@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -21,6 +30,9 @@ export class MemberSearchComponent implements OnInit {
   @Input()
   data: string[];
 
+  @Output()
+  selection = new EventEmitter<any[]>();
+
   constructor() {}
 
   ngOnInit(): void {
@@ -31,7 +43,6 @@ export class MemberSearchComponent implements OnInit {
   }
 
   private _filter(name: string): String[] {
-    console.log(this.data);
     const filterValue = name.toLowerCase();
     // Set selected values to retain the selected checkbox state
     this.setSelectedValues();
@@ -44,6 +55,7 @@ export class MemberSearchComponent implements OnInit {
     if (event.isUserInput && event.source.selected === false) {
       const index = this.selectedValues.indexOf(event.source.value);
       this.selectedValues.splice(index, 1);
+      this.selection.emit(this.selectedValues);
     }
   }
 
@@ -62,6 +74,7 @@ export class MemberSearchComponent implements OnInit {
   clearSearch(event) {
     event.stopPropagation();
     this.searchTextBoxControl.patchValue('');
+    this.selection.emit(this.selectedValues);
   }
 
   /**

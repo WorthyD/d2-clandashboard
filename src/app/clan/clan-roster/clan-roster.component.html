@@ -1,6 +1,7 @@
 <lib-table-search-bar>
-  <lib-member-search [data]="clanMemberNames$ | async"></lib-member-search>
-  {{(clanMemberNames$ | async) | json}}
+  <ng-container *ngIf="clanMemberNames$ | async as memberStuff">
+    <lib-member-search [data]="memberStuff" (selection)="memberSearch($event)"></lib-member-search>
+  </ng-container>
 
 </lib-table-search-bar>
 
