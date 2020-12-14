@@ -1,2 +1,10 @@
+<lib-table-search-bar>
+  <ng-container *ngIf="gambitService.clanMemberNames$ | async as memberStuff">
+    <lib-member-search [data]="memberStuff" (selection)="gambitService.memberSearch($event)">
+    </lib-member-search>
+  </ng-container>
+
+</lib-table-search-bar>
 <lib-clan-gambit-stats-table [memberGambitStats]="gambitService.gambitStats" [isLoading]="gambitService.isLoading">
 </lib-clan-gambit-stats-table>
+

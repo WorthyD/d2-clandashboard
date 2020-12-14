@@ -7,7 +7,7 @@ import * as clanIdSelectors from '../store/clan-id/clan-id.selector';
 
 import { getIsMembersProfilesLoaded } from '../store/member-profiles/member-profiles.selectors';
 import { bufferTime, filter, map, mergeMap, switchMap, take, tap, toArray } from 'rxjs/operators';
-import { combineLatest, forkJoin, pipe } from 'rxjs';
+import { BehaviorSubject, combineLatest, forkJoin, pipe } from 'rxjs';
 
 @Injectable()
 export class CrucibleService {
@@ -16,6 +16,7 @@ export class CrucibleService {
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);
   clanMembers$ = this.store.select(clanMemberSelectors.getAllMembers);
+  selectedMembers$ = new BehaviorSubject([]);
 
   isLoading = true;
   crucibleStats = [];
@@ -25,10 +26,23 @@ export class CrucibleService {
       return x;
     })
   );
+  clanMemberNames$ = this.preloadedInfo$.pipe(
+    map(([isMemberLoaded, id, clanMembers]) => {
+      return clanMembers.map((x) => x.destinyUserInfo.displayName);
+    })
+  );
 
-  crucibleStats$ = this.preloadedInfo$.pipe(
-    switchMap(([isMemberLoaded, id, clanMembers]) => {
+  crucibleStats$ = combineLatest([this.preloadedInfo$, this.selectedMembers$]).pipe(
+    switchMap(([[isMemberLoaded, id, clanMembers], selectedMembers]) => {
       this.isLoading = true;
+
+      this.crucibleStats = [];
+      if (selectedMembers.length > 0) {
+        clanMembers = clanMembers.filter((members) => {
+          return selectedMembers.indexOf(members.destinyUserInfo.displayName) > -1;
+        });
+      }
+
       return this.clanCrucibleService.getClanCrucibleStats(id, clanMembers).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
@@ -42,8 +56,11 @@ export class CrucibleService {
       );
     })
   );
+  memberSearch(members) {
+    this.selectedMembers$.next(members);
+  }
 
   loadStats() {
-    this.crucibleStats$.pipe(take(1)).subscribe();
+    this.crucibleStats$.subscribe();
   }
 }

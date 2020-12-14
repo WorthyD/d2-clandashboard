@@ -32,6 +32,7 @@ export class MemberSearchComponent implements OnInit {
 
   @Output()
   selection = new EventEmitter<any[]>();
+  dirtyFields = [];
 
   constructor() {}
 
@@ -47,8 +48,10 @@ export class MemberSearchComponent implements OnInit {
     // Set selected values to retain the selected checkbox state
     this.setSelectedValues();
     this.selectFormControl.patchValue(this.selectedValues);
-    const filteredList = this.data.filter((option) => option.toLowerCase().indexOf(filterValue) === 0);
-    return filteredList;
+    const filteredList = this.data.filter((option) => option.toLowerCase().indexOf(filterValue) > -1);
+    return filteredList.sort((a: string, b: string) => {
+      return a?.toLowerCase() > b?.toLowerCase() ? 1 : -1;
+    });
   }
 
   selectionChange(event) {
@@ -63,9 +66,12 @@ export class MemberSearchComponent implements OnInit {
     this.searchTextBoxControl.patchValue('');
     // Focus to search textbox while clicking on selectbox
     if (e === true) {
+      this.dirtyFields = this.selectedValues.concat();
       this.searchTextBox.nativeElement.focus();
     } else {
-      this.selection.emit(this.selectedValues);
+      if (JSON.stringify(this.dirtyFields) !== JSON.stringify(this.selectedValues)) {
+        this.selection.emit(this.selectedValues);
+      }
     }
   }
 

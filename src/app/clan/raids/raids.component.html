@@ -2,7 +2,13 @@
   {{(raidService.raidStats$ | async) | json}}
 </textarea>
  -->
+<!-- <lib-table-search-bar>
+  <ng-container *ngIf="raidService.clanMemberNames$ | async as memberStuff">
+    <lib-member-search [data]="memberStuff" (selection)="raidService.memberSearch($event)">
+    </lib-member-search>
+  </ng-container>
 
+</lib-table-search-bar> -->
 <lib-clan-raid-stat-table [memberRaidStats]="raidService.raidStats$ | async"
   [isLoading]="raidService.raidStatsLoading$ | async">
 </lib-clan-raid-stat-table>

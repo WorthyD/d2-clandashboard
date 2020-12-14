@@ -47,7 +47,6 @@ export class ClanRosterComponent implements OnInit {
   );
   clanMemberNames$ = this.preloadedInfo$.pipe(
     map(([isMemberLoaded, id, clanMembers]) => {
-      //console.log(clanMembers.map((x) => x.destinyUserInfo.displayName));
       return clanMembers.map((x) => x.destinyUserInfo.displayName);
     })
   );
@@ -76,14 +75,12 @@ export class ClanRosterComponent implements OnInit {
     })
   );
 
-  //members$: Observable<ClanMemberListItem[]> = this.store.pipe(select(clanMembers));
 
   ngOnInit() {
     this.members$.subscribe();
   }
 
   memberSearch(members) {
-    //console.log(stuff);
     this.selectedMembers$.next(members);
   }
   viewMember(member: ClanMember) {
