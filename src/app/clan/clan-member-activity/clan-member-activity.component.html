@@ -1,4 +1,8 @@
 <lib-table-search-bar>
+  <ng-container *ngIf="clanMemberActivityService.clanMemberNames$ | async as memberStuff">
+    <lib-member-search [data]="memberStuff" (selection)="clanMemberActivityService.memberSearch($event)">
+    </lib-member-search>
+  </ng-container>
   <lib-activity-mode-select [definitions]="clanMemberActivityService.activityModeDefinitionOptions"
     (selectedMode)="clanMemberActivityService.selectEventMode($event)">
   </lib-activity-mode-select>

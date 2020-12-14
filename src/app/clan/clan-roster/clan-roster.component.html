@@ -1,4 +1,11 @@
- <ng-container>
+<lib-table-search-bar>
+  <ng-container *ngIf="clanMemberNames$ | async as memberStuff">
+    <lib-member-search [data]="memberStuff" (selection)="memberSearch($event)"></lib-member-search>
+  </ng-container>
+
+</lib-table-search-bar>
+
+<ng-container>
   <lib-clan-roster-list-view *ngIf="members.length > 0" [members]="members" [isLoading]="isLoading"
     (viewMember)="viewMember($event)">
   </lib-clan-roster-list-view>

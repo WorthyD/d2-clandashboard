@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, createSelector, select } from '@ngrx/store';
-import { combineLatest, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 
 import { getClanMemberEntities, getAllMembers } from '../store/clan-members/clan-members.selectors';
 import { getMemberProfileEntities } from '../store/member-profiles/member-profiles.selectors';
@@ -15,16 +15,16 @@ import { getClanMemberId, ClanRosterService } from '@destiny/data';
 import { ClanMember } from 'bungie-models';
 import { bufferTime, filter, map, mergeMap, switchMap, take, toArray } from 'rxjs/operators';
 
-const clanMembers = createSelector(getAllMembers, getMemberProfileEntities, (members, profiles) => {
-  const allUsers: ClanMemberListItem[] = [];
-  members.forEach((x) => {
-    allUsers.push({
-      member: x,
-      profile: profiles[getClanMemberId(x)]
-    });
-  });
-  return allUsers;
-});
+// const clanMembers = createSelector(getAllMembers, getMemberProfileEntities, (members, profiles) => {
+//   const allUsers: ClanMemberListItem[] = [];
+//   members.forEach((x) => {
+//     allUsers.push({
+//       member: x,
+//       profile: profiles[getClanMemberId(x)]
+//     });
+//   });
+//   return allUsers;
+// });
 
 @Component({
   selector: 'app-clan-roster',
@@ -35,18 +35,32 @@ export class ClanRosterComponent implements OnInit {
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);
   clanMembers$ = this.store.select(clanMemberSelectors.getAllMembers);
-
   isLoading = true;
   members = [];
+  selectedMembers$ = new BehaviorSubject([]);
+
   preloadedInfo$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMembers$]).pipe(
     filter(([isMembersLoaded, id, m]) => isMembersLoaded === true),
     map((x) => {
       return x;
     })
   );
-  members$ = this.preloadedInfo$.pipe(
-    switchMap(([isMemberLoaded, id, clanMembers]) => {
+  clanMemberNames$ = this.preloadedInfo$.pipe(
+    map(([isMemberLoaded, id, clanMembers]) => {
+      return clanMembers.map((x) => x.destinyUserInfo.displayName);
+    })
+  );
+
+  members$ = combineLatest([this.preloadedInfo$, this.selectedMembers$]).pipe(
+    switchMap(([[isMemberLoaded, id, clanMembers], selectedMembers]) => {
       this.isLoading = true;
+      this.members = [];
+      if (selectedMembers.length > 0) {
+        clanMembers = clanMembers.filter((members) => {
+          return selectedMembers.indexOf(members.destinyUserInfo.displayName) > -1;
+        });
+      }
+
       return this.clanRosterService.getClanRosterStats(id, clanMembers).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
@@ -61,10 +75,13 @@ export class ClanRosterComponent implements OnInit {
     })
   );
 
-  //members$: Observable<ClanMemberListItem[]> = this.store.pipe(select(clanMembers));
 
   ngOnInit() {
-    this.members$.pipe(take(1)).subscribe();
+    this.members$.subscribe();
+  }
+
+  memberSearch(members) {
+    this.selectedMembers$.next(members);
   }
   viewMember(member: ClanMember) {
     this.router.navigate(['../../../member-details', getClanMemberId(member)], {

@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RaidsComponent } from './raids.component';
 import { RaidRoutingModule } from './raids-routing.module';
 import { MatTableModule } from '@angular/material/table';
-import { ClanRaidStatTableModule } from '@destiny/components';
+import { ClanRaidStatTableModule, SharedModule } from '@destiny/components';
 
 @NgModule({
   declarations: [RaidsComponent],
-  imports: [CommonModule, RaidRoutingModule, MatTableModule, ClanRaidStatTableModule]
+  imports: [CommonModule, RaidRoutingModule, MatTableModule, ClanRaidStatTableModule, SharedModule]
 })
 export class RaidsModule {}

@@ -35,6 +35,7 @@ export class ClanMemberActivityService {
   areMemberProfilesLoading$ = this.store.pipe(select(getIsMembersProfilesLoading));
 
   selectedActivity$ = new BehaviorSubject(0);
+  selectedMembers$ = new BehaviorSubject([]);
 
   isLoading = true;
   preloadedInfo$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMemberProfiles$]).pipe(
@@ -44,11 +45,22 @@ export class ClanMemberActivityService {
     })
   );
 
+  clanMemberNames$ = this.preloadedInfo$.pipe(
+    map(([isMemberLoaded, id, clanMembers]) => {
+      return clanMembers.map((x) => x.profile.data.userInfo.displayName);
+    })
+  );
+
   activityStats = [];
-  activityStats$ = combineLatest([this.preloadedInfo$, this.selectedActivity$]).pipe(
-    switchMap(([[isMemberLoaded, id, clanMembers], selectedActivity]) => {
+  activityStats$ = combineLatest([this.preloadedInfo$, this.selectedActivity$, this.selectedMembers$]).pipe(
+    switchMap(([[isMemberLoaded, id, clanMembers], selectedActivity, selectedMembers]) => {
       this.isLoading = true;
       this.activityStats = [];
+      if (selectedMembers.length > 0) {
+        clanMembers = clanMembers.filter((members) => {
+          return selectedMembers.indexOf(members.profile.data.userInfo.displayName) > -1;
+        });
+      }
       return this.clanActivityService.getClanActivityStats(id, clanMembers, selectedActivity).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
@@ -62,6 +74,10 @@ export class ClanMemberActivityService {
       );
     })
   );
+
+  memberSearch(members) {
+    this.selectedMembers$.next(members);
+  }
 
   loadMemberActivity() {
     this.activityStats$.subscribe();

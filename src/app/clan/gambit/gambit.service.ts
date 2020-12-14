@@ -6,7 +6,7 @@ import * as clanIdSelectors from '../store/clan-id/clan-id.selector';
 
 import { getIsMembersProfilesLoaded } from '../store/member-profiles/member-profiles.selectors';
 import { bufferTime, filter, map, mergeMap, switchMap, take, tap, toArray } from 'rxjs/operators';
-import { combineLatest, forkJoin, pipe } from 'rxjs';
+import { BehaviorSubject, combineLatest, forkJoin, pipe } from 'rxjs';
 
 @Injectable()
 export class GambitService {
@@ -17,6 +17,7 @@ export class GambitService {
 
   isLoading = true;
   gambitStats = [];
+  selectedMembers$ = new BehaviorSubject([]);
 
   preloadedInfo$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMembers$]).pipe(
     filter(([isMembersLoaded, id, m]) => isMembersLoaded === true),
@@ -24,9 +25,20 @@ export class GambitService {
       return x;
     })
   );
-  gambitStats$ = this.preloadedInfo$.pipe(
-    switchMap(([isMemberLoaded, id, clanMembers]) => {
+  clanMemberNames$ = this.preloadedInfo$.pipe(
+    map(([isMemberLoaded, id, clanMembers]) => {
+      return clanMembers.map((x) => x.destinyUserInfo.displayName);
+    })
+  );
+  gambitStats$ = combineLatest([this.preloadedInfo$, this.selectedMembers$]).pipe(
+    switchMap(([[isMemberLoaded, id, clanMembers], selectedMembers]) => {
       this.isLoading = true;
+      this.gambitStats = [];
+      if (selectedMembers.length > 0) {
+        clanMembers = clanMembers.filter((members) => {
+          return selectedMembers.indexOf(members.destinyUserInfo.displayName) > -1;
+        });
+      }
       return this.clanGambitService.getClanGambitStats(id, clanMembers).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
@@ -40,8 +52,10 @@ export class GambitService {
       );
     })
   );
-
+  memberSearch(members) {
+    this.selectedMembers$.next(members);
+  }
   loadStats() {
-    this.gambitStats$.pipe(take(1)).subscribe();
+    this.gambitStats$.subscribe();
   }
 }
