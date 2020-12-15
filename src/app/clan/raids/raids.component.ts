@@ -16,7 +16,7 @@ import { RaidsService } from './raids.service';
   selector: 'app-raids',
   templateUrl: './raids.component.html',
   styleUrls: ['./raids.component.scss'],
-  providers: [RaidsService]
+  //providers: [RaidsService]
 })
 export class RaidsComponent implements OnInit {
   // members$: Observable<any[]> = this.store.pipe(select(getAllMembers));

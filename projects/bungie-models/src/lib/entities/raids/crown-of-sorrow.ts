@@ -1,5 +1,6 @@
 import { Raid } from '../../models/Raid';
 
+
 export const CrownOfSorrow: Raid = {
   hashes: [3333172150],
   key: 'cos',

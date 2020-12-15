@@ -7,3 +7,10 @@ export interface Raid {
   isGuidedGames: boolean;
   isVaulted: boolean;
 }
+
+export interface RaidGroup {
+  raid: Raid;
+  raidGG?: Raid;
+  raidPrestiege?: Raid;
+  raidImage: string;
+}
