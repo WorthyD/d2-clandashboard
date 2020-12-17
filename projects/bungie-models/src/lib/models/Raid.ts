@@ -8,9 +8,10 @@ export interface Raid {
   isVaulted: boolean;
 }
 
-export interface RaidGroup {
+export interface RaidInfo {
   raid: Raid;
   raidGG?: Raid;
   raidPrestiege?: Raid;
+  raidPrestiegeGG?: Raid;
   raidImage: string;
 }

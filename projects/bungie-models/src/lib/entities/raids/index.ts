@@ -19,7 +19,7 @@ export * from './crown-of-sorrow';
 import { GardenOfSalvation, GardenOfSalvationGG } from './garden-of-salvation';
 export * from './garden-of-salvation';
 
-import { DeepStoneCrypt, DeepStoneCryptGG } from './deep-stone-crypt';
+import { DeepStoneCryptInfo, DeepStoneCrypt, DeepStoneCryptGG } from './deep-stone-crypt';
 
 export const AllRaids = [
   Leviathan,
@@ -42,3 +42,5 @@ export const AllRaids = [
   DeepStoneCrypt,
   DeepStoneCryptGG
 ];
+
+export const AllRaidInfos = [DeepStoneCryptInfo];
