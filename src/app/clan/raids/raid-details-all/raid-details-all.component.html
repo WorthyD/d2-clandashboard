@@ -1,1 +1,4 @@
-<p>raid-details-all works!</p>
+<lib-clan-raid-stat-table [memberRaidStats]="raidService.raidStats$ | async"
+  [isLoading]="raidService.raidStatsLoading$ | async">
+</lib-clan-raid-stat-table>
+

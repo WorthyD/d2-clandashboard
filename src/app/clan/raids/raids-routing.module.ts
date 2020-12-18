@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 //import { SealsComponent } from './seals.component';
 import { RaidsComponent } from './raids.component';
-import {RaidDetailsAllComponent} from './raid-details-all/raid-details-all.component';
+import { RaidDetailsAllComponent } from './raid-details-all/raid-details-all.component';
 
 const routes: Routes = [
   {
@@ -13,10 +13,9 @@ const routes: Routes = [
     data: { title: 'd2.clan.raids' }
   },
   {
-    path:'all',
+    path: 'all',
     component: RaidDetailsAllComponent,
     data: { title: 'd2.clan.raids.all' }
-
   }
 ];
 

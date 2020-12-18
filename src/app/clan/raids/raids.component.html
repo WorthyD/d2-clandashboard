@@ -9,10 +9,7 @@
   </ng-container>
 
 </lib-table-search-bar> -->
-<lib-clan-raid-stat-table [memberRaidStats]="raidService.raidStats$ | async"
-  [isLoading]="raidService.raidStatsLoading$ | async">
-</lib-clan-raid-stat-table>
-
+<a routerLink="./all">All Raids</a>
 <!-- <table mat-table [dataSource]="members" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="displayName">
     <th mat-header-cell *matHeaderCellDef>Name </th>

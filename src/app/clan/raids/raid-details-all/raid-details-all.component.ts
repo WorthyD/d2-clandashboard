@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RaidsService } from '../raids.service';
 
 @Component({
   selector: 'app-raid-details-all',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./raid-details-all.component.scss']
 })
 export class RaidDetailsAllComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(public raidService: RaidsService) {}
   ngOnInit(): void {
+    console.log('stuff');
+    this.raidService.loadRaidStats();
   }
-
 }
