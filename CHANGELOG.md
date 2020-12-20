@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.35.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.34.0...v0.35.0) (2020-12-20)
+
+
+### Features
+
+* Adding raid cards ([5e1b3e7](https://github.com/WorthyD/d2-clandashboard/commit/5e1b3e7cd93b09de9e1a38844956a2ac87709835))
+
 ## [0.34.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.33.0...v0.34.0) (2020-12-14)
 
 
