@@ -9,15 +9,15 @@
   </ng-container>
 
 </lib-table-search-bar> -->
-<a routerLink="./all">All Raids</a>
 
 <div class="raid-container">
   <div class="raid-card m-3">
-    <mat-card (click)="viewRaid('all')">
+    <mat-card (click)="viewRaid('all')" class="mat-card-hover">
       <mat-card-title>
         All Raids
       </mat-card-title>
-      <img mat-card-image src="https://www.bungie.net/img/theme/destiny/bgs/stats/banner_raid_4.jpg" alt="">
+      <img mat-card-image src="https://www.bungie.net/img/destiny_content/pgcr/patrol_edz.jpg" alt="">
+      <mat-progress-bar mode="indeterminate" *ngIf="raidService.isLoading"></mat-progress-bar>
       <mat-card-actions>
         <div class="raid-info">
           <div class="raid-name">
@@ -32,7 +32,8 @@
   </div>
 
   <ng-container *ngFor="let raid of raidService.allRaidInfo">
-    <lib-raid-card [raid]="raid" [memberRaidStats]="raidService.raidStats" class="raid-card m-3">
+    <lib-raid-card [raid]="raid" [memberRaidStats]="raidService.raidStats" [isLoading]="raidService.isLoading"
+      class="raid-card m-3">
 
     </lib-raid-card>
   </ng-container>

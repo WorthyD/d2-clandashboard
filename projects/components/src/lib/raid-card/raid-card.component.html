@@ -1,8 +1,9 @@
-<mat-card>
+<mat-card matTooltip="Raid Breakdowns In Development">
   <mat-card-title>
     {{raid.raid.displayName}}
   </mat-card-title>
   <img mat-card-image src="{{raid.raidImage}}" alt="">
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
   <mat-card-actions>
     <div class="raid-info">
       <div class="raid-name">
@@ -10,14 +11,6 @@
       </div>
       <div>
         {{ memberRaidStats | raidCompletionTotal : raid.raid.key }}
-      </div>
-    </div>
-    <div class="raid-info">
-      <div class="raid-name">
-        Guided Game Clears
-      </div>
-      <div>
-        {{ memberRaidStats | raidCompletionTotal : raid.raidGG.key }}
       </div>
     </div>
     <div class="raid-info" *ngIf="raid.raidPrestige">
@@ -28,14 +21,15 @@
         {{ memberRaidStats | raidCompletionTotal : raid.raidPrestige.key }}
       </div>
     </div>
-    <div class="raid-info" *ngIf="raid.raidPrestigeGG">
+    <div class="raid-info">
       <div class="raid-name">
-        Guided Games Prestige Clears
+        Guided Game Clears
       </div>
       <div>
-        {{ memberRaidStats | raidCompletionTotal : raid.raidPrestigeGG.key }}
+        {{ memberRaidStats | raidCompletionTotal : raid.raidGG.key }}
       </div>
     </div>
+
 
   </mat-card-actions>
 </mat-card>

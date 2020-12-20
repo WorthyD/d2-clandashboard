@@ -1,4 +1,4 @@
-import { Raid } from '../../models/Raid';
+import { Raid, RaidInfo } from '../../models/Raid';
 
 export const SpireOfStars: Raid = {
   hashes: [119944200],
@@ -28,4 +28,11 @@ export const SpireOfStarsGG: Raid = {
   sortOrder: 9,
   isGuidedGames: true,
   isVaulted: true
+};
+
+export const SpireOfStarsInfo: RaidInfo = {
+  raid: SpireOfStars,
+  raidImage: 'https://www.bungie.net/img/destiny_content/pgcr/raid_greed.jpg',
+  raidGG: SpireOfStarsGG,
+  raidPrestige: SpireOfStarsPrestige
 };

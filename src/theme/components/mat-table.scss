@@ -15,4 +15,11 @@
     transition: background-color 0.2s;
     background-color: darken(mat-color($background, background), 5%);
   }
+
+  .mat-card-hover {
+    transition: background-color 0.2s;
+  }
+  .mat-card-hover:hover {
+    background-color: darken(mat-color($background, background), 5%);
+  }
 }

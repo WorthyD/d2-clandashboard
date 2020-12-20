@@ -1,4 +1,4 @@
-import { Raid } from '../../models/Raid';
+import { Raid, RaidInfo } from '../../models/Raid';
 
 export const ScourgeOfThePast: Raid = {
   hashes: [548750096],
@@ -18,4 +18,10 @@ export const ScourgeOfThePastGG: Raid = {
   sortOrder: 13,
   isGuidedGames: true,
   isVaulted: true
+};
+
+export const ScourgeOfThePastInfo: RaidInfo = {
+  raid: ScourgeOfThePast,
+  raidImage: 'https://www.bungie.net/img/destiny_content/pgcr/raids.1305rh0093145r13t5hn10tnz.raid_sunset.jpg',
+  raidGG: ScourgeOfThePastGG
 };

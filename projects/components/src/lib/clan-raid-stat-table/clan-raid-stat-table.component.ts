@@ -23,8 +23,28 @@ export class ClanRaidStatTableComponent implements OnInit {
   @Input()
   isLoading: boolean = true;
 
-  showGG = false;
-  showVaultedContent = false;
+  _showGG = false;
+  @Input()
+  get showGG() {
+    return this._showGG;
+  }
+  set showGG(value) {
+    this._showGG = value;
+    this.updateColumns();
+  }
+
+  _showVaultedContent = false;
+  @Input()
+  get showVaultedContent() {
+    return this._showVaultedContent;
+  }
+  set showVaultedContent(value) {
+    this._showVaultedContent = value;
+    this.updateColumns();
+  }
+
+  // showGG = false;
+  // showVaultedContent = false;
   sortedData: MemberRaidStats[];
 
   allRaids;
@@ -38,7 +58,6 @@ export class ClanRaidStatTableComponent implements OnInit {
   }
 
   getTotals() {
-    console.log('testing');
   }
 
   getRaids() {
@@ -81,12 +100,5 @@ export class ClanRaidStatTableComponent implements OnInit {
       }
     });
   }
-  changeGG(event) {
-    this.showGG = event.checked;
-    this.updateColumns();
-  }
-  changeVaulted(event) {
-    this.showVaultedContent = event.checked;
-    this.updateColumns();
-  }
+
 }

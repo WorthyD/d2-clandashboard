@@ -1,5 +1,4 @@
-import { Raid } from '../../models/Raid';
-
+import { Raid, RaidInfo } from '../../models/Raid';
 
 export const CrownOfSorrow: Raid = {
   hashes: [3333172150],
@@ -19,4 +18,10 @@ export const CrownOfSorrowGG: Raid = {
   sortOrder: 15,
   isGuidedGames: true,
   isVaulted: true
+};
+
+export const CrownOfSorrowInfo: RaidInfo = {
+  raid: CrownOfSorrow,
+  raidGG: CrownOfSorrowGG,
+  raidImage: 'https://www.bungie.net/img/destiny_content/pgcr/raid_eclipse.jpg'
 };

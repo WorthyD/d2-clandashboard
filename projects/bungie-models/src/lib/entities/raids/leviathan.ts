@@ -1,4 +1,4 @@
-import { Raid } from '../../models/Raid';
+import { Raid, RaidInfo } from '../../models/Raid';
 export const Leviathan: Raid = {
   hashes: [2693136600, 2693136601, 2693136602, 2693136603, 2693136604, 2693136605],
   key: 'levi',
@@ -27,4 +27,11 @@ export const LeviathanGuidedGames: Raid = {
   sortOrder: 3,
   isGuidedGames: true,  isVaulted: true
 
+};
+
+export const LeviathanInfo: RaidInfo = {
+  raid: Leviathan,
+  raidImage: 'https://www.bungie.net/img/destiny_content/pgcr/raid_gluttony.jpg',
+  raidGG: LeviathanGuidedGames,
+  raidPrestige: LeviathanPrestige
 };

@@ -1,2 +1,10 @@
-<lib-clan-raid-stat-table [memberRaidStats]="raidService.raidStats" [isLoading]="raidService.isLoading">
+<lib-table-search-bar>
+  <button mat-button class="nav-button" [routerLink]="['../']" routerLinkActive="active-link">
+    Raids
+  </button>
+  <mat-checkbox color="primary" (change)="changeGG($event)">Show Guided Games</mat-checkbox>
+  <mat-checkbox color="primary" (change)="changeVaulted($event)">Show Vaulted Content</mat-checkbox>
+</lib-table-search-bar>
+<lib-clan-raid-stat-table [memberRaidStats]="raidService.raidStats" [isLoading]="raidService.isLoading"
+  [showGG]="showGG" [showVaultedContent]="showVaultedContent">
 </lib-clan-raid-stat-table>

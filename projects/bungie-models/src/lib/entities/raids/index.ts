@@ -1,19 +1,19 @@
-import { Leviathan, LeviathanGuidedGames, LeviathanPrestige } from './leviathan';
+import { Leviathan, LeviathanGuidedGames, LeviathanPrestige, LeviathanInfo } from './leviathan';
 export * from './leviathan';
 
-import { EaterOfWorlds, EaterOfWorldsGG, EaterOfWorldsPrestige } from './eater-of-worlds';
+import { EaterOfWorlds, EaterOfWorldsGG, EaterOfWorldsPrestige, EaterOfWorldsInfo } from './eater-of-worlds';
 export * from './eater-of-worlds';
 
-import { SpireOfStars, SpireOfStarsGG, SpireOfStarsPrestige } from './spire-of-stars';
+import { SpireOfStars, SpireOfStarsGG, SpireOfStarsPrestige, SpireOfStarsInfo } from './spire-of-stars';
 export * from './spire-of-stars';
 
 import { LastWishGG, LastWish, LastWishInfo } from './last-wish';
 export * from './last-wish';
 
-import { ScourgeOfThePast, ScourgeOfThePastGG } from './scourge-of-the-past';
+import { ScourgeOfThePast, ScourgeOfThePastGG, ScourgeOfThePastInfo } from './scourge-of-the-past';
 export * from './scourge-of-the-past';
 
-import { CrownOfSorrow, CrownOfSorrowGG } from './crown-of-sorrow';
+import { CrownOfSorrow, CrownOfSorrowGG, CrownOfSorrowInfo } from './crown-of-sorrow';
 export * from './crown-of-sorrow';
 
 import { GardenOfSalvation, GardenOfSalvationGG, GardenOfSalvationInfo } from './garden-of-salvation';
@@ -44,4 +44,13 @@ export const AllRaids = [
   DeepStoneCryptGG
 ];
 
-export const AllRaidInfos = [DeepStoneCryptInfo, GardenOfSalvationInfo, LastWishInfo];
+export const AllRaidInfos = [
+  DeepStoneCryptInfo,
+  GardenOfSalvationInfo,
+  LastWishInfo,
+  CrownOfSorrowInfo,
+  ScourgeOfThePastInfo,
+  SpireOfStarsInfo,
+  EaterOfWorldsInfo,
+  LeviathanInfo
+];

@@ -7,9 +7,16 @@ import { RaidsService } from '../raids.service';
   styleUrls: ['./raid-details-all.component.scss']
 })
 export class RaidDetailsAllComponent implements OnInit {
+  showGG = false;
+  showVaultedContent = false;
   constructor(public raidService: RaidsService) {}
   ngOnInit(): void {
-    console.log('stuff');
     this.raidService.loadRaidStats();
+  }
+  changeGG(event) {
+    this.showGG = event.checked;
+  }
+  changeVaulted(event) {
+    this.showVaultedContent = event.checked;
   }
 }
