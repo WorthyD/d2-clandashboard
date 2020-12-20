@@ -1,4 +1,4 @@
-import { Raid } from '../../models/Raid';
+import { Raid, RaidInfo } from '../../models/Raid';
 
 export const DeepStoneCrypt: Raid = {
   hashes: [910380154],
@@ -18,6 +18,12 @@ export const DeepStoneCryptGG: Raid = {
   sortOrder: 19,
   isGuidedGames: true,
   isVaulted: false
+};
+
+export const DeepStoneCryptInfo: RaidInfo = {
+  raid: DeepStoneCrypt,
+  raidImage: 'https://www.bungie.net/img/destiny_content/pgcr/europa-raid-deep-stone-crypt.jpg',
+  raidGG: DeepStoneCryptGG
 };
 
 //910380154

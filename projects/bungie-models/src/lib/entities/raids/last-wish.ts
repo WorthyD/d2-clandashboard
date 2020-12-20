@@ -1,4 +1,4 @@
-import { Raid } from '../../models/Raid';
+import { Raid, RaidInfo } from '../../models/Raid';
 
 export const LastWish: Raid = {
   hashes: [2122313384],
@@ -18,4 +18,10 @@ export const LastWishGG: Raid = {
   sortOrder: 11,
   isGuidedGames: true,
   isVaulted: false
+};
+
+export const LastWishInfo: RaidInfo = {
+  raid: LastWish,
+  raidGG: LastWishGG,
+  raidImage: 'https://www.bungie.net/img/destiny_content/pgcr/raid_beanstalk.jpg'
 };

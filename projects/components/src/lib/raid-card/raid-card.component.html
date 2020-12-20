@@ -1,0 +1,35 @@
+<mat-card matTooltip="Raid Breakdowns In Development">
+  <mat-card-title>
+    {{raid.raid.displayName}}
+  </mat-card-title>
+  <img mat-card-image src="{{raid.raidImage}}" alt="">
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+  <mat-card-actions>
+    <div class="raid-info">
+      <div class="raid-name">
+        Clears
+      </div>
+      <div>
+        {{ memberRaidStats | raidCompletionTotal : raid.raid.key }}
+      </div>
+    </div>
+    <div class="raid-info" *ngIf="raid.raidPrestige">
+      <div class="raid-name">
+        Prestige Clears
+      </div>
+      <div>
+        {{ memberRaidStats | raidCompletionTotal : raid.raidPrestige.key }}
+      </div>
+    </div>
+    <div class="raid-info">
+      <div class="raid-name">
+        Guided Game Clears
+      </div>
+      <div>
+        {{ memberRaidStats | raidCompletionTotal : raid.raidGG.key }}
+      </div>
+    </div>
+
+
+  </mat-card-actions>
+</mat-card>

@@ -1,4 +1,4 @@
-import { Raid } from '../../models/Raid';
+import { Raid, RaidInfo } from '../../models/Raid';
 
 export const EaterOfWorlds: Raid = {
   hashes: [3089205900],
@@ -28,4 +28,11 @@ export const EaterOfWorldsGG: Raid = {
   sortOrder: 6,
   isGuidedGames: true,
   isVaulted: true
+};
+
+export const EaterOfWorldsInfo: RaidInfo = {
+  raid: EaterOfWorlds,
+  raidImage: 'https://www.bungie.net/img/destiny_content/pgcr/raids_leviathan_eater_of_worlds.jpg',
+  raidGG: EaterOfWorldsGG,
+  raidPrestige: EaterOfWorldsPrestige
 };

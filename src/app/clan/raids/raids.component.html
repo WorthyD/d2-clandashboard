@@ -9,9 +9,38 @@
   </ng-container>
 
 </lib-table-search-bar> -->
-<lib-clan-raid-stat-table [memberRaidStats]="raidService.raidStats$ | async"
-  [isLoading]="raidService.raidStatsLoading$ | async">
-</lib-clan-raid-stat-table>
+
+<div class="raid-container">
+  <div class="raid-card m-3">
+    <mat-card (click)="viewRaid('all')" class="mat-card-hover">
+      <mat-card-title>
+        All Raids
+      </mat-card-title>
+      <img mat-card-image src="https://www.bungie.net/img/destiny_content/pgcr/patrol_edz.jpg" alt="">
+      <mat-progress-bar mode="indeterminate" *ngIf="raidService.isLoading"></mat-progress-bar>
+      <mat-card-actions>
+        <div class="raid-info">
+          <div class="raid-name">
+            Clears
+          </div>
+          <div>
+            {{ raidService.raidStats | raidCompletionTotal  }}
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <ng-container *ngFor="let raid of raidService.allRaidInfo">
+    <lib-raid-card [raid]="raid" [memberRaidStats]="raidService.raidStats" [isLoading]="raidService.isLoading"
+      class="raid-card m-3">
+
+    </lib-raid-card>
+  </ng-container>
+
+
+</div>
+
 
 <!-- <table mat-table [dataSource]="members" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="displayName">

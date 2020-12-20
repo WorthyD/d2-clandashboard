@@ -19,14 +19,9 @@ export class DungeonsService {
   stats2$ = this.isMembersLoaded$.pipe(
     filter((f) => f === true),
     take(1),
-    tap(() => {
-      console.log('loading');
-    }),
     map((s) => {
       return combineLatest([this.clanId$, this.clanMembers$]).pipe(
         map(([clanId, clanMembers]) => {
-          console.log('clanId', clanId);
-          console.log('clanMembers', clanMembers);
 
           return clanId;
         })
