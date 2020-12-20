@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MemberRaidStats, RaidInfo } from '@destiny/models';
 
 @Component({
   selector: 'lib-raid-card',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./raid-card.component.scss']
 })
 export class RaidCardComponent implements OnInit {
+  constructor() {}
+  @Input()
+  raid: RaidInfo;
 
-  constructor() { }
+  @Input()
+  memberRaidStats: MemberRaidStats[];
 
-  ngOnInit(): void {
-  }
+  @Input()
+  isLoading: boolean;
 
+  ngOnInit(): void {}
 }

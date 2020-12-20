@@ -11,11 +11,12 @@ import { Actions, ofType } from '@ngrx/effects';
 import { loadMemberProfileSuccess } from '../store/member-profiles/member-profiles.actions';
 import { Destiny2Service } from 'bungie-api-angular';
 import { RaidsService } from './raids.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-raids',
   templateUrl: './raids.component.html',
-  styleUrls: ['./raids.component.scss'],
+  styleUrls: ['./raids.component.scss']
   //providers: [RaidsService]
 })
 export class RaidsComponent implements OnInit {
@@ -152,8 +153,13 @@ export class RaidsComponent implements OnInit {
   //     return parseInt(prevCharact, 0) + characterCompletions;
   //   }, 0);
   //}
-  constructor(public raidService: RaidsService) {}
+  constructor(public raidService: RaidsService, private router: Router, private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.raidService.loadRaidStats();
+  }
+  viewRaid(key) {
+    this.router.navigate([key], {
+      relativeTo: this.route
+    });
   }
 }

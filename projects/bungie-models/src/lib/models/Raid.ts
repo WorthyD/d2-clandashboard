@@ -11,7 +11,7 @@ export interface Raid {
 export interface RaidInfo {
   raid: Raid;
   raidGG?: Raid;
-  raidPrestiege?: Raid;
-  raidPrestiegeGG?: Raid;
+  raidPrestige?: Raid;
+  raidPrestigeGG?: Raid;
   raidImage: string;
 }

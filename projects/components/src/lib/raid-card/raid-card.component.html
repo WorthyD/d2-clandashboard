@@ -1,1 +1,41 @@
-<p>raid-card works!</p>
+<mat-card>
+  <mat-card-title>
+    {{raid.raid.displayName}}
+  </mat-card-title>
+  <img mat-card-image src="{{raid.raidImage}}" alt="">
+  <mat-card-actions>
+    <div class="raid-info">
+      <div class="raid-name">
+        Clears
+      </div>
+      <div>
+        {{ memberRaidStats | raidCompletionTotal : raid.raid.key }}
+      </div>
+    </div>
+    <div class="raid-info">
+      <div class="raid-name">
+        Guided Game Clears
+      </div>
+      <div>
+        {{ memberRaidStats | raidCompletionTotal : raid.raidGG.key }}
+      </div>
+    </div>
+    <div class="raid-info" *ngIf="raid.raidPrestige">
+      <div class="raid-name">
+        Prestige Clears
+      </div>
+      <div>
+        {{ memberRaidStats | raidCompletionTotal : raid.raidPrestige.key }}
+      </div>
+    </div>
+    <div class="raid-info" *ngIf="raid.raidPrestigeGG">
+      <div class="raid-name">
+        Guided Games Prestige Clears
+      </div>
+      <div>
+        {{ memberRaidStats | raidCompletionTotal : raid.raidPrestigeGG.key }}
+      </div>
+    </div>
+
+  </mat-card-actions>
+</mat-card>

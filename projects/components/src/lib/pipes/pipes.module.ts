@@ -15,6 +15,7 @@ import { BungieDatePipe } from './bungie-date/bungie-date.pipe';
 import { BungieDateTimePipe } from './bungie-date/bungie-date-time.pipe';
 import { MemberTypePipe } from './member-type/member-type.pipe';
 import { SortByClassPipe } from './sortByClass/sort-by-class.pipe';
+import { RaidCompletionTotalPipe } from './raid-completion-total/raid-completion-total.pipe';
 
 const pipes = [
   DateAgoPipe,
@@ -31,7 +32,8 @@ const pipes = [
   BungieDatePipe,
   BungieDateTimePipe,
   MemberTypePipe,
-  SortByClassPipe
+  SortByClassPipe,
+  RaidCompletionTotalPipe
 ];
 
 @NgModule({

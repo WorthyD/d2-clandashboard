@@ -1,4 +1,4 @@
-import { Raid } from '../../models/Raid';
+import { Raid, RaidInfo } from '../../models/Raid';
 
 export const GardenOfSalvation: Raid = {
   hashes: [2659723068],
@@ -18,4 +18,10 @@ export const GardenOfSalvationGG: Raid = {
   sortOrder: 17,
   isGuidedGames: true,
   isVaulted: false
+};
+
+export const GardenOfSalvationInfo: RaidInfo = {
+  raid: GardenOfSalvation,
+  raidGG: GardenOfSalvationGG,
+  raidImage: 'https://www.bungie.net/img/destiny_content/pgcr/raid_garden_of_salvation.jpg'
 };
