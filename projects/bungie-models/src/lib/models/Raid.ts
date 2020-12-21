@@ -19,5 +19,6 @@ export interface RaidInfo {
 
 export interface TrackedMetric {
   hash: number;
+  key: string;
   displayName: string;
 }

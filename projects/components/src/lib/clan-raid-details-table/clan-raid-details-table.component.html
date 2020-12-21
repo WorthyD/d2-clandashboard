@@ -1,0 +1,41 @@
+<ng-container>
+  <!-- <ng-container *ngIf="!isLoading; else loading"> -->
+  <ng-container *ngIf="memberRaidStats && raidInfo">
+    <mat-table [dataSource]="sortedData" matSort class="mat-elevation-z8" matSortStart="desc"
+      (matSortChange)="sortData($event)">
+      <ng-container matColumnDef="loadingRow">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-header-cell>
+
+      </ng-container>
+
+      <ng-container matColumnDef="displayName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Total Clears:
+          <!-- ({{ memberRaidStats | raidCompletionTotal}}) -->
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.profile.data.userInfo.displayName}}</mat-cell>
+      </ng-container>
+
+
+
+
+      <ng-container *ngFor="let raid of raidInfo.trackedMetrics; let colIndex = index" matColumnDef="{{raid.key}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{raid.displayName}}
+          <!-- ({{ memberRaidStats | raidCompletionTotal : raid.key }})  -->
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.metrics?.data?.metrics[raid.hash]?.objectiveProgress.progress}}
+          <!-- {{element.stats[raid.key].activityCompletions}} -->
+        </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+      <mat-header-row *matHeaderRowDef="['loadingRow'] ; sticky:true"
+        [ngClass]="{'loading': isLoading, 'loading-row': true}"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </ng-container>
+</ng-container>

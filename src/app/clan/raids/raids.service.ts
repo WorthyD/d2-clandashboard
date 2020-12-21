@@ -71,6 +71,7 @@ export class RaidsService {
   );
 
   isDetailsLoading = true;
+  raidDetailInfo;
   raidDetailStats = [];
   raidDetailStats$ = combineLatest([this.preloadedInfo$, this.selectedRaid$]).pipe(
     switchMap(([[isMemberLoaded, id, clanMemberProfiles, clanMembers], selectedRaid]) => {
@@ -81,9 +82,9 @@ export class RaidsService {
       this.isDetailsLoading = true;
       this.raidDetailStats = [];
 
-      const raidInfo = AllRaidInfos.find((x) => x.raid.key.toLowerCase() === selectedRaid.toLowerCase());
+      this.raidDetailInfo = AllRaidInfos.find((x) => x.raid.key.toLowerCase() === selectedRaid.toLowerCase());
 
-      return this.clanRaidDetailsService.getClanRaidDetailStats(id, clanMembers, raidInfo).pipe(
+      return this.clanRaidDetailsService.getClanRaidDetailStats(id, clanMembers, this.raidDetailInfo).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
           this.raidDetailStats = this.raidDetailStats.concat(members);

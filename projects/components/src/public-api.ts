@@ -21,6 +21,7 @@ export * from './lib/clan-dungeon-stat-table';
 export * from './lib/clan-crucible-stats-table';
 export * from './lib/clan-gambit-stats-table';
 export * from './lib/raid-card';
+export * from './lib/clan-raid-details-table';
 
 export * from './lib/pipes/pipes.module';
 export * from './lib/shared/shared.module';

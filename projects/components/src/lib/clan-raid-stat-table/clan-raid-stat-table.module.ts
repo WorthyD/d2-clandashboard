@@ -4,7 +4,6 @@ import { ClanRaidStatTableComponent } from './clan-raid-stat-table.component';
 import { MaterialModule } from '../shared/modules/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { PipesModule } from '../pipes/pipes.module';
-//import { RaidCompletionTotalPipe } from './raid-completion-total.pipe';
 
 @NgModule({
   declarations: [ClanRaidStatTableComponent],

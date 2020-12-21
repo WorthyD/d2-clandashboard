@@ -27,18 +27,22 @@ export const DeepStoneCryptInfo: RaidInfo = {
   trackedMetrics: [
     {
       displayName: 'Completions',
+      key: 'comp',
       hash: 954805812
     },
     {
       displayName: 'Guided Games',
+      key: 'gg',
       hash: 2466440160
     },
     {
       displayName: 'Carries',
+      key: 'carries',
       hash: 2330596844
     },
     {
       displayName: 'Time',
+      key: 'time',
       hash: 3679202587
     }
   ]
