@@ -33,7 +33,7 @@
 
   <ng-container *ngFor="let raid of raidService.allRaidInfo">
     <lib-raid-card [raid]="raid" [memberRaidStats]="raidService.raidStats" [isLoading]="raidService.isLoading"
-      class="raid-card m-3">
+      (click)="viewRaid(raid.raid.key)" class="raid-card m-3">
 
     </lib-raid-card>
   </ng-container>

@@ -14,23 +14,34 @@ import * as clanMemberProfileSelectors from '../store/member-profiles/member-pro
 import * as clanIdSelectors from '../store/clan-id/clan-id.selector';
 import { getIsMembersProfilesLoaded } from '../store/member-profiles/member-profiles.selectors';
 import { bufferTime, filter, map, mergeMap, switchMap, take, tap, toArray } from 'rxjs/operators';
-import { combineLatest, forkJoin, pipe } from 'rxjs';
-import { ClanRaidsService } from '@destiny/data';
+import { BehaviorSubject, combineLatest, forkJoin, pipe } from 'rxjs';
+import { ClanRaidsService, ClanRaidDetailsService } from '@destiny/data';
+import * as clanMemberSelectors from '../store/clan-members/clan-members.selectors';
 
 @Injectable()
 export class RaidsService {
-  constructor(private store: Store<ClanState>, private actions$: Actions, private clanRaidsService: ClanRaidsService) {}
+  constructor(
+    private store: Store<ClanState>,
+    private actions$: Actions,
+    private clanRaidsService: ClanRaidsService,
+    private clanRaidDetailsService: ClanRaidDetailsService
+  ) {}
 
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
-  //  raidStats$ = this.store.pipe(select(getAllRaidStats));
-  // raidStatsLoading$ = this.store.pipe(select(getRaidStatsLoading));
   allRaidInfo = AllRaidInfos;
 
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);
-  clanMembers$ = this.store.select(clanMemberProfileSelectors.getAllMembers);
+  clanMembers$ = this.store.select(clanMemberSelectors.getAllMembers);
+  clanMemberProfiles$ = this.store.select(clanMemberProfileSelectors.getAllMembers);
+  selectedRaid$ = new BehaviorSubject('');
 
-  preloadedInfo$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMembers$]).pipe(
-    filter(([isMembersLoaded, id, m]) => isMembersLoaded === true),
+  preloadedInfo$ = combineLatest([
+    this.isMembersLoaded$,
+    this.clanId$,
+    this.clanMemberProfiles$,
+    this.clanMembers$
+  ]).pipe(
+    filter(([isMembersLoaded, id, m, cm]) => isMembersLoaded === true),
     map((x) => {
       return x;
     })
@@ -41,10 +52,10 @@ export class RaidsService {
   isLoaded = false;
   raidStats = [];
   raidStats$ = this.preloadedInfo$.pipe(
-    switchMap(([isMemberLoaded, id, clanMembers]) => {
+    switchMap(([isMemberLoaded, id, clanMemberProfiles, cm]) => {
       this.isLoading = true;
       this.raidStats = [];
-      return this.clanRaidsService.getClanRaidStatsAsync(id, clanMembers).pipe(
+      return this.clanRaidsService.getClanRaidStatsAsync(id, clanMemberProfiles).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
           this.raidStats = this.raidStats.concat(members);
@@ -59,18 +70,39 @@ export class RaidsService {
     })
   );
 
+  isDetailsLoading = true;
+  raidDetailStats = [];
+  raidDetailStats$ = combineLatest([this.preloadedInfo$, this.selectedRaid$]).pipe(
+    switchMap(([[isMemberLoaded, id, clanMemberProfiles, clanMembers], selectedRaid]) => {
+      if (!selectedRaid) {
+        return;
+      }
+
+      this.isDetailsLoading = true;
+      this.raidDetailStats = [];
+
+      const raidInfo = AllRaidInfos.find((x) => x.raid.key.toLowerCase() === selectedRaid.toLowerCase());
+
+      return this.clanRaidDetailsService.getClanRaidDetailStats(id, clanMembers, raidInfo).pipe(
+        bufferTime(500, undefined, 20),
+        mergeMap((members) => {
+          this.raidDetailStats = this.raidDetailStats.concat(members);
+          return members;
+        }),
+        toArray(),
+        map((stats) => {
+          this.isDetailsLoading = false;
+        })
+      );
+    })
+  );
+
   loadRaidStats() {
     if (this.isLoaded === false) {
       this.raidStats$.subscribe();
     }
-
-    // this.isMembersLoaded$
-    //   .pipe(
-    //     filter((f) => f === true),
-    //     take(1)
-    //   )
-    //   .subscribe((x) => {
-    //     this.store.dispatch(loadRaids());
-    //   });
+  }
+  changeRaidDetails(key) {
+    this.selectedRaid$.next(key);
   }
 }

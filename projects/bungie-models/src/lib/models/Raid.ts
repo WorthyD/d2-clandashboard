@@ -14,4 +14,10 @@ export interface RaidInfo {
   raidPrestige?: Raid;
   raidPrestigeGG?: Raid;
   raidImage: string;
+  trackedMetrics?: TrackedMetric[];
+}
+
+export interface TrackedMetric {
+  hash: number;
+  displayName: string;
 }

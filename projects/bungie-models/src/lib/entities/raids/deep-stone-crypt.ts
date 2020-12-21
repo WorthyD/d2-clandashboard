@@ -23,7 +23,25 @@ export const DeepStoneCryptGG: Raid = {
 export const DeepStoneCryptInfo: RaidInfo = {
   raid: DeepStoneCrypt,
   raidImage: 'https://www.bungie.net/img/destiny_content/pgcr/europa-raid-deep-stone-crypt.jpg',
-  raidGG: DeepStoneCryptGG
+  raidGG: DeepStoneCryptGG,
+  trackedMetrics: [
+    {
+      displayName: 'Completions',
+      hash: 954805812
+    },
+    {
+      displayName: 'Guided Games',
+      hash: 2466440160
+    },
+    {
+      displayName: 'Carries',
+      hash: 2330596844
+    },
+    {
+      displayName: 'Time',
+      hash: 3679202587
+    }
+  ]
 };
 
 //910380154
