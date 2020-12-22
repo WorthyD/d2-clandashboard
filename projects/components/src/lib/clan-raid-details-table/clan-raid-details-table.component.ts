@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { MemberProfile, RaidInfo } from 'bungie-models';
+import { MemberProfile, RaidInfo, MetricDisplayType } from 'bungie-models';
 import { Sort } from '@angular/material/sort';
 import { compare } from '../utilities/compare';
 @Component({
@@ -35,6 +35,9 @@ export class ClanRaidDetailsTableComponent implements OnInit {
   }
 
   displayedColumns: string[] = [];
+
+  displayThing = MetricDisplayType;
+
   constructor() {}
 
   updateColumns() {

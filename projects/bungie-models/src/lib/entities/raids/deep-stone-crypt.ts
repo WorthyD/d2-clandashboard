@@ -1,4 +1,4 @@
-import { Raid, RaidInfo } from '../../models/Raid';
+import { MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
 
 export const DeepStoneCrypt: Raid = {
   hashes: [910380154],
@@ -43,7 +43,8 @@ export const DeepStoneCryptInfo: RaidInfo = {
     {
       displayName: 'Time',
       key: 'time',
-      hash: 3679202587
+      hash: 3679202587,
+      displayType: MetricDisplayType.time
     }
   ]
 };

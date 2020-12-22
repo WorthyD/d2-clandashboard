@@ -20,14 +20,22 @@
 
 
 
-      <ng-container *ngFor="let raid of raidInfo.trackedMetrics; let colIndex = index" matColumnDef="{{raid.key}}">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>{{raid.displayName}}
+      <ng-container *ngFor="let metric of raidInfo.trackedMetrics; let colIndex = index" matColumnDef="{{metric.key}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{metric.displayName}}
           <!-- ({{ memberRaidStats | raidCompletionTotal : raid.key }})  -->
         </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          {{element.metrics?.data?.metrics[raid.hash]?.objectiveProgress.progress}}
-          <!-- {{element.stats[raid.key].activityCompletions}} -->
-        </mat-cell>
+        <ng-container *ngIf="metric.displayType === displayThing.time; ">
+          <mat-cell *matCellDef="let element">
+            {{element.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress | playtimems}}
+          </mat-cell>
+        </ng-container>
+        <ng-container *ngIf="metric.displayType !== displayThing.time; ">
+          <mat-cell *matCellDef="let element">
+            {{element.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress}}
+          </mat-cell>
+        </ng-container>
+
+
       </ng-container>
 
 

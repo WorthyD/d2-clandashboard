@@ -21,4 +21,10 @@ export interface TrackedMetric {
   hash: number;
   key: string;
   displayName: string;
+  displayType?: MetricDisplayType;
+}
+
+export enum MetricDisplayType {
+  numeric,
+  time
 }
