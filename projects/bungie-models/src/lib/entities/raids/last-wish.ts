@@ -1,4 +1,4 @@
-import { Raid, RaidInfo } from '../../models/Raid';
+import { MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
 
 export const LastWish: Raid = {
   hashes: [2122313384],
@@ -23,5 +23,28 @@ export const LastWishGG: Raid = {
 export const LastWishInfo: RaidInfo = {
   raid: LastWish,
   raidGG: LastWishGG,
-  raidImage: 'https://www.bungie.net/img/destiny_content/pgcr/raid_beanstalk.jpg'
+  raidImage: 'https://www.bungie.net/img/destiny_content/pgcr/raid_beanstalk.jpg',
+  trackedMetrics: [
+    {
+      displayName: 'Completions',
+      key: 'comp',
+      hash: 905240985
+    },
+    {
+      displayName: 'Carries',
+      key: 'carries',
+      hash: 1139173585
+    },
+    {
+      displayName: 'Guided Games',
+      key: 'gg',
+      hash: 2657968781
+    },
+    {
+      displayName: 'Time Trial',
+      key: 'time',
+      hash: 4164362538,
+      displayType: MetricDisplayType.time
+    }
+  ]
 };

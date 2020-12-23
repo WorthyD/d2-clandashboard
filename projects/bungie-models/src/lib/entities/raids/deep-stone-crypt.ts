@@ -31,17 +31,17 @@ export const DeepStoneCryptInfo: RaidInfo = {
       hash: 954805812
     },
     {
-      displayName: 'Guided Games',
-      key: 'gg',
-      hash: 2466440160
-    },
-    {
       displayName: 'Carries',
       key: 'carries',
       hash: 2330596844
     },
     {
-      displayName: 'Time',
+      displayName: 'Guided Games',
+      key: 'gg',
+      hash: 2466440160
+    },
+    {
+      displayName: 'Time Trial',
       key: 'time',
       hash: 3679202587,
       displayType: MetricDisplayType.time
