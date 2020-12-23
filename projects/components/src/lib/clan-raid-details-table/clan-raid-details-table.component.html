@@ -11,7 +11,7 @@
       </ng-container>
 
       <ng-container matColumnDef="displayName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Total Clears:
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Display Name:
           <!-- ({{ memberRaidStats | raidCompletionTotal}}) -->
         </mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.profile.data.userInfo.displayName}}</mat-cell>
@@ -22,7 +22,10 @@
 
       <ng-container *ngFor="let metric of raidInfo.trackedMetrics; let colIndex = index" matColumnDef="{{metric.key}}">
         <mat-header-cell *matHeaderCellDef mat-sort-header>{{metric.displayName}}
-          <!-- ({{ memberRaidStats | raidCompletionTotal : raid.key }})  -->
+
+          <ng-container *ngIf="metric.displayType !== displayThing.time; ">
+            ({{ memberRaidStats | metricTotal : metric.hash }})
+          </ng-container>
         </mat-header-cell>
         <ng-container *ngIf="metric.displayType === displayThing.time; ">
           <mat-cell *matCellDef="let element">

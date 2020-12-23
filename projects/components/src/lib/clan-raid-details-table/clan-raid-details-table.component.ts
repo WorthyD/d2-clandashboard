@@ -53,6 +53,7 @@ export class ClanRaidDetailsTableComponent implements OnInit {
       this.sortedData = data;
       return;
     }
+    const metric = this.raidInfo.trackedMetrics.find(x => x.key === sort.active);
     this.sortedData = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
@@ -63,7 +64,11 @@ export class ClanRaidDetailsTableComponent implements OnInit {
             isAsc
           );
         default:
-        // return compare(a.stats[sort.active]?.activityCompletions, b.stats[sort.active]?.activityCompletions, isAsc);
+          return compare(
+            a.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress ?? 0,
+            b.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress ?? 0,
+            isAsc
+          );
       }
     });
   }
