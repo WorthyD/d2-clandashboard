@@ -53,7 +53,7 @@ export class ClanRaidDetailsTableComponent implements OnInit {
       this.sortedData = data;
       return;
     }
-    const metric = this.raidInfo.trackedMetrics.find(x => x.key === sort.active);
+    const metric = this.raidInfo.trackedMetrics.find((x) => x.key === sort.active);
     this.sortedData = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
@@ -64,11 +64,24 @@ export class ClanRaidDetailsTableComponent implements OnInit {
             isAsc
           );
         default:
-          return compare(
-            a.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress ?? 0,
-            b.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress ?? 0,
-            isAsc
-          );
+          let alt = 0;
+
+          // Prevent non-completions from overtaking time trials
+          if (metric.displayType === MetricDisplayType.time && isAsc) {
+            alt = 9999999999999;
+          }
+
+          const first =
+            a.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress > 0
+              ? a.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress
+              : alt;
+
+          const second =
+            b.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress > 0
+              ? b.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress
+              : alt;
+
+          return compare(first, second, isAsc);
       }
     });
   }

@@ -2,10 +2,11 @@ export interface Raid {
   displayName: string;
   abbreviatedName: string;
   key: string;
-  hashes: number[];
+  activityHashes: number[];
   sortOrder: number;
   isGuidedGames: boolean;
   isVaulted: boolean;
+  completionMetricHash: number;
 }
 
 export interface RaidInfo {
@@ -22,6 +23,7 @@ export interface TrackedMetric {
   key: string;
   displayName: string;
   displayType?: MetricDisplayType;
+  toolTip?: string;
 }
 
 export enum MetricDisplayType {

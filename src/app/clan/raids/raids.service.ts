@@ -55,7 +55,7 @@ export class RaidsService {
     switchMap(([isMemberLoaded, id, clanMemberProfiles, cm]) => {
       this.isLoading = true;
       this.raidStats = [];
-      return this.clanRaidsService.getClanRaidStatsAsync(id, clanMemberProfiles).pipe(
+      return this.clanRaidsService.getClanRaidStatsAsync(id, cm).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
           this.raidStats = this.raidStats.concat(members);

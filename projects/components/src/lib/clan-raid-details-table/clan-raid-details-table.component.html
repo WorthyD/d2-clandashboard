@@ -21,7 +21,7 @@
 
 
       <ng-container *ngFor="let metric of raidInfo.trackedMetrics; let colIndex = index" matColumnDef="{{metric.key}}">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>{{metric.displayName}}
+        <mat-header-cell *matHeaderCellDef mat-sort-header [matTooltip]="metric.toolTip">{{metric.displayName}}
 
           <ng-container *ngIf="metric.displayType !== displayThing.time; ">
             ({{ memberRaidStats | metricTotal : metric.hash }})

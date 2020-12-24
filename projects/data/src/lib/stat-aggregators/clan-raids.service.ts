@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AllRaids, MemberRaidStats } from '@destiny/models';
+import { AllRaids, ClanMember, MemberRaidStats } from '@destiny/models';
 import { MemberProfile } from 'bungie-models';
 
 import { DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api-angular';
 import { from, of, Observable } from 'rxjs';
-import { switchMap, take, takeUntil, filter, withLatestFrom, mergeMap, toArray, map } from 'rxjs/operators';
+import { switchMap, take, takeUntil, filter, withLatestFrom, mergeMap, toArray, map, tap } from 'rxjs/operators';
 import { MemberActivityStatsService } from '../clan-db/member-activity-stats/member-activity-stats.service';
+import { MemberMetricsService } from '../clan-db';
 // export interface MemberAggregateActivityStats {
 //   member: any;
 //   //  activityStats:
@@ -20,22 +21,26 @@ export class ClanRaidsService {
   readonly CONCURRENT_COUNT = 10;
   readonly TRACKED_STATS = ['activityCompletions'];
   readonly TACKED_ACTIVITIES = AllRaids.map((raid) => {
-    return raid.hashes;
+    return raid.activityHashes;
   }).reduce((acc, val) => acc.concat(val), []);
 
-  constructor(private memberActivityService: MemberActivityStatsService) {}
+  readonly TRACKED_METRICS = AllRaids.map((raid) => raid.completionMetricHash);
 
-  getClanRaidStatsAsync(clanId: number, clanMemberProfiles: MemberProfile[]) {
+  constructor(
+    private memberActivityService: MemberActivityStatsService,
+    private memberMetricService: MemberMetricsService
+  ) {}
+
+  getClanRaidStatsAsync(clanId: number, clanMemberProfiles: ClanMember[]) {
     return from(clanMemberProfiles).pipe(
       mergeMap((member) => {
         return this.getMemberRaidStats(clanId, member);
-      }, this.CONCURRENT_COUNT),
+      }, this.CONCURRENT_COUNT)
       //toArray()
     );
   }
 
-
-  getClanRaidStats(clanId: number, clanMemberProfiles: MemberProfile[]) {
+  getClanRaidStats(clanId: number, clanMemberProfiles: ClanMember[]) {
     return from(clanMemberProfiles).pipe(
       mergeMap((member) => {
         return this.getMemberRaidStats(clanId, member);
@@ -44,8 +49,9 @@ export class ClanRaidsService {
     );
   }
 
-  private getMemberRaidStats(clanId: number, member: MemberProfile): Observable<MemberRaidStats> {
+  private getMemberRaidStats(clanId: number, member: ClanMember): Observable<MemberRaidStats> {
     //console.log(member);
+    /*
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId: number) => {
         return this.getCharacterRaidStats(clanId, member, characterId);
@@ -56,6 +62,16 @@ export class ClanRaidsService {
         return {
           memberProfile: { profile: member.profile },
           stats: this.combineCharacterActivityStats(characterStats)
+        };
+      })
+    );
+  */
+
+    return this.memberMetricService.getSerializedProfile(clanId.toString(), member, this.TRACKED_METRICS).pipe(
+      map((memberProfile) => {
+        return {
+          memberProfile: { profile: memberProfile.profile },
+          stats: this.combineCharacterActivityStats(memberProfile)
         };
       })
     );
@@ -70,14 +86,32 @@ export class ClanRaidsService {
       this.TRACKED_STATS
     );
   }
-  private combineCharacterActivityStats(stats) {
+
+  private combineCharacterActivityStats(memberProfile: MemberProfile) {
     const statsObj = {};
     AllRaids.forEach((x) => {
-      statsObj[x.key] = this.combineStatValues(stats, x.hashes);
+      //statsObj[x.key] = this.combineStatValues(memberProfile, x.completionMetricHash);
+      statsObj[x.key] = {
+        activityCompletions:
+          memberProfile.metrics?.data?.metrics[x.completionMetricHash]?.objectiveProgress.progress ?? 0
+      };
     });
     return statsObj;
   }
-  private combineStatValues(stats, activityHashes) {
+
+  private combineStatValues(memberProfile, metricHash) {
+    return null;
+  }
+
+  private combineCharacterActivityStats2(stats) {
+    const statsObj = {};
+    AllRaids.forEach((x) => {
+      statsObj[x.key] = this.combineStatValues2(stats, x.activityHashes);
+    });
+    return statsObj;
+  }
+
+  private combineStatValues2(stats, activityHashes) {
     const statValues = {};
 
     this.TRACKED_STATS.forEach((x) => {

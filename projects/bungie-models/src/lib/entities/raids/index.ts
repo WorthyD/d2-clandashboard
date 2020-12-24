@@ -24,13 +24,13 @@ export * from './deep-stone-crypt';
 
 export const AllRaids = [
   Leviathan,
-  LeviathanGuidedGames,
+  //LeviathanGuidedGames,
   LeviathanPrestige,
   EaterOfWorlds,
-  EaterOfWorldsGG,
+  //EaterOfWorldsGG,
   EaterOfWorldsPrestige,
   SpireOfStars,
-  SpireOfStarsGG,
+  //SpireOfStarsGG,
   SpireOfStarsPrestige,
   LastWishGG,
   LastWish,
