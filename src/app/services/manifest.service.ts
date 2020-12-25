@@ -18,12 +18,14 @@ import {
   ActivityModeService,
   PresentationNodeDefinitionService
 } from '@destiny/data';
+import { NGXLogger } from 'ngx-logger';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ManifestService {
   constructor(
+    private logger: NGXLogger,
     private data: DataService,
     private activityService: ActivitiesService,
     private activityModeService: ActivityModeService,

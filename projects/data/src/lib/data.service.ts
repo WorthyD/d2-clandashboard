@@ -1,24 +1,13 @@
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import {
-  catchError,
-  map,
-  switchMap,
-  tap,
-  distinctUntilChanged,
-  first,
-  take,
-  filter,
-  withLatestFrom
-} from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 import { Destiny2Service } from 'bungie-api-angular';
 import { ManifestDatabaseService } from './services/manifest-database.service';
 
-// import { requireDatabase, getAllRecords } from './database';
-import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpRequest } from '@angular/common/http';
 import { CachedManifest } from './models/CachedManifest';
+import { NGXLogger } from 'ngx-logger';
 
 const DOWNLOADING = 'downloading manifest';
 export const STATUS_EXTRACTING_TABLES = 'extracting tables';
@@ -48,7 +37,7 @@ const VERSION = 'v1';
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private d2service: Destiny2Service, private db: ManifestDatabaseService) {}
+  constructor(private logger: NGXLogger, private d2service: Destiny2Service, private db: ManifestDatabaseService) {}
 
   private getManifest(language: string) {
     return this.d2service.destiny2GetDestinyManifest().pipe(
@@ -80,7 +69,8 @@ export class DataService {
       switchMap((cachedValue) => {
         const versionKey = `${VERSION}:${dbPath}`;
 
-        if (cachedValue && cachedValue.length > 0) {
+        if (cachedValue && cachedValue.length > 0  ) {
+          this.logger.info('Cached Manifest', cachedValue);
           return cachedValue;
         }
 
@@ -101,8 +91,11 @@ export class DataService {
   public loadManifestData(language: string = 'en', tableNames): Observable<CachedManifest> {
     return this.db.getValues('manifest').allData.pipe(
       switchMap((x) => this.getManifest(language)),
-      switchMap((path) => this.allDataFromRemote(path, tableNames)),
-      map((definitions) => definitions)
+      switchMap((path) => this.requestDefinitionsArchive(path, tableNames)),
+      map((definitions) => {
+        console.log(definitions);
+        return definitions;
+      })
     );
   }
 }

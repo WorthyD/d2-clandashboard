@@ -1,11 +1,11 @@
 import { openDB, deleteDB, IDBPDatabase } from 'idb';
 import { ReplaySubject, Subject } from 'rxjs';
 
-const DB_VERSION = 1;
+const DB_VERSION = 10;
 
-export type StoreId = 'manifestBlob' | 'allData';
+export type StoreId = 'manifestBlob' | 'allData' | 'table3333';
 
-export const STORE_IDS: StoreId[] = ['manifestBlob', 'allData'];
+export const STORE_IDS: StoreId[] = ['manifestBlob', 'allData', 'table3333'];
 
 // TODO: Add Angular decorator.
 export class AppIndexedDb {
