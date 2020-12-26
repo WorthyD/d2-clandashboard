@@ -15,29 +15,12 @@ export const STATUS_UNZIPPING = 'unzipping';
 export const STATUS_DONE = 'done';
 
 const VERSION = 'v1';
-/*
-[
-                                'DestinyChecklistDefinition',
-                                'DestinyObjectiveDefinition',
-                                'DestinyStatDefinition',
-                                'DestinyVendorDefinition',
-                                'DestinyInventoryItemDefinition',
-                                'DestinyClassDefinition',
-                                'DestinySandboxPerkDefinition',
-                                'DestinyEnergyTypeDefinition',
-                                'DestinyCollectibleDefinition',
-                                'DestinyPresentationNodeDefinition',
-                                'DestinyRecordDefinition',
-                                'DestinyActivityModeDefinition',
-                                'DestinyPlaceDefinition',
-                                'DestinyFactionDefinition'
-                            ]
-                            */
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private logger: NGXLogger, private d2service: Destiny2Service, private db: ManifestDatabaseService) {}
+  constructor(private d2service: Destiny2Service, private db: ManifestDatabaseService) {}
 
   private getManifest(language: string) {
     return this.d2service.destiny2GetDestinyManifest().pipe(
@@ -47,9 +30,9 @@ export class DataService {
     );
   }
 
-  private allDataFromRemote(dbPath, tablesNames) {
-    return this.requestDefinitionsArchive(dbPath, tablesNames);
-  }
+  // private allDataFromRemote(dbPath, tablesNames) {
+  //   return this.requestDefinitionsArchive(dbPath, tablesNames);
+  // }
 
   pruneTables(obj, keys) {
     if (!keys.length) {
@@ -69,8 +52,7 @@ export class DataService {
       switchMap((cachedValue) => {
         const versionKey = `${VERSION}:${dbPath}`;
 
-        if (cachedValue && cachedValue.length > 0  ) {
-          this.logger.info('Cached Manifest', cachedValue);
+        if (cachedValue && cachedValue.length > 0) {
           return cachedValue;
         }
 

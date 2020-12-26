@@ -64,6 +64,7 @@ describe('ClanMemberActivityService', () => {
         expect(updateSpy).toHaveBeenCalledTimes(1);
       });
     });
+    /*
     it('should get all recent activity', () => {
       // const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
@@ -99,6 +100,8 @@ describe('ClanMemberActivityService', () => {
         expect(serviceSpy).toHaveBeenCalledTimes(6);
       });
     });
+    */
+   /*
     it('should get all recent activity and stop when done', () => {
       // const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
@@ -137,6 +140,8 @@ describe('ClanMemberActivityService', () => {
         expect(x.activities.length).toBe(4);
       });
     });
+    */
+    /*
     it('should get all recent activity and stop when done at max page size', () => {
       // const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
@@ -157,6 +162,7 @@ describe('ClanMemberActivityService', () => {
         expect(x.activities.length).toBe(68);
       });
     });
+    */
 
     // todo: Fix later
     it('should get profile from DB and not call service if cache is good', async (done) => {
