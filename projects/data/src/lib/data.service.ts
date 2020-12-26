@@ -51,8 +51,10 @@ export class DataService {
     return this.db.getValues('manifest').allData.pipe(
       switchMap((cachedValue) => {
         const versionKey = `${VERSION}:${dbPath}`;
+        console.log('object', cachedValue);
 
         if (cachedValue && cachedValue.length > 0) {
+          console.log('returning cached valuye');
           return cachedValue;
         }
 
