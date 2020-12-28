@@ -21,7 +21,11 @@ const VERSION = 'v1';
   providedIn: 'root'
 })
 export class DataService {
-  constructor(@Inject(WindowToken) private window: Window, private d2service: Destiny2Service, private db: ManifestDatabaseService) {}
+  constructor(
+    @Inject(WindowToken) private window: Window,
+    private d2service: Destiny2Service,
+    private db: ManifestDatabaseService
+  ) {}
 
   private getManifest(language: string) {
     return this.d2service.destiny2GetDestinyManifest().pipe(
@@ -52,14 +56,12 @@ export class DataService {
     return this.db.getValues('manifest').allData.pipe(
       switchMap((cachedValue) => {
         const versionKey = `${VERSION}:${dbPath}`;
-        console.log('object', cachedValue);
 
-        if (cachedValue && cachedValue.length > 0) {
-          console.log('returning cached valuye');
+        if (cachedValue && cachedValue.length > 0 && cachedValue.find((x) => x.id === versionKey)) {
           return cachedValue;
         }
 
-        return fetch(`https://www.bungie.net${dbPath}`).then((x) => {
+        return this.window.fetch(`https://www.bungie.net${dbPath}`).then((x) => {
           return x.json().then((y) => {
             const prunedTables = this.pruneTables(y, tableNames);
             const dbObject = { id: versionKey, data: prunedTables };
@@ -78,7 +80,6 @@ export class DataService {
       switchMap((x) => this.getManifest(language)),
       switchMap((path) => this.requestDefinitionsArchive(path, tableNames)),
       map((definitions) => {
-        console.log(definitions);
         return definitions;
       })
     );

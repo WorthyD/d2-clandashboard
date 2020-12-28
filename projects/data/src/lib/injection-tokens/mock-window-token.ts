@@ -1,3 +1,6 @@
 export const NO_WINDOW_MOCK = {
-  fetch: () => null
+  fetch: () => {
+    console.log('alert');
+    return null;
+  }
 };
