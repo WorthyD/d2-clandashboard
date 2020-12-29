@@ -49,3 +49,4 @@ src/environments/keys.ts
 # Local Netlify folder
 .netlify
 debug.log
+*.log

@@ -8,7 +8,7 @@ import { WindowToken } from './injection-tokens/window-token';
 import { ManifestDatabaseService } from './services/manifest-database.service';
 import { NO_WINDOW_MOCK } from './injection-tokens/mock-window-token';
 
-describe('DataService', () => {
+fdescribe('DataService', () => {
   let service: DataService;
   let apiService: Destiny2Service;
   let dbService: ManifestDatabaseService;
@@ -29,16 +29,18 @@ describe('DataService', () => {
     expect(service).toBeTruthy();
   });
   describe('requestDefinitionsArchive', () => {
-    it('return cached value', async (done) => {
+    fit('return cached value', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getValues').and.callFake((repo) => {
         console.log('spying');
         return {
-          allData: of([{ id: 'v1:blah', data: [] }])
+          allData: new Promise((res, rej) => {
+            res([{ id: 'v1:blah', data: [] }]);
+          })
         };
       });
       const dbUpdateSpy = spyOn(dbService, 'update').and.callThrough();
 
-      service.requestDefinitionsArchive('blah', []).subscribe((x) => {
+      service.requestDefinitionsArchive('blah', []).then((x) => {
         expect(x).toBeTruthy();
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(dbUpdateSpy).toHaveBeenCalledTimes(0);
@@ -64,7 +66,7 @@ describe('DataService', () => {
       });
       const dbUpdateSpy = spyOn(dbService, 'update').and.callThrough();
 
-      service.requestDefinitionsArchive('v2:blah', []).subscribe((x) => {
+      service.requestDefinitionsArchive('v2:blah', []).then((x) => {
         expect(x).toBeTruthy();
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(dbUpdateSpy).toHaveBeenCalledTimes(1);

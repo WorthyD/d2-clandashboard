@@ -1,20 +1,17 @@
-import {Injectable} from '@angular/core';
-import {AppIndexedDb, StoreId} from '../utility/app-indexed-db';
+import { Injectable } from '@angular/core';
+import { AppIndexedDb, StoreId } from '../utility/app-indexed-db';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ManifestDatabaseService {
-
   private database: AppIndexedDb;
 
-  getValues(repository: string) {
-    return this.getDatabase(repository).initialValues;
+  getValues(repository: string): Promise<any[]> {
+    return this.getDatabase(repository).getAllData('allData');
   }
 
   update(repository: string, type: StoreId, entities: any[]): Promise<void> {
-
-
     return this.getDatabase(repository).updateValues(entities, type);
   }
 
@@ -27,7 +24,9 @@ export class ManifestDatabaseService {
   }
 
   private getDatabase(repository: string) {
+    console.log('getting database', repository);
     if (this.database && this.database.name === repository) {
+      console.log('db found', repository);
       return this.database;
     }
 
@@ -36,6 +35,7 @@ export class ManifestDatabaseService {
     }
 
     this.database = new AppIndexedDb(repository);
+    console.log(this.database);
     return this.database;
   }
 }

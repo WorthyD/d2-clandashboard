@@ -53,35 +53,34 @@ export class DataService {
   }
 
   requestDefinitionsArchive(dbPath, tableNames) {
-    return this.db.getValues('manifest').allData.pipe(
-      switchMap((cachedValue) => {
-        const versionKey = `${VERSION}:${dbPath}`;
+    return this.db.getValues('manifest').then((cachedValue) => {
+      const versionKey = `${VERSION}:${dbPath}`;
 
-        if (cachedValue && cachedValue.length > 0 && cachedValue.find((x) => x.id === versionKey)) {
-          return cachedValue;
-        }
+      if (cachedValue && cachedValue.length > 0 && cachedValue.find((x) => x.id === versionKey)) {
+        return cachedValue.find((x) => x.id === versionKey);
+      }
 
-        return this.window.fetch(`https://www.bungie.net${dbPath}`).then((x) => {
-          return x.json().then((y) => {
-            const prunedTables = this.pruneTables(y, tableNames);
-            const dbObject = { id: versionKey, data: prunedTables };
-            this.db.update('manifest', 'allData', [dbObject]);
-            // TODO: Clean up old DB
+      return this.window.fetch(`https://www.bungie.net${dbPath}`).then((x) => {
+        return x.json().then((y) => {
+          const prunedTables = this.pruneTables(y, tableNames);
+          const dbObject = { id: versionKey, data: prunedTables };
+          this.db.update('manifest', 'allData', [dbObject]);
+          // TODO: Clean up old DB
 
-            return dbObject;
-          });
+          return dbObject;
         });
-      })
-    );
+      });
+    });
   }
 
-  public loadManifestData(language: string = 'en', tableNames): Observable<CachedManifest> {
-    return this.db.getValues('manifest').allData.pipe(
-      switchMap((x) => this.getManifest(language)),
-      switchMap((path) => this.requestDefinitionsArchive(path, tableNames)),
-      map((definitions) => {
-        return definitions;
+  public loadManifestData(language: string = 'en', tableNames): Promise<CachedManifest> {
+    console.log('getting values');
+    return this.db
+      .getValues('manifest')
+      .then((x) => {
+        console.log('-----------------------------switch mapping------------------------');
+        return this.getManifest(language);
       })
-    );
+      .then((path) => this.requestDefinitionsArchive(path, tableNames));
   }
 }

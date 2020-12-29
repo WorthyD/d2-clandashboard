@@ -9,7 +9,8 @@ import {
   first,
   take,
   filter,
-  withLatestFrom
+  withLatestFrom,
+  delay
 } from 'rxjs/operators';
 import {
   DataService,
@@ -35,6 +36,7 @@ export class ManifestService {
 
   // TODO: Call for api/settings and look at destiny2CoreSettings
   loadManifest() {
+    console.log('loading manifest');
     const tables = [
       //            'DestinyChecklistDefinition',
       //            'DestinyObjectiveDefinition',
@@ -57,9 +59,9 @@ export class ManifestService {
     ];
     return this.data
       .loadManifestData('en', tables)
-      .pipe(take(1))
-      .toPromise()
+      //.pipe(delay(2000), take(1))
       .then((x) => {
+        console.log('erroring');
         if (x && x.data) {
           if (x.data.DestinyActivityModeDefinition) {
             this.activityModeService.initializeCache(x.data.DestinyActivityModeDefinition);
