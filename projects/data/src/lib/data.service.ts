@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -8,6 +8,7 @@ import { ManifestDatabaseService } from './services/manifest-database.service';
 
 import { CachedManifest } from './models/CachedManifest';
 import { NGXLogger } from 'ngx-logger';
+import { WindowToken } from './injection-tokens/window-token';
 
 const DOWNLOADING = 'downloading manifest';
 export const STATUS_EXTRACTING_TABLES = 'extracting tables';
@@ -20,7 +21,11 @@ const VERSION = 'v1';
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private d2service: Destiny2Service, private db: ManifestDatabaseService) {}
+  constructor(
+    @Inject(WindowToken) private window: Window,
+    private d2service: Destiny2Service,
+    private db: ManifestDatabaseService
+  ) {}
 
   private getManifest(language: string) {
     return this.d2service.destiny2GetDestinyManifest().pipe(
@@ -48,38 +53,34 @@ export class DataService {
   }
 
   requestDefinitionsArchive(dbPath, tableNames) {
-    return this.db.getValues('manifest').allData.pipe(
-      switchMap((cachedValue) => {
-        const versionKey = `${VERSION}:${dbPath}`;
-        console.log('object', cachedValue);
+    return this.db.getValues('manifest').then((cachedValue) => {
+      const versionKey = `${VERSION}:${dbPath}`;
 
-        if (cachedValue && cachedValue.length > 0) {
-          console.log('returning cached valuye');
-          return cachedValue;
-        }
+      if (cachedValue && cachedValue.length > 0 && cachedValue.find((x) => x.id === versionKey)) {
+        return cachedValue.find((x) => x.id === versionKey);
+      }
 
-        return fetch(`https://www.bungie.net${dbPath}`).then((x) => {
-          return x.json().then((y) => {
-            const prunedTables = this.pruneTables(y, tableNames);
-            const dbObject = { id: versionKey, data: prunedTables };
-            this.db.update('manifest', 'allData', [dbObject]);
-            // TODO: Clean up old DB
+      return this.window.fetch(`https://www.bungie.net${dbPath}`).then((x) => {
+        return x.json().then((y) => {
+          const prunedTables = this.pruneTables(y, tableNames);
+          const dbObject = { id: versionKey, data: prunedTables };
+          this.db.update('manifest', 'allData', [dbObject]);
+          // TODO: Clean up old DB
 
-            return dbObject;
-          });
+          return dbObject;
         });
-      })
-    );
+      });
+    });
   }
 
-  public loadManifestData(language: string = 'en', tableNames): Observable<CachedManifest> {
-    return this.db.getValues('manifest').allData.pipe(
-      switchMap((x) => this.getManifest(language)),
-      switchMap((path) => this.requestDefinitionsArchive(path, tableNames)),
-      map((definitions) => {
-        console.log(definitions);
-        return definitions;
+  public loadManifestData(language: string = 'en', tableNames): Promise<CachedManifest> {
+    console.log('getting values');
+    return this.db
+      .getValues('manifest')
+      .then((x) => {
+        console.log('-----------------------------switch mapping------------------------');
+        return this.getManifest(language);
       })
-    );
+      .then((path) => this.requestDefinitionsArchive(path, tableNames));
   }
 }

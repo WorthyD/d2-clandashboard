@@ -97,8 +97,35 @@
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
           </svg>
         </div>
+
+
       </div>
     </app-root>
+    <a id="btnPurge">Purge DB</a>
+    <script>
+      window.addEventListener('load', function () {
+        document.getElementById('btnPurge').addEventListener('click', async () => {
+          // The big red button
+          // const dbs = await window.indexedDB.databases()
+          // dbs.forEach(db => {
+          //   console.log('deleting', db.name);
+          //   window.indexedDB.deleteDatabase(db.name)
+          // })
+          console.log('deleing');
+          var req = indexedDB.deleteDatabase('manifest');
+          req.onsuccess = function () {
+            console.log("Deleted database successfully");
+          };
+          req.onerror = function () {
+            console.log("Couldn't delete database");
+          };
+          req.onblocked = function () {
+            console.log("Couldn't delete database due to the operation being blocked");
+          };
+        });
+      })
+
+    </script>
   </body>
 
 </html>
