@@ -54,11 +54,10 @@ export class DataService {
 
   requestDefinitionsArchive(dbPath, tableNames) {
     return this.db.getValues('manifest').then((cachedValue) => {
-      console.log('---------', cachedValue);
-      console.log('---- dbPath-----', dbPath);
       const versionKey = `${VERSION}:${dbPath}`;
 
       if (cachedValue && cachedValue.length > 0 && cachedValue.find((x) => x.id === versionKey)) {
+        this.db.closeDatabase('manifest');
         return cachedValue.find((x) => x.id === versionKey);
       }
 
@@ -66,8 +65,9 @@ export class DataService {
         return x.json().then((y) => {
           const prunedTables = this.pruneTables(y, tableNames);
           const dbObject = { id: versionKey, data: prunedTables };
-          this.db.update('manifest', 'allData', [dbObject]);
-          // TODO: Clean up old DB
+          this.db.update('manifest', 'allData', [dbObject]).then((db) => {
+            this.db.closeDatabase('manifest');
+          });
 
           return dbObject;
         });
@@ -76,13 +76,8 @@ export class DataService {
   }
 
   public loadManifestData(language: string = 'en', tableNames): Promise<CachedManifest> {
-    console.log('getting values');
-    return this.db
-      .getValues('manifest')
-      .then((x) => {
-        console.log('-----------------------------switch mapping------------------------');
-        return this.getManifest(language).toPromise();
-      })
+    return this.getManifest(language)
+      .toPromise()
       .then((path) => this.requestDefinitionsArchive(path, tableNames));
   }
 }

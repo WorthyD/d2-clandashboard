@@ -11,6 +11,10 @@ export class ManifestDatabaseService {
     return this.getDatabase(repository).getAllData('allData');
   }
 
+  closeDatabase(repository: string) {
+    return this.getDatabase(repository).close();
+  }
+
   update(repository: string, type: StoreId, entities: any[]): Promise<void> {
     return this.getDatabase(repository).updateValues(entities, type);
   }
@@ -24,9 +28,7 @@ export class ManifestDatabaseService {
   }
 
   private getDatabase(repository: string) {
-    console.log('getting database', repository);
     if (this.database && this.database.name === repository) {
-      console.log('db found', repository);
       return this.database;
     }
 
@@ -35,7 +37,6 @@ export class ManifestDatabaseService {
     }
 
     this.database = new AppIndexedDb(repository);
-    //console.log(this.database);
     return this.database;
   }
 }
