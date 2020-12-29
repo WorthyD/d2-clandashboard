@@ -9,7 +9,8 @@ import {
   first,
   take,
   filter,
-  withLatestFrom
+  withLatestFrom,
+  delay
 } from 'rxjs/operators';
 import {
   DataService,
@@ -18,12 +19,14 @@ import {
   ActivityModeService,
   PresentationNodeDefinitionService
 } from '@destiny/data';
+import { NGXLogger } from 'ngx-logger';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ManifestService {
   constructor(
+    private logger: NGXLogger,
     private data: DataService,
     private activityService: ActivitiesService,
     private activityModeService: ActivityModeService,
@@ -53,30 +56,30 @@ export class ManifestService {
       //            'DestinyPlaceDefinition',
       //            'DestinyFactionDefinition'
     ];
-    return this.data
-      .loadManifestData('en', tables)
-      .pipe(take(1))
-      .toPromise()
-      .then((x) => {
-        if (x && x.data) {
-          if (x.data.DestinyActivityModeDefinition) {
-            this.activityModeService.initializeCache(x.data.DestinyActivityModeDefinition);
-          }
-          if (x.data.DestinyActivityDefinition) {
-            this.activityService.initializeCache(x.data.DestinyActivityDefinition);
-          }
+    return (
+      this.data
+        .loadManifestData('en', tables)
+        .then((x) => {
+          if (x && x.data) {
+            if (x.data.DestinyActivityModeDefinition) {
+              this.activityModeService.initializeCache(x.data.DestinyActivityModeDefinition);
+            }
+            if (x.data.DestinyActivityDefinition) {
+              this.activityService.initializeCache(x.data.DestinyActivityDefinition);
+            }
 
-          if (x.data.DestinyMilestoneDefinition) {
-            this.milestoneDefinitionService.initializeCache(x.data.DestinyMilestoneDefinition);
+            if (x.data.DestinyMilestoneDefinition) {
+              this.milestoneDefinitionService.initializeCache(x.data.DestinyMilestoneDefinition);
+            }
+            if (x.data.DestinyPresentationNodeDefinition) {
+              this.presentationNodeDefinitionService.initializeCache(x.data.DestinyPresentationNodeDefinition);
+            }
           }
-          if (x.data.DestinyPresentationNodeDefinition) {
-            this.presentationNodeDefinitionService.initializeCache(x.data.DestinyPresentationNodeDefinition);
-          }
-        }
-        return true;
-      })
-      .catch((err: any) => {
-        console.error(err);
-      });
+          return true;
+        })
+        .catch((err: any) => {
+          console.error(err);
+        })
+    );
   }
 }

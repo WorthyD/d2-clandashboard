@@ -20,7 +20,7 @@ export function profileSerializer(p: MemberProfile, progressionHashes: any[]): M
     },
     characters: p.characters,
     characterProgressions: {
-      data: getCharacterProgressions(p.characterProgressions.data, progressionHashes)
+      data: getCharacterProgressions(p.characterProgressions?.data, progressionHashes)
     }
   };
 }
@@ -42,12 +42,12 @@ function getCharacterProgressions(data, progressionHashes) {
 // TODO: Track these somewhere.
 function getProgressionValues(prog) {
   return {
-    dailyProgress: prog.dailyProgress,
-    weeklyProgress: prog.weeklyProgress,
-    currentProgress: prog.currentProgress,
-    level: prog.level,
-    levelCap: prog.levelCap,
-    progressToNextLevel: prog.progressToNextLevel,
-    nextLevelAt: prog.nextLevelAt
+    dailyProgress: prog?.dailyProgress,
+    weeklyProgress: prog?.weeklyProgress,
+    currentProgress: prog?.currentProgress,
+    level: prog?.level,
+    levelCap: prog?.levelCap,
+    progressToNextLevel: prog?.progressToNextLevel,
+    nextLevelAt: prog?.nextLevelAt
   };
 }

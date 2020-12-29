@@ -34,7 +34,7 @@ describe('ProfileService', () => {
   });
 
   describe('getProfile', () => {
-    it('should get profile from DB, but call service if expired', () => {
+    it('should get profile from DB, but call service if expired', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((a, b, id) => {
         return of(MOCK_DB_PROFILES.find((x) => x.id === id));
       });
@@ -50,10 +50,11 @@ describe('ProfileService', () => {
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(1);
         expect(updateSpy).toHaveBeenCalledTimes(1);
+        done();
       });
     });
 
-    it('should get profile from DB and not call service if cache is good', () => {
+    it('should get profile from DB and not call service if cache is good', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake((a, b, id) => {
         return of(MOCK_DB_PROFILES.find((x) => x.id === id));
       });
@@ -69,6 +70,7 @@ describe('ProfileService', () => {
         expect(dbGetSpy).toHaveBeenCalledTimes(1);
         expect(serviceSpy).toHaveBeenCalledTimes(0);
         expect(updateSpy).toHaveBeenCalledTimes(0);
+        done();
       });
     });
 
@@ -113,7 +115,7 @@ describe('ProfileService', () => {
         done();
       });
     });
-    it('should handle API down with no DB data', async(done) => {
+    it('should handle API down with no DB data', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return of([]);
       });

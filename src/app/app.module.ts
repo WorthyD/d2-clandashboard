@@ -19,6 +19,9 @@ import { ManifestService } from './services/manifest.service';
 import { MaterialModule } from '@destiny/components';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AlertModule } from './alert/alert.module';
+import { environment } from 'src/environments/environment';
+//TODO: proper export
+import { windowProvider, WindowToken } from 'projects/data/src/lib/injection-tokens/window-token';
 //import { MaterialModule } from '@destiny/components';
 export function initConfig(appConfig: ManifestService) {
   return () => appConfig.loadManifest();
@@ -35,11 +38,11 @@ export function initConfig(appConfig: ManifestService) {
     RootStoreModule,
     MaterialModule,
     AlertModule,
-    // LoggerModule.forRoot({
-    //   level: NgxLoggerLevel.TRACE,
-    //   serverLogLevel: NgxLoggerLevel.ERROR,
-    //   disableConsoleLogging: false
-    // }),
+    LoggerModule.forRoot({
+      level: NgxLoggerLevel.TRACE,
+      serverLogLevel: NgxLoggerLevel.ERROR,
+      disableConsoleLogging: environment.production
+    }),
     BrowserAnimationsModule,
     HomeModule
   ],
@@ -54,7 +57,8 @@ export function initConfig(appConfig: ManifestService) {
       useFactory: initConfig,
       deps: [ManifestService],
       multi: true
-    }
+    },
+    { provide: WindowToken, useFactory: windowProvider }
   ],
   bootstrap: [AppComponent]
 })
