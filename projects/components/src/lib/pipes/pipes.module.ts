@@ -8,7 +8,7 @@ import { RaidReportUrlPipe } from './raid-report-url/raid-report-url.pipe';
 import { DestinyTrackerUrlPipe } from './destiny-tracker-url/destiny-tracker-url.pipe';
 import { BungieProfileUrlPipe } from './bungie-profile-url/bungie-profile-url.pipe';
 import { RaidReportProfileUrlPipe } from './raid-report-url/raid-report-profile-url.pipe';
-import { PlaytimePipe } from './playtime/playtime.pipe';
+import { PlaytimePipe, PlaytimeMillisecondsPipe } from './playtime/playtime.pipe';
 import { DungeonReportUrlPipe } from './dungeon-report-url/dungeon-report-url.pipe';
 import { DungeonReportProfileUrlPipe } from './dungeon-report-url/dungeon-report-profile-url.pipe';
 import { BungieDatePipe } from './bungie-date/bungie-date.pipe';
@@ -16,6 +16,7 @@ import { BungieDateTimePipe } from './bungie-date/bungie-date-time.pipe';
 import { MemberTypePipe } from './member-type/member-type.pipe';
 import { SortByClassPipe } from './sortByClass/sort-by-class.pipe';
 import { RaidCompletionTotalPipe } from './raid-completion-total/raid-completion-total.pipe';
+import { MetricTotalPipe } from './metric-total/metric-total.pipe';
 
 const pipes = [
   DateAgoPipe,
@@ -27,13 +28,15 @@ const pipes = [
   BungieProfileUrlPipe,
   RaidReportProfileUrlPipe,
   PlaytimePipe,
+  PlaytimeMillisecondsPipe,
   DungeonReportUrlPipe,
   DungeonReportProfileUrlPipe,
   BungieDatePipe,
   BungieDateTimePipe,
   MemberTypePipe,
   SortByClassPipe,
-  RaidCompletionTotalPipe
+  RaidCompletionTotalPipe,
+  MetricTotalPipe
 ];
 
 @NgModule({

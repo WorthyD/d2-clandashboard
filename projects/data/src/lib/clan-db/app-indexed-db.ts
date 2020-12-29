@@ -1,6 +1,6 @@
 import { BaseAppIndexedDb } from '../utility/base-indexed-db';
 
-const DB_VERSION = 4;
+const DB_VERSION = 5;
 
 export enum StoreId {
   CacheDetails = 'CacheDetails',
@@ -11,6 +11,7 @@ export enum StoreId {
   MemberActivityStats = 'MemberActivityStats',
   MemberRecentActivities = 'MemberRecentActivities',
   ProfileMilestones = 'ProfileMilestones',
+  ProfileMetrics = 'ProfileMetrics',
   Raids = 'Raids'
 }
 
@@ -23,6 +24,7 @@ export const STORE_IDS: StoreId[] = [
   StoreId.MemberRecentActivities,
   StoreId.ProfileMilestones,
   StoreId.MemberActivityStats,
+  StoreId.ProfileMetrics,
   StoreId.Raids
 ];
 

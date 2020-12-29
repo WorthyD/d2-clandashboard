@@ -1,1 +1,15 @@
-<p>raid-details works!</p>
+<!-- <p>raid-details works!</p>
+{{raidKey | async}}
+
+<pre><code>
+  {{raidsService.raidDetailStats | json}}
+</code></pre> -->
+<lib-table-search-bar>
+  <button mat-button class="nav-button" [routerLink]="['../']" routerLinkActive="active-link">
+    Raids
+  </button>
+  {{ raidsService.raidDetailInfo.raid.displayName}}
+</lib-table-search-bar>
+
+<lib-clan-raid-details-table [memberRaidStats]="raidsService.raidDetailStats" [raidInfo]="raidsService.raidDetailInfo"
+  [isLoading]="raidsService.isDetailsLoading"></lib-clan-raid-details-table>

@@ -9,6 +9,7 @@ import { ClanMemberActivityService } from './clan-member-activity/clan-member-ac
 import { ProfileMilestonesService } from './profile-milestones/profile-milestones.service';
 import { MemberActivityStatsService } from './member-activity-stats/member-activity-stats.service';
 import { ClanMemberRecentActivityService } from './clan-member-recent-activity/clan-member-recent-activity.service';
+import { MemberMetricsService } from './member-metrics/member-metrics.service';
 @NgModule({
   declarations: [],
   imports: [CommonModule],
@@ -21,7 +22,8 @@ import { ClanMemberRecentActivityService } from './clan-member-recent-activity/c
     ClanMemberActivityService,
     ProfileMilestonesService,
     MemberActivityStatsService,
-    ClanMemberRecentActivityService
+    ClanMemberRecentActivityService,
+    MemberMetricsService
   ]
 })
 export class ClanDbModule {}

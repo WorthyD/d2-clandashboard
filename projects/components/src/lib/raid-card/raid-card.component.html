@@ -1,4 +1,4 @@
-<mat-card matTooltip="Raid Breakdowns In Development">
+<mat-card class="mat-card-hover">
   <mat-card-title>
     {{raid.raid.displayName}}
   </mat-card-title>
@@ -21,14 +21,14 @@
         {{ memberRaidStats | raidCompletionTotal : raid.raidPrestige.key }}
       </div>
     </div>
-    <div class="raid-info">
+    <!-- <div class="raid-info">
       <div class="raid-name">
         Guided Game Clears
       </div>
       <div>
         {{ memberRaidStats | raidCompletionTotal : raid.raidGG.key }}
       </div>
-    </div>
+    </div> -->
 
 
   </mat-card-actions>
