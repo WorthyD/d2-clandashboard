@@ -9,7 +9,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Destiny Clan Dashboard">
     <meta property="og:description" content="Monitor your Destiny clan activity">
-    <!-- <meta property="og:image" content="https://www.d2checklist.com/assets/share-logo.png"/> -->
+    <!-- <meta property="og:image" content=""/> -->
     <meta name="og:site_name" content="Destiny Clan Dashboard">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -85,6 +85,37 @@
         }
       }
 
+      #btnPurge {
+        box-sizing: border-box;
+        position: relative;
+        user-select: none;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        vertical-align: baseline;
+        text-align: center;
+        margin: 0;
+        min-width: 64px;
+        line-height: 36px;
+        padding: 0 16px;
+        border-radius: 4px;
+        overflow: visible;
+        background-color: #607d8b;
+        color: #fff;
+      }
+
+
+      #error-prompt {
+        opacity: 1;
+        transition: opacity 1s;
+        text-align: center;
+      }
+
+      #error-prompt.hidden {
+        opacity: 0;
+      }
+
     </style>
   </head>
 
@@ -97,8 +128,36 @@
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
           </svg>
         </div>
+        <div id="error-prompt" class="hidden">
+          It looks like it's taking a while to load. <br>
+          <button id="btnPurge">Reset Data and Try Again</button>
+        </div>
+        <script>
+          window.addEventListener('load', function () {
+            const btnPurge = document.getElementById('btnPurge');
+            const errorPrompt = document.getElementById('error-prompt');
+            setTimeout(() => {
+              errorPrompt.classList.remove('hidden');
+              btnPurge.addEventListener('click', async () => {
+                var req = indexedDB.deleteDatabase('manifest');
+                req.onsuccess = function () {
+                  location.reload();
+                };
+                req.onerror = function () {
+                  location.reload();
+                };
+                req.onblocked = function () {
+                  location.reload();
+                };
+              });
+            }, 8000);
+          })
+
+        </script>
+
       </div>
     </app-root>
+
   </body>
 
 </html>
