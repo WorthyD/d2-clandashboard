@@ -32,11 +32,9 @@ fdescribe('DataService', () => {
     fit('return cached value', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getValues').and.callFake((repo) => {
         console.log('spying');
-        return {
-          allData: new Promise((res, rej) => {
-            res([{ id: 'v1:blah', data: [] }]);
-          })
-        };
+        return new Promise((res, rej) => {
+          res({ allData: [{ id: '', data: [] }] });
+        });
       });
       const dbUpdateSpy = spyOn(dbService, 'update').and.callThrough();
 

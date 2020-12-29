@@ -35,7 +35,7 @@ export class ManifestDatabaseService {
     }
 
     this.database = new AppIndexedDb(repository);
-    console.log(this.database);
+    //console.log(this.database);
     return this.database;
   }
 }

@@ -54,6 +54,8 @@ export class DataService {
 
   requestDefinitionsArchive(dbPath, tableNames) {
     return this.db.getValues('manifest').then((cachedValue) => {
+      console.log('---------', cachedValue);
+      console.log('---- dbPath-----', dbPath);
       const versionKey = `${VERSION}:${dbPath}`;
 
       if (cachedValue && cachedValue.length > 0 && cachedValue.find((x) => x.id === versionKey)) {
@@ -79,7 +81,7 @@ export class DataService {
       .getValues('manifest')
       .then((x) => {
         console.log('-----------------------------switch mapping------------------------');
-        return this.getManifest(language);
+        return this.getManifest(language).toPromise();
       })
       .then((path) => this.requestDefinitionsArchive(path, tableNames));
   }
