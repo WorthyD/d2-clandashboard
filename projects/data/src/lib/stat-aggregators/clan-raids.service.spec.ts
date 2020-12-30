@@ -8,6 +8,8 @@ import { Destiny2Service } from 'bungie-api-angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ClanDatabase } from '../clan-db';
 
+import { MemberMetricsService } from '../clan-db';
+
 describe('ClanRaidsService', () => {
   let service: ClanRaidsService;
   let activityService: MemberActivityStatsService;
@@ -15,7 +17,7 @@ describe('ClanRaidsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [MemberActivityStatsService, Destiny2Service, ClanDatabase]
+      providers: [MemberActivityStatsService, MemberMetricsService, Destiny2Service, ClanDatabase]
     });
     service = TestBed.inject(ClanRaidsService);
     activityService = TestBed.inject(MemberActivityStatsService);

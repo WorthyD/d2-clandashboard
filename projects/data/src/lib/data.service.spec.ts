@@ -8,7 +8,7 @@ import { WindowToken } from './injection-tokens/window-token';
 import { ManifestDatabaseService } from './services/manifest-database.service';
 import { NO_WINDOW_MOCK } from './injection-tokens/mock-window-token';
 
-fdescribe('DataService', () => {
+describe('DataService', () => {
   let service: DataService;
   let apiService: Destiny2Service;
   let dbService: ManifestDatabaseService;
@@ -29,11 +29,10 @@ fdescribe('DataService', () => {
     expect(service).toBeTruthy();
   });
   describe('requestDefinitionsArchive', () => {
-    fit('return cached value', async (done) => {
+    it('return cached value', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getValues').and.callFake((repo) => {
-        console.log('spying');
         return new Promise((res, rej) => {
-          res({ allData: [{ id: '', data: [] }] });
+          res([{ id: 'v1:blah', data: [] }]);
         });
       });
       const dbUpdateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -48,9 +47,9 @@ fdescribe('DataService', () => {
 
     it('should request new on with new version', async (done) => {
       const dbGetSpy = spyOn(dbService, 'getValues').and.callFake((repo) => {
-        return {
-          allData: of([{ id: 'v1:blah', data: [] }])
-        };
+        return new Promise((res, rej) => {
+          res([{ id: 'v1:blah', data: [] }]);
+        });
       });
       const winSpy = spyOn(win, 'fetch').and.callFake((stuff) => {
         return new Promise((res, rej) => {
