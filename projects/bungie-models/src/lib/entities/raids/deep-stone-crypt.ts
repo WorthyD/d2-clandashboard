@@ -1,4 +1,4 @@
-import { MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
+import { GearType, MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
 
 export const DeepStoneCrypt: Raid = {
   activityHashes: [910380154],
@@ -8,7 +8,7 @@ export const DeepStoneCrypt: Raid = {
   sortOrder: 18,
   isGuidedGames: false,
   isVaulted: false,
-  completionMetricHash:954805812
+  completionMetricHash: 954805812
 };
 
 export const DeepStoneCryptGG: Raid = {
@@ -31,19 +31,19 @@ export const DeepStoneCryptInfo: RaidInfo = {
       displayName: 'Completions',
       key: 'comp',
       hash: DeepStoneCrypt.completionMetricHash,
-      toolTip: 'Tracked from season 12 onward',
+      toolTip: 'Tracked from season 12 onward'
     },
     {
       displayName: 'Carries',
       key: 'carries',
       hash: 2330596844,
-      toolTip: 'Tracked from season 12 onward',
+      toolTip: 'Tracked from season 12 onward'
     },
     {
       displayName: 'Guided Games',
       key: 'gg',
       hash: DeepStoneCryptGG.completionMetricHash,
-      toolTip: 'Tracked from season 12 onward',
+      toolTip: 'Tracked from season 12 onward'
     },
     {
       displayName: 'Time Trial',
@@ -51,6 +51,14 @@ export const DeepStoneCryptInfo: RaidInfo = {
       hash: 3679202587,
       toolTip: 'Tracked from season 12 onward',
       displayType: MetricDisplayType.time
+    }
+  ],
+  trackedGear: [
+    {
+      displayName: 'Eyes of Tomorrow',
+      key: 'eot',
+      hash: 753200559,
+      displayType: GearType.weapon
     }
   ]
 };

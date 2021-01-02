@@ -15,7 +15,7 @@ export interface MilestoneProfiles {
 }
 
 @Injectable()
-export class ProfileMilestonesService extends BaseProfileService {
+export class ProfileCollectionsService extends BaseProfileService {
   private concurrentRequests = 20;
 
   constructor(private clanDb: ClanDatabase, private d2Service: Destiny2Service) {
