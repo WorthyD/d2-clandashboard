@@ -37,8 +37,14 @@
             {{element.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress}}
           </mat-cell>
         </ng-container>
+      </ng-container>
 
-
+      <ng-container *ngFor="let metric of raidInfo.trackedGear; let colIndex = index" matColumnDef="{{metric.key}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [matTooltip]="metric.toolTip">{{metric.displayName}}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.profileCollectibles?.data?.collectibles[metric.hash]?.state}}
+        </mat-cell>
       </ng-container>
 
 

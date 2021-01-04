@@ -7,7 +7,7 @@ import { from, of, Observable, forkJoin } from 'rxjs';
 import { switchMap, take, takeUntil, filter, withLatestFrom, mergeMap, toArray, map } from 'rxjs/operators';
 // import { MemberActivityStatsService } from '../clan-db/member-activity-stats/member-activity-stats.service';
 import { MemberMetricsService } from '../clan-db/member-metrics/member-metrics.service';
-import {ProfileCollectionsService} from '../clan-db/profile-collections/profile-collections.service';
+import { ProfileCollectionsService } from '../clan-db/profile-collections/profile-collections.service';
 // export interface MemberAggregateActivityStats {
 //   member: any;
 //   //  activityStats:
@@ -64,12 +64,13 @@ export class ClanRaidDetailsService {
         clanId.toString(),
         member,
         raidInfo.trackedGear.map((x) => x.hash)
+      )
     ]).pipe(
       map(([profileMetrics, profileCollections]) => {
         return {
           profile: profileMetrics.profile,
           metrics: profileMetrics.metrics,
-         profileCollectibles:    profileCollections.profileCollectibles
+          profileCollectibles: profileCollections.profileCollectibles
         };
       })
     );

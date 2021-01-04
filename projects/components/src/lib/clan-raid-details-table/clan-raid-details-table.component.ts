@@ -42,7 +42,11 @@ export class ClanRaidDetailsTableComponent implements OnInit {
 
   updateColumns() {
     if (this.raidInfo) {
-      this.displayedColumns = ['displayName', ...this.raidInfo.trackedMetrics.map((x) => x.key)];
+      this.displayedColumns = [
+        'displayName',
+        ...this.raidInfo.trackedMetrics.map((x) => x.key),
+        ...this.raidInfo.trackedGear.map((x) => x.key)
+      ];
     }
   }
 

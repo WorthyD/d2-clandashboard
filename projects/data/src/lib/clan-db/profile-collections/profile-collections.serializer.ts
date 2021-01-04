@@ -11,14 +11,11 @@ export function profileCollectionsSerializer(p: MemberProfile, itemHashes: any[]
         }
       }
     },
-    // profileRecords: {
-    //   data: {
-    //     score: p.profileRecords?.data?.score,
-    //     activeScore: p.profileRecords?.data?.activeScore,
-    //     lifetimeScore: p.profileRecords?.data?.lifetimeScore,
-    //     records: getProfileRecords(p.profileRecords?.data?.records, profileRecords)
-    //   }
-    // }
+    profileCollectibles: {
+      data: {
+        collectibles: getProfileItems(p.profileCollectibles?.data?.collectibles, itemHashes)
+      }
+    }
   };
 }
 
