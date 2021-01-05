@@ -72,6 +72,13 @@ export const EaterOfWorldsInfo: RaidInfo = {
     }
   ],
   trackedGear: [
+    {
+      displayName: 'Contender\'s Shell',
+      key: 'cshell',
+      hash: 1718922260,
+      displayType: GearType.ghost,
+      icon: 'https://bungie.net/common/destiny2_content/icons/b6e95f780a8381c48f49af3f6436de29.jpg'
+    },
     // {
     //   displayName: '',
     //   key: '',
