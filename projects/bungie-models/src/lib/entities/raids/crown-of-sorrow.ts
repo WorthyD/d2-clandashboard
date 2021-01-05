@@ -1,4 +1,4 @@
-import { MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
+import { GearType, MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
 
 export const CrownOfSorrow: Raid = {
   activityHashes: [3333172150],
@@ -53,6 +53,22 @@ export const CrownOfSorrowInfo: RaidInfo = {
       displayType: MetricDisplayType.time
     }
   ],
-  trackedGear:[]
+  trackedGear: [
+    {
+      displayName: 'Tarrabah',
+      key: 'tarr',
+      hash: 2329697053,
+      displayType: GearType.weapon,
+      icon: 'https://www.bungie.net/common/destiny2_content/icons/ce6bd07715a082bad0ba946f5f8dca5e.jpg'
+    },
+    {
+      displayName: 'Shadow of Earth',
+      key: 'soe',
+      hash: 753635605,
+      displayType: GearType.ghost,
+      icon: 'https://www.bungie.net/common/destiny2_content/icons/9d647709892eaaa29b2d51923618512f.jpg'
+    },
 
+
+  ]
 };

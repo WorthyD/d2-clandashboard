@@ -1,4 +1,4 @@
-import { MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
+import { GearType, MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
 
 export const EaterOfWorlds: Raid = {
   activityHashes: [3089205900],
@@ -71,5 +71,14 @@ export const EaterOfWorldsInfo: RaidInfo = {
       displayType: MetricDisplayType.time
     }
   ],
-  trackedGear: []
+  trackedGear: [
+    // {
+    //   displayName: '',
+    //   key: '',
+    //   hash: ,
+    //   displayType: GearType.weapon,
+    //   icon: ''
+    // },
+
+  ]
 };

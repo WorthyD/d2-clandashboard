@@ -1,4 +1,4 @@
-import { MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
+import { GearType, MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
 
 export const GardenOfSalvation: Raid = {
   activityHashes: [2659723068],
@@ -53,5 +53,13 @@ export const GardenOfSalvationInfo: RaidInfo = {
       displayType: MetricDisplayType.time
     }
   ],
-  trackedGear:[]
+  trackedGear: [
+    {
+      displayName: 'Divinity',
+      key: 'div',
+      hash: 1988948484,
+      displayType: GearType.weapon,
+      icon: 'https://bungie.net/common/destiny2_content/icons/9fca585b5cc85e25f99d4cc9bee58db5.jpg'
+    }
+  ]
 };

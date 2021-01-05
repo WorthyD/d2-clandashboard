@@ -1,4 +1,4 @@
-import { MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
+import { GearType, MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
 
 export const LastWish: Raid = {
   activityHashes: [2122313384],
@@ -53,5 +53,34 @@ export const LastWishInfo: RaidInfo = {
       displayType: MetricDisplayType.time
     }
   ],
-  trackedGear: []
+  trackedGear: [
+    {
+      displayName: 'One Thousand Voices',
+      key: 'onekay',
+      hash: 199171385,
+      displayType: GearType.weapon,
+      icon: 'https://bungie.net/common/destiny2_content/icons/0421f2a3fdff6fd946f7e20951b08876.jpg'
+    },
+    {
+      displayName: 'Wish-Maker Shell',
+      key: 'wms',
+      hash: 3360537485,
+      displayType: GearType.ghost,
+      icon: 'https://www.bungie.net/common/destiny2_content/icons/c29195cba3a2570c43e4013d9c03d230.jpg'
+    },
+    {
+      displayName: 'Ermine TAC-717',
+      key: 'erm',
+      hash: 3163873693,
+      displayType: GearType.ship,
+      icon: 'https://bungie.net/common/destiny2_content/icons/c85f617536f6f0cf14f591e6e67c2d78.jpg'
+    },
+    {
+      displayName: 'Cleansing Knife',
+      key: 'knife',
+      hash: 1469913804,
+      displayType: GearType.sparrow,
+      icon: 'https://bungie.net/common/destiny2_content/icons/1fdad47579f1ac76e77524a3c9ef2e09.jpg'
+    }
+  ]
 };
