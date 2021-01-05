@@ -3,10 +3,11 @@ import { AllRaids, MemberRaidStats, RaidInfo } from '@destiny/models';
 import { MemberProfile, ClanMember } from 'bungie-models';
 
 import { DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api-angular';
-import { from, of, Observable } from 'rxjs';
+import { from, of, Observable, forkJoin } from 'rxjs';
 import { switchMap, take, takeUntil, filter, withLatestFrom, mergeMap, toArray, map } from 'rxjs/operators';
 // import { MemberActivityStatsService } from '../clan-db/member-activity-stats/member-activity-stats.service';
 import { MemberMetricsService } from '../clan-db/member-metrics/member-metrics.service';
+import { ProfileCollectionsService } from '../clan-db/profile-collections/profile-collections.service';
 // export interface MemberAggregateActivityStats {
 //   member: any;
 //   //  activityStats:
@@ -24,7 +25,10 @@ export class ClanRaidDetailsService {
   //   return raid.hashes;
   // }).reduce((acc, val) => acc.concat(val), []);
 
-  constructor(private memberMetricService: MemberMetricsService) {}
+  constructor(
+    private memberMetricService: MemberMetricsService,
+    private profileCollectionsService: ProfileCollectionsService
+  ) {}
 
   getClanRaidDetailStats(clanId: number, clanMemberProfiles: ClanMember[], raidInfo: RaidInfo) {
     return from(clanMemberProfiles).pipe(
@@ -50,10 +54,25 @@ export class ClanRaidDetailsService {
     //     };
     //   })
     // );
-    return this.memberMetricService.getSerializedProfile(
-      clanId.toString(),
-      member,
-      raidInfo.trackedMetrics.map((x) => x.hash)
+    return forkJoin([
+      this.memberMetricService.getSerializedProfile(
+        clanId.toString(),
+        member,
+        raidInfo.trackedMetrics.map((x) => x.hash)
+      ),
+      this.profileCollectionsService.getSerializedProfile(
+        clanId.toString(),
+        member,
+        raidInfo.trackedGear.map((x) => x.hash)
+      )
+    ]).pipe(
+      map(([profileMetrics, profileCollections]) => {
+        return {
+          profile: profileMetrics.profile,
+          metrics: profileMetrics.metrics,
+          profileCollectibles: profileCollections.profileCollectibles
+        };
+      })
     );
   }
 

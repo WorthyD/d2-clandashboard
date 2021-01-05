@@ -17,6 +17,8 @@ import { MemberTypePipe } from './member-type/member-type.pipe';
 import { SortByClassPipe } from './sortByClass/sort-by-class.pipe';
 import { RaidCompletionTotalPipe } from './raid-completion-total/raid-completion-total.pipe';
 import { MetricTotalPipe } from './metric-total/metric-total.pipe';
+import { InCollectionsPipe } from './in-collections/in-collections.pipe';
+import { InCollectionsTotalPipe } from './in-collections/in-collections-total.pipe';
 
 const pipes = [
   DateAgoPipe,
@@ -36,7 +38,9 @@ const pipes = [
   MemberTypePipe,
   SortByClassPipe,
   RaidCompletionTotalPipe,
-  MetricTotalPipe
+  MetricTotalPipe,
+  InCollectionsPipe,
+  InCollectionsTotalPipe
 ];
 
 @NgModule({

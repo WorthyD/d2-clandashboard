@@ -16,6 +16,7 @@ export interface RaidInfo {
   raidPrestigeGG?: Raid;
   raidImage: string;
   trackedMetrics?: TrackedMetric[];
+  trackedGear?: TrackedGear[];
 }
 
 export interface TrackedMetric {
@@ -29,4 +30,21 @@ export interface TrackedMetric {
 export enum MetricDisplayType {
   numeric,
   time
+}
+
+export interface TrackedGear {
+  hash: number;
+  key: string;
+  displayName: string;
+  displayType?: GearType;
+  icon?: string;
+  toolTip?: string;
+}
+
+export enum GearType {
+  weapon,
+  mod,
+  ghost,
+  sparrow,
+  emote
 }

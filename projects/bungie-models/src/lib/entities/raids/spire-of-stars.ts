@@ -70,5 +70,6 @@ export const SpireOfStarsInfo: RaidInfo = {
       toolTip: 'Tracked from season 10 onward',
       displayType: MetricDisplayType.time
     }
-  ]
+  ],
+  trackedGear: []
 };

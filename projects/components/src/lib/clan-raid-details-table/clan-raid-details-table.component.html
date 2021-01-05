@@ -37,8 +37,17 @@
             {{element.metrics?.data?.metrics[metric.hash]?.objectiveProgress.progress}}
           </mat-cell>
         </ng-container>
+      </ng-container>
 
-
+      <ng-container *ngFor="let metric of raidInfo.trackedGear; let colIndex = index" matColumnDef="{{metric.key}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [matTooltip]="metric.toolTip">
+          <img [src]="metric.icon" style="width:30px"/>
+          ({{ memberRaidStats | inCollectionsTotal : metric.hash }})
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <mat-checkbox [checked]="element.profileCollectibles?.data?.collectibles[metric.hash] | inCollections" [disabled]="true">
+          </mat-checkbox>
+        </mat-cell>
       </ng-container>
 
 
