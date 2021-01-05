@@ -8,7 +8,7 @@
   <button mat-button class="nav-button" [routerLink]="['../']" routerLinkActive="active-link">
     Raids
   </button>
-  {{ raidsService.raidDetailInfo.raid.displayName}}
+  {{ raidsService.raidDetailInfo?.raid?.displayName}}
 </lib-table-search-bar>
 
 <lib-clan-raid-details-table [memberRaidStats]="raidsService.raidDetailStats" [raidInfo]="raidsService.raidDetailInfo"

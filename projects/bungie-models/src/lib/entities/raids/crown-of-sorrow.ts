@@ -52,5 +52,7 @@ export const CrownOfSorrowInfo: RaidInfo = {
       toolTip: 'Tracked from season 10 onward',
       displayType: MetricDisplayType.time
     }
-  ]
+  ],
+  trackedGear:[]
+
 };

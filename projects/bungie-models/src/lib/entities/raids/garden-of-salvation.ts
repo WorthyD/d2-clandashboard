@@ -52,5 +52,6 @@ export const GardenOfSalvationInfo: RaidInfo = {
       hash: 1835852368,
       displayType: MetricDisplayType.time
     }
-  ]
+  ],
+  trackedGear:[]
 };

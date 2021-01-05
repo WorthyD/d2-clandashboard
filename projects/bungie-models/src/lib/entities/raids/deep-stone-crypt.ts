@@ -58,7 +58,22 @@ export const DeepStoneCryptInfo: RaidInfo = {
       displayName: 'Eyes of Tomorrow',
       key: 'eot',
       hash: 753200559,
-      displayType: GearType.weapon
+      displayType: GearType.weapon,
+      icon: 'https://www.bungie.net/common/destiny2_content/icons/7ae4b38a1ad247c4a7caffcd6e0a6ed9.jpg'
+    },
+    {
+      displayName: 'No Love Lost',
+      key: 'nll',
+      hash: 3574313939,
+      displayType: GearType.ghost,
+      icon: 'https://www.bungie.net/common/destiny2_content/icons/b73246bedf8b4237d5cd04909be64688.jpg'
+    },
+    {
+      displayName: 'Retrocausality',
+      key: 'retro',
+      hash: 392272160,
+      displayType: GearType.sparrow,
+      icon: 'https://www.bungie.net/common/destiny2_content/icons/777af9c51db331eba97293fb8468bc6d.jpg'
     }
   ]
 };

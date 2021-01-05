@@ -37,6 +37,7 @@ export interface TrackedGear {
   key: string;
   displayName: string;
   displayType?: GearType;
+  icon?: string;
   toolTip?: string;
 }
 
