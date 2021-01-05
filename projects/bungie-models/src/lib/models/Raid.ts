@@ -45,6 +45,7 @@ export enum GearType {
   weapon,
   mod,
   ghost,
+  ship,
   sparrow,
   emote
 }

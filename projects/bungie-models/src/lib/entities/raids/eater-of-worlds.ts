@@ -1,4 +1,4 @@
-import { MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
+import { GearType, MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
 
 export const EaterOfWorlds: Raid = {
   activityHashes: [3089205900],
@@ -71,5 +71,21 @@ export const EaterOfWorldsInfo: RaidInfo = {
       displayType: MetricDisplayType.time
     }
   ],
-  trackedGear: []
+  trackedGear: [
+    {
+      displayName: 'Contender\'s Shell',
+      key: 'cshell',
+      hash: 1718922260,
+      displayType: GearType.ghost,
+      icon: 'https://bungie.net/common/destiny2_content/icons/b6e95f780a8381c48f49af3f6436de29.jpg'
+    },
+    // {
+    //   displayName: '',
+    //   key: '',
+    //   hash: ,
+    //   displayType: GearType.weapon,
+    //   icon: ''
+    // },
+
+  ]
 };

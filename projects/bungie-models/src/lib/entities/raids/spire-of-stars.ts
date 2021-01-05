@@ -1,4 +1,4 @@
-import { MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
+import { GearType, MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
 
 export const SpireOfStars: Raid = {
   activityHashes: [119944200],
@@ -71,5 +71,13 @@ export const SpireOfStarsInfo: RaidInfo = {
       displayType: MetricDisplayType.time
     }
   ],
-  trackedGear: []
+  trackedGear: [
+    {
+      displayName: 'Luxurious Toast',
+      key: 'lt',
+      hash: 1866399776,
+      displayType: GearType.emote,
+      icon: 'https://bungie.net/common/destiny2_content/icons/01b8ba5d2faf06d6207d945d9f1e6cb1.jpg'
+    }
+  ]
 };

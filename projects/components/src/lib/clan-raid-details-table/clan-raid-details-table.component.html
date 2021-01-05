@@ -40,8 +40,8 @@
       </ng-container>
 
       <ng-container *ngFor="let metric of raidInfo.trackedGear; let colIndex = index" matColumnDef="{{metric.key}}">
-        <mat-header-cell *matHeaderCellDef mat-sort-header [matTooltip]="metric.toolTip">
-          <img [src]="metric.icon" style="width:30px"/>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <img [src]="metric.icon" style="width:30px"  [matTooltip]="metric.displayName"/>
           ({{ memberRaidStats | inCollectionsTotal : metric.hash }})
         </mat-header-cell>
         <mat-cell *matCellDef="let element">

@@ -1,4 +1,4 @@
-import { MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
+import { GearType, MetricDisplayType, Raid, RaidInfo } from '../../models/Raid';
 
 export const ScourgeOfThePast: Raid = {
   activityHashes: [548750096],
@@ -53,5 +53,20 @@ export const ScourgeOfThePastInfo: RaidInfo = {
       displayType: MetricDisplayType.time
     }
   ],
-  trackedGear: []
+  trackedGear: [
+    {
+      displayName: 'Anarchy',
+      key: 'ana',
+      hash: 2220014607,
+      displayType: GearType.weapon,
+      icon: 'https://bungie.net/common/destiny2_content/icons/474558c3e58e56b9a351c4064a74c5ca.jpg'
+    },
+    {
+      displayName: 'Always on Time ',
+      key: 'aot',
+      hash: 1903459810,
+      displayType: GearType.sparrow,
+      icon: 'https://bungie.net/common/destiny2_content/icons/99ebc52e53a7b6cfe845d97d07892d7e.jpg'
+    }
+  ]
 };
