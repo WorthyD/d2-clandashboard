@@ -101,8 +101,8 @@ export class BarChartComponent implements OnInit {
       .select(this.hostElement)
       .attr('class', 'activity-heatmap')
       .append('svg')
-      .attr('width', this.chartWidth + 100)
-      .attr('height', this.chartHeight + 100)
+      .attr('width', this.chartWidth + 200)
+      .attr('height', this.chartHeight + 200)
       //.attr('viewBox', `0 0 ${this.chartWidth} ${this.chartHeight}`)
       .append('g')
       .attr('transform', 'translate(' + 100 + ',' + 100 + ')');
@@ -122,7 +122,13 @@ export class BarChartComponent implements OnInit {
           return d.date;
         })
       );
+      // this.x.domain(
+      //   d3.extent(cleanedData, function (d) {
+      //     return d.date;
+      //   })
+      // );
       this.y.domain([0, d3.max(cleanedData, (d) => d.seconds) * 1.1]);
+      console.log(cleanedData);
 
       // Footer
       this.svg
@@ -130,7 +136,15 @@ export class BarChartComponent implements OnInit {
         .attr('transform', 'translate(0,' + this.chartHeight + ')')
         .attr('y', this.chartHeight - 250)
         .attr('x', this.chartWidth - 50)
-        .call(d3.axisBottom(this.x).ticks(10));
+        .call(d3.axisBottom(this.x)
+          .ticks(d3.timeDay.every(14))
+          .tickFormat(d3.timeFormat('%Y-%m-%d')))
+        //.ticks(d3.timeDay.every(24)).tickFormat(d3.timeFormat('%Y-%m-%d')))
+        .selectAll('text')
+        .style('text-anchor', 'end')
+        .attr('dx', '-.8em')
+        .attr('dy', '.15em')
+        .attr('transform', 'rotate(-65)');
 
       this.svg
         .append('g')
@@ -191,9 +205,6 @@ export class BarChartComponent implements OnInit {
         const dFormatted = formatDate(d);
 
         const data = sourceData.find((x) => x.date === dFormatted);
-        // console.log(d);
-        // console.log(dFormatted);
-        // console.log(sourceData.find((x) => x.date === dFormatted));
 
         if (data) {
           preppedData.push(data);
@@ -206,8 +217,13 @@ export class BarChartComponent implements OnInit {
     preppedData.sort((a, b) => {
       return compare(a.date, b.date, true);
     });
-
-    return preppedData;
+    const parseTime = d3.timeParse("%Y-%m-%d");
+    return preppedData.map((x) => {
+      return {
+        date: new Date(x.date),
+        seconds: x.seconds
+      };
+    });
   }
 }
 
