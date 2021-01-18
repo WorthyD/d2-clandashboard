@@ -101,11 +101,11 @@ export class BarChartComponent implements OnInit {
       .select(this.hostElement)
       .attr('class', 'activity-heatmap')
       .append('svg')
-      .attr('width', this.chartWidth)
-      .attr('height', this.chartHeight)
+      .attr('width', this.chartWidth + 100)
+      .attr('height', this.chartHeight + 100)
       //.attr('viewBox', `0 0 ${this.chartWidth} ${this.chartHeight}`)
       .append('g')
-      //.attr('transform', 'translate(' + 50 + ',' + 50 + ')');
+      .attr('transform', 'translate(' + 100 + ',' + 100 + ')');
 
     //this.x = d3.scaleBand().range([0, this.chartWidth], 0.05);
     this.x = d3.scaleBand().range([0, this.chartWidth]).padding(0.05);
@@ -122,12 +122,15 @@ export class BarChartComponent implements OnInit {
           return d.date;
         })
       );
-      this.y.domain([0, d3.max(cleanedData, (d) => d.seconds)]);
+      this.y.domain([0, d3.max(cleanedData, (d) => d.seconds) * 1.1]);
 
-      // this.svg
-      //   .append('g')
-      //   .attr('transform', 'translate(0,' + 100 + ')')
-      //   .call(d3.axisBottom(this.x));
+      // Footer
+      this.svg
+        .append('g')
+        .attr('transform', 'translate(0,' + this.chartHeight + ')')
+        .attr('y', this.chartHeight - 250)
+        .attr('x', this.chartWidth - 50)
+        .call(d3.axisBottom(this.x).ticks(10));
 
       this.svg
         .append('g')
@@ -163,7 +166,8 @@ export class BarChartComponent implements OnInit {
       bars
         .on('mouseover', (d) => {
           this.tooltip.style('opacity', 0.9);
-          this.tooltip.html(`Week Starting: ${formatDate(d.date)}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
+          //this.tooltip.html(`Week Starting: ${formatDate(d.date)}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
+          this.tooltip.html(`Week Starting: ${formatDate(d.date)}<br/> Time:  ${d.seconds}`);
         })
         .on('mousemove', () => {
           this.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');
