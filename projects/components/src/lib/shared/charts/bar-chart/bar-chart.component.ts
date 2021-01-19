@@ -66,8 +66,8 @@ export class BarChartComponent implements OnInit {
 
     const date = new Date();
     const offset = date.getDay() >= 2 ? 2 : -5;
-    this.endDate = new Date(date.setDate(date.getDate() - date.getDay() + offset));
-    this.startDate = new Date(new Date(this.endDate).setDate(new Date(this.endDate).getDate() - 182));
+    //this.endDate = new Date(date.setDate(date.getDate() - date.getDay() + offset));
+    //this.startDate = new Date(new Date(this.endDate).setDate(new Date(this.endDate).getDate() - 182));
   }
 
   private updateChart(eventData) {
@@ -117,9 +117,10 @@ export class BarChartComponent implements OnInit {
   private processData(sourceData) {
     if (sourceData) {
       const cleanedData = this.prepData(sourceData);
+
       this.x.domain(
         cleanedData.map(function (d) {
-          return d.date;
+          return new Date(d.date);
         })
       );
       // this.x.domain(
@@ -136,9 +137,9 @@ export class BarChartComponent implements OnInit {
         .attr('transform', 'translate(0,' + this.chartHeight + ')')
         .attr('y', this.chartHeight - 250)
         .attr('x', this.chartWidth - 50)
-        .call(d3.axisBottom(this.x)
-          .ticks(d3.timeDay.every(14))
-          .tickFormat(d3.timeFormat('%Y-%m-%d')))
+        .call(d3.axisBottom(this.x).tickFormat(d3.timeFormat('%Y-%m-%d')))
+        //   .ticks(d3.timeDay.every(14))
+        //   .tickFormat(d3.timeFormat('%Y-%m-%d')))
         //.ticks(d3.timeDay.every(24)).tickFormat(d3.timeFormat('%Y-%m-%d')))
         .selectAll('text')
         .style('text-anchor', 'end')
@@ -195,30 +196,32 @@ export class BarChartComponent implements OnInit {
   private prepData(sourceData) {
     const preppedData = [];
 
-    for (let i = 1; i < 52; i++) {
+    //for (let i = 1; i < 52; i++) {
       // Needing to add 1 because of utc conversion i think.
-      const d = new Date(new Date(this.startDate).setDate(this.startDate.getDate() + i * 7));
-      if (d > this.endDate) {
-        break;
-      }
-      if (d >= this.startDate) {
-        const dFormatted = formatDate(d);
 
-        const data = sourceData.find((x) => x.date === dFormatted);
+      //const d = new Date(new Date(this.startDate).setDate(this.startDate.getDate() + i * 7));
+      // if (d > this.endDate) {
+      //   break;
+      // }
+      //if (d >= this.startDate) {
+      // const dFormatted = formatDate(d);
 
-        if (data) {
-          preppedData.push(data);
-        } else {
-          preppedData.push({ date: dFormatted, seconds: 0 });
-        }
-      }
-    }
+      // const data = sourceData.find((x) => x.date === dFormatted);
 
-    preppedData.sort((a, b) => {
-      return compare(a.date, b.date, true);
-    });
-    const parseTime = d3.timeParse("%Y-%m-%d");
-    return preppedData.map((x) => {
+      // if (data) {
+      //   preppedData.push(data);
+      // } else {
+      //   preppedData.push({ date: dFormatted, seconds: 0 });
+      // }
+      //}
+    //}
+
+    // preppedData.sort((a, b) => {
+    //   return compare(a.date, b.date, true);
+    // });
+
+    //const parseTime = d3.timeParse('%Y-%m-%d');
+    return sourceData.map((x) => {
       return {
         date: new Date(x.date),
         seconds: x.seconds

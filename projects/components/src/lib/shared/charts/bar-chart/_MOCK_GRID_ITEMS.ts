@@ -44,15 +44,15 @@ export const REAL_DATA = [
     seconds: 1118
   },
   {
-    date: '2020-02-11',
+    date: '2023-02-11',
     seconds: 5502
   },
   {
-    date: '2020-01-14',
+    date: '2023-05-14',
     seconds: 2589
   },
   {
-    date: '2020-01-07',
+    date: '2020-05-07',
     seconds: 3810
   },
   {
