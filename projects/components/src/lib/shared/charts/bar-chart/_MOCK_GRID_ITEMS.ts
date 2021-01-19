@@ -4,7 +4,7 @@ const stats = [];
 
 const today = new Date(new Date().setDate(new Date().getDate() + ((2 + 7 - new Date().getDay()) % 7) - 189));
 
-for (let i = 0; i < 26; i++) {
+for (let i = 0; i < 50; i++) {
   const d = new Date(today);
   const d2 = new Date(d.setDate(d.getDate() + i * 7));
   stats.push({

@@ -31,7 +31,7 @@ export class BarChartComponent implements OnInit {
   y;
   tooltip;
 
-  chartHeight = 500;
+  chartHeight = 400;
   chartWidth = 600;
   threshHold = SECONDS_IN_HOUR * 20;
   color = d3.scaleLinear().range(['#00ff00', '#ff0000']).domain([0, 1]);
@@ -101,14 +101,16 @@ export class BarChartComponent implements OnInit {
       .select(this.hostElement)
       .attr('class', 'activity-heatmap')
       .append('svg')
-      .attr('width', this.chartWidth + 200)
-      .attr('height', this.chartHeight + 200)
+      .attr('width', this.chartWidth + 100)
+      .attr('height', this.chartHeight + 100)
       //.attr('viewBox', `0 0 ${this.chartWidth} ${this.chartHeight}`)
       .append('g')
-      .attr('transform', 'translate(' + 100 + ',' + 100 + ')');
+      .attr('transform', 'translate(' + 50 + ',' + 50 + ')');
 
     //this.x = d3.scaleBand().range([0, this.chartWidth], 0.05);
-    this.x = d3.scaleBand().range([0, this.chartWidth]).padding(0.05);
+    //this.x = d3.scaleTime().rangeRound([0, this.chartWidth]).padding(0.05);
+    this.x = d3.scaleTime().range([0, this.chartWidth]);
+    //this.x = d3.scaleBand().range([0, this.chartWidth]).padding(0.05);
     this.y = d3.scaleLinear().range([this.chartHeight, 0]);
   }
   private addToolTip() {
@@ -118,11 +120,13 @@ export class BarChartComponent implements OnInit {
     if (sourceData) {
       const cleanedData = this.prepData(sourceData);
 
-      this.x.domain(
-        cleanedData.map(function (d) {
-          return new Date(d.date);
-        })
-      );
+      // this.x.domain(
+      //   cleanedData.map(function (d) {
+      //     return new Date(d.date);
+      //   })
+      // );
+      this.x.domain([cleanedData[0].date, cleanedData[cleanedData.length - 1].date]);
+
       // this.x.domain(
       //   d3.extent(cleanedData, function (d) {
       //     return d.date;
@@ -137,15 +141,15 @@ export class BarChartComponent implements OnInit {
         .attr('transform', 'translate(0,' + this.chartHeight + ')')
         .attr('y', this.chartHeight - 250)
         .attr('x', this.chartWidth - 50)
-        .call(d3.axisBottom(this.x).tickFormat(d3.timeFormat('%Y-%m-%d')))
+        .call(d3.axisBottom(this.x)) //.tickFormat(d3.timeFormat('%Y-%m')))
         //   .ticks(d3.timeDay.every(14))
         //   .tickFormat(d3.timeFormat('%Y-%m-%d')))
         //.ticks(d3.timeDay.every(24)).tickFormat(d3.timeFormat('%Y-%m-%d')))
         .selectAll('text')
-        .style('text-anchor', 'end')
-        .attr('dx', '-.8em')
-        .attr('dy', '.15em')
-        .attr('transform', 'rotate(-65)');
+        //.style('text-anchor', 'end');
+      //.attr('dx', '-.8em')
+      //.attr('dy', '.15em');
+      ///.attr('transform', 'rotate(-65)');
 
       this.svg
         .append('g')
@@ -153,15 +157,17 @@ export class BarChartComponent implements OnInit {
           d3
             .axisLeft(this.y)
             .tickFormat(function (d) {
-              return d;
+              return Math.floor(d / 3600);
             })
             .ticks(10)
         )
         .append('text')
         .attr('y', 6)
-        .attr('dy', '0.71em')
+        .attr('fill', 'currentColor')
+        .attr('dy', '-4.1em')
+        .attr('transform', 'rotate(-90)')
         .attr('text-anchor', 'end')
-        .text('value');
+        .text('Hours');
 
       const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
 
@@ -173,7 +179,8 @@ export class BarChartComponent implements OnInit {
         .attr('y', (d) => {
           return this.y(d.seconds);
         })
-        .attr('width', this.x.bandwidth())
+        //.attr('width', this.x.bandwidth())
+        .attr('width', this.chartWidth / cleanedData.length)
         .attr('height', (d) => {
           return this.chartHeight - this.y(d.seconds);
         });
@@ -181,8 +188,8 @@ export class BarChartComponent implements OnInit {
       bars
         .on('mouseover', (d) => {
           this.tooltip.style('opacity', 0.9);
-          //this.tooltip.html(`Week Starting: ${formatDate(d.date)}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
-          this.tooltip.html(`Week Starting: ${formatDate(d.date)}<br/> Time:  ${d.seconds}`);
+          this.tooltip.html(`Week Starting: ${formatDate(d.date)}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
+          // this.tooltip.html(`Week Starting: ${formatDate(d.date)}<br/> Time:  ${d.seconds}`);
         })
         .on('mousemove', () => {
           this.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');
@@ -197,23 +204,23 @@ export class BarChartComponent implements OnInit {
     const preppedData = [];
 
     //for (let i = 1; i < 52; i++) {
-      // Needing to add 1 because of utc conversion i think.
+    // Needing to add 1 because of utc conversion i think.
 
-      //const d = new Date(new Date(this.startDate).setDate(this.startDate.getDate() + i * 7));
-      // if (d > this.endDate) {
-      //   break;
-      // }
-      //if (d >= this.startDate) {
-      // const dFormatted = formatDate(d);
+    //const d = new Date(new Date(this.startDate).setDate(this.startDate.getDate() + i * 7));
+    // if (d > this.endDate) {
+    //   break;
+    // }
+    //if (d >= this.startDate) {
+    // const dFormatted = formatDate(d);
 
-      // const data = sourceData.find((x) => x.date === dFormatted);
+    // const data = sourceData.find((x) => x.date === dFormatted);
 
-      // if (data) {
-      //   preppedData.push(data);
-      // } else {
-      //   preppedData.push({ date: dFormatted, seconds: 0 });
-      // }
-      //}
+    // if (data) {
+    //   preppedData.push(data);
+    // } else {
+    //   preppedData.push({ date: dFormatted, seconds: 0 });
+    // }
+    //}
     //}
 
     // preppedData.sort((a, b) => {
@@ -221,12 +228,16 @@ export class BarChartComponent implements OnInit {
     // });
 
     //const parseTime = d3.timeParse('%Y-%m-%d');
-    return sourceData.map((x) => {
-      return {
-        date: new Date(x.date),
-        seconds: x.seconds
-      };
-    });
+    return sourceData
+      .sort((a, b) => {
+        return compare(a.date, b.date, true);
+      })
+      .map((x) => {
+        return {
+          date: new Date(x.date),
+          seconds: x.seconds
+        };
+      });
   }
 }
 
