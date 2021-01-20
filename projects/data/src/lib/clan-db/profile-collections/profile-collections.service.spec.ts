@@ -9,10 +9,10 @@ import { MOCK_WORTHY_MEMBER, MOCK_OMEGA_MEMBER } from '../../testing-utils/objec
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { HttpErrorResponse } from '@angular/common/http';
 import { tap, toArray } from 'rxjs/operators';
-import { ProfileMilestonesService } from './profile-milestones.service';
+import {ProfileCollectionsService} from './profile-collections.service';
 
 describe('ProfileMilestonesService', () => {
-  let service: ProfileMilestonesService;
+  let service: ProfileCollectionsService;
   let dbService: ClanDatabase;
   let d2Service: Destiny2Service;
 
@@ -22,9 +22,9 @@ describe('ProfileMilestonesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [Destiny2Service, ProfileMilestonesService, ClanDatabase]
+      providers: [Destiny2Service, ProfileCollectionsService, ClanDatabase]
     });
-    service = TestBed.inject(ProfileMilestonesService);
+    service = TestBed.inject(ProfileCollectionsService);
     dbService = TestBed.inject(ClanDatabase);
     d2Service = TestBed.inject(Destiny2Service);
   });

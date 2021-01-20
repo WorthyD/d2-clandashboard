@@ -97,13 +97,18 @@ export class BarChartComponent implements OnInit {
   }
 
   private setChartDimensions() {
+    const padding = 100;
+    const svgHeight = this.chartHeight + padding;
+    const svgWidth = this.chartWidth + padding;
+
+
     this.svg = d3
       .select(this.hostElement)
       .attr('class', 'activity-heatmap')
       .append('svg')
-      .attr('width', this.chartWidth + 100)
-      .attr('height', this.chartHeight + 100)
-      //.attr('viewBox', `0 0 ${this.chartWidth} ${this.chartHeight}`)
+      //.attr('width', svgWidth)
+      //.attr('height', svgHeight)
+      .attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`)
       .append('g')
       .attr('transform', 'translate(' + 50 + ',' + 50 + ')');
 
@@ -188,8 +193,7 @@ export class BarChartComponent implements OnInit {
       bars
         .on('mouseover', (d) => {
           this.tooltip.style('opacity', 0.9);
-          this.tooltip.html(`Week Starting: ${formatDate(d.date)}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
-          // this.tooltip.html(`Week Starting: ${formatDate(d.date)}<br/> Time:  ${d.seconds}`);
+          this.tooltip.html(`Date: ${formatDate(d.date)}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
         })
         .on('mousemove', () => {
           this.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');

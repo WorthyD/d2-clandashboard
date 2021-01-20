@@ -7,9 +7,17 @@ import { ClanMemberRecentActivityService, ProfileService } from '../clan-db';
 @Injectable({
   providedIn: 'root'
 })
-export class ClanActivityService {
+export class ClanAggregateTimeService {
   readonly CONCURRENT_COUNT = 10;
   constructor(private profileService: ProfileService, private memberActivityService: ClanMemberRecentActivityService) {}
+
+  getClanActivityStatsForDays(clanId: number, clanMemberProfiles: MemberProfile[], activityMode: number = 0) {
+    return this.getClanActivityStats(clanId, clanMemberProfiles, activityMode).pipe(
+      map((x) => {
+        console.log(x);
+      })
+    );
+  }
 
   getClanActivityStats(clanId: number, clanMemberProfiles: MemberProfile[], activityMode: number = 0) {
     return from(clanMemberProfiles).pipe(
@@ -24,9 +32,8 @@ export class ClanActivityService {
     member: MemberProfile,
     activityMode: number = 0
   ): Observable<ActivityStats> {
-    return this.memberActivityService.getSerializedProfileActivity(clanId, member, activityMode).pipe(
+    return this.memberActivityService.getMemberActivity(clanId, member, activityMode).pipe(
       map((memberActivityResponse) => {
-        console.log('response', memberActivityResponse)
         return {
           memberProfile: { profile: member.profile },
           stats: memberActivityResponse
