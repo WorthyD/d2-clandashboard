@@ -13,10 +13,10 @@ export abstract class BaseClanAggregateTimeService {
 
   abstract getClanActivityStatsForDuration(clanId: number, clanMemberProfiles: MemberProfile[], activityMode, count);
 
-  getClanActivityStats(clanId: number, clanMemberProfiles: MemberProfile[], activityMode: number = 0) {
+  getClanActivityStats(clanId: number, clanMemberProfiles: MemberProfile[], startDate: Date, activityMode: number = 0) {
     return from(clanMemberProfiles).pipe(
       mergeMap((member) => {
-        return this.getMemberActivityStats(clanId, member, activityMode);
+        return this.getMemberActivityStats(clanId, member, startDate, activityMode);
       }, this.CONCURRENT_COUNT)
     );
   }
@@ -24,13 +24,17 @@ export abstract class BaseClanAggregateTimeService {
   private getMemberActivityStats(
     clanId: number,
     member: MemberProfile,
+    startDate: Date,
     activityMode: number = 0
   ): Observable<ActivityStats> {
     return this.memberActivityService.getMemberActivity(clanId, member, activityMode).pipe(
       map((memberActivityResponse) => {
         return {
           memberProfile: { profile: member.profile },
-          stats: memberActivityResponse
+          stats: {
+            id: memberActivityResponse.id,
+            activities: memberActivityResponse.activities.filter((x) => true) //TODO add filter
+          }
         };
       })
     );

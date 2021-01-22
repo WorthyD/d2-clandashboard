@@ -3,26 +3,23 @@ import { ActivityStats, MemberProfile, ClanMember } from 'bungie-models';
 import { forkJoin, from, Observable } from 'rxjs';
 import { map, mergeMap, toArray } from 'rxjs/operators';
 import { ClanMemberRecentActivityService, ProfileService } from '../../clan-db';
+import { groupActivitiesByDate } from '../../utility/group-activity-by-date';
 import { BaseClanAggregateTimeService } from './base-clan-aggregate-time.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DailyClanAggregateTimeService extends BaseClanAggregateTimeService {
-  getClanActivityStatsForDuration(clanId: number, clanMemberProfiles: MemberProfile[], activityMode: any, count: any) {
+  getClanActivityStatsForDuration(clanId: number, clanMemberProfiles: MemberProfile[], activityMode: any, startData: Date) {
     return this.getClanActivityStats(clanId, clanMemberProfiles, activityMode).pipe(
       toArray(),
       map((x) => {
-        console.log(x.map((y) => [...y.stats.activities]).length);
         const activities = [...x.map((y) => y.stats.activities)];
-        return activities;
+        const flatActivities = [].concat.apply([], activities);
+        const summedActivities = groupActivitiesByDate(flatActivities);
+
+        return summedActivities;
       })
     );
   }
-  // constructor(
-  //   private profileServiceBase: ProfileService,
-  //   private memberActivityServiceBase: ClanMemberRecentActivityService
-  // ) {
-  //   super(profileServiceBase, memberActivityServiceBase);
-  // }
 }
