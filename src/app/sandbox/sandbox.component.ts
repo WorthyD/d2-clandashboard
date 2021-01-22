@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivitiesService, ActivityModeService, PresentationNodeDefinitionService } from '@destiny/data';
+import { ActivitiesService, ActivityModeService, ClanMemberRecentActivityService, PresentationNodeDefinitionService } from '@destiny/data';
 import { MemberProfile } from 'bungie-models';
 import { MemberActivityStatsService } from 'projects/data/src/lib/clan-db/member-activity-stats/member-activity-stats.service';
 import { combineLatest } from 'rxjs';
@@ -15,6 +15,7 @@ export class SandboxComponent implements OnInit {
   rootSealNode2 = [];
   constructor(
     private x: MemberActivityStatsService,
+    private y: ClanMemberRecentActivityService,
     private presentationNodeService: ActivitiesService,
     private activityModeService: ActivityModeService
   ) {
@@ -25,7 +26,6 @@ export class SandboxComponent implements OnInit {
     }
 
     const defs2 = this.activityModeService.getDefinitions();
-    console.log(defs2);
 
     // tslint:disable-next-line:forin
     for (const prop in defs2) {
@@ -50,7 +50,7 @@ export class SandboxComponent implements OnInit {
           displayName: 'WorthyD'
         },
         versionsOwned: 63,
-        characterIds: [2305843009310516628, 2305843009319768855, 2305843009319768858],
+        characterIds: ['2305843009310516628', '2305843009319768855', '2305843009319768858'],
         seasonHashes: [3612906877, 2007338097, 4035491417, 248573323],
         currentSeasonHash: 248573323,
         currentSeasonRewardPowerCap: 1060
@@ -59,13 +59,14 @@ export class SandboxComponent implements OnInit {
     }
   } as unknown) as MemberProfile;
 
-  user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, 305843009310516628);
+///  user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, 305843009310516628);
+  user = this.y.getMemberActivity(2073131, this.profile);
 
-  prophecy = this.user.pipe(
-    map((x) => {
-      ///return x.activities.find((y) => y.activityHash === 4148187374);
-    })
-  );
+  // prophecy = this.user.pipe(
+  //   map((x) => {
+  //     ///return x.activities.find((y) => y.activityHash === 4148187374);
+  //   })
+  // );
 
   stuff = this.user.pipe(
     map((x) => {
