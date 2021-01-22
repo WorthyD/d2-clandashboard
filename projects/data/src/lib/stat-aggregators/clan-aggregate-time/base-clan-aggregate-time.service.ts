@@ -33,7 +33,7 @@ export abstract class BaseClanAggregateTimeService {
           memberProfile: { profile: member.profile },
           stats: {
             id: memberActivityResponse.id,
-            activities: memberActivityResponse.activities.filter((x) => true) //TODO add filter
+            activities: memberActivityResponse.activities.filter((x) => x.period > startDate)
           }
         };
       })

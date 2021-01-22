@@ -10,8 +10,13 @@ import { BaseClanAggregateTimeService } from './base-clan-aggregate-time.service
   providedIn: 'root'
 })
 export class DailyClanAggregateTimeService extends BaseClanAggregateTimeService {
-  getClanActivityStatsForDuration(clanId: number, clanMemberProfiles: MemberProfile[], activityMode: any, startData: Date) {
-    return this.getClanActivityStats(clanId, clanMemberProfiles, activityMode).pipe(
+  getClanActivityStatsForDuration(
+    clanId: number,
+    clanMemberProfiles: MemberProfile[],
+    startData: Date,
+    activityMode: any,
+  ) {
+    return this.getClanActivityStats(clanId, clanMemberProfiles, startData, activityMode).pipe(
       toArray(),
       map((x) => {
         const activities = [...x.map((y) => y.stats.activities)];
