@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-content>
+    <div class="card-header">
+      <div class="h2">
+        Clan In Game Time
+      </div>
+      <div>
+        <ng-container *ngFor="let button of buttons">
+          <button mat-raised-button [color]="button.type === selection ? 'primary' : ''" class="mx-1"
+            (click)="onSelectionChange(button.type)">{{button.text}}</button>
+        </ng-container>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
