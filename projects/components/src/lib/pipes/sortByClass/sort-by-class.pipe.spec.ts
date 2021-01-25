@@ -18,7 +18,7 @@ const member = {
   }
 } as MemberProfile;
 
-fdescribe('SortByClassPipe', () => {
+describe('SortByClassPipe', () => {
   it('create an instance', () => {
     const pipe = new SortByClassPipe();
     expect(pipe).toBeTruthy();

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { formatDate } from 'projects/data/src/lib/utility/format-date';
+import { SECONDS_IN_WEEK, SECONDS_IN_DAY } from '@destiny/models/constants';
 enum Views {
   daily = 'daily',
   weekly = 'weekly'
 }
+
 
 @Component({
   selector: 'lib-activity-time-chart',
@@ -18,11 +20,17 @@ export class ActivityTimeChartComponent implements OnInit {
       type: Views.daily,
       text: 'Daily'
     },
-    {
-      type: Views.weekly,
-      text: 'Weekly'
-    }
+    // {
+    //   type: Views.weekly,
+    //   text: 'Weekly'
+    // }
   ];
+
+  @Input()
+  events;
+
+  @Input()
+  loading;
 
   constructor() {}
 

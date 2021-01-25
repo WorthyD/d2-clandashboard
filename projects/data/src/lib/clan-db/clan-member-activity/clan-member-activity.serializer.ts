@@ -7,7 +7,10 @@ export function clanMemberActivitySerializer(
 ): DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup {
   return {
     period: activity.period,
-    activityDetails: activity.activityDetails,
+    activityDetails: {
+      mode: activity.activityDetails.mode,
+      //modes: activity.activityDetails.modes
+    },
     values: {
       activityDurationSeconds: activity?.values?.activityDurationSeconds,
       completed: activity?.values?.completed

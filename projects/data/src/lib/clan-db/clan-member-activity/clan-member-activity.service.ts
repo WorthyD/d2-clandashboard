@@ -13,7 +13,7 @@ import { from, of, Observable, defer, concat, EMPTY, forkJoin } from 'rxjs';
 import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo } from 'rxjs/operators';
 
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
-import { StoreId } from '../app-indexed-db';
+import { DBObject, StoreId } from '../app-indexed-db';
 
 @Injectable()
 export class ClanMemberActivityService extends BaseMemberActivityService {
@@ -38,6 +38,33 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
       })
     );
   }
+
+  getAllActivitiesFromCache(clanId: number, memberProfiles: MemberProfile[]) {
+  //  console.log(this.isCacheValid);
+   // console.log(this.getAllDataFromCache);
+    return from(this.getAllDataFromCache(clanId.toString())).pipe(
+      map((x) => {
+        return this.groupActivitiesToMember(memberProfiles, x);
+      })
+    );
+  }
+
+  private groupActivitiesToMember(memberProfiles: MemberProfile[], allActivities: DBObject[]) {
+    return memberProfiles.map((memberProfile) => {
+      const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
+
+      const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
+      const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
+        clanMemberActivitySerializer(activityDB.data)
+      );
+
+      return {
+        id: memberProfileId,
+        activities: [].concat(...memberActivitiesSerialized)
+      };
+    });
+  }
+
   getMemberActivity(clanId: number, member: MemberProfile, activityMode: number = 0): Observable<MemberActivityStats> {
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId) => {

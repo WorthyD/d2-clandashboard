@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivitiesService, ActivityModeService, ClanMemberRecentActivityService, PresentationNodeDefinitionService } from '@destiny/data';
+import {
+  ActivitiesService,
+  ActivityModeService,
+  ClanMemberActivityService,
+  ClanMemberRecentActivityService,
+  PresentationNodeDefinitionService
+} from '@destiny/data';
 import { MemberProfile } from 'bungie-models';
 import { MemberActivityStatsService } from 'projects/data/src/lib/clan-db/member-activity-stats/member-activity-stats.service';
 import { combineLatest } from 'rxjs';
@@ -13,9 +19,10 @@ import { map } from 'rxjs/operators';
 export class SandboxComponent implements OnInit {
   rootSealNode = [];
   rootSealNode2 = [];
+  blah =[];
   constructor(
     private x: MemberActivityStatsService,
-    private y: ClanMemberRecentActivityService,
+    private y: ClanMemberActivityService,
     private presentationNodeService: ActivitiesService,
     private activityModeService: ActivityModeService
   ) {
@@ -32,10 +39,13 @@ export class SandboxComponent implements OnInit {
       this.rootSealNode2.push(defs2[prop]);
     }
 
-    this.rootSealNode2.sort(function(a, b) {
+    this.rootSealNode2.sort(function (a, b) {
       return a.modeType - b.modeType;
     });
 
+    // this.y.getAllFromCache(2073131, [this.profile]).then((x) => {
+    //   this.blah = x;
+    // });
   }
 
   profile = ({
@@ -59,8 +69,9 @@ export class SandboxComponent implements OnInit {
     }
   } as unknown) as MemberProfile;
 
-///  user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, 305843009310516628);
-  user = this.y.getMemberActivity(2073131, this.profile);
+  ///  user = this.x.getMemberCharacterActivityStatsSerializedGETALL(2073131, this.profile, 305843009310516628);
+  //juser = this.y.getMemberActivity(2073131, this.profile);
+  //user = this.y.getAllFromCache(2073131, [this.profile]);
 
   // prophecy = this.user.pipe(
   //   map((x) => {
@@ -68,27 +79,27 @@ export class SandboxComponent implements OnInit {
   //   })
   // );
 
-  stuff = this.user.pipe(
-    map((x) => {
-      //console.log(x);
+  // stuff = this.user.pipe(
+  //   map((x) => {
+  //     //console.log(x);
 
-      // const retVal = [];
-      // x.activities.forEach((stat) => {
-      //   retVal.push({
-      //     user: this.rootSealNode[stat.activityHash]?.displayProperties.name,
-      //     id: stat.activityHash
-      //   });
-      // });
+  //     // const retVal = [];
+  //     // x.activities.forEach((stat) => {
+  //     //   retVal.push({
+  //     //     user: this.rootSealNode[stat.activityHash]?.displayProperties.name,
+  //     //     id: stat.activityHash
+  //     //   });
+  //     // });
 
-      // if (this.rootSealNode[x.activityHash]) {
-      //   return {
-      //     name: this.rootSealNode[x.activityHash]
-      //   };
-      // }
-      //return retVal;
-      return null;
-    })
-  );
+  //     // if (this.rootSealNode[x.activityHash]) {
+  //     //   return {
+  //     //     name: this.rootSealNode[x.activityHash]
+  //     //   };
+  //     // }
+  //     //return retVal;
+  //     return null;
+  //   })
+  // );
 
   ngOnInit(): void {}
 }

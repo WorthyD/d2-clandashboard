@@ -33,7 +33,7 @@ export abstract class BaseClanAggregateTimeService {
           memberProfile: { profile: member.profile },
           stats: {
             id: memberActivityResponse.id,
-            activities: memberActivityResponse.activities.filter((x) => x.period > startDate)
+            activities: memberActivityResponse.activities.filter((x) => new Date(x.period) > startDate)
           }
         };
       })

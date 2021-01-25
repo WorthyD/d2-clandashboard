@@ -11,5 +11,12 @@
         </ng-container>
       </div>
     </div>
+    <div class="chart-container">
+      <lib-activity-bar-chart *ngIf="!loading; else loadingTemplate" [events]="events"></lib-activity-bar-chart>
+    </div>
   </mat-card-content>
 </mat-card>
+
+<ng-template #loadingTemplate>
+  <lib-loading></lib-loading>
+</ng-template>

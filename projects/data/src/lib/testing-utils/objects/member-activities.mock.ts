@@ -1,3 +1,4 @@
+import { MemberProfile } from 'bungie-models';
 import { DBObject } from '../../clan-db/app-indexed-db';
 import { nowPlusDays } from '../../utility/date-utils';
 
@@ -174,7 +175,43 @@ const mockValues = {
   teamScore: { statId: 'teamScore', basic: { value: 0.0, displayValue: '0' } }
 };
 
+export function GET_MOCK_ACTIVITIES(count: number) {
+  const activities = [];
+  for (let i = 0; i < count; i++) {
+    activities.push({
+      period: nowPlusDays(-i).toJSON(),
+      activityDetails: {
+        referenceId: 1,
+        directorActivityHash: 1,
+        instanceId: '1234',
+        mode: 1,
+        modes: [1, 2],
+        isPrivate: false,
+        membershipType: 3
+      },
+      values: { ...mockValues }
+    });
+  }
+}
+
+export function GET_MOCK_DB_ACTIVITIES(memberProfiles: MemberProfile[], activities) {
+  const dbActivities = [];
+  memberProfiles.forEach((member) => {
+    member.profile.data.characterIds.forEach((charId) => {
+      dbActivities.push({
+        id: `${member.profile.data.userInfo.membershipType}-${member.profile.data.userInfo.membershipId}-${charId}`,
+        createDate: new Date(),
+        data: activities
+      });
+    });
+  });
+  return dbActivities;
+}
+
 const currentYear = new Date().getFullYear();
+/**
+ * @deprecated
+ */
 export const MOCK_RESP_ACTIVITIES_PAGE1 = {
   activities: [
     {
@@ -205,6 +242,9 @@ export const MOCK_RESP_ACTIVITIES_PAGE1 = {
     }
   ]
 };
+/**
+ * @deprecated
+ */
 export const MOCK_RESP_ACTIVITIES_PAGE2 = {
   activities: [
     {
@@ -235,7 +275,9 @@ export const MOCK_RESP_ACTIVITIES_PAGE2 = {
     }
   ]
 };
-
+/**
+ * @deprecated
+ */
 export const MOCK_RESP_ACTIVITIES_PAGE3 = {
   activities: [
     {
@@ -266,12 +308,17 @@ export const MOCK_RESP_ACTIVITIES_PAGE3 = {
     }
   ]
 };
+/**
+ * @deprecated
+ */
 export const MOCK_RESP_ACTIVITIES_COMBINED = [
   ...MOCK_RESP_ACTIVITIES_PAGE1.activities,
   ...MOCK_RESP_ACTIVITIES_PAGE2.activities,
   ...MOCK_RESP_ACTIVITIES_PAGE3.activities
 ];
-
+/**
+ * @deprecated
+ */
 export const MOCK_DB_ACTIVITIES: DBObject[] = [
   {
     id: '3-4611686018467238913-2305843009310516628',

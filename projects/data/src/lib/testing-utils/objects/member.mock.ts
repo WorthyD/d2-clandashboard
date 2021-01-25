@@ -1,6 +1,9 @@
 import { DBObject } from '../../clan-db/app-indexed-db';
 import { nowPlusDays, dateToUnixTimeStamp } from '../../utility/date-utils';
 
+/**
+ * @deprecated
+ */
 export const MOCK_ZONED_MEMBER = {
   memberType: 5,
   isOnline: false,
@@ -29,6 +32,9 @@ export const MOCK_ZONED_MEMBER = {
   joinDate: '2017-10-25T02:09:31Z'
 };
 
+/**
+ * @deprecated
+ */
 export const MOCK_OMEGA_MEMBER = {
   memberType: 3,
   isOnline: true,
@@ -57,6 +63,9 @@ export const MOCK_OMEGA_MEMBER = {
   joinDate: '2019-04-06T15:42:23Z'
 };
 
+/**
+ * @deprecated
+ */
 export const MOCK_WORTHY_MEMBER = {
   memberType: 3,
   isOnline: false,
@@ -85,6 +94,9 @@ export const MOCK_WORTHY_MEMBER = {
   joinDate: '2019-09-15T18:11:09Z'
 };
 
+/**
+ * @deprecated
+ */
 export const MOCK_DB_MEMBERS: DBObject[] = [
   {
     id: '3-4611686018469839063',

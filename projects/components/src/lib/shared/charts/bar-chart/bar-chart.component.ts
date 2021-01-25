@@ -31,7 +31,7 @@ export class BarChartComponent implements OnInit {
   y;
   tooltip;
 
-  chartHeight = 400;
+  chartHeight = 200;
   chartWidth = 600;
   threshHold = SECONDS_IN_HOUR * 20;
   color = d3.scaleLinear().range(['#00ff00', '#ff0000']).domain([0, 1]);
@@ -138,7 +138,6 @@ export class BarChartComponent implements OnInit {
       //   })
       // );
       this.y.domain([0, d3.max(cleanedData, (d) => d.seconds) * 1.1]);
-      console.log(cleanedData);
 
       // Footer
       this.svg

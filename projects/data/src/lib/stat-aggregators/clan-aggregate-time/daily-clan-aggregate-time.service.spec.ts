@@ -108,7 +108,7 @@ const memberProfile = {
   }
 } as MemberProfile;
 
-fdescribe('DailyClanAggregateTimeService', () => {
+describe('DailyClanAggregateTimeService', () => {
   let service: DailyClanAggregateTimeService;
   let profileService: ProfileService;
   let activityService: ClanMemberRecentActivityService;
