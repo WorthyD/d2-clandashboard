@@ -192,6 +192,7 @@ export function GET_MOCK_ACTIVITIES(count: number) {
       values: { ...mockValues }
     });
   }
+  return activities;
 }
 
 export function GET_MOCK_DB_ACTIVITIES(memberProfiles: MemberProfile[], activities) {

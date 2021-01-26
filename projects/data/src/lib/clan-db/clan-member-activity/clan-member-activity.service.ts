@@ -40,10 +40,11 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
   }
 
   getAllActivitiesFromCache(clanId: number, memberProfiles: MemberProfile[]) {
-  //  console.log(this.isCacheValid);
-   // console.log(this.getAllDataFromCache);
+    //  console.log(this.isCacheValid);
+    // console.log(this.getAllDataFromCache);
     return from(this.getAllDataFromCache(clanId.toString())).pipe(
       map((x) => {
+        console.log('mapping', x);
         return this.groupActivitiesToMember(memberProfiles, x);
       })
     );
@@ -58,6 +59,8 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
         clanMemberActivitySerializer(activityDB.data)
       );
 
+      console.log('memberProfile', memberProfileId);
+      console.log('member profile length', memberActivitiesSerialized.length);
       return {
         id: memberProfileId,
         activities: [].concat(...memberActivitiesSerialized)

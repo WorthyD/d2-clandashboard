@@ -14,7 +14,7 @@ export const MOCK_MEMBER_PROFILE = {
 
 export function GET_MOCK_PROFILES(count: number): MemberProfile[] {
   const profiles = [];
-  for (let i = 0; i++; i < count) {
+  for (let i = 0; i < count; i++) {
     profiles.push({
       profile: {
         data: {
