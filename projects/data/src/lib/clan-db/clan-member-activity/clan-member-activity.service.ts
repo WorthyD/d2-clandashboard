@@ -44,7 +44,6 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     // console.log(this.getAllDataFromCache);
     return from(this.getAllDataFromCache(clanId.toString())).pipe(
       map((x) => {
-        console.log('mapping', x);
         return this.groupActivitiesToMember(memberProfiles, x);
       })
     );
@@ -56,11 +55,11 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
 
       const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
       const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
-        clanMemberActivitySerializer(activityDB.data)
+        activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
       );
 
-      console.log('memberProfile', memberProfileId);
-      console.log('member profile length', memberActivitiesSerialized.length);
+      //      console.log('memberProfile', memberProfileId);
+      ///     console.log('member profile length', memberActivitiesSerialized.length);
       return {
         id: memberProfileId,
         activities: [].concat(...memberActivitiesSerialized)

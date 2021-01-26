@@ -40,10 +40,9 @@ describe('ClanMemberActivityService', () => {
   });
 
   fdescribe('getAllActivitiesFromCache', () => {
-    it('should retrieve data from db', async(done) => {
+    it('should retrieve data from db', async (done) => {
       const MOCK_PROFILES = GET_MOCK_PROFILES(2);
       const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
-      console.log('activities', MOCK_ACTIVITIES);
       const MOCK_DB_ACTIVITIES = GET_MOCK_DB_ACTIVITIES(MOCK_PROFILES, MOCK_ACTIVITIES);
 
       const dbGetSpy = spyOn(dbService, 'getAll').and.callFake(() => {
@@ -51,7 +50,8 @@ describe('ClanMemberActivityService', () => {
       });
 
       service.getAllActivitiesFromCache(1, MOCK_PROFILES).subscribe((x) => {
-        console.log('data', x.length);
+        expect(x.length).toBe(2);
+        expect(x[0].activities.length).toEqual(9);
         done();
       });
     });
