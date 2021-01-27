@@ -39,7 +39,7 @@ describe('ClanMemberActivityService', () => {
     expect(service).toBeTruthy();
   });
 
-  fdescribe('getAllActivitiesFromCache', () => {
+  describe('getAllActivitiesFromCache', () => {
     it('should retrieve data from db', () => {
       const MOCK_PROFILES = GET_MOCK_PROFILES(2);
       const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
@@ -55,6 +55,28 @@ describe('ClanMemberActivityService', () => {
       });
     });
   });
+
+
+  describe('updateAllActivityCache', () => {
+    it('should retrieve data from db', () => {
+      const MOCK_PROFILES = GET_MOCK_PROFILES(2);
+      const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
+      const MOCK_DB_ACTIVITIES = GET_MOCK_DB_ACTIVITIES(MOCK_PROFILES, MOCK_ACTIVITIES);
+
+      const dbGetSpy = spyOn(dbService, 'getAll').and.callFake(() => {
+        return of(MOCK_DB_ACTIVITIES);
+      });
+
+      service.getAllActivitiesFromCache(1, MOCK_PROFILES).subscribe((x) => {
+        expect(x.length).toBe(2);
+        expect(x[0].activities.length).toEqual(9);
+      });
+    });
+  });
+
+
+
+
 
   describe('getMemberCharacterActivitySerialized', () => {
     it('should get profile from DB, but call service if expired', () => {

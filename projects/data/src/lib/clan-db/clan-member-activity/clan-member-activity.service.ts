@@ -10,7 +10,7 @@ import { BaseMemberActivityService } from '../base-member-activity.service';
 import { ClanDatabase } from '../ClanDatabase';
 import { MemberProfile, MemberActivityStats } from 'bungie-models';
 import { from, of, Observable, defer, concat, EMPTY, forkJoin } from 'rxjs';
-import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo } from 'rxjs/operators';
+import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo, tap } from 'rxjs/operators';
 
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
 import { DBObject, StoreId } from '../app-indexed-db';
@@ -32,9 +32,21 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
   }
 
   // TODO: Add progress indicator?
-  updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[]){
-    return from(memberProfiles)
-
+  updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[]) {
+    return from(memberProfiles).pipe(
+      mergeMap((memberProfile) => {
+        return from(memberProfile.profile.data.characterIds).pipe(
+          mergeMap((characterId) => {
+            // getFreshMemberCharacterActivity
+            return this.getMemberCharacterActivity(clanId, memberProfile, characterId);
+          })
+        );
+      }),
+      tap((x) => {
+        console.log('tapping', x);
+      }),
+      toArray()
+    );
   }
 
   private groupActivitiesToMember(memberProfiles: MemberProfile[], allActivities: DBObject[]): MemberActivityStats[] {
@@ -53,11 +65,6 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     });
   }
 
-  /**
-   * @deprecated
-   *
-   *
-   */
   getMemberCharacterActivitySerialized(
     clanId: number,
     member: MemberProfile,
@@ -76,11 +83,6 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     );
   }
 
-  /**
-   * @deprecated
-   *
-   *
-   */
   getMemberActivity(clanId: number, member: MemberProfile, activityMode: number = 0): Observable<MemberActivityStats> {
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId) => {
