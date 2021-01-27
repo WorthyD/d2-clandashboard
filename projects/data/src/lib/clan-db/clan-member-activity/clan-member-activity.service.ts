@@ -14,11 +14,13 @@ import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo } from '
 
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
 import { DBObject, StoreId } from '../app-indexed-db';
+import { nowPlusDays } from '../../utility/date-utils';
 
 @Injectable()
 export class ClanMemberActivityService extends BaseMemberActivityService {
   constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
-    super(clanDB, StoreId.MemberActivities, d2Service, new Date(new Date().getFullYear() - 1, 0, 0), 30);
+    // super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-365), 30);
+    super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-30), 6); // TODO: remove this eventually for larger numbers
   }
 
   getAllActivitiesFromCache(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityStats[]> {
@@ -27,6 +29,12 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
         return this.groupActivitiesToMember(memberProfiles, x);
       })
     );
+  }
+
+  // TODO: Add progress indicator?
+  updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[]){
+    return from(memberProfiles)
+
   }
 
   private groupActivitiesToMember(memberProfiles: MemberProfile[], allActivities: DBObject[]): MemberActivityStats[] {
