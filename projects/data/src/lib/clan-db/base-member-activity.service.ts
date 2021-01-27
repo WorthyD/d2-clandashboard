@@ -97,27 +97,55 @@ export class BaseMemberActivityService extends BaseClanService {
           return of(cachedData.data);
         }
 
-        return this.getAllRecentActivity(member, characterId).pipe(
-          map((activityResponse) => {
-            if (activityResponse.activities) {
-              this.updateDB(clanId, characterActivityId, activityResponse.activities);
-              return activityResponse.activities;
-            }
-          }),
-          catchError((error) => {
-            if (error.error?.ErrorStatus === 'DestinyPrivacyRestriction') {
-              this.updateDB(clanId, characterActivityId, []);
-              return of([]);
-            }
-            if (cachedData && cachedData.data) {
-              return of(cachedData.data);
-            }
+        return this.getFreshMemberCharacterActivity(clanId, member, characterId, characterActivityId, cachedData);
+        // return this.getAllRecentActivity(member, characterId).pipe(
+        //   map((activityResponse) => {
+        //     if (activityResponse.activities) {
+        //       this.updateDB(clanId, characterActivityId, activityResponse.activities);
+        //       return activityResponse.activities;
+        //     }
+        //   }),
+        //   catchError((error) => {
+        //     if (error.error?.ErrorStatus === 'DestinyPrivacyRestriction') {
+        //       this.updateDB(clanId, characterActivityId, []);
+        //       return of([]);
+        //     }
+        //     if (cachedData && cachedData.data) {
+        //       return of(cachedData.data);
+        //     }
 
-            throw error;
-          })
-        );
+        //     throw error;
+        //   })
+        // );
       })
     );
   }
 
+  getFreshMemberCharacterActivity(
+    clanId: number,
+    member: MemberProfile,
+    characterId: number,
+    characterActivityId: string,
+    cachedData: any
+  ): Observable<Array<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup>> {
+    return this.getAllRecentActivity(member, characterId).pipe(
+      map((activityResponse) => {
+        if (activityResponse.activities) {
+          this.updateDB(clanId, characterActivityId, activityResponse.activities);
+          return activityResponse.activities;
+        }
+      }),
+      catchError((error) => {
+        if (error.error?.ErrorStatus === 'DestinyPrivacyRestriction') {
+          this.updateDB(clanId, characterActivityId, []);
+          return of([]);
+        }
+        if (cachedData && cachedData.data) {
+          return of(cachedData.data);
+        }
+
+        throw error;
+      })
+    );
+  }
 }

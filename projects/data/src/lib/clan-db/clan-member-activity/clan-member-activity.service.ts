@@ -21,6 +21,35 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     super(clanDB, StoreId.MemberActivities, d2Service, new Date(new Date().getFullYear() - 1, 0, 0), 30);
   }
 
+  getAllActivitiesFromCache(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityStats[]> {
+    return from(this.getAllDataFromCache(clanId.toString())).pipe(
+      map((x) => {
+        return this.groupActivitiesToMember(memberProfiles, x);
+      })
+    );
+  }
+
+  private groupActivitiesToMember(memberProfiles: MemberProfile[], allActivities: DBObject[]): MemberActivityStats[] {
+    return memberProfiles.map((memberProfile) => {
+      const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
+
+      const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
+      const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
+        activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
+      );
+
+      return {
+        id: memberProfileId,
+        activities: [].concat(...memberActivitiesSerialized)
+      };
+    });
+  }
+
+  /**
+   * @deprecated
+   *
+   *
+   */
   getMemberCharacterActivitySerialized(
     clanId: number,
     member: MemberProfile,
@@ -39,34 +68,11 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     );
   }
 
-  getAllActivitiesFromCache(clanId: number, memberProfiles: MemberProfile[]) {
-    //  console.log(this.isCacheValid);
-    // console.log(this.getAllDataFromCache);
-    return from(this.getAllDataFromCache(clanId.toString())).pipe(
-      map((x) => {
-        return this.groupActivitiesToMember(memberProfiles, x);
-      })
-    );
-  }
-
-  private groupActivitiesToMember(memberProfiles: MemberProfile[], allActivities: DBObject[]) {
-    return memberProfiles.map((memberProfile) => {
-      const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
-
-      const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
-      const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
-        activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
-      );
-
-      //      console.log('memberProfile', memberProfileId);
-      ///     console.log('member profile length', memberActivitiesSerialized.length);
-      return {
-        id: memberProfileId,
-        activities: [].concat(...memberActivitiesSerialized)
-      };
-    });
-  }
-
+  /**
+   * @deprecated
+   *
+   *
+   */
   getMemberActivity(clanId: number, member: MemberProfile, activityMode: number = 0): Observable<MemberActivityStats> {
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId) => {

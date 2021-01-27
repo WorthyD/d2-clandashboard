@@ -40,7 +40,7 @@ describe('ClanMemberActivityService', () => {
   });
 
   fdescribe('getAllActivitiesFromCache', () => {
-    it('should retrieve data from db', async (done) => {
+    it('should retrieve data from db', () => {
       const MOCK_PROFILES = GET_MOCK_PROFILES(2);
       const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
       const MOCK_DB_ACTIVITIES = GET_MOCK_DB_ACTIVITIES(MOCK_PROFILES, MOCK_ACTIVITIES);
@@ -52,7 +52,6 @@ describe('ClanMemberActivityService', () => {
       service.getAllActivitiesFromCache(1, MOCK_PROFILES).subscribe((x) => {
         expect(x.length).toBe(2);
         expect(x[0].activities.length).toEqual(9);
-        done();
       });
     });
   });
