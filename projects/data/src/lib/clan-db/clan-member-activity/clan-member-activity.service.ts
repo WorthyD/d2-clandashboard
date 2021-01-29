@@ -10,7 +10,7 @@ import { BaseMemberActivityService } from '../base-member-activity.service';
 import { ClanDatabase } from '../ClanDatabase';
 import { MemberProfile, MemberActivityStats } from 'bungie-models';
 import { from, of, Observable, defer, concat, EMPTY, forkJoin, combineLatest } from 'rxjs';
-import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo, tap } from 'rxjs/operators';
+import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo, tap, switchMap } from 'rxjs/operators';
 
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
 import { DBObject, StoreId } from '../app-indexed-db';
@@ -26,7 +26,7 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
   getAllActivitiesFromCache(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityStats[]> {
     return from(this.getAllDataFromCache(clanId.toString())).pipe(
       map((x) => {
-        return this.groupActivitiesToMember(memberProfiles, x);
+        return this.groupActivitiesToMembers(memberProfiles, x);
       })
     );
   }
@@ -36,22 +36,32 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     const memberProfilesObs = from(memberProfiles);
     const cacheDataObs = from(this.getAllDataFromCache(clanId.toString()));
 
-    return combineLatest([memberProfilesObs, cacheDataObs]).pipe(
-      mergeMap(([memberProfile, cachedData]) => {
-        return from(memberProfile.profile.data.characterIds).pipe(
-          mergeMap((characterId) => {
-            // getFreshMemberCharacterActivity
+    return cacheDataObs.pipe(
+      switchMap((cachedData) => {
+        return memberProfilesObs.pipe(
+          mergeMap((memberProfile) => {
+            return from(memberProfile.profile.data.characterIds).pipe(
+              mergeMap((characterId) => {
+                const characterActivityId = this.getMemberActivityId(memberProfile, characterId);
+                const characterActivityCache = cachedData.find((x) => x.id === characterActivityId);
 
-            const characterActivityId = this.getMemberActivityId(memberProfile, characterId);
-
-            return this.getMemberCharacterActivity(clanId, memberProfile, characterId);
-          })
+                return this.verifyCacheIntegrity(clanId, memberProfile, characterId, characterActivityCache);
+              }),
+              toArray(),
+              map((x) => {
+                const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
+                return {
+                  id: memberProfileId,
+                  activities: [].concat(...x)
+                };
+              })
+            );
+          }),
+          tap((x) => {
+          }),
+          toArray()
         );
-      }),
-      tap((x) => {
-        console.log('tapping', x);
-      }),
-      toArray()
+      })
     );
     /*
     return from(memberProfiles).pipe(
@@ -71,20 +81,24 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     */
   }
 
-  private groupActivitiesToMember(memberProfiles: MemberProfile[], allActivities: DBObject[]): MemberActivityStats[] {
+  private groupActivitiesToMembers(memberProfiles: MemberProfile[], allActivities: DBObject[]): MemberActivityStats[] {
     return memberProfiles.map((memberProfile) => {
-      const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
-
-      const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
-      const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
-        activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
-      );
-
-      return {
-        id: memberProfileId,
-        activities: [].concat(...memberActivitiesSerialized)
-      };
+      return this.groupActivitiesToMember(memberProfile, allActivities);
     });
+  }
+
+  private groupActivitiesToMember(memberProfile: MemberProfile, allActivities: DBObject[]) {
+    const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
+
+    const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
+    const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
+      activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
+    );
+
+    return {
+      id: memberProfileId,
+      activities: [].concat(...memberActivitiesSerialized)
+    };
   }
 
   getMemberCharacterActivitySerialized(

@@ -52,13 +52,13 @@ describe('ClanMemberActivityService', () => {
       service.getAllActivitiesFromCache(1, MOCK_PROFILES).subscribe((x) => {
         expect(x.length).toBe(2);
         expect(x[0].activities.length).toEqual(9);
+        expect(dbGetSpy).toHaveBeenCalledTimes(1);
       });
     });
   });
 
-
-  describe('updateAllActivityCache', () => {
-    it('should retrieve data from db', () => {
+  fdescribe('updateAllActivityCache', () => {
+    it('should not update if cache is good', () => {
       const MOCK_PROFILES = GET_MOCK_PROFILES(2);
       const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
       const MOCK_DB_ACTIVITIES = GET_MOCK_DB_ACTIVITIES(MOCK_PROFILES, MOCK_ACTIVITIES);
@@ -66,17 +66,86 @@ describe('ClanMemberActivityService', () => {
       const dbGetSpy = spyOn(dbService, 'getAll').and.callFake(() => {
         return of(MOCK_DB_ACTIVITIES);
       });
+      const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(() => {
+        return of({
+          Response: { activities: MOCK_ACTIVITIES }
+        });
+      });
 
-      service.getAllActivitiesFromCache(1, MOCK_PROFILES).subscribe((x) => {
+      service.updateAllActivityCache(1, MOCK_PROFILES).subscribe((x) => {
+        expect(x.length).toBe(2);
+        //expect(x[0].activities.length).toEqual(9);
+        expect(dbGetSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(0);
+        expect(updateSpy).toHaveBeenCalledTimes(0);
+      });
+    });
+    it('should  not update cache for innactive users', () => {
+      const MOCK_PROFILES = GET_MOCK_PROFILES(2);
+      MOCK_PROFILES[0].profile.data.dateLastPlayed = nowPlusDays(-100);
+      const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
+      const MOCK_DB_ACTIVITIES = GET_MOCK_DB_ACTIVITIES(MOCK_PROFILES, MOCK_ACTIVITIES);
+
+      const dbGetSpy = spyOn(dbService, 'getAll').and.callFake(() => {
+        return of(MOCK_DB_ACTIVITIES);
+      });
+      const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(() => {
+        return of({
+          Response: { activities: MOCK_ACTIVITIES }
+        });
+      });
+
+      service.updateAllActivityCache(1, MOCK_PROFILES).subscribe((x) => {
         expect(x.length).toBe(2);
         expect(x[0].activities.length).toEqual(9);
+        expect(dbGetSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(0);
+        expect(updateSpy).toHaveBeenCalledTimes(0);
+      });
+    });
+    it('should  update stale cache for  users', () => {
+      const MOCK_PROFILES = GET_MOCK_PROFILES(2);
+      const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
+      const MOCK_DB_ACTIVITIES = GET_MOCK_DB_ACTIVITIES(MOCK_PROFILES, MOCK_ACTIVITIES);
+      MOCK_DB_ACTIVITIES[0].createDate = nowPlusDays(-100);
+
+      const dbGetSpy = spyOn(dbService, 'getAll').and.callFake(() => {
+        return of(MOCK_DB_ACTIVITIES);
+      });
+      const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      // const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(() => {
+      //   return of({
+      //     Response: { activities: MOCK_ACTIVITIES }
+      //   });
+      // });
+      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
+        (charId, memberId, memberType, getCount, something, pageNumber) => {
+          switch (pageNumber) {
+            case 0:
+              return of({
+                Response:  { activities: MOCK_ACTIVITIES }
+              });
+
+            default:
+              return of({
+                Response: {}
+              });
+              break;
+          }
+        }
+      );
+
+      service.updateAllActivityCache(1, MOCK_PROFILES).subscribe((x) => {
+        expect(x.length).toBe(2);
+        expect(x[0].activities.length).toEqual(9);
+        expect(dbGetSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(5); // Gets based on 4 pages
+        expect(updateSpy).toHaveBeenCalledTimes(1);
       });
     });
   });
-
-
-
-
 
   describe('getMemberCharacterActivitySerialized', () => {
     it('should get profile from DB, but call service if expired', () => {

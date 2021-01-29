@@ -195,7 +195,7 @@ export function GET_MOCK_ACTIVITIES(count: number) {
   return activities;
 }
 
-export function GET_MOCK_DB_ACTIVITIES(memberProfiles: MemberProfile[], activities) {
+export function GET_MOCK_DB_ACTIVITIES(memberProfiles: MemberProfile[], activities): DBObject[] {
   const dbActivities = [];
   memberProfiles.forEach((member) => {
     member.profile.data.characterIds.forEach((charId) => {
