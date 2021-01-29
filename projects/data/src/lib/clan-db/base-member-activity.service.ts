@@ -81,7 +81,8 @@ export class BaseMemberActivityService extends BaseClanService {
       })
     );
   }
-  private getMemberActivityId(member: MemberProfile, characterId: number) {
+
+  getMemberActivityId(member: MemberProfile, characterId: number) {
     return `${member.profile.data.userInfo.membershipType}-${member.profile.data.userInfo.membershipId}-${characterId}`;
   }
 
@@ -91,6 +92,7 @@ export class BaseMemberActivityService extends BaseClanService {
     characterId: number
   ): Observable<Array<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup>> {
     const characterActivityId = this.getMemberActivityId(member, characterId);
+
     return from(this.getDataFromCache(clanId.toString(), characterActivityId)).pipe(
       mergeMap((cachedData) => {
         if (this.isCacheValid(cachedData, 720, new Date(member.profile.data.dateLastPlayed))) {
@@ -98,27 +100,17 @@ export class BaseMemberActivityService extends BaseClanService {
         }
 
         return this.getFreshMemberCharacterActivity(clanId, member, characterId, characterActivityId, cachedData);
-        // return this.getAllRecentActivity(member, characterId).pipe(
-        //   map((activityResponse) => {
-        //     if (activityResponse.activities) {
-        //       this.updateDB(clanId, characterActivityId, activityResponse.activities);
-        //       return activityResponse.activities;
-        //     }
-        //   }),
-        //   catchError((error) => {
-        //     if (error.error?.ErrorStatus === 'DestinyPrivacyRestriction') {
-        //       this.updateDB(clanId, characterActivityId, []);
-        //       return of([]);
-        //     }
-        //     if (cachedData && cachedData.data) {
-        //       return of(cachedData.data);
-        //     }
-
-        //     throw error;
-        //   })
-        // );
       })
     );
+  }
+
+  getMemberCharacterActivityFromCache(clanId, memberProfile: MemberProfile, characterId, cachedData) {
+    const characterActivityId = this.getMemberActivityId(memberProfile, characterId);
+    if (this.isCacheValid(cachedData, 720, new Date(memberProfile.profile.data.dateLastPlayed))) {
+      return of(cachedData.data);
+    }
+
+    return this.getFreshMemberCharacterActivity(clanId, memberProfile, characterId, characterActivityId, cachedData);
   }
 
   getFreshMemberCharacterActivity(

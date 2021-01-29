@@ -9,7 +9,7 @@ import { BaseClanService } from '../base-clan.service';
 import { BaseMemberActivityService } from '../base-member-activity.service';
 import { ClanDatabase } from '../ClanDatabase';
 import { MemberProfile, MemberActivityStats } from 'bungie-models';
-import { from, of, Observable, defer, concat, EMPTY, forkJoin } from 'rxjs';
+import { from, of, Observable, defer, concat, EMPTY, forkJoin, combineLatest } from 'rxjs';
 import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo, tap } from 'rxjs/operators';
 
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
@@ -33,6 +33,27 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
 
   // TODO: Add progress indicator?
   updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[]) {
+    const memberProfilesObs = from(memberProfiles);
+    const cacheDataObs = from(this.getAllDataFromCache(clanId.toString()));
+
+    return combineLatest([memberProfilesObs, cacheDataObs]).pipe(
+      mergeMap(([memberProfile, cachedData]) => {
+        return from(memberProfile.profile.data.characterIds).pipe(
+          mergeMap((characterId) => {
+            // getFreshMemberCharacterActivity
+
+            const characterActivityId = this.getMemberActivityId(memberProfile, characterId);
+
+            return this.getMemberCharacterActivity(clanId, memberProfile, characterId);
+          })
+        );
+      }),
+      tap((x) => {
+        console.log('tapping', x);
+      }),
+      toArray()
+    );
+    /*
     return from(memberProfiles).pipe(
       mergeMap((memberProfile) => {
         return from(memberProfile.profile.data.characterIds).pipe(
@@ -47,6 +68,7 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
       }),
       toArray()
     );
+    */
   }
 
   private groupActivitiesToMember(memberProfiles: MemberProfile[], allActivities: DBObject[]): MemberActivityStats[] {
