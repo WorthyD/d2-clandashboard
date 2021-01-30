@@ -57,7 +57,7 @@ describe('ClanMemberActivityService', () => {
     });
   });
 
-  fdescribe('updateAllActivityCache', () => {
+  describe('updateAllActivityCache', () => {
     it('should not update if cache is good', () => {
       const MOCK_PROFILES = GET_MOCK_PROFILES(2);
       const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
@@ -125,7 +125,7 @@ describe('ClanMemberActivityService', () => {
           switch (pageNumber) {
             case 0:
               return of({
-                Response:  { activities: MOCK_ACTIVITIES }
+                Response: { activities: MOCK_ACTIVITIES }
               });
 
             default:
