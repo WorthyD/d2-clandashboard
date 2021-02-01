@@ -18,6 +18,7 @@ import * as memberProfileReducer from './member-profiles/member-profiles.reducer
 // import { MemberStatEffects } from './member-activities/member-activities.effects';
 import * as memberActivityState from './member-activities/member-activities.state';
 import * as memberActivityReducer from './member-activities/member-activities.reducers';
+import { MemberActivityEffects } from './member-activities/member-activities.effects';
 
 // import * as clanCacheState from './clan-cache/clan-cache.state';
 // import * as clanCacheReducer from './clan-cache/clan-cache.reducers';
@@ -73,6 +74,7 @@ export const ClanEffects = [
   //  ClanCacheEffects,
   ClanRewardEffects,
   // SealEffects,
+  MemberActivityEffects,
   RaidEffects
   //MemberRecentStatEffects
 ];

@@ -56,8 +56,9 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
                 };
               })
             );
-          }),
+          }, 5),
           tap((x) => {
+            console.log('tapping', x);
           }),
           toArray()
         );
