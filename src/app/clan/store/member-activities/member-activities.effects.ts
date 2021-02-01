@@ -45,23 +45,24 @@ export class MemberActivityEffects {
     private memberActivityService: ClanMemberActivityService
   ) {}
 
-  // profilesLoaded$ = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(loadMemberProfileSuccess),
-  //     withLatestFrom(this.store.select(getAllMembers)),
-  //     map(([action, memberProfiles]) => {
-  //       this.store.dispatch(memberActivityActions.refreshMemberActivities({ member: memberProfiles }));
-  //       return memberActivityActions.loadMemberActivities({ member: memberProfiles });
-  //     })
-  //   );
-  // });
+  profilesLoaded$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(loadMemberProfileSuccess),
+      withLatestFrom(this.store.select(getAllMembers)),
+      map(([action, memberProfiles]) => {
+        //this.store.dispatch(memberActivityActions.refreshMemberActivities({ member: memberProfiles }));
+        return memberActivityActions.loadMemberActivities({ member: memberProfiles });
+      })
+    );
+  });
 
   loadMemberActivities$ = createEffect(() =>
     this.actions$.pipe(
       ofType(memberActivityActions.loadMemberActivities),
       withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
-      switchMap(([action, clanId]) => this.memberActivityService.getAllActivitiesFromCache(clanId, action.member)),
+      switchMap(([action, clanId]) => this.memberActivityService.getAllActivitiesFromCache2(clanId, action.member)),
       map((x) => {
+        console.log(x);
         //map(([action, clanId]) => {
         //  console.log(action);
         //   console.log(clanId);
@@ -86,7 +87,7 @@ export class MemberActivityEffects {
       switchMap(([action, clanId]) => this.memberActivityService.updateAllActivityCache(clanId, action.member)),
       map((x) => {
         console.log('done', x);
-        return memberActivityActions.refreshMemberActivitiesComplete({ memberActivities: x });
+        return memberActivityActions.refreshMemberActivitiesComplete({ memberActivities: null });
       })
     );
   });

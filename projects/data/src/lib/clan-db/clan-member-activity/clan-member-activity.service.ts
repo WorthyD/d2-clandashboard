@@ -15,6 +15,7 @@ import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo, tap, sw
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
 import { DBObject, StoreId } from '../app-indexed-db';
 import { nowPlusDays } from '../../utility/date-utils';
+import { groupActivitiesByDate } from '../../utility/group-activity-by-date';
 
 @Injectable()
 export class ClanMemberActivityService extends BaseMemberActivityService {
@@ -27,6 +28,14 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     return from(this.getAllDataFromCache(clanId.toString())).pipe(
       map((x) => {
         return this.groupActivitiesToMembers(memberProfiles, x);
+      })
+    );
+  }
+
+  getAllActivitiesFromCache2(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityStats[]> {
+    return from(this.getAllDataFromCache(clanId.toString())).pipe(
+      map((x) => {
+        return this.groupActivitiesToMembers2(memberProfiles, x);
       })
     );
   }
@@ -86,6 +95,27 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     return memberProfiles.map((memberProfile) => {
       return this.groupActivitiesToMember(memberProfile, allActivities);
     });
+  }
+
+  private groupActivitiesToMembers2(memberProfiles: MemberProfile[], allActivities: DBObject[]): any[] {
+    return memberProfiles.map((memberProfile) => {
+      return this.groupActivitiesToMember2(memberProfile, allActivities);
+    });
+  }
+  private groupActivitiesToMember2(memberProfile: MemberProfile, allActivities: DBObject[]) {
+    const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
+
+    const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
+    const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
+      activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
+    );
+
+    const timed = groupActivitiesByDate([].concat(...memberActivitiesSerialized));
+
+    return {
+      id: memberProfileId,
+      activities: timed
+    };
   }
 
   private groupActivitiesToMember(memberProfile: MemberProfile, allActivities: DBObject[]) {
