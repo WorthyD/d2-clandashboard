@@ -15,6 +15,7 @@ import * as d3 from 'd3';
 import { SECONDS_IN_HOUR } from '@destiny/models/constants';
 import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
 import { compare } from '../../../utilities/compare';
+import { formatDate } from 'projects/data/src/lib/utility/format-date';
 
 @Component({
   selector: 'lib-activity-bar-chart',
@@ -124,6 +125,7 @@ export class BarChartComponent implements OnInit {
   private processData(sourceData) {
     if (sourceData) {
       const cleanedData = this.prepData(sourceData);
+      console.log(cleanedData);
 
       // this.x.domain(
       //   cleanedData.map(function (d) {
@@ -242,20 +244,4 @@ export class BarChartComponent implements OnInit {
         };
       });
   }
-}
-
-function formatDate(date) {
-  const d = new Date(date);
-  let month = '' + (d.getMonth() + 1),
-    day = '' + d.getDate();
-  const year = d.getFullYear();
-
-  if (month.length < 2) {
-    month = '0' + month;
-  }
-  if (day.length < 2) {
-    day = '0' + day;
-  }
-
-  return [year, month, day].join('-');
 }

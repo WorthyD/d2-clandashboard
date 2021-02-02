@@ -51,6 +51,7 @@ export class MemberActivityEffects {
       withLatestFrom(this.store.select(getAllMembers)),
       map(([action, memberProfiles]) => {
         //this.store.dispatch(memberActivityActions.refreshMemberActivities({ member: memberProfiles }));
+        memberProfiles = memberProfiles.slice(0,1);
         return memberActivityActions.loadMemberActivities({ member: memberProfiles });
       })
     );

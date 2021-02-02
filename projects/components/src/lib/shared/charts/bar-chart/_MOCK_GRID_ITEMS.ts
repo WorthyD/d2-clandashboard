@@ -8,7 +8,7 @@ for (let i = 0; i < 50; i++) {
   const d = new Date(today);
   const d2 = new Date(d.setDate(d.getDate() + i * 7));
   stats.push({
-    date: formatDate(d2),
+    date: d2,
     seconds: Math.floor(Math.random() * SECONDS_IN_DAY + 1)
   });
 }

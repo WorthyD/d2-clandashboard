@@ -9,7 +9,7 @@ export const getMemberProfileEntityState = createSelector(getClanState, (state) 
 export const {
   selectIds: getMemberIds,
   selectEntities: getMemberProfileEntities,
-  selectAll: getAllMembers,
+  selectAll: getAllMemberActivities,
   selectTotal: getTotalMembers
 } = memberActivityStatState.MemberActivityStatAdapter.getSelectors(getMemberProfileEntityState);
 
