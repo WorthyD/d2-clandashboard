@@ -14,7 +14,8 @@ import {
 } from '../../store/member-profiles/member-profiles.selectors';
 import {
   getAllMemberActivities,
-  getClanMemberActivitiesLoaded
+  getClanMemberActivitiesLoaded,
+  getClanMemberActivitiesUpdating
 } from '../../store/member-activities/member-activities.selectors';
 // import { groupActivitiesByDate } from 'projects/data/src/lib/utility/group-activity-by-date';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
@@ -32,16 +33,16 @@ export class ClanAggregateActivityService {
   clanMemberProfiles$ = this.store.pipe(select(getAllMembers));
   isLoading = true;
 
-
   activities$ = this.store.pipe(select(getAllMemberActivities));
   activitiesLoaded$ = this.store.pipe(select(getClanMemberActivitiesLoaded));
+  activitiesUpdating$ = this.store.pipe(select(getClanMemberActivitiesUpdating));
 
   events2 = [];
   events2$ = combineLatest([this.activities$, this.activitiesLoaded$]).pipe(
     filter(([activities, isLoaded]) => isLoaded === true),
     map(([activities, isLoaded]) => {
-      const a = [...activities.map((y) => y.activities)];//.filter((x) => x.date > nowPlusDays(-30)))];
-      console.log(a);
+      //const a = [...activities.map((y) => y.activities)]; //.filter((x) => x.date > nowPlusDays(-30)))];
+      const a = [...activities.map((y) => y.activities).filter((x) => x.date > nowPlusDays(-30))];
       const flata = [].concat.apply([], a);
       const summedActivities = groupActivityStatsByDate(flata);
       this.events2 = summedActivities;
@@ -85,5 +86,4 @@ export class ClanAggregateActivityService {
     //this.events$.subscribe();
     this.events2$.subscribe();
   }
-
 }

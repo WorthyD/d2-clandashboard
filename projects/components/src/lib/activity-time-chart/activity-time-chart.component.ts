@@ -32,6 +32,9 @@ export class ActivityTimeChartComponent implements OnInit {
   @Input()
   loading;
 
+  @Input()
+  updating;
+
   constructor() {}
 
   ngOnInit(): void {}
