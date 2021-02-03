@@ -20,8 +20,8 @@ import { groupActivitiesByDate } from '../../utility/group-activity-by-date';
 @Injectable()
 export class ClanMemberActivityService extends BaseMemberActivityService {
   constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
-    // super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-365), 30);
-    super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-30), 6); // TODO: remove this eventually for larger numbers
+    super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-365), 30);
+    //super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-30), 6); // TODO: remove this eventually for larger numbers
   }
 
   getAllActivitiesFromCache(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityStats[]> {
@@ -60,7 +60,7 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
               map((x) => {
                 const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
                 return {
-                  id: memberProfileId,
+                  id: memberProfileId
                 };
               })
             );
