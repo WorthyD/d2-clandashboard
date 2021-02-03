@@ -13,14 +13,16 @@ export class FeaturedClansComponent implements OnInit {
   dodClans = [
     // PC
     { name: 'DOD Paternal Chums', id: 2073131 },
+    { name: 'DOD Warbucks', id: 4523816 },
     { name: 'DADS OF DESTINY GMT X86', id: 2866236 },
     //    { name: 'DOD BFAM', id: 2916512 },
     { name: 'DOD PDO', id: 4322250 },
+    { name: 'DOD Family Pride', id: 4430645 },
 
     // ----------------- PS4
-    { name: 'DOD BACKWATER', id: 114213 },
+    // { name: 'DOD BACKWATER', id: 114213 },
     { name: 'DOD BATTLEBORN', id: 523657 },
-    { name: 'DOD BATTLEBORN DEUX', id: 3872451 },
+    { name: 'DOD BATTLEBORN Ascendant', id: 3872451 },
     { name: 'DOD ELITISTS', id: 1771725 },
     { name: 'DOD Military', id: 2180975 },
     { name: 'DOD One More', id: 2942177 },
@@ -32,7 +34,8 @@ export class FeaturedClansComponent implements OnInit {
     { name: 'DOD UK Crucible Chapter', id: 1375802 },
 
     // XBox
-    { name: 'DOD Unbroken', id: 4271754 },
+    { name: 'DOD X1 GHOST', id: 167225 },
+    { name: 'DOD Shenanigans', id: 4271754 },
     { name: 'DOD X1 FOXTROT', id: 806412 },
     { name: 'DOD ORBIT ', id: 546562 },
     { name: 'DOD UNITED ', id: 1245118 },
@@ -41,9 +44,9 @@ export class FeaturedClansComponent implements OnInit {
     { name: 'DOD CHATTAWHYTE KREW', id: 910604 },
     { name: 'DOD ', id: 2704603 },
     { name: 'DOD Iron Warlords', id: 1179713 },
-    { name: 'DOD JUGGERNAUTS', id: 1161209 },
-    { name: 'DOD SPACE WOLVES', id: 3136336 },
-    { name: 'DOD STORM ', id: 3219957 }
+    // { name: 'DOD JUGGERNAUTS', id: 1161209 },
+    // { name: 'DOD SPACE WOLVES', id: 3136336 },
+    // { name: 'DOD STORM ', id: 3219957 }
   ];
 
   rjnClans = [

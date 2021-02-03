@@ -29,4 +29,3 @@ users.forEach((u) => {
     stats
   });
 });
-console.log(MOCK_DUNGEON_STATS);

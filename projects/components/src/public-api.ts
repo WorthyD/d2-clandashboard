@@ -26,3 +26,4 @@ export * from './lib/clan-raid-details-table';
 export * from './lib/pipes/pipes.module';
 export * from './lib/shared/shared.module';
 export * from './lib/shared/modules/material.module';
+export * from './lib/activity-time-chart/activity-time-chart.module';

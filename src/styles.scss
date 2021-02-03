@@ -79,5 +79,6 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
+@import './theme/typography';
 @import './theme/utilities';
 @import './theme/components/sidenav';
