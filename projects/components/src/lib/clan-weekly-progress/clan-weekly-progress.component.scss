@@ -1,67 +1,71 @@
-
 .card-header {
   display: flex;
   justify-content: space-between;
+  margin-bottom:1rem;
 }
 
 .rewards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .reward {
-    min-width: 120px;
-    width: 25%;
-    text-align: center;
-    margin-bottom: 0.5rem;
+  min-width: 120px;
+  width: 25%;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.loading-container {
+  display: flex;
+  justify-content: center;
 }
 .engram {
-    $engram-height: 100px;
-    $engram-width: 60px;
-    $border-width: 50px;
-    $border-side-width: 30px;
-    $locked-color: #858585;
-    $unlocked-color: #9b34eb;
+  $engram-height: 100px;
+  $engram-width: 60px;
+  $border-width: 50px;
+  $border-side-width: 30px;
+  $locked-color: #858585;
+  $unlocked-color: #9b34eb;
 
-    position: relative;
-    margin: 0 auto;
-    width: 120px;
-    height: 100px;
+  position: relative;
+  margin: 0 auto;
+  width: 120px;
+  height: 100px;
 
+  .e-l {
+    float: left;
+    border-right: $border-side-width solid $locked-color;
+    border-top: $border-width solid transparent;
+    border-bottom: $border-width solid transparent;
+  }
+  .e-c {
+    float: left;
+    width: $engram-width;
+    height: $engram-height;
+    background-color: $locked-color;
+  }
+  .e-r {
+    float: left;
+    border-left: $border-side-width solid $locked-color;
+    border-top: $border-width solid transparent;
+    border-bottom: $border-width solid transparent;
+  }
+  &.unlocked {
     .e-l {
-        float: left;
-        border-right: $border-side-width solid $locked-color;
-        border-top: $border-width solid transparent;
-        border-bottom: $border-width solid transparent;
+      border-right-color: $unlocked-color;
     }
     .e-c {
-        float: left;
-        width: $engram-width;
-        height: $engram-height;
-        background-color: $locked-color;
+      background-color: $unlocked-color;
     }
     .e-r {
-        float: left;
-        border-left: $border-side-width solid $locked-color;
-        border-top: $border-width solid transparent;
-        border-bottom: $border-width solid transparent;
+      border-left-color: $unlocked-color;
     }
-    &.unlocked {
-        .e-l {
-            border-right-color: $unlocked-color;
-        }
-        .e-c {
-            background-color: $unlocked-color;
-        }
-        .e-r {
-            border-left-color: $unlocked-color;
-        }
-    }
-    .icon {
-        height: 80%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+  }
+  .icon {
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

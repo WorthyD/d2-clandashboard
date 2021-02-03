@@ -18,6 +18,9 @@ export interface ClanWeeklyRewardModel {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClanWeeklyProgressComponent implements OnInit {
+
+  tab = 'week';
+
   @Input()
   clanRewards: ClanWeeklyProgressModel;
 
@@ -32,5 +35,6 @@ export class ClanWeeklyProgressComponent implements OnInit {
 
   ngOnInit(): void {}
   onSelectionChange(type){
+    this.tab = type;
   }
 }

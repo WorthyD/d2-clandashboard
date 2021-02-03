@@ -9,19 +9,24 @@
     <div class="col-12 col-md-6">
       <div class="m-3">
         <lib-clan-weekly-progress [clanRewards]="clanDetails.clanWeekRewards$ | async"
+          [clanRewardsLastWeek]="clanDetails.clanLastWeekRewards$ | async"
           [isLoading]="clanDetails.clanWeekRewardsLoading$ | async"></lib-clan-weekly-progress>
       </div>
-      <div class="m-3">
+      <div *ngIf="clanDetails.clanSeasonalProgression$ | async as clanProgress" class=" m-3">
+        <lib-clan-season-progress [clanProgress]="clanProgress"></lib-clan-season-progress>
+      </div>
+
+      <!-- <div class="m-3">
         <lib-clan-weekly-progress [clanRewards]="clanDetails.clanLastWeekRewards$ | async"
           [isLoading]="clanDetails.clanWeekRewardsLoading$ | async"></lib-clan-weekly-progress>
-      </div>
+      </div> -->
     </div>
   </div>
-  <div class="row">
+  <!-- <div class="row">
     <div *ngIf="clanDetails.clanSeasonalProgression$ | async as clanProgress" class="col m-3">
       <lib-clan-season-progress [clanProgress]="clanProgress"></lib-clan-season-progress>
     </div>
-  </div>
+  </div> -->
   <div class="row">
     <div class="col m-3">
       <app-clan-aggregate-activity></app-clan-aggregate-activity>

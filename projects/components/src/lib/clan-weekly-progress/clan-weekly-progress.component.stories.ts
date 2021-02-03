@@ -16,7 +16,7 @@ export default {
 export const base = () => ({
   component: ClanWeeklyProgressComponent,
   template: `
-        <lib-clan-weekly-progress [clanRewards]="progress"></lib-clan-weekly-progress>
+        <lib-clan-weekly-progress [clanRewards]="progress" [clanRewardsLastWeek]="progress"></lib-clan-weekly-progress>
    `,
   props: {
     progress: MOCK_WEEKLY_PROGRESS
