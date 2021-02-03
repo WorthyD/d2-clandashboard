@@ -17,7 +17,7 @@ export const MemberProfileReducer = createReducer(
   on(MemberActivityActions.refreshMemberActivitiesComplete, (state, { memberActivities }) => {
     return MemberActivityState.MemberActivityStatAdapter.upsertMany(memberActivities, {
       ...state,
-      updating: true
+      updating: false
     });
   }),
 

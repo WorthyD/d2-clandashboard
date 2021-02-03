@@ -118,7 +118,6 @@ export class BaseMemberActivityService extends BaseClanService {
   verifyCacheIntegrity(clanId, memberProfile: MemberProfile, characterId, cachedData: DBObject) {
     const characterActivityId = this.getMemberActivityId(memberProfile, characterId);
     if (this.isCacheValid(cachedData, 720, new Date(memberProfile.profile.data.dateLastPlayed))) {
-      console.log(characterActivityId + 'cache good');
       return of(cachedData.data);
     }
 
@@ -145,7 +144,6 @@ export class BaseMemberActivityService extends BaseClanService {
       catchError((error) => {
         if (error.error?.ErrorStatus === 'DestinyPrivacyRestriction') {
           this.updateDB(clanId, characterActivityId, []);
-          console.log('erroring');
           return of([]);
         }
         if (cachedData && cachedData.data) {

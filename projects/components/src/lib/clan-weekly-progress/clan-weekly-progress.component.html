@@ -1,21 +1,20 @@
 <mat-card>
-  <mat-card-header>
-    <mat-card-title >{{clanRewards?.title || 'Loading Clan Rewards'}}</mat-card-title>
-  </mat-card-header>
-
+  <div class="card-header">
+    <div class="h2">
+      {{clanRewards?.title || 'Loading Clan Rewards'}}
+    </div>
+    <div>
+        <button mat-raised-button [color]="tab === '' ? 'primary' : ''" class="mx-1"
+          (click)="onSelectionChange(button.type)">This Week</button>
+    </div>
+  </div>
   <mat-card-content>
     <div class="rewards">
       <ng-container *ngIf="!isLoading; else loading">
-        <div class="reward" *ngFor="let reward of clanRewards?.rewards">
-          <div class="engram" [ngClass]="{'unlocked': reward.earned}"
-            matTooltip="{{reward.definition.displayProperties.description}}">
-            <div class="e-l"></div>
-            <div class="e-c"></div>
-            <div class="e-r"></div>
-            <img class="icon" [src]="'https://bungie.net'+reward.definition.displayProperties.icon" />
-          </div>
-          {{reward.definition.displayProperties.name}}
-        </div>
+
+        <ng-container [ngTemplateOutlet]="" [ngTemplateOutletContext]="clanRewards.rewards">
+
+        </ng-container>
       </ng-container>
     </div>
   </mat-card-content>
@@ -23,4 +22,17 @@
 
 <ng-template #loading>
   <lib-loading></lib-loading>
+</ng-template>
+
+<ng-template #rewardTemplate let-rewards="rewards">
+  <div class="reward" *ngFor="let reward of rewards">
+    <div class="engram" [ngClass]="{'unlocked': reward.earned}"
+      matTooltip="{{reward.definition.displayProperties.description}}">
+      <div class="e-l"></div>
+      <div class="e-c"></div>
+      <div class="e-r"></div>
+      <img class="icon" [src]="'https://bungie.net'+reward.definition.displayProperties.icon" />
+    </div>
+    {{reward.definition.displayProperties.name}}
+  </div>
 </ng-template>

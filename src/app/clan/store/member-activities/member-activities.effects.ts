@@ -45,38 +45,30 @@ export class MemberActivityEffects {
     private memberActivityService: ClanMemberActivityService
   ) {}
 
-  profilesLoaded$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(loadMemberProfileSuccess),
-      withLatestFrom(this.store.select(getAllMembers)),
-      map(([action, memberProfiles]) => {
-        //this.store.dispatch(memberActivityActions.refreshMemberActivities({ member: memberProfiles }));
-        memberProfiles = memberProfiles.slice(0,1);
-        return memberActivityActions.loadMemberActivities({ member: memberProfiles });
-      })
-    );
-  });
+  // profilesLoaded$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(loadMemberProfileSuccess),
+  //     withLatestFrom(this.store.select(getAllMembers)),
+  //     map(([action, memberProfiles]) => {
+  //       return memberActivityActions.loadMemberActivities({ member: memberProfiles });
+  //     })
+  //   );
+  // });
 
   loadMemberActivities$ = createEffect(() =>
     this.actions$.pipe(
       ofType(memberActivityActions.loadMemberActivities),
       withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
-      switchMap(([action, clanId]) => this.memberActivityService.getAllActivitiesFromCache2(clanId, action.member)),
+      switchMap(([action, clanId]) =>
+        this.memberActivityService.getAllActivitiesFromCache2(clanId, action.member).pipe(
+          map((x) => {
+            this.store.dispatch(memberActivityActions.refreshMemberActivities({ member: action.member }));
+            return x;
+          })
+        )
+      ),
       map((x) => {
-        console.log(x);
-        //map(([action, clanId]) => {
-        //  console.log(action);
-        //   console.log(clanId);
-        //return memberActivityActions.refreshMemberActivitiesFailure({ error: '' });
-
-        //        return this.memberActivityService.getAllActivitiesFromCache(clanId, action).pipe(
-        //         map((x) => {
-        //return memberActivityActions.refreshMemberActivitiesFailure({ error: '' });
-        //return null;
-
         return memberActivityActions.loadMemberActivitiesSuccess({ memberActivities: x });
-        //        })
-        //     );
       })
     )
   );
@@ -85,10 +77,15 @@ export class MemberActivityEffects {
     return this.actions$.pipe(
       ofType(memberActivityActions.refreshMemberActivities),
       withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
-      switchMap(([action, clanId]) => this.memberActivityService.updateAllActivityCache(clanId, action.member)),
+      switchMap(([action, clanId]) => {
+        return this.memberActivityService.updateAllActivityCache(clanId, action.member).pipe(
+          switchMap(() => {
+            return this.memberActivityService.getAllActivitiesFromCache2(clanId, action.member);
+          })
+        );
+      }),
       map((x) => {
-        console.log('done', x);
-        return memberActivityActions.refreshMemberActivitiesComplete({ memberActivities: null });
+        return memberActivityActions.refreshMemberActivitiesComplete({ memberActivities: x });
       })
     );
   });

@@ -8,7 +8,7 @@ import {
 import { BaseClanService } from '../base-clan.service';
 import { BaseMemberActivityService } from '../base-member-activity.service';
 import { ClanDatabase } from '../ClanDatabase';
-import { MemberProfile, MemberActivityStats } from 'bungie-models';
+import { MemberProfile, MemberActivityStats, MemberActivityTime } from 'bungie-models';
 import { from, of, Observable, defer, concat, EMPTY, forkJoin, combineLatest } from 'rxjs';
 import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo, tap, switchMap } from 'rxjs/operators';
 
@@ -32,7 +32,7 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     );
   }
 
-  getAllActivitiesFromCache2(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityStats[]> {
+  getAllActivitiesFromCache2(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityTime[]> {
     return from(this.getAllDataFromCache(clanId.toString())).pipe(
       map((x) => {
         return this.groupActivitiesToMembers2(memberProfiles, x);
@@ -61,14 +61,12 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
                 const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
                 return {
                   id: memberProfileId,
-                  activities: [].concat(...x)
                 };
               })
             );
-          }, 5),
-          tap((x) => {
-            console.log('tapping', x);
-          }),
+          }, 3),
+          // tap((x) => {
+          // }),
           toArray()
         );
       })

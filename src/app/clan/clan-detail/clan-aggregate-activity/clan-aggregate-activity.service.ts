@@ -42,7 +42,11 @@ export class ClanAggregateActivityService {
     filter(([activities, isLoaded]) => isLoaded === true),
     map(([activities, isLoaded]) => {
       //const a = [...activities.map((y) => y.activities)]; //.filter((x) => x.date > nowPlusDays(-30)))];
-      const a = [...activities.map((y) => y.activities).filter((x) => x.date > nowPlusDays(-30))];
+      //const a = [...activities.map((y) => y.activities).filter((x) => x.date > nowPlusDays(-30))];
+      //const a [] = [...activities.map((y) => y.activities)].filter((x) => x.date > nowPlusDays(-30));
+      const xpDate = nowPlusDays(-30);
+      const a = [...activities.map((y) => y.activities.filter((x) => x.date > xpDate))];
+
       const flata = [].concat.apply([], a);
       const summedActivities = groupActivityStatsByDate(flata);
       this.events2 = summedActivities;
