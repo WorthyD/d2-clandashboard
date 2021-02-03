@@ -29,6 +29,7 @@ import {
 import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 
 import { ClanMembersService } from '@destiny/data';
+import { loadMemberActivities } from '../member-activities/member-activities.actions';
 
 @Injectable()
 export class ClanMemberEffects {

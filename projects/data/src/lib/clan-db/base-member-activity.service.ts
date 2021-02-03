@@ -1,6 +1,6 @@
 import { BaseClanService } from './base-clan.service';
 import { ClanDatabase } from './ClanDatabase';
-import { StoreId } from './app-indexed-db';
+import { StoreId, DBObject } from './app-indexed-db';
 import { Destiny2Service, DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api-angular';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { mergeMap, map, catchError, toArray } from 'rxjs/operators';
@@ -81,43 +81,77 @@ export class BaseMemberActivityService extends BaseClanService {
       })
     );
   }
-  private getMemberActivityId(member: MemberProfile, characterId: number) {
-    return `${member.profile.data.userInfo.membershipType}-${member.profile.data.userInfo.membershipId}-${characterId}`;
+
+  getMemberActivityId(member: MemberProfile, characterId: number) {
+    return `${this.getMemberProfileId(member)}-${characterId}`;
+  }
+  getMemberProfileId(member: MemberProfile) {
+    return `${member.profile.data.userInfo.membershipType}-${member.profile.data.userInfo.membershipId}`;
   }
 
+  /**
+   *  Pulls character activity from cache and will return fresh data if cache is exipred
+   */
   getMemberCharacterActivity(
     clanId: number,
     member: MemberProfile,
     characterId: number
   ): Observable<Array<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup>> {
     const characterActivityId = this.getMemberActivityId(member, characterId);
+
     return from(this.getDataFromCache(clanId.toString(), characterActivityId)).pipe(
       mergeMap((cachedData) => {
-        if (this.isCacheValid(cachedData, 720, new Date(member.profile.data.dateLastPlayed))) {
-          return of(cachedData.data);
-        }
+        // if (this.isCacheValid(cachedData, 720, new Date(member.profile.data.dateLastPlayed))) {
+        //   return of(cachedData.data);
+        // }
 
-        return this.getAllRecentActivity(member, characterId).pipe(
-          map((activityResponse) => {
-            if (activityResponse.activities) {
-              this.updateDB(clanId, characterActivityId, activityResponse.activities);
-              return activityResponse.activities;
-            }
-          }),
-          catchError((error) => {
-            if (error.error?.ErrorStatus === 'DestinyPrivacyRestriction') {
-              this.updateDB(clanId, characterActivityId, []);
-              return of([]);
-            }
-            if (cachedData && cachedData.data) {
-              return of(cachedData.data);
-            }
-
-            throw error;
-          })
-        );
+        // return this.getFreshMemberCharacterActivity(clanId, member, characterId, characterActivityId, cachedData);
+        return this.verifyCacheIntegrity(clanId, member, characterId, cachedData);
       })
     );
   }
 
+  /**
+   * Determines if Cached data is fresh enough to use. Triggers new call if too old.
+   *
+   */
+  verifyCacheIntegrity(clanId, memberProfile: MemberProfile, characterId, cachedData: DBObject) {
+    const characterActivityId = this.getMemberActivityId(memberProfile, characterId);
+    if (this.isCacheValid(cachedData, 720, new Date(memberProfile.profile.data.dateLastPlayed))) {
+      return of(cachedData.data);
+    }
+
+    return this.getFreshMemberCharacterActivity(clanId, memberProfile, characterId, characterActivityId, cachedData);
+  }
+
+  /**
+   * Calls for fresh character activity. Updates cache. Falls back on cache on failure.
+   */
+  getFreshMemberCharacterActivity(
+    clanId: number,
+    member: MemberProfile,
+    characterId: number,
+    characterActivityId: string,
+    cachedData: DBObject
+  ): Observable<Array<DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup>> {
+    return this.getAllRecentActivity(member, characterId).pipe(
+      map((activityResponse) => {
+        if (activityResponse.activities) {
+          this.updateDB(clanId, characterActivityId, activityResponse.activities);
+          return activityResponse.activities;
+        }
+      }),
+      catchError((error) => {
+        if (error.error?.ErrorStatus === 'DestinyPrivacyRestriction') {
+          this.updateDB(clanId, characterActivityId, []);
+          return of([]);
+        }
+        if (cachedData && cachedData.data) {
+          return of(cachedData.data);
+        }
+
+        throw error;
+      })
+    );
+  }
 }

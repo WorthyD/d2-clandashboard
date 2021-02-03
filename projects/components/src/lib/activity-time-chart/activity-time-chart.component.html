@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-content>
+    <div class="card-header">
+      <div class="h2">
+        Clan In Game Time
+      </div>
+      <div>
+        <ng-container *ngFor="let button of buttons">
+          <button mat-raised-button [color]="button.type === selection ? 'primary' : ''" class="mx-1"
+            (click)="onSelectionChange(button.type)">{{button.text}}</button>
+        </ng-container>
+      </div>
+    </div>
+    <div class="chart-container">
+      <!-- <lib-activity-bar-chart *ngIf="!loading; else loadingTemplate" [events]="events"></lib-activity-bar-chart> -->
+      <div class="h3">Feature coming soon </div>
+    </div>
+    <div *ngIf="updating" class="update-info">
+      Updating...
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #loadingTemplate>
+  <lib-loading></lib-loading>
+</ng-template>

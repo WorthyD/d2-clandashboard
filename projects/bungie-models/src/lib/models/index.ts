@@ -12,3 +12,4 @@ export * from './MemberActivityRecentStats';
 export * from './RaidStats';
 export * from './ActivityStats';
 export * from './Raid';
+export * from './MemberActivityTime';

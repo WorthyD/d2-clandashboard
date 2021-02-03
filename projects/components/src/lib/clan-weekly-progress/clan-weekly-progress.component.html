@@ -1,26 +1,47 @@
 <mat-card>
-  <mat-card-header>
-    <mat-card-title >{{clanRewards?.title || 'Loading Clan Rewards'}}</mat-card-title>
-  </mat-card-header>
-
+  <div class="card-header">
+    <div class="h2">
+      {{clanRewards?.title || 'Loading Clan Rewards'}}
+    </div>
+    <div>
+      <button mat-raised-button [color]="tab === 'week' ? 'primary' : ''" class="mx-1"
+        (click)="onSelectionChange('week')">This Week</button>
+      <button mat-raised-button [color]="tab === 'lastWeek' ? 'primary' : ''" class="mx-1"
+        (click)="onSelectionChange('lastWeek')">Last Week</button>
+    </div>
+  </div>
   <mat-card-content>
     <div class="rewards">
       <ng-container *ngIf="!isLoading; else loading">
-        <div class="reward" *ngFor="let reward of clanRewards?.rewards">
-          <div class="engram" [ngClass]="{'unlocked': reward.earned}"
-            matTooltip="{{reward.definition.displayProperties.description}}">
-            <div class="e-l"></div>
-            <div class="e-c"></div>
-            <div class="e-r"></div>
-            <img class="icon" [src]="'https://bungie.net'+reward.definition.displayProperties.icon" />
-          </div>
-          {{reward.definition.displayProperties.name}}
-        </div>
+
+        <ng-container *ngIf="tab==='week'" [ngTemplateOutlet]="rewardTemplate"
+          [ngTemplateOutletContext]="{rewards:clanRewards.rewards}">
+        </ng-container>
+        <ng-container *ngIf="tab==='lastWeek'" [ngTemplateOutlet]="rewardTemplate"
+          [ngTemplateOutletContext]="{rewards: clanRewardsLastWeek.rewards}">
+        </ng-container>
+
+
       </ng-container>
     </div>
   </mat-card-content>
 </mat-card>
 
 <ng-template #loading>
-  <lib-loading></lib-loading>
+  <div class="loading-container">
+    <lib-loading></lib-loading>
+  </div>
+</ng-template>
+
+<ng-template #rewardTemplate let-rewards="rewards">
+  <div class="reward" *ngFor="let reward of rewards">
+    <div class="engram" [ngClass]="{'unlocked': reward.earned}"
+      matTooltip="{{reward.definition.displayProperties.description}}">
+      <div class="e-l"></div>
+      <div class="e-c"></div>
+      <div class="e-r"></div>
+      <img class="icon" [src]="'https://bungie.net'+reward.definition.displayProperties.icon" />
+    </div>
+    {{reward.definition.displayProperties.name}}
+  </div>
 </ng-template>

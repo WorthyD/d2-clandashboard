@@ -1,11 +1,6 @@
-
 import { formatDate } from './format-date';
 
-export function groupActivitiesByDate(data) {
-  const raw = data.map((x) => {
-    return { date: formatDate(x.period), seconds: x.values.activityDurationSeconds.basic.value };
-  });
-
+function groupActivities(raw) {
   // Todo: Find better way to handle this.
   let holder = {};
 
@@ -20,8 +15,25 @@ export function groupActivitiesByDate(data) {
   const obj2 = [];
 
   for (let prop in holder) {
-    obj2.push({ date: prop, seconds: holder[prop] });
+    obj2.push({ date: new Date(prop), seconds: holder[prop] });
   }
 
   return obj2;
+}
+
+export function groupActivitiesByDate(data) {
+  const raw = data.map((x) => {
+    // console.log('--------');
+    // console.log(x.period);
+    // console.log(formatDate(x.period));
+    // console.log('--------');
+    return { date: formatDate(x.period), seconds: x.values.activityDurationSeconds.basic.value };
+  });
+
+  return groupActivities(raw);
+}
+
+export function groupActivityStatsByDate(data) {
+
+  return groupActivities(data);
 }

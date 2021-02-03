@@ -9,6 +9,10 @@ export class ClanDatabase {
   //   return this.getDatabase(repository).initialValues;
   // }
 
+  getAll(repository: string, type: StoreId): Promise<DBObject[]> {
+    return this.getDatabase(repository).getAllData(type);
+  }
+
   getById(repository: string, type: StoreId, id: string): Promise<DBObject> {
     return this.getDatabase(repository).getById(type, id);
   }

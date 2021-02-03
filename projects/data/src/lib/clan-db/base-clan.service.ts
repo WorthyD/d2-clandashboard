@@ -12,6 +12,10 @@ export class BaseClanService {
     return this.clanDbBase.getById(clanId, this.tableNameBase, rowId);
   }
 
+  getAllDataFromCache(clanId: string): Promise<DBObject[]> {
+    return this.clanDbBase.getAll(clanId, this.tableNameBase);
+  }
+
   isCacheValid(cachedData: DBObject, minuteExpiration: number, lastActivity?: Date) {
     if (cachedData && cachedData.createDate) {
       const cacheDate = cachedData.createDate;

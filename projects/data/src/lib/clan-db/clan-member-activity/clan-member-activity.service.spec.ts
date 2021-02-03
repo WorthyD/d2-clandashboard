@@ -6,9 +6,9 @@ import { Destiny2Service } from 'bungie-api-angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of, defer, forkJoin } from 'rxjs';
 import { MemberProfile } from 'bungie-models';
-import { MOCK_WORTHY_PROFILE } from '../../testing-utils/objects/profiles.mock';
+import { MOCK_OMEGA_PROFILE, MOCK_WORTHY_PROFILE } from '../../testing-utils/objects/profiles.mock';
 import {
-  MOCK_DB_ACTIVITIES,
+  MOCK_DB_ACTIVITIES as MOCKED_DB_ACTIVITIES,
   MOCK_RESP_ACTIVITIES_COMBINED,
   MOCK_RESP_ACTIVITIES_PAGE1,
   MOCK_RESP_ACTIVITIES_PAGE2,
@@ -16,6 +16,9 @@ import {
 } from '../../testing-utils/objects/member-activities.mock';
 import { HttpErrorResponse } from '@angular/common/http';
 import { nowPlusDays } from '../../utility/date-utils';
+
+import { GET_MOCK_PROFILES } from '../../testing-utils/objects/member-profiles.mock';
+import { GET_MOCK_ACTIVITIES, GET_MOCK_DB_ACTIVITIES } from '../../testing-utils/objects/member-activities.mock';
 
 describe('ClanMemberActivityService', () => {
   let service: ClanMemberActivityService;
@@ -36,11 +39,119 @@ describe('ClanMemberActivityService', () => {
     expect(service).toBeTruthy();
   });
 
+  describe('getAllActivitiesFromCache', () => {
+    it('should retrieve data from db', () => {
+      const MOCK_PROFILES = GET_MOCK_PROFILES(2);
+      const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
+      const MOCK_DB_ACTIVITIES = GET_MOCK_DB_ACTIVITIES(MOCK_PROFILES, MOCK_ACTIVITIES);
+
+      const dbGetSpy = spyOn(dbService, 'getAll').and.callFake(() => {
+        return of(MOCK_DB_ACTIVITIES);
+      });
+
+      service.getAllActivitiesFromCache(1, MOCK_PROFILES).subscribe((x) => {
+        expect(x.length).toBe(2);
+        expect(x[0].activities.length).toEqual(9);
+        expect(dbGetSpy).toHaveBeenCalledTimes(1);
+      });
+    });
+  });
+
+  describe('updateAllActivityCache', () => {
+    it('should not update if cache is good', () => {
+      const MOCK_PROFILES = GET_MOCK_PROFILES(2);
+      const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
+      const MOCK_DB_ACTIVITIES = GET_MOCK_DB_ACTIVITIES(MOCK_PROFILES, MOCK_ACTIVITIES);
+
+      const dbGetSpy = spyOn(dbService, 'getAll').and.callFake(() => {
+        return of(MOCK_DB_ACTIVITIES);
+      });
+      const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(() => {
+        return of({
+          Response: { activities: MOCK_ACTIVITIES }
+        });
+      });
+
+      service.updateAllActivityCache(1, MOCK_PROFILES).subscribe((x) => {
+        expect(x.length).toBe(2);
+        //expect(x[0].activities.length).toEqual(9);
+        expect(dbGetSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(0);
+        expect(updateSpy).toHaveBeenCalledTimes(0);
+      });
+    });
+    it('should  not update cache for innactive users', () => {
+      const MOCK_PROFILES = GET_MOCK_PROFILES(2);
+      MOCK_PROFILES[0].profile.data.dateLastPlayed = nowPlusDays(-100);
+      const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
+      const MOCK_DB_ACTIVITIES = GET_MOCK_DB_ACTIVITIES(MOCK_PROFILES, MOCK_ACTIVITIES);
+
+      const dbGetSpy = spyOn(dbService, 'getAll').and.callFake(() => {
+        return of(MOCK_DB_ACTIVITIES);
+      });
+      const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(() => {
+        return of({
+          Response: { activities: MOCK_ACTIVITIES }
+        });
+      });
+
+      service.updateAllActivityCache(1, MOCK_PROFILES).subscribe((x) => {
+        expect(x.length).toBe(2);
+        expect(x[0].activities.length).toEqual(9);
+        expect(dbGetSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(0);
+        expect(updateSpy).toHaveBeenCalledTimes(0);
+      });
+    });
+    it('should  update stale cache for  users', () => {
+      const MOCK_PROFILES = GET_MOCK_PROFILES(2);
+      const MOCK_ACTIVITIES = GET_MOCK_ACTIVITIES(3);
+      const MOCK_DB_ACTIVITIES = GET_MOCK_DB_ACTIVITIES(MOCK_PROFILES, MOCK_ACTIVITIES);
+      MOCK_DB_ACTIVITIES[0].createDate = nowPlusDays(-100);
+
+      const dbGetSpy = spyOn(dbService, 'getAll').and.callFake(() => {
+        return of(MOCK_DB_ACTIVITIES);
+      });
+      const updateSpy = spyOn(dbService, 'update').and.callThrough();
+      // const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(() => {
+      //   return of({
+      //     Response: { activities: MOCK_ACTIVITIES }
+      //   });
+      // });
+      const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
+        (charId, memberId, memberType, getCount, something, pageNumber) => {
+          switch (pageNumber) {
+            case 0:
+              return of({
+                Response: { activities: MOCK_ACTIVITIES }
+              });
+
+            default:
+              return of({
+                Response: {}
+              });
+              break;
+          }
+        }
+      );
+
+      service.updateAllActivityCache(1, MOCK_PROFILES).subscribe((x) => {
+        expect(x.length).toBe(2);
+        expect(x[0].activities.length).toEqual(9);
+        expect(dbGetSpy).toHaveBeenCalledTimes(1);
+        expect(serviceSpy).toHaveBeenCalledTimes(5); // Gets based on 4 pages
+        expect(updateSpy).toHaveBeenCalledTimes(1);
+      });
+    });
+  });
+
   describe('getMemberCharacterActivitySerialized', () => {
     it('should get profile from DB, but call service if expired', () => {
       const mockDBItem = {
-        ...MOCK_DB_ACTIVITIES[0],
-        createDate: nowPlusDays(-10),
+        ...MOCKED_DB_ACTIVITIES[0],
+        createDate: nowPlusDays(-10)
       };
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return of(mockDBItem);
@@ -64,6 +175,7 @@ describe('ClanMemberActivityService', () => {
         expect(updateSpy).toHaveBeenCalledTimes(1);
       });
     });
+
     /*
     it('should get all recent activity', () => {
       // const updateSpy = spyOn(dbService, 'update').and.callThrough();
@@ -101,7 +213,7 @@ describe('ClanMemberActivityService', () => {
       });
     });
     */
-   /*
+    /*
     it('should get all recent activity and stop when done', () => {
       // const updateSpy = spyOn(dbService, 'update').and.callThrough();
       const serviceSpy = spyOn(d2Service, 'destiny2GetActivityHistory').and.callFake(
@@ -167,7 +279,7 @@ describe('ClanMemberActivityService', () => {
     // todo: Fix later
     it('should get profile from DB and not call service if cache is good', async (done) => {
       const mockDBItem = {
-        ...MOCK_DB_ACTIVITIES[0],
+        ...MOCKED_DB_ACTIVITIES[0],
         createDate: nowPlusDays(-10)
       };
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
@@ -239,7 +351,7 @@ describe('ClanMemberActivityService', () => {
     });
     it('should handle API down with DB data', async (done) => {
       const mockDBItem = {
-        ...MOCK_DB_ACTIVITIES[0],
+        ...MOCKED_DB_ACTIVITIES[0],
         createDate: nowPlusDays(-10)
       };
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
@@ -300,7 +412,7 @@ describe('ClanMemberActivityService', () => {
 
   describe('getMemberActivity', () => {
     it('getMemberActivity', () => {
-      const mockDBItem = MOCK_DB_ACTIVITIES;
+      const mockDBItem = MOCKED_DB_ACTIVITIES;
 
       const dbGetSpy = spyOn(dbService, 'getById').and.callFake(() => {
         return of(mockDBItem);
