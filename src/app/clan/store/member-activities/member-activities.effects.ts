@@ -62,7 +62,7 @@ export class MemberActivityEffects {
       switchMap(([action, clanId]) =>
         this.memberActivityService.getAllActivitiesFromCache2(clanId, action.member).pipe(
           map((x) => {
-            //this.store.dispatch(memberActivityActions.refreshMemberActivities({ member: action.member }));
+            this.store.dispatch(memberActivityActions.refreshMemberActivities({ member: action.member }));
             return x;
           })
         )

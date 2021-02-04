@@ -20,25 +20,36 @@ import { groupActivitiesByDate } from '../../utility/group-activity-by-date';
 @Injectable()
 export class ClanMemberActivityService extends BaseMemberActivityService {
   constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
-    // super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-365), 30);
-    super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-30), 6); // TODO: remove this eventually for larger numbers
+    super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-365), 30);
+    //super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-30), 6); // TODO: remove this eventually for larger numbers
   }
 
   getAllActivitiesFromCache(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityStats[]> {
+    console.time('getAllDataFromCache');
     return from(this.getAllDataFromCache(clanId.toString())).pipe(
       map((x) => {
+        console.timeEnd('getAllDataFromCache');
         return this.groupActivitiesToMembers(memberProfiles, x);
       })
     );
   }
 
   getAllActivitiesFromCache2(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityTime[]> {
+    console.time('getAllDataFromCache2');
     return from(this.getAllDataFromCache(clanId.toString())).pipe(
       map((x) => {
-        return this.groupActivitiesToMembers2(memberProfiles, x);
+        console.timeEnd('getAllDataFromCache2');
+        console.time('groupActivitiesToMembers2');
+        const y = this.groupActivitiesToMembers2(memberProfiles, x);
+
+        console.timeEnd('groupActivitiesToMembers2');
+
+        return y;
       })
     );
   }
+
+
 
   // TODO: Add progress indicator?
   updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[]) {
@@ -64,7 +75,7 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
                 };
               })
             );
-          }, 3),
+          }, 2),
           // tap((x) => {
           // }),
           toArray()

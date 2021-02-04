@@ -44,47 +44,50 @@ export class ClanAggregateActivityService {
       //const a = [...activities.map((y) => y.activities)]; //.filter((x) => x.date > nowPlusDays(-30)))];
       //const a = [...activities.map((y) => y.activities).filter((x) => x.date > nowPlusDays(-30))];
       //const a [] = [...activities.map((y) => y.activities)].filter((x) => x.date > nowPlusDays(-30));
-      const xpDate = nowPlusDays(-30);
-      const a = [...activities.map((y) => y.activities.filter((x) => x.date > xpDate))];
+      // const xpDate = nowPlusDays(-30);
+      // const a = [...activities.map((y) => y.activities.filter((x) => x.date > xpDate))];
 
-      const flata = [].concat.apply([], a);
-      const summedActivities = groupActivityStatsByDate(flata);
+      // const flata = [].concat.apply([], a);
+       const summedActivities = this.service.getClanActivityStatsForDuration(activities, 0);
+
+
+
       this.events2 = summedActivities;
       this.isLoading = false;
     })
   );
 
   events = [];
-  events$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMemberProfiles$]).pipe(
-    switchMap(([isMemberLoaded, id, clanMembers]) => {
-      this.isLoading = true;
-      this.events = [];
+  // events$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMemberProfiles$]).pipe(
+  //   switchMap(([isMemberLoaded, id, clanMembers]) => {
+  //     this.isLoading = true;
+  //     this.events = [];
 
-      return this.service.getClanActivityStatsForDuration(id, clanMembers, nowPlusDays(-30), 0).pipe(
-        map((stats) => {
-          this.events = stats;
-          this.isLoading = false;
-        })
-      );
+  //     return this.service.getClanActivityStatsForDuration(id, clanMembers, nowPlusDays(-30), 0).pipe(
+  //       map((stats) => {
+  //         this.events = stats;
+  //         this.isLoading = false;
+  //       })
+  //     );
 
-      // if (selectedMembers.length > 0) {
-      //   clanMembers = clanMembers.filter((members) => {
-      //     return selectedMembers.indexOf(members.profile.data.userInfo.displayName) > -1;
-      //   });
-      // }
-      // return this.clanActivityService.getClanActivityStats(id, clanMembers, selectedActivity).pipe(
-      //   bufferTime(500, undefined, 20),
-      //   mergeMap((members) => {
-      //     this.activityStats = this.activityStats.concat(members);
-      //     return members;
-      //   }),
-      //   toArray(),
-      //   map((stats) => {
-      //     this.isLoading = false;
-      //   })
-      // );
-    })
-  );
+  //     // if (selectedMembers.length > 0) {
+  //     //   clanMembers = clanMembers.filter((members) => {
+  //     //     return selectedMembers.indexOf(members.profile.data.userInfo.displayName) > -1;
+  //     //   });
+  //     // }
+  //     // return this.clanActivityService.getClanActivityStats(id, clanMembers, selectedActivity).pipe(
+  //     //   bufferTime(500, undefined, 20),
+  //     //   mergeMap((members) => {
+  //     //     this.activityStats = this.activityStats.concat(members);
+  //     //     return members;
+  //     //   }),
+  //     //   toArray(),
+  //     //   map((stats) => {
+  //     //     this.isLoading = false;
+  //     //   })
+  //     // );
+  //   })
+  //);
 
   load() {
     //this.events$.subscribe();

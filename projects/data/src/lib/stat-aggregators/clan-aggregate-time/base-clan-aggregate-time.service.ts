@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivityStats, MemberProfile, ClanMember } from 'bungie-models';
+import { ActivityStats, MemberProfile, ClanMember, MemberActivityTime } from 'bungie-models';
 import { forkJoin, from, Observable } from 'rxjs';
 import { map, mergeMap, toArray } from 'rxjs/operators';
 import { ClanMemberRecentActivityService, ProfileService } from '../../clan-db';
@@ -11,7 +11,16 @@ export abstract class BaseClanAggregateTimeService {
   readonly CONCURRENT_COUNT = 10;
   constructor(private profileService: ProfileService, private memberActivityService: ClanMemberRecentActivityService) {}
 
-  abstract getClanActivityStatsForDuration(clanId: number, clanMemberProfiles: MemberProfile[], activityMode, count);
+  abstract getClanActivityStatsForDuration(memberActivities: MemberActivityTime[], activityMode, count);
+
+  filterDates(memberActivities: MemberActivityTime[], startDate: Date): MemberActivityTime[] {
+    return memberActivities.map((ma) => {
+      return {
+        id: ma.id,
+        activities: ma.activities.filter((x) => x.date > startDate)
+      };
+    });
+  }
 
   getClanActivityStats(clanId: number, clanMemberProfiles: MemberProfile[], startDate: Date, activityMode: number = 0) {
     return from(clanMemberProfiles).pipe(
