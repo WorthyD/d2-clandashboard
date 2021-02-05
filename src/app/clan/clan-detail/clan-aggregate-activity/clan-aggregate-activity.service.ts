@@ -36,6 +36,9 @@ export class ClanAggregateActivityService {
   activities$ = this.store.pipe(select(getAllMemberActivities));
   activitiesLoaded$ = this.store.pipe(select(getClanMemberActivitiesLoaded));
   activitiesUpdating$ = this.store.pipe(select(getClanMemberActivitiesUpdating));
+  selectedDuration$ = new BehaviorSubject('daily');
+
+
 
   events2 = [];
   events2$ = combineLatest([this.activities$, this.activitiesLoaded$]).pipe(
@@ -57,7 +60,11 @@ export class ClanAggregateActivityService {
     })
   );
 
+<<<<<<< HEAD
   events = [];
+=======
+  // events = [];
+>>>>>>> @{-1}
   // events$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMemberProfiles$]).pipe(
   //   switchMap(([isMemberLoaded, id, clanMembers]) => {
   //     this.isLoading = true;
@@ -87,10 +94,17 @@ export class ClanAggregateActivityService {
   //     //   })
   //     // );
   //   })
+<<<<<<< HEAD
   //);
+=======
+  // );
+>>>>>>> @{-1}
 
   load() {
     //this.events$.subscribe();
     this.events2$.subscribe();
+  }
+  changeDuration(duration){
+    this.selectedDuration$.next(duration);
   }
 }
