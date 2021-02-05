@@ -41,9 +41,9 @@ export class ClanAggregateActivityService {
 
 
   events2 = [];
-  events2$ = combineLatest([this.activities$, this.activitiesLoaded$]).pipe(
-    filter(([activities, isLoaded]) => isLoaded === true),
-    map(([activities, isLoaded]) => {
+  events2$ = combineLatest([this.activities$, this.activitiesLoaded$, this.selectedDuration$]).pipe(
+    filter(([activities, isLoaded, selectedDuration]) => isLoaded === true),
+    map(([activities, isLoaded, selectedDuration]) => {
       //const a = [...activities.map((y) => y.activities)]; //.filter((x) => x.date > nowPlusDays(-30)))];
       //const a = [...activities.map((y) => y.activities).filter((x) => x.date > nowPlusDays(-30))];
       //const a [] = [...activities.map((y) => y.activities)].filter((x) => x.date > nowPlusDays(-30));
@@ -52,6 +52,7 @@ export class ClanAggregateActivityService {
 
       // const flata = [].concat.apply([], a);
        const summedActivities = this.service.getClanActivityStatsForDuration(activities, 0);
+       console.log('loading');
 
 
 
@@ -60,11 +61,7 @@ export class ClanAggregateActivityService {
     })
   );
 
-<<<<<<< HEAD
-  events = [];
-=======
   // events = [];
->>>>>>> @{-1}
   // events$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMemberProfiles$]).pipe(
   //   switchMap(([isMemberLoaded, id, clanMembers]) => {
   //     this.isLoading = true;
@@ -94,11 +91,7 @@ export class ClanAggregateActivityService {
   //     //   })
   //     // );
   //   })
-<<<<<<< HEAD
-  //);
-=======
   // );
->>>>>>> @{-1}
 
   load() {
     //this.events$.subscribe();
