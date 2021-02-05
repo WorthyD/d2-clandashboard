@@ -36,6 +36,9 @@ export class ClanAggregateActivityService {
   activities$ = this.store.pipe(select(getAllMemberActivities));
   activitiesLoaded$ = this.store.pipe(select(getClanMemberActivitiesLoaded));
   activitiesUpdating$ = this.store.pipe(select(getClanMemberActivitiesUpdating));
+  selectedDuration$ = new BehaviorSubject('daily');
+
+
 
   events2 = [];
   events2$ = combineLatest([this.activities$, this.activitiesLoaded$]).pipe(
@@ -54,40 +57,43 @@ export class ClanAggregateActivityService {
     })
   );
 
-  events = [];
-  events$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMemberProfiles$]).pipe(
-    switchMap(([isMemberLoaded, id, clanMembers]) => {
-      this.isLoading = true;
-      this.events = [];
+  // events = [];
+  // events$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMemberProfiles$]).pipe(
+  //   switchMap(([isMemberLoaded, id, clanMembers]) => {
+  //     this.isLoading = true;
+  //     this.events = [];
 
-      return this.service.getClanActivityStatsForDuration(id, clanMembers, nowPlusDays(-30), 0).pipe(
-        map((stats) => {
-          this.events = stats;
-          this.isLoading = false;
-        })
-      );
+  //     return this.service.getClanActivityStatsForDuration(id, clanMembers, nowPlusDays(-30), 0).pipe(
+  //       map((stats) => {
+  //         this.events = stats;
+  //         this.isLoading = false;
+  //       })
+  //     );
 
-      // if (selectedMembers.length > 0) {
-      //   clanMembers = clanMembers.filter((members) => {
-      //     return selectedMembers.indexOf(members.profile.data.userInfo.displayName) > -1;
-      //   });
-      // }
-      // return this.clanActivityService.getClanActivityStats(id, clanMembers, selectedActivity).pipe(
-      //   bufferTime(500, undefined, 20),
-      //   mergeMap((members) => {
-      //     this.activityStats = this.activityStats.concat(members);
-      //     return members;
-      //   }),
-      //   toArray(),
-      //   map((stats) => {
-      //     this.isLoading = false;
-      //   })
-      // );
-    })
-  );
+  //     // if (selectedMembers.length > 0) {
+  //     //   clanMembers = clanMembers.filter((members) => {
+  //     //     return selectedMembers.indexOf(members.profile.data.userInfo.displayName) > -1;
+  //     //   });
+  //     // }
+  //     // return this.clanActivityService.getClanActivityStats(id, clanMembers, selectedActivity).pipe(
+  //     //   bufferTime(500, undefined, 20),
+  //     //   mergeMap((members) => {
+  //     //     this.activityStats = this.activityStats.concat(members);
+  //     //     return members;
+  //     //   }),
+  //     //   toArray(),
+  //     //   map((stats) => {
+  //     //     this.isLoading = false;
+  //     //   })
+  //     // );
+  //   })
+  // );
 
   load() {
     //this.events$.subscribe();
     this.events2$.subscribe();
+  }
+  changeDuration(duration){
+    this.selectedDuration$.next(duration);
   }
 }
