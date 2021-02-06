@@ -5,10 +5,10 @@ import { BarChartModule } from './bar-chart.module';
 import { BarChartComponent } from './bar-chart.component';
 
 import { withKnobs, select, object, boolean } from '@storybook/addon-knobs';
-import { MOCK_GRID_ITEMS, REAL_DATA } from './_MOCK_GRID_ITEMS';
+import { MOCK_GRID_ITEMS, MOCK_GRID_ITEMS2, REAL_DATA } from './_MOCK_GRID_ITEMS';
 import { MaterialModule } from '../../modules/material.module';
 import { LoadingModule } from '../../loading/loading.module';
-const events = [MOCK_GRID_ITEMS];
+const events = [MOCK_GRID_ITEMS, MOCK_GRID_ITEMS2];
 
 export default {
   title: 'Shared / Bar Chart',
