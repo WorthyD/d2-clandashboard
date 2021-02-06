@@ -7,3 +7,4 @@ export * from './clan-activity.service';
 export * from './clan-raid-details.service';
 
 export * from './clan-aggregate-time/daily-clan-aggregate-time.service';
+export * from './clan-aggregate-time/weekly-clan-aggregate-time.service';

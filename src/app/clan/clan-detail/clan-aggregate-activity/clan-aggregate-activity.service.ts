@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { DailyClanAggregateTimeService } from '@destiny/data';
+import { Injectable, Injector } from '@angular/core';
+import { DailyClanAggregateTimeService, WeeklyClanAggregateTimeService } from '@destiny/data';
 import { select } from '@ngrx/store';
 import { Store } from '@ngrx/store';
 import { nowPlusDays } from 'projects/data/src/lib/utility/date-utils';
@@ -25,7 +25,7 @@ import { groupActivityStatsByDate } from 'projects/data/src/lib/utility/group-ac
   providedIn: 'root'
 })
 export class ClanAggregateActivityService {
-  constructor(private store: Store<any>, private service: DailyClanAggregateTimeService) {}
+  constructor(private store: Store<any>, private service: DailyClanAggregateTimeService, private injector: Injector) {}
 
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);
@@ -38,28 +38,27 @@ export class ClanAggregateActivityService {
   activitiesUpdating$ = this.store.pipe(select(getClanMemberActivitiesUpdating));
   selectedDuration$ = new BehaviorSubject('daily');
 
-
-
   events2 = [];
   events2$ = combineLatest([this.activities$, this.activitiesLoaded$, this.selectedDuration$]).pipe(
     filter(([activities, isLoaded, selectedDuration]) => isLoaded === true),
     map(([activities, isLoaded, selectedDuration]) => {
-      //const a = [...activities.map((y) => y.activities)]; //.filter((x) => x.date > nowPlusDays(-30)))];
-      //const a = [...activities.map((y) => y.activities).filter((x) => x.date > nowPlusDays(-30))];
-      //const a [] = [...activities.map((y) => y.activities)].filter((x) => x.date > nowPlusDays(-30));
-      // const xpDate = nowPlusDays(-30);
-      // const a = [...activities.map((y) => y.activities.filter((x) => x.date > xpDate))];
+      const service = this.getInjector(selectedDuration);
 
-      // const flata = [].concat.apply([], a);
-       const summedActivities = this.service.getClanActivityStatsForDuration(activities, 0);
-       console.log('loading');
-
-
+      const summedActivities = service.getClanActivityStatsForDuration(activities, 0);
 
       this.events2 = summedActivities;
       this.isLoading = false;
     })
   );
+
+  private getInjector(duration: string) {
+    switch (duration) {
+      case 'weekly':
+        return this.injector.get(WeeklyClanAggregateTimeService);
+      default:
+        return this.injector.get(DailyClanAggregateTimeService);
+    }
+  }
 
   // events = [];
   // events$ = combineLatest([this.isMembersLoaded$, this.clanId$, this.clanMemberProfiles$]).pipe(
@@ -97,7 +96,7 @@ export class ClanAggregateActivityService {
     //this.events$.subscribe();
     this.events2$.subscribe();
   }
-  changeDuration(duration){
+  changeDuration(duration) {
     this.selectedDuration$.next(duration);
   }
 }
