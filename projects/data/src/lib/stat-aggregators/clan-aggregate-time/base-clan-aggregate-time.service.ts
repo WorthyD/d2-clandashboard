@@ -14,6 +14,10 @@ export abstract class BaseClanAggregateTimeService {
   abstract getClanActivityStatsForDuration(memberActivities: MemberActivityTime[], activityMode, count);
 
   filterDates(memberActivities: MemberActivityTime[], startDate: Date): MemberActivityTime[] {
+    console.log('startDate', startDate);
+    console.log(
+      memberActivities.find((x) => x.id === '3-4611686018504387531').activities.filter((x) => x.date > startDate)
+    );
     return memberActivities.map((ma) => {
       return {
         id: ma.id,

@@ -29,7 +29,9 @@ export class BarChartComponent implements OnInit {
   svg;
   data;
   x;
+  xAxis;
   y;
+  yAxis;
   tooltip;
 
   chartHeight = 200;
@@ -46,7 +48,6 @@ export class BarChartComponent implements OnInit {
   }
 
   set events(value) {
-    console.log('updating', value);
     if (value && value.length && value !== this._events) {
       this._events = value;
       this.updateChart(this._events);
@@ -88,8 +89,27 @@ export class BarChartComponent implements OnInit {
     this.setChartDimensions();
 
     this.addToolTip();
+    this.addAxis();
 
     this.processData(eventData);
+  }
+  private addAxis() {
+    this.xAxis = this.svg
+      .append('g')
+      .attr('transform', 'translate(0,' + this.chartHeight + ')')
+      .attr('y', this.chartHeight - 250)
+      .attr('x', this.chartWidth - 50);
+
+    this.yAxis = this.svg.append('g');
+
+    this.yAxis
+      .append('text')
+      .attr('y', 6)
+      .attr('fill', 'currentColor')
+      .attr('dy', '-4.1em')
+      .attr('transform', 'rotate(-90)')
+      .attr('text-anchor', 'end')
+      .text('Hours');
   }
 
   private removeExistingChartFromParent() {
@@ -132,11 +152,13 @@ export class BarChartComponent implements OnInit {
 
       this.y.domain([0, d3.max(cleanedData, (d) => d.seconds) * 1.1]);
       // Footer
-      this.svg
-        .append('g')
-        .attr('transform', 'translate(0,' + this.chartHeight + ')')
-        .attr('y', this.chartHeight - 250)
-        .attr('x', this.chartWidth - 50)
+      // this.svg
+      //   .append('g')
+      //   .attr('transform', 'translate(0,' + this.chartHeight + ')')
+      //   .attr('y', this.chartHeight - 250)
+      //   .attr('x', this.chartWidth - 50)
+
+      this.xAxis
         .call(d3.axisBottom(this.x)) //.tickFormat(d3.timeFormat('%Y-%m')))
         //   .ticks(d3.timeDay.every(14))
         //   .tickFormat(d3.timeFormat('%Y-%m-%d')))
@@ -147,26 +169,20 @@ export class BarChartComponent implements OnInit {
       //.attr('dy', '.15em');
       ///.attr('transform', 'rotate(-65)');
 
-      this.svg
-        .append('g')
-        .call(
-          d3
-            .axisLeft(this.y)
-            .tickFormat(function (d) {
-              return Math.floor(d / 3600);
-            })
-            .ticks(10)
-        )
-        .append('text')
-        .attr('y', 6)
-        .attr('fill', 'currentColor')
-        .attr('dy', '-4.1em')
-        .attr('transform', 'rotate(-90)')
-        .attr('text-anchor', 'end')
-        .text('Hours');
+      this.yAxis.call(
+        d3
+          .axisLeft(this.y)
+          .tickFormat(function (d) {
+            return Math.floor(d / 3600);
+          })
+          .ticks(10)
+      );
+
+
+      // Delete old data
+      this.svg.selectAll('rect').remove();
 
       const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
-
       bars
         .attr('class', 'activity-bar')
         .attr('x', (d) => {
@@ -178,7 +194,6 @@ export class BarChartComponent implements OnInit {
         //.attr('width', this.x.bandwidth())
         .attr('width', this.chartWidth / cleanedData.length)
         .attr('height', (d) => {
-          console.log(d);
           return this.chartHeight - this.y(d.seconds);
         });
 

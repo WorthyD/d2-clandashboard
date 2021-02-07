@@ -45,7 +45,6 @@ export class ClanAggregateActivityService {
       const service = this.getInjector(selectedDuration);
 
       const summedActivities = service.getClanActivityStatsForDuration(activities, 0);
-
       this.events2 = summedActivities;
       this.isLoading = false;
     })
