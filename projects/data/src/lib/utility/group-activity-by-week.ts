@@ -5,26 +5,31 @@ import { groupActivities } from './group-activity-by-date';
 
 export function groupActivitiesByWeek(data): Array<MemberActivityRecentStatsActivity> {
   const raw = data.map((x) => {
-    return Object.assign(
-      {},
-      {
-        date: getBungieStartDate(new Date(x.period)),
-        seconds: x.values.activityDurationSeconds.basic.value
-      }
-    );
+    return {
+      date: getBungieStartDate(new Date(x.period)),
+      seconds: x.values.activityDurationSeconds.basic.value
+    };
   });
   return groupActivities(raw);
 }
 
 export function groupActivityStatsByWeek(data: MemberActivityRecentStatsActivity[]) {
+  // const raw = data.map((x) => {
+  //   return Object.assign(
+  //     {},
+  //     {
+  //       date: getBungieStartDate(x.date),
+  //       seconds: x.seconds
+  //     }
+  //   );
+  // });
+  // return groupActivities(raw);
+
   const raw = data.map((x) => {
-    return Object.assign(
-      {},
-      {
-        date: getBungieStartDate(x.date),
-        seconds: x.seconds
-      }
-    );
+    return {
+      date: getBungieStartDate(x.date),
+      seconds: x.seconds
+    };
   });
   return groupActivities(raw);
 }

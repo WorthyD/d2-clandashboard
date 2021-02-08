@@ -1,71 +1,60 @@
-import { groupActivitiesByWeek } from './group-activity-by-week';
-const _MOCK_DATA = [
-  {
-    period: '2020-08-23T01:38:09Z',
-    activityDetails: {},
-    values: {
-      activityDurationSeconds: {
-        statId: 'activityDurationSeconds',
-        basic: {
-          value: 400
-        }
-      }
-    }
-  },
+import { getBungieStartDate, nowPlusDays } from './date-utils';
+import { groupActivitiesByWeek, groupActivityStatsByWeek } from './group-activity-by-week';
 
-  {
-    period: '2020-08-25T01:38:09Z',
-    activityDetails: {},
-    values: {
-      activityDurationSeconds: {
-        statId: 'activityDurationSeconds',
-        basic: {
-          value: 400
-        }
-      }
-    }
-  },
+function datePlusDays(date: Date, days: number) {
+  return new Date(new Date().setDate(date.getDate() + days));
+}
+const yesterday = getBungieStartDate(nowPlusDays(-1));
+const lastWeek = datePlusDays(new Date(yesterday), -4);
+const twoWeeks = datePlusDays(new Date(yesterday), -15);
+const twoWeeks2 = datePlusDays(new Date(yesterday), -18);
+const threeWeeks = datePlusDays(new Date(yesterday), -22);
+const dates = [lastWeek, twoWeeks, twoWeeks2, threeWeeks];
 
-  {
-    period: '2020-08-27T01:38:09Z',
+const bActivities = [...dates].map((x) => {
+  return {
+    period: x,
     activityDetails: {},
     values: {
       activityDurationSeconds: {
-        statId: 'activityDurationSeconds',
         basic: {
-          value: 400
+          value: 100
         }
       }
     }
-  },
-  {
-    period: '2020-08-27T01:27:28Z',
-    activityDetails: {},
-    values: {
-      activityDurationSeconds: {
-        statId: 'activityDurationSeconds',
-        basic: {
-          value: 300
-        }
-      }
-    }
-  },
-  {
-    period: '2020-08-30T01:27:28Z',
-    activityDetails: {},
-    values: {
-      activityDurationSeconds: {
-        statId: 'activityDurationSeconds',
-        basic: {
-          value: 300
-        }
-      }
-    }
-  }
-];
+  };
+});
+
+const groupedActivities = [...dates].map((x) => {
+  return {
+    date: x,
+    seconds: 100
+  };
+});
+
 describe('Group activities by week', () => {
-  // it('should group activities by week', () => {
-  //   const formatted = groupActivitiesByWeek(_MOCK_DATA);
-  //   expect(formatted.length).toEqual(2);
-  // });
+  it('groupActivitiesByWeek', () => {
+    const orig = JSON.stringify(bActivities);
+    const formatted = groupActivitiesByWeek(bActivities);
+
+    expect(formatted.length).toEqual(3);
+    expect(formatted[0].seconds).toEqual(100);
+    expect(formatted[1].seconds).toEqual(200);
+    expect(formatted[2].seconds).toEqual(100);
+    // Make sure it doesn't mutate original object
+    expect(JSON.stringify(bActivities)).toEqual(orig);
+  });
+
+  it('groupActivityStatsByWeek', () => {
+    const orig = JSON.stringify(groupedActivities);
+
+    const formatted = groupActivityStatsByWeek(groupedActivities);
+
+    expect(formatted.length).toEqual(3);
+    expect(formatted[0].seconds).toEqual(100);
+    expect(formatted[1].seconds).toEqual(200);
+    expect(formatted[2].seconds).toEqual(100);
+    // Make sure it doesn't mutate original object
+    expect(JSON.stringify(groupedActivities)).toEqual(orig);
+  });
 });

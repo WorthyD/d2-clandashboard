@@ -19,8 +19,6 @@ const twoWeeks2 = datePlusDays(new Date(yesterday), -18);
 const threeWeeks = datePlusDays(new Date(yesterday), -22);
 const dates = [lastWeek, twoWeeks, twoWeeks2, threeWeeks];
 
-console.log('dates array', [lastWeek, twoWeeks, twoWeeks2, threeWeeks]);
-console.log('dates', dates);
 
 const dummyActivities = dates.map((x) => {
   return {

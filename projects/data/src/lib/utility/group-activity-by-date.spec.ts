@@ -1,3 +1,4 @@
+import { getBungieStartDate, nowPlusDays } from './date-utils';
 import { groupActivitiesByDate } from './group-activity-by-date';
 const _MOCK_DATA = [
   {
@@ -37,10 +38,59 @@ const _MOCK_DATA = [
     }
   }
 ];
-describe('Group activities by date', () => {
-  it('should group activities by date', () => {
-    const formatted = groupActivitiesByDate(_MOCK_DATA);
-    expect(formatted.length).toEqual(2);
-    expect(formatted.find(x => x.date === '2020-08-26').seconds).toEqual(700);
+
+function datePlusDays(date: Date, days: number) {
+  return new Date(new Date().setDate(date.getDate() + days));
+}
+const yesterday = nowPlusDays(-1);
+const yesterday2 = new Date(nowPlusDays(-1).setHours(12));
+const yesterday3 = nowPlusDays(-2);
+const yesterday4 = new Date(nowPlusDays(-2).setHours(12));
+const yesterday5 = nowPlusDays(-3);
+
+const dates = [yesterday, yesterday2, yesterday3, yesterday4, yesterday5];
+
+const bActivities = [...dates].map((x) => {
+  return {
+    period: x,
+    activityDetails: {},
+    values: {
+      activityDurationSeconds: {
+        basic: {
+          value: 100
+        }
+      }
+    }
+  };
+});
+
+const groupedActivities = [...dates].map((x) => {
+  return {
+    date: x,
+    seconds: 100
+  };
+});
+
+fdescribe('Group activities by date', () => {
+  it('groupActivities', () => {
+    // const formatted = groupActivitiesByDate(_MOCK_DATA);
+    // expect(formatted.length).toEqual(2);
+    // expect(formatted.find((x) => x.date === '2020-08-26').seconds).toEqual(700);
   });
+
+  it('groupActivitiesByDate', () => {
+      const formatted = groupActivitiesByDate(bActivities);
+     expect(formatted.length).toEqual(3);
+    // expect(formatted.find((x) => x.date === '2020-08-26').seconds).toEqual(700);
+
+  });
+
+  it('groupActivityStatsByDate', () => {
+
+  });
+
+
+
+
+
 });
