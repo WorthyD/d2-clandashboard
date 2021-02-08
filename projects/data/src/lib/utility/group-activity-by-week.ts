@@ -5,10 +5,13 @@ import { groupActivities } from './group-activity-by-date';
 
 export function groupActivitiesByWeek(data): Array<MemberActivityRecentStatsActivity> {
   const raw = data.map((x) => {
-    return {
-      date: getBungieStartDate(new Date(x.period)),
-      seconds: x.values.activityDurationSeconds.basic.value
-    };
+    return Object.assign(
+      {},
+      {
+        date: getBungieStartDate(new Date(x.period)),
+        seconds: x.values.activityDurationSeconds.basic.value
+      }
+    );
   });
   return groupActivities(raw);
 }

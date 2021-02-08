@@ -11,7 +11,7 @@ export class WeeklyClanAggregateTimeService extends BaseClanAggregateTimeService
   getClanActivityStatsForDuration(memberActivities: MemberActivityTime[], activityMode: any) {
     const x = this.filterDates(memberActivities, nowPlusWeeks(-12));
 
-    const activities = [...x.map((y) => y.activities)];
+    const activities = [...x.map((y) => [...y.activities])];
     const flatActivities = [].concat.apply([], activities);
 
     const summedActivities = groupActivityStatsByWeek(flatActivities);
