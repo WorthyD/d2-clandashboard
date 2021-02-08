@@ -46,21 +46,23 @@ describe('WeeklyClanAggregateTimeService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  describe('should aggregate days of data', () => {
+  fdescribe('should aggregate days of data', () => {
     let serviceSpy;
 
     it('should be a function', () => {
       expect(service.getClanActivityStatsForDuration).toBeDefined();
     });
 
-    console.log('in describe dates', dates);
     it('should appropriately group by week', () => {
       const activities = [
         { id: '0', activities: dummyActivities },
         { id: '1', activities: dummyActivities }
       ];
+      const orig = JSON.stringify(activities);
+
       const grouped = service.getClanActivityStatsForDuration(activities, 0);
       expect(grouped.length).toBe(3);
+      expect(JSON.stringify(activities)).toEqual(orig);
     });
     it('should sum accurately', () => {
       const activities = [

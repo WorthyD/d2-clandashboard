@@ -1,7 +1,7 @@
 import { formatDate } from './format-date';
 import { MemberActivityRecentStatsActivity } from 'bungie-models';
 import { getBungieStartDate } from './date-utils';
-import {groupActivities} from './group-activity-by-date';
+import { groupActivities } from './group-activity-by-date';
 
 export function groupActivitiesByWeek(data): Array<MemberActivityRecentStatsActivity> {
   const raw = data.map((x) => {
@@ -15,10 +15,13 @@ export function groupActivitiesByWeek(data): Array<MemberActivityRecentStatsActi
 
 export function groupActivityStatsByWeek(data: MemberActivityRecentStatsActivity[]) {
   const raw = data.map((x) => {
-    return {
-      date: getBungieStartDate(x.date),
-      seconds: x.seconds
-    };
+    return Object.assign(
+      {},
+      {
+        date: getBungieStartDate(x.date),
+        seconds: x.seconds
+      }
+    );
   });
   return groupActivities(raw);
 }

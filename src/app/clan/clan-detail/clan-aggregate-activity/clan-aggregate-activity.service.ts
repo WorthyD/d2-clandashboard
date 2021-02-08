@@ -34,7 +34,6 @@ export class ClanAggregateActivityService {
   isLoading = true;
 
   activities$ = this.store.pipe(select(getAllMemberActivities));
-  activities2$ = this.store.pipe(select(getAllMemberActivities));
   activitiesLoaded$ = this.store.pipe(select(getClanMemberActivitiesLoaded));
   activitiesUpdating$ = this.store.pipe(select(getClanMemberActivitiesUpdating));
   selectedDuration$ = new BehaviorSubject('daily');
@@ -45,12 +44,12 @@ export class ClanAggregateActivityService {
     map(([activities, isLoaded, selectedDuration]) => {
       const service = this.getInjector(selectedDuration);
       // console.log('a', activities[0]);
-      const clonedActivities = activities.map((x) => {
-        return Object.assign({}, x);
-      });
+      // const clonedActivities = activities.map((x) => {
+      //   return Object.assign({}, x);
+      // });
 
-      const summedActivities = service.getClanActivityStatsForDuration(deepCopyFunction(clonedActivities), 0);
-      // this.events2 = summedActivities;
+      const summedActivities = service.getClanActivityStatsForDuration(activities, 0);
+      this.events2 = summedActivities;
       this.isLoading = false;
     })
   );
