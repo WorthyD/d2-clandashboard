@@ -1,5 +1,6 @@
-  {{service.selectedDuration$ | async}}
-  <hr>
+  <textarea style="width:100%; height:250px;">
+    {{(service.activities2$| async)[0] | json}}
+  </textarea>
   <lib-activity-time-chart [loading]="service.isLoading" [events]="service.events2"
     [updating]="service.activitiesUpdating$ | async" (selectionChange)="service.changeDuration($event)">
   </lib-activity-time-chart>

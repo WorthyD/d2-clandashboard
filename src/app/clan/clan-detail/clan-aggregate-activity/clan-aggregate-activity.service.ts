@@ -34,6 +34,7 @@ export class ClanAggregateActivityService {
   isLoading = true;
 
   activities$ = this.store.pipe(select(getAllMemberActivities));
+  activities2$ = this.store.pipe(select(getAllMemberActivities));
   activitiesLoaded$ = this.store.pipe(select(getClanMemberActivitiesLoaded));
   activitiesUpdating$ = this.store.pipe(select(getClanMemberActivitiesUpdating));
   selectedDuration$ = new BehaviorSubject('daily');
@@ -43,9 +44,13 @@ export class ClanAggregateActivityService {
     filter(([activities, isLoaded, selectedDuration]) => isLoaded === true),
     map(([activities, isLoaded, selectedDuration]) => {
       const service = this.getInjector(selectedDuration);
+      // console.log('a', activities[0]);
+      const clonedActivities = activities.map((x) => {
+        return Object.assign({}, x);
+      });
 
-      const summedActivities = service.getClanActivityStatsForDuration(activities, 0);
-      this.events2 = summedActivities;
+      const summedActivities = service.getClanActivityStatsForDuration(deepCopyFunction(clonedActivities), 0);
+      // this.events2 = summedActivities;
       this.isLoading = false;
     })
   );
@@ -98,4 +103,24 @@ export class ClanAggregateActivityService {
   changeDuration(duration) {
     this.selectedDuration$.next(duration);
   }
+}
+
+const deepCopyFunction = (inObject) => {
+  let outObject, value, key
+
+  if (typeof inObject !== "object" || inObject === null) {
+    return inObject // Return the value if inObject is not an object
+  }
+
+  // Create an array or object to hold the values
+  outObject = Array.isArray(inObject) ? [] : {}
+
+  for (key in inObject) {
+    value = inObject[key]
+
+    // Recursively (deep) copy for nested objects, including arrays
+    outObject[key] = deepCopyFunction(value)
+  }
+
+  return outObject
 }
