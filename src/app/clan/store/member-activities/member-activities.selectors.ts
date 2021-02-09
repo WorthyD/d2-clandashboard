@@ -8,13 +8,13 @@ export const getMemberProfileEntityState = createSelector(getClanState, (state) 
 
 export const {
   selectIds: getMemberIds,
-  selectEntities: getMemberProfileEntities,
+  selectEntities: getMemberActivityEntities,
   selectAll: getAllMemberActivities,
   selectTotal: getTotalMembers
 } = memberActivityStatState.MemberActivityStatAdapter.getSelectors(getMemberProfileEntityState);
 
 export const getClanMemberById = (memberId) =>
-  createSelector(getMemberProfileEntities, (entities) => {
+  createSelector(getMemberActivityEntities, (entities) => {
     return memberId && entities[memberId];
   });
 
@@ -25,7 +25,7 @@ export const getClanMemberActivities = (memberId) =>
 
 export const getSelectedClanMemberActivities = createSelector(
   getSelectedClanMemberId,
-  getMemberProfileEntities,
+  getMemberActivityEntities,
   (memberId, entities) => {
     return memberId && entities[memberId] && entities[memberId].activities;
   }

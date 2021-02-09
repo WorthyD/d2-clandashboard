@@ -36,3 +36,11 @@ export const base = () => ({
     events: stats
   }
 });
+export const initial = () => ({
+  component: ActivityTimeChartComponent,
+  template: `<lib-activity-time-chart [loading]="isLoading" [events]="events" [updating]="true"></lib-activity-time-chart>`,
+  props: {
+    isLoading: boolean('Is Loading', false),
+    events: []
+  }
+});

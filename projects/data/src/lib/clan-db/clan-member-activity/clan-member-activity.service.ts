@@ -35,10 +35,15 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
   getAllActivitiesFromCache2(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityTime[]> {
     return from(this.getAllDataFromCache(clanId.toString())).pipe(
       map((x) => {
-        return this.groupActivitiesToMembers2(memberProfiles, x);
+        const y = this.groupActivitiesToMembers2(memberProfiles, x);
+
+
+        return y;
       })
     );
   }
+
+
 
   // TODO: Add progress indicator?
   updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[]) {

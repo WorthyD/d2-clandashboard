@@ -45,15 +45,15 @@ export class MemberActivityEffects {
     private memberActivityService: ClanMemberActivityService
   ) {}
 
-  // profilesLoaded$ = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(loadMemberProfileSuccess),
-  //     withLatestFrom(this.store.select(getAllMembers)),
-  //     map(([action, memberProfiles]) => {
-  //       return memberActivityActions.loadMemberActivities({ member: memberProfiles });
-  //     })
-  //   );
-  // });
+  profilesLoaded$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(loadMemberProfileSuccess),
+      withLatestFrom(this.store.select(getAllMembers)),
+      map(([action, memberProfiles]) => {
+        return memberActivityActions.loadMemberActivities({ member: memberProfiles });
+      })
+    );
+  });
 
   loadMemberActivities$ = createEffect(() =>
     this.actions$.pipe(

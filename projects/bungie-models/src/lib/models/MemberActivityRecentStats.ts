@@ -9,6 +9,6 @@ export interface MemberActivityRecentStats {
   lastWeek: number;
 }
 export interface MemberActivityRecentStatsActivity {
-  date: string;
+  date: string | Date;
   seconds: number;
 }

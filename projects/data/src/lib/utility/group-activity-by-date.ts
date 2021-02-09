@@ -1,6 +1,6 @@
 import { formatDate } from './format-date';
 
-function groupActivities(raw) {
+export function groupActivities(raw) {
   // Todo: Find better way to handle this.
   let holder = {};
 
@@ -23,10 +23,6 @@ function groupActivities(raw) {
 
 export function groupActivitiesByDate(data) {
   const raw = data.map((x) => {
-    // console.log('--------');
-    // console.log(x.period);
-    // console.log(formatDate(x.period));
-    // console.log('--------');
     return { date: formatDate(x.period), seconds: x.values.activityDurationSeconds.basic.value };
   });
 
@@ -34,6 +30,9 @@ export function groupActivitiesByDate(data) {
 }
 
 export function groupActivityStatsByDate(data) {
-
-  return groupActivities(data);
+  return groupActivities(
+    data.map((x) => {
+      return { date: formatDate(x.date), seconds: x.seconds };
+    })
+  );
 }

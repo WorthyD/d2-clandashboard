@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ActivityStats, MemberProfile, ClanMember } from 'bungie-models';
+import { ActivityStats, MemberProfile, ClanMember, MemberActivityTime } from 'bungie-models';
 import { forkJoin, from, Observable } from 'rxjs';
 import { map, mergeMap, toArray } from 'rxjs/operators';
 import { ClanMemberRecentActivityService, ProfileService } from '../../clan-db';
-import { groupActivitiesByDate } from '../../utility/group-activity-by-date';
+import { nowPlusDays } from '../../utility/date-utils';
+import { groupActivitiesByDate, groupActivityStatsByDate } from '../../utility/group-activity-by-date';
 import { BaseClanAggregateTimeService } from './base-clan-aggregate-time.service';
 
 @Injectable({
@@ -11,21 +12,20 @@ import { BaseClanAggregateTimeService } from './base-clan-aggregate-time.service
 })
 export class DailyClanAggregateTimeService extends BaseClanAggregateTimeService {
   getClanActivityStatsForDuration(
-    clanId: number,
-    clanMemberProfiles: MemberProfile[],
-    startData: Date,
-    activityMode: any,
+    memberActivities: MemberActivityTime[],
+    //startData: Date,
+    activityMode: any
   ) {
-    return this.getClanActivityStats(clanId, clanMemberProfiles, startData, activityMode).pipe(
-      toArray(),
-      map((x) => {
+    //console.log('ma', memberActivities);
+    const x = this.filterDates(memberActivities, nowPlusDays(-30));
+    //console.log('x', x);
 
-        const activities = [...x.map((y) => y.stats.activities)];
-        const flatActivities = [].concat.apply([], activities);
-        const summedActivities = groupActivitiesByDate(flatActivities);
-
-        return summedActivities;
-      })
-    );
+    const activities = [...x.map((y) => y.activities)];
+    //    console.log('activities', activities);
+    const flatActivities = [].concat.apply([], activities);
+    //   console.log('flatActivities', flatActivities);
+    const summedActivities = groupActivityStatsByDate(flatActivities);
+    //  console.log('summedActivities', summedActivities);
+    return summedActivities;
   }
 }

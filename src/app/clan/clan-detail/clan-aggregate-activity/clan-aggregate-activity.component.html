@@ -1,2 +1,3 @@
-<lib-activity-time-chart [loading]="service.isLoading" [events]="service.events2"
-  [updating]="service.activitiesUpdating$ | async"></lib-activity-time-chart>
+   <lib-activity-time-chart [loading]="service.isLoading" [events]="service.events2"
+     [updating]="service.activitiesUpdating$ | async" (selectionChange)="service.changeDuration($event)">
+   </lib-activity-time-chart>

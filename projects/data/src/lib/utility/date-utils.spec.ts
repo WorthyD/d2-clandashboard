@@ -1,4 +1,4 @@
-import { isValidDate, dateToUnixTimeStamp, unixTimeStampToDate } from './date-utils';
+import { isValidDate, dateToUnixTimeStamp, unixTimeStampToDate, getBungieStartDate } from './date-utils';
 
 describe('Date Utils', () => {
   describe('isValidDate', () => {
@@ -41,4 +41,17 @@ describe('Date Utils', () => {
       expect(unixTimeStampToDate(uxts)).toEqual(d);
     });
   });
+
+  describe('getBungieStartDate', () => {
+    it('found find bungie start date', () => {
+      const date = new Date(2021, 1, 18);
+      const oDate = new Date(2021, 1, 18);
+      const bungieStartDate = getBungieStartDate(date);
+      expect(bungieStartDate.getDate()).toBe(16);
+      expect(date).toEqual(oDate);
+    });
+
+  });
+
+
 });

@@ -1,6 +1,7 @@
 import { SECONDS_IN_WEEK, SECONDS_IN_DAY } from '@destiny/models/constants';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
 const stats = [];
+const stats2 = [];
 
 const today = new Date(new Date().setDate(new Date().getDate() + ((2 + 7 - new Date().getDay()) % 7) - 189));
 
@@ -11,8 +12,15 @@ for (let i = 0; i < 50; i++) {
     date: d2,
     seconds: Math.floor(Math.random() * SECONDS_IN_DAY + 1)
   });
+
+  stats2.push({
+    date: d2,
+    seconds: Math.floor(Math.random() * SECONDS_IN_DAY + 1)
+  });
 }
 export const MOCK_GRID_ITEMS: any[] = stats;
+
+export const MOCK_GRID_ITEMS2: any[] = stats2;
 
 export const REAL_DATA = [
   {

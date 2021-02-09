@@ -5,6 +5,7 @@ import { Destiny2Service, DestinyHistoricalStatsDestinyHistoricalStatsPeriodGrou
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { mergeMap, map, catchError, toArray } from 'rxjs/operators';
 import { Observable, of, from, defer, concat, EMPTY, forkJoin } from 'rxjs';
+import { clanMemberActivitySerializer } from './clan-member-activity/clan-member-activity.serializer';
 interface ActivityCollection {
   activities: any[];
 }
@@ -137,8 +138,16 @@ export class BaseMemberActivityService extends BaseClanService {
     return this.getAllRecentActivity(member, characterId).pipe(
       map((activityResponse) => {
         if (activityResponse.activities) {
-          this.updateDB(clanId, characterActivityId, activityResponse.activities);
-          return activityResponse.activities;
+
+          // serialize:
+          const slimmedActivities = activityResponse.activities.map(x => {
+            return clanMemberActivitySerializer(x);
+          });
+
+
+
+          this.updateDB(clanId, characterActivityId, slimmedActivities);
+          return slimmedActivities;
         }
       }),
       catchError((error) => {
