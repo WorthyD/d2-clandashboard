@@ -23,7 +23,7 @@ export function groupActivities(raw) {
 
 export function groupActivitiesByDate(data) {
   const raw = data.map((x) => {
-    return Object.assign({}, { date: formatDate(x.period), seconds: x.values.activityDurationSeconds.basic.value });
+    return { date: formatDate(x.period), seconds: x.values.activityDurationSeconds.basic.value };
   });
 
   return groupActivities(raw);
@@ -32,7 +32,7 @@ export function groupActivitiesByDate(data) {
 export function groupActivityStatsByDate(data) {
   return groupActivities(
     data.map((x) => {
-      return Object.assign({}, x);
+      return { date: formatDate(x.date), seconds: x.seconds };
     })
   );
 }

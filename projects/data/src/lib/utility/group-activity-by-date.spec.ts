@@ -1,5 +1,5 @@
 import { getBungieStartDate, nowPlusDays } from './date-utils';
-import { groupActivitiesByDate } from './group-activity-by-date';
+import { groupActivitiesByDate, groupActivityStatsByDate } from './group-activity-by-date';
 const _MOCK_DATA = [
   {
     period: '2020-08-27T01:38:09Z',
@@ -71,26 +71,28 @@ const groupedActivities = [...dates].map((x) => {
   };
 });
 
-fdescribe('Group activities by date', () => {
-  it('groupActivities', () => {
-    // const formatted = groupActivitiesByDate(_MOCK_DATA);
-    // expect(formatted.length).toEqual(2);
-    // expect(formatted.find((x) => x.date === '2020-08-26').seconds).toEqual(700);
-  });
-
+describe('Group activities by date', () => {
   it('groupActivitiesByDate', () => {
-      const formatted = groupActivitiesByDate(bActivities);
-     expect(formatted.length).toEqual(3);
-    // expect(formatted.find((x) => x.date === '2020-08-26').seconds).toEqual(700);
+    const orig = JSON.stringify(bActivities);
+    const formatted = groupActivitiesByDate(bActivities);
+    expect(formatted[0].seconds).toEqual(100);
+    expect(formatted[1].seconds).toEqual(200);
+    expect(formatted[2].seconds).toEqual(200);
 
+    expect(formatted.length).toEqual(3);
+    expect(JSON.stringify(bActivities)).toEqual(orig);
+    // expect(formatted.find((x) => x.date === '2020-08-26').seconds).toEqual(700);
   });
 
   it('groupActivityStatsByDate', () => {
+    const orig = JSON.stringify(groupedActivities);
+    const formatted = groupActivityStatsByDate(groupedActivities);
+    expect(formatted[0].seconds).toEqual(100);
+    expect(formatted[1].seconds).toEqual(200);
+    expect(formatted[2].seconds).toEqual(200);
 
+    expect(formatted.length).toEqual(3);
+
+    expect(JSON.stringify(groupedActivities)).toEqual(orig);
   });
-
-
-
-
-
 });
