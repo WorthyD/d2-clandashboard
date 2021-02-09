@@ -69,7 +69,7 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
                 };
               })
             );
-          }, 2),
+          }, 3),
           // tap((x) => {
           // }),
           toArray()
