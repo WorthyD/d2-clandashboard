@@ -104,7 +104,8 @@ export class ActivityBarChartComponent implements OnInit {
       .attr('width', '100%')
       .attr('viewBox', `0 0 ${this.chartWidth} ${this.chartHeight}`)
       .append('g');
-    this.x = d3.scaleBand().range([0, this.chartWidth], 0.05);
+//    this.x = d3.scaleBand().range([0, this.chartWidth], 0.05);
+    this.x = d3.scaleTime().range([0, this.chartWidth]);
     this.y = d3.scaleLinear().range([this.chartHeight, 0]);
   }
   private addToolTip() {
@@ -113,11 +114,12 @@ export class ActivityBarChartComponent implements OnInit {
   private processData(sourceData) {
     if (sourceData) {
       const cleanedData = this.prepData(sourceData);
-      this.x.domain(
-        cleanedData.map(function (d) {
-          return d.date;
-        })
-      );
+      // this.x.domain(
+      //   cleanedData.map(function (d) {
+      //     return d.date;
+      //   })
+      // );
+      this.x.domain([cleanedData[0].date, cleanedData[cleanedData.length - 1].date]);
       this.y.domain([0, this.threshHold]);
 
       const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
@@ -130,7 +132,8 @@ export class ActivityBarChartComponent implements OnInit {
         .attr('y', (d) => {
           return this.y(d.seconds);
         })
-        .attr('width', this.x.bandwidth())
+        //.attr('width', this.x.bandwidth())
+        .attr('width', this.chartWidth / cleanedData.length)
         .attr('height', (d) => {
           return this.chartHeight - this.y(d.seconds);
         });
@@ -154,33 +157,43 @@ export class ActivityBarChartComponent implements OnInit {
   private prepData(sourceData) {
     const preppedData = [];
 
-    for (let i = 1; i < 52; i++) {
-      // Needing to add 1 because of utc conversion i think.
-      const d = new Date(new Date(this.startDate).setDate(this.startDate.getDate() + i * 7));
-      if (d > this.endDate) {
-        break;
-      }
-      if (d >= this.startDate) {
-        const dFormatted = formatDate(d);
+    // for (let i = 1; i < 52; i++) {
+    //   // Needing to add 1 because of utc conversion i think.
+    //   const d = new Date(new Date(this.startDate).setDate(this.startDate.getDate() + i * 7));
+    //   if (d > this.endDate) {
+    //     break;
+    //   }
+    //   if (d >= this.startDate) {
+    //     const dFormatted = formatDate(d);
 
-        const data = sourceData.find((x) => x.date === dFormatted);
-        // console.log(d);
-        // console.log(dFormatted);
-        // console.log(sourceData.find((x) => x.date === dFormatted));
+    //     const data = sourceData.find((x) => x.date === dFormatted);
+    //     // console.log(d);
+    //     // console.log(dFormatted);
+    //     // console.log(sourceData.find((x) => x.date === dFormatted));
 
-        if (data) {
-          preppedData.push(data);
-        } else {
-          preppedData.push({ date: dFormatted, seconds: 0 });
-        }
-      }
-    }
+    //     if (data) {
+    //       preppedData.push(data);
+    //     } else {
+    //       preppedData.push({ date: dFormatted, seconds: 0 });
+    //     }
+    //   }
+    // }
 
-    preppedData.sort((a, b) => {
-      return compare(a.date, b.date, true);
-    });
+    // preppedData.sort((a, b) => {
+    //   return compare(a.date, b.date, true);
+    // });
 
-    return preppedData;
+    // return preppedData;
+    return sourceData
+      .sort((a, b) => {
+        return compare(a.date, b.date, true);
+      })
+      .map((x) => {
+        return {
+          date: new Date(x.date),
+          seconds: x.seconds
+        };
+      });
   }
 }
 
