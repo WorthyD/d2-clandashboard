@@ -26,7 +26,6 @@ export class ClanActivityService {
   ): Observable<ActivityStats> {
     return this.memberActivityService.getSerializedProfileActivity(clanId, member, activityMode).pipe(
       map((memberActivityResponse) => {
-        console.log('response', memberActivityResponse)
         return {
           memberProfile: { profile: member.profile },
           stats: memberActivityResponse

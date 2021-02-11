@@ -1,6 +1,9 @@
-import { MemberActivityStats, MemberActivityRecentStats } from 'bungie-models';
+import { MemberActivityStats, MemberActivityRecentStats, MemberActivityRecentStatsActivity } from 'bungie-models';
 import { DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api-angular';
-import { groupActivitiesByWeek } from '../../utility/group-activity-by-week';
+import { formatDate } from '../../utility/format-date';
+import { groupActivities } from '../../utility/group-activity-by-date';
+//import { getBungieStartDate } from '../../utility/date-utils';
+//import { groupActivitiesByWeek } from '../../utility/group-activity-by-week';
 
 
 export function clanMemberRecentActivitySerializer(activity: MemberActivityStats): MemberActivityRecentStats {
@@ -35,3 +38,43 @@ export function clanMemberRecentActivitySerializer(activity: MemberActivityStats
     lastWeek: lastWeek
   };
 }
+
+ function groupActivitiesByWeek(data): Array<MemberActivityRecentStatsActivity> {
+  const raw = data.map((x) => {
+    return {
+      date: getBungieStartDate(new Date(x.period)),
+      seconds: x.values.activityDurationSeconds.basic.value
+    };
+  });
+  // const obj2 = raw.reduce((prev, cur) => {
+  //   const index = prev.findIndex((x) => x.date === cur.date);
+  //   if (index > -1) {
+  //     prev[index].seconds += cur.seconds;
+  //   } else {
+  //     prev.push({ date: cur.date, seconds: cur.seconds });
+  //   }
+
+  //   // if (prev.hasOwnProperty(cur.date)) {
+  //   //   prev[cur.date] = prev[cur.date] + cur.seconds;
+  //   // } else {
+  //   //   prev[cur.date] = cur.seconds;
+  //   // }
+  //   return prev;
+  // }, []);
+
+  return groupActivities(raw);
+}
+export function getBungieStartDate(date): Date {
+  const offset = date.getDay() >= 2 ? 2 : -5;
+  // Clone date to prevent mutation
+  const cDate = new Date(date.toDateString());
+  const newDate = new Date(cDate.setDate(date.getDate() - date.getDay() + offset));
+
+  return newDate;
+}
+
+
+// function getBungieStartDate(date) {
+//   const offset = date.getDay() >= 2 ? 2 : -5;
+//   return formatDate(new Date(date.setDate(date.getDate() - date.getDay() + offset)));
+// }

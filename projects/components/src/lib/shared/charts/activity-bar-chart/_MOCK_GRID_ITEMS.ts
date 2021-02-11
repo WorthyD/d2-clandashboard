@@ -17,7 +17,8 @@ import { formatDate } from 'projects/data/src/lib/utility/format-date';
 const stats = [];
 const stats2 = [];
 
-const today = new Date(new Date().setDate(new Date().getDate() + ((2 + 7 - new Date().getDay()) % 7) - 189));
+const today2 = new Date(new Date().setDate(new Date().getDate() + ((2 + 7 - new Date().getDay()) % 7) - 189));
+const today = new Date(today2.toDateString());
 
 for (let i = 0; i < 50; i++) {
   const d = new Date(today);

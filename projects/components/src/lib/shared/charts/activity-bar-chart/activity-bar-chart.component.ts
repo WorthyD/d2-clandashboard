@@ -157,33 +157,31 @@ export class ActivityBarChartComponent implements OnInit {
   private prepData(sourceData) {
     const preppedData = [];
 
-    // for (let i = 1; i < 52; i++) {
-    //   // Needing to add 1 because of utc conversion i think.
-    //   const d = new Date(new Date(this.startDate).setDate(this.startDate.getDate() + i * 7));
-    //   if (d > this.endDate) {
-    //     break;
-    //   }
-    //   if (d >= this.startDate) {
-    //     const dFormatted = formatDate(d);
+    for (let i = 1; i < 52; i++) {
+      // Needing to add 1 because of utc conversion i think.
+      const y = new Date(new Date(this.startDate).setDate(this.startDate.getDate() + i * 7));
+      const d = new Date(y.toDateString());
+      if (d > this.endDate) {
+        break;
+      }
+      if (d >= this.startDate) {
+        const dFormatted = formatDate(d);
 
-    //     const data = sourceData.find((x) => x.date === dFormatted);
-    //     // console.log(d);
-    //     // console.log(dFormatted);
-    //     // console.log(sourceData.find((x) => x.date === dFormatted));
+        const data = sourceData.find((x) => x.date.toDateString() === d.toDateString());
 
-    //     if (data) {
-    //       preppedData.push(data);
-    //     } else {
-    //       preppedData.push({ date: dFormatted, seconds: 0 });
-    //     }
-    //   }
-    // }
+        if (data) {
+          preppedData.push(data);
+        } else {
+          preppedData.push({ date: d, seconds: 0 });
+        }
+      }
+    }
 
-    // preppedData.sort((a, b) => {
-    //   return compare(a.date, b.date, true);
-    // });
+    preppedData.sort((a, b) => {
+      return compare(a.date, b.date, true);
+    });
 
-    // return preppedData;
+    return preppedData;
     return sourceData
       .sort((a, b) => {
         return compare(a.date, b.date, true);
