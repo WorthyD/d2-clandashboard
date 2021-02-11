@@ -1,5 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { DailyClanAggregateTimeService, WeeklyClanAggregateTimeService } from '@destiny/data';
+import { DailyClanAggregateTimeService, MonthlyClanAggregateTimeService, WeeklyClanAggregateTimeService } from '@destiny/data';
 import { select } from '@ngrx/store';
 import { Store } from '@ngrx/store';
 import { nowPlusDays } from 'projects/data/src/lib/utility/date-utils';
@@ -58,6 +58,8 @@ export class ClanAggregateActivityService {
     switch (duration) {
       case 'weekly':
         return this.injector.get(WeeklyClanAggregateTimeService);
+      case 'monthly':
+        return this.injector.get(MonthlyClanAggregateTimeService);
       default:
         return this.injector.get(DailyClanAggregateTimeService);
     }

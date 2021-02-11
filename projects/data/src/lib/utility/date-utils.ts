@@ -13,6 +13,7 @@ export function nowPlusDays(days) {
 export function nowPlusWeeks(weeks) {
   return new Date(new Date().setDate(new Date().getDate() + weeks * 7));
 }
+
 export function dateToUnixTimeStamp(d) {
   return Math.floor(d.getTime() / 1000);
 }
@@ -26,4 +27,8 @@ export function getBungieStartDate(date): Date {
   // Clone date to prevent mutation
   const cDate = new Date(date.getTime());
   return new Date(cDate.setDate(date.getDate() - date.getDay() + offset));
+}
+
+export function getFirstDayOfMonth(date): Date {
+  return new Date(date.getFullYear(), date.getMonth(), 1);
 }
