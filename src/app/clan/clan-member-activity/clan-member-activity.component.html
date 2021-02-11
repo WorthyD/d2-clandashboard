@@ -8,9 +8,14 @@
   </lib-activity-mode-select>
 </lib-table-search-bar>
 
-
 <lib-clan-roster-activity-table [memberActivityStats]="clanMemberActivityService.activityStats"
   [isLoading]="clanMemberActivityService.isLoading"
   [memberProfilesLoading]="clanMemberActivityService.areMemberProfilesLoading$ | async"
   (viewMember)="viewMember($event)">
 </lib-clan-roster-activity-table>
+
+<!-- <pre>
+  <code>
+    {{clanMemberActivityService.activityStats | json}}
+  </code>
+</pre> -->

@@ -1,14 +1,35 @@
 import { SECONDS_IN_WEEK, SECONDS_IN_DAY } from '@destiny/models/constants';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
+// const stats = [];
+
+// const today = new Date(new Date().setDate(new Date().getDate() + ((2 + 7 - new Date().getDay()) % 7) - 189));
+
+// for (let i = 0; i < 26; i++) {
+//   const d = new Date(today);
+//   const d2 = new Date(d.setDate(d.getDate() + i * 7));
+//   stats.push({
+//     date: formatDate(d2),
+//     seconds: Math.floor(Math.random() * SECONDS_IN_DAY + 1)
+//   });
+// }
+// export const MOCK_GRID_ITEMS: any[] = stats;
+
 const stats = [];
+const stats2 = [];
 
-const today = new Date(new Date().setDate(new Date().getDate() + ((2 + 7 - new Date().getDay()) % 7) - 189));
+const today2 = new Date(new Date().setDate(new Date().getDate() + ((2 + 7 - new Date().getDay()) % 7) - 189));
+const today = new Date(today2.toDateString());
 
-for (let i = 0; i < 26; i++) {
+for (let i = 0; i < 50; i++) {
   const d = new Date(today);
   const d2 = new Date(d.setDate(d.getDate() + i * 7));
   stats.push({
-    date: formatDate(d2),
+    date: d2,
+    seconds: Math.floor(Math.random() * SECONDS_IN_DAY + 1)
+  });
+
+  stats2.push({
+    date: d2,
     seconds: Math.floor(Math.random() * SECONDS_IN_DAY + 1)
   });
 }

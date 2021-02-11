@@ -61,6 +61,8 @@ export class ClanMemberActivityService {
           return selectedMembers.indexOf(members.profile.data.userInfo.displayName) > -1;
         });
       }
+
+
       return this.clanActivityService.getClanActivityStats(id, clanMembers, selectedActivity).pipe(
         bufferTime(500, undefined, 20),
         mergeMap((members) => {
