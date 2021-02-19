@@ -11,7 +11,7 @@ import { BaseClanAggregateTimeService } from './base-clan-aggregate-time.service
 export class MonthlyClanAggregateTimeService extends BaseClanAggregateTimeService {
   getClanActivityStatsForDuration(memberActivities: MemberActivityTime[], activityMode: any) {
     const now = new Date();
-    const startDate = new Date(now.getFullYear(), now.getMonth() - 12, 1);
+    const startDate = new Date(now.getFullYear(), now.getMonth() - 18, 1);
 
     const x = this.filterDates(memberActivities, startDate);
 

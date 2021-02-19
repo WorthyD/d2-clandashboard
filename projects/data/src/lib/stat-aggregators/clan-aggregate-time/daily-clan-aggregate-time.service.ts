@@ -17,7 +17,7 @@ export class DailyClanAggregateTimeService extends BaseClanAggregateTimeService 
     activityMode: any
   ) {
     //console.log('ma', memberActivities);
-    const x = this.filterDates(memberActivities, nowPlusDays(-30));
+    const x = this.filterDates(memberActivities, nowPlusDays(-60));
     //console.log('x', x);
 
     const activities = [...x.map((y) => y.activities)];

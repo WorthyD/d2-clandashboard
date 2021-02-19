@@ -9,7 +9,7 @@ import { BaseClanAggregateTimeService } from './base-clan-aggregate-time.service
 })
 export class WeeklyClanAggregateTimeService extends BaseClanAggregateTimeService {
   getClanActivityStatsForDuration(memberActivities: MemberActivityTime[], activityMode: any) {
-    const x = this.filterDates(memberActivities, nowPlusWeeks(-12));
+    const x = this.filterDates(memberActivities, nowPlusWeeks(-24));
 
     const activities = [...x.map((y) => [...y.activities])];
     const flatActivities = [].concat.apply([], activities);
