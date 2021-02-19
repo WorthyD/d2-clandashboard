@@ -9,7 +9,7 @@ import { DBObject, StoreId } from '../app-indexed-db';
 import { latestSeason } from '@destiny/models';
 
 import { profileSerializer } from './profile.serializer';
-import { unixTimeStampToDate } from '../../utility/date-utils';
+import { nowPlusDays, unixTimeStampToDate } from '../../utility/date-utils';
 
 @Injectable()
 export class ProfileService {
@@ -48,7 +48,11 @@ export class ProfileService {
         if (cachedData && cachedData.createDate) {
           const cacheDate = cachedData.createDate;
           const lastStatusChange = unixTimeStampToDate(member.lastOnlineStatusChange);
-          if (cacheDate > lastStatusChange) {
+          const staleXP = nowPlusDays(-1);
+          // Make sure we recapture new data after season change
+          const expireDate = staleXP > lastStatusChange ? staleXP : lastStatusChange;
+
+          if (cacheDate > expireDate) {
             return of(cachedData?.data);
           }
         }
@@ -80,10 +84,7 @@ export class ProfileService {
     );
   }
 
-  constructor(
-    private d2Service: Destiny2Service,
-    private clanDb: ClanDatabase,
-  ) {}
+  constructor(private d2Service: Destiny2Service, private clanDb: ClanDatabase) {}
 
   getSerializedProfiles(clanId: string, members: ClanMember[]): Observable<MemberProfile> {
     return from(members).pipe(mergeMap((member) => this.getSerializedProfile(clanId, member), this.concurrentRequests));
