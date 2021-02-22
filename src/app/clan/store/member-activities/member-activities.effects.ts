@@ -36,6 +36,7 @@ import {
 import { Observable } from 'rxjs';
 import { loadMemberProfileSuccess } from '../member-profiles/member-profiles.actions';
 import { getAllMembers, getMemberProfileEntities } from '../member-profiles/member-profiles.selectors';
+import { nowPlusMinutes } from 'projects/data/src/lib/utility/date-utils';
 
 @Injectable()
 export class MemberActivityEffects {
@@ -62,7 +63,14 @@ export class MemberActivityEffects {
       switchMap(([action, clanId]) =>
         this.memberActivityService.getAllActivitiesFromCache2(clanId, action.member).pipe(
           map((x) => {
-            this.store.dispatch(memberActivityActions.refreshMemberActivities({ member: action.member }));
+            const lastUpdate = new Date(window.localStorage.getItem('lastActivityUpdate-' + clanId));
+            const refreshThreshold = nowPlusMinutes(-60);
+
+            // Updating is expensive. Limit it to 1 time an hour.
+            if (refreshThreshold > lastUpdate) {
+              this.store.dispatch(memberActivityActions.refreshMemberActivities({ member: action.member }));
+            }
+
             return x;
           })
         )
@@ -80,6 +88,7 @@ export class MemberActivityEffects {
       switchMap(([action, clanId]) => {
         return this.memberActivityService.updateAllActivityCache(clanId, action.member).pipe(
           switchMap(() => {
+            window.localStorage.setItem('lastActivityUpdate-' + clanId, new Date().toString());
             return this.memberActivityService.getAllActivitiesFromCache2(clanId, action.member);
           })
         );

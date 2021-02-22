@@ -76,22 +76,7 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
         );
       })
     );
-    /*
-    return from(memberProfiles).pipe(
-      mergeMap((memberProfile) => {
-        return from(memberProfile.profile.data.characterIds).pipe(
-          mergeMap((characterId) => {
-            // getFreshMemberCharacterActivity
-            return this.getMemberCharacterActivity(clanId, memberProfile, characterId);
-          })
-        );
-      }),
-      tap((x) => {
-        console.log('tapping', x);
-      }),
-      toArray()
-    );
-    */
+
   }
 
   private groupActivitiesToMembers(memberProfiles: MemberProfile[], allActivities: DBObject[]): MemberActivityStats[] {
