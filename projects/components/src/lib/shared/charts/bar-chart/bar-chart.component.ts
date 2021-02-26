@@ -137,6 +137,7 @@ export class BarChartComponent implements OnInit {
 
     //this.x = d3.scaleBand().range([0, this.chartWidth], 0.05);
     //this.x = d3.scaleTime().rangeRound([0, this.chartWidth]).padding(0.05);
+    //date.GetTime <-- Vlalid check
     this.x = d3.scaleTime().range([0, this.chartWidth]);
     //this.x = d3.scaleBand().range([0, this.chartWidth]).padding(0.05);
     this.y = d3.scaleLinear().range([this.chartHeight, 0]);
