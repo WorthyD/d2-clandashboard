@@ -1,6 +1,6 @@
 import { Season } from './season';
 
-export const season03: Season = {
+export const season01: Season = {
   name: 'Red War',
   valorLegendHash: 0,
   seasonRewardProgressionHash: 0,
