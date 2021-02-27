@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MemberActivityTime } from 'bungie-models';
 import { nowPlusWeeks } from '../../utility/date-utils';
 import { groupActivityStatsByMonth } from '../../utility/group-activity-by-month';
-import { groupActivityStatsBySeason } from '../../utility/group-activity-by-season';
+import { groupActivityStatsBySeason, relabelSeasons } from '../../utility/group-activity-by-season';
 import { groupActivityStatsByWeek } from '../../utility/group-activity-by-week';
 import { BaseClanAggregateTimeService } from './base-clan-aggregate-time.service';
 
@@ -22,6 +22,6 @@ export class SeasonClanAggregateTimeService extends BaseClanAggregateTimeService
     const summedActivities = groupActivityStatsBySeason(flatActivities);
     console.log(summedActivities);
 
-    return summedActivities;
+    return relabelSeasons(summedActivities);
   }
 }

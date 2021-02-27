@@ -26,7 +26,6 @@ export const ALL_SEASONS = [
   season12,
   season13
 ];
-console.log(ALL_SEASONS.length);
 ALL_SEASONS.forEach((x) => {
   console.log(x.name, x.startDate);
 });

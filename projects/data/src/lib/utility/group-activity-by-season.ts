@@ -23,6 +23,19 @@ export function groupActivityStatsBySeason(data: MemberActivityRecentStatsActivi
   return groupActivities(raw);
 }
 
+export function relabelSeasons(data: MemberActivityRecentStatsActivity[]) {
+  return data
+    .sort((a, b) => {
+      return compare(a.date, b.date, true);
+    })
+    .map((x) => {
+      return {
+        seconds: x.seconds,
+        date: lastWord(ALL_SEASONS.find((season) => x.date.getTime() === season.startDate.getTime())?.name)
+      };
+    });
+}
+
 function getFirstDayOfSeason(date) {
   let retDate;
   //for (let i = 0; i < ALL_SEASONS.length; i++) {
@@ -38,4 +51,11 @@ function getFirstDayOfSeason(date) {
     }
   }
   return retDate;
+}
+export function compare(a: number | string | Date, b: number | string | Date, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
+function lastWord(words) {
+  const n = words.split(' ');
+  return n[n.length - 1];
 }
