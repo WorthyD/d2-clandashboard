@@ -3,4 +3,6 @@ export interface Season {
   valorLegendHash: Number;
   seasonRewardProgressionHash?: Number;
   seasonPrestigeProgressionHash?: Number;
+  startDate: Date;
+  endDate: Date;
 }

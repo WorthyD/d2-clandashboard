@@ -1,5 +1,10 @@
 import { Injectable, Injector } from '@angular/core';
-import { DailyClanAggregateTimeService, MonthlyClanAggregateTimeService, WeeklyClanAggregateTimeService } from '@destiny/data';
+import {
+  DailyClanAggregateTimeService,
+  MonthlyClanAggregateTimeService,
+  WeeklyClanAggregateTimeService,
+  SeasonClanAggregateTimeService
+} from '@destiny/data';
 import { select } from '@ngrx/store';
 import { Store } from '@ngrx/store';
 import { nowPlusDays } from 'projects/data/src/lib/utility/date-utils';
@@ -60,6 +65,8 @@ export class ClanAggregateActivityService {
         return this.injector.get(WeeklyClanAggregateTimeService);
       case 'monthly':
         return this.injector.get(MonthlyClanAggregateTimeService);
+      case 'season':
+        return this.injector.get(SeasonClanAggregateTimeService);
       default:
         return this.injector.get(DailyClanAggregateTimeService);
     }
@@ -107,21 +114,21 @@ export class ClanAggregateActivityService {
 }
 
 const deepCopyFunction = (inObject) => {
-  let outObject, value, key
+  let outObject, value, key;
 
-  if (typeof inObject !== "object" || inObject === null) {
-    return inObject // Return the value if inObject is not an object
+  if (typeof inObject !== 'object' || inObject === null) {
+    return inObject; // Return the value if inObject is not an object
   }
 
   // Create an array or object to hold the values
-  outObject = Array.isArray(inObject) ? [] : {}
+  outObject = Array.isArray(inObject) ? [] : {};
 
   for (key in inObject) {
-    value = inObject[key]
+    value = inObject[key];
 
     // Recursively (deep) copy for nested objects, including arrays
-    outObject[key] = deepCopyFunction(value)
+    outObject[key] = deepCopyFunction(value);
   }
 
-  return outObject
-}
+  return outObject;
+};

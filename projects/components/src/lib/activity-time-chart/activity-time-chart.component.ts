@@ -4,7 +4,8 @@ import { SECONDS_IN_WEEK, SECONDS_IN_DAY } from '@destiny/models/constants';
 enum Views {
   daily = 'daily',
   weekly = 'weekly',
-  monthly = 'monthly'
+  monthly = 'monthly',
+  season = 'season'
 }
 
 @Component({
@@ -27,6 +28,10 @@ export class ActivityTimeChartComponent implements OnInit {
     {
       type: Views.monthly,
       text: 'Monthly'
+    },
+    {
+      type: Views.season,
+      text: 'Season'
     }
   ];
 

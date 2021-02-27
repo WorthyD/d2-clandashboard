@@ -186,8 +186,12 @@ export class BarChartComponent implements OnInit {
 
       bars
         .on('mouseover', (d) => {
+          let label = d.date;
+          if (d.date instanceof Date) {
+            label = `Date: ${formatDate(d.date)}`;
+          }
           this.tooltip.style('opacity', 0.9);
-          this.tooltip.html(`Date: ${formatDate(d.date)}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
+          this.tooltip.html(`${label}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
         })
         .on('mousemove', () => {
           this.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');
