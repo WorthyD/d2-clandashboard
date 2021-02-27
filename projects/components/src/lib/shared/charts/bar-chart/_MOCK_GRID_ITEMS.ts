@@ -18,6 +18,16 @@ for (let i = 0; i < 50; i++) {
     seconds: Math.floor(Math.random() * SECONDS_IN_DAY + 1)
   });
 }
+
+export const MOCK_GRID_CATEGORIES = [];
+const weeks = ['week 1', 'week 2', 'week 3'];
+weeks.forEach((x) => {
+  MOCK_GRID_CATEGORIES.push({
+    date: x,
+    seconds: Math.floor(Math.random() * SECONDS_IN_DAY + 1)
+  });
+});
+
 export const MOCK_GRID_ITEMS: any[] = stats;
 
 export const MOCK_GRID_ITEMS2: any[] = stats2;
