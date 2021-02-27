@@ -54,21 +54,21 @@ export class BarChartComponent implements OnInit {
     }
   }
 
-  @Input()
-  maxBarCount = 25;
+  // @Input()
+  // maxBarCount = 25;
 
-  @Input()
-  startDate: Date;
+  // @Input()
+  // startDate: Date;
 
-  @Input()
-  endDate: Date;
+  // @Input()
+  // endDate: Date;
 
   constructor(private elRef: ElementRef, private cd: ChangeDetectorRef) {
     this.hostElement = this.elRef.nativeElement;
     this.cd.detach();
 
-    const date = new Date();
-    const offset = date.getDay() >= 2 ? 2 : -5;
+    // const date = new Date();
+    //const offset = date.getDay() >= 2 ? 2 : -5;
     //this.endDate = new Date(date.setDate(date.getDate() - date.getDay() + offset));
     //this.startDate = new Date(new Date(this.endDate).setDate(new Date(this.endDate).getDate() - 182));
   }
@@ -129,55 +129,42 @@ export class BarChartComponent implements OnInit {
       .select(this.hostElement)
       .attr('class', 'activity-heatmap')
       .append('svg')
-      //.attr('width', svgWidth)
-      //.attr('height', svgHeight)
       .attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`)
       .append('g')
       .attr('transform', 'translate(' + 50 + ',' + 50 + ')');
-
-    //this.x = d3.scaleBand().range([0, this.chartWidth], 0.05);
-    //this.x = d3.scaleTime().rangeRound([0, this.chartWidth]).padding(0.05);
-    this.x = d3.scaleTime().range([0, this.chartWidth]);
-    //this.x = d3.scaleBand().range([0, this.chartWidth]).padding(0.05);
-    this.y = d3.scaleLinear().range([this.chartHeight, 0]);
   }
+
   private addToolTip() {
     this.tooltip = d3.select(this.hostElement).append('div').attr('class', 'activity-tooltip');
   }
   private processData(sourceData) {
     if (sourceData) {
-      const cleanedData = this.prepData(sourceData);
+      let cleanedData = [];
+      const firstData = sourceData[0].date;
 
-      this.x.domain([cleanedData[0].date, cleanedData[cleanedData.length - 1].date]);
+      if (firstData instanceof Date) {
+        cleanedData = this.prepDateData(sourceData);
+        this.x = d3.scaleTime().range([0, this.chartWidth]);
+        this.x.domain([cleanedData[0].date, cleanedData[cleanedData.length - 1].date]);
+      } else {
+        cleanedData = [...sourceData];
+        this.x = d3.scaleBand().range([0, this.chartWidth]);
+        this.x.domain(cleanedData.map((x) => x.date));
+      }
+
+      this.y = d3.scaleLinear().range([this.chartHeight, 0]);
 
       this.y.domain([0, d3.max(cleanedData, (d) => d.seconds) * 1.1]);
-      // Footer
-      // this.svg
-      //   .append('g')
-      //   .attr('transform', 'translate(0,' + this.chartHeight + ')')
-      //   .attr('y', this.chartHeight - 250)
-      //   .attr('x', this.chartWidth - 50)
 
-      this.xAxis
-        .call(d3.axisBottom(this.x)) //.tickFormat(d3.timeFormat('%Y-%m')))
-        //   .ticks(d3.timeDay.every(14))
-        //   .tickFormat(d3.timeFormat('%Y-%m-%d')))
-        //.ticks(d3.timeDay.every(24)).tickFormat(d3.timeFormat('%Y-%m-%d')))
-        .selectAll('text');
-      //.style('text-anchor', 'end');
-      //.attr('dx', '-.8em')
-      //.attr('dy', '.15em');
-      ///.attr('transform', 'rotate(-65)');
-
+      this.xAxis.call(d3.axisBottom(this.x)).selectAll('text');
       this.yAxis.call(
         d3
           .axisLeft(this.y)
           .tickFormat(function (d) {
-            return Math.floor(d / 3600);
+            return Math.floor(d / 3600); // Round to every hour
           })
           .ticks(10)
       );
-
 
       // Delete old data
       this.svg.selectAll('rect').remove();
@@ -208,100 +195,14 @@ export class BarChartComponent implements OnInit {
         .on('mouseout', (d) => {
           this.tooltip.style('opacity', 0);
         });
-
-      // this.svg
-      //   .append('g')
-      //   .attr('transform', 'translate(0,' + this.chartHeight + ')')
-      //   .attr('y', this.chartHeight - 250)
-      //   .attr('x', this.chartWidth - 50)
-      //   .call(d3.axisBottom(this.x))
-      //   .selectAll('text');
-
-      // this.svg
-      //   .append('g')
-      //   .call(
-      //     d3
-      //       .axisLeft(this.y)
-      //       .tickFormat(function (d) {
-      //         return Math.floor(d / 3600);
-      //       })
-      //       .ticks(10)
-      //   )
-      //   .append('text')
-      //   .attr('y', 6)
-      //   .attr('fill', 'currentColor')
-      //   .attr('dy', '-4.1em')
-      //   .attr('transform', 'rotate(-90)')
-      //   .attr('text-anchor', 'end')
-      //   .text('Hours');
-
-      // const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
-
-      // bars
-      //   .attr('class', 'activity-bar')
-      //   .attr('x', (d) => {
-      //     return this.x(d.date);
-      //   })
-      //   .attr('y', (d) => {
-      //     return this.y(d.seconds);
-      //   })
-      //   //.attr('width', this.x.bandwidth())
-      //   .attr('width', this.chartWidth / cleanedData.length)
-      //   .attr('height', (d) => {
-      //     return this.chartHeight - this.y(d.seconds);
-      //   });
-
-      // bars
-      //   .on('mouseover', (d) => {
-      //     this.tooltip.style('opacity', 0.9);
-      //     this.tooltip.html(`Date: ${formatDate(d.date)}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
-      //   })
-      //   .on('mousemove', () => {
-      //     this.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');
-      //   })
-      //   .on('mouseout', (d) => {
-      //     this.tooltip.style('opacity', 0);
-      //   });
     }
   }
 
-  private prepData(sourceData) {
+  private prepDateData(sourceData) {
     const preppedData = [];
 
-    //for (let i = 1; i < 52; i++) {
-    // Needing to add 1 because of utc conversion i think.
-
-    //const d = new Date(new Date(this.startDate).setDate(this.startDate.getDate() + i * 7));
-    // if (d > this.endDate) {
-    //   break;
-    // }
-    //if (d >= this.startDate) {
-    // const dFormatted = formatDate(d);
-
-    // const data = sourceData.find((x) => x.date === dFormatted);
-
-    // if (data) {
-    //   preppedData.push(data);
-    // } else {
-    //   preppedData.push({ date: dFormatted, seconds: 0 });
-    // }
-    //}
-    //}
-
-    // preppedData.sort((a, b) => {
-    //   return compare(a.date, b.date, true);
-    // });
-
-    //const parseTime = d3.timeParse('%Y-%m-%d');
-    return sourceData
-      .sort((a, b) => {
-        return compare(a.date, b.date, true);
-      })
-      .map((x) => {
-        return {
-          date: new Date(x.date),
-          seconds: x.seconds
-        };
-      });
+    return sourceData.sort((a, b) => {
+      return compare(a.date, b.date, true);
+    });
   }
 }

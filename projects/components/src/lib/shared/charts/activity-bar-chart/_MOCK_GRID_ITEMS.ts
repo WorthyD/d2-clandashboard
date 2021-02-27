@@ -12,7 +12,9 @@ import { formatDate } from 'projects/data/src/lib/utility/format-date';
 //     seconds: Math.floor(Math.random() * SECONDS_IN_DAY + 1)
 //   });
 // }
+
 // export const MOCK_GRID_ITEMS: any[] = stats;
+
 
 const stats = [];
 const stats2 = [];

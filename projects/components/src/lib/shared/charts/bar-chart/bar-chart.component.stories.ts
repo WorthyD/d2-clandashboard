@@ -5,10 +5,10 @@ import { BarChartModule } from './bar-chart.module';
 import { BarChartComponent } from './bar-chart.component';
 
 import { withKnobs, select, object, boolean } from '@storybook/addon-knobs';
-import { MOCK_GRID_ITEMS, MOCK_GRID_ITEMS2, REAL_DATA } from './_MOCK_GRID_ITEMS';
+import { MOCK_GRID_ITEMS, MOCK_GRID_ITEMS2, REAL_DATA, MOCK_GRID_CATEGORIES } from './_MOCK_GRID_ITEMS';
 import { MaterialModule } from '../../modules/material.module';
 import { LoadingModule } from '../../loading/loading.module';
-const events = [MOCK_GRID_ITEMS, MOCK_GRID_ITEMS2.slice(0, 20)];
+const events = [MOCK_GRID_ITEMS, MOCK_GRID_ITEMS2.slice(0, 20), MOCK_GRID_CATEGORIES];
 
 export default {
   title: 'Shared / Bar Chart',
@@ -33,7 +33,7 @@ export const base = () => ({
    `,
   props: {
     allEvents: events,
-    eventIndex: select('DataSet', [0, 1], 0),
+    eventIndex: select('DataSet', [0, 1, 2], 0),
     cellSelect: action('cell select')
   }
 });
