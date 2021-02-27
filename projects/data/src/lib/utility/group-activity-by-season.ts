@@ -43,9 +43,9 @@ function getFirstDayOfSeason(date) {
     if (date < ALL_SEASONS[i].endDate && date > ALL_SEASONS[i].startDate) {
       retDate = ALL_SEASONS[i].startDate;
 
-      if (i === 5) {
-        console.log(ALL_SEASONS[i].name, retDate);
-      }
+      // if (i === 5) {
+      //   console.log(ALL_SEASONS[i].name, retDate);
+      // }
 
       break;
     }
