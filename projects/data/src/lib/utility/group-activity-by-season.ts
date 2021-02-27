@@ -31,7 +31,7 @@ export function relabelSeasons(data: MemberActivityRecentStatsActivity[]) {
     .map((x) => {
       return {
         seconds: x.seconds,
-        date: lastWord(ALL_SEASONS.find((season) => x.date.getTime() === season.startDate.getTime())?.name)
+        date: lastWord(ALL_SEASONS.find((season) => new Date(x.date).getTime() === season.startDate.getTime())?.name)
       };
     });
 }
