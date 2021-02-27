@@ -20,7 +20,6 @@ export class SeasonClanAggregateTimeService extends BaseClanAggregateTimeService
     const flatActivities = [].concat.apply([], activities);
 
     const summedActivities = groupActivityStatsBySeason(flatActivities);
-    console.log(summedActivities);
 
     return relabelSeasons(summedActivities);
   }
