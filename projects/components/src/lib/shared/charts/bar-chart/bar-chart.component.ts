@@ -16,7 +16,7 @@ import { SECONDS_IN_HOUR } from '@destiny/models/constants';
 import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
 import { compare } from '../../../utilities/compare';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
-
+// https://bl.ocks.org/alanvillalobos/14e9f0d80ea6b0d8083ba95a9d571d13
 @Component({
   selector: 'lib-activity-bar-chart',
   template: '',
@@ -129,7 +129,7 @@ export class BarChartComponent implements OnInit {
       .select(this.hostElement)
       .attr('class', 'activity-heatmap')
       .append('svg')
-      .attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`)
+      //.attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`)
       .append('g')
       .attr('transform', 'translate(' + 50 + ',' + 50 + ')');
   }
@@ -166,10 +166,13 @@ export class BarChartComponent implements OnInit {
           .ticks(10)
       );
 
+      /// https://codepen.io/netkuy/pen/KzPaBe
       // Delete old data
       this.svg.selectAll('rect').remove();
 
       const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
+      const t = d3.transition()
+      .duration(750);
       bars
         .attr('class', 'activity-bar')
         .attr('x', (d) => {
@@ -180,7 +183,7 @@ export class BarChartComponent implements OnInit {
         })
         //.attr('width', this.x.bandwidth())
         .attr('width', this.chartWidth / cleanedData.length)
-        .attr('height', (d) => {
+        bars.transition(t).attr('height', (d) => {
           return this.chartHeight - this.y(d.seconds);
         });
 
