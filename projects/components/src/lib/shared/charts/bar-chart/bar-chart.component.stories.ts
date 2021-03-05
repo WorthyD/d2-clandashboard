@@ -23,7 +23,7 @@ export default {
 export const base = () => ({
   component: BarChartComponent,
   template: `
-  <div style="max-width:800px;">
+  <div style="max-width:1200px;">
         <lib-activity-bar-chart [events]="allEvents[eventIndex]" (cellSelect)="cellSelect($event)"></lib-activity-bar-chart>
         <hr>
         <textarea style="width:100%; height:500px">

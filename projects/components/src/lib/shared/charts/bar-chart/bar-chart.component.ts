@@ -27,12 +27,15 @@ import { formatDate } from 'projects/data/src/lib/utility/format-date';
 export class BarChartComponent implements OnInit {
   hostElement;
   svg;
+  g;
   data;
   x;
   xAxis;
   y;
   yAxis;
   tooltip;
+
+  margin = { top: 20, right: 20, bottom: 30, left: 40 };
 
   chartHeight = 200;
   chartWidth = 600;
@@ -94,14 +97,14 @@ export class BarChartComponent implements OnInit {
     this.processData(eventData);
   }
   private addAxis() {
-    this.xAxis = this.svg
-      .append('g')
-      .attr('transform', 'translate(0,' + this.chartHeight + ')')
-      .attr('y', this.chartHeight - 250)
-      .attr('x', this.chartWidth - 50);
+    this.xAxis = this.g.append('g').attr('class', 'axis axis--x');
+    // .attr('transform', 'translate(0,' + this.chartHeight + ')')
+    // .attr('y', this.chartHeight - 250)
+    // .attr('x', this.chartWidth - 50);
 
-    this.yAxis = this.svg.append('g');
+    this.yAxis = this.g.append('g').attr('class', 'axis axis--y');
 
+    // yAxis Label
     this.yAxis
       .append('text')
       .attr('y', 6)
@@ -121,17 +124,18 @@ export class BarChartComponent implements OnInit {
   }
 
   private setChartDimensions() {
-    const padding = 100;
-    const svgHeight = this.chartHeight + padding;
-    const svgWidth = this.chartWidth + padding;
+    // const padding = 100;
+    // const svgHeight = this.chartHeight + padding;
+    // const svgWidth = this.chartWidth + padding;
 
     this.svg = d3
       .select(this.hostElement)
       .attr('class', 'activity-heatmap')
       .append('svg')
-      //.attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`)
-      .append('g')
-      .attr('transform', 'translate(' + 50 + ',' + 50 + ')');
+      .attr('height', this.chartHeight)
+      .attr('width', '100%');
+
+    this.g = this.svg.append('g').attr('transform', `translate(${this.margin.left},${this.margin.top})`);
   }
 
   private addToolTip() {
@@ -141,68 +145,177 @@ export class BarChartComponent implements OnInit {
     if (sourceData) {
       let cleanedData = [];
       const firstData = sourceData[0].date;
+      // const bounds = this.svg.node().getBoundingClientRect(),
+      // width = bounds.width - this.margin.left - this.margin.right,
+      // height = bounds.height - this.margin.top - this.margin.bottom;
 
       if (firstData instanceof Date) {
         cleanedData = this.prepDateData(sourceData);
-        this.x = d3.scaleTime().range([0, this.chartWidth]);
+        this.x = d3.scaleTime();// .range([0, width]);
         this.x.domain([cleanedData[0].date, cleanedData[cleanedData.length - 1].date]);
+          //this.x.domain(cleanedData.map((x) => x.date));
+
       } else {
         cleanedData = [...sourceData];
-        this.x = d3.scaleBand().range([0, this.chartWidth]);
-        this.x.domain(cleanedData.map((x) => x.date));
+        this.x = d3.scaleBand().domain(cleanedData.map((x) => x.date));//.range([0, width]);
+        //this.x.domain(cleanedData.map((x) => x.date));
       }
+      //console.log(this.x.bandwidth());
 
-      this.y = d3.scaleLinear().range([this.chartHeight, 0]);
+      //this.x = d3.scaleTime().domain([cleanedData[0].date, cleanedData[cleanedData.length - 1].date]).range([0, width] );
+      //this.x = d3.scaleBand().domain(cleanedData.map((x) => x.date)).range([0, width]);
+   //   console.log(this.x.bandwidth());
+    //this.x.domain(cleanedData.map((x) => x.date));
 
+
+
+
+
+
+
+
+
+
+      this.y = d3.scaleLinear();
       this.y.domain([0, d3.max(cleanedData, (d) => d.seconds) * 1.1]);
 
-      this.xAxis.call(d3.axisBottom(this.x)).selectAll('text');
-      this.yAxis.call(
-        d3
-          .axisLeft(this.y)
-          .tickFormat(function (d) {
-            return Math.floor(d / 3600); // Round to every hour
-          })
-          .ticks(10)
-      );
 
-      /// https://codepen.io/netkuy/pen/KzPaBe
-      // Delete old data
-      this.svg.selectAll('rect').remove();
 
-      const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
-      const t = d3.transition()
-      .duration(750);
-      bars
-        .attr('class', 'activity-bar')
-        .attr('x', (d) => {
-          return this.x(d.date);
-        })
-        .attr('y', (d) => {
-          return this.y(d.seconds);
-        })
-        //.attr('width', this.x.bandwidth())
-        .attr('width', this.chartWidth / cleanedData.length)
-        bars.transition(t).attr('height', (d) => {
-          return this.chartHeight - this.y(d.seconds);
-        });
+      // this.y = d3.scaleLinear().range([this.chartHeight, 0]);
 
-      bars
-        .on('mouseover', (d) => {
-          let label = d.date;
-          if (d.date instanceof Date) {
-            label = `Date: ${formatDate(d.date)}`;
-          }
-          this.tooltip.style('opacity', 0.9);
-          this.tooltip.html(`${label}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
-        })
-        .on('mousemove', () => {
-          this.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');
-        })
-        .on('mouseout', (d) => {
-          this.tooltip.style('opacity', 0);
-        });
+      // this.y.domain([0, d3.max(cleanedData, (d) => d.seconds) * 1.1]);
+
+      // this.xAxis.call(d3.axisBottom(this.x)).selectAll('text');
+      // this.yAxis.call(
+      //   d3
+      //     .axisLeft(this.y)
+      //     .tickFormat(function (d) {
+      //       return Math.floor(d / 3600); // Round to every hour
+      //     })
+      //     .ticks(10)
+      // );
+
+      // /// https://codepen.io/netkuy/pen/KzPaBe
+      // // Delete old data
+      // this.svg.selectAll('rect').remove();
+
+      // const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
+
+      // const t = d3.transition().duration(750);
+
+      // bars
+      //   .attr('class', 'activity-bar')
+      //   .attr('x', (d) => {
+      //     return this.x(d.date);
+      //   })
+      //   .attr('y', (d) => {
+      //     return this.y(d.seconds);
+      //   })
+      //   //.attr('width', this.x.bandwidth())
+      //   .attr('width', this.chartWidth / cleanedData.length)
+      //   .attr('height', 0);
+
+      // bars.transition(t).attr('height', (d) => {
+      //   return this.chartHeight - this.y(d.seconds);
+      // });
+      this.renderChart(cleanedData);
     }
+  }
+
+  renderChart(cleanedData) {
+    const bounds = this.svg.node().getBoundingClientRect(),
+      width = bounds.width - this.margin.left - this.margin.right,
+      height = bounds.height - this.margin.top - this.margin.bottom;
+
+    this.y.rangeRound([height, 0]);
+
+    // this.x = d3.scaleBand();
+     this.x.range([0, width]);
+  //  this.x.domain(cleanedData.map((x) => x.date));
+    //this.x.rangeRound([0, width]);
+    //console.log(this.x.bandwidth());
+
+    // Draw X Axis
+    this.g
+      .select('.axis--x')
+      .attr('transform', 'translate(0,' + height + ')')
+      .call(d3.axisBottom(this.x));
+
+    // this.y.domain([0, d3.max(cleanedData, (d) => d.seconds) * 1.1]);
+    this.g.select('.axis--y').call(
+      d3
+        .axisLeft(this.y)
+        .tickFormat(function (d) {
+          return Math.floor(d / 3600); // Round to every hour
+        })
+        .ticks(10)
+    );
+
+    // Render y Axis
+    //this.y = d3.scaleLinear();
+
+    //    this.xAxis.call(d3.axisBottom(this.x)).selectAll('text');
+    // this.yAxis.call(
+    //   d3
+    //     .axisLeft(this.y)
+    //     .tickFormat(function (d) {
+    //       return Math.floor(d / 3600); // Round to every hour
+    //     })
+    //     .ticks(10)
+    // );
+
+    /// https://codepen.io/netkuy/pen/KzPaBe
+
+    // Delete old data
+    this.g.selectAll('rect').remove();
+
+    const bars = this.g.selectAll('bar').data(cleanedData).enter().append('rect');
+
+    const t = d3.transition().duration(750);
+    //console.log(this.x.rangeRound([0, width]));
+    //const y = d3.axisBottom().scale(this.x).bandwidth
+    //    const y = d3.scaleBand().domain().
+    //   console.log(y);
+
+    bars
+      .attr('class', 'activity-bar')
+      .attr('x', (d) => {
+        return this.x(d.date);
+      })
+      .attr('y', (d) => {
+        return this.y(d.seconds);
+      })
+      .attr('width', (d) => {
+        return width / cleanedData.length; // this.x(d.date).bandwidth;
+      })
+      //.attr('width', this.chartWidth / cleanedData.length)
+      .attr('height', (d) => {
+        return height - this.y(d.seconds);
+      });
+
+    // bars.transition(t).attr('height', (d) => {
+    //   return this.chartHeight - this.y(d.seconds);
+    // });
+
+    this.addToolTips(bars);
+  }
+
+  addToolTips(bars) {
+    bars
+      .on('mouseover', (d) => {
+        let label = d.date;
+        if (d.date instanceof Date) {
+          label = `Date: ${formatDate(d.date)}`;
+        }
+        this.tooltip.style('opacity', 0.9);
+        this.tooltip.html(`${label}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
+      })
+      .on('mousemove', () => {
+        this.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');
+      })
+      .on('mouseout', (d) => {
+        this.tooltip.style('opacity', 0);
+      });
   }
 
   private prepDateData(sourceData) {
