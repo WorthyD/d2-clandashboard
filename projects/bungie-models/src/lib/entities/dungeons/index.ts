@@ -4,12 +4,16 @@ import { ShatteredThrone } from './throne';
 import { Whisper, WhisperHeroic } from './whisper';
 import { ZeroHour, ZeroHourHeroic } from './zero-hour';
 import { NiobeLabs } from './niobe';
+import { Harbinger } from './harbinger';
+import { Presage, PresageMaster } from './presage';
 export * from './pit';
 export * from './prophecy';
 export * from './throne';
 export * from './whisper';
 export * from './zero-hour';
 export * from './niobe';
+export * from './harbinger';
+export * from './presage';
 
 export const AllDungeons = [
   ShatteredThrone,
@@ -19,5 +23,8 @@ export const AllDungeons = [
   WhisperHeroic,
   ZeroHour,
   ZeroHourHeroic,
-  NiobeLabs
+  NiobeLabs,
+  Harbinger,
+  Presage,
+  PresageMaster
 ];
