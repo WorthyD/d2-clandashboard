@@ -73,13 +73,6 @@ export class BarChartComponent implements OnInit {
           });
         });
 
-      // .debounceTime(1500)
-      // .distinctUntilChanged()
-      // .subscribe((e: Event) => {
-      //   this.zone.run(() => {
-      //     this.changeSubject.next(e);
-      //   });
-      // });
     });
     this.changeSubject.subscribe((e: Event) => {
       this.updateChart(this.events);
