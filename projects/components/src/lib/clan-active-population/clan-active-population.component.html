@@ -3,17 +3,19 @@
   <mat-card-content>
     <div>
       <div style="display:flex">
-        <div style="font-size:4rem;">56</div>
+        <div style="font-size:4rem;" [libCountTo]="56"></div>
         <div class="info">
-          <div class="h3">
-            Last 24 hrs
-          </div>
+          <div [ngClass]="routeAnimationsElements">
+            <div class="h3">
+              Last 24 hrs
+            </div>
 
-          <div class="up">
-            Prev: 40 <span class="material-icons">
-              trending_up
-            </span>
+            <div class="up">
+              Prev: 40 <span class="material-icons">
+                trending_up
+              </span>
 
+            </div>
           </div>
         </div>
       </div>
