@@ -28,6 +28,13 @@
     </div>
   </div> -->
   <div class="row">
+    <div class="col m-3" *ngIf="clanDetails.events2$ | async as events">
+      <lib-clan-active-population [last24Hours]="events.last24Hours" [prev24Hours]="events.previous24Hours"
+        [lastWeek]="events.lastWeek" [prevWeek]="events.previousWeek" [lastMonth]="events.lastMonth"
+        [prevMonth]="events.previousMonth"></lib-clan-active-population>
+    </div>
+  </div>
+  <div class="row">
     <div class="col m-3">
       <app-clan-aggregate-activity></app-clan-aggregate-activity>
     </div>
