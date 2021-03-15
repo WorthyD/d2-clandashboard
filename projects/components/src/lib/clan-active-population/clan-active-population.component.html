@@ -1,0 +1,78 @@
+<mat-card>
+  <mat-card-title>Active Population</mat-card-title>
+  <mat-card-content>
+    <div>
+      <div class="population">
+        <div class="count" [libCountTo]="last24Hours"></div>
+        <div class="info">
+          <div class="h3">
+            Last 24 hrs
+          </div>
+
+          <div [ngClass]="{up: last24Hours > prev24Hours, down: prev24Hours > last24Hours }">
+            Prev: {{prev24Hours}}
+            <span class="material-icons" *ngIf="last24Hours > prev24Hours">
+              trending_up
+            </span>
+            <span class="material-icons" *ngIf="prev24Hours > last24Hours">
+              trending_down
+            </span>
+            <span class="material-icons" *ngIf="last24Hours === prev24Hours">
+              trending_flat
+            </span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="population">
+        <div class="count" [libCountTo]="lastWeek"></div>
+        <div class="info">
+          <div class="h3">
+            Last Week
+          </div>
+
+          <div [ngClass]="{up: lastWeek > prevWeek, down: prevWeek > lastWeek }">
+            Prev: {{prevWeek}}
+            <span class="material-icons" *ngIf="lastWeek > prevWeek">
+              trending_up
+            </span>
+            <span class="material-icons" *ngIf="prevWeek > lastWeek">
+              trending_down
+            </span>
+            <span class="material-icons" *ngIf="lastWeek === prevWeek">
+              trending_flat
+            </span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="population">
+        <div class="count" [libCountTo]="lastMonth"></div>
+        <div class="info">
+          <div class="h3">
+            Last Month
+          </div>
+
+          <div [ngClass]="{up: lastMonth > prevMonth, down: prevMonth > lastMonth }">
+            Prev: {{prevMonth}}
+            <span class="material-icons" *ngIf="lastMonth > prevMonth">
+              trending_up
+            </span>
+            <span class="material-icons" *ngIf="prevMonth > lastMonth">
+              trending_down
+            </span>
+            <span class="material-icons" *ngIf="lastMonth === prevMonth">
+              trending_flat
+            </span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>
