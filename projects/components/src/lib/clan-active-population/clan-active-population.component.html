@@ -9,7 +9,7 @@
             Last 24 hrs
           </div>
 
-          <div [ngClass]="{up: last24Hours > prev24Hours, down: prev24Hours > last24Hours }">
+          <div [ngClass]="{change: true, up: last24Hours > prev24Hours, down: prev24Hours > last24Hours }">
             Prev: {{prev24Hours}}
             <span class="material-icons" *ngIf="last24Hours > prev24Hours">
               trending_up
@@ -33,7 +33,7 @@
             Last Week
           </div>
 
-          <div [ngClass]="{up: lastWeek > prevWeek, down: prevWeek > lastWeek }">
+          <div [ngClass]="{change: true, up: lastWeek > prevWeek, down: prevWeek > lastWeek }">
             Prev: {{prevWeek}}
             <span class="material-icons" *ngIf="lastWeek > prevWeek">
               trending_up
@@ -57,7 +57,7 @@
             Last Month
           </div>
 
-          <div [ngClass]="{up: lastMonth > prevMonth, down: prevMonth > lastMonth }">
+          <div [ngClass]="{change: true, up: lastMonth > prevMonth, down: prevMonth > lastMonth }">
             Prev: {{prevMonth}}
             <span class="material-icons" *ngIf="lastMonth > prevMonth">
               trending_up

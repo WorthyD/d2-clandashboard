@@ -8,12 +8,25 @@ import { ClanReward, ClanProgress, ClanDetails } from 'bungie-models';
 import { ClanWeeklyProgressModel, ClanMemberListItem } from '@destiny/components';
 import * as clanDetailSelectors from '../store/clan-detail/clan-detail.selectors';
 import * as clanDetailStore from '../store/clan-detail/clan-detail.state';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { AppConstants } from '../../app.constants';
 import { getClanMemberEntities, getAllMembers } from '../store/clan-members/clan-members.selectors';
 import { getMemberProfileEntities } from '../store/member-profiles/member-profiles.selectors';
 import { getClanMemberId } from '@destiny/data';
 import { ClanHashes } from '@destiny/models';
+
+import {
+  getLast24HourCount,
+  getLastMonthCount,
+  getLastWeekCount,
+  getPrev24HourCount,
+  getPrevMonthCount,
+  getPrevWeekCount
+} from './eventGrouper';
+import {
+  getAllMemberActivities,
+  getClanMemberActivitiesLoaded
+} from '../store/member-activities/member-activities.selectors';
 @Injectable()
 export class ClanDetailService {
   constructor(
@@ -76,22 +89,6 @@ export class ClanDetailService {
       }
     })
   );
-  /*
-    clanMembers$ = createSelector(
-        getAllMembers,
-        getMemberProfileEntities,
-        (members, profiles) => {
-            const allUsers: ClanMemberListItem[] = [];
-            members.forEach(x => {
-                allUsers.push({
-                    member: x,
-                    profile: profiles[x.destinyUserInfo.membershipId]
-                });
-            });
-            return allUsers;
-        }
-    );
-    */
 
   clanRewards$: Observable<ClanReward> = this.store.pipe(select(getClanRewards));
   clanRewardDefinitions$ = this.milestoneDefinitionService.getDefinitionsByHash(MilestoneHashes.ClanRewards);
@@ -118,6 +115,22 @@ export class ClanDetailService {
     (clanWeekRewards, clanRewardDefinitions) => {
       return this.mapClanRewards(clanWeekRewards, clanRewardDefinitions, MilestoneHashes.ClanPastWeekRewards);
     }
+  );
+  activities$ = this.store.pipe(select(getAllMemberActivities));
+  activitiesLoaded$ = this.store.pipe(select(getClanMemberActivitiesLoaded));
+  events2$ = combineLatest([this.activities$, this.activitiesLoaded$]).pipe(
+    filter(([activities, isLoaded]) => isLoaded === true),
+    map(([activities, isLoaded]) => {
+      return {
+        last24Hours: getLast24HourCount(activities),
+        previous24Hours: getPrev24HourCount(activities),
+        lastWeek: getLastWeekCount(activities),
+        previousWeek: getPrevWeekCount(activities),
+
+        lastMonth: getLastMonthCount(activities),
+        previousMonth: getPrevMonthCount(activities)
+      };
+    })
   );
 
   private mapClanRewards(clanWeekRewards, clanRewardDefinitions, weekHash) {
