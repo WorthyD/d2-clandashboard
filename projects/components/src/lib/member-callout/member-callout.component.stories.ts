@@ -1,22 +1,35 @@
 import { moduleMetadata } from '@storybook/angular';
 import { StorybookModule } from '../storybook/storybook.module';
-import { ClanActivePopulationComponent } from './clan-active-population.component';
-import { ClanActivePopulationModule } from './clan-active-population.module';
+import { MemberCalloutModule } from './member-callout.module';
+import { MemberCalloutComponent } from './member-callout.component';
 
 export default {
-  title: 'Clan / Active Population',
+  title: 'Clan Member / Member Callout',
   decorators: [
     moduleMetadata({
-      imports: [ClanActivePopulationModule, StorybookModule]
+      imports: [MemberCalloutModule, StorybookModule]
     })
   ]
 };
 
 export const base = () => ({
-  component: ClanActivePopulationComponent,
+  component: MemberCalloutComponent,
   template: `
-    <lib-clan-active-population [last24Hours]="20" [prev24Hours]="100" [lastWeek]="3" [prevWeek]="3" [lastMonth]="3" [prevMonth]="3"></lib-clan-active-population>
+    <lib-member-callout [title]="title" [callouts]="callouts"></lib-member-callout>
    `,
   props: {
+    title: 'Title Card',
+    callouts: [
+      {
+        title: 'One',
+        value: '1234'
+      },
+      {
+        title: 'two',
+        value: '1234',
+        subValue: '4567',
+        subTtile: 'Sub title'
+      }
+    ]
   }
 });

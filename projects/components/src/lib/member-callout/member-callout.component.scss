@@ -1,0 +1,22 @@
+.mat-card-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  > div{
+
+  }
+}
+.callout {
+  display: flex;
+}
+.value {
+  font-size: 4rem;
+}
+.info {
+  padding-left: 1rem;
+  align-self: center;
+}
+.change {
+  display: flex;
+  align-items: center;
+}

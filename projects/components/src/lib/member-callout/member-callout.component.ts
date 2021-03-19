@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+
+export interface Callout {
+  title: string;
+  value: number | string;
+  subValue: number | string;
+  subTitle: string;
+}
 
 @Component({
   selector: 'lib-member-callout',
   templateUrl: './member-callout.component.html',
-  styleUrls: ['./member-callout.component.scss']
+  styleUrls: ['./member-callout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MemberCalloutComponent implements OnInit {
+  @Input()
+  title = '';
 
-  constructor() { }
+  @Input()
+  callouts: Callout[];
 
-  ngOnInit(): void {
-  }
+  constructor() {}
 
+  ngOnInit(): void {}
 }
