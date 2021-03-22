@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { MemberCalloutModule } from '@destiny/components';
 import { MemberOverviewComponent } from './member-overview.component';
 import {
@@ -31,6 +31,9 @@ export class OverviewRoutingModule {}
     MemberCalloutModule,
     ActivityGridModule,
     SeasonPassModule
+  ],
+  providers:[
+    DecimalPipe
   ]
 })
 export class MemberOverviewModule {}

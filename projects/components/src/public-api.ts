@@ -29,3 +29,4 @@ export * from './lib/shared/modules/material.module';
 export * from './lib/activity-time-chart/activity-time-chart.module';
 export * from './lib/clan-active-population/clan-active-population.module';
 export * from './lib/member-callout/member-callout.module';
+export * from './lib/member-callout/member-callout.component';

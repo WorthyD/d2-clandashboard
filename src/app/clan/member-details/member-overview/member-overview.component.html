@@ -20,7 +20,8 @@
 
   <div class="row">
     <div class="col">
-      <lib-member-callout [title]="'stuff'"></lib-member-callout>
+      <lib-member-callout [title]="'Player Snapshot'" [callouts]="memberOverviewService.memberSnapShot$ | async">
+      </lib-member-callout>
     </div>
   </div>
 </div>

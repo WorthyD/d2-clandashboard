@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 export interface Callout {
   title: string;
   value: number | string;
-  subValue: number | string;
-  subTitle: string;
+  subValue?: number | string;
+  subTitle?: string;
 }
 
 @Component({
