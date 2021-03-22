@@ -17,4 +17,11 @@
       <lib-character-card [character]="character"></lib-character-card>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col">
+      <lib-member-callout [title]="'Player Snapshot'" [callouts]="memberOverviewService.memberSnapShot$ | async">
+      </lib-member-callout>
+    </div>
+  </div>
 </div>

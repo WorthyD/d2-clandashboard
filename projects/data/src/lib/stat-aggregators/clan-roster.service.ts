@@ -26,7 +26,7 @@ export class ClanRosterService {
     );
   }
 
-  private getMemberRosterStats(clanId: number, member: ClanMember): Observable<RosterMember> {
+  getMemberRosterStats(clanId: number, member: ClanMember): Observable<RosterMember> {
     return forkJoin([
       this.profileService.getSerializedProfile(clanId.toString(), member),
       this.profileMilestonesService.getSerializedProfile(clanId.toString(), member, [])

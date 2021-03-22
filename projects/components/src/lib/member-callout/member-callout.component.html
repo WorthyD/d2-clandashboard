@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title>{{title}}</mat-card-title>
+  <mat-card-content>
+    <div *ngFor="let callout of callouts">
+      <div class="callout">
+        <div class="value">
+          {{callout.value}}
+        </div>
+        <div class="info">
+          <div class="h3">
+            {{callout.title}}
+          </div>
+
+          <div [ngClass]="'change'">
+            {{callout.subValue}}
+
+            {{callout.subTitle}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </mat-card-content>
+</mat-card>

@@ -23,7 +23,7 @@ export class ClanGambitService {
     );
   }
 
-  private getMemberGambitStats(clanId: number, member: ClanMember): Observable<ActivityStats> {
+  getMemberGambitStats(clanId: number, member: ClanMember): Observable<ActivityStats> {
     //console.log(member);
     // return from(member.profile.data.characterIds).pipe(
     //   mergeMap((characterId: number) => {
