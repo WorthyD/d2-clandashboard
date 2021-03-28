@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivityTimeChartComponent } from './activity-time-chart/activity-time-chart.component';
-
-
-
+import { ActivityTimeChartComponent } from './activity-time-chart.component';
+import { ActivityTimeChartModule as atcm } from '@destiny/components';
 @NgModule({
   declarations: [ActivityTimeChartComponent],
-  imports: [
-    CommonModule
-  ]
+  exports: [ActivityTimeChartComponent],
+  imports: [CommonModule, atcm]
 })
-export class ActivityTimeChartModule { }
+export class ActivityTimeChartModule {}

@@ -9,6 +9,7 @@ import {
   SeasonPassModule
 } from '@destiny/components';
 import { Routes, RouterModule } from '@angular/router';
+import { ActivityTimeChartModule } from '../activity-time-chart/activity-time-chart.module';
 
 const routes: Routes = [
   {
@@ -27,13 +28,12 @@ export class OverviewRoutingModule {}
     CommonModule,
     OverviewRoutingModule,
     MemberOverviewComponentModule,
+    ActivityTimeChartModule,
     CharacterCardModule,
     MemberCalloutModule,
     ActivityGridModule,
     SeasonPassModule
   ],
-  providers:[
-    DecimalPipe
-  ]
+  providers: [DecimalPipe]
 })
 export class MemberOverviewModule {}

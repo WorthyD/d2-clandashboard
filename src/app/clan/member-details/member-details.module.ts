@@ -6,6 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 // import { MemberDetailsRoutingModule } from './member-details-routing.module';
 import { MaterialModule, PipesModule } from '@destiny/components';
+import { ActivityTimeChartModule } from './activity-time-chart/activity-time-chart.module';
 
 const routes: Routes = [
   {
@@ -30,7 +31,14 @@ export class MemberDetailsRoutingModule {}
 
 @NgModule({
   declarations: [MemberDetailsComponent],
-imports: [CommonModule, MemberDetailsRoutingModule, MatSidenavModule, MaterialModule, PipesModule],
+  imports: [
+    CommonModule,
+    MemberDetailsRoutingModule,
+    MatSidenavModule,
+    MaterialModule,
+    PipesModule,
+    ActivityTimeChartModule
+  ],
   exports: [MemberDetailsComponent]
 })
 export class MemberDetailsModule {}

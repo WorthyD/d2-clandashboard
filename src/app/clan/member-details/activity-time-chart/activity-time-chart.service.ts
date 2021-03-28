@@ -39,8 +39,11 @@ export class ActivityTimeChartService {
   isLoading = true;
   events = [];
   events$ = combineLatest([this.memberActivities$, this.activitiesLoaded$, this.selectedDuration$]).pipe(
-    filter(([activities, isLoaded, selectedDuration]) => isLoaded === true),
+    filter(([activities, isLoaded, selectedDuration]) => {
+      return isLoaded === true;
+    }),
     map(([activities, isLoaded, selectedDuration]) => {
+
       const service = this.getInjector(selectedDuration);
       // console.log('a', activities[0]);
       // const clonedActivities = activities.map((x) => {
@@ -64,5 +67,11 @@ export class ActivityTimeChartService {
       default:
         return this.injector.get(DailyClanAggregateTimeService);
     }
+  }
+  changeDuration(duration) {
+    this.selectedDuration$.next(duration);
+  }
+  load(){
+    this.events$.subscribe();
   }
 }
