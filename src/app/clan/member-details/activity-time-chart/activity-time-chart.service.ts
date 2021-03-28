@@ -38,6 +38,7 @@ export class ActivityTimeChartService {
   ) {}
   isLoading = true;
   events = [];
+  activities = [];
   events$ = combineLatest([this.memberActivities$, this.activitiesLoaded$, this.selectedDuration$]).pipe(
     filter(([activities, isLoaded, selectedDuration]) => {
       return isLoaded === true;
@@ -49,6 +50,7 @@ export class ActivityTimeChartService {
       // const clonedActivities = activities.map((x) => {
       //   return Object.assign({}, x);
       // });
+      this.activities = activities;
 
       const summedActivities = service.getClanActivityStatsForDuration([{ id: '', activities }], 0);
       this.events = summedActivities;
