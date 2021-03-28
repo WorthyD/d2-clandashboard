@@ -18,10 +18,16 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row my-3">
     <div class="col">
       <lib-member-callout [title]="'Player Snapshot'" [callouts]="memberOverviewService.memberSnapShot$ | async">
       </lib-member-callout>
     </div>
   </div>
+  <div class="row my-3">
+    <div class="col">
+      <app-activity-time-chart></app-activity-time-chart>
+    </div>
+  </div>
+
 </div>
