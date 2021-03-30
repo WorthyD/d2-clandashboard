@@ -26,6 +26,8 @@ export function getBungieStartDate(date): Date {
   const offset = date.getDay() >= 2 ? 2 : -5;
   // Clone date to prevent mutation
   const cDate = new Date(date.getTime());
+  // Reset Time
+  cDate.setHours(12, 0, 0);
   return new Date(cDate.setDate(date.getDate() - date.getDay() + offset));
 }
 

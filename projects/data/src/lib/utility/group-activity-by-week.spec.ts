@@ -1,6 +1,6 @@
 import { getBungieStartDate, nowPlusDays } from './date-utils';
 import { groupActivitiesByWeek, groupActivityStatsByWeek } from './group-activity-by-week';
-
+import { _MOCK_RAW_ACTIVITY_DATES } from './_mocks/_MOCK_ACTIVITY_DATES';
 function datePlusDays(date: Date, days: number) {
   return new Date(new Date().setDate(date.getDate() + days));
 }
@@ -32,7 +32,7 @@ const groupedActivities = [...dates].map((x) => {
   };
 });
 
-describe('Group activities by week', () => {
+fdescribe('Group activities by week', () => {
   it('groupActivitiesByWeek', () => {
     const orig = JSON.stringify(bActivities);
     const formatted = groupActivitiesByWeek(bActivities);
@@ -56,5 +56,11 @@ describe('Group activities by week', () => {
     expect(formatted[2].seconds).toEqual(100);
     // Make sure it doesn't mutate original object
     expect(JSON.stringify(groupedActivities)).toEqual(orig);
+  });
+
+  it('should group by week', () => {
+    const formatted = groupActivityStatsByWeek(_MOCK_RAW_ACTIVITY_DATES);
+    console.log(_MOCK_RAW_ACTIVITY_DATES.length);
+    console.log(formatted.sort((a, b) => b.date - a.date));
   });
 });

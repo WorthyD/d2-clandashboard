@@ -32,7 +32,7 @@ const groupedActivities = [...dates].map((x) => {
   };
 });
 
-fdescribe('Group activities by month', () => {
+describe('Group activities by month', () => {
   it('groupActivitiesByWeek', () => {
     const orig = JSON.stringify(bActivities);
     const formatted = groupActivitiesByMonth(bActivities);

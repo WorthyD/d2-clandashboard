@@ -335,122 +335,122 @@ export const _MOCK_RAW_ACTIVITY_DATES = [
     date: new Date('2020-01-01T00:00:00.000Z'),
     seconds: 6886
   },
-  {
-    date: new Date('2019-12-31T00:00:00.000Z'),
-    seconds: 6356
-  },
-  {
-    date: new Date('2019-12-30T00:00:00.000Z'),
-    seconds: 14566
-  },
-  {
-    date: new Date('2019-12-28T00:00:00.000Z'),
-    seconds: 4938
-  },
-  {
-    date: new Date('2019-12-27T00:00:00.000Z'),
-    seconds: 1530
-  },
-  {
-    date: new Date('2019-12-26T00:00:00.000Z'),
-    seconds: 7835
-  },
-  {
-    date: new Date('2019-12-25T00:00:00.000Z'),
-    seconds: 7371
-  },
-  {
-    date: new Date('2019-12-24T00:00:00.000Z'),
-    seconds: 7794
-  },
-  {
-    date: new Date('2019-12-23T00:00:00.000Z'),
-    seconds: 5062
-  },
-  {
-    date: new Date('2019-12-22T00:00:00.000Z'),
-    seconds: 1320
-  },
-  {
-    date: new Date('2019-12-20T00:00:00.000Z'),
-    seconds: 3960
-  },
-  {
-    date: new Date('2019-12-18T00:00:00.000Z'),
-    seconds: 6800
-  },
-  {
-    date: new Date('2019-12-17T00:00:00.000Z'),
-    seconds: 90
-  },
-  {
-    date: new Date('2019-12-16T00:00:00.000Z'),
-    seconds: 2761
-  },
-  {
-    date: new Date('2019-12-14T00:00:00.000Z'),
-    seconds: 5888
-  },
-  {
-    date: new Date('2019-12-13T00:00:00.000Z'),
-    seconds: 3570
-  },
-  {
-    date: new Date('2019-12-11T00:00:00.000Z'),
-    seconds: 6571
-  },
-  {
-    date: new Date('2019-12-09T00:00:00.000Z'),
-    seconds: 486
-  },
-  {
-    date: new Date('2019-11-29T00:00:00.000Z'),
-    seconds: 1302
-  },
-  {
-    date: new Date('2019-11-28T00:00:00.000Z'),
-    seconds: 6165
-  },
-  {
-    date: new Date('2019-11-26T00:00:00.000Z'),
-    seconds: 8281
-  },
-  {
-    date: new Date('2019-11-25T00:00:00.000Z'),
-    seconds: 4162
-  },
-  {
-    date: new Date('2019-11-23T00:00:00.000Z'),
-    seconds: 1180
-  },
-  {
-    date: new Date('2019-11-22T00:00:00.000Z'),
-    seconds: 8317
-  },
-  {
-    date: new Date('2019-11-21T00:00:00.000Z'),
-    seconds: 5016
-  },
-  {
-    date: new Date('2019-11-19T00:00:00.000Z'),
-    seconds: 6049
-  },
-  {
-    date: new Date('2019-11-18T00:00:00.000Z'),
-    seconds: 4363
-  },
-  {
-    date: new Date('2019-11-17T00:00:00.000Z'),
-    seconds: 1399
-  },
-  {
-    date: new Date('2019-11-15T00:00:00.000Z'),
-    seconds: 2020
-  },
-  {
-    date: new Date('2019-11-14T00:00:00.000Z'),
-    seconds: 1590
-  },
+  // {
+  //   date: new Date('2019-12-31T00:00:00.000Z'),
+  //   seconds: 6356
+  // },
+  // {
+  //   date: new Date('2019-12-30T00:00:00.000Z'),
+  //   seconds: 14566
+  // },
+  // {
+  //   date: new Date('2019-12-28T00:00:00.000Z'),
+  //   seconds: 4938
+  // },
+  // {
+  //   date: new Date('2019-12-27T00:00:00.000Z'),
+  //   seconds: 1530
+  // },
+  // {
+  //   date: new Date('2019-12-26T00:00:00.000Z'),
+  //   seconds: 7835
+  // },
+  // {
+  //   date: new Date('2019-12-25T00:00:00.000Z'),
+  //   seconds: 7371
+  // },
+  // {
+  //   date: new Date('2019-12-24T00:00:00.000Z'),
+  //   seconds: 7794
+  // },
+  // {
+  //   date: new Date('2019-12-23T00:00:00.000Z'),
+  //   seconds: 5062
+  // },
+  // {
+  //   date: new Date('2019-12-22T00:00:00.000Z'),
+  //   seconds: 1320
+  // },
+  // {
+  //   date: new Date('2019-12-20T00:00:00.000Z'),
+  //   seconds: 3960
+  // },
+  // {
+  //   date: new Date('2019-12-18T00:00:00.000Z'),
+  //   seconds: 6800
+  // },
+  // {
+  //   date: new Date('2019-12-17T00:00:00.000Z'),
+  //   seconds: 90
+  // },
+  // {
+  //   date: new Date('2019-12-16T00:00:00.000Z'),
+  //   seconds: 2761
+  // },
+  // {
+  //   date: new Date('2019-12-14T00:00:00.000Z'),
+  //   seconds: 5888
+  // },
+  // {
+  //   date: new Date('2019-12-13T00:00:00.000Z'),
+  //   seconds: 3570
+  // },
+  // {
+  //   date: new Date('2019-12-11T00:00:00.000Z'),
+  //   seconds: 6571
+  // },
+  // {
+  //   date: new Date('2019-12-09T00:00:00.000Z'),
+  //   seconds: 486
+  // },
+  // {
+  //   date: new Date('2019-11-29T00:00:00.000Z'),
+  //   seconds: 1302
+  // },
+  // {
+  //   date: new Date('2019-11-28T00:00:00.000Z'),
+  //   seconds: 6165
+  // },
+  // {
+  //   date: new Date('2019-11-26T00:00:00.000Z'),
+  //   seconds: 8281
+  // },
+  // {
+  //   date: new Date('2019-11-25T00:00:00.000Z'),
+  //   seconds: 4162
+  // },
+  // {
+  //   date: new Date('2019-11-23T00:00:00.000Z'),
+  //   seconds: 1180
+  // },
+  // {
+  //   date: new Date('2019-11-22T00:00:00.000Z'),
+  //   seconds: 8317
+  // },
+  // {
+  //   date: new Date('2019-11-21T00:00:00.000Z'),
+  //   seconds: 5016
+  // },
+  // {
+  //   date: new Date('2019-11-19T00:00:00.000Z'),
+  //   seconds: 6049
+  // },
+  // {
+  //   date: new Date('2019-11-18T00:00:00.000Z'),
+  //   seconds: 4363
+  // },
+  // {
+  //   date: new Date('2019-11-17T00:00:00.000Z'),
+  //   seconds: 1399
+  // },
+  // {
+  //   date: new Date('2019-11-15T00:00:00.000Z'),
+  //   seconds: 2020
+  // },
+  // {
+  //   date: new Date('2019-11-14T00:00:00.000Z'),
+  //   seconds: 1590
+  // },
   {
     date: new Date('2021-01-19T00:00:00.000Z'),
     seconds: 4068
@@ -515,7 +515,7 @@ export const _MOCK_RAW_ACTIVITY_DATES = [
     date: new Date('2021-01-01T00:00:00.000Z'),
     seconds: 3723
   },
-  {
+   {
     date: new Date('2020-12-31T00:00:00.000Z'),
     seconds: 2069
   },
@@ -763,186 +763,186 @@ export const _MOCK_RAW_ACTIVITY_DATES = [
     date: new Date('2020-04-23T00:00:00.000Z'),
     seconds: 9405
   },
-  {
-    date: new Date('2019-11-13T00:00:00.000Z'),
-    seconds: 2386
-  },
-  {
-    date: new Date('2019-11-11T00:00:00.000Z'),
-    seconds: 3036
-  },
-  {
-    date: new Date('2019-11-10T00:00:00.000Z'),
-    seconds: 4419
-  },
-  {
-    date: new Date('2019-11-09T00:00:00.000Z'),
-    seconds: 4881
-  },
-  {
-    date: new Date('2019-11-08T00:00:00.000Z'),
-    seconds: 3364
-  },
-  {
-    date: new Date('2019-11-07T00:00:00.000Z'),
-    seconds: 7923
-  },
-  {
-    date: new Date('2019-11-06T00:00:00.000Z'),
-    seconds: 9064
-  },
-  {
-    date: new Date('2019-11-05T00:00:00.000Z'),
-    seconds: 8491
-  },
-  {
-    date: new Date('2019-11-04T00:00:00.000Z'),
-    seconds: 2152
-  },
-  {
-    date: new Date('2019-11-03T00:00:00.000Z'),
-    seconds: 2999
-  },
-  {
-    date: new Date('2019-11-02T00:00:00.000Z'),
-    seconds: 12694
-  },
-  {
-    date: new Date('2019-11-01T00:00:00.000Z'),
-    seconds: 11159
-  },
-  {
-    date: new Date('2019-10-30T00:00:00.000Z'),
-    seconds: 5063
-  },
-  {
-    date: new Date('2019-10-29T00:00:00.000Z'),
-    seconds: 4810
-  },
-  {
-    date: new Date('2019-10-27T00:00:00.000Z'),
-    seconds: 90
-  },
-  {
-    date: new Date('2019-10-26T00:00:00.000Z'),
-    seconds: 4261
-  },
-  {
-    date: new Date('2019-10-25T00:00:00.000Z'),
-    seconds: 1452
-  },
-  {
-    date: new Date('2019-10-24T00:00:00.000Z'),
-    seconds: 6347
-  },
-  {
-    date: new Date('2019-10-23T00:00:00.000Z'),
-    seconds: 11423
-  },
-  {
-    date: new Date('2019-10-20T00:00:00.000Z'),
-    seconds: 2221
-  },
-  {
-    date: new Date('2019-10-17T00:00:00.000Z'),
-    seconds: 4102
-  },
-  {
-    date: new Date('2019-10-16T00:00:00.000Z'),
-    seconds: 5217
-  },
-  {
-    date: new Date('2019-10-14T00:00:00.000Z'),
-    seconds: 3649
-  },
-  {
-    date: new Date('2019-10-11T00:00:00.000Z'),
-    seconds: 3930
-  },
-  {
-    date: new Date('2019-10-10T00:00:00.000Z'),
-    seconds: 3604
-  },
-  {
-    date: new Date('2019-10-09T00:00:00.000Z'),
-    seconds: 2220
-  },
-  {
-    date: new Date('2019-10-08T00:00:00.000Z'),
-    seconds: 6763
-  },
-  {
-    date: new Date('2019-10-07T00:00:00.000Z'),
-    seconds: 3270
-  },
-  {
-    date: new Date('2019-10-06T00:00:00.000Z'),
-    seconds: 4698
-  },
-  {
-    date: new Date('2019-10-04T00:00:00.000Z'),
-    seconds: 3649
-  },
-  {
-    date: new Date('2019-10-03T00:00:00.000Z'),
-    seconds: 5841
-  },
-  {
-    date: new Date('2019-10-02T00:00:00.000Z'),
-    seconds: 5411
-  },
-  {
-    date: new Date('2019-09-30T00:00:00.000Z'),
-    seconds: 180
-  },
-  {
-    date: new Date('2019-09-26T00:00:00.000Z'),
-    seconds: 3566
-  },
-  {
-    date: new Date('2019-09-25T00:00:00.000Z'),
-    seconds: 4625
-  },
-  {
-    date: new Date('2019-09-21T00:00:00.000Z'),
-    seconds: 6382
-  },
-  {
-    date: new Date('2019-09-20T00:00:00.000Z'),
-    seconds: 150
-  },
-  {
-    date: new Date('2019-09-19T00:00:00.000Z'),
-    seconds: 2082
-  },
-  {
-    date: new Date('2019-09-18T00:00:00.000Z'),
-    seconds: 2624
-  },
-  {
-    date: new Date('2019-09-17T00:00:00.000Z'),
-    seconds: 19650
-  },
-  {
-    date: new Date('2019-09-15T00:00:00.000Z'),
-    seconds: 2486
-  },
-  {
-    date: new Date('2019-09-14T00:00:00.000Z'),
-    seconds: 3382
-  },
-  {
-    date: new Date('2019-09-13T00:00:00.000Z'),
-    seconds: 3191
-  },
-  {
-    date: new Date('2019-09-12T00:00:00.000Z'),
-    seconds: 150
-  },
-  {
-    date: new Date('2019-09-11T00:00:00.000Z'),
-    seconds: 1376
-  },
+  // {
+  //   date: new Date('2019-11-13T00:00:00.000Z'),
+  //   seconds: 2386
+  // },
+  // {
+  //   date: new Date('2019-11-11T00:00:00.000Z'),
+  //   seconds: 3036
+  // },
+  // {
+  //   date: new Date('2019-11-10T00:00:00.000Z'),
+  //   seconds: 4419
+  // },
+  // {
+  //   date: new Date('2019-11-09T00:00:00.000Z'),
+  //   seconds: 4881
+  // },
+  // {
+  //   date: new Date('2019-11-08T00:00:00.000Z'),
+  //   seconds: 3364
+  // },
+  // {
+  //   date: new Date('2019-11-07T00:00:00.000Z'),
+  //   seconds: 7923
+  // },
+  // {
+  //   date: new Date('2019-11-06T00:00:00.000Z'),
+  //   seconds: 9064
+  // },
+  // {
+  //   date: new Date('2019-11-05T00:00:00.000Z'),
+  //   seconds: 8491
+  // },
+  // {
+  //   date: new Date('2019-11-04T00:00:00.000Z'),
+  //   seconds: 2152
+  // },
+  // {
+  //   date: new Date('2019-11-03T00:00:00.000Z'),
+  //   seconds: 2999
+  // },
+  // {
+  //   date: new Date('2019-11-02T00:00:00.000Z'),
+  //   seconds: 12694
+  // },
+  // {
+  //   date: new Date('2019-11-01T00:00:00.000Z'),
+  //   seconds: 11159
+  // },
+  // {
+  //   date: new Date('2019-10-30T00:00:00.000Z'),
+  //   seconds: 5063
+  // },
+  // {
+  //   date: new Date('2019-10-29T00:00:00.000Z'),
+  //   seconds: 4810
+  // },
+  // {
+  //   date: new Date('2019-10-27T00:00:00.000Z'),
+  //   seconds: 90
+  // },
+  // {
+  //   date: new Date('2019-10-26T00:00:00.000Z'),
+  //   seconds: 4261
+  // },
+  // {
+  //   date: new Date('2019-10-25T00:00:00.000Z'),
+  //   seconds: 1452
+  // },
+  // {
+  //   date: new Date('2019-10-24T00:00:00.000Z'),
+  //   seconds: 6347
+  // },
+  // {
+  //   date: new Date('2019-10-23T00:00:00.000Z'),
+  //   seconds: 11423
+  // },
+  // {
+  //   date: new Date('2019-10-20T00:00:00.000Z'),
+  //   seconds: 2221
+  // },
+  // {
+  //   date: new Date('2019-10-17T00:00:00.000Z'),
+  //   seconds: 4102
+  // },
+  // {
+  //   date: new Date('2019-10-16T00:00:00.000Z'),
+  //   seconds: 5217
+  // },
+  // {
+  //   date: new Date('2019-10-14T00:00:00.000Z'),
+  //   seconds: 3649
+  // },
+  // {
+  //   date: new Date('2019-10-11T00:00:00.000Z'),
+  //   seconds: 3930
+  // },
+  // {
+  //   date: new Date('2019-10-10T00:00:00.000Z'),
+  //   seconds: 3604
+  // },
+  // {
+  //   date: new Date('2019-10-09T00:00:00.000Z'),
+  //   seconds: 2220
+  // },
+  // {
+  //   date: new Date('2019-10-08T00:00:00.000Z'),
+  //   seconds: 6763
+  // },
+  // {
+  //   date: new Date('2019-10-07T00:00:00.000Z'),
+  //   seconds: 3270
+  // },
+  // {
+  //   date: new Date('2019-10-06T00:00:00.000Z'),
+  //   seconds: 4698
+  // },
+  // {
+  //   date: new Date('2019-10-04T00:00:00.000Z'),
+  //   seconds: 3649
+  // },
+  // {
+  //   date: new Date('2019-10-03T00:00:00.000Z'),
+  //   seconds: 5841
+  // },
+  // {
+  //   date: new Date('2019-10-02T00:00:00.000Z'),
+  //   seconds: 5411
+  // },
+  // {
+  //   date: new Date('2019-09-30T00:00:00.000Z'),
+  //   seconds: 180
+  // },
+  // {
+  //   date: new Date('2019-09-26T00:00:00.000Z'),
+  //   seconds: 3566
+  // },
+  // {
+  //   date: new Date('2019-09-25T00:00:00.000Z'),
+  //   seconds: 4625
+  // },
+  // {
+  //   date: new Date('2019-09-21T00:00:00.000Z'),
+  //   seconds: 6382
+  // },
+  // {
+  //   date: new Date('2019-09-20T00:00:00.000Z'),
+  //   seconds: 150
+  // },
+  // {
+  //   date: new Date('2019-09-19T00:00:00.000Z'),
+  //   seconds: 2082
+  // },
+  // {
+  //   date: new Date('2019-09-18T00:00:00.000Z'),
+  //   seconds: 2624
+  // },
+  // {
+  //   date: new Date('2019-09-17T00:00:00.000Z'),
+  //   seconds: 19650
+  // },
+  // {
+  //   date: new Date('2019-09-15T00:00:00.000Z'),
+  //   seconds: 2486
+  // },
+  // {
+  //   date: new Date('2019-09-14T00:00:00.000Z'),
+  //   seconds: 3382
+  // },
+  // {
+  //   date: new Date('2019-09-13T00:00:00.000Z'),
+  //   seconds: 3191
+  // },
+  // {
+  //   date: new Date('2019-09-12T00:00:00.000Z'),
+  //   seconds: 150
+  // },
+  // {
+  //   date: new Date('2019-09-11T00:00:00.000Z'),
+  //   seconds: 1376
+  // },
   {
     date: new Date('2020-12-05T00:00:00.000Z'),
     seconds: 6124
@@ -1747,482 +1747,482 @@ export const _MOCK_RAW_ACTIVITY_DATES = [
     date: new Date('2020-01-03T00:00:00.000Z'),
     seconds: 2925
   },
-  {
-    date: new Date('2019-09-02T00:00:00.000Z'),
-    seconds: 2756
-  },
-  {
-    date: new Date('2019-07-22T00:00:00.000Z'),
-    seconds: 3965
-  },
-  {
-    date: new Date('2019-07-21T00:00:00.000Z'),
-    seconds: 8932
-  },
-  {
-    date: new Date('2019-07-02T00:00:00.000Z'),
-    seconds: 922
-  },
-  {
-    date: new Date('2019-07-01T00:00:00.000Z'),
-    seconds: 2122
-  },
-  {
-    date: new Date('2019-06-30T00:00:00.000Z'),
-    seconds: 4639
-  },
-  {
-    date: new Date('2019-06-27T00:00:00.000Z'),
-    seconds: 4563
-  },
-  {
-    date: new Date('2019-06-26T00:00:00.000Z'),
-    seconds: 2069
-  },
-  {
-    date: new Date('2019-06-20T00:00:00.000Z'),
-    seconds: 2672
-  },
-  {
-    date: new Date('2019-06-19T00:00:00.000Z'),
-    seconds: 2280
-  },
-  {
-    date: new Date('2019-06-12T00:00:00.000Z'),
-    seconds: 5042
-  },
-  {
-    date: new Date('2019-06-05T00:00:00.000Z'),
-    seconds: 3330
-  },
-  {
-    date: new Date('2019-05-29T00:00:00.000Z'),
-    seconds: 1920
-  },
-  {
-    date: new Date('2019-05-23T00:00:00.000Z'),
-    seconds: 4171
-  },
-  {
-    date: new Date('2019-05-13T00:00:00.000Z'),
-    seconds: 3372
-  },
-  {
-    date: new Date('2019-05-12T00:00:00.000Z'),
-    seconds: 7579
-  },
-  {
-    date: new Date('2019-05-10T00:00:00.000Z'),
-    seconds: 2373
-  },
-  {
-    date: new Date('2019-05-07T00:00:00.000Z'),
-    seconds: 1487
-  },
-  {
-    date: new Date('2019-05-05T00:00:00.000Z'),
-    seconds: 3376
-  },
-  {
-    date: new Date('2019-05-02T00:00:00.000Z'),
-    seconds: 7508
-  },
-  {
-    date: new Date('2019-05-01T00:00:00.000Z'),
-    seconds: 4968
-  },
-  {
-    date: new Date('2019-04-30T00:00:00.000Z'),
-    seconds: 2138
-  },
-  {
-    date: new Date('2019-04-29T00:00:00.000Z'),
-    seconds: 4970
-  },
-  {
-    date: new Date('2019-04-28T00:00:00.000Z'),
-    seconds: 6266
-  },
-  {
-    date: new Date('2019-04-27T00:00:00.000Z'),
-    seconds: 2169
-  },
-  {
-    date: new Date('2019-04-22T00:00:00.000Z'),
-    seconds: 5096
-  },
-  {
-    date: new Date('2019-04-16T00:00:00.000Z'),
-    seconds: 6437
-  },
-  {
-    date: new Date('2019-04-15T00:00:00.000Z'),
-    seconds: 2552
-  },
-  {
-    date: new Date('2019-04-14T00:00:00.000Z'),
-    seconds: 2517
-  },
-  {
-    date: new Date('2019-04-13T00:00:00.000Z'),
-    seconds: 3779
-  },
-  {
-    date: new Date('2019-04-11T00:00:00.000Z'),
-    seconds: 1915
-  },
-  {
-    date: new Date('2019-04-09T00:00:00.000Z'),
-    seconds: 2479
-  },
-  {
-    date: new Date('2019-04-07T00:00:00.000Z'),
-    seconds: 4859
-  },
-  {
-    date: new Date('2019-04-06T00:00:00.000Z'),
-    seconds: 660
-  },
-  {
-    date: new Date('2019-04-05T00:00:00.000Z'),
-    seconds: 450
-  },
-  {
-    date: new Date('2019-04-04T00:00:00.000Z'),
-    seconds: 1080
-  },
-  {
-    date: new Date('2019-04-02T00:00:00.000Z'),
-    seconds: 16840
-  },
-  {
-    date: new Date('2019-03-26T00:00:00.000Z'),
-    seconds: 7078
-  },
-  {
-    date: new Date('2019-03-19T00:00:00.000Z'),
-    seconds: 4149
-  },
-  {
-    date: new Date('2019-03-18T00:00:00.000Z'),
-    seconds: 7684
-  },
-  {
-    date: new Date('2019-02-17T00:00:00.000Z'),
-    seconds: 1608
-  },
-  {
-    date: new Date('2019-02-16T00:00:00.000Z'),
-    seconds: 2042
-  },
-  {
-    date: new Date('2019-02-09T00:00:00.000Z'),
-    seconds: 390
-  },
-  {
-    date: new Date('2019-02-06T00:00:00.000Z'),
-    seconds: 1646
-  },
-  {
-    date: new Date('2019-02-03T00:00:00.000Z'),
-    seconds: 150
-  },
-  {
-    date: new Date('2019-01-27T00:00:00.000Z'),
-    seconds: 3128
-  },
-  {
-    date: new Date('2019-01-21T00:00:00.000Z'),
-    seconds: 5030
-  },
-  {
-    date: new Date('2019-01-20T00:00:00.000Z'),
-    seconds: 2437
-  },
-  {
-    date: new Date('2019-01-18T00:00:00.000Z'),
-    seconds: 2405
-  },
-  {
-    date: new Date('2019-01-14T00:00:00.000Z'),
-    seconds: 3224
-  },
-  {
-    date: new Date('2019-01-13T00:00:00.000Z'),
-    seconds: 5499
-  },
-  {
-    date: new Date('2019-01-12T00:00:00.000Z'),
-    seconds: 930
-  },
-  {
-    date: new Date('2019-01-11T00:00:00.000Z'),
-    seconds: 3750
-  },
-  {
-    date: new Date('2019-01-04T00:00:00.000Z'),
-    seconds: 2940
-  },
-  {
-    date: new Date('2019-01-03T00:00:00.000Z'),
-    seconds: 1680
-  },
-  {
-    date: new Date('2018-12-31T00:00:00.000Z'),
-    seconds: 1290
-  },
-  {
-    date: new Date('2018-12-19T00:00:00.000Z'),
-    seconds: 6783
-  },
-  {
-    date: new Date('2018-12-15T00:00:00.000Z'),
-    seconds: 3269
-  },
-  {
-    date: new Date('2018-10-09T00:00:00.000Z'),
-    seconds: 1081
-  },
-  {
-    date: new Date('2018-08-14T00:00:00.000Z'),
-    seconds: 2735
-  },
-  {
-    date: new Date('2018-08-01T00:00:00.000Z'),
-    seconds: 764
-  },
-  {
-    date: new Date('2018-07-22T00:00:00.000Z'),
-    seconds: 480
-  },
-  {
-    date: new Date('2018-07-21T00:00:00.000Z'),
-    seconds: 1980
-  },
-  {
-    date: new Date('2018-07-19T00:00:00.000Z'),
-    seconds: 3247
-  },
-  {
-    date: new Date('2018-07-18T00:00:00.000Z'),
-    seconds: 840
-  },
-  {
-    date: new Date('2018-07-01T00:00:00.000Z'),
-    seconds: 2242
-  },
-  {
-    date: new Date('2018-06-30T00:00:00.000Z'),
-    seconds: 1830
-  },
-  {
-    date: new Date('2018-06-29T00:00:00.000Z'),
-    seconds: 4355
-  },
-  {
-    date: new Date('2018-06-28T00:00:00.000Z'),
-    seconds: 2204
-  },
-  {
-    date: new Date('2018-06-27T00:00:00.000Z'),
-    seconds: 4050
-  },
-  {
-    date: new Date('2018-06-25T00:00:00.000Z'),
-    seconds: 2460
-  },
-  {
-    date: new Date('2018-06-17T00:00:00.000Z'),
-    seconds: 1980
-  },
-  {
-    date: new Date('2018-06-16T00:00:00.000Z'),
-    seconds: 3355
-  },
-  {
-    date: new Date('2018-06-15T00:00:00.000Z'),
-    seconds: 1494
-  },
-  {
-    date: new Date('2018-06-09T00:00:00.000Z'),
-    seconds: 3960
-  },
-  {
-    date: new Date('2018-06-06T00:00:00.000Z'),
-    seconds: 780
-  },
-  {
-    date: new Date('2018-05-25T00:00:00.000Z'),
-    seconds: 2938
-  },
-  {
-    date: new Date('2018-05-21T00:00:00.000Z'),
-    seconds: 1696
-  },
-  {
-    date: new Date('2018-05-20T00:00:00.000Z'),
-    seconds: 2550
-  },
-  {
-    date: new Date('2018-05-19T00:00:00.000Z'),
-    seconds: 4369
-  },
-  {
-    date: new Date('2018-05-18T00:00:00.000Z'),
-    seconds: 2180
-  },
-  {
-    date: new Date('2018-05-14T00:00:00.000Z'),
-    seconds: 690
-  },
-  {
-    date: new Date('2018-05-09T00:00:00.000Z'),
-    seconds: 6771
-  },
-  {
-    date: new Date('2018-05-08T00:00:00.000Z'),
-    seconds: 2578
-  },
-  {
-    date: new Date('2018-05-07T00:00:00.000Z'),
-    seconds: 2333
-  },
-  {
-    date: new Date('2018-05-06T00:00:00.000Z'),
-    seconds: 673
-  },
-  {
-    date: new Date('2018-05-05T00:00:00.000Z'),
-    seconds: 8209
-  },
-  {
-    date: new Date('2018-05-04T00:00:00.000Z'),
-    seconds: 3011
-  },
-  {
-    date: new Date('2018-05-03T00:00:00.000Z'),
-    seconds: 2310
-  },
-  {
-    date: new Date('2018-04-28T00:00:00.000Z'),
-    seconds: 3666
-  },
-  {
-    date: new Date('2018-04-27T00:00:00.000Z'),
-    seconds: 1680
-  },
-  {
-    date: new Date('2018-04-16T00:00:00.000Z'),
-    seconds: 3210
-  },
-  {
-    date: new Date('2018-04-09T00:00:00.000Z'),
-    seconds: 2460
-  },
-  {
-    date: new Date('2018-04-06T00:00:00.000Z'),
-    seconds: 330
-  },
-  {
-    date: new Date('2018-03-09T00:00:00.000Z'),
-    seconds: 1530
-  },
-  {
-    date: new Date('2018-03-04T00:00:00.000Z'),
-    seconds: 1110
-  },
-  {
-    date: new Date('2018-03-03T00:00:00.000Z'),
-    seconds: 1080
-  },
-  {
-    date: new Date('2018-02-28T00:00:00.000Z'),
-    seconds: 60
-  },
-  {
-    date: new Date('2018-02-26T00:00:00.000Z'),
-    seconds: 671
-  },
-  {
-    date: new Date('2018-02-22T00:00:00.000Z'),
-    seconds: 3172
-  },
-  {
-    date: new Date('2018-02-15T00:00:00.000Z'),
-    seconds: 3946
-  },
-  {
-    date: new Date('2018-02-14T00:00:00.000Z'),
-    seconds: 1470
-  },
-  {
-    date: new Date('2018-02-12T00:00:00.000Z'),
-    seconds: 3060
-  },
-  {
-    date: new Date('2018-02-10T00:00:00.000Z'),
-    seconds: 7640
-  },
-  {
-    date: new Date('2018-02-09T00:00:00.000Z'),
-    seconds: 1759
-  },
-  {
-    date: new Date('2018-02-08T00:00:00.000Z'),
-    seconds: 3519
-  },
-  {
-    date: new Date('2018-02-07T00:00:00.000Z'),
-    seconds: 3753
-  },
-  {
-    date: new Date('2018-02-06T00:00:00.000Z'),
-    seconds: 60
-  },
-  {
-    date: new Date('2018-02-05T00:00:00.000Z'),
-    seconds: 1440
-  },
-  {
-    date: new Date('2018-02-02T00:00:00.000Z'),
-    seconds: 2070
-  },
-  {
-    date: new Date('2018-02-01T00:00:00.000Z'),
-    seconds: 488
-  },
-  {
-    date: new Date('2018-01-30T00:00:00.000Z'),
-    seconds: 1865
-  },
-  {
-    date: new Date('2018-01-29T00:00:00.000Z'),
-    seconds: 3572
-  },
-  {
-    date: new Date('2018-01-25T00:00:00.000Z'),
-    seconds: 4596
-  },
-  {
-    date: new Date('2018-01-23T00:00:00.000Z'),
-    seconds: 2524
-  },
-  {
-    date: new Date('2018-01-18T00:00:00.000Z'),
-    seconds: 1462
-  },
-  {
-    date: new Date('2018-01-15T00:00:00.000Z'),
-    seconds: 1418
-  },
-  {
-    date: new Date('2018-01-14T00:00:00.000Z'),
-    seconds: 2504
-  },
-  {
-    date: new Date('2018-01-08T00:00:00.000Z'),
-    seconds: 1010
-  },
+  // {
+  //   date: new Date('2019-09-02T00:00:00.000Z'),
+  //   seconds: 2756
+  // },
+  // {
+  //   date: new Date('2019-07-22T00:00:00.000Z'),
+  //   seconds: 3965
+  // },
+  // {
+  //   date: new Date('2019-07-21T00:00:00.000Z'),
+  //   seconds: 8932
+  // },
+  // {
+  //   date: new Date('2019-07-02T00:00:00.000Z'),
+  //   seconds: 922
+  // },
+  // {
+  //   date: new Date('2019-07-01T00:00:00.000Z'),
+  //   seconds: 2122
+  // },
+  // {
+  //   date: new Date('2019-06-30T00:00:00.000Z'),
+  //   seconds: 4639
+  // },
+  // {
+  //   date: new Date('2019-06-27T00:00:00.000Z'),
+  //   seconds: 4563
+  // },
+  // {
+  //   date: new Date('2019-06-26T00:00:00.000Z'),
+  //   seconds: 2069
+  // },
+  // {
+  //   date: new Date('2019-06-20T00:00:00.000Z'),
+  //   seconds: 2672
+  // },
+  // {
+  //   date: new Date('2019-06-19T00:00:00.000Z'),
+  //   seconds: 2280
+  // },
+  // {
+  //   date: new Date('2019-06-12T00:00:00.000Z'),
+  //   seconds: 5042
+  // },
+  // {
+  //   date: new Date('2019-06-05T00:00:00.000Z'),
+  //   seconds: 3330
+  // },
+  // {
+  //   date: new Date('2019-05-29T00:00:00.000Z'),
+  //   seconds: 1920
+  // },
+  // {
+  //   date: new Date('2019-05-23T00:00:00.000Z'),
+  //   seconds: 4171
+  // },
+  // {
+  //   date: new Date('2019-05-13T00:00:00.000Z'),
+  //   seconds: 3372
+  // },
+  // {
+  //   date: new Date('2019-05-12T00:00:00.000Z'),
+  //   seconds: 7579
+  // },
+  // {
+  //   date: new Date('2019-05-10T00:00:00.000Z'),
+  //   seconds: 2373
+  // },
+  // {
+  //   date: new Date('2019-05-07T00:00:00.000Z'),
+  //   seconds: 1487
+  // },
+  // {
+  //   date: new Date('2019-05-05T00:00:00.000Z'),
+  //   seconds: 3376
+  // },
+  // {
+  //   date: new Date('2019-05-02T00:00:00.000Z'),
+  //   seconds: 7508
+  // },
+  // {
+  //   date: new Date('2019-05-01T00:00:00.000Z'),
+  //   seconds: 4968
+  // },
+  // {
+  //   date: new Date('2019-04-30T00:00:00.000Z'),
+  //   seconds: 2138
+  // },
+  // {
+  //   date: new Date('2019-04-29T00:00:00.000Z'),
+  //   seconds: 4970
+  // },
+  // {
+  //   date: new Date('2019-04-28T00:00:00.000Z'),
+  //   seconds: 6266
+  // },
+  // {
+  //   date: new Date('2019-04-27T00:00:00.000Z'),
+  //   seconds: 2169
+  // },
+  // {
+  //   date: new Date('2019-04-22T00:00:00.000Z'),
+  //   seconds: 5096
+  // },
+  // {
+  //   date: new Date('2019-04-16T00:00:00.000Z'),
+  //   seconds: 6437
+  // },
+  // {
+  //   date: new Date('2019-04-15T00:00:00.000Z'),
+  //   seconds: 2552
+  // },
+  // {
+  //   date: new Date('2019-04-14T00:00:00.000Z'),
+  //   seconds: 2517
+  // },
+  // {
+  //   date: new Date('2019-04-13T00:00:00.000Z'),
+  //   seconds: 3779
+  // },
+  // {
+  //   date: new Date('2019-04-11T00:00:00.000Z'),
+  //   seconds: 1915
+  // },
+  // {
+  //   date: new Date('2019-04-09T00:00:00.000Z'),
+  //   seconds: 2479
+  // },
+  // {
+  //   date: new Date('2019-04-07T00:00:00.000Z'),
+  //   seconds: 4859
+  // },
+  // {
+  //   date: new Date('2019-04-06T00:00:00.000Z'),
+  //   seconds: 660
+  // },
+  // {
+  //   date: new Date('2019-04-05T00:00:00.000Z'),
+  //   seconds: 450
+  // },
+  // {
+  //   date: new Date('2019-04-04T00:00:00.000Z'),
+  //   seconds: 1080
+  // },
+  // {
+  //   date: new Date('2019-04-02T00:00:00.000Z'),
+  //   seconds: 16840
+  // },
+  // {
+  //   date: new Date('2019-03-26T00:00:00.000Z'),
+  //   seconds: 7078
+  // },
+  // {
+  //   date: new Date('2019-03-19T00:00:00.000Z'),
+  //   seconds: 4149
+  // },
+  // {
+  //   date: new Date('2019-03-18T00:00:00.000Z'),
+  //   seconds: 7684
+  // },
+  // {
+  //   date: new Date('2019-02-17T00:00:00.000Z'),
+  //   seconds: 1608
+  // },
+  // {
+  //   date: new Date('2019-02-16T00:00:00.000Z'),
+  //   seconds: 2042
+  // },
+  // {
+  //   date: new Date('2019-02-09T00:00:00.000Z'),
+  //   seconds: 390
+  // },
+  // {
+  //   date: new Date('2019-02-06T00:00:00.000Z'),
+  //   seconds: 1646
+  // },
+  // {
+  //   date: new Date('2019-02-03T00:00:00.000Z'),
+  //   seconds: 150
+  // },
+  // {
+  //   date: new Date('2019-01-27T00:00:00.000Z'),
+  //   seconds: 3128
+  // },
+  // {
+  //   date: new Date('2019-01-21T00:00:00.000Z'),
+  //   seconds: 5030
+  // },
+  // {
+  //   date: new Date('2019-01-20T00:00:00.000Z'),
+  //   seconds: 2437
+  // },
+  // {
+  //   date: new Date('2019-01-18T00:00:00.000Z'),
+  //   seconds: 2405
+  // },
+  // {
+  //   date: new Date('2019-01-14T00:00:00.000Z'),
+  //   seconds: 3224
+  // },
+  // {
+  //   date: new Date('2019-01-13T00:00:00.000Z'),
+  //   seconds: 5499
+  // },
+  // {
+  //   date: new Date('2019-01-12T00:00:00.000Z'),
+  //   seconds: 930
+  // },
+  // {
+  //   date: new Date('2019-01-11T00:00:00.000Z'),
+  //   seconds: 3750
+  // },
+  // {
+  //   date: new Date('2019-01-04T00:00:00.000Z'),
+  //   seconds: 2940
+  // },
+  // {
+  //   date: new Date('2019-01-03T00:00:00.000Z'),
+  //   seconds: 1680
+  // },
+  // {
+  //   date: new Date('2018-12-31T00:00:00.000Z'),
+  //   seconds: 1290
+  // },
+  // {
+  //   date: new Date('2018-12-19T00:00:00.000Z'),
+  //   seconds: 6783
+  // },
+  // {
+  //   date: new Date('2018-12-15T00:00:00.000Z'),
+  //   seconds: 3269
+  // },
+  // {
+  //   date: new Date('2018-10-09T00:00:00.000Z'),
+  //   seconds: 1081
+  // },
+  // {
+  //   date: new Date('2018-08-14T00:00:00.000Z'),
+  //   seconds: 2735
+  // },
+  // {
+  //   date: new Date('2018-08-01T00:00:00.000Z'),
+  //   seconds: 764
+  // },
+  // {
+  //   date: new Date('2018-07-22T00:00:00.000Z'),
+  //   seconds: 480
+  // },
+  // {
+  //   date: new Date('2018-07-21T00:00:00.000Z'),
+  //   seconds: 1980
+  // },
+  // {
+  //   date: new Date('2018-07-19T00:00:00.000Z'),
+  //   seconds: 3247
+  // },
+  // {
+  //   date: new Date('2018-07-18T00:00:00.000Z'),
+  //   seconds: 840
+  // },
+  // {
+  //   date: new Date('2018-07-01T00:00:00.000Z'),
+  //   seconds: 2242
+  // },
+  // {
+  //   date: new Date('2018-06-30T00:00:00.000Z'),
+  //   seconds: 1830
+  // },
+  // {
+  //   date: new Date('2018-06-29T00:00:00.000Z'),
+  //   seconds: 4355
+  // },
+  // {
+  //   date: new Date('2018-06-28T00:00:00.000Z'),
+  //   seconds: 2204
+  // },
+  // {
+  //   date: new Date('2018-06-27T00:00:00.000Z'),
+  //   seconds: 4050
+  // },
+  // {
+  //   date: new Date('2018-06-25T00:00:00.000Z'),
+  //   seconds: 2460
+  // },
+  // {
+  //   date: new Date('2018-06-17T00:00:00.000Z'),
+  //   seconds: 1980
+  // },
+  // {
+  //   date: new Date('2018-06-16T00:00:00.000Z'),
+  //   seconds: 3355
+  // },
+  // {
+  //   date: new Date('2018-06-15T00:00:00.000Z'),
+  //   seconds: 1494
+  // },
+  // {
+  //   date: new Date('2018-06-09T00:00:00.000Z'),
+  //   seconds: 3960
+  // },
+  // {
+  //   date: new Date('2018-06-06T00:00:00.000Z'),
+  //   seconds: 780
+  // },
+  // {
+  //   date: new Date('2018-05-25T00:00:00.000Z'),
+  //   seconds: 2938
+  // },
+  // {
+  //   date: new Date('2018-05-21T00:00:00.000Z'),
+  //   seconds: 1696
+  // },
+  // {
+  //   date: new Date('2018-05-20T00:00:00.000Z'),
+  //   seconds: 2550
+  // },
+  // {
+  //   date: new Date('2018-05-19T00:00:00.000Z'),
+  //   seconds: 4369
+  // },
+  // {
+  //   date: new Date('2018-05-18T00:00:00.000Z'),
+  //   seconds: 2180
+  // },
+  // {
+  //   date: new Date('2018-05-14T00:00:00.000Z'),
+  //   seconds: 690
+  // },
+  // {
+  //   date: new Date('2018-05-09T00:00:00.000Z'),
+  //   seconds: 6771
+  // },
+  // {
+  //   date: new Date('2018-05-08T00:00:00.000Z'),
+  //   seconds: 2578
+  // },
+  // {
+  //   date: new Date('2018-05-07T00:00:00.000Z'),
+  //   seconds: 2333
+  // },
+  // {
+  //   date: new Date('2018-05-06T00:00:00.000Z'),
+  //   seconds: 673
+  // },
+  // {
+  //   date: new Date('2018-05-05T00:00:00.000Z'),
+  //   seconds: 8209
+  // },
+  // {
+  //   date: new Date('2018-05-04T00:00:00.000Z'),
+  //   seconds: 3011
+  // },
+  // {
+  //   date: new Date('2018-05-03T00:00:00.000Z'),
+  //   seconds: 2310
+  // },
+  // {
+  //   date: new Date('2018-04-28T00:00:00.000Z'),
+  //   seconds: 3666
+  // },
+  // {
+  //   date: new Date('2018-04-27T00:00:00.000Z'),
+  //   seconds: 1680
+  // },
+  // {
+  //   date: new Date('2018-04-16T00:00:00.000Z'),
+  //   seconds: 3210
+  // },
+  // {
+  //   date: new Date('2018-04-09T00:00:00.000Z'),
+  //   seconds: 2460
+  // },
+  // {
+  //   date: new Date('2018-04-06T00:00:00.000Z'),
+  //   seconds: 330
+  // },
+  // {
+  //   date: new Date('2018-03-09T00:00:00.000Z'),
+  //   seconds: 1530
+  // },
+  // {
+  //   date: new Date('2018-03-04T00:00:00.000Z'),
+  //   seconds: 1110
+  // },
+  // {
+  //   date: new Date('2018-03-03T00:00:00.000Z'),
+  //   seconds: 1080
+  // },
+  // {
+  //   date: new Date('2018-02-28T00:00:00.000Z'),
+  //   seconds: 60
+  // },
+  // {
+  //   date: new Date('2018-02-26T00:00:00.000Z'),
+  //   seconds: 671
+  // },
+  // {
+  //   date: new Date('2018-02-22T00:00:00.000Z'),
+  //   seconds: 3172
+  // },
+  // {
+  //   date: new Date('2018-02-15T00:00:00.000Z'),
+  //   seconds: 3946
+  // },
+  // {
+  //   date: new Date('2018-02-14T00:00:00.000Z'),
+  //   seconds: 1470
+  // },
+  // {
+  //   date: new Date('2018-02-12T00:00:00.000Z'),
+  //   seconds: 3060
+  // },
+  // {
+  //   date: new Date('2018-02-10T00:00:00.000Z'),
+  //   seconds: 7640
+  // },
+  // {
+  //   date: new Date('2018-02-09T00:00:00.000Z'),
+  //   seconds: 1759
+  // },
+  // {
+  //   date: new Date('2018-02-08T00:00:00.000Z'),
+  //   seconds: 3519
+  // },
+  // {
+  //   date: new Date('2018-02-07T00:00:00.000Z'),
+  //   seconds: 3753
+  // },
+  // {
+  //   date: new Date('2018-02-06T00:00:00.000Z'),
+  //   seconds: 60
+  // },
+  // {
+  //   date: new Date('2018-02-05T00:00:00.000Z'),
+  //   seconds: 1440
+  // },
+  // {
+  //   date: new Date('2018-02-02T00:00:00.000Z'),
+  //   seconds: 2070
+  // },
+  // {
+  //   date: new Date('2018-02-01T00:00:00.000Z'),
+  //   seconds: 488
+  // },
+  // {
+  //   date: new Date('2018-01-30T00:00:00.000Z'),
+  //   seconds: 1865
+  // },
+  // {
+  //   date: new Date('2018-01-29T00:00:00.000Z'),
+  //   seconds: 3572
+  // },
+  // {
+  //   date: new Date('2018-01-25T00:00:00.000Z'),
+  //   seconds: 4596
+  // },
+  // {
+  //   date: new Date('2018-01-23T00:00:00.000Z'),
+  //   seconds: 2524
+  // },
+  // {
+  //   date: new Date('2018-01-18T00:00:00.000Z'),
+  //   seconds: 1462
+  // },
+  // {
+  //   date: new Date('2018-01-15T00:00:00.000Z'),
+  //   seconds: 1418
+  // },
+  // {
+  //   date: new Date('2018-01-14T00:00:00.000Z'),
+  //   seconds: 2504
+  // },
+  // {
+  //   date: new Date('2018-01-08T00:00:00.000Z'),
+  //   seconds: 1010
+  // },
   {
     date: new Date('2017-12-28T00:00:00.000Z'),
     seconds: 104
@@ -2239,7 +2239,7 @@ export const _MOCK_RAW_ACTIVITY_DATES = [
     date: new Date('2021-03-15T00:00:00.000Z'),
     seconds: 1779
   },
-  {
+{
     date: new Date('2021-02-02T00:00:00.000Z'),
     seconds: 2495
   },
@@ -2307,176 +2307,176 @@ export const _MOCK_RAW_ACTIVITY_DATES = [
     date: new Date('2020-03-08T00:00:00.000Z'),
     seconds: 5345
   },
-  {
-    date: new Date('2019-09-10T00:00:00.000Z'),
-    seconds: 1274
-  },
-  {
-    date: new Date('2019-09-09T00:00:00.000Z'),
-    seconds: 5354
-  },
-  {
-    date: new Date('2019-09-08T00:00:00.000Z'),
-    seconds: 2749
-  },
-  {
-    date: new Date('2019-09-06T00:00:00.000Z'),
-    seconds: 2508
-  },
-  {
-    date: new Date('2019-07-18T00:00:00.000Z'),
-    seconds: 4310
-  },
-  {
-    date: new Date('2019-07-11T00:00:00.000Z'),
-    seconds: 3683
-  },
-  {
-    date: new Date('2019-07-10T00:00:00.000Z'),
-    seconds: 4367
-  },
-  {
-    date: new Date('2019-07-04T00:00:00.000Z'),
-    seconds: 9429
-  },
-  {
-    date: new Date('2019-06-22T00:00:00.000Z'),
-    seconds: 1787
-  },
-  {
-    date: new Date('2019-06-21T00:00:00.000Z'),
-    seconds: 1497
-  },
-  {
-    date: new Date('2019-05-30T00:00:00.000Z'),
-    seconds: 8418
-  },
-  {
-    date: new Date('2019-05-27T00:00:00.000Z'),
-    seconds: 3180
-  },
-  {
-    date: new Date('2019-05-14T00:00:00.000Z'),
-    seconds: 6874
-  },
-  {
-    date: new Date('2019-04-21T00:00:00.000Z'),
-    seconds: 6152
-  },
-  {
-    date: new Date('2019-04-19T00:00:00.000Z'),
-    seconds: 4290
-  },
-  {
-    date: new Date('2019-04-18T00:00:00.000Z'),
-    seconds: 4535
-  },
-  {
-    date: new Date('2019-04-17T00:00:00.000Z'),
-    seconds: 848
-  },
-  {
-    date: new Date('2019-04-01T00:00:00.000Z'),
-    seconds: 3603
-  },
-  {
-    date: new Date('2019-03-31T00:00:00.000Z'),
-    seconds: 930
-  },
-  {
-    date: new Date('2019-03-28T00:00:00.000Z'),
-    seconds: 8752
-  },
-  {
-    date: new Date('2019-03-27T00:00:00.000Z'),
-    seconds: 1710
-  },
-  {
-    date: new Date('2019-03-25T00:00:00.000Z'),
-    seconds: 5550
-  },
-  {
-    date: new Date('2019-03-24T00:00:00.000Z'),
-    seconds: 2340
-  },
-  {
-    date: new Date('2019-03-22T00:00:00.000Z'),
-    seconds: 6787
-  },
-  {
-    date: new Date('2019-03-17T00:00:00.000Z'),
-    seconds: 1893
-  },
-  {
-    date: new Date('2019-03-14T00:00:00.000Z'),
-    seconds: 4318
-  },
-  {
-    date: new Date('2019-03-12T00:00:00.000Z'),
-    seconds: 1784
-  },
-  {
-    date: new Date('2019-02-11T00:00:00.000Z'),
-    seconds: 2992
-  },
-  {
-    date: new Date('2019-02-10T00:00:00.000Z'),
-    seconds: 3298
-  },
-  {
-    date: new Date('2019-01-08T00:00:00.000Z'),
-    seconds: 1560
-  },
-  {
-    date: new Date('2018-12-30T00:00:00.000Z'),
-    seconds: 540
-  },
-  {
-    date: new Date('2018-12-09T00:00:00.000Z'),
-    seconds: 6695
-  },
-  {
-    date: new Date('2018-12-08T00:00:00.000Z'),
-    seconds: 2352
-  },
-  {
-    date: new Date('2018-08-07T00:00:00.000Z'),
-    seconds: 3579
-  },
-  {
-    date: new Date('2018-07-23T00:00:00.000Z'),
-    seconds: 120
-  },
-  {
-    date: new Date('2018-07-06T00:00:00.000Z'),
-    seconds: 2079
-  },
-  {
-    date: new Date('2018-07-05T00:00:00.000Z'),
-    seconds: 2837
-  },
-  {
-    date: new Date('2018-07-04T00:00:00.000Z'),
-    seconds: 4168
-  },
-  {
-    date: new Date('2018-07-03T00:00:00.000Z'),
-    seconds: 1019
-  },
-  {
-    date: new Date('2018-07-02T00:00:00.000Z'),
-    seconds: 985
-  },
-  {
-    date: new Date('2018-06-13T00:00:00.000Z'),
-    seconds: 210
-  },
-  {
-    date: new Date('2018-06-10T00:00:00.000Z'),
-    seconds: 270
-  },
-  {
-    date: new Date('2018-06-03T00:00:00.000Z'),
-    seconds: 150
-  }
+  // {
+  //   date: new Date('2019-09-10T00:00:00.000Z'),
+  //   seconds: 1274
+  // },
+  // {
+  //   date: new Date('2019-09-09T00:00:00.000Z'),
+  //   seconds: 5354
+  // },
+  // {
+  //   date: new Date('2019-09-08T00:00:00.000Z'),
+  //   seconds: 2749
+  // },
+  // {
+  //   date: new Date('2019-09-06T00:00:00.000Z'),
+  //   seconds: 2508
+  // },
+  // {
+  //   date: new Date('2019-07-18T00:00:00.000Z'),
+  //   seconds: 4310
+  // },
+  // {
+  //   date: new Date('2019-07-11T00:00:00.000Z'),
+  //   seconds: 3683
+  // },
+  // {
+  //   date: new Date('2019-07-10T00:00:00.000Z'),
+  //   seconds: 4367
+  // },
+  // {
+  //   date: new Date('2019-07-04T00:00:00.000Z'),
+  //   seconds: 9429
+  // },
+  // {
+  //   date: new Date('2019-06-22T00:00:00.000Z'),
+  //   seconds: 1787
+  // },
+  // {
+  //   date: new Date('2019-06-21T00:00:00.000Z'),
+  //   seconds: 1497
+  // },
+  // {
+  //   date: new Date('2019-05-30T00:00:00.000Z'),
+  //   seconds: 8418
+  // },
+  // {
+  //   date: new Date('2019-05-27T00:00:00.000Z'),
+  //   seconds: 3180
+  // },
+  // {
+  //   date: new Date('2019-05-14T00:00:00.000Z'),
+  //   seconds: 6874
+  // },
+  // {
+  //   date: new Date('2019-04-21T00:00:00.000Z'),
+  //   seconds: 6152
+  // },
+  // {
+  //   date: new Date('2019-04-19T00:00:00.000Z'),
+  //   seconds: 4290
+  // },
+  // {
+  //   date: new Date('2019-04-18T00:00:00.000Z'),
+  //   seconds: 4535
+  // },
+  // {
+  //   date: new Date('2019-04-17T00:00:00.000Z'),
+  //   seconds: 848
+  // },
+  // {
+  //   date: new Date('2019-04-01T00:00:00.000Z'),
+  //   seconds: 3603
+  // },
+  // {
+  //   date: new Date('2019-03-31T00:00:00.000Z'),
+  //   seconds: 930
+  // },
+  // {
+  //   date: new Date('2019-03-28T00:00:00.000Z'),
+  //   seconds: 8752
+  // },
+  // {
+  //   date: new Date('2019-03-27T00:00:00.000Z'),
+  //   seconds: 1710
+  // },
+  // {
+  //   date: new Date('2019-03-25T00:00:00.000Z'),
+  //   seconds: 5550
+  // },
+  // {
+  //   date: new Date('2019-03-24T00:00:00.000Z'),
+  //   seconds: 2340
+  // },
+  // {
+  //   date: new Date('2019-03-22T00:00:00.000Z'),
+  //   seconds: 6787
+  // },
+  // {
+  //   date: new Date('2019-03-17T00:00:00.000Z'),
+  //   seconds: 1893
+  // },
+  // {
+  //   date: new Date('2019-03-14T00:00:00.000Z'),
+  //   seconds: 4318
+  // },
+  // {
+  //   date: new Date('2019-03-12T00:00:00.000Z'),
+  //   seconds: 1784
+  // },
+  // {
+  //   date: new Date('2019-02-11T00:00:00.000Z'),
+  //   seconds: 2992
+  // },
+  // {
+  //   date: new Date('2019-02-10T00:00:00.000Z'),
+  //   seconds: 3298
+  // },
+  // {
+  //   date: new Date('2019-01-08T00:00:00.000Z'),
+  //   seconds: 1560
+  // },
+  // {
+  //   date: new Date('2018-12-30T00:00:00.000Z'),
+  //   seconds: 540
+  // },
+  // {
+  //   date: new Date('2018-12-09T00:00:00.000Z'),
+  //   seconds: 6695
+  // },
+  // {
+  //   date: new Date('2018-12-08T00:00:00.000Z'),
+  //   seconds: 2352
+  // },
+  // {
+  //   date: new Date('2018-08-07T00:00:00.000Z'),
+  //   seconds: 3579
+  // },
+  // {
+  //   date: new Date('2018-07-23T00:00:00.000Z'),
+  //   seconds: 120
+  // },
+  // {
+  //   date: new Date('2018-07-06T00:00:00.000Z'),
+  //   seconds: 2079
+  // },
+  // {
+  //   date: new Date('2018-07-05T00:00:00.000Z'),
+  //   seconds: 2837
+  // },
+  // {
+  //   date: new Date('2018-07-04T00:00:00.000Z'),
+  //   seconds: 4168
+  // },
+  // {
+  //   date: new Date('2018-07-03T00:00:00.000Z'),
+  //   seconds: 1019
+  // },
+  // {
+  //   date: new Date('2018-07-02T00:00:00.000Z'),
+  //   seconds: 985
+  // },
+  // {
+  //   date: new Date('2018-06-13T00:00:00.000Z'),
+  //   seconds: 210
+  // },
+  // {
+  //   date: new Date('2018-06-10T00:00:00.000Z'),
+  //   seconds: 270
+  // },
+  // {
+  //   date: new Date('2018-06-03T00:00:00.000Z'),
+  //   seconds: 150
+  // }
 ];
