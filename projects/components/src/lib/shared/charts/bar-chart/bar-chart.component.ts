@@ -257,8 +257,8 @@ export class BarChartComponent implements OnInit {
       .on('mouseover', (d) => {
         let label = d.date;
         if (d.date instanceof Date) {
-          //label = `Date: ${formatDate(d.date)}`;
-          label = `Date: ${d.date}`;
+          label = `Date: ${formatDate(d.date)}`;
+          //label = `Date: ${d.date}`;
         }
         this.tooltip.style('opacity', 0.9);
         this.tooltip.html(`${label}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
