@@ -18,6 +18,12 @@
   display: flex;
   justify-content: space-around;
 }
+.mat-card-footer {
+  .update-info {
+    text-align: right;
+  padding-right: 1rem;
+  }
+}
 .info {
   padding-left: 1rem;
   align-self: center;

@@ -15,7 +15,7 @@ export default {
 export const base = () => ({
   component: ClanActivePopulationComponent,
   template: `
-    <lib-clan-active-population [last24Hours]="20" [prev24Hours]="100" [lastWeek]="3" [prevWeek]="3" [lastMonth]="3" [prevMonth]="3"></lib-clan-active-population>
+    <lib-clan-active-population [last24Hours]="20" [prev24Hours]="100" [lastWeek]="3" [prevWeek]="3" [lastMonth]="3" [prevMonth]="3" [isUpdating]="false"></lib-clan-active-population>
    `,
   props: {
   }

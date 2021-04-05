@@ -26,6 +26,9 @@ export class ClanActivePopulationComponent implements OnInit {
   @Input()
   prevMonth;
 
+  @Input()
+  isUpdating;
+
 
 
   constructor() {}
