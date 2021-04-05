@@ -72,7 +72,6 @@ export class BarChartComponent implements OnInit {
             this.changeSubject.next(e);
           });
         });
-
     });
     this.changeSubject.subscribe((e: Event) => {
       this.updateChart(this.events);
@@ -144,8 +143,34 @@ export class BarChartComponent implements OnInit {
 
       if (firstData instanceof Date) {
         cleanedData = this.prepDateData(sourceData);
-        this.x = d3.scaleTime();
-        this.x.domain([cleanedData[0].date, cleanedData[cleanedData.length - 1].date]);
+        //this.x = d3.scaleTime();
+        //  this.x.domain([cleanedData[0].date, cleanedData[cleanedData.length - 1].date]);
+        // console.log(
+        //   d3.min(cleanedData, (d) => {
+        //     return d3.timeDay.offset(d.date, 0);
+        //   })
+        // );
+        // console.log(
+        //   d3.max(cleanedData, (d) => {
+        //     return d3.timeDay.offset(d.date, 0);
+        //   })
+        // );
+
+        // this.x.domain([
+        //   d3.min(cleanedData, (d) => {
+        //     return d3.timeDay.offset(d.date, 0);
+        //   }),
+        //   d3.max(cleanedData, (d) => {
+        //     return d3.timeDay.offset(d.date, 0);
+        //   })
+        // ]);
+        //this.x.domain(cleanedData.map((x) => x.date));
+
+        //this.x = d3.scaleTime();
+        this.x = d3.scaleBand();
+        this.x.domain(cleanedData.map((x) => x.date));
+
+        // console.log(cleanedData[0].date + ' ' + cleanedData[cleanedData.length - 1].date);
       } else {
         cleanedData = [...sourceData];
         this.x = d3.scaleBand().domain(cleanedData.map((x) => x.date));
@@ -167,10 +192,27 @@ export class BarChartComponent implements OnInit {
     this.x.range([0, width]);
 
     // Draw X Axis
+    const firstData = cleanedData[0].date;
+    let xFunc = d3.axisBottom(this.x);
+
+    if (firstData instanceof Date) {
+      const r = cleanedData.length > 25 ? 5 : 3;
+      xFunc = d3
+        .axisBottom(this.x)
+        .tickFormat((x) => {
+          return formatDate(x);
+        })
+        .tickValues(
+          this.x.domain().filter(function (d, i) {
+            return !(i % r);
+          })
+        );
+    }
+
     this.g
       .select('.axis--x')
       .attr('transform', 'translate(0,' + height + ')')
-      .call(d3.axisBottom(this.x));
+      .call(xFunc);
 
     this.g.select('.axis--y').call(
       d3
@@ -215,7 +257,8 @@ export class BarChartComponent implements OnInit {
       .on('mouseover', (d) => {
         let label = d.date;
         if (d.date instanceof Date) {
-          label = `Date: ${formatDate(d.date)}`;
+          //label = `Date: ${formatDate(d.date)}`;
+          label = `Date: ${d.date}`;
         }
         this.tooltip.style('opacity', 0.9);
         this.tooltip.html(`${label}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
