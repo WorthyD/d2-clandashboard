@@ -192,21 +192,27 @@ export class BarChartComponent implements OnInit {
     this.x.range([0, width]);
 
     // Draw X Axis
+    const firstData = cleanedData[0].date;
+    let xFunc = d3.axisBottom(this.x);
+
+    if (firstData instanceof Date) {
+      const r = cleanedData.length > 25 ? 5 : 3;
+      xFunc = d3
+        .axisBottom(this.x)
+        .tickFormat((x) => {
+          return formatDate(x);
+        })
+        .tickValues(
+          this.x.domain().filter(function (d, i) {
+            return !(i % r);
+          })
+        );
+    }
+
     this.g
       .select('.axis--x')
       .attr('transform', 'translate(0,' + height + ')')
-      .call(
-        d3
-          .axisBottom(this.x)
-          .tickFormat((x) => {
-            return formatDate(x);
-          })
-          .tickValues(
-            this.x.domain().filter(function (d, i) {
-              return !(i % 5);
-            })
-          )
-      );
+      .call(xFunc);
 
     this.g.select('.axis--y').call(
       d3
