@@ -3,15 +3,11 @@
 module.exports = {
   stories: ['../src/**/*.stories.[tj]s', '../projects/**/*.stories.[tj]s'],
   addons: [
-    '@storybook/addon-knobs',
-    {
-      name: '@storybook/addon-essentials',
-      options: {}
-    }
-  ]
-  //decorators: [withTheme]
+    '@storybook/addon-links',
+    '@storybook/addon-controls',
+    '@storybook/preset-scss'
+  ],
+  core: {
+    builder: 'webpack4'
+  }
 };
-
-// import { withTheme } from './theme-decorator';
-
-// addDecorator(withTheme);
