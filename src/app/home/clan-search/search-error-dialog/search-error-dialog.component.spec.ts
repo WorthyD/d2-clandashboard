@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SearchErrorDialogComponent } from './search-error-dialog.component';
 
@@ -6,7 +6,7 @@ describe('SearchErrorDialogComponent', () => {
   let component: SearchErrorDialogComponent;
   let fixture: ComponentFixture<SearchErrorDialogComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SearchErrorDialogComponent ]
     })

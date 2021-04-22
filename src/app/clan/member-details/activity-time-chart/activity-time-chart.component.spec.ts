@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ActivityTimeChartComponent } from './activity-time-chart.component';
 
@@ -6,7 +6,7 @@ describe('ActivityTimeChartComponent', () => {
   let component: ActivityTimeChartComponent;
   let fixture: ComponentFixture<ActivityTimeChartComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ActivityTimeChartComponent ]
     })

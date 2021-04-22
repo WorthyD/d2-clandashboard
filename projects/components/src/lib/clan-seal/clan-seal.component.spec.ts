@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ClanSealComponent } from './clan-seal.component';
 import { CompletedPipe, CompletionPipe } from './completion.pipe';
@@ -7,7 +7,7 @@ describe('ClanSealComponent', () => {
   let component: ClanSealComponent;
   let fixture: ComponentFixture<ClanSealComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ClanSealComponent, CompletedPipe, CompletionPipe]
     }).compileComponents();

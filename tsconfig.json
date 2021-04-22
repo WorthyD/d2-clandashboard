@@ -1,37 +1,56 @@
-/*
-  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
-  It is not intended to be used to perform a compilation.
-
-  To learn more about this file see: https://angular.io/config/solution-tsconfig.
-*/
 {
-  "files": [],
-  "references": [{
-      "path": "./src/tsconfig.app.json"
-    },
-    {
-      "path": "./src/tsconfig.spec.json"
-    },
-    {
-      "path": "./e2e/tsconfig.e2e.json"
-    },
-    {
-      "path": "./projects/bungie-models/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/bungie-models/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/components/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/components/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/data/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/data/tsconfig.spec.json"
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "downlevelIteration": true,
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "bungie-api": [
+        "projects/bungie-api/src/public_api"
+      ],
+      "bungie-models": [
+        "projects/bungie-models/src/public-api"
+      ],
+      "bungie-models/definitions": [
+        "projects/bungie-models/src/models/definitions/public-api"
+      ],
+
+      "@destiny/components": [
+        "projects/components/src/public-api"
+      ],
+      "@destiny/components/*": [
+        "projects/components/src/*/public-api"
+      ],
+      "@destiny/data": [
+        "projects/data/src/public-api"
+      ],
+      "@destiny/models/definitions": [
+        "projects/bungie-models/src/lib/models/Definitions/public-api"
+      ],
+      "@destiny/models": [
+        "projects/bungie-models/src/public-api"
+      ],
+      "@destiny/models/enums": [
+        "projects/bungie-models/src/lib/enums/public-api"
+      ],
+      "@destiny/models/constants": [
+        "projects/bungie-models/src/lib/constants/public-api"
+      ]
     }
-  ]
+  }
 }
