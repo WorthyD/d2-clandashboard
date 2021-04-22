@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ClanRosterActivityTableComponent } from './clan-roster-activity-table.component';
 
@@ -6,7 +6,7 @@ describe('ClanRosterActivityTableComponent', () => {
   let component: ClanRosterActivityTableComponent;
   let fixture: ComponentFixture<ClanRosterActivityTableComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ClanRosterActivityTableComponent ]
     })

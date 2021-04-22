@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MemberCalloutComponent } from './member-callout.component';
 
@@ -6,7 +6,7 @@ describe('MemberCalloutComponent', () => {
   let component: MemberCalloutComponent;
   let fixture: ComponentFixture<MemberCalloutComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MemberCalloutComponent ]
     })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MemberSearchComponent } from './member-search.component';
 
@@ -6,7 +6,7 @@ describe('MemberSearchComponent', () => {
   let component: MemberSearchComponent;
   let fixture: ComponentFixture<MemberSearchComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MemberSearchComponent ]
     })

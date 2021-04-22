@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { HighestpowerMembersComponent } from './highestpower-members.component';
 
@@ -6,7 +6,7 @@ describe('HighestpowerMembersComponent', () => {
   let component: HighestpowerMembersComponent;
   let fixture: ComponentFixture<HighestpowerMembersComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ HighestpowerMembersComponent ]
     })

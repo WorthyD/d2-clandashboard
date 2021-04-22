@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ClanRosterListViewComponent } from './clan-roster-list-view.component';
 
@@ -6,7 +6,7 @@ describe('ClanRosterListViewComponent', () => {
   let component: ClanRosterListViewComponent;
   let fixture: ComponentFixture<ClanRosterListViewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ClanRosterListViewComponent ]
     })

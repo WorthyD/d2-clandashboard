@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ClanWeeklyProgressComponent } from './clan-weekly-progress.component';
 
@@ -6,7 +6,7 @@ describe('ClanWeeklyProgressComponent', () => {
   let component: ClanWeeklyProgressComponent;
   let fixture: ComponentFixture<ClanWeeklyProgressComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ClanWeeklyProgressComponent ]
     })
