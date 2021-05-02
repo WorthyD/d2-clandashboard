@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.57.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.56.0...v0.57.0) (2021-05-02)
+
+
+### Features
+
+* Adding progress bar,but calling it notifications ([bef1b7b](https://github.com/WorthyD/d2-clandashboard/commit/bef1b7b44e9ce6b56544b124d20f84a4c2926db9))
+
 ## [0.56.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.55.0...v0.56.0) (2021-04-05)
 
 ## [0.55.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.54.0...v0.55.0) (2021-04-05)
