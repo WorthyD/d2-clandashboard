@@ -1,10 +1,13 @@
-.card {
-  padding: 0;
-  padding-bottom: 1rem;
-  &__title {
-    padding: 1rem;
+.notification {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .progress-bar {
+    flex: 1;
+    padding: 0.5rem;
   }
-}
-.notificaiton{
-
+  .info {
+    flex: 0;
+    padding: 0.5rem;
+  }
 }
