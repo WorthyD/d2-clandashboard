@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+interface Notification {
+  title: string;
+  progress: number;
+}
 
 @Component({
   selector: 'lib-notifications',
@@ -6,10 +11,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  @Input() notifications: Notification[];
 
   ngOnInit(): void {
   }
-
 }

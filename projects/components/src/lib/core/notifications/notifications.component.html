@@ -1,1 +1,13 @@
-<p>notifications works!</p>
+<mat-card class="card">
+  <mat-card-title class="card__title">
+    Simple card
+  </mat-card-title>
+
+  <div *ngFor="let notification of  notifications" class="notification">
+    <h6></h6>
+    {{notification.title}}
+    <mat-progress-bar mode="determinate" [value]="notification.progress"></mat-progress-bar>
+  </div>
+
+
+</mat-card>
