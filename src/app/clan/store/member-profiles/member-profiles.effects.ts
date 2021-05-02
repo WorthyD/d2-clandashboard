@@ -38,7 +38,7 @@ import {
   combineAll,
   bufferTime
 } from 'rxjs/operators';
-import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
+import { addNotification, updateNotification, removeNotification } from '../notifications/notifications.actions';
 
 @Injectable()
 export class MemberProfileEffects {
@@ -57,6 +57,10 @@ export class MemberProfileEffects {
       ofType(memberProfileActions.initLoadMemberProfiles),
       switchMap(({ clanId, clanMembers }) => {
         // clanMembers = clanMembers.slice(0, 10);
+        let progress = 0;
+        this.store.dispatch(
+          addNotification({ notification: { id: 'memberProfile', title: 'Updating Profiles', data: { progress } } })
+        );
 
         return this.profileService.getSerializedProfiles(clanId.toString(), clanMembers).pipe(
           // tap((x) => {
@@ -68,11 +72,20 @@ export class MemberProfileEffects {
            *   there are no buffered companies.
            */
           mergeMap((members) => {
+            progress += members.length;
+            this.store.dispatch(
+              updateNotification({
+                notification: { id: 'memberProfile', title: 'Updating Profiles', data: { progress } }
+              })
+            );
             this.store.dispatch(memberProfileActions.loadMemberProfiles({ memberProfiles: members }));
             return members;
           }),
           toArray(),
           map((x) => {
+            this.store.dispatch(
+              removeNotification({ notification: { id: 'memberProfile', title: 'Updating Profiles', data: 'done' } })
+            );
             return memberProfileActions.loadMemberProfileSuccess();
           })
         );

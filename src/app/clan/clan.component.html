@@ -1,4 +1,5 @@
 <div class="main-container">
+
   <lib-navbar [clanDetails]="clanDetails$ | async" [versionNumber]="versionNumber"
     (selectThemeOutput)="changeTheme($event)" (openLink)="openLink($event)" (openAbout)="openAbout()"
     (resetDatabase)="resetDatabase()" (toggleMenu)="sidenav.open()"></lib-navbar>
@@ -6,7 +7,8 @@
     <mat-sidenav [appResponsiveSidebar]="960" #sidenav mode="side" opened>
       <mat-nav-list class="clan-nav">
         <div class="section-nav">
-          <a mat-list-item routerLink="./" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"> Details </a>
+          <a mat-list-item routerLink="./" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+            Details </a>
           <a mat-list-item routerLink="roster" routerLinkActive="active-link"> Roster </a>
           <a mat-list-item routerLink="member-activity" routerLinkActive="active-link"> Member Activity </a>
           <a mat-list-item routerLink="crucible" routerLinkActive="active-link"> Crucible </a>
@@ -18,10 +20,12 @@
         </div>
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content >
-      <div [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.data && o.activatedRoute.routeConfig.data.title" >
-      <router-outlet #o="outlet"></router-outlet>
-</div>
+    <mat-sidenav-content>
+      <lib-notifications [notifications]="notifications$ | async"></lib-notifications>
+      <div
+        [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.data && o.activatedRoute.routeConfig.data.title">
+        <router-outlet #o="outlet"></router-outlet>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

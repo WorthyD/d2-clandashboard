@@ -25,7 +25,8 @@ import {
 } from './eventGrouper';
 import {
   getAllMemberActivities,
-  getClanMemberActivitiesLoaded
+  getClanMemberActivitiesLoaded,
+  getClanMemberActivitiesUpdating
 } from '../store/member-activities/member-activities.selectors';
 @Injectable()
 export class ClanDetailService {
@@ -42,6 +43,7 @@ export class ClanDetailService {
 
   clanWeekRewardsLoading$ = this.store.pipe(select(getClanRewardsLoading));
   clanDetailsLoading$ = this.store.pipe(select(clanDetailSelectors.getClanDetailLoading));
+  activitiesUpdating$ = this.store.pipe(select(getClanMemberActivitiesUpdating));
 
   allClanMemberProfiles$ = combineLatest(this.clanMembers$, this.clanMemberProfiles$, (members, profiles) => {
     const allUsers: ClanMemberListItem[] = [];

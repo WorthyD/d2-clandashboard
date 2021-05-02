@@ -16,6 +16,7 @@ import * as memberProfileActions from './store/member-profiles/member-profiles.a
 
 import * as routerStore from '../root-store/router/router.selectors';
 import { actionSettingsChangeClan, actionSettingsChangeTheme } from '../root-store/settings/settings.actions';
+import { getAllNotifications } from './store/notifications/notifications.selectors';
 
 // import { Clan } from 'bungie-parse';
 import { Store, select } from '@ngrx/store';
@@ -51,6 +52,7 @@ export class ClanComponent implements OnInit, OnDestroy {
   clanId = this.activatedRoute.params.pipe(map((x) => x.id, distinctUntilChanged()));
 
   clanDetails$: Observable<ClanDetails> = this.store.pipe(select(clanDetailSelectors.getClanDetail));
+  notifications$ = this.store.pipe(select(getAllNotifications));
   private destroyed = new Subject();
 
   ngOnInit() {}

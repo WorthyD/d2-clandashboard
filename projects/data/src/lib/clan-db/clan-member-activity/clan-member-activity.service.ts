@@ -37,21 +37,19 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
       map((x) => {
         const y = this.groupActivitiesToMembers2(memberProfiles, x);
 
-
         return y;
       })
     );
   }
 
-
-
   // TODO: Add progress indicator?
-  updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[]) {
+  updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[], progress?: (done) => any) {
     const memberProfilesObs = from(memberProfiles);
     const cacheDataObs = from(this.getAllDataFromCache(clanId.toString()));
 
     return cacheDataObs.pipe(
       switchMap((cachedData) => {
+        let complete = 0;
         return memberProfilesObs.pipe(
           mergeMap((memberProfile) => {
             return from(memberProfile.profile.data.characterIds).pipe(
@@ -70,13 +68,16 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
               })
             );
           }, 3),
-          // tap((x) => {
-          // }),
+          tap((x) => {
+            complete++;
+            if (progress) {
+              progress(complete);
+            }
+          }),
           toArray()
         );
       })
     );
-
   }
 
   private groupActivitiesToMembers(memberProfiles: MemberProfile[], allActivities: DBObject[]): MemberActivityStats[] {
