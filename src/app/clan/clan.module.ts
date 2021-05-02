@@ -18,6 +18,7 @@ import { ClanDbModule } from '@destiny/data';
 import { AboutModule } from '../about/about.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DirectivesModule } from '../shared/directives/directives.module';
+import { NotificationsModule } from '@destiny/components';
 
 @NgModule({
   declarations: [ClanComponent],
@@ -33,6 +34,7 @@ import { DirectivesModule } from '../shared/directives/directives.module';
     MatDialogModule,
     AboutModule,
     DirectivesModule,
+    NotificationsModule,
     // ClanRosterModule,
     //         BungieParseModule,
     StoreModule.forFeature('clan', clanState.reducers),

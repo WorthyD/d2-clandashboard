@@ -37,6 +37,7 @@ import { Observable } from 'rxjs';
 import { loadMemberProfileSuccess } from '../member-profiles/member-profiles.actions';
 import { getAllMembers, getMemberProfileEntities } from '../member-profiles/member-profiles.selectors';
 import { nowPlusMinutes } from 'projects/data/src/lib/utility/date-utils';
+import { addNotification, removeNotification, updateNotification } from '../notifications/notifications.actions';
 
 @Injectable()
 export class MemberActivityEffects {
@@ -86,9 +87,31 @@ export class MemberActivityEffects {
       ofType(memberActivityActions.refreshMemberActivities),
       withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
       switchMap(([action, clanId]) => {
-        return this.memberActivityService.updateAllActivityCache(clanId, action.member).pipe(
+        this.store.dispatch(
+          addNotification({
+            notification: { id: 'memberActivity', title: 'Updating Member Activities', data: { progress: 0 } }
+          })
+        );
+        const progress = (progressCount) => {
+          this.store.dispatch(
+            updateNotification({
+              notification: {
+                id: 'memberActivity',
+                title: 'Updating Member Activities',
+                data: { progress: progressCount }
+              }
+            })
+          );
+        };
+
+        return this.memberActivityService.updateAllActivityCache(clanId, action.member, progress).pipe(
           switchMap(() => {
             window.localStorage.setItem('lastActivityUpdate-' + clanId, new Date().toString());
+            this.store.dispatch(
+              removeNotification({
+                notification: { id: 'memberActivity', title: 'Updating Member Activities', data: { progress: 100 } }
+              })
+            );
             return this.memberActivityService.getAllActivitiesFromCache2(clanId, action.member);
           })
         );

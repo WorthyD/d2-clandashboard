@@ -58,7 +58,9 @@ export class MemberProfileEffects {
       switchMap(({ clanId, clanMembers }) => {
         // clanMembers = clanMembers.slice(0, 10);
         let progress = 0;
-        this.store.dispatch(addNotification({ notification: { id: 'memberProfile', data: { progress } } }));
+        this.store.dispatch(
+          addNotification({ notification: { id: 'memberProfile', title: 'Updating Profiles', data: { progress } } })
+        );
 
         return this.profileService.getSerializedProfiles(clanId.toString(), clanMembers).pipe(
           // tap((x) => {
@@ -71,13 +73,19 @@ export class MemberProfileEffects {
            */
           mergeMap((members) => {
             progress += members.length;
-            this.store.dispatch(updateNotification({ notification: { id: 'memberProfile', data: { progress } } }));
+            this.store.dispatch(
+              updateNotification({
+                notification: { id: 'memberProfile', title: 'Updating Profiles', data: { progress } }
+              })
+            );
             this.store.dispatch(memberProfileActions.loadMemberProfiles({ memberProfiles: members }));
             return members;
           }),
           toArray(),
           map((x) => {
-            this.store.dispatch(removeNotification({ notification: { id: 'memberProfile', data: 'done' } }));
+            this.store.dispatch(
+              removeNotification({ notification: { id: 'memberProfile', title: 'Updating Profiles', data: 'done' } })
+            );
             return memberProfileActions.loadMemberProfileSuccess();
           })
         );

@@ -70,7 +70,9 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
           }, 3),
           tap((x) => {
             complete++;
-            progress(complete);
+            if (progress) {
+              progress(complete);
+            }
           }),
           toArray()
         );

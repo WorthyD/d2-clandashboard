@@ -30,3 +30,5 @@ export * from './lib/activity-time-chart/activity-time-chart.module';
 export * from './lib/clan-active-population/clan-active-population.module';
 export * from './lib/member-callout/member-callout.module';
 export * from './lib/member-callout/member-callout.component';
+export * from './lib/core/notifications/notifications.module';
+export * from './lib/core/notifications/notifications.component';

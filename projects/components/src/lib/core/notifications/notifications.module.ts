@@ -6,6 +6,7 @@ import { MaterialModule } from '../../shared/modules/material.module';
 
 @NgModule({
   declarations: [NotificationsComponent],
+  exports: [NotificationsComponent],
   imports: [CommonModule, MaterialModule]
 })
 export class NotificationsModule {}
