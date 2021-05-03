@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [HomeGuard], data: { title: 'd2.clan.home' } },
-  { path: 'player', loadChildren: () => import('./player/player.module').then((m) => m.PlayerModule) }
+  { path: 'player', loadChildren: () => import('./player/player.module').then((m) => m.PlayerModule) },
   { path: 'clan', loadChildren: () => import('./clan/clan.module').then((m) => m.ClanModule) }
 ];
 

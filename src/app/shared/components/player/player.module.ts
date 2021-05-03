@@ -4,16 +4,11 @@ import { PlayerDetailsComponent } from './player-details/player-details.componen
 import { PlayerActivityComponent } from './player-activity/player-activity.component';
 import { PlayerOverviewComponent } from './player-overview/player-overview.component';
 
-
+const components = [PlayerDetailsComponent, PlayerActivityComponent, PlayerOverviewComponent];
 
 @NgModule({
-  declarations: [
-    PlayerDetailsComponent,
-    PlayerActivityComponent,
-    PlayerOverviewComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [...components],
+  exports: [...components],
+  imports: [CommonModule]
 })
-export class PlayerModule { }
+export class PlayerModule {}
