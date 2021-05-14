@@ -27,8 +27,9 @@
     <!-- https://raid.report/pc/4611686018467238913 -->
   </ng-container>
 </mat-toolbar>
-<div>
+<div >
 </div>
-<div [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.data && o.activatedRoute.routeConfig.data.title">
-  <router-outlet #o="outlet"></router-outlet>
-</div>
+<ng-content></ng-content>
+
+
+<!-- https://raid.report/pc/4611686018467238913 -->

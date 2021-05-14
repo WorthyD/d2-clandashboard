@@ -1,5 +1,5 @@
 export const ActivityHashes = {
-  infamyRank: 2772425241,
-  valorRank: 2626549951,
-  gloryRank: 2000925172
+  infamyRank: 3008065600,
+  valorRank: 2083746873,
+  gloryRank: 1647151960
 };
