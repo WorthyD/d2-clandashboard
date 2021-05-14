@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class PlayerService {
+import { MemberProfile } from 'bungie-models';
+import { Observable } from 'rxjs';
 
-  constructor() { }
+@Injectable()
+export class PlayerService {
+  constructor() {}
+
+  getPlayerProfile(platformId: string, profileId: string): Observable<MemberProfile> {
+    throw new Error('not implemented');
+  }
 }

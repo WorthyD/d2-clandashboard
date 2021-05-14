@@ -6,5 +6,5 @@ export const season13: Season = {
   seasonRewardProgressionHash: 4030656982,
   seasonPrestigeProgressionHash: 2068785426,
   startDate: new Date('2021-02-09T17:00:00Z'),
-  endDate: new Date('2022-02-09T17:00:00Z')
+  endDate: new Date('2021-05-11T17:00:00Z')
 };
