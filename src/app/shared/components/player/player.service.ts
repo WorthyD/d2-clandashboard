@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
 export class PlayerService {
   constructor() {}
 
+  getMemberId(){
+    throw new Error('not implemented');
+  }
   getPlayerProfile(platformId: string, profileId: string): Observable<MemberProfile> {
     throw new Error('not implemented');
   }

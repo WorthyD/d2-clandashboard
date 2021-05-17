@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerService } from '../player.service';
 
 @Component({
   selector: 'app-player-overview',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private playerService: PlayerService) { }
+
+  memberId = this.playerService.getMemberId();
+
 
   ngOnInit(): void {
   }
