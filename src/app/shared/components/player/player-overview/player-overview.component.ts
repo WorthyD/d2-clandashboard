@@ -10,7 +10,7 @@ export class PlayerOverviewComponent implements OnInit {
 
   constructor(private playerService: PlayerService) { }
 
-  memberId = this.playerService.getMemberId();
+  memberId = this.playerService.memberId;
 
 
   ngOnInit(): void {

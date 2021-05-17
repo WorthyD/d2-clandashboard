@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Destiny2Service } from 'bungie-api-angular';
 import { MemberProfile } from 'bungie-models';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 import { PlayerService as BasePlayerService } from '../shared/components/player/player.service';
 
@@ -13,8 +13,10 @@ export class PlayerService extends BasePlayerService {
     super();
   }
 
+  memberId: Subject<string> = new Subject();
+
   getMemberId() {
-     console.log(this.activatedRoute);
+    console.log(this.activatedRoute);
     // return this.activatedRoute.parent.params.pipe(
     //   map((x) => {
     //     console.log(x);
