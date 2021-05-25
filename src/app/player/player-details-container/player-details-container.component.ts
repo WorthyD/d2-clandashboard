@@ -19,11 +19,12 @@ export class PlayerDetailsContainerComponent implements OnInit {
         }, distinctUntilChanged())
       )
       .subscribe((x) => {
-        this.memberId = x;
-        this.playerService.memberId.next(x.memberId);
+        //this.memberId = x;
+        //this.playerService.memberIdSource.next(x.memberId);
+        this.playerService.setMemberId(x);
       });
   }
-  memberId;
+  memberId = this.playerService.memberId;
 
   // memberId = this.activatedRoute.params.pipe(
   //   map((x) => {
