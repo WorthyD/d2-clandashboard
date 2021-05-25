@@ -10,14 +10,27 @@ import { PlayerService } from '../../shared/components/player/player.service';
   styleUrls: ['./player-details-container.component.scss']
 })
 export class PlayerDetailsContainerComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute, private playerService: PlayerService) {}
+  constructor(private activatedRoute: ActivatedRoute, private playerService: PlayerService) {
+    this.activatedRoute.params
+      .pipe(
+        map((x) => {
+          //this.playerService.memberId.next(x.memberI);
+          return x.memberId;
+        }, distinctUntilChanged())
+      )
+      .subscribe((x) => {
+        this.memberId = x;
+        this.playerService.memberId.next(x.memberId);
+      });
+  }
+  memberId;
 
-  memberId = this.activatedRoute.params.pipe(
-    map((x) => {
-      this.playerService.memberId.next(x.memberI);
-      return x.memberId;
-    }, distinctUntilChanged())
-  );
+  // memberId = this.activatedRoute.params.pipe(
+  //   map((x) => {
+  //     //this.playerService.memberId.next(x.memberI);
+  //     return x.memberId;
+  //   }, distinctUntilChanged())
+  // );
 
   ngOnInit(): void {}
 }

@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs';
 export class PlayerService {
   constructor() {}
   memberId: Subject<string>;
+//  memberId: Observable<string>;
 
   getMemberId() {
     throw new Error('not implemented');

@@ -13,6 +13,12 @@ export class PlayerService extends BasePlayerService {
     super();
   }
 
+  // memberId = this.activatedRoute.params.pipe(
+  //   map((x) => {
+  //     return x.memberId;
+  //   }, distinctUntilChanged())
+  // );
+
   memberId: Subject<string> = new Subject();
 
   getMemberId() {
