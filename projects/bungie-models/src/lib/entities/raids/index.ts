@@ -22,6 +22,8 @@ export * from './garden-of-salvation';
 import { DeepStoneCryptInfo, DeepStoneCrypt, DeepStoneCryptGG } from './deep-stone-crypt';
 export * from './deep-stone-crypt';
 
+import { VaultOfGlass, VaultOfGlassGG, VaultOfGlassInfo } from './vault-of-glass';
+
 export const AllRaids = [
   Leviathan,
   //LeviathanGuidedGames,
@@ -41,10 +43,13 @@ export const AllRaids = [
   GardenOfSalvation,
   GardenOfSalvationGG,
   DeepStoneCrypt,
-  DeepStoneCryptGG
+  DeepStoneCryptGG,
+  VaultOfGlass,
+  VaultOfGlassGG
 ];
 
 export const AllRaidInfos = [
+  VaultOfGlassInfo,
   DeepStoneCryptInfo,
   GardenOfSalvationInfo,
   LastWishInfo,
