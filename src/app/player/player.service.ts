@@ -14,14 +14,8 @@ export class PlayerService extends BasePlayerService {
     super();
   }
 
-  // memberId = this.activatedRoute.params.pipe(
-  //   map((x) => {
-  //     return x.memberId;
-  //   }, distinctUntilChanged())
-  // );
-
   //memberId: Subject<string> = new Subject();
-  memberIdSource: BehaviorSubject<string> = new BehaviorSubject('test');
+  memberIdSource: BehaviorSubject<string> = new BehaviorSubject('');
   memberId = this.memberIdSource.asObservable();
 
   memberProfile = this.memberId.pipe(
@@ -56,10 +50,6 @@ export class PlayerService extends BasePlayerService {
       });
     })
   );
-
-
-
-
 
   setMemberId(memberId) {
     this.memberIdSource.next(memberId);

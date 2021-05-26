@@ -7,6 +7,9 @@ import { PlayerRoutingModule } from './player-routing.module';
 import { PlayerService } from './player.service';
 import { PlayerService as BasePlayerService } from '../shared/components/player/player.service';
 
+import { PlayerActivityService } from './player-activity.service';
+import { PlayerActivityService as BasePlayerActivityService } from '../shared/components/player/player-activity.service';
+
 @NgModule({
   declarations: [PlayerDetailsContainerComponent],
   imports: [CommonModule, PlayerRoutingModule, PlayerComponentsModule],
@@ -14,6 +17,10 @@ import { PlayerService as BasePlayerService } from '../shared/components/player/
     {
       provide: BasePlayerService,
       useClass: PlayerService
+    },
+    {
+      provide: BasePlayerActivityService,
+      useClass: PlayerActivityService
     }
   ]
 })
