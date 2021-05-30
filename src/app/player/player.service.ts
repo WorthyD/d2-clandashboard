@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Destiny2Service } from 'bungie-api-angular';
-import { MemberProfile } from 'bungie-models';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { distinctUntilChanged, map, shareReplay, switchMap } from 'rxjs/operators';
+import { ActivityStats, MemberProfile } from 'bungie-models';
+import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
+import { distinctUntilChanged, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import { PlayerService as BasePlayerService } from '../shared/components/player/player.service';
 import { latestSeason } from '@destiny/models';
+import { Callout } from '@destiny/components';
+import { getGloryPoints, getInfamyPoints, getInfamyResets, getValorPoints, getValorResets } from '@destiny/data';
+import { DecimalPipe } from '@angular/common';
 
 @Injectable()
 export class PlayerService extends BasePlayerService {
-  private profileComponents = [100, 104, 200, 202];
-  constructor(private d2Service: Destiny2Service, private activatedRoute: ActivatedRoute) {
+  private profileComponents = [100, 104, 200, 202, 900];
+  constructor(
+    private d2Service: Destiny2Service,
+    private activatedRoute: ActivatedRoute,
+    private decimalPipe: DecimalPipe
+  ) {
     super();
   }
 
@@ -48,6 +55,76 @@ export class PlayerService extends BasePlayerService {
       return charIDs?.map((x) => {
         return item.characters.data[x];
       });
+    })
+  );
+
+  selectMemberTriumphs$ = this.memberProfile.pipe(
+    filter((profile) => !!profile),
+    map((memberStats) => {
+      return {
+        triumphScore: memberStats.profileRecords.data.activeScore,
+        lifetimeScore: memberStats.profileRecords.data.lifetimeScore
+      };
+    })
+  );
+
+  selectMemberCrucibleStats$: Observable<ActivityStats> = this.memberProfile.pipe(
+    filter((profile) => !!profile),
+    map((profile) => {
+      return {
+        memberProfile: null,
+        stats: {
+          valorPoints: getValorPoints(profile),
+          valorResets: getValorResets(profile.profileRecords),
+          gloryPoints: getGloryPoints(profile)
+        }
+      };
+    })
+  );
+
+  selectMemberGambitStats$: Observable<ActivityStats> = this.memberProfile.pipe(
+    filter((profile) => !!profile),
+    map((profile) => {
+      return {
+        memberProfile: null,
+        stats: {
+          infamyPoints: getInfamyPoints(profile),
+          infamyResets: getInfamyResets(profile.profileRecords)
+        }
+      };
+    })
+  );
+
+  memberSnapShot$: Observable<Callout[]> = combineLatest([
+    this.selectMemberTriumphs$,
+    this.selectMemberCrucibleStats$,
+    this.selectMemberGambitStats$
+  ]).pipe(
+    map(([triumphs, crucible, gambit]) => {
+      return [
+        {
+          title: 'Triumph Score',
+          value: this.decimalPipe.transform(triumphs.triumphScore),
+          subTitle: 'Lifetime Score',
+          subValue: this.decimalPipe.transform(triumphs.lifetimeScore)
+        },
+        {
+          title: 'Valor Points',
+          value: this.decimalPipe.transform(crucible.stats.valorPoints),
+          subTitle: 'Resets',
+          subValue: crucible.stats.valorResets
+        },
+        {
+          title: 'Glory Points',
+          value: this.decimalPipe.transform(crucible.stats.gloryPoints)
+        },
+        {
+          title: 'Infamy Points',
+          value: this.decimalPipe.transform(gambit.stats.infamyPoints),
+          subTitle: 'Resets',
+          subValue: gambit.stats.infamyResets
+        }
+      ];
     })
   );
 

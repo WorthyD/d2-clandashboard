@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ClanMemberSeasonPassProgression } from '@destiny/components';
+import { Callout, ClanMemberSeasonPassProgression } from '@destiny/components';
 import { DestinyEntitiesCharactersDestinyCharacterComponent } from 'bungie-api-angular';
 
 import { MemberProfile } from 'bungie-models';
@@ -14,6 +14,7 @@ export class PlayerService {
   memberProfile: Observable<MemberProfile>;
   seasonPass$: Observable<ClanMemberSeasonPassProgression>;
   characters$: Observable<DestinyEntitiesCharactersDestinyCharacterComponent[]>;
+  memberSnapShot$: Observable<Callout[]>;
 
   getMemberId() {
     throw new Error('not implemented');
