@@ -16,9 +16,9 @@ export class PlayerService {
   characters$: Observable<DestinyEntitiesCharactersDestinyCharacterComponent[]>;
   memberSnapShot$: Observable<Callout[]>;
 
-  getMemberId() {
-    throw new Error('not implemented');
-  }
+  // getMemberId() {
+  //   throw new Error('not implemented');
+  // }
   getPlayerProfile(platformId: string, profileId: string): Observable<MemberProfile> {
     throw new Error('not implemented');
   }

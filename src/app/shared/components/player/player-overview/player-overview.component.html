@@ -1,10 +1,5 @@
-<p>player-overview works!</p>
-
-{{memberId | async}}
-f
 <div class="container">
   <div *ngIf="memberProfile$ | async as memberProfile" class="row my-3">
-    profile?
     <div class="col">
       <lib-member-overview [memberOverview]="memberProfile"></lib-member-overview>
     </div>
@@ -22,17 +17,19 @@ f
     </div>
   </div>
 
-  <!--
   <div class="row my-3">
     <div class="col">
-      <lib-member-callout [title]="'Player Snapshot'" [callouts]="memberOverviewService.memberSnapShot$ | async">
+      <lib-member-callout [title]="'Player Snapshot'" [callouts]="memberSnapShot$ | async">
       </lib-member-callout>
     </div>
   </div>
   <div class="row my-3">
     <div class="col">
-      <app-activity-time-chart></app-activity-time-chart>
+      <lib-activity-time-chart [loading]="activityIsLoading" [events]="playerActivities | async">
+        <!-- (selectionChange)="service.changeDuration($event)"> -->
+      </lib-activity-time-chart>
+
     </div>
-  </div> -->
+  </div>
 
 </div>

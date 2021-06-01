@@ -9,7 +9,9 @@ import {
   PipesModule,
   MemberOverviewModule,
   SeasonPassModule,
-  CharacterCardModule
+  CharacterCardModule,
+  ActivityTimeChartModule,
+  MemberCalloutModule
 } from '@destiny/components';
 
 const components = [PlayerDetailsComponent, PlayerActivityComponent, PlayerOverviewComponent];
@@ -19,7 +21,9 @@ const components = [PlayerDetailsComponent, PlayerActivityComponent, PlayerOverv
   exports: [...components],
   imports: [
     CommonModule,
+    ActivityTimeChartModule,
     MaterialModule,
+    MemberCalloutModule,
     RouterModule,
     PipesModule,
     MemberOverviewModule,

@@ -132,16 +132,16 @@ export class PlayerService extends BasePlayerService {
     this.memberIdSource.next(memberId);
   }
 
-  getMemberId() {
-    console.log(this.activatedRoute);
-    // return this.activatedRoute.parent.params.pipe(
-    //   map((x) => {
-    //     console.log(x);
-    //     return x;
-    //   }, distinctUntilChanged())
-    // );
-    return this.activatedRoute?.params.pipe(map((x) => x.memberId, distinctUntilChanged()));
-  }
+  // getMemberId() {
+  //   console.log(this.activatedRoute);
+  //   // return this.activatedRoute.parent.params.pipe(
+  //   //   map((x) => {
+  //   //     console.log(x);
+  //   //     return x;
+  //   //   }, distinctUntilChanged())
+  //   // );
+  //   return this.activatedRoute?.params.pipe(map((x) => x.memberId, distinctUntilChanged()));
+  // }
 
   getPlayerProfile(platformId: string, profileId: string): Observable<MemberProfile> {
     return this.d2Service

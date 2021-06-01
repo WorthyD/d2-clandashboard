@@ -6,7 +6,7 @@ import { ProfileService } from '../clan-db/profiles/profile.service';
 import { ActivityHashes, RecordHashes } from '@destiny/models';
 import { ProfileMilestonesService } from '../clan-db/profile-milestones/profile-milestones.service';
 import { SingleComponentResponseOfDestinyProfileRecordsComponent } from 'bungie-api-angular';
-import { getGloryPoints, getValorPoints, getValorResets } from '../member-profile/member-stats';
+import { getGloryPoints, getValorPoints, getValorResets } from '../member-profile/member-stats-crucible';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +41,4 @@ export class ClanCrucibleService {
       })
     );
   }
-
-
 }
