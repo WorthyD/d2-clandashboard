@@ -14,6 +14,9 @@ import {
   MemberCalloutModule
 } from '@destiny/components';
 
+import { PlayerService } from './player.service';
+import { PlayerActivityService } from './player-activity.service';
+
 const components = [PlayerDetailsComponent, PlayerActivityComponent, PlayerOverviewComponent];
 
 @NgModule({
@@ -29,6 +32,7 @@ const components = [PlayerDetailsComponent, PlayerActivityComponent, PlayerOverv
     MemberOverviewModule,
     SeasonPassModule,
     CharacterCardModule
-  ]
+  ],
+  providers: [PlayerService, PlayerActivityService]
 })
 export class PlayerModule {}

@@ -13,11 +13,7 @@ import { DecimalPipe } from '@angular/common';
 @Injectable()
 export class PlayerService extends BasePlayerService {
   private profileComponents = [100, 104, 200, 202, 900];
-  constructor(
-    private d2Service: Destiny2Service,
-    private activatedRoute: ActivatedRoute,
-    private decimalPipe: DecimalPipe
-  ) {
+  constructor(private d2Service: Destiny2Service, private decimalPipe: DecimalPipe) {
     super();
   }
 
@@ -26,6 +22,7 @@ export class PlayerService extends BasePlayerService {
   memberId = this.memberIdSource.asObservable();
 
   memberProfile = this.memberId.pipe(
+    filter((x) => !!x),
     switchMap((x) => {
       // tslint:disable-next-line:radix
       const memberType = x.split('-')[0];

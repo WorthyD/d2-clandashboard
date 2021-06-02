@@ -10,5 +10,5 @@ import { PlayerService } from './player.service';
 export class PlayerActivityService {
   playerActivitiesLoading: boolean;
   playerActivities$: Observable<any>;
-  constructor(private playerService: PlayerService) {}
+  constructor() {}
 }

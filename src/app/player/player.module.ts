@@ -17,6 +17,8 @@ import { PipesModule } from '@destiny/components';
 
   providers: [
     DecimalPipe,
+    PlayerService,
+    PlayerActivityService,
     {
       provide: BasePlayerService,
       useClass: PlayerService
