@@ -8,7 +8,8 @@ import { PlayerService } from './player.service';
 
 @Injectable()
 export class PlayerActivityService {
-  playerActivitiesLoading: boolean;
+  playerActivitiesLoadingSource: BehaviorSubject<boolean>;
+  playerActivitiesLoading: Observable<boolean>;
   playerActivities$: Observable<any>;
   constructor() {}
 }

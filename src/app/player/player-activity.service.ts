@@ -17,21 +17,17 @@ export class PlayerActivityService extends BasePlayerService {
     super();
   }
 
-  playerActivitiesLoading = false;
+  playerActivitiesLoadingSource: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  playerActivitiesLoading: Observable<boolean> = this.playerActivitiesLoadingSource.asObservable();
 
   playerActivities$ = this.playerServiceBase.memberProfile.pipe(
-    tap((x) => {
-      console.log('x', x);
-    }),
     filter((profile) => !!profile),
     switchMap((profile) => {
-      console.log('activities');
-      this.playerActivitiesLoading = true;
-
+      this.playerActivitiesLoadingSource.next(true);
       return this.playerActivityService.getMemberActivity(profile);
     }),
     map((profileActivities) => {
-      this.playerActivitiesLoading = false;
+      this.playerActivitiesLoadingSource.next(false);
       return profileActivities.activities;
     })
   );
