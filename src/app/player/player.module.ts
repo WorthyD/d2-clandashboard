@@ -21,11 +21,11 @@ import { PipesModule } from '@destiny/components';
     PlayerActivityService,
     {
       provide: BasePlayerService,
-      useClass: PlayerService
+      useExisting: PlayerService
     },
     {
       provide: BasePlayerActivityService,
-      useClass: PlayerActivityService
+      useExisting: PlayerActivityService
     }
   ]
 })

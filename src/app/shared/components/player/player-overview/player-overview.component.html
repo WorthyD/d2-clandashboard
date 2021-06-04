@@ -25,9 +25,13 @@
   </div>
   <div class="row my-3">
     <div class="col">
-      <lib-activity-time-chart [loading]="activityIsLoading" [events]="playerActivities | async">
-        <!-- (selectionChange)="service.changeDuration($event)"> -->
-      </lib-activity-time-chart>
+      {{activityIsLoading}}
+      <textarea name="" id="" cols="30" rows="10">
+{{(playerActivities | async) | json}}
+      </textarea>
+      <!-- <lib-activity-time-chart [loading]="activityIsLoading" [events]="playerActivities | async">
+      </lib-activity-time-chart> -->
+      <!-- (selectionChange)="service.changeDuration($event)"> -->
 
     </div>
   </div>
