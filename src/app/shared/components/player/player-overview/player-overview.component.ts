@@ -18,9 +18,11 @@ export class PlayerOverviewComponent implements OnInit {
 
   //memberId;
   activityIsLoading = this.playerActivityService.playerActivitiesLoading;
-  playerActivities = this.playerActivityService.playerActivities$;
+  playerActivities = this.playerActivityService.playerFilteredEvents$;
 
-
+  changeDuration(duration) {
+    this.playerActivityService.selectedDuration$.next(duration);
+  }
   ngOnInit(): void {
     // this.memberId = this.playerService.memberId.subscribe((x) => {
     //   console.log(x);

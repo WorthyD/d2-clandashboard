@@ -6,12 +6,13 @@
 
 import { Injectable } from '@angular/core';
 import { Destiny2Service } from 'bungie-api-angular';
-import { MemberProfile, MemberActivityStats } from 'bungie-models';
+import { MemberProfile, MemberActivityStats, MemberActivityTime } from 'bungie-models';
 
 import { mergeMap, map, catchError, toArray } from 'rxjs/operators';
 import { Observable, of, from, defer, concat, EMPTY, forkJoin } from 'rxjs';
 import { nowPlusDays } from '../utility/date-utils';
-import {clanMemberActivitySerializer} from '../clan-db/clan-member-activity/clan-member-activity.serializer';
+import { clanMemberActivitySerializer } from '../clan-db/clan-member-activity/clan-member-activity.serializer';
+import { groupActivitiesByDate } from '../utility/group-activity-by-date';
 
 interface ActivityCollection {
   activities: any[];
@@ -87,13 +88,8 @@ export class PlayerActivityService {
     });
   }
 
-
-  getMemberCharacterActivitySerialized(
-    member: MemberProfile,
-    characterId: number,
-    activityMode: number = 0
-  ) {
-    return this.getAllRecentActivity( member, characterId).pipe(
+  getMemberCharacterActivitySerialized(member: MemberProfile, characterId: number, activityMode: number = 0) {
+    return this.getAllRecentActivity(member, characterId).pipe(
       map((activity) => {
         if (activityMode > 0) {
           activity.activities = activity.activities.filter((a) => a.activityDetails.modes.indexOf(activityMode) > -1);
@@ -105,9 +101,7 @@ export class PlayerActivityService {
     );
   }
 
-
-
-  getMemberActivity(member: MemberProfile, activityMode: number = 0): Observable<MemberActivityStats> {
+  getMemberActivity(member: MemberProfile, activityMode: number = 0): Observable<MemberActivityTime> {
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId) => {
         return this.getMemberCharacterActivitySerialized(member, characterId, activityMode);
@@ -119,7 +113,8 @@ export class PlayerActivityService {
       map((x) => {
         return {
           id: `${member.profile.data.userInfo.membershipType}-${member.profile.data.userInfo.membershipId}`,
-          activities: [].concat(...x)
+          activities: groupActivitiesByDate([].concat(...x))
+          // activities: [].concat(...x)
         };
       })
     );
