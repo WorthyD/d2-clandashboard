@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerSearchService } from './player-search.service';
 
 @Component({
   selector: 'app-player-search',
@@ -6,10 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player-search.component.scss']
 })
 export class PlayerSearchComponent implements OnInit {
+  constructor(private playerSearchService: PlayerSearchService) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

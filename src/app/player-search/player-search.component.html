@@ -1,1 +1,19 @@
-<p>player-search works!</p>
+<h2>Player Search</h2>
+<mat-form-field appearance="outline" class="search">
+  <input matInput autofocus #playerInput placeholder="Search by Player Name">
+</mat-form-field>
+
+<lib-loading matSuffix diameter='35' *ngIf="loading | async"></lib-loading>
+<mat-action-list>
+  <button mat-list-item *ngFor="let member of members | async; let idx = index" (click)="memberClick(member)">
+    <div class="member-info">
+
+      <mat-icon [svgIcon]="member.iconName"></mat-icon>
+      <div class="member-name">
+        {{member.member.destinyUserInfo.displayName}}
+      </div>
+      <!-- <ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ $implicit: member }">
+      </ng-container> -->
+    </div>
+  </button>
+</mat-action-list>
