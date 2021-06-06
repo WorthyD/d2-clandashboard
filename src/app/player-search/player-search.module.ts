@@ -5,10 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PlayerSearchService } from './player-search.service';
+import { MaterialModule, SharedModule } from '@destiny/components';
 
 @NgModule({
   declarations: [PlayerSearchComponent],
-  imports: [CommonModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule],
+  imports: [CommonModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MaterialModule, SharedModule],
   providers: [PlayerSearchService]
 })
 export class PlayerSearchModule {}
