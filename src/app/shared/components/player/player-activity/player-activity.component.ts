@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerActivityService } from '../player-activity.service';
 
 @Component({
   selector: 'app-player-activity',
@@ -6,10 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player-activity.component.scss']
 })
 export class PlayerActivityComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor(private playerActivityService: PlayerActivityService) {}
+  activityIsLoading = this.playerActivityService.playerActivitiesLoading;
+  playerActivities = this.playerActivityService.playerActivities$;
+  ngOnInit(): void {}
 }

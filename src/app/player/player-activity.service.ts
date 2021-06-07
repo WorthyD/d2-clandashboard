@@ -40,7 +40,8 @@ export class PlayerActivityService extends BasePlayerService {
     map((profileActivities) => {
       this.playerActivitiesLoadingSource.next(false);
       return profileActivities.activities;
-    })
+    }),
+    shareReplay(1)
   );
 
   playerFilteredEvents$ = combineLatest([

@@ -1,1 +1,16 @@
-<p>player-activity works!</p>
+<div>
+
+  <!-- <div class="activity-filters">
+    <lib-activity-mode-select [definitions]="memberActivityService.activityModeDefinitionOptions"
+      (selectedMode)="memberActivityService.selectEventMode($event)">
+    </lib-activity-mode-select>
+  </div> -->
+
+  <lib-member-activity-heat-map [events]="playerActivities | async" [isLoading]="activityIsLoading | async">
+  </lib-member-activity-heat-map>
+
+  <!-- (dateSelected)="memberActivityService.loadDate($event)" -->
+</div>
+<!-- <div *ngIf="memberActivityService.activityDetails$| async as activityDetails">
+  <lib-activity-grid [activityItems]="activityDetails"></lib-activity-grid>
+</div> -->
