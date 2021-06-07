@@ -26,6 +26,7 @@ import { windowProvider, WindowToken } from 'projects/data/src/lib/injection-tok
 export function initConfig(appConfig: ManifestService) {
   return () => appConfig.loadManifest();
 }
+import { PlayerSearchModule } from './player-search/player-search.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,7 +45,8 @@ export function initConfig(appConfig: ManifestService) {
       disableConsoleLogging: environment.production
     }),
     BrowserAnimationsModule,
-    HomeModule
+    HomeModule,
+    PlayerSearchModule
   ],
   providers: [
     {

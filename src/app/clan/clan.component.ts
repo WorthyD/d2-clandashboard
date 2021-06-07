@@ -30,6 +30,7 @@ import { AboutComponent } from '../about/about.component';
 import { MatDialog } from '@angular/material/dialog';
 import { routeAnimations } from '../core/core.module';
 import { logoutClan } from '../root-store/meta-reducers/logout.reducer';
+import { PlayerSearchComponent } from '../player-search/player-search.component';
 
 @Component({
   selector: 'app-clan',
@@ -67,6 +68,10 @@ export class ClanComponent implements OnInit, OnDestroy {
   }
   openAbout() {
     this.dialog.open(AboutComponent);
+  }
+
+  openPlayerSearch() {
+    this.dialog.open(PlayerSearchComponent);
   }
 
   loadClan(clanId) {
