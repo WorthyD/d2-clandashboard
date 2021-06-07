@@ -14,7 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [PlayerDetailsContainerComponent],
-  imports: [CommonModule, MatSidenavModule, PlayerRoutingModule, PlayerComponentsModule, PipesModule],
+  imports: [CommonModule,DirectivesModule, MatSidenavModule, PlayerRoutingModule, PlayerComponentsModule, PipesModule],
 
   providers: [
     DecimalPipe,
