@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { sampleTime, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, sampleTime, switchMap, tap } from 'rxjs/operators';
 import { PlayerSearchService } from './player-search.service';
 
 @Component({
@@ -21,8 +21,8 @@ export class PlayerSearchComponent implements OnInit {
 
   loading$ = this.playerSearchService.loading;
   members$ = this.autocompleteControl.valueChanges.pipe(
+    debounceTime(500),
     tap(() => this.playerSearchService.loadingSource.next(true)),
-    sampleTime(1000),
     switchMap((query) => {
       return this.playerSearchService.textPlayerSearch(query);
     }),

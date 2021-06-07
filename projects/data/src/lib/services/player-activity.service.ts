@@ -24,8 +24,8 @@ interface ActivityCollection {
 export class PlayerActivityService {
   private ACTIVITY_GET_COUNT = 250;
   public activityTypeId = 0;
-  private startValue = nowPlusDays(-365);
-  private maxRequestCount = 3;
+  private startValue = nowPlusDays(-730);
+  private maxRequestCount = 30;
 
   constructor(private d2ServiceBase: Destiny2Service) {}
 

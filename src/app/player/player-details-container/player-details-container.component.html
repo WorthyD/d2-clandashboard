@@ -1,11 +1,21 @@
-<mat-sidenav-container>
-  <mat-sidenav [appResponsiveSidebar]="960" #sidenav mode="side" opened>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <app-player-details [memberId]="memberId">
-      <div>
-        <router-outlet></router-outlet>
-      </div>
-    </app-player-details>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="main-container">
+  <mat-sidenav-container>
+    <mat-sidenav [appResponsiveSidebar]="960" #sidenav mode="side" opened>
+      <mat-nav-list class="clan-nav">
+        <div class="section-nav">
+          <a mat-list-item (click)="openPlayerSearch()">Player Search</a>
+          <a mat-list-item (click)="goHome()">Home</a>
+        </div>
+      </mat-nav-list>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-player-details [memberId]="memberId">
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </app-player-details>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>

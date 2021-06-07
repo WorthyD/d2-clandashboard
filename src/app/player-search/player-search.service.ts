@@ -12,10 +12,8 @@ export class PlayerSearchService {
 
   textPlayerSearch(currentQuery) {
     return this.destiny2Service.destiny2SearchDestinyPlayer(currentQuery, -1, true).pipe(
-      //tap((x) => this.loadingSource.next(true)),
       map((searchResults) => {
         return searchResults.Response.slice(0, 10).map((profile) => {
-          console.log(profile);
           return {
             iconName: this.getIcon(profile.membershipType),
             name: profile.displayName,
@@ -24,7 +22,6 @@ export class PlayerSearchService {
           };
         });
       })
-      //tap((x) => this.loadingSource.next(false))
     );
   }
   getIcon(type: number) {
