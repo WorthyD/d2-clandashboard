@@ -1,5 +1,11 @@
-<app-player-details [memberId]="memberId">
-  <div>
-    <router-outlet></router-outlet>
-  </div>
-</app-player-details>
+<mat-sidenav-container>
+  <mat-sidenav [appResponsiveSidebar]="960" #sidenav mode="side" opened>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-player-details [memberId]="memberId">
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </app-player-details>
+  </mat-sidenav-content>
+</mat-sidenav-container>

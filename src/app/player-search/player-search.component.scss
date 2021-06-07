@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  min-width: 400px;
+}
+.search {
+  width: 100%;
+}
+
+.member-info {
+  display: flex;
+  &__member-name {
+    margin-left: 0.25rem;
+  }
+}

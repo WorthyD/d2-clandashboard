@@ -10,10 +10,11 @@ import { PlayerService as BasePlayerService } from '../shared/components/player/
 import { PlayerActivityService } from './player-activity.service';
 import { PlayerActivityService as BasePlayerActivityService } from '../shared/components/player/player-activity.service';
 import { PipesModule } from '@destiny/components';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [PlayerDetailsContainerComponent],
-  imports: [CommonModule, PlayerRoutingModule, PlayerComponentsModule, PipesModule],
+  imports: [CommonModule, MatSidenavModule, PlayerRoutingModule, PlayerComponentsModule, PipesModule],
 
   providers: [
     DecimalPipe,

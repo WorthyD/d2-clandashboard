@@ -23,7 +23,7 @@ export class PlayerSearchService {
             membershipId: profile.membershipId
           };
         });
-      }),
+      })
       //tap((x) => this.loadingSource.next(false))
     );
   }

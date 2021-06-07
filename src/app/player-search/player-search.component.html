@@ -3,19 +3,19 @@
   <input matInput autofocus #playerInput [formControl]="autocompleteControl" placeholder="Search by Player Name">
 </mat-form-field>
 
-{{loading$ | async}}
-<lib-loading matSuffix diameter='35' *ngIf="loading$ | async"></lib-loading>
-<mat-action-list>
-  <button mat-list-item *ngFor="let member of members$ | async; let idx = index" (click)="memberClick(member)">
-    <div class="member-info">
+<ng-container *ngIf="{loading: loading$ | async, members: members$ | async} as memberObs">
 
-      <mat-icon [svgIcon]="member.iconName"></mat-icon>
-      <div class="member-name">
-        {{member.name}}
-        <!-- {{member.member.destinyUserInfo.displayName}} -->
-      </div>
-      <!-- <ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ $implicit: member }">
-      </ng-container> -->
-    </div>
-  </button>
-</mat-action-list>
+  <lib-loading matSuffix diameter='35' *ngIf="memberObs.loading; else memberList"></lib-loading>
+  <ng-template #memberList>
+    <mat-action-list>
+      <button mat-list-item *ngFor="let member of memberObs.members; let idx = index" (click)="memberClick(member)">
+        <div class="member-info">
+          <mat-icon [svgIcon]="member.iconName"></mat-icon>
+          <div class="member-info__member-name">
+            {{member.name}}
+          </div>
+        </div>
+      </button>
+    </mat-action-list>
+  </ng-template>
+</ng-container>
