@@ -34,7 +34,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
   week = d3.timeFormat('%U');
   data;
   transitionDuration = 500;
-  startYear = new Date().getFullYear() - 1;
+  startYear = 2017;//new Date().getFullYear() - 1;
   endYear = new Date().getFullYear() + 1;
 
   week_days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

@@ -1,6 +1,3 @@
-<textarea>
-{{events | json}}
-</textarea>
  <ng-container *ngIf="!isLoading; else loading">
    <ng-container *ngIf="events">
      <lib-activity-heatmap [events]="formattedData" (cellSelect)="cellSelect($event)"></lib-activity-heatmap>

@@ -16,7 +16,7 @@ export class DailyClanAggregateTimeService extends BaseClanAggregateTimeService 
     //startData: Date,
     activityMode: any
   ) {
-    //console.log('ma', memberActivities);
+
     const x = this.filterDates(memberActivities, nowPlusDays(-60));
     //console.log('x', x);
 

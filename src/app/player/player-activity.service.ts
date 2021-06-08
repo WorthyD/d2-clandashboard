@@ -44,8 +44,14 @@ export class PlayerActivityService extends BasePlayerService {
     shareReplay(1)
   );
 
+  playerActivitiesGrouped$ = this.playerActivities$.pipe(
+    map((x) => {
+      return this.playerActivityService.groupMemberActivities(x);
+    })
+  );
+
   playerFilteredEvents$ = combineLatest([
-    this.playerActivities$,
+    this.playerActivitiesGrouped$,
     this.playerActivitiesLoading,
     this.selectedDuration$
   ]).pipe(
@@ -54,7 +60,10 @@ export class PlayerActivityService extends BasePlayerService {
     }),
     map(([activities, isLoaded, selectedDuration]) => {
       const service = this.getInjector(selectedDuration);
-      const summedActivities = service.getClanActivityStatsForDuration([{ id: '', activities }], 0);
+      const summedActivities = service.getClanActivityStatsForDuration(
+        [{ id: '', activities: activities.activities }],
+        0
+      );
       return summedActivities;
     })
   );
