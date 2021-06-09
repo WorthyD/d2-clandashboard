@@ -1,10 +1,10 @@
 <div>
 
-  <!-- <div class="activity-filters">
-    <lib-activity-mode-select [definitions]="memberActivityService.activityModeDefinitionOptions"
-      (selectedMode)="memberActivityService.selectEventMode($event)">
+   <div class="activity-filters">
+    <lib-activity-mode-select [definitions]="activityModeDefinitionOptions"
+      (selectedMode)="selectEventMode($event)">
     </lib-activity-mode-select>
-  </div> -->
+  </div>
 
   <lib-member-activity-heat-map [events]="playerActivities | async" [isLoading]="activityIsLoading | async">
   </lib-member-activity-heat-map>

@@ -13,5 +13,6 @@ export class PlayerActivityService {
   playerActivitiesLoading: Observable<boolean>;
   playerActivities$: Observable<any>;
   playerFilteredEvents$: Observable<any>;
+  selectedActivity$: BehaviorSubject<number>
   constructor() {}
 }

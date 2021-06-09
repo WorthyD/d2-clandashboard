@@ -7,8 +7,8 @@ export function clanMemberActivitySerializer(
   return {
     period: activity.period,
     activityDetails: {
-      mode: activity.activityDetails.mode
-      //modes: activity.activityDetails.modes
+      mode: activity.activityDetails.mode,
+      modes: activity.activityDetails.modes
     },
     values: {
       activityDurationSeconds: activity?.values?.activityDurationSeconds,

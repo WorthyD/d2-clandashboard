@@ -30,11 +30,13 @@ export class PlayerActivityService extends BasePlayerService {
   playerActivitiesLoadingSource: BehaviorSubject<boolean> = new BehaviorSubject(true);
   playerActivitiesLoading: Observable<boolean> = this.playerActivitiesLoadingSource.asObservable();
   selectedDuration$ = new BehaviorSubject('daily');
+  selectedActivity$ = new BehaviorSubject(0);
 
-  playerActivities$ = this.playerServiceBase.memberProfile.pipe(
-    filter((profile) => !!profile),
-    switchMap((profile) => {
+  playerActivities$ = combineLatest([this.playerServiceBase.memberProfile, this.selectedActivity$]).pipe(
+    filter(([profile, x]) => !!profile),
+    switchMap(([profile, activityId]) => {
       this.playerActivitiesLoadingSource.next(true);
+      // leverage activity ID elsewhwere
       return this.playerActivityService.getMemberActivity(profile);
     }),
     map((profileActivities) => {
