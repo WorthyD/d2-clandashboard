@@ -20,7 +20,7 @@ import { groupActivitiesByDate } from '../../utility/group-activity-by-date';
 @Injectable()
 export class ClanMemberActivityService extends BaseMemberActivityService {
   constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
-    super(clanDB, StoreId.MemberActivities, d2Service, new Date(2017, 8, 1), 40);
+    super(clanDB, StoreId.MemberActivities, d2Service,  nowPlusDays(-365), 30);
     //super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-30), 6); // TODO: remove this eventually for larger numbers
   }
 

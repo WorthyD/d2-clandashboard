@@ -102,7 +102,7 @@ export class PlayerActivityService {
     );
   }
 
-  getMemberActivity(member: MemberProfile, activityMode: number = 0): Observable<MemberActivityTime> {
+  getMemberActivity(member: MemberProfile, activityMode: number = 0): Observable<ActivityCollection> {
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId) => {
         return this.getMemberCharacterActivitySerialized(member, characterId, activityMode);

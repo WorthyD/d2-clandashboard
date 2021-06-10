@@ -32,9 +32,9 @@ export class PlayerActivityService extends BasePlayerService {
   selectedDuration$ = new BehaviorSubject('daily');
   selectedActivity$ = new BehaviorSubject(0);
 
-  playerActivities$ = combineLatest([this.playerServiceBase.memberProfile, this.selectedActivity$]).pipe(
-    filter(([profile, x]) => !!profile),
-    switchMap(([profile, activityId]) => {
+  playerActivitiesRaw$ = this.playerServiceBase.memberProfile.pipe(
+    filter((profile) => !!profile),
+    switchMap((profile) => {
       this.playerActivitiesLoadingSource.next(true);
       // leverage activity ID elsewhwere
       return this.playerActivityService.getMemberActivity(profile);
@@ -44,6 +44,15 @@ export class PlayerActivityService extends BasePlayerService {
       return profileActivities.activities;
     }),
     shareReplay(1)
+  );
+
+  playerActivities$ = combineLatest([this.playerActivitiesRaw$, this.selectedActivity$]).pipe(
+    map(([activities, activityId]) => {
+      if (activityId > 0) {
+        activities = activities.filter((a) => a.activityDetails.modes.indexOf(activityId) > -1);
+      }
+      return activities;
+    })
   );
 
   playerActivitiesGrouped$ = this.playerActivities$.pipe(
