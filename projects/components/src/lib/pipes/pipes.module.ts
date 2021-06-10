@@ -19,6 +19,8 @@ import { RaidCompletionTotalPipe } from './raid-completion-total/raid-completion
 import { MetricTotalPipe } from './metric-total/metric-total.pipe';
 import { InCollectionsPipe } from './in-collections/in-collections.pipe';
 import { InCollectionsTotalPipe } from './in-collections/in-collections-total.pipe';
+import { D2ChecklistUrlPipe } from './d2-checklist-url/d2-checklist-url.pipe';
+import { TriumphReportPipe } from './triumph-report/triumph-report.pipe';
 
 const pipes = [
   DateAgoPipe,
@@ -40,11 +42,13 @@ const pipes = [
   RaidCompletionTotalPipe,
   MetricTotalPipe,
   InCollectionsPipe,
-  InCollectionsTotalPipe
+  InCollectionsTotalPipe,
+  D2ChecklistUrlPipe,
+  TriumphReportPipe
 ];
 
 @NgModule({
-  declarations: [...pipes],
+  declarations: [...pipes ],
   exports: [...pipes],
   imports: [CommonModule]
 })
