@@ -24,8 +24,9 @@ interface ActivityCollection {
 export class PlayerActivityService {
   private ACTIVITY_GET_COUNT = 250;
   public activityTypeId = 0;
-  private startValue = nowPlusDays(-730);
-  private maxRequestCount = 30;
+  //private startValue = nowPlusDays(-730);
+  private startValue = new Date(2017, 8, 1);
+  private maxRequestCount = 40;
 
   constructor(private d2ServiceBase: Destiny2Service) {}
 
@@ -39,7 +40,7 @@ export class PlayerActivityService {
       pageNumber
     );
   }
-  private getAllRecentActivity(member: MemberProfile, characterId: number): Observable<ActivityCollection> {
+  getAllRecentActivity(member: MemberProfile, characterId: number): Observable<ActivityCollection> {
     const maxConcurrentCount = 4;
     const fetchPage = (page = 0) => {
       return this.getMemberCharacterActivityFromAPI(member, characterId, page).pipe(
@@ -101,7 +102,7 @@ export class PlayerActivityService {
     );
   }
 
-  getMemberActivity(member: MemberProfile, activityMode: number = 0): Observable<MemberActivityTime> {
+  getMemberActivity(member: MemberProfile, activityMode: number = 0): Observable<ActivityCollection> {
     return from(member.profile.data.characterIds).pipe(
       mergeMap((characterId) => {
         return this.getMemberCharacterActivitySerialized(member, characterId, activityMode);
@@ -113,10 +114,17 @@ export class PlayerActivityService {
       map((x) => {
         return {
           id: `${member.profile.data.userInfo.membershipType}-${member.profile.data.userInfo.membershipId}`,
-          activities: groupActivitiesByDate([].concat(...x))
-          // activities: [].concat(...x)
+          // activities: groupActivitiesByDate([].concat(...x))
+          activities: [].concat(...x)
         };
       })
     );
+  }
+
+  groupMemberActivities(activities) {
+    return {
+      id: '',
+      activities: groupActivitiesByDate([].concat(...activities))
+    };
   }
 }

@@ -11,7 +11,10 @@ import {
   SeasonPassModule,
   CharacterCardModule,
   ActivityTimeChartModule,
-  MemberCalloutModule
+  MemberCalloutModule,
+  MemberActivityHeatMapModule,
+  ActivityGridModule,
+  SharedModule
 } from '@destiny/components';
 
 import { PlayerService } from './player.service';
@@ -31,6 +34,9 @@ const components = [PlayerDetailsComponent, PlayerActivityComponent, PlayerOverv
     PipesModule,
     MemberOverviewModule,
     SeasonPassModule,
+    MemberActivityHeatMapModule,
+    ActivityGridModule,
+    SharedModule,
     CharacterCardModule
   ],
   providers: [PlayerService, PlayerActivityService]

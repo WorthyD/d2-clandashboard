@@ -30,21 +30,39 @@ export class PlayerActivityService extends BasePlayerService {
   playerActivitiesLoadingSource: BehaviorSubject<boolean> = new BehaviorSubject(true);
   playerActivitiesLoading: Observable<boolean> = this.playerActivitiesLoadingSource.asObservable();
   selectedDuration$ = new BehaviorSubject('daily');
+  selectedActivity$ = new BehaviorSubject(0);
 
-  playerActivities$ = this.playerServiceBase.memberProfile.pipe(
+  playerActivitiesRaw$ = this.playerServiceBase.memberProfile.pipe(
     filter((profile) => !!profile),
     switchMap((profile) => {
       this.playerActivitiesLoadingSource.next(true);
+      // leverage activity ID elsewhwere
       return this.playerActivityService.getMemberActivity(profile);
     }),
     map((profileActivities) => {
       this.playerActivitiesLoadingSource.next(false);
       return profileActivities.activities;
+    }),
+    shareReplay(1)
+  );
+
+  playerActivities$ = combineLatest([this.playerActivitiesRaw$, this.selectedActivity$]).pipe(
+    map(([activities, activityId]) => {
+      if (activityId > 0) {
+        activities = activities.filter((a) => a.activityDetails.modes.indexOf(activityId) > -1);
+      }
+      return activities;
+    })
+  );
+
+  playerActivitiesGrouped$ = this.playerActivities$.pipe(
+    map((x) => {
+      return this.playerActivityService.groupMemberActivities(x);
     })
   );
 
   playerFilteredEvents$ = combineLatest([
-    this.playerActivities$,
+    this.playerActivitiesGrouped$,
     this.playerActivitiesLoading,
     this.selectedDuration$
   ]).pipe(
@@ -53,7 +71,10 @@ export class PlayerActivityService extends BasePlayerService {
     }),
     map(([activities, isLoaded, selectedDuration]) => {
       const service = this.getInjector(selectedDuration);
-      const summedActivities = service.getClanActivityStatsForDuration([{ id: '', activities }], 0);
+      const summedActivities = service.getClanActivityStatsForDuration(
+        [{ id: '', activities: activities.activities }],
+        0
+      );
       return summedActivities;
     })
   );

@@ -34,7 +34,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
   week = d3.timeFormat('%U');
   data;
   transitionDuration = 500;
-  startYear = new Date().getFullYear() - 1;
+  startYear = 2017; //new Date().getFullYear() - 1;
   endYear = new Date().getFullYear() + 1;
 
   week_days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -75,7 +75,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
 
   private createChart(eventData) {
     this.removeExistingChartFromParent();
-    this.setChartDimentions();
+    this.setChartDimentions(eventData);
     this.addYearLabels();
     this.addDayLabels();
     this.addDayRectangles();
@@ -89,12 +89,24 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
     this.createHeatMapActiveCells();
   }
 
-  private setChartDimentions() {
+  private setChartDimentions(eventData) {
+    console.log(eventData);
+    const dates = eventData.map((x) => new Date(x.date));
+    const mnDate = dates.reduce((a, b) => {
+      return a < b ? a : b;
+    }).getFullYear();
+
+    const mxDate = dates.reduce( (a, b) =>{
+      return a > b ? a : b;
+    }).getFullYear();
+
+    console.log(mnDate);
+    console.log(mxDate);
     this.svg = d3
       .select(this.hostElement)
       .attr('class', 'activity-heatmap')
       .selectAll('svg')
-      .data(d3.range(this.startYear, this.endYear))
+      .data(d3.range(mnDate, mxDate+1))
       .enter()
       .append('svg')
       .attr('width', '100%')
@@ -322,9 +334,7 @@ export class ActivityHeatmapComponent implements OnInit, OnChanges {
         .on('mouseover', (d) => {
           const data = this.data[d];
           this.tooltip.style('opacity', 0.9);
-          this.tooltip.html(
-            `Date: ${formatDate(d)}<br/> Time:  ${this.formatActivityDuration(data.seconds)}`
-          );
+          this.tooltip.html(`Date: ${formatDate(d)}<br/> Time:  ${this.formatActivityDuration(data.seconds)}`);
         })
         .on('mousemove', () => {
           that.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');
