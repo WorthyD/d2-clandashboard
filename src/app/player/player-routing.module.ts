@@ -4,7 +4,6 @@ import { PlayerDetailsContainerComponent } from './player-details-container/play
 import { PlayerOverviewComponent } from '../shared/components/player/player-overview/player-overview.component';
 import { PlayerActivityComponent } from '../shared/components/player/player-activity/player-activity.component';
 
-
 const routes: Routes = [
   {
     path: ':memberId',
