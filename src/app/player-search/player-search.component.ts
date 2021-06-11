@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ export class PlayerSearchComponent implements OnInit {
   constructor(
     private playerSearchService: PlayerSearchService,
     private router: Router,
-    public dialogRef: MatDialogRef<PlayerSearchComponent>
+    @Optional() public dialogRef: MatDialogRef<PlayerSearchComponent>
   ) {}
 
   autocompleteControl = new FormControl('');
@@ -32,6 +32,8 @@ export class PlayerSearchComponent implements OnInit {
   ngOnInit(): void {}
   memberClick(member) {
     this.router.navigate(['player', `${member.membershipType}-${member.membershipId}`]);
-    this.dialogRef.close();
+    if (this.dialogRef) {
+      this.dialogRef.close();
+    }
   }
 }

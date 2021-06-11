@@ -6,9 +6,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PlayerSearchService } from './player-search.service';
 import { MaterialModule, SharedModule } from '@destiny/components';
+import { PageComponent } from './page/page.component';
 
 @NgModule({
-  declarations: [PlayerSearchComponent],
+  declarations: [PlayerSearchComponent, PageComponent],
   imports: [CommonModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MaterialModule, SharedModule],
   providers: [PlayerSearchService]
 })
