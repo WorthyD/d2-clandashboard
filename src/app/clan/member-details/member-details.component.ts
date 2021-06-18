@@ -3,11 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { distinctUntilChanged, map, takeUntil, take, filter } from 'rxjs/operators';
 import { Store, select, createSelector } from '@ngrx/store';
 
-import {
-    ClanMember,
-    MemberProfile,
-    MemberActivityStat,
-} from 'bungie-models';
+import { ClanMember, MemberProfile, MemberActivityStat } from 'bungie-models';
 import { ActivitiesService, ActivityModeService } from '@destiny/data';
 
 import { Observable, Subject, Subscription, combineLatest } from 'rxjs';
@@ -16,74 +12,78 @@ import * as clanMemberSelectors from '../store/clan-members/clan-members.selecto
 import * as clanMemberActions from '../store/clan-members/clan-members.actions';
 import * as memberProfileSelectors from '../store/member-profiles/member-profiles.selectors';
 
-// import * as memberActivitySelectors from '../store/member-activities/member-activities.selectors';
-// import * as memberActivityActions from '../store/member-activities/member-activities.actions';
 import { routeAnimations } from 'src/app/core/core.module';
 
-// export const getRecentClanMemberActivities = memberId =>
-//     createSelector(memberActivitySelectors.getClanMemberActivities(memberId), activities => {
-//         if (!memberId || !activities) {
-//             return null;
-//         }
-
-//         return activities
-//             .sort((a, b) => new Date(b.period).getTime() - new Date(a.period).getTime())
-//             .slice(0, 250);
-//     });
+import { PlayerService } from '../../shared/components/player/player.service';
 
 @Component({
-    selector: 'app-member-details',
-    templateUrl: './member-details.component.html',
-    styleUrls: ['./member-details.component.scss'],
-    animations: [routeAnimations]
+  selector: 'app-member-details',
+  templateUrl: './member-details.component.html',
+  styleUrls: ['./member-details.component.scss'],
+  animations: [routeAnimations]
 })
-export class MemberDetailsComponent implements OnInit, OnDestroy {
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private store: Store<any>,
-        private activityModeService: ActivityModeService,
-        private activityService: ActivitiesService
-    ) {
-        this.memberId.pipe(takeUntil(this.destroyed)).subscribe(r => {
-            store.dispatch(clanMemberActions.selectClanMember({ memberId: r }));
-            this.loadMemberDetails(r);
-        });
-    }
+export class MemberDetailsComponent implements OnInit {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private store: Store<any>,
+    // private activityModeService: ActivityModeService,
+    // private activityService: ActivitiesService
+    private playerService: PlayerService
+  ) {
+    // this.memberId.pipe(takeUntil(this.destroyed)).subscribe(r => {
+    //     store.dispatch(clanMemberActions.selectClanMember({ memberId: r }));
+    //     this.loadMemberDetails(r);
+    // });
+    this.activatedRoute.params
+      .pipe(
+        map((x) => {
+          //this.playerService.memberId.next(x.memberI);
+          return x.memberId;
+        }, distinctUntilChanged())
+      )
+      .subscribe((x) => {
+        //this.memberId = x;
+        //this.playerService.memberIdSource.next(x.memberId);
+        store.dispatch(clanMemberActions.selectClanMember({ memberId: x }));
+        this.playerService.setMemberId(x);
+      });
+  }
 
-    memberId = this.activatedRoute.params.pipe(
-        map(x => x.memberId, distinctUntilChanged())
-    );
+  memberId = this.playerService.memberId;
 
-    member$: Observable<ClanMember>;
-    profile$: Observable<MemberProfile>;
-    playerActivities$: Observable<MemberActivityStat[]>;
-    activityModeDefinitions$: Observable<any>;
-    activityDefinitions$: Observable<any>;
+  // memberId = this.activatedRoute.params.pipe(
+  //     map(x => x.memberId, distinctUntilChanged())
+  // );
 
-    activityDetails$: Observable<any[]>;
-    activityDetailsTwo$: Observable<any[]>;
+  // member$: Observable<ClanMember>;
+  // profile$: Observable<MemberProfile>;
+  // playerActivities$: Observable<MemberActivityStat[]>;
+  // activityModeDefinitions$: Observable<any>;
+  // activityDefinitions$: Observable<any>;
 
-    private destroyed = new Subject();
+  // activityDetails$: Observable<any[]>;
+  // activityDetailsTwo$: Observable<any[]>;
 
-    ngOnInit() {}
+  // private destroyed = new Subject();
 
-    loadMemberDetails(memberId) {
-        this.profile$ = this.store.pipe(select(memberProfileSelectors.getClanMemberById(memberId)));
-        this.member$ = this.store.pipe(select(clanMemberSelectors.getClanMemberById(memberId)));
+  ngOnInit() {}
 
-        // this.profile$
-        //     .pipe(
-        //         filter(loaded => !!loaded),
-        //         take(1)
-        //     )
-        //     .subscribe(x => {
-        //         this.store.dispatch(memberActivityActions.loadMemberActivities({ member: x }));
-        //     });
-    }
+  // loadMemberDetails(memberId) {
+  //     this.profile$ = this.store.pipe(select(memberProfileSelectors.getClanMemberById(memberId)));
+  //     this.member$ = this.store.pipe(select(clanMemberSelectors.getClanMemberById(memberId)));
 
-    ngOnDestroy() {
-        this.destroyed.next();
-        this.destroyed.complete();
-    }
+  //     // this.profile$
+  //     //     .pipe(
+  //     //         filter(loaded => !!loaded),
+  //     //         take(1)
+  //     //     )
+  //     //     .subscribe(x => {
+  //     //         this.store.dispatch(memberActivityActions.loadMemberActivities({ member: x }));
+  //     //     });
+  // }
 
+  // ngOnDestroy() {
+  //     this.destroyed.next();
+  //     this.destroyed.complete();
+  // }
 }
