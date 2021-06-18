@@ -25,7 +25,6 @@
 
   <div class="row my-3">
     <div class="col">
-      {{activityIsLoading | async}}
       <lib-activity-time-chart [loading]="activityIsLoading | async" [events]="playerActivities | async"
         (selectionChange)="changeDuration($event)"></lib-activity-time-chart>
     </div>

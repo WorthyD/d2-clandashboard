@@ -31,7 +31,7 @@ export class PlayerDetailsContainerComponent implements OnInit {
         this.playerService.setMemberId(x);
       });
   }
-  memberId = this.playerService.memberId;
+  memberId = this.playerService.memberId$;
 
   // memberId = this.activatedRoute.params.pipe(
   //   map((x) => {

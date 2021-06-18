@@ -1,6 +1,15 @@
 .float-right {
-    float: right;
+  float: right;
 }
-.text-center{
+.text-center {
   text-align: center;
+}
+.ico-steam svg {
+  color: rgba(0, 0, 0, 0.87);;
+}
+.ico-playstation svg {
+  color: #006fcd;
+}
+.ico-xbox svg {
+  color: #107c11;
 }

@@ -9,7 +9,7 @@ import { PlayerActivityService as BasePlayerService } from '../../shared/compone
 
 import { PlayerService } from './player.service';
 import { latestSeason } from '@destiny/models';
-import { PlayerActivityService as DataPlayerActivityService } from '@destiny/data';
+import { ClanMemberActivityService, PlayerActivityService as DataPlayerActivityService } from '@destiny/data';
 import {
   DailyClanAggregateTimeService,
   MonthlyClanAggregateTimeService,
@@ -31,6 +31,7 @@ export class PlayerActivityService extends BasePlayerService {
     // private playerActivityService: DataPlayerActivityService,
     private memberStore: Store<ClanMemberState>,
     private profileStore: Store<MemberProfileState>,
+    private clanMemberActivityService: ClanMemberActivityService,
     private store: Store<any>,
     private injector: Injector
   ) {
@@ -67,7 +68,27 @@ export class PlayerActivityService extends BasePlayerService {
   memberActivitiesRaw$ = this.store.pipe(select(getSelectedClanMemberActivities));
   activitiesLoaded$ = this.store.pipe(select(getClanMemberActivitiesLoaded));
 
-  playerFilteredEvents$ = combineLatest([this.memberActivitiesRaw$, this.activitiesLoaded$, this.selectedDuration$]).pipe(
+  playerActivities$ = combineLatest([
+    this.playerServiceBase.clanId$,
+    this.playerServiceBase.memberProfile$,
+    this.selectedActivity$
+  ]).pipe(
+    filter(([id, m, sa]) => !!m),
+    switchMap(([id, x, sa]) => {
+      this.playerActivitiesLoadingSource.next(true);
+      return this.clanMemberActivityService.getMemberActivity(id, x, sa);
+    }),
+    map((x) => {
+      this.playerActivitiesLoadingSource.next(false);
+      return x.activities;
+    })
+  );
+
+  playerFilteredEvents$ = combineLatest([
+    this.memberActivitiesRaw$,
+    this.activitiesLoaded$,
+    this.selectedDuration$
+  ]).pipe(
     tap((x) => {
       console.log('activities tappling');
       this.playerActivitiesLoadingSource.next(true);

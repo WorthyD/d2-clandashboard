@@ -21,7 +21,7 @@ export class PlayerService extends BasePlayerService {
   memberIdSource: BehaviorSubject<string> = new BehaviorSubject('');
   memberId = this.memberIdSource.asObservable();
 
-  memberProfile = this.memberId.pipe(
+  memberProfile$ = this.memberId.pipe(
     filter((x) => !!x),
     switchMap((x) => {
       // tslint:disable-next-line:radix
@@ -33,7 +33,7 @@ export class PlayerService extends BasePlayerService {
     shareReplay(1)
   );
 
-  seasonPass$ = this.memberProfile.pipe(
+  seasonPass$ = this.memberProfile$.pipe(
     map((member) => {
       const characterId = member?.profile?.data?.characterIds[0];
       if (characterId > 0 && member?.characterProgressions?.data[characterId]?.progressions) {
@@ -46,7 +46,7 @@ export class PlayerService extends BasePlayerService {
     })
   );
 
-  characters$ = this.memberProfile.pipe(
+  characters$ = this.memberProfile$.pipe(
     map((item) => {
       const charIDs = item?.profile?.data?.characterIds;
       return charIDs?.map((x) => {
@@ -55,7 +55,7 @@ export class PlayerService extends BasePlayerService {
     })
   );
 
-  selectMemberTriumphs$ = this.memberProfile.pipe(
+  selectMemberTriumphs$ = this.memberProfile$.pipe(
     filter((profile) => !!profile),
     map((memberStats) => {
       return {
@@ -65,7 +65,7 @@ export class PlayerService extends BasePlayerService {
     })
   );
 
-  selectMemberCrucibleStats$: Observable<ActivityStats> = this.memberProfile.pipe(
+  selectMemberCrucibleStats$: Observable<ActivityStats> = this.memberProfile$.pipe(
     filter((profile) => !!profile),
     map((profile) => {
       return {
@@ -79,7 +79,7 @@ export class PlayerService extends BasePlayerService {
     })
   );
 
-  selectMemberGambitStats$: Observable<ActivityStats> = this.memberProfile.pipe(
+  selectMemberGambitStats$: Observable<ActivityStats> = this.memberProfile$.pipe(
     filter((profile) => !!profile),
     map((profile) => {
       return {

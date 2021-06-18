@@ -38,7 +38,7 @@ export class PlayerService extends BasePlayerService {
   memberIdSource: BehaviorSubject<string> = new BehaviorSubject('');
   memberId = this.memberIdSource.asObservable();
 
-  memberProfile: Observable<MemberProfile> = this.memberId.pipe(
+  memberProfile$: Observable<MemberProfile> = this.memberId.pipe(
     switchMap((x) => this.store.pipe(select(memberProfileSelectors.getClanMemberById(x))))
   );
 
@@ -53,7 +53,7 @@ export class PlayerService extends BasePlayerService {
     })
   );
 
-  seasonPass$: Observable<ClanMemberSeasonPassProgression> = this.memberProfile.pipe(
+  seasonPass$: Observable<ClanMemberSeasonPassProgression> = this.memberProfile$.pipe(
     map((member) => {
       const characterId = member?.profile?.data?.characterIds[0];
       if (characterId > 0 && member?.characterProgressions?.data[characterId]?.progressions) {
@@ -91,7 +91,7 @@ export class PlayerService extends BasePlayerService {
   //   })
   // );
 
-  characters$ = this.memberProfile.pipe(
+  characters$ = this.memberProfile$.pipe(
     map((item) => {
       const charIDs = item?.profile?.data?.characterIds;
       return charIDs?.map((x) => {

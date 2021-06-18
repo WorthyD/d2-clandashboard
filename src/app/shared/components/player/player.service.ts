@@ -8,10 +8,9 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 @Injectable()
 export class PlayerService {
   constructor() {}
-  // memberId: BehaviorSubject<string>;
-  memberIdSource: BehaviorSubject<string>;
-  memberId: Observable<string>;
-  memberProfile: Observable<MemberProfile>;
+  memberIdSource$: BehaviorSubject<string>;
+  memberId$: Observable<string>;
+  memberProfile$: Observable<MemberProfile>;
   seasonPass$: Observable<ClanMemberSeasonPassProgression>;
   characters$: Observable<DestinyEntitiesCharactersDestinyCharacterComponent[]>;
   memberSnapShot$: Observable<Callout[]>;

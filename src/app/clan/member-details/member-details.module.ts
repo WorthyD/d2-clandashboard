@@ -17,6 +17,7 @@ import { PlayerService as BasePlayerService } from '../../shared/components/play
 import { PlayerActivityService as BasePlayerActivityService } from '../../shared/components/player/player-activity.service';
 
 import { PlayerOverviewComponent } from '../../shared/components/player/player-overview/player-overview.component';
+import { PlayerActivityComponent } from '../../shared/components/player/player-activity/player-activity.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
       },
       {
         path: 'activity',
-        loadChildren: () => import('./member-activity/member-activity.module').then((m) => m.MemberActivityModule)
+        component: PlayerActivityComponent
+        //loadChildren: () => import('./member-activity/member-activity.module').then((m) => m.MemberActivityModule)
       }
       // { path: '**', redirectTo: '../' }
     ]
