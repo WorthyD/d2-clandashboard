@@ -1,25 +1,25 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+// import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { ActivityTimeChartComponent } from './activity-time-chart.component';
+// import { ActivityTimeChartComponent } from './activity-time-chart.component';
 
-describe('ActivityTimeChartComponent', () => {
-  let component: ActivityTimeChartComponent;
-  let fixture: ComponentFixture<ActivityTimeChartComponent>;
+// describe('ActivityTimeChartComponent', () => {
+//   let component: ActivityTimeChartComponent;
+//   let fixture: ComponentFixture<ActivityTimeChartComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ActivityTimeChartComponent ]
-    })
-    .compileComponents();
-  }));
+//   beforeEach(waitForAsync(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ ActivityTimeChartComponent ]
+//     })
+//     .compileComponents();
+//   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ActivityTimeChartComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(ActivityTimeChartComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });

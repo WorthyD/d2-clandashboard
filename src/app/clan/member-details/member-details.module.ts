@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { MemberDetailsComponent } from './member-details.component';
-import { MatListModule } from '@angular/material/list';
+//import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 // import { MemberDetailsRoutingModule } from './member-details-routing.module';
 import { MaterialModule, PipesModule } from '@destiny/components';
-import { ActivityTimeChartModule } from './activity-time-chart/activity-time-chart.module';
-import { PlayerDetailsComponent } from '../../shared/components/player/player-details/player-details.component';
+//import { ActivityTimeChartModule } from './activity-time-chart/activity-time-chart.module';
+//import { PlayerDetailsComponent } from '../../shared/components/player/player-details/player-details.component';
 
 import { PlayerModule as PlayerComponentsModule } from '../../shared/components/player/player.module';
 import { PlayerService } from './player.service';
@@ -49,8 +49,8 @@ export class MemberDetailsRoutingModule {}
     PlayerComponentsModule,
     MatSidenavModule,
     MaterialModule,
-    PipesModule,
-    ActivityTimeChartModule
+    PipesModule
+    //    ActivityTimeChartModule
   ],
   exports: [MemberDetailsComponent],
   providers: [

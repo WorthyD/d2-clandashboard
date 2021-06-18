@@ -7,7 +7,8 @@ export function profileSerializer(p: MemberProfile, progressionHashes: any[]): M
         userInfo: {
           membershipType: p.profile.data.userInfo.membershipType,
           membershipId: p.profile.data.userInfo.membershipId,
-          displayName: p.profile.data.userInfo.displayName
+          displayName: p.profile.data.userInfo.displayName,
+          applicableMembershipTypes: p.profile.data.userInfo.applicableMembershipTypes
         },
         dateLastPlayed: p.profile.data.dateLastPlayed,
         characterIds: p.profile.data.characterIds
