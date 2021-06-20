@@ -1,3 +1,4 @@
+export * from './BungieInfo';
 export * from './Character';
 export * from './ClanDetails';
 export * from './ClanMember';
