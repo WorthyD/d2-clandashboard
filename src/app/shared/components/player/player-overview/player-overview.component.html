@@ -3,9 +3,6 @@
     <div class="col">
       <lib-member-overview [memberOverview]="memberProfile"></lib-member-overview>
     </div>
-    {{
-      memberProfile | json
-    }}
   </div>
 
   <div *ngIf="seasonPass$ | async as seasonPass" class="row my-3">

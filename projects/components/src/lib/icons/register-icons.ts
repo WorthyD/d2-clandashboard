@@ -6,6 +6,7 @@ const svgIcons = {
     hunter: '/assets/icons/hunter.svg',
     warlock: '/assets/icons/warlock.svg',
     steam: '/assets/icons/steam.svg',
+    stadia: '/assets/icons/stadia.svg',
     playstation: '/assets/icons/playstation.svg',
     xbox: '/assets/icons/xbox.svg',
 };
