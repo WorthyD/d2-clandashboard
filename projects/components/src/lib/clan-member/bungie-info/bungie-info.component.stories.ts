@@ -1,23 +1,35 @@
 import { moduleMetadata } from '@storybook/angular';
-import { MemberOverviewModule } from './member-overview.module';
-import { MemberOverviewComponent } from './member-overview.component';
-import { MOCK_MEMBER_OVERVIEW, MOCK_MEMBER } from './_MOCK_MEMBER_OVERVIEW';
+import { BungieInfoModule } from './bungie-info.module';
+import { BungieInfoComponent } from './bungie-info.component';
+import { USER } from './_MOCK_BUNGIE_INFO';
 
 export default {
-    title: 'Clan Member / Member Overview',
-    decorators: [
-        moduleMetadata({
-            imports: [MemberOverviewModule],
-        }),
-    ],
+  title: 'Clan Member / Bungie Info',
+  decorators: [
+    moduleMetadata({
+      imports: [BungieInfoModule]
+    })
+  ]
 };
 
 export const base = () => ({
-    component: MemberOverviewComponent,
-    template: `
-        <lib-member-overview [memberOverview]="member"></lib-member-overview>
+  component: BungieInfoComponent,
+  template: `
+        <lib-bungie-info [bungieInfo]="bungieInfo" [isLoading]="isLoading"></lib-bungie-info>
    `,
-    props: {
-        member: MOCK_MEMBER_OVERVIEW,
-    },
+  props: {
+    bungieInfo: USER,
+    isLoading: false
+  }
+});
+
+export const loading = () => ({
+  component: BungieInfoComponent,
+  template: `
+        <lib-bungie-info [bungieInfo]="bungieInfo" [isLoading]="isLoading"></lib-bungie-info>
+   `,
+  props: {
+    bungieInfo: USER,
+    isLoading: true
+  }
 });

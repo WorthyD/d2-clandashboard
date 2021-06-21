@@ -12,7 +12,7 @@ export class BungieInfoComponent implements OnInit {
   bungieInfo: BungieInfo;
 
   @Input()
-  loading: boolean;
+  isLoading: boolean;
 
   constructor() {}
 
