@@ -21,11 +21,12 @@
       <mat-divider></mat-divider>
 
       <div mat-subheader>Linked Accounts</div>
-      <mat-list-item>
-        <mat-icon mat-list-icon>note</mat-icon>
-        <div mat-line></div>
-        <div mat-line></div>
+      <mat-list-item *ngFor="let link of linkedAccounts">
+        <mat-icon mat-list-icon [svgIcon]="link.icon" class="ico-{{link.icon}}"></mat-icon>
+        <div mat-line>{{link.name}}</div>
+        <div mat-line>{{link.description}}</div>
       </mat-list-item>
+
     </mat-list>
   </mat-card-content>
 

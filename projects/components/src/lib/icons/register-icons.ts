@@ -9,6 +9,7 @@ const svgIcons = {
     stadia: '/assets/icons/stadia.svg',
     playstation: '/assets/icons/playstation.svg',
     xbox: '/assets/icons/xbox.svg',
+    twitch: '/assets/icons/twitch-purp.svg',
 };
 
 export const registerIcons = (registry: MatIconRegistry, domSanitizer: DomSanitizer) => {

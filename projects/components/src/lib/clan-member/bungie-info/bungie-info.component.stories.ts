@@ -2,12 +2,13 @@ import { moduleMetadata } from '@storybook/angular';
 import { BungieInfoModule } from './bungie-info.module';
 import { BungieInfoComponent } from './bungie-info.component';
 import { USER } from './_MOCK_BUNGIE_INFO';
+import { StorybookModule } from '../../storybook/storybook.module';
 
 export default {
   title: 'Clan Member / Bungie Info',
   decorators: [
     moduleMetadata({
-      imports: [BungieInfoModule]
+      imports: [BungieInfoModule, StorybookModule]
     })
   ]
 };
