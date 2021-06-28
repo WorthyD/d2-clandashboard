@@ -15,6 +15,8 @@ export class PlayerOverviewComponent implements OnInit {
   seasonPass$ = this.playerService.seasonPass$;
   characters$ = this.playerService.characters$;
   memberSnapShot$ = this.playerService.memberSnapShot$;
+  bungieInfo$ = this.playerService.bungieInfo$;
+  bungieInfoLoading$ = this.playerService.bungieInfoLoading$;
 
   //memberId;
   activityIsLoading = this.playerActivityService.playerActivitiesLoading;

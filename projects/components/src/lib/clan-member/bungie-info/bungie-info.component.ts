@@ -4,8 +4,8 @@ import { BungieInfo } from 'bungie-models';
 @Component({
   selector: 'lib-bungie-info',
   templateUrl: './bungie-info.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./bungie-info.component.scss']
+  styleUrls: ['./bungie-info.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BungieInfoComponent implements OnInit {
   _bungieInfo: BungieInfo;
@@ -15,6 +15,7 @@ export class BungieInfoComponent implements OnInit {
   }
   set bungieInfo(value) {
     this._bungieInfo = value;
+    console.log('bInfor', value);
     this.applyLinks();
   }
 
@@ -27,6 +28,9 @@ export class BungieInfoComponent implements OnInit {
   ngOnInit(): void {}
 
   applyLinks() {
+    if (!this._bungieInfo) {
+      return;
+    }
     const tempLinkedAccounts = [];
     if (this.bungieInfo.steamDisplayName) {
       tempLinkedAccounts.push({
@@ -49,7 +53,7 @@ export class BungieInfoComponent implements OnInit {
         description: 'PlayStation'
       });
     }
-    if (this.bungieInfo.steamDisplayName) {
+    if (this.bungieInfo.stadiaDisplayName) {
       tempLinkedAccounts.push({
         icon: 'stadia',
         name: this.bungieInfo.stadiaDisplayName,
@@ -57,16 +61,13 @@ export class BungieInfoComponent implements OnInit {
       });
     }
 
-    if (this.bungieInfo.steamDisplayName) {
+    if (this.bungieInfo.twitchDisplayName) {
       tempLinkedAccounts.push({
         icon: 'twitch',
         name: this.bungieInfo.twitchDisplayName,
         description: 'Twitch'
       });
     }
-
-
-
 
     this.linkedAccounts = tempLinkedAccounts;
   }

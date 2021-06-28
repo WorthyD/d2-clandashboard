@@ -6,17 +6,17 @@
     <mat-list>
       <div mat-subheader>About</div>
       <mat-list-item>
-        <img matListAvatar [src]="'https://bungie.net' + bungieInfo.profilePicturePath" alt="...">
-        <h3 matLine> {{bungieInfo.displayName}} </h3>
+        <img matListAvatar [src]="'https://bungie.net' + bungieInfo?.profilePicturePath" alt="...">
+        <h3 matLine> {{bungieInfo?.displayName}} </h3>
       </mat-list-item>
       <mat-list-item>
         <mat-icon mat-list-icon>cake</mat-icon>
-        <div mat-line> {{bungieInfo.firstAccess | dateAgo}}</div>
-        <div mat-line> {{bungieInfo.firstAccess | bungieDate}} </div>
+        <div mat-line> {{bungieInfo?.firstAccess | dateAgo}}</div>
+        <div mat-line> {{bungieInfo?.firstAccess | bungieDate}} </div>
       </mat-list-item>
       <mat-list-item>
         <mat-icon mat-list-icon>language</mat-icon>
-        <div mat-line> {{bungieInfo.locale}}</div>
+        <div mat-line> {{bungieInfo?.locale}}</div>
       </mat-list-item>
       <mat-divider></mat-divider>
 

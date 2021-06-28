@@ -2,20 +2,25 @@
   <div *ngIf="memberProfile$ | async as memberProfile" class="row my-3">
     <div class="col">
       <lib-member-overview [memberOverview]="memberProfile"></lib-member-overview>
-    </div>
-  </div>
+      <div *ngIf="characters$ | async as characters">
+        <div *ngFor="let character of characters">
+          <lib-character-card [character]="character"></lib-character-card>
+        </div>
+      </div>
 
+
+    </div>
+    <div class="col">
+      <lib-bungie-info [bungieInfo]="bungieInfo$ | async" [isLoading]="bungieInfoLoading$ | async">
+      </lib-bungie-info>
+    </div>
+
+  </div>
   <div *ngIf="seasonPass$ | async as seasonPass" class="row my-3">
     <div class="col">
       <lib-season-pass [clanMemberSeasonPass]="seasonPass"></lib-season-pass>
     </div>
   </div>
-  <div *ngIf="characters$ | async as characters" class="row my-3">
-    <div class="col" *ngFor="let character of characters">
-      <lib-character-card [character]="character"></lib-character-card>
-    </div>
-  </div>
-
   <div class="row my-3">
     <div class="col">
       <lib-member-callout [title]="'Player Snapshot'" [callouts]="memberSnapShot$ | async">

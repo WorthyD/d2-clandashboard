@@ -7,13 +7,24 @@ import { distinctUntilChanged, filter, map, shareReplay, switchMap } from 'rxjs/
 import { PlayerService as BasePlayerService } from '../shared/components/player/player.service';
 import { latestSeason } from '@destiny/models';
 import { Callout } from '@destiny/components';
-import { getGloryPoints, getInfamyPoints, getInfamyResets, getValorPoints, getValorResets } from '@destiny/data';
+import {
+  getGloryPoints,
+  getInfamyPoints,
+  getInfamyResets,
+  getValorPoints,
+  getValorResets,
+  BungieInfoService
+} from '@destiny/data';
 import { DecimalPipe } from '@angular/common';
 
 @Injectable()
 export class PlayerService extends BasePlayerService {
   private profileComponents = [100, 104, 200, 202, 900];
-  constructor(private d2Service: Destiny2Service, private decimalPipe: DecimalPipe) {
+  constructor(
+    private d2Service: Destiny2Service,
+    private decimalPipe: DecimalPipe,
+    private bungieInfoService: BungieInfoService
+  ) {
     super();
   }
 
@@ -52,6 +63,20 @@ export class PlayerService extends BasePlayerService {
       return charIDs?.map((x) => {
         return item.characters.data[x];
       });
+    })
+  );
+
+  bungieInfo$ = this.memberProfile$.pipe(
+    filter((profile) => !!profile),
+    switchMap((profile) => {
+      return this.bungieInfoService.getBungieInformation(
+        profile.profile.data.userInfo.membershipType,
+        profile.profile.data.userInfo.membershipId
+      );
+    }),
+    map((response) => {
+      console.log('stuff');
+      return response.Response;
     })
   );
 
