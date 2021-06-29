@@ -1,6 +1,16 @@
 <mat-card>
-    <!-- TODO: is online -->
-    <mat-card-title>{{memberOverview?.profile?.data?.userInfo?.displayName}}</mat-card-title>
-    <mat-card-subtitle>Last Online: {{memberOverview?.profile?.data?.dateLastPlayed | bungieDateTime}}
-    </mat-card-subtitle>
+  <!-- TODO: is online -->
+  <mat-card-title>{{memberOverview?.profile?.data?.userInfo?.displayName}}</mat-card-title>
+  <mat-card-subtitle> </mat-card-subtitle>
+  <mat-card-content>
+    <section>
+      Last Online: {{memberOverview?.profile?.data?.dateLastPlayed | bungieDateTime}}
+    </section>
+    <section class="platforms">
+      Platforms: <ng-container *ngFor="let type of memberOverview?.profile?.data?.userInfo?.applicableMembershipTypes">
+        <lib-member-type [type]="type" class="mx-1"></lib-member-type>
+      </ng-container>
+    </section>
+  </mat-card-content>
+
 </mat-card>

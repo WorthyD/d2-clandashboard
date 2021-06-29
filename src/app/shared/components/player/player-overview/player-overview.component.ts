@@ -10,11 +10,13 @@ import { PlayerActivityService } from '../player-activity.service';
 export class PlayerOverviewComponent implements OnInit {
   constructor(private playerService: PlayerService, private playerActivityService: PlayerActivityService) {}
 
-  memberId = this.playerService.memberId;
-  memberProfile$ = this.playerService.memberProfile;
+  memberId = this.playerService.memberId$;
+  memberProfile$ = this.playerService.memberProfile$;
   seasonPass$ = this.playerService.seasonPass$;
   characters$ = this.playerService.characters$;
   memberSnapShot$ = this.playerService.memberSnapShot$;
+  bungieInfo$ = this.playerService.bungieInfo$;
+  bungieInfoLoading$ = this.playerService.bungieInfoLoading$;
 
   //memberId;
   activityIsLoading = this.playerActivityService.playerActivitiesLoading;

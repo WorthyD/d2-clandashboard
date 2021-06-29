@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'lib-member-type',
-  template: `<mat-icon [svgIcon]="type | memberType"></mat-icon>`,
+  template: `<mat-icon [svgIcon]="type | memberType" class="ico-{{type | memberType}}"></mat-icon>`,
   encapsulation: ViewEncapsulation.None
 })
 export class MemberTypeComponent implements OnInit {

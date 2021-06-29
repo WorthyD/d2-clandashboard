@@ -15,7 +15,7 @@ export class PlayerDetailsComponent implements OnInit {
   memberId: Observable<string>;
 
   constructor(private playerService: PlayerService) {}
-  profile$: Observable<MemberProfile> = this.playerService.memberProfile;
+  profile$: Observable<MemberProfile> = this.playerService.memberProfile$;
 
   ngOnInit(): void {
     // this.profile$ = this.memberId.pipe(

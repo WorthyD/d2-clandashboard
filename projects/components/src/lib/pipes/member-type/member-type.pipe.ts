@@ -14,7 +14,7 @@ export class MemberTypePipe implements PipeTransform {
       case MembershipTypes.Steam:
         return 'steam';
       case MembershipTypes.Stadia:
-        return '';
+        return 'stadia';
       default:
         return '';
     }

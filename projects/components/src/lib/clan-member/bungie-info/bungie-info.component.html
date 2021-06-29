@@ -1,0 +1,44 @@
+<mat-card>
+  <!-- TODO: is online -->
+  <mat-card-title>Bungie Info</mat-card-title>
+  <mat-card-subtitle> </mat-card-subtitle>
+
+  <mat-card-content>
+
+    <ng-container *ngIf="!isLoading; else loading">
+      <mat-list>
+        <div mat-subheader>About</div>
+        <mat-list-item>
+          <img matListAvatar [src]="'https://bungie.net' + bungieInfo?.profilePicturePath" alt="...">
+          <h3 matLine> {{bungieInfo?.displayName}} </h3>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>cake</mat-icon>
+          <div mat-line> {{bungieInfo?.firstAccess | dateAgo}}</div>
+          <div mat-line> {{bungieInfo?.firstAccess | bungieDate}} </div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>language</mat-icon>
+          <div mat-line> {{bungieInfo?.locale}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <div mat-subheader>Linked Accounts</div>
+        <mat-list-item *ngFor="let link of linkedAccounts">
+          <mat-icon mat-list-icon [svgIcon]="link.icon" class="ico-{{link.icon}}"></mat-icon>
+          <div mat-line>{{link.name}}</div>
+          <div mat-line>{{link.description}}</div>
+        </mat-list-item>
+
+      </mat-list>
+    </ng-container>
+
+  </mat-card-content>
+
+</mat-card>
+<ng-template #loading>
+
+  <div class="text-center m-5">
+    <lib-loading></lib-loading>
+  </div>
+</ng-template>

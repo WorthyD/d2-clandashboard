@@ -10,7 +10,7 @@
     <mat-action-list>
       <button mat-list-item *ngFor="let member of memberObs.members; let idx = index" (click)="memberClick(member)">
         <div class="member-info">
-          <mat-icon [svgIcon]="member.iconName"></mat-icon>
+          <mat-icon [svgIcon]="member.iconName" class="ico-{{member.iconName}}"></mat-icon>
           <div class="member-info__member-name">
             {{member.name}}
           </div>

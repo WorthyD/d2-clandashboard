@@ -6,8 +6,8 @@ import { PipesModule } from '../../pipes/pipes.module';
 
 import { MatCardModule } from '@angular/material/card';
 @NgModule({
-    declarations: [CharacterCardComponent],
-    exports: [CharacterCardComponent],
-    imports: [CommonModule, MatCardModule, PipesModule],
+  declarations: [CharacterCardComponent],
+  exports: [CharacterCardComponent],
+  imports: [CommonModule, MatCardModule, PipesModule]
 })
 export class CharacterCardModule {}

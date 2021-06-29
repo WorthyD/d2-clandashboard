@@ -2,19 +2,20 @@ import { Injectable } from '@angular/core';
 import { Callout, ClanMemberSeasonPassProgression } from '@destiny/components';
 import { DestinyEntitiesCharactersDestinyCharacterComponent } from 'bungie-api-angular';
 
-import { MemberProfile } from 'bungie-models';
+import { MemberProfile, BungieInfo } from 'bungie-models';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class PlayerService {
   constructor() {}
-  // memberId: BehaviorSubject<string>;
-  memberIdSource: BehaviorSubject<string>;
-  memberId: Observable<string>;
-  memberProfile: Observable<MemberProfile>;
+  memberIdSource$: BehaviorSubject<string>;
+  memberId$: Observable<string>;
+  memberProfile$: Observable<MemberProfile>;
   seasonPass$: Observable<ClanMemberSeasonPassProgression>;
   characters$: Observable<DestinyEntitiesCharactersDestinyCharacterComponent[]>;
   memberSnapShot$: Observable<Callout[]>;
+  bungieInfo$: Observable<BungieInfo>;
+  bungieInfoLoading$: Observable<boolean>;
 
   // getMemberId() {
   //   throw new Error('not implemented');

@@ -32,7 +32,7 @@ export class PlayerActivityService extends BasePlayerService {
   selectedDuration$ = new BehaviorSubject('daily');
   selectedActivity$ = new BehaviorSubject(0);
 
-  playerActivitiesRaw$ = this.playerServiceBase.memberProfile.pipe(
+  playerActivitiesRaw$ = this.playerServiceBase.memberProfile$.pipe(
     filter((profile) => !!profile),
     switchMap((profile) => {
       this.playerActivitiesLoadingSource.next(true);
