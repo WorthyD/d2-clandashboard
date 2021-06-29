@@ -7,7 +7,7 @@ import { distinctUntilChanged, filter, map, shareReplay, switchMap } from 'rxjs/
 import { PlayerService as BasePlayerService } from '../../shared/components/player/player.service';
 import { latestSeason } from '@destiny/models';
 import { Callout, ClanMemberSeasonPassProgression } from '@destiny/components';
-import { getGloryPoints, getInfamyPoints, getInfamyResets, getValorPoints, getValorResets } from '@destiny/data';
+import { BungieInfoService, getGloryPoints, getInfamyPoints, getInfamyResets, getValorPoints, getValorResets } from '@destiny/data';
 import { DecimalPipe } from '@angular/common';
 import { select, Store } from '@ngrx/store';
 import * as clanMemberSelectors from '../store/clan-members/clan-members.selectors';
@@ -30,6 +30,7 @@ export class PlayerService extends BasePlayerService {
     private clanRosterService: ClanRosterService,
     private clanCrucibleService: ClanCrucibleService,
     private clanGambitService: ClanGambitService,
+    private bungieInfoService: BungieInfoService
   ) {
     super();
   }
@@ -97,6 +98,23 @@ export class PlayerService extends BasePlayerService {
       return charIDs?.map((x) => {
         return item.characters.data[x];
       });
+    })
+  );
+  bungieInfoLoadingSource$: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  bungieInfoLoading$ = this.bungieInfoLoadingSource$.asObservable();
+
+  bungieInfo$ = this.memberProfile$.pipe(
+    filter((profile) => !!profile),
+    switchMap((profile) => {
+      this.bungieInfoLoadingSource$.next(true);
+      return this.bungieInfoService.getBungieInformation(
+        profile.profile.data.userInfo.membershipType,
+        profile.profile.data.userInfo.membershipId
+      );
+    }),
+    map((response) => {
+      this.bungieInfoLoadingSource$.next(false);
+      return response.Response;
     })
   );
   /*
