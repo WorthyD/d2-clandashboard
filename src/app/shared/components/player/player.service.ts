@@ -15,7 +15,7 @@ export class PlayerService {
   characters$: Observable<DestinyEntitiesCharactersDestinyCharacterComponent[]>;
   memberSnapShot$: Observable<Callout[]>;
   bungieInfo$: Observable<BungieInfo>;
-  bungieInfoLoading$: Observable<BungieInfo>;
+  bungieInfoLoading$: Observable<boolean>;
 
   // getMemberId() {
   //   throw new Error('not implemented');

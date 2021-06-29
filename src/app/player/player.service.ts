@@ -66,20 +66,23 @@ export class PlayerService extends BasePlayerService {
     })
   );
 
+  bungieInfoLoadingSource$: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  bungieInfoLoading$ = this.bungieInfoLoadingSource$.asObservable();
+
   bungieInfo$ = this.memberProfile$.pipe(
     filter((profile) => !!profile),
     switchMap((profile) => {
+      this.bungieInfoLoadingSource$.next(true);
       return this.bungieInfoService.getBungieInformation(
         profile.profile.data.userInfo.membershipType,
         profile.profile.data.userInfo.membershipId
       );
     }),
     map((response) => {
-      console.log('stuff');
+      this.bungieInfoLoadingSource$.next(false);
       return response.Response;
     })
   );
-
   selectMemberTriumphs$ = this.memberProfile$.pipe(
     filter((profile) => !!profile),
     map((memberStats) => {
