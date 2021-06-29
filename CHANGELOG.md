@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.63.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.62.0...v0.63.0) (2021-06-29)
+
+
+### Features
+
+* Revamping profile pages ([c7943d0](https://github.com/WorthyD/d2-clandashboard/commit/c7943d03c70a0d1ecd7da94056f01c1b8b7ebad9))
+
 ## [0.62.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.61.0...v0.62.0) (2021-06-11)
 
 ## [0.61.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.60.0...v0.61.0) (2021-06-10)
