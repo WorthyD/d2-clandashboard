@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
 import { SECONDS_IN_WEEK, SECONDS_IN_DAY } from '@destiny/models/constants';
 enum Views {
@@ -11,7 +11,8 @@ enum Views {
 @Component({
   selector: 'lib-activity-time-chart',
   templateUrl: './activity-time-chart.component.html',
-  styleUrls: ['./activity-time-chart.component.scss']
+  styleUrls: ['./activity-time-chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActivityTimeChartComponent implements OnInit {
   selection: Views = Views.daily;
