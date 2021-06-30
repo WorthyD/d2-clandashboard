@@ -27,6 +27,7 @@ export function initConfig(appConfig: ManifestService) {
   return () => appConfig.loadManifest();
 }
 import { PlayerSearchModule } from './player-search/player-search.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -46,7 +47,14 @@ import { PlayerSearchModule } from './player-search/player-search.module';
     }),
     BrowserAnimationsModule,
     HomeModule,
-    PlayerSearchModule
+    PlayerSearchModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      //enabled: environment.production,
+      enabled: true,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {
