@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Destiny2Service } from 'bungie-api-angular';
 import { ActivityStats, MemberProfile } from 'bungie-models';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
-import { distinctUntilChanged, filter, map, shareReplay, switchMap } from 'rxjs/operators';
+import { catchError, distinctUntilChanged, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import { PlayerService as BasePlayerService } from '../shared/components/player/player.service';
 import { latestSeason } from '@destiny/models';
 import { Callout } from '@destiny/components';
@@ -16,6 +16,8 @@ import {
   BungieInfoService
 } from '@destiny/data';
 import { DecimalPipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../shared/components/dialog/dialog.component';
 
 @Injectable()
 export class PlayerService extends BasePlayerService {
@@ -23,7 +25,9 @@ export class PlayerService extends BasePlayerService {
   constructor(
     private d2Service: Destiny2Service,
     private decimalPipe: DecimalPipe,
-    private bungieInfoService: BungieInfoService
+    private bungieInfoService: BungieInfoService,
+    public dialog: MatDialog,
+    private router: Router
   ) {
     super();
   }
@@ -174,7 +178,23 @@ export class PlayerService extends BasePlayerService {
       .pipe(
         map((memberProfileResponse) => {
           return memberProfileResponse.Response;
+        }),
+        catchError((error) => {
+          this.openError(error);
+          return of();
         })
       );
+  }
+
+  openError(error) {
+    console.log('error', error);
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '400px',
+      data: { title: error.error.ErrorStatus, description: error.error.Message }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.router.navigate(['/', 'player-search']);
+    });
   }
 }

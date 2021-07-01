@@ -13,12 +13,13 @@ import { PipesModule } from '@destiny/components';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DirectivesModule } from '../shared/directives/directives.module';
 import { MatListModule } from '@angular/material/list';
+import { DialogModule } from '../shared/components/dialog/dialog.module';
 
 @NgModule({
   declarations: [PlayerDetailsContainerComponent],
   imports: [
     CommonModule,
-
+    DialogModule,
     MatListModule,
     DirectivesModule,
     MatSidenavModule,
