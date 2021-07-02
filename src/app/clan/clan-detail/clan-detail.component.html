@@ -15,18 +15,8 @@
       <div *ngIf="clanDetails.clanSeasonalProgression$ | async as clanProgress" class=" m-3">
         <lib-clan-season-progress [clanProgress]="clanProgress"></lib-clan-season-progress>
       </div>
-
-      <!-- <div class="m-3">
-        <lib-clan-weekly-progress [clanRewards]="clanDetails.clanLastWeekRewards$ | async"
-          [isLoading]="clanDetails.clanWeekRewardsLoading$ | async"></lib-clan-weekly-progress>
-      </div> -->
     </div>
   </div>
-  <!-- <div class="row">
-    <div *ngIf="clanDetails.clanSeasonalProgression$ | async as clanProgress" class="col m-3">
-      <lib-clan-season-progress [clanProgress]="clanProgress"></lib-clan-season-progress>
-    </div>
-  </div> -->
   <div class="row">
     <div class="col m-3" *ngIf="clanDetails.events2$ | async as events">
       <lib-clan-active-population [last24Hours]="events.last24Hours" [prev24Hours]="events.previous24Hours"
