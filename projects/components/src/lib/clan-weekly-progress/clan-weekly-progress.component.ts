@@ -15,10 +15,9 @@ export interface ClanWeeklyRewardModel {
   selector: 'lib-clan-weekly-progress',
   templateUrl: './clan-weekly-progress.component.html',
   styleUrls: ['./clan-weekly-progress.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClanWeeklyProgressComponent implements OnInit {
-
   tab = 'week';
 
   @Input()
@@ -27,14 +26,13 @@ export class ClanWeeklyProgressComponent implements OnInit {
   @Input()
   clanRewardsLastWeek: ClanWeeklyProgressModel;
 
-
   @Input()
   isLoading: boolean;
 
   constructor() {}
 
   ngOnInit(): void {}
-  onSelectionChange(type){
+  onSelectionChange(type) {
     this.tab = type;
   }
 }

@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     selector: 'app-highestpower-members',
     templateUrl: './highestpower-members.component.html',
     styleUrls: ['./highestpower-members.component.scss'],
+
 })
 export class HighestpowerMembersComponent extends BaseMemberCardComponent implements OnInit {
     constructor(

@@ -6,7 +6,7 @@
     <title>Destiny Clan Dashboard</title>
     <base href="/">
     <meta property="og:url" content="https://destinyclandashboard.com/">
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="website"/>
     <meta property="og:title" content="Destiny Clan Dashboard">
     <meta property="og:description" content="Monitor your Destiny clan activity">
     <!-- <meta property="og:image" content=""/> -->
@@ -14,7 +14,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
       body,
@@ -117,7 +117,9 @@
       }
 
     </style>
-  </head>
+    <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+</head>
 
   <body>
     <app-root>
@@ -125,7 +127,7 @@
         <h3>Loading Manifest Data</h3>
         <div class="logo">
           <svg class="spinner" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
           </svg>
         </div>
         <div id="error-prompt" class="hidden">
@@ -158,6 +160,7 @@
       </div>
     </app-root>
 
-  </body>
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
+</body>
 
 </html>

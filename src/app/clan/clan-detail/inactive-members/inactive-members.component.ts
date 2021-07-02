@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ClanDetailService } from '../clan-detail.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseMemberCardComponent } from '../base-member-card/base-member-card.component';
@@ -6,19 +6,17 @@ import { BaseMemberCardComponent } from '../base-member-card/base-member-card.co
 @Component({
   selector: 'app-inactive-members',
   templateUrl: './inactive-members.component.html',
-  styleUrls: ['./inactive-members.component.scss']
+  styleUrls: ['./inactive-members.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class InactiveMembersComponent extends BaseMemberCardComponent  implements OnInit {
-
-    constructor(
-        public baseClanDetails: ClanDetailService,
-        private baseRouter: Router,
-        private baseRoute: ActivatedRoute
-    ) {
-        super(baseClanDetails, baseRouter, baseRoute);
-    }
-
-  ngOnInit(): void {
+export class InactiveMembersComponent extends BaseMemberCardComponent implements OnInit {
+  constructor(
+    public baseClanDetails: ClanDetailService,
+    private baseRouter: Router,
+    private baseRoute: ActivatedRoute
+  ) {
+    super(baseClanDetails, baseRouter, baseRoute);
   }
 
+  ngOnInit(): void {}
 }
