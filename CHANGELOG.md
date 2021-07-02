@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.64.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.63.0...v0.64.0) (2021-07-02)
+
+
+### Features
+
+* player search not found ([40294d3](https://github.com/WorthyD/d2-clandashboard/commit/40294d3fe88c9c58795931749577920cc7cd2659))
+
 ## [0.63.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.62.0...v0.63.0) (2021-06-29)
 
 
