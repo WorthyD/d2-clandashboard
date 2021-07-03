@@ -1,13 +1,9 @@
 import {
   Component,
   OnInit,
-  Output,
   Input,
   ChangeDetectionStrategy,
   ElementRef,
-  SimpleChanges,
-  OnChanges,
-  EventEmitter,
   ViewEncapsulation,
   ChangeDetectorRef
 } from '@angular/core';
@@ -74,10 +70,17 @@ export class ActivityBarChartComponent implements OnInit {
 
   // ----------------
   series: ApexAxisChartSeries = [];
-  chart: ApexChart = { type: 'bar', height: 400 };
+  chart: ApexChart = { type: 'bar', height: 400, zoom: { enabled: false } };
   yaxis: ApexYAxis = {
     title: {
       //text: '$ (thousands)'
+    },
+    labels: {
+      formatter: (x) => {
+        // dynamically calculate
+
+        return `${this.formatPipe.transform(x, false)}`;
+      }
     }
   };
   xaxis: ApexXAxis = {
@@ -106,8 +109,8 @@ export class ActivityBarChartComponent implements OnInit {
 
   tooltip: ApexTooltip = {
     y: {
-      formatter: function (val) {
-        return val + ' seconds';
+      formatter: (val) => {
+        return `${this.formatPipe.transform(val)}`;
       }
     }
   };
