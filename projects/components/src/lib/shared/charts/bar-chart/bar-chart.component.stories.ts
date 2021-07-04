@@ -24,7 +24,8 @@ export const base = () => ({
   component: BarChartComponent,
   template: `
   <div style="max-width:900px;">
-        <lib-activity-bar-chart [events]="allEvents[eventIndex]" (cellSelect)="cellSelect($event)"></lib-activity-bar-chart>
+  fart
+        <lib-activity-bar-chart [convertTo]="'Hours'" [events]="allEvents[eventIndex]"  (cellSelect)="cellSelect($event)"></lib-activity-bar-chart>
         <hr>
         <textarea style="width:100%; height:500px">
         {{allEvents[eventIndex] | json}}

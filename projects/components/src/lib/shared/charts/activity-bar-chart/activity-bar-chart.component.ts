@@ -32,17 +32,7 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class ActivityBarChartComponent implements OnInit {
-  hostElement;
-  svg;
-  data;
   x;
-  y;
-  // tooltip;
-
-  // chartHeight = 100;
-  // chartWidth = 1000;
-  // threshHold = SECONDS_IN_HOUR * 20;
-  // color = d3.scaleLinear().range(['#00ff00', '#ff0000']).domain([0, 1]);
 
   formatPipe = new PlaytimePipe();
 
@@ -60,12 +50,15 @@ export class ActivityBarChartComponent implements OnInit {
   }
 
   @Input()
-  maxBarCount = 25;
+  convertTo = 'Minutes';
 
-  @Input()
+  // @Input()
+  // maxBarCount = 25;
+
+  //@Input()
   startDate: Date;
 
-  @Input()
+  // @Input()
   endDate: Date;
 
   // ----------------
@@ -73,14 +66,16 @@ export class ActivityBarChartComponent implements OnInit {
   chart: ApexChart = { type: 'bar', height: 400, zoom: { enabled: false } };
   yaxis: ApexYAxis = {
     title: {
+      text: this.convertTo
       //text: '$ (thousands)'
     },
     labels: {
-      formatter: (x) => {
-        // dynamically calculate
+      // formatter: (x) => {
+      //   // dynamically calculate
 
-        return `${this.formatPipe.transform(x, false)}`;
-      }
+      //   //return `${this.formatPipe.transform(x, false)}`;
+      //   return `${this.formatPipe.transform(x, false)}`;
+      // }
     }
   };
   xaxis: ApexXAxis = {
@@ -110,7 +105,13 @@ export class ActivityBarChartComponent implements OnInit {
   tooltip: ApexTooltip = {
     y: {
       formatter: (val) => {
-        return `${this.formatPipe.transform(val)}`;
+        let convertedVal = 0;
+        if (this.convertTo === 'Minutes') {
+          convertedVal = val * 60;
+        } else if (this.convertTo === 'Hours') {
+          convertedVal = val * 60 * 60;
+        }
+        return `${this.formatPipe.transform(convertedVal)}`;
       }
     }
   };
@@ -230,7 +231,14 @@ export class ActivityBarChartComponent implements OnInit {
         const data = sourceData.find((x) => x.date.toDateString() === d.toDateString());
 
         if (data) {
-          preppedData.push({ x: data.date, y: data.seconds });
+          let convertedSeconds = 0;
+          if (this.convertTo === 'Minutes') {
+            convertedSeconds = Math.floor(data.seconds / 60);
+          } else if (this.convertTo === 'Hours') {
+            convertedSeconds = data.seconds / 60 / 60;
+          }
+
+          preppedData.push({ x: data.date, y: convertedSeconds });
         } else {
           preppedData.push({ x: d, y: 0 });
         }
