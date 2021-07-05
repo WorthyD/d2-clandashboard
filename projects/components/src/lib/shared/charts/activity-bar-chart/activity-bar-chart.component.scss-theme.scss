@@ -13,6 +13,9 @@
       opacity: 1;
     }
   }
+  .apexcharts-text {
+    fill: mat-color($fg, text);
+  }
   .activity-bar-chart {
     .year-label {
       fill: mat-color($fg, text);

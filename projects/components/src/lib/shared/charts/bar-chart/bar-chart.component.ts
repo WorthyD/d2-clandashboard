@@ -106,9 +106,7 @@ export class BarChartComponent implements OnInit {
   //     // }
   //   }
   // };
-  xaxis: ApexXAxis = {
-    type: 'datetime'
-  };
+  xaxis: ApexXAxis;
   legend: ApexLegend = {};
 
   plotOptions: ApexPlotOptions = {
@@ -176,22 +174,31 @@ export class BarChartComponent implements OnInit {
       const firstData = sourceData[0].date;
 
       if (firstData instanceof Date) {
-        cleanedData = this.prepDateData(sourceData);
-        this.series = [
-          {
-            name: '',
-            data: cleanedData
-          }
-        ];
+        this.xaxis = {
+          type: 'datetime'
+        };
       } else {
-        cleanedData = [...sourceData];
-        this.series = [
-          {
-            name: '',
-            data: cleanedData
-          }
-        ];
+        this.xaxis = {
+          type: 'category'
+        };
       }
+      cleanedData = this.prepDateData(sourceData);
+      this.series = [
+        {
+          name: '',
+          data: cleanedData
+        }
+      ];
+      // } else {
+      //   cleanedData = [...sourceData];
+      //   console.log(cleanedData);
+      //   this.series = [
+      //     {
+      //       name: '',
+      //       data: cleanedData
+      //     }
+      //   ];
+      // }
     }
   }
 
