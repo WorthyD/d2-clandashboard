@@ -1,3 +1,4 @@
    <lib-activity-time-chart [loading]="service.isLoading" [events]="service.events2"
-     [updating]="service.activitiesUpdating$ | async" (selectionChange)="service.changeDuration($event)">
+     [updating]="service.activitiesUpdating$ | async" (selectionChange)="service.changeDuration($event)"
+     [theme]="service.theme$ | async">
    </lib-activity-time-chart>

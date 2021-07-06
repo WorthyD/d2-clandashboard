@@ -21,6 +21,7 @@ import {
   ApexLegend,
   ApexPlotOptions,
   ApexStroke,
+  ApexTheme,
   ApexTooltip,
   ApexXAxis,
   ApexYAxis
@@ -48,6 +49,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
       [stroke]="stroke"
       [tooltip]="tooltip"
       [xaxis]="xaxis"
+      [theme]="theme"
     ></apx-chart>
   `,
   styleUrls: ['./bar-chart.component.scss'],
@@ -76,6 +78,9 @@ export class BarChartComponent implements OnInit {
   @Input()
   convertTo: string = 'Minutes';
 
+  @Input()
+  colorTheme: 'light' | 'dark';
+
   _events;
   @Input()
   get events(): [] {
@@ -93,6 +98,7 @@ export class BarChartComponent implements OnInit {
   series: ApexAxisChartSeries = [];
   chart: ApexChart = { type: 'bar', height: 400, zoom: { enabled: false } };
   yaxis: ApexYAxis;
+  theme: ApexTheme;
   // yaxis: ApexYAxis = {
   //   title: {
   //     text: this.convertTo
@@ -165,6 +171,9 @@ export class BarChartComponent implements OnInit {
           return x.toString();
         }
       }
+    };
+    this.theme = {
+      mode: this.colorTheme
     };
   }
 

@@ -12,7 +12,8 @@
       </div>
     </div>
     <div class="chart-container">
-      <lib-activity-bar-chart *ngIf="!loading; else loadingTemplate" [events]="events" convertTo="Hours"></lib-activity-bar-chart>
+      <lib-activity-bar-chart *ngIf="!loading; else loadingTemplate" [events]="events" convertTo="Hours"
+        [colorTheme]="theme === 'dark-theme' ?  'dark':'light'"></lib-activity-bar-chart>
       <!-- <div class="h3">Feature coming soon </div> -->
     </div>
     <div *ngIf="updating && events.length > 0" class="update-info">

@@ -19,6 +19,7 @@ import {
   ApexLegend,
   ApexPlotOptions,
   ApexStroke,
+  ApexTheme,
   ApexTooltip,
   ApexXAxis,
   ApexYAxis
@@ -32,7 +33,6 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class ActivityBarChartComponent implements OnInit {
-  x;
 
   formatPipe = new PlaytimePipe();
 
@@ -72,11 +72,13 @@ export class ActivityBarChartComponent implements OnInit {
     labels: {
       // formatter: (x) => {
       //   // dynamically calculate
-
       //   //return `${this.formatPipe.transform(x, false)}`;
       //   return `${this.formatPipe.transform(x, false)}`;
       // }
     }
+  };
+  theme: ApexTheme = {
+    mode: 'dark'
   };
   xaxis: ApexXAxis = {
     type: 'datetime'
