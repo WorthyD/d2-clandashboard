@@ -12,12 +12,13 @@ import {
 } from '../store/member-profiles/member-profiles.selectors';
 import { ActivityModeService, ClanActivityService } from '@destiny/data';
 import { ActivityModeDefinition } from 'bungie-models';
+import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selectors';
 
 @Injectable()
 export class ClanMemberActivityService {
   activityModeDefinitionOptions: ActivityModeDefinition[];
   constructor(
-    private store: Store<ClanState>,
+    private store: Store<any>,
     private clanActivityService: ClanActivityService,
     private activityModeService: ActivityModeService
   ) {
@@ -33,6 +34,7 @@ export class ClanMemberActivityService {
 
   clanMemberProfiles$ = this.store.pipe(select(getAllMembers));
   areMemberProfilesLoading$ = this.store.pipe(select(getIsMembersProfilesLoading));
+  theme$ = this.store.pipe(select(selectEffectiveTheme));
 
   selectedActivity$ = new BehaviorSubject(0);
   selectedMembers$ = new BehaviorSubject([]);

@@ -11,7 +11,7 @@
 <lib-clan-roster-activity-table [memberActivityStats]="clanMemberActivityService.activityStats"
   [isLoading]="clanMemberActivityService.isLoading"
   [memberProfilesLoading]="clanMemberActivityService.areMemberProfilesLoading$ | async"
-  (viewMember)="viewMember($event)">
+  [theme]="clanMemberActivityService.theme$ | async" (viewMember)="viewMember($event)">
 </lib-clan-roster-activity-table>
 
 <!-- <pre>

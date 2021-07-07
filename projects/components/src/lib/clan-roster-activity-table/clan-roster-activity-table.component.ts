@@ -32,6 +32,9 @@ export class ClanRosterActivityTableComponent implements OnInit {
 
   sortedData: ActivityStats[]
 
+  @Input()
+  theme;
+
   _memberActivityStats;
   @Input()
   get memberActivityStats(): ActivityStats[] {

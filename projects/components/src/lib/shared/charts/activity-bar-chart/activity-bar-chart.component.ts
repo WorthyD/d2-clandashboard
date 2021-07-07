@@ -7,8 +7,6 @@ import {
   ViewEncapsulation,
   ChangeDetectorRef
 } from '@angular/core';
-import * as d3 from 'd3';
-import { SECONDS_IN_HOUR } from '@destiny/models/constants';
 import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
 import { compare } from '../../../utilities/compare';
 import {
@@ -27,13 +25,19 @@ import {
 
 @Component({
   selector: 'lib-activity-bar-chart',
-  templateUrl: './activity-bar-chart.component.html',
+  template: `<apx-chart
+    [series]="series"
+    [chart]="chart"
+    [plotOptions]="plotOptions"
+    [tooltip]="tooltip"
+    [xaxis]="xaxis"
+    [theme]="theme"
+  ></apx-chart> `,
   styleUrls: ['./activity-bar-chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 export class ActivityBarChartComponent implements OnInit {
-
   formatPipe = new PlaytimePipe();
 
   _events;
@@ -63,7 +67,14 @@ export class ActivityBarChartComponent implements OnInit {
 
   // ----------------
   series: ApexAxisChartSeries = [];
-  chart: ApexChart = { type: 'bar', height: 400, zoom: { enabled: false } };
+  chart: ApexChart = {
+    type: 'bar',
+    height: 100,
+    sparkline: {
+      enabled: true
+    }
+  };
+
   yaxis: ApexYAxis = {
     title: {
       text: this.convertTo
@@ -78,7 +89,7 @@ export class ActivityBarChartComponent implements OnInit {
     }
   };
   theme: ApexTheme = {
-    mode: 'dark'
+    mode: 'light'
   };
   xaxis: ApexXAxis = {
     type: 'datetime'
@@ -87,9 +98,7 @@ export class ActivityBarChartComponent implements OnInit {
 
   plotOptions: ApexPlotOptions = {
     bar: {
-      horizontal: false,
-      columnWidth: '75%'
-      // endingShape: 'rounded'
+      columnWidth: '80%'
     }
   };
   dataLabels: ApexDataLabels = {
@@ -105,6 +114,12 @@ export class ActivityBarChartComponent implements OnInit {
   };
 
   tooltip: ApexTooltip = {
+    fixed: {
+      enabled: false
+    },
+    x: {
+      show: false
+    },
     y: {
       formatter: (val) => {
         let convertedVal = 0;
@@ -114,8 +129,23 @@ export class ActivityBarChartComponent implements OnInit {
           convertedVal = val * 60 * 60;
         }
         return `${this.formatPipe.transform(convertedVal)}`;
+
       }
+    },
+    marker: {
+      show: false
     }
+    // y: {
+    //   formatter: (val) => {
+    //     let convertedVal = 0;
+    //     if (this.convertTo === 'Minutes') {
+    //       convertedVal = val * 60;
+    //     } else if (this.convertTo === 'Hours') {
+    //       convertedVal = val * 60 * 60;
+    //     }
+    //     return `${this.formatPipe.transform(convertedVal)}`;
+    //   }
+    // }
   };
 
   constructor(private elRef: ElementRef, private cd: ChangeDetectorRef) {
@@ -265,18 +295,18 @@ export class ActivityBarChartComponent implements OnInit {
   }
 }
 
-function formatDate(date) {
-  const d = new Date(date);
-  let month = '' + (d.getMonth() + 1),
-    day = '' + d.getDate();
-  const year = d.getFullYear();
+// function formatDate(date) {
+//   const d = new Date(date);
+//   let month = '' + (d.getMonth() + 1),
+//     day = '' + d.getDate();
+//   const year = d.getFullYear();
 
-  if (month.length < 2) {
-    month = '0' + month;
-  }
-  if (day.length < 2) {
-    day = '0' + day;
-  }
+//   if (month.length < 2) {
+//     month = '0' + month;
+//   }
+//   if (day.length < 2) {
+//     day = '0' + day;
+//   }
 
-  return [year, month, day].join('-');
-}
+//   return [year, month, day].join('-');
+// }

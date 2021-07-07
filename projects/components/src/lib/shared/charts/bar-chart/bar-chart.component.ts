@@ -27,16 +27,15 @@ import {
   ApexYAxis
 } from 'ng-apexcharts';
 
-import * as d3 from 'd3';
-import { SECONDS_IN_HOUR } from '@destiny/models/constants';
 import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
 import { compare } from '../../../utilities/compare';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 // https://bl.ocks.org/alanvillalobos/14e9f0d80ea6b0d8083ba95a9d571d13
+
 @Component({
-  selector: 'lib-activity-bar-chart',
+  selector: 'lib-bar-chart',
   template: `
     <apx-chart
       [series]="series"
