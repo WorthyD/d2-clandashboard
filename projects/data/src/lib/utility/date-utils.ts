@@ -34,3 +34,17 @@ export function getBungieStartDate(date): Date {
 export function getFirstDayOfMonth(date): Date {
   return new Date(date.getFullYear(), date.getMonth(), 1);
 }
+
+export function getDateArray(startDate: Date, stopDate: Date) {
+  const dateArray = [];
+  let currentDate = startDate;
+  while (currentDate <= stopDate) {
+    dateArray.push(new Date(currentDate));
+    currentDate = addDays(currentDate, 1);
+  }
+  return dateArray;
+}
+function addDays(date: Date, days: number) {
+  date.setDate(date.getDate() + days);
+  return date;
+}

@@ -1,3 +1,5 @@
+import { getDateArray } from 'projects/data/src/lib/utility/date-utils';
+
 export function formatHeatmapData(data) {
   const dates = data.map((x) => new Date(x.date));
   const mnDate = dates
@@ -22,7 +24,8 @@ export function formatHeatmapData(data) {
     console.log(startDay);
     console.log(endDay);
 
-
+    const dateRange = getDateArray(startDay, endDay);
+    // console.log(dateRange);
   }
   return '';
 }
