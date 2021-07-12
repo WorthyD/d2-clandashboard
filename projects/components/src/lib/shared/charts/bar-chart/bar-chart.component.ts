@@ -189,16 +189,7 @@ export class BarChartComponent implements OnInit {
           data: cleanedData
         }
       ];
-      // } else {
-      //   cleanedData = [...sourceData];
-      //   console.log(cleanedData);
-      //   this.series = [
-      //     {
-      //       name: '',
-      //       data: cleanedData
-      //     }
-      //   ];
-      // }
+
     }
   }
 
