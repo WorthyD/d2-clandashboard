@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+// import { TestBed } from '@angular/core/testing';
 
-import { Route.AnimationsService } from './route.animations.service';
+// import { Route.AnimationsService } from './route.animations.service';
 
-describe('Route.AnimationsService', () => {
-  let service: Route.AnimationsService;
+// describe('Route.AnimationsService', () => {
+//   let service: Route.AnimationsService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Route.AnimationsService);
-  });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({});
+//     service = TestBed.inject(Route.AnimationsService);
+//   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+//   it('should be created', () => {
+//     expect(service).toBeTruthy();
+//   });
+// });

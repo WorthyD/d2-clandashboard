@@ -21,21 +21,21 @@ import {
   ApexLegend,
   ApexPlotOptions,
   ApexStroke,
+  ApexTheme,
   ApexTooltip,
   ApexXAxis,
   ApexYAxis
 } from 'ng-apexcharts';
 
-import * as d3 from 'd3';
-import { SECONDS_IN_HOUR } from '@destiny/models/constants';
 import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
 import { compare } from '../../../utilities/compare';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 // https://bl.ocks.org/alanvillalobos/14e9f0d80ea6b0d8083ba95a9d571d13
+
 @Component({
-  selector: 'lib-activity-bar-chart',
+  selector: 'lib-bar-chart',
   template: `
     <apx-chart
       [series]="series"
@@ -48,6 +48,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
       [stroke]="stroke"
       [tooltip]="tooltip"
       [xaxis]="xaxis"
+      [theme]="theme"
     ></apx-chart>
   `,
   styleUrls: ['./bar-chart.component.scss'],
@@ -76,6 +77,9 @@ export class BarChartComponent implements OnInit {
   @Input()
   convertTo: string = 'Minutes';
 
+  @Input()
+  colorTheme: 'light' | 'dark';
+
   _events;
   @Input()
   get events(): [] {
@@ -93,6 +97,7 @@ export class BarChartComponent implements OnInit {
   series: ApexAxisChartSeries = [];
   chart: ApexChart = { type: 'bar', height: 400, zoom: { enabled: false } };
   yaxis: ApexYAxis;
+  theme: ApexTheme;
   // yaxis: ApexYAxis = {
   //   title: {
   //     text: this.convertTo
@@ -165,6 +170,9 @@ export class BarChartComponent implements OnInit {
           return x.toString();
         }
       }
+    };
+    this.theme = {
+      mode: this.colorTheme
     };
   }
 

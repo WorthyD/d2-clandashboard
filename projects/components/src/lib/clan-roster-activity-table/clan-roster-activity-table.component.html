@@ -20,7 +20,8 @@
       <mat-cell *matCellDef="let element" class="activity-cell">
 
         <div class="mx-1">
-          <lib-activity-bar-chart [events]="element.stats.activities">
+          <lib-activity-bar-chart [events]="element.stats.activities"
+            [colorTheme]="theme === 'dark-theme' ?  'dark':'light'">
           </lib-activity-bar-chart>
         </div>
       </mat-cell>

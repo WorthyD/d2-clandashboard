@@ -1,10 +1,10 @@
 export const MOCK_GRID_ITEMS: any[] = [
   {
-    date: '2020-08-26',
+    date: '2019-08-26',
     seconds: 10822
   },
   {
-    date: '2020-08-25',
+    date: '2019-08-25',
     seconds: 4974
   },
   {

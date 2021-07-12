@@ -17,6 +17,7 @@ import {
   getClanMemberActivitiesLoaded,
   getClanMemberActivitiesUpdating
 } from '../../store/member-activities/member-activities.selectors';
+import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selectors';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +30,7 @@ export class ClanAggregateActivityService {
   clanMemberProfiles$ = this.store.pipe(select(getAllMembers));
   isLoading = true;
 
+  theme$ = this.store.pipe(select(selectEffectiveTheme));
   activities$ = this.store.pipe(select(getAllMemberActivities));
   activitiesLoaded$ = this.store.pipe(select(getClanMemberActivitiesLoaded));
   activitiesUpdating$ = this.store.pipe(select(getClanMemberActivitiesUpdating));
