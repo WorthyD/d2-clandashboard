@@ -23,8 +23,13 @@ export function formatHeatmapData(data) {
 
   const exportData = [];
   for (let yearIndex = startYear; yearIndex < endYear + 1; yearIndex++) {
-    const startDate = new Date(yearIndex, 0, 1);
 
+    /*
+      Get the beginning of the first week and end of the last week.
+      These wont have any data, but are required for our chart's rows to line up properly
+    */
+
+    const startDate = new Date(yearIndex, 0, 1);
     // Get previous sunday
     const startDateAdjusted = new Date(startDate.setDate(startDate.getDate() - startDate.getDay()));
 
@@ -33,19 +38,15 @@ export function formatHeatmapData(data) {
     // Get next saturday
     const endDateAdjusted = new Date(endDate.setDate(endDate.getDate() - endDate.getDay() + 6));
 
+
     const dateRange = getDateArray(startDateAdjusted, endDateAdjusted);
     const eventsOfYear = cleanedData.filter((x) => x.date.getFullYear() === yearIndex);
 
-    const sundayData = getDataForDayOfWeek(0, dateRange, eventsOfYear);
-    console.log(sundayData);
-    // getDataForDayOfWeek(1, dateRange, eventsOfYear);
-    // getDataForDayOfWeek(2, dateRange, eventsOfYear);
-    // getDataForDayOfWeek(3, dateRange, eventsOfYear);
-    // getDataForDayOfWeek(4, dateRange, eventsOfYear);
-    // getDataForDayOfWeek(5, dateRange, eventsOfYear);
-    // getDataForDayOfWeek(6, dateRange, eventsOfYear);
+    for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+      exportData.push(getDataForDayOfWeek(dayOfWeek, dateRange, eventsOfYear));
+    }
   }
-  return '';
+  return exportData;
 }
 
 function getDataForDayOfWeek(dayIndex: number, dateRange: Date[], eventData) {
@@ -73,6 +74,12 @@ function getDataForDayOfWeek(dayIndex: number, dateRange: Date[], eventData) {
     data: dayOfWeekData
   };
 }
+
+/*
+  TODO: not a fan of this right now.
+  Look into a different way to do this if we ever handle
+  more than en-us.
+*/
 function getDayOfWeek(dayIndex) {
   switch (dayIndex) {
     case 0:
