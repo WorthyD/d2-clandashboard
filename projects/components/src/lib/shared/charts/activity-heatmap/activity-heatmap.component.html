@@ -1,2 +1,4 @@
-<apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
-  [plotOptions]="chartOptions.plotOptions" [title]="chartOptions.title"></apx-chart>
+<ng-container *ngFor="let dataSet of dataSets">
+  <apx-chart [series]="dataSet" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
+    [plotOptions]="chartOptions.plotOptions" [title]="chartOptions.title"></apx-chart>
+</ng-container>

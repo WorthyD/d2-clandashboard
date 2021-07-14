@@ -14,6 +14,7 @@ import * as d3 from 'd3';
 import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
 import { ApexAxisChartSeries, ApexChart, ApexDataLabels, ApexPlotOptions, ApexTitleSubtitle } from 'ng-apexcharts';
+import { formatHeatmapData } from './activity-heatmap-formatter';
 
 export interface ChartOptions {
   //series: ApexAxisChartSeries;
@@ -54,8 +55,19 @@ export class ActivityHeatmapComponent implements OnInit {
 
   formatPipe = new PlaytimePipe();
 
+  _events;
   @Input()
-  events: [];
+  get events(): [] {
+    return this._events;
+  }
+  set events(value) {
+    if (value && value.length && value !== this._events) {
+      this._events = value;
+      this.updateChart(this._events);
+    }
+  }
+
+  dataSets;
 
   @Output()
   cellSelect = new EventEmitter<string>();
@@ -67,7 +79,7 @@ export class ActivityHeatmapComponent implements OnInit {
     this.chartOptions = {
       chart: {
         height: 350,
-        type: "heatmap"
+        type: 'heatmap'
       },
       plotOptions: {
         heatmap: {
@@ -77,26 +89,26 @@ export class ActivityHeatmapComponent implements OnInit {
               {
                 from: -30,
                 to: 5,
-                name: "low",
-                color: "#00A100"
+                name: 'low',
+                color: 'transparent'
               },
               {
                 from: 6,
                 to: 20,
-                name: "medium",
-                color: "#128FD9"
+                name: 'medium',
+                color: '#128FD9'
               },
               {
                 from: 21,
                 to: 45,
-                name: "high",
-                color: "#FFB200"
+                name: 'high',
+                color: '#FFB200'
               },
               {
                 from: 46,
                 to: 55,
-                name: "extreme",
-                color: "#FF0000"
+                name: 'extreme',
+                color: '#FF0000'
               }
             ]
           }
@@ -106,12 +118,17 @@ export class ActivityHeatmapComponent implements OnInit {
         enabled: false
       },
       title: {
-        text: "HeatMap Chart with Color Range"
+        text: 'HeatMap Chart with Color Range'
       }
     };
   }
 
   ngOnInit(): void {}
+
+  updateChart(events) {
+    this.dataSets = formatHeatmapData(events);
+    console.log(this.dataSets);
+  }
 
   //TODO: change this.
   // ngOnChanges(changes: SimpleChanges) {
