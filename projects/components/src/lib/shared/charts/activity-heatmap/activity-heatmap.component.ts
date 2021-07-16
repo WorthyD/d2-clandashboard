@@ -13,15 +13,25 @@ import {
 import * as d3 from 'd3';
 import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
-import { ApexAxisChartSeries, ApexChart, ApexDataLabels, ApexPlotOptions, ApexTitleSubtitle } from 'ng-apexcharts';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexDataLabels,
+  ApexPlotOptions,
+  ApexTheme,
+  ApexTitleSubtitle,
+  ApexTooltip
+} from 'ng-apexcharts';
 import { formatHeatmapData } from './activity-heatmap-formatter';
 
 export interface ChartOptions {
-  //series: ApexAxisChartSeries;
+  // series: ApexAxisChartSeries;
   chart: ApexChart;
   dataLabels: ApexDataLabels;
   title: ApexTitleSubtitle;
   plotOptions: ApexPlotOptions;
+  toolTip: ApexTooltip;
+  theme: ApexTheme;
 }
 
 @Component({
@@ -55,6 +65,9 @@ export class ActivityHeatmapComponent implements OnInit {
 
   formatPipe = new PlaytimePipe();
 
+  @Input()
+  colorTheme: 'light' | 'dark';
+
   _events;
   @Input()
   get events(): [] {
@@ -84,16 +97,18 @@ export class ActivityHeatmapComponent implements OnInit {
       plotOptions: {
         heatmap: {
           shadeIntensity: 0.5,
+          //useFillColorAsStroke: true,
           colorScale: {
             ranges: [
               {
-                from: -30,
-                to: 5,
+                from: 0,
+                to: 1,
                 name: 'low',
-                color: 'transparent'
+                color: '#fafafa'
+                // color: this.colorTheme === 'light' ? '#ffffff' : '#303030'
               },
               {
-                from: 6,
+                from: 1,
                 to: 20,
                 name: 'medium',
                 color: '#128FD9'
@@ -114,11 +129,34 @@ export class ActivityHeatmapComponent implements OnInit {
           }
         }
       },
+      theme: {
+        mode: this.colorTheme
+      },
       dataLabels: {
         enabled: false
       },
       title: {
         text: 'HeatMap Chart with Color Range'
+      },
+      toolTip: {
+        fixed: {
+          enabled: false
+        },
+        x: {
+          show: false
+        },
+        y: {
+          formatter: (val) => {
+            // let convertedVal = 0;
+            // if (this.convertTo === 'Minutes') {
+            //   convertedVal = val * 60;
+            // } else if (this.convertTo === 'Hours') {
+            //   convertedVal = val * 60 * 60;
+            // }
+            // return `${this.formatPipe.transform(convertedVal)}`;
+            return 'test';
+          }
+        }
       }
     };
   }
@@ -127,7 +165,7 @@ export class ActivityHeatmapComponent implements OnInit {
 
   updateChart(events) {
     this.dataSets = formatHeatmapData(events);
-    console.log(this.dataSets);
+    //    console.log(this.dataSets);
   }
 
   //TODO: change this.

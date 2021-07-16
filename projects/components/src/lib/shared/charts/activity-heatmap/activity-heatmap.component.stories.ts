@@ -20,12 +20,13 @@ export const base = () => ({
   component: ActivityHeatmapComponent,
   template: `
   <div>
-        <lib-activity-heatmap [events]="allEvents[eventIndex]" (cellSelect)="cellSelect($event)"></lib-activity-heatmap>
+        <lib-activity-heatmap [events]="allEvents[eventIndex]" [colorTheme]="theme" (cellSelect)="cellSelect($event)" ></lib-activity-heatmap>
   </div>
    `,
   props: {
     allEvents: events,
     eventIndex: select('DataSet', [0, 1], 0),
+    theme: select('color theme', ['light', 'dark'], 'light'),
     cellSelect: action('cell select')
   }
 });
