@@ -1,7 +1,5 @@
 <ng-container *ngFor="let dataSet of dataSets">
-  <apx-chart [series]="dataSet" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
-    [plotOptions]="chartOptions.plotOptions" [title]="chartOptions.title"  [tooltip]="chartOptions.toolTip"
-    [xaxis]="chartOptions.xaxis"
-    [theme]="chartOptions.theme"
-    ></apx-chart>
+  <apx-chart [series]="dataSet.data" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
+    [plotOptions]="chartOptions.plotOptions" [title]="{text:dataSet.year}" [tooltip]="chartOptions.toolTip"
+    [xaxis]="chartOptions.xaxis" [theme]="chartOptions.theme"></apx-chart>
 </ng-container>

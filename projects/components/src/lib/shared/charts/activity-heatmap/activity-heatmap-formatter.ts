@@ -23,7 +23,6 @@ export function formatHeatmapData(data) {
 
   const exportData = [];
   for (let yearIndex = startYear; yearIndex < endYear + 1; yearIndex++) {
-    console.log('yearIndex', yearIndex);
     /*
       Get the beginning of the first week and end of the last week.
       These wont have any data, but are required for our chart's rows to line up properly
@@ -45,9 +44,8 @@ export function formatHeatmapData(data) {
     for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
       yearData.push(getDataForDayOfWeek(dayOfWeek, dateRange, eventsOfYear));
     }
-    exportData.push(yearData);
+    exportData.push({ year: yearIndex, data: yearData });
   }
-  console.log('export data', exportData);
 
   return exportData;
 }
@@ -68,7 +66,8 @@ function getDataForDayOfWeek(dayIndex: number, dateRange: Date[], eventData) {
     } else {
       dayOfWeekData.push({
         x: xName,
-        y: 0
+        y: 0,
+        date: allDaysOfYear[i]
       });
     }
   }

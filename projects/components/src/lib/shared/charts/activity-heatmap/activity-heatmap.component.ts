@@ -24,6 +24,7 @@ import {
   ApexXAxis
 } from 'ng-apexcharts';
 import { formatHeatmapData } from './activity-heatmap-formatter';
+import { getDayOfWeek } from 'projects/data/src/lib/utility/date-utils';
 
 export interface ChartOptions {
   // series: ApexAxisChartSeries;
@@ -83,6 +84,8 @@ export class ActivityHeatmapComponent implements OnInit {
   }
 
   dataSets;
+  lastKey = '';
+  lastData: any = {};
 
   @Output()
   cellSelect = new EventEmitter<string>();
@@ -150,13 +153,16 @@ export class ActivityHeatmapComponent implements OnInit {
         }
       },
       title: {
-        text: 'HeatMap Chart with Color Range'
+        //  text: 'HeatMap Chart with Color Range'
       },
       toolTip: {
-        // custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-        //   console.log(seriesIndex);
-        //   return 'alert';
-        // },
+        custom: ({ series, seriesIndex, dataPointIndex, w }) =>
+          this.toolTip({ series, seriesIndex, dataPointIndex, w }),
+        // custom: function({series, seriesIndex, dataPointIndex, w}) {
+        //   return '<div class="arrow_box">' +
+        //     '<span>' + series[seriesIndex][dataPointIndex] + '</span>' +
+        //     '</div>'
+        // }
         fixed: {
           enabled: false
         },
@@ -181,6 +187,29 @@ export class ActivityHeatmapComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  toolTip({ series, seriesIndex, dataPointIndex, w }) {
+    const key = `${seriesIndex}-${dataPointIndex}-${w.config.title.text}`;
+
+    if (this.lastKey !== key) {
+      this.lastKey = key;
+      this.lastData = this.lookupData(seriesIndex, dataPointIndex, w.config.title.text);
+    }
+    //console.log(series);// array of each row
+    //console.log(seriesIndex);// 0 sunday, 6 saturday
+    //console.log(dataPointIndex); // week number
+    //console.log(w);
+
+    return `<div><strong>${formatDate(this.lastData.date)}</strong>: ${this.formatPipe.transform(this.lastData.y)}`;
+  }
+
+  lookupData(seriesIndex, dataPointIndex, year): any {
+    const yearData = this.dataSets.find((x) => x.year === year);
+    const dayOfWeek = getDayOfWeek(seriesIndex);
+    const weekData = yearData.data.find((x) => x.name === dayOfWeek);
+    const dayData = weekData.data.find((x) => x.x === `w${dataPointIndex}`);
+    return dayData;
+  }
 
   updateChart(events) {
     this.dataSets = formatHeatmapData(events);
