@@ -62,7 +62,8 @@ function getDataForDayOfWeek(dayIndex: number, dateRange: Date[], eventData) {
     if (matchedDate) {
       dayOfWeekData.push({
         x: xName,
-        y: matchedDate.seconds
+        y: matchedDate.seconds,
+        date: matchedDate.date
       });
     } else {
       dayOfWeekData.push({

@@ -20,7 +20,8 @@ import {
   ApexPlotOptions,
   ApexTheme,
   ApexTitleSubtitle,
-  ApexTooltip
+  ApexTooltip,
+  ApexXAxis
 } from 'ng-apexcharts';
 import { formatHeatmapData } from './activity-heatmap-formatter';
 
@@ -31,6 +32,7 @@ export interface ChartOptions {
   title: ApexTitleSubtitle;
   plotOptions: ApexPlotOptions;
   toolTip: ApexTooltip;
+  xaxis: ApexXAxis;
   theme: ApexTheme;
 }
 
@@ -103,26 +105,32 @@ export class ActivityHeatmapComponent implements OnInit {
               {
                 from: 0,
                 to: 1,
-                name: 'low',
+                name: ' ',
                 color: '#fafafa'
-                // color: this.colorTheme === 'light' ? '#ffffff' : '#303030'
+                //color: this.colorTheme === 'light' ? '#fafafa' : '#303030'
               },
               {
-                from: 1,
-                to: 20,
-                name: 'medium',
+                from: 2,
+                to: 17280,
+                name: '0 - 5hr',
+                color: '#00A100'
+              },
+              {
+                from: 17281,
+                to: 34560,
+                name: '5 - 10 hr',
                 color: '#128FD9'
               },
               {
-                from: 21,
-                to: 45,
-                name: 'high',
+                from: 34560,
+                to: 51840,
+                name: '10 -  15 hr',
                 color: '#FFB200'
               },
               {
-                from: 46,
-                to: 55,
-                name: 'extreme',
+                from: 51841,
+                to: 86400,
+                name: '15 - 24 hr',
                 color: '#FF0000'
               }
             ]
@@ -135,10 +143,20 @@ export class ActivityHeatmapComponent implements OnInit {
       dataLabels: {
         enabled: false
       },
+      xaxis: {
+        type: 'category',
+        labels: {
+          show: false
+        }
+      },
       title: {
         text: 'HeatMap Chart with Color Range'
       },
       toolTip: {
+        // custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+        //   console.log(seriesIndex);
+        //   return 'alert';
+        // },
         fixed: {
           enabled: false
         },
@@ -146,15 +164,16 @@ export class ActivityHeatmapComponent implements OnInit {
           show: false
         },
         y: {
-          formatter: (val) => {
-            // let convertedVal = 0;
+          formatter: (val, opts) => {
+            let convertedVal = 0;
+            //console.log(opts);
             // if (this.convertTo === 'Minutes') {
             //   convertedVal = val * 60;
             // } else if (this.convertTo === 'Hours') {
-            //   convertedVal = val * 60 * 60;
+            //           convertedVal = val * 60 * 60;
             // }
-            // return `${this.formatPipe.transform(convertedVal)}`;
-            return 'test';
+            return `${this.formatPipe.transform(val)}`;
+            //return 'test';
           }
         }
       }
