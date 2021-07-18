@@ -93,10 +93,9 @@ export class ActivityHeatmapComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
 
   constructor(private elRef: ElementRef) {
-    // this.hostElement = this.elRef.nativeElement;
     this.chartOptions = {
       chart: {
-        height: 350,
+        height: 250,
         type: 'heatmap'
       },
       plotOptions: {
@@ -149,39 +148,44 @@ export class ActivityHeatmapComponent implements OnInit {
       xaxis: {
         type: 'category',
         labels: {
-          show: false
+          show: true,
+          formatter: (value: string, timestamp?: number, opts?: any) => {
+            return this.xAxisLabelFormatter(value);
+          }
+        },
+        tooltip: {
+          enabled: false
         }
       },
       title: {
         //  text: 'HeatMap Chart with Color Range'
       },
       toolTip: {
-        custom: ({ series, seriesIndex, dataPointIndex, w }) =>
-          this.toolTip({ series, seriesIndex, dataPointIndex, w }),
+        custom: ({ series, seriesIndex, dataPointIndex, w }) => this.toolTip({ series, seriesIndex, dataPointIndex, w })
         // custom: function({series, seriesIndex, dataPointIndex, w}) {
         //   return '<div class="arrow_box">' +
         //     '<span>' + series[seriesIndex][dataPointIndex] + '</span>' +
         //     '</div>'
         // }
-        fixed: {
-          enabled: false
-        },
-        x: {
-          show: false
-        },
-        y: {
-          formatter: (val, opts) => {
-            let convertedVal = 0;
-            //console.log(opts);
-            // if (this.convertTo === 'Minutes') {
-            //   convertedVal = val * 60;
-            // } else if (this.convertTo === 'Hours') {
-            //           convertedVal = val * 60 * 60;
-            // }
-            return `${this.formatPipe.transform(val)}`;
-            //return 'test';
-          }
-        }
+        // fixed: {
+        //   enabled: false
+        // },
+        // x: {
+        //   show: false
+        // },
+        // y: {
+        //   formatter: (val, opts) => {
+        //     let convertedVal = 0;
+        //     //console.log(opts);
+        //     // if (this.convertTo === 'Minutes') {
+        //     //   convertedVal = val * 60;
+        //     // } else if (this.convertTo === 'Hours') {
+        //     //           convertedVal = val * 60 * 60;
+        //     // }
+        //     return `${this.formatPipe.transform(val)}`;
+        //     //return 'test';
+        //   }
+        // }
       }
     };
   }
@@ -195,12 +199,18 @@ export class ActivityHeatmapComponent implements OnInit {
       this.lastKey = key;
       this.lastData = this.lookupData(seriesIndex, dataPointIndex, w.config.title.text);
     }
-    //console.log(series);// array of each row
-    //console.log(seriesIndex);// 0 sunday, 6 saturday
-    //console.log(dataPointIndex); // week number
-    //console.log(w);
+    return `<div class="p-1">
+       <div>Date: ${formatDate(this.lastData.date)}</div>
+       <div>Time: ${this.formatPipe.transform(this.lastData.y)}</div>
+       </div>`;
+  }
 
-    return `<div><strong>${formatDate(this.lastData.date)}</strong>: ${this.formatPipe.transform(this.lastData.y)}`;
+  xAxisLabelFormatter(val) {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const labelWeeks = ['w0', 'w4', 'w8', 'w13', 'w17', 'w22', 'w26', 'w30', 'w34', 'w39', 'w45', 'w49'];
+    const index = labelWeeks.indexOf(val);
+
+    return index > -1 ? months[index] : '';
   }
 
   lookupData(seriesIndex, dataPointIndex, year): any {

@@ -41,7 +41,7 @@ export function formatHeatmapData(data) {
     const eventsOfYear = cleanedData.filter((x) => x.date.getFullYear() === yearIndex);
 
     const yearData = [];
-    for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
+    for (let dayOfWeek = 6; dayOfWeek > -1; dayOfWeek--) {
       yearData.push(getDataForDayOfWeek(dayOfWeek, dateRange, eventsOfYear));
     }
     exportData.push({ year: yearIndex, data: yearData });
