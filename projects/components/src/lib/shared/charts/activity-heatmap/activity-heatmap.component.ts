@@ -96,7 +96,18 @@ export class ActivityHeatmapComponent implements OnInit {
     this.chartOptions = {
       chart: {
         height: 250,
-        type: 'heatmap'
+        type: 'heatmap',
+        events: {
+          dataPointSelection: (event, chartContext, config) => {
+            /// ...
+            console.log('event', event);
+            console.log('chartContext', chartContext);
+            console.log('config', config);
+            //return this.toolTip({ series: null, seriesIndex: config.seriesIndex, dataPointIndex, w });
+            const data = this.lookupData(config.seriesIndex, config.dataPointIndex, config.w.config.title.text);
+            console.log(data);
+          }
+        }
       },
       plotOptions: {
         heatmap: {
@@ -173,7 +184,7 @@ export class ActivityHeatmapComponent implements OnInit {
         // x: {
         //   show: false
         // },
-        // y: {
+        //  y: {
         //   formatter: (val, opts) => {
         //     let convertedVal = 0;
         //     //console.log(opts);
@@ -215,14 +226,32 @@ export class ActivityHeatmapComponent implements OnInit {
 
   lookupData(seriesIndex, dataPointIndex, year): any {
     const yearData = this.dataSets.find((x) => x.year === year);
-    const dayOfWeek = getDayOfWeek(seriesIndex);
+    const dayOfWeek = this.getDayOfWeekReverse(seriesIndex);
     const weekData = yearData.data.find((x) => x.name === dayOfWeek);
     const dayData = weekData.data.find((x) => x.x === `w${dataPointIndex}`);
     return dayData;
   }
-
+  getDayOfWeekReverse(dayIndex) {
+    switch (dayIndex) {
+      case 6:
+        return 'Sunday';
+      case 5:
+        return 'Monday';
+      case 4:
+        return 'Tuesday';
+      case 3:
+        return 'Wednesday';
+      case 2:
+        return 'Thursday';
+      case 1:
+        return 'Friday';
+      case 0:
+        return 'Saturday';
+    }
+  }
   updateChart(events) {
     this.dataSets = formatHeatmapData(events);
+    console.log(this.dataSets);
     //    console.log(this.dataSets);
   }
 
