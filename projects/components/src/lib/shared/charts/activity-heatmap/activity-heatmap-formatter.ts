@@ -1,8 +1,11 @@
 import { getDateArray } from 'projects/data/src/lib/utility/date-utils';
+import { formatDate } from 'projects/data/src/lib/utility/format-date';
 
 export function formatHeatmapData(data) {
+  console.log(data);
   const cleanedData = data.map((x) => {
     return {
+      formattedDate: x.date,
       date: new Date(x.date),
       seconds: x.seconds
     };
@@ -13,13 +16,14 @@ export function formatHeatmapData(data) {
     .reduce((a, b) => {
       return a < b ? a : b;
     })
-    .getFullYear();
+    .getUTCFullYear();
 
   const endYear = dates
     .reduce((a, b) => {
       return a > b ? a : b;
     })
-    .getFullYear();
+    .getUTCFullYear();
+    //new Date()
 
   const exportData = [];
   for (let yearIndex = startYear; yearIndex < endYear + 1; yearIndex++) {
@@ -38,7 +42,7 @@ export function formatHeatmapData(data) {
     const endDateAdjusted = new Date(endDate.setDate(endDate.getDate() - endDate.getDay() + 6));
 
     const dateRange = getDateArray(startDateAdjusted, endDateAdjusted);
-    const eventsOfYear = cleanedData.filter((x) => x.date.getFullYear() === yearIndex);
+    const eventsOfYear = cleanedData.filter((x) => x.date.getUTCFullYear() === yearIndex);
 
     const yearData = [];
     for (let dayOfWeek = 6; dayOfWeek > -1; dayOfWeek--) {
@@ -51,17 +55,18 @@ export function formatHeatmapData(data) {
 }
 
 function getDataForDayOfWeek(dayIndex: number, dateRange: Date[], eventData) {
-  const allDaysOfYear = dateRange.filter((x) => x.getDay() === dayIndex);
+  const allDaysOfYear = dateRange.filter((x) => x.getDay() === dayIndex).map(x => formatDate(x));
+
 
   const dayOfWeekData = [];
   for (let i = 0; i < allDaysOfYear.length; i++) {
-    const matchedDate = eventData.find((x) => x.date.toDateString() === allDaysOfYear[i].toDateString());
+    const matchedDate = eventData.find((x) => x.formattedDate === allDaysOfYear[i]);
     const xName = `w${i}`;
     if (matchedDate) {
       dayOfWeekData.push({
         x: xName,
         y: matchedDate.seconds,
-        date: matchedDate.date
+        date: matchedDate.formattedDate
       });
     } else {
       dayOfWeekData.push({

@@ -209,6 +209,9 @@ export class ActivityHeatmapComponent implements OnInit {
     if (this.lastKey !== key) {
       this.lastKey = key;
       this.lastData = this.lookupData(seriesIndex, dataPointIndex, w.config.title.text);
+      // console.log(this.lastData.date);
+      // console.log(this.lastData.date.toDateString());
+      // console.log(this.lastData.date.toLocaleDateString());
     }
     return `<div class="p-1">
        <div>Date: ${formatDate(this.lastData.date)}</div>
@@ -251,7 +254,7 @@ export class ActivityHeatmapComponent implements OnInit {
   }
   updateChart(events) {
     this.dataSets = formatHeatmapData(events);
-    console.log(this.dataSets);
+  //  console.log(this.dataSets);
     //    console.log(this.dataSets);
   }
 
