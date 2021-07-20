@@ -35,6 +35,8 @@ export class ActivityTimeChartComponent implements OnInit {
       text: 'Season'
     }
   ];
+  @Input()
+  theme;
 
   @Input()
   events;

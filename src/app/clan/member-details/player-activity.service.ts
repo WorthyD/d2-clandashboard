@@ -90,7 +90,6 @@ export class PlayerActivityService extends BasePlayerService {
     this.selectedDuration$
   ]).pipe(
     tap((x) => {
-      console.log('activities tappling');
       this.playerActivitiesLoadingSource.next(true);
     }),
     filter(([activities, isLoaded, selectedDuration]) => {

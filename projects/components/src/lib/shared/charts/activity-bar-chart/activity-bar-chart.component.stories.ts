@@ -52,16 +52,3 @@ export const realData = () => ({
     events: REAL_DATA
   }
 });
-
-export const loadingTest = () => ({
-  component: ActivityBarChartComponent,
-  template: `
-  <div>
-        <lib-activity-bar-chart-story [events]="events" [isLoading]="isLoading"></lib-activity-bar-chart-story>
-  </div>
-   `,
-  props: {
-    events: REAL_DATA,
-    isLoading: boolean('Is Loading', true)
-  }
-});
