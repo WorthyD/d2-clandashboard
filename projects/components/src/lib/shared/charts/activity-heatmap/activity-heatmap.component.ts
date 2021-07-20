@@ -10,7 +10,7 @@ import {
   EventEmitter,
   ViewEncapsulation
 } from '@angular/core';
-import * as d3 from 'd3';
+//import * as d3 from 'd3';
 import { PlaytimePipe } from '../../../pipes/playtime/playtime.pipe';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
 import {
