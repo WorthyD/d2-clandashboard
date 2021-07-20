@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.65.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.64.0...v0.65.0) (2021-07-20)
+
+
+### Features
+
+* New charts ([054e754](https://github.com/WorthyD/d2-clandashboard/commit/054e7545c965dfd20bfe414707691958a053a449))
+* swapping D3 to ApexCharts ([35209aa](https://github.com/WorthyD/d2-clandashboard/commit/35209aa35e97e7ca65c68a15f9ad4493c598097b))
+* WE HAVE A NEW HEATMAP! ([c8a0eaa](https://github.com/WorthyD/d2-clandashboard/commit/c8a0eaa86688b83a40b892ad2a8b88dbb2e2231a))
+
 ## [0.64.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.63.0...v0.64.0) (2021-07-02)
 
 
