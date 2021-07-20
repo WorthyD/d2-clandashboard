@@ -130,7 +130,6 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     return this.getMemberCharacterActivity(clanId, member, characterId).pipe(
       map((activity) => {
         if (activityMode > 0) {
-          console.log(activity);
           activity = activity.filter((a) => a.activityDetails.modes.indexOf(activityMode) > -1);
         }
         return {

@@ -100,19 +100,19 @@ export class ActivityHeatmapComponent implements OnInit {
         events: {
           dataPointSelection: (event, chartContext, config) => {
             /// ...
-            console.log('event', event);
-            console.log('chartContext', chartContext);
-            console.log('config', config);
-            //return this.toolTip({ series: null, seriesIndex: config.seriesIndex, dataPointIndex, w });
+            // return this.toolTip({ series: null, seriesIndex: config.seriesIndex, dataPointIndex, w });
             const data = this.lookupData(config.seriesIndex, config.dataPointIndex, config.w.config.title.text);
-            console.log(data);
+            this.cellSelect.emit(data.date);
           }
+        },
+        animations: {
+          speed: 50
         }
       },
       plotOptions: {
         heatmap: {
           shadeIntensity: 0.5,
-          //useFillColorAsStroke: true,
+          // useFillColorAsStroke: true,
           colorScale: {
             ranges: [
               {
@@ -120,7 +120,7 @@ export class ActivityHeatmapComponent implements OnInit {
                 to: 1,
                 name: ' ',
                 color: '#fafafa'
-                //color: this.colorTheme === 'light' ? '#fafafa' : '#303030'
+                // color: this.colorTheme === 'light' ? '#fafafa' : '#303030'
               },
               {
                 from: 2,
@@ -254,7 +254,7 @@ export class ActivityHeatmapComponent implements OnInit {
   }
   updateChart(events) {
     this.dataSets = formatHeatmapData(events);
-  //  console.log(this.dataSets);
+    //  console.log(this.dataSets);
     //    console.log(this.dataSets);
   }
 

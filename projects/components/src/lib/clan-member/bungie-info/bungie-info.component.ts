@@ -15,7 +15,6 @@ export class BungieInfoComponent implements OnInit {
   }
   set bungieInfo(value) {
     this._bungieInfo = value;
-    console.log('bInfor', value);
     this.applyLinks();
   }
 

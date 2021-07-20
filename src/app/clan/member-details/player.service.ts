@@ -157,7 +157,6 @@ export class PlayerService extends BasePlayerService {
   */
   selectMemberTriumphs$ = this.preload$.pipe(
     switchMap(([isMemberLoaded, clanId, member]) => {
-      console.log(member);
       return this.clanRosterService.getMemberRosterStats(clanId, member);
     }),
     map((memberStats) => {

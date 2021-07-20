@@ -2,7 +2,6 @@ import { getDateArray } from 'projects/data/src/lib/utility/date-utils';
 import { formatDate } from 'projects/data/src/lib/utility/format-date';
 
 export function formatHeatmapData(data) {
-  console.log(data);
   const cleanedData = data.map((x) => {
     return {
       formattedDate: x.date,
