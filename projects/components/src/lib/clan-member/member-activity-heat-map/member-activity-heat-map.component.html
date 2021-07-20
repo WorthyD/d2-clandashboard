@@ -1,6 +1,6 @@
  <ng-container *ngIf="!isLoading; else loading">
    <ng-container *ngIf="events">
-     <lib-activity-heatmap [events]="formattedData" (cellSelect)="cellSelect($event)"></lib-activity-heatmap>
+     <lib-activity-heatmap [events]="formattedData" (cellSelect)="cellSelect($event)" [colorTheme]="theme === 'dark-theme' ?  'dark':'light'"></lib-activity-heatmap>
    </ng-container>
  </ng-container>
  <ng-template #loading>

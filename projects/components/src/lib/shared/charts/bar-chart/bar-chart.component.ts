@@ -48,7 +48,9 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
       [stroke]="stroke"
       [tooltip]="tooltip"
       [xaxis]="xaxis"
-      [theme]="theme"
+      [theme]="{
+      mode: colorTheme
+    }"
     ></apx-chart>
   `,
   styleUrls: ['./bar-chart.component.scss'],
@@ -197,7 +199,6 @@ export class BarChartComponent implements OnInit {
           data: cleanedData
         }
       ];
-
     }
   }
 

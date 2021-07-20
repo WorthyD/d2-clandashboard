@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PlayerService } from '../player.service';
 import { PlayerActivityService } from '../player-activity.service';
 
@@ -9,6 +9,8 @@ import { PlayerActivityService } from '../player-activity.service';
 })
 export class PlayerOverviewComponent implements OnInit {
   constructor(private playerService: PlayerService, private playerActivityService: PlayerActivityService) {}
+
+  theme = this.playerService.theme$;
 
   memberId = this.playerService.memberId$;
   memberProfile$ = this.playerService.memberProfile$;

@@ -16,17 +16,21 @@ import {
   SeasonClanAggregateTimeService,
   WeeklyClanAggregateTimeService
 } from '@destiny/data';
+import { selectEffectiveTheme } from '../root-store/settings/settings.selectors';
+import { select, Store } from '@ngrx/store';
 
 @Injectable()
 export class PlayerActivityService extends BasePlayerService {
   constructor(
     private playerServiceBase: PlayerService,
     private playerActivityService: DataPlayerActivityService,
-    private injector: Injector
+    private injector: Injector,
+    private store: Store<any>
   ) {
     super();
   }
-
+  themeSource$: BehaviorSubject<string> = new BehaviorSubject('');
+  theme$ = this.store.pipe(select(selectEffectiveTheme));
   playerActivitiesLoadingSource: BehaviorSubject<boolean> = new BehaviorSubject(true);
   playerActivitiesLoading: Observable<boolean> = this.playerActivitiesLoadingSource.asObservable();
   selectedDuration$ = new BehaviorSubject('daily');

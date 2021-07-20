@@ -20,6 +20,7 @@ import * as clanIdSelectors from '../store/clan-id/clan-id.selector';
 
 import { getClanMemberById, getIsMembersProfilesLoaded } from '../store/member-profiles/member-profiles.selectors';
 import { ClanRosterService, ClanCrucibleService, ClanGambitService } from '@destiny/data';
+import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selectors';
 @Injectable()
 export class PlayerService extends BasePlayerService {
   //private profileComponents = [100, 104, 200, 202, 900];
@@ -34,6 +35,9 @@ export class PlayerService extends BasePlayerService {
   ) {
     super();
   }
+
+  themeSource$: BehaviorSubject<string> = new BehaviorSubject('');
+  theme$ = this.store.pipe(select(selectEffectiveTheme));
 
   //memberId: Subject<string> = new Subject();
   memberIdSource: BehaviorSubject<string> = new BehaviorSubject('');

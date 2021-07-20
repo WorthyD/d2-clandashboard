@@ -8,6 +8,9 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 @Injectable()
 export class PlayerService {
   constructor() {}
+  themeSource$: BehaviorSubject<string>;
+  theme$: Observable<string>;
+
   memberIdSource$: BehaviorSubject<string>;
   memberId$: Observable<string>;
   memberProfile$: Observable<MemberProfile>;

@@ -18,11 +18,14 @@ import {
 import { DecimalPipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../shared/components/dialog/dialog.component';
+import { select, Store } from '@ngrx/store';
+import { selectEffectiveTheme } from '../root-store/settings/settings.selectors';
 
 @Injectable()
 export class PlayerService extends BasePlayerService {
   private profileComponents = [100, 104, 200, 202, 900];
   constructor(
+    private store: Store<any>,
     private d2Service: Destiny2Service,
     private decimalPipe: DecimalPipe,
     private bungieInfoService: BungieInfoService,
@@ -31,6 +34,9 @@ export class PlayerService extends BasePlayerService {
   ) {
     super();
   }
+
+  themeSource$: BehaviorSubject<string> = new BehaviorSubject('');
+  theme$ = this.store.pipe(select(selectEffectiveTheme));
 
   //memberId: Subject<string> = new Subject();
   memberIdSource: BehaviorSubject<string> = new BehaviorSubject('');

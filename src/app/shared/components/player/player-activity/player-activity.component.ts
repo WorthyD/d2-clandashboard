@@ -24,6 +24,7 @@ export class PlayerActivityComponent implements OnInit {
   }
   activityIsLoading = this.playerActivityService.playerActivitiesLoading;
   playerActivities = this.playerActivityService.playerActivities$;
+  theme = this.playerActivityService.theme$;
   ngOnInit(): void {}
   selectEventMode(event){
     this.playerActivityService.selectedActivity$.next(event.modeType);

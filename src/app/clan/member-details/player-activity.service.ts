@@ -23,6 +23,7 @@ import {
   getClanMemberActivitiesLoaded,
   getSelectedClanMemberActivities
 } from '../store/member-activities/member-activities.selectors';
+import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selectors';
 
 @Injectable()
 export class PlayerActivityService extends BasePlayerService {
@@ -37,7 +38,8 @@ export class PlayerActivityService extends BasePlayerService {
   ) {
     super();
   }
-
+  themeSource$: BehaviorSubject<string> = new BehaviorSubject('');
+  theme$ = this.store.pipe(select(selectEffectiveTheme));
   playerActivitiesLoadingSource: BehaviorSubject<boolean> = new BehaviorSubject(true);
   playerActivitiesLoading: Observable<boolean> = this.playerActivitiesLoadingSource.asObservable();
   selectedDuration$ = new BehaviorSubject('daily');

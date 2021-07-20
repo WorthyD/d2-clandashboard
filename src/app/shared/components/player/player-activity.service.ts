@@ -8,6 +8,8 @@ import { PlayerService } from './player.service';
 
 @Injectable()
 export class PlayerActivityService {
+  themeSource$: BehaviorSubject<string>;
+  theme$: Observable<string>;
   playerActivitiesLoadingSource: BehaviorSubject<boolean>;
   selectedDuration$: BehaviorSubject<string>;
   playerActivitiesLoading: Observable<boolean>;

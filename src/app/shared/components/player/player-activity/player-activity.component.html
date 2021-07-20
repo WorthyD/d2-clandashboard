@@ -1,12 +1,12 @@
 <div>
 
-   <div class="activity-filters">
-    <lib-activity-mode-select [definitions]="activityModeDefinitionOptions"
-      (selectedMode)="selectEventMode($event)">
+  <div class="activity-filters">
+    <lib-activity-mode-select [definitions]="activityModeDefinitionOptions" (selectedMode)="selectEventMode($event)">
     </lib-activity-mode-select>
   </div>
 
-  <lib-member-activity-heat-map [events]="playerActivities | async" [isLoading]="activityIsLoading | async">
+  <lib-member-activity-heat-map [events]="playerActivities | async" [isLoading]="activityIsLoading | async"
+    [theme]="theme | async">
   </lib-member-activity-heat-map>
 
   <!-- (dateSelected)="memberActivityService.loadDate($event)" -->
