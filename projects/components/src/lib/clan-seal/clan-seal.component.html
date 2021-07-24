@@ -8,6 +8,9 @@
   <div class="seal-image">
     <img src="//bungie.net/{{seal.displayProperties.icon}}" alt="">
   </div>
+  <textarea name="" id="" cols="30" rows="10">
+{{seal | json}}
+  </textarea>
   <mat-card-actions>
     <mat-expansion-panel *ngIf="!isLoading; else loading">
       <mat-expansion-panel-header>
