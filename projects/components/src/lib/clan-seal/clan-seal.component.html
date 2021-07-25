@@ -1,4 +1,4 @@
-<mat-card class="seal-card">
+<mat-card class="seal-card mat-card-hover" (click)="viewSeal(seal)" ></mat-card>
   <mat-card-title>
     {{seal.displayProperties.name}}
   </mat-card-title>
@@ -8,9 +8,9 @@
   <div class="seal-image">
     <img src="//bungie.net/{{seal.displayProperties.icon}}" alt="">
   </div>
-  <textarea name="" id="" cols="30" rows="10">
+  <!-- <textarea name="" id="" cols="30" rows="10">
 {{seal | json}}
-  </textarea>
+  </textarea> -->
   <mat-card-actions>
     <mat-expansion-panel *ngIf="!isLoading; else loading">
       <mat-expansion-panel-header>
