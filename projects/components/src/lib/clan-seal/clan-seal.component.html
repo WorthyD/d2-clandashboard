@@ -1,4 +1,4 @@
-<mat-card class="seal-card">
+<mat-card (click)="viewSealClick(seal)" class="seal-card mat-card-hover">
   <mat-card-title>
     {{seal.displayProperties.name}}
   </mat-card-title>
@@ -9,23 +9,14 @@
     <img src="//bungie.net/{{seal.displayProperties.icon}}" alt="">
   </div>
   <mat-card-actions>
-    <mat-expansion-panel *ngIf="!isLoading; else loading">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{members | completion : seal.completionRecordHash }}
-        </mat-panel-title>
-        <mat-panel-description>
-          <div></div>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-
-      <ng-template matExpansionPanelContent>
-        <div *ngFor="let member of members | completed : seal.completionRecordHash">
-          {{member.profile.data.userInfo.displayName}}
-        </div>
-      </ng-template>
-    </mat-expansion-panel>
-
+    <div class="seal-info" *ngIf="!isLoading; else loading">
+      <div class="seal-complete">
+        Complete
+      </div>
+      <div>
+        {{members | completion : seal.completionRecordHash }}
+      </div>
+    </div>
   </mat-card-actions>
 </mat-card>
 

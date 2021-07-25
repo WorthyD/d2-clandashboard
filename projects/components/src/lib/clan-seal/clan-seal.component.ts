@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MemberProfile, PresentationNodeDefinition, SealMembers } from 'bungie-models';
 
 @Component({
@@ -19,6 +19,7 @@ export class ClanSealComponent implements OnInit {
   @Input()
   isLoading: boolean;
 
+  @Output() viewSeal = new EventEmitter<PresentationNodeDefinition>();
   constructor() {}
 
   ngOnInit(): void {}
@@ -36,5 +37,8 @@ export class ClanSealComponent implements OnInit {
     });
 
     return completed;
+  }
+  viewSealClick(seal: PresentationNodeDefinition) {
+    this.viewSeal.emit(seal);
   }
 }
