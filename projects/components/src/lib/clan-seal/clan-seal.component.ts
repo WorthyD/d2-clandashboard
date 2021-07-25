@@ -19,9 +19,7 @@ export class ClanSealComponent implements OnInit {
   @Input()
   isLoading: boolean;
 
-
-  @Output() viewMember = new EventEmitter<PresentationNodeDefinition>();
-
+  @Output() viewSeal = new EventEmitter<PresentationNodeDefinition>();
   constructor() {}
 
   ngOnInit(): void {}
@@ -39,5 +37,8 @@ export class ClanSealComponent implements OnInit {
     });
 
     return completed;
+  }
+  viewSealClick(seal: PresentationNodeDefinition) {
+    this.viewSeal.emit(seal);
   }
 }

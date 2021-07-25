@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SealsService } from './seals.service';
 
+import { PresentationNodeDefinition } from 'bungie-models';
+
 @Component({
   selector: 'app-seals',
   templateUrl: './seals.component.html',
@@ -12,5 +14,9 @@ export class SealsComponent implements OnInit {
 
   ngOnInit(): void {
     this.sealService.loadSeals();
+  }
+
+  viewSeal(seal: PresentationNodeDefinition) {
+    console.log('view seal', seal);
   }
 }

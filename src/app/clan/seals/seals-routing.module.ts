@@ -12,9 +12,9 @@ const routes: Routes = [
     data: { title: 'd2.clan.seals' }
   },
   {
-    path:':sealKey',
+    path: ':sealHash',
     component: SealDetailsComponent,
-    data: { title: 'd2.clan.seal.details' }
+    data: { title: 'd2.clan.seals.details' }
   }
 
 ];

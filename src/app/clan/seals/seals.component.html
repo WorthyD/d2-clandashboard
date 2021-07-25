@@ -1,6 +1,6 @@
 <div *ngIf="(sealService.isMembersLoaded$ | async); else loading" class="clan-seal-container">
   <ng-container *ngFor="let seal of sealService.seals">
-    <lib-clan-seal [seal]="seal.seal" [members]="seal.members" [isLoading]="sealService.sealsLoading"
+    <lib-clan-seal [seal]="seal.seal" [members]="seal.members" [isLoading]="sealService.sealsLoading" (viewSeal)="viewSeal($event)"
       class="m-3 clan-seal">
     </lib-clan-seal>
   </ng-container>
