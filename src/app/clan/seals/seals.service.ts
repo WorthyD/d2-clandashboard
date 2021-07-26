@@ -68,13 +68,19 @@ export class SealsService {
 
   sealDetail$ = this.selectedSealId$.pipe(
     map((x) => {
-      console.log(x);
-      //console.log(this.sealNodes);
-      // this.sealNodes.forEach((x) => {
-      //   console.log(x.hash);
-      // });
-      console.log(this.sealNodes.find((sealNode) => sealNode.hash === x));
       return this.sealNodes.find((sealNode) => sealNode.hash === +x);
+    })
+  );
+
+  sealDetailMembers$ = combineLatest([this.preloadedInfo$, this.sealDetail$]).pipe(
+    switchMap(([[isMemberLoaded, clanId, clanMembers], sealDetails]) => {
+      // TODO: May need to add progression hashes
+      const hashes = [sealDetails.completionRecordHash];
+      return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), clanMembers, hashes).pipe(
+        map((sealProfiles) => {
+          return sealProfiles;
+        })
+      );
     })
   );
 

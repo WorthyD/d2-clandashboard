@@ -1,3 +1,8 @@
 <p>seal-details works!</p>
 {{sealKey | async}}
+<hr>
 {{(sealDetails$ | async) | json}}
+<hr>
+<textarea name="" id="" cols="30" rows="10">
+{{(sealDetailMembers$ | async) | json}}
+</textarea>

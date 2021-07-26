@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-seals',
   templateUrl: './seals.component.html',
   styleUrls: ['./seals.component.scss'],
- // providers: [SealsService]
 })
 export class SealsComponent implements OnInit {
   constructor(public sealService: SealsService, private router: Router, private route: ActivatedRoute) {}
@@ -19,6 +18,7 @@ export class SealsComponent implements OnInit {
 
   viewSeal(seal: PresentationNodeDefinition) {
     console.log('view seal', seal);
+
     this.router.navigate([seal.hash], {
       relativeTo: this.route
     });
