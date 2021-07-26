@@ -1,14 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BaseComponent } from '@destiny/components';
 import { distinctUntilChanged, map } from 'rxjs/operators';
+import { SealsService } from '../seals.service';
 
 @Component({
   selector: 'app-seal-details',
   templateUrl: './seal-details.component.html',
   styleUrls: ['./seal-details.component.scss']
 })
-export class SealDetailsComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+export class SealDetailsComponent extends BaseComponent implements OnInit {
+  constructor(private router: Router, private route: ActivatedRoute, private sealService: SealsService) {
+    super();
+  }
+
   sealKey = this.route.params.pipe(map((x) => x.sealHash, distinctUntilChanged()));
-  ngOnInit(): void {}
+  sealDetails$ = this.sealService.sealDetail$;
+  ngOnInit(): void {
+    this.subs.push(this.sealKey.subscribe((x) => {
+      this.sealService.changeSelectedSeal(x);
+    }));
+  }
 }

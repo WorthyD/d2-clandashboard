@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-seals',
   templateUrl: './seals.component.html',
   styleUrls: ['./seals.component.scss'],
-  providers: [SealsService]
+ // providers: [SealsService]
 })
 export class SealsComponent implements OnInit {
   constructor(public sealService: SealsService, private router: Router, private route: ActivatedRoute) {}

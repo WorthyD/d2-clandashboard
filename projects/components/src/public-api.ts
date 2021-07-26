@@ -33,3 +33,4 @@ export * from './lib/member-callout/member-callout.component';
 export * from './lib/core/notifications/notifications.module';
 export * from './lib/core/notifications/notifications.component';
 export * from './lib/clan-member/bungie-info/index';
+export * from './lib/shared/base-component';

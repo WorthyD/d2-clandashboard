@@ -8,6 +8,7 @@ import { SealDetailsModule } from './seal-details/seal-details.module';
 
 @NgModule({
   declarations: [SealsComponent],
+  providers: [SealsService],
   imports: [CommonModule, SealsRoutingModule, ClanSealModule, SharedModule, SealDetailsModule]
 })
 export class SealsModule {}

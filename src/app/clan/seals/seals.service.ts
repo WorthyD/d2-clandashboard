@@ -3,7 +3,7 @@ import { PresentationNodeDefinitionService, ProfileMilestonesService } from '@de
 import { switchMap, filter, take, map, tap } from 'rxjs/operators';
 import { ClanState } from '../store/clan-state.state';
 import { Store, select } from '@ngrx/store';
-import { combineLatest, of } from 'rxjs';
+import { BehaviorSubject, combineLatest, of } from 'rxjs';
 import { getIsMembersLoaded } from '../store/clan-members/clan-members.selectors';
 
 import * as clanMemberSelectors from '../store/clan-members/clan-members.selectors';
@@ -30,6 +30,7 @@ export class SealsService {
   sealsLoading = true;
 
   isMembersLoaded$ = this.store.pipe(select(getIsMembersLoaded));
+  selectedSealId$ = new BehaviorSubject(0);
 
   seals = [];
 
@@ -65,11 +66,27 @@ export class SealsService {
     })
   );
 
+  sealDetail$ = this.selectedSealId$.pipe(
+    map((x) => {
+      console.log(x);
+      //console.log(this.sealNodes);
+      // this.sealNodes.forEach((x) => {
+      //   console.log(x.hash);
+      // });
+      console.log(this.sealNodes.find((sealNode) => sealNode.hash === x));
+      return this.sealNodes.find((sealNode) => sealNode.hash === +x);
+    })
+  );
+
   getChildNode(hash) {
     return this.presentationNodeService.getDefinitionsByHash(hash);
   }
   private getNodes(node) {
     return node.children.presentationNodes.map((x) => x.presentationNodeHash);
+  }
+
+  changeSelectedSeal(key) {
+    this.selectedSealId$.next(key);
   }
 
   loadSeals() {
