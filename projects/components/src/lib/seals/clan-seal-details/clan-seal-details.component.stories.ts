@@ -2,6 +2,8 @@ import { moduleMetadata } from '@storybook/angular';
 import { StorybookModule } from '../../storybook/storybook.module';
 import { ClanSealDetailsModule } from './clan-seal-details.module';
 import { ClanSealDetailsComponent } from './clan-seal-details.component';
+import { GUILDED_SEAL } from './_MOCK_SEAL_GUILDED';
+import { NONGUILDED_SEAL } from './_MOCK_SEAL_NONGUILDED';
 
 export default {
   title: 'Seals / Clan Seal Details',
@@ -14,8 +16,7 @@ export default {
 
 export const base = () => ({
   component: ClanSealDetailsComponent,
-  template: `
-    <lib-clan-seal-details></lib-clan-seal-details>
-   `,
-  props: {}
+  props: {
+    seal: GUILDED_SEAL
+  }
 });

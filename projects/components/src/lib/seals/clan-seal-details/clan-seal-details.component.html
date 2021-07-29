@@ -1,1 +1,17 @@
-<p>clan-seal-details works!</p>
+<mat-card>
+  <div class="clan-seal">
+
+    <img class="clan-seal__icon" src="//bungie.net/{{seal.displayProperties.icon}}" alt="">
+    <div class="clan-seal__details">
+      <h2>{{seal.displayProperties.name}}</h2>
+      <h4>{{seal.displayProperties.description}}</h4>
+
+    </div>
+
+  </div>
+</mat-card>
+
+<pre><code>
+
+  {{seal | json}}
+</code></pre>
