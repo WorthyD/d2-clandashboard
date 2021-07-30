@@ -30,7 +30,7 @@ export class SealsService {
   sealsLoading = true;
 
   isMembersLoaded$ = this.store.pipe(select(getIsMembersLoaded));
-  selectedSealId$ = new BehaviorSubject(0);
+  //selectedSealId$ = new BehaviorSubject(0);
 
   seals = [];
 
@@ -66,23 +66,23 @@ export class SealsService {
     })
   );
 
-  sealDetail$ = this.selectedSealId$.pipe(
-    map((x) => {
-      return this.sealNodes.find((sealNode) => sealNode.hash === +x);
-    })
-  );
+  // sealDetail$ = this.selectedSealId$.pipe(
+  //   map((x) => {
+  //     return this.sealNodes.find((sealNode) => sealNode.hash === +x);
+  //   })
+  // );
 
-  sealDetailMembers$ = combineLatest([this.preloadedInfo$, this.sealDetail$]).pipe(
-    switchMap(([[isMemberLoaded, clanId, clanMembers], sealDetails]) => {
-      // TODO: May need to add progression hashes
-      const hashes = [sealDetails.completionRecordHash];
-      return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), clanMembers, hashes).pipe(
-        map((sealProfiles) => {
-          return sealProfiles;
-        })
-      );
-    })
-  );
+  // sealDetailMembers$ = combineLatest([this.preloadedInfo$, this.sealDetail$]).pipe(
+  //   switchMap(([[isMemberLoaded, clanId, clanMembers], sealDetails]) => {
+  //     // TODO: May need to add progression hashes
+  //     const hashes = [sealDetails.completionRecordHash];
+  //     return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), clanMembers, hashes).pipe(
+  //       map((sealProfiles) => {
+  //         return sealProfiles;
+  //       })
+  //     );
+  //   })
+  // );
 
   getChildNode(hash) {
     return this.presentationNodeService.getDefinitionsByHash(hash);
@@ -91,9 +91,9 @@ export class SealsService {
     return node.children.presentationNodes.map((x) => x.presentationNodeHash);
   }
 
-  changeSelectedSeal(key) {
-    this.selectedSealId$.next(key);
-  }
+  // changeSelectedSeal(key) {
+  //   this.selectedSealId$.next(key);
+  // }
 
   loadSeals() {
     this.loadMemberSeals$.pipe(take(1)).subscribe();

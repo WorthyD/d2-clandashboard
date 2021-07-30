@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BaseComponent } from '@destiny/components';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 import { SealsService } from '../seals.service';
+import { SealDetailsService } from './seal-details.service';
 
 @Component({
   selector: 'app-seal-details',
@@ -10,7 +11,7 @@ import { SealsService } from '../seals.service';
   styleUrls: ['./seal-details.component.scss']
 })
 export class SealDetailsComponent extends BaseComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute, private sealService: SealsService) {
+  constructor(private router: Router, private route: ActivatedRoute, private sealService: SealDetailsService) {
     super();
   }
 

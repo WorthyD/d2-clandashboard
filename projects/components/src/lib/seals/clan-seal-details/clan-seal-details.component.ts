@@ -26,9 +26,11 @@ export class ClanSealDetailsComponent implements OnInit {
   @Input()
   guildedPercentage: number;
 
-
   @Input()
   hasGuilded: boolean;
+
+  @Input()
+  isLoading: boolean;
 
   // @Input()
   // members: MemberProfile[];
