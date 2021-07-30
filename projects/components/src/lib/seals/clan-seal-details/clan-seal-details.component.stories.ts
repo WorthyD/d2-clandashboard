@@ -17,6 +17,12 @@ export default {
 export const base = () => ({
   component: ClanSealDetailsComponent,
   props: {
-    seal: GUILDED_SEAL
+    seal: GUILDED_SEAL,
+    totalMembers: 100,
+    completedNumber: 30,
+    completedPercentage: 30,
+    guildedNumber: 33,
+    guildedPercentage: 33,
+    hasGuilded: false
   }
 });

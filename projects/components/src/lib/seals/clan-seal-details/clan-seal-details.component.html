@@ -5,6 +5,12 @@
     <div class="clan-seal__details">
       <h2>{{seal.displayProperties.name}}</h2>
       <h4>{{seal.displayProperties.description}}</h4>
+      <section class="clan-seal__completion">
+        <div class="clan-seal__fraction">
+          {{completedNumber}} / {{totalMembers}}
+        </div>
+        <mat-progress-bar class="clan-seal__progress-bar" mode="determinate" [value]="completedPercentage"></mat-progress-bar>
+      </section>
 
     </div>
 

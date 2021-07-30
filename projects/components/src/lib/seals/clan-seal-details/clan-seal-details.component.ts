@@ -8,19 +8,32 @@ import { MemberProfile, PresentationNodeDefinition } from 'bungie-models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClanSealDetailsComponent implements OnInit {
-
-
   @Input()
   seal: PresentationNodeDefinition;
 
+  @Input()
+  totalMembers: number;
 
+  @Input()
+  completedNumber: number;
+
+  @Input()
+  completedPercentage: number;
+
+  @Input()
+  guildedNumber: number;
+
+  @Input()
+  guildedPercentage: number;
+
+
+  @Input()
+  hasGuilded: boolean;
 
   // @Input()
   // members: MemberProfile[];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -2,5 +2,17 @@
   display: flex;
   &__details {
     flex: 1;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  &__completion {
+    align-items: center;
+    display: flex;
+  }
+  &__fraction {
+    flex-shrink: 0;
+  }
+  &__progress-bar {
+    margin: 1rem;
   }
 }
