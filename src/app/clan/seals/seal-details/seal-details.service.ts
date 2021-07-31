@@ -3,6 +3,25 @@ import { ProfileMilestonesService } from '@destiny/data';
 import { map, switchMap } from 'rxjs/operators';
 import { BehaviorSubject, combineLatest, of } from 'rxjs';
 import { SealsService } from '../seals.service';
+import { PresentationNodeDefinition } from 'bungie-models';
+
+export interface SealDetails {
+  seal: PresentationNodeDefinition;
+
+  totalMembers: number;
+
+  completedNumber: number;
+
+  completedPercentage: number;
+
+  guildedNumber: number;
+
+  guildedPercentage: number;
+
+  hasGuilded: boolean;
+
+  isLoading: boolean;
+}
 
 @Injectable()
 export class SealDetailsService {
