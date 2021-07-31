@@ -1,11 +1,12 @@
 <lib-clan-seal-details>
 
 </lib-clan-seal-details>
-<p>seal-details works!</p>
+{{(clanSealDetails$ | async) | json}}
+<!-- <p>seal-details works!</p>
 {{sealKey | async}}
 <hr>
 {{(sealDetails$ | async) | json}}
 <hr>
 <textarea name="" id="" cols="30" rows="10">
 {{(sealDetailMembers$ | async) | json}}
-</textarea>
+</textarea> -->

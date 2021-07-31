@@ -5,8 +5,8 @@
       <img src="//bungie.net/{{seal?.displayProperties?.icon}}" alt="{{seal?.displayProperties?.name}}">
     </div>
     <div class="clan-seal__details">
-      <h2>{{seal.displayProperties.name}}</h2>
-      <h4>{{seal.displayProperties.description}}</h4>
+      <h2>{{seal?.displayProperties?.name}}</h2>
+      <h4>{{seal?.displayProperties?.description}}</h4>
       <ng-container *ngIf="!isLoading; else loadingTemplate">
         <section class="clan-seal__completion">
           <div>

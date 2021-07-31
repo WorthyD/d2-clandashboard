@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ProfileMilestonesService } from '@destiny/data';
-import { map, switchMap } from 'rxjs/operators';
-import { BehaviorSubject, combineLatest, of } from 'rxjs';
+import { filter, map, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import { SealsService } from '../seals.service';
 import { PresentationNodeDefinition } from 'bungie-models';
 
-export interface SealDetails {
+export interface ClanSealDetails {
   seal: PresentationNodeDefinition;
 
   totalMembers: number;
@@ -43,6 +43,25 @@ export class SealDetailsService {
         })
       );
     })
+  );
+  clanSealDetails$: Observable<ClanSealDetails> = combineLatest([this.sealDetail$, this.sealDetailMembers$]).pipe(
+    filter(([sealDetails, sealDetailMembers]) => !!sealDetails),
+    map(
+      ([sealDetails, sealDetailMembers]): ClanSealDetails => {
+        console.log('mapping');
+        console.log('mapping', sealDetailMembers);
+        return {
+          completedNumber: 0,
+          completedPercentage: 0,
+          guildedNumber: 0,
+          guildedPercentage: 0,
+          hasGuilded: false,
+          isLoading: true,
+          seal: sealDetails,
+          totalMembers: 0
+        };
+      }
+    )
   );
   changeSelectedSeal(key) {
     this.selectedSealId$.next(key);

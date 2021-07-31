@@ -16,8 +16,8 @@ export class SealDetailsComponent extends BaseComponent implements OnInit {
   }
 
   sealKey = this.route.params.pipe(map((x) => x.sealHash, distinctUntilChanged()));
-  sealDetails$ = this.sealService.sealDetail$;
-  sealDetailMembers$ = this.sealService.sealDetailMembers$;
+  clanSealDetails$ = this.sealService.clanSealDetails$;
+
   ngOnInit(): void {
     this.subs.push(this.sealKey.subscribe((x) => {
       this.sealService.changeSelectedSeal(x);
