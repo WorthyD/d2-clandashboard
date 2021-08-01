@@ -1,7 +1,8 @@
-<lib-clan-seal-details>
+<ng-container *ngIf="clanSealDetails$ | async as clanSealDetails">
+  <lib-clan-seal-details [seal]="clanSealDetails.seal">
 
-</lib-clan-seal-details>
-{{(clanSealDetails$ | async) | json}}
+  </lib-clan-seal-details>
+</ng-container>
 <!-- <p>seal-details works!</p>
 {{sealKey | async}}
 <hr>

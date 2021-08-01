@@ -48,8 +48,9 @@ export class SealDetailsService {
     filter(([sealDetails, sealDetailMembers]) => !!sealDetails),
     map(
       ([sealDetails, sealDetailMembers]): ClanSealDetails => {
-        console.log('mapping');
-        console.log('mapping', sealDetailMembers);
+        console.log('mapping', sealDetails);
+        console.log('sealDetailMembers', sealDetailMembers);
+        // console.log('mapping', sealDetailMembers);
         return {
           completedNumber: 0,
           completedPercentage: 0,
