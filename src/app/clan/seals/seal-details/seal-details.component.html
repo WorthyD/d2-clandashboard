@@ -1,8 +1,18 @@
-<ng-container *ngIf="clanSealDetails$ | async as clanSealDetails">
-  <lib-clan-seal-details [seal]="clanSealDetails.seal">
+<ng-container *ngIf="clanSealDetails$ | async as clanSealDetails; else loading">
+  <lib-clan-seal-details [seal]="clanSealDetails.seal" [completedNumber]="clanSealDetails.completedNumber"
+    [completedPercentage]="clanSealDetails.completedPercentage" [guildedNumber]="clanSealDetails.guildedNumber"
+    [guildedPercentage]="clanSealDetails.guildedPercentage" [hasGuilded]="clanSealDetails.hasGuilded"
+    [totalMembers]="clanSealDetails.totalMembers">
 
   </lib-clan-seal-details>
 </ng-container>
+<ng-template #loading>
+  <div class="text-center m-5">
+    <h2>Loading...</h2>
+    <lib-loading></lib-loading>
+  </div>
+</ng-template>
+
 <!-- <p>seal-details works!</p>
 {{sealKey | async}}
 <hr>

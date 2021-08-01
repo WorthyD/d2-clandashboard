@@ -5,7 +5,8 @@ import { MemberProfile } from 'bungie-models';
   name: 'sealCompleted'
 })
 export class SealCompletedPipe implements PipeTransform {
-  transform(value: MemberProfile[], hash): unknown {
+  transform(value: MemberProfile[], hash): any[] {
+    // TODO: Find new way to do this. Put in separate file or something.
     const completed = value.filter((m) => {
       const records = m.profileRecords.data.records[hash]?.objectives;
 
