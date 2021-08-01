@@ -1,10 +1,16 @@
-<ng-container *ngIf="clanSealDetails$ | async as clanSealDetails; else loading">
-  <lib-clan-seal-details [seal]="clanSealDetails.seal" [completedNumber]="clanSealDetails.completedNumber"
-    [completedPercentage]="clanSealDetails.completedPercentage" [guildedNumber]="clanSealDetails.guildedNumber"
-    [guildedPercentage]="clanSealDetails.guildedPercentage" [hasGuilded]="clanSealDetails.hasGuilded"
-    [totalMembers]="clanSealDetails.totalMembers">
+<div class="m-3">
+  <ng-container *ngIf="clanSealDetails$ | async as clanSealDetails; else loading">
+    <lib-clan-seal-details [seal]="clanSealDetails.seal" [completedNumber]="clanSealDetails.completedNumber"
+      [completedPercentage]="clanSealDetails.completedPercentage" [guildedNumber]="clanSealDetails.guildedNumber"
+      [guildedPercentage]="clanSealDetails.guildedPercentage" [hasGuilded]="clanSealDetails.hasGuilded"
+      [totalMembers]="clanSealDetails.totalMembers">
 
-  </lib-clan-seal-details>
+    </lib-clan-seal-details>
+  </ng-container>
+</div>
+
+<ng-container *ngIf="clanSealTableData$ | async as clanSealTableData;">
+  <lib-clan-seal-table [clanSealTableData]="clanSealTableData"></lib-clan-seal-table>
 </ng-container>
 <ng-template #loading>
   <div class="text-center m-5">
@@ -12,12 +18,3 @@
     <lib-loading></lib-loading>
   </div>
 </ng-template>
-
-<!-- <p>seal-details works!</p>
-{{sealKey | async}}
-<hr>
-{{(sealDetails$ | async) | json}}
-<hr>
-<textarea name="" id="" cols="30" rows="10">
-{{(sealDetailMembers$ | async) | json}}
-</textarea> -->

@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+}
+.clan-seal-table {
+  &__percent-complete-row {
+    width: 50%;
+    span {
+      margin-right: 0.5rem;
+    }
+  }
+  &__percent-complete-info {
+    display: flex;
+    align-items: center;
+  }
+}

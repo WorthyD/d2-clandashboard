@@ -5,6 +5,7 @@ import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import { SealsService } from '../seals.service';
 import { MemberProfile, PresentationNodeDefinition } from 'bungie-models';
 import { SealCompletedPipe } from 'projects/components/src/lib/pipes/seal-pipes/seal-completed.pipe';
+import { ClanSealTableDataItem } from 'projects/components/src/lib/seals/clan-seal-table/clan-seal-table-data-item';
 
 export interface ClanSealDetails {
   seal: PresentationNodeDefinition;
@@ -70,6 +71,31 @@ export class SealDetailsService {
       }
     )
   );
+
+  clanSealTableDetails$: Observable<ClanSealTableDataItem[]> = combineLatest([
+    this.sealDetail$,
+    this.sealDetailMembers$
+  ]).pipe(
+    filter(([sealDetails, sealDetailMembers]) => !!sealDetails && !!sealDetailMembers),
+    map(([sealDetails, sealDetailMembers]) => {
+      const sealHash = sealDetails.completionRecordHash;
+      return sealDetailMembers.map((x) => {
+        const recordDetails = x.profileRecords.data.records[sealHash]?.objectives[0];
+        return {
+          membershipId: x.profile.data.userInfo.membershipId,
+          membershipTypeId: x.profile.data.userInfo.membershipType,
+          displayName: x.profile.data.userInfo.displayName,
+          completedTriumphCount: recordDetails?.progress || 0,
+          totalTriumphCount: recordDetails?.completionValue || 0,
+          completionPercentage:
+            recordDetails?.progress > 0
+              ? Math.floor((recordDetails?.progress / recordDetails?.completionValue) * 100)
+              : 0
+        };
+      });
+    })
+  );
+
   changeSelectedSeal(key) {
     this.selectedSealId$.next(key);
   }
