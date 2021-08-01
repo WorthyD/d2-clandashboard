@@ -41,3 +41,12 @@
     flex: 1;
   }
 }
+.seal-info {
+  display: flex;
+  align-content: space-between;
+  width: 100%;
+
+  .seal-complete {
+    flex: 1;
+  }
+}

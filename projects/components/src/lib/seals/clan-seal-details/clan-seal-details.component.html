@@ -1,0 +1,46 @@
+<mat-card>
+  <div class="clan-seal">
+
+    <div class="clan-seal__icon">
+      <img src="//bungie.net/{{seal?.displayProperties?.icon}}" alt="{{seal?.displayProperties?.name}}">
+    </div>
+    <div class="clan-seal__details">
+      <h2>{{seal?.displayProperties?.name}}</h2>
+      <h4>{{seal?.displayProperties?.description}}</h4>
+      <ng-container *ngIf="!isLoading; else loadingTemplate">
+        <section class="clan-seal__completion">
+          <div>
+            Completed:
+          </div>
+          <div class="clan-seal__fraction">
+            {{completedNumber}} / {{totalMembers}}
+          </div>
+          <div class="clan-seal__percentage">
+            {{completedPercentage}}%
+          </div>
+          <mat-progress-bar class="clan-seal__progress-bar" mode="determinate" [value]="completedPercentage">
+          </mat-progress-bar>
+        </section>
+        <section *ngIf="hasGuilded" class="clan-seal__guilded">
+          <div>
+            Guilded:
+          </div>
+          <div class="clan-seal__fraction">
+            {{guildedNumber}} / {{totalMembers}}
+          </div>
+          <div class="clan-seal__percentage">
+            {{guildedPercentage}}%
+          </div>
+          <mat-progress-bar class="clan-seal__progress-bar" mode="determinate" [value]="guildedPercentage">
+          </mat-progress-bar>
+        </section>
+      </ng-container>
+
+    </div>
+
+  </div>
+</mat-card>
+<ng-template #loadingTemplate>
+  <mat-progress-bar mode="indeterminate">
+  </mat-progress-bar>
+</ng-template>

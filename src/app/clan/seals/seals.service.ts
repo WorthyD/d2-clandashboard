@@ -3,7 +3,7 @@ import { PresentationNodeDefinitionService, ProfileMilestonesService } from '@de
 import { switchMap, filter, take, map, tap } from 'rxjs/operators';
 import { ClanState } from '../store/clan-state.state';
 import { Store, select } from '@ngrx/store';
-import { combineLatest, of } from 'rxjs';
+import { BehaviorSubject, combineLatest, of } from 'rxjs';
 import { getIsMembersLoaded } from '../store/clan-members/clan-members.selectors';
 
 import * as clanMemberSelectors from '../store/clan-members/clan-members.selectors';
@@ -30,6 +30,7 @@ export class SealsService {
   sealsLoading = true;
 
   isMembersLoaded$ = this.store.pipe(select(getIsMembersLoaded));
+  //selectedSealId$ = new BehaviorSubject(0);
 
   seals = [];
 
@@ -65,12 +66,34 @@ export class SealsService {
     })
   );
 
+  // sealDetail$ = this.selectedSealId$.pipe(
+  //   map((x) => {
+  //     return this.sealNodes.find((sealNode) => sealNode.hash === +x);
+  //   })
+  // );
+
+  // sealDetailMembers$ = combineLatest([this.preloadedInfo$, this.sealDetail$]).pipe(
+  //   switchMap(([[isMemberLoaded, clanId, clanMembers], sealDetails]) => {
+  //     // TODO: May need to add progression hashes
+  //     const hashes = [sealDetails.completionRecordHash];
+  //     return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), clanMembers, hashes).pipe(
+  //       map((sealProfiles) => {
+  //         return sealProfiles;
+  //       })
+  //     );
+  //   })
+  // );
+
   getChildNode(hash) {
     return this.presentationNodeService.getDefinitionsByHash(hash);
   }
   private getNodes(node) {
     return node.children.presentationNodes.map((x) => x.presentationNodeHash);
   }
+
+  // changeSelectedSeal(key) {
+  //   this.selectedSealId$.next(key);
+  // }
 
   loadSeals() {
     this.loadMemberSeals$.pipe(take(1)).subscribe();

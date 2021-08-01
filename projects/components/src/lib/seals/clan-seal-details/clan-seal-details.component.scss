@@ -1,0 +1,25 @@
+.clan-seal {
+  display: flex;
+  &__icon {
+    min-width: 126px; // Based on API, prevents content from shifting during load
+  }
+  &__details {
+    flex: 1;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  &__completion,
+  &__guilded {
+    align-items: center;
+    display: flex;
+  }
+  &__fraction {
+    flex-shrink: 0;
+  }
+
+  &__fraction,
+  &__percentage,
+  &__progress-bar {
+    margin: 0 0.5rem;
+  }
+}
