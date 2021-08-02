@@ -4,7 +4,7 @@ import { PlayerSealsModule } from './player-seals.module';
 import { PlayerSealsComponent } from './player-seals.component';
 
 export default {
-  title: 'Seals / Clan Seal Table',
+  title: 'Seals / Player Seals',
   component: PlayerSealsComponent,
   decorators: [
     moduleMetadata({
