@@ -19,6 +19,7 @@ export class PlayerService {
   memberSnapShot$: Observable<Callout[]>;
   bungieInfo$: Observable<BungieInfo>;
   bungieInfoLoading$: Observable<boolean>;
+  memberSealInfo$: Observable<any>;
 
   // getMemberId() {
   //   throw new Error('not implemented');

@@ -50,6 +50,7 @@ export class MemberDetailsComponent implements OnInit {
   }
 
   memberId = this.playerService.memberId$;
+  memberSealInfo$ = this.playerService.memberSealInfo$;
 
   // memberId = this.activatedRoute.params.pipe(
   //     map(x => x.memberId, distinctUntilChanged())
