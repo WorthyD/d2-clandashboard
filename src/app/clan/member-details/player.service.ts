@@ -30,6 +30,7 @@ import * as clanIdSelectors from '../store/clan-id/clan-id.selector';
 import { getClanMemberById, getIsMembersProfilesLoaded } from '../store/member-profiles/member-profiles.selectors';
 import { ClanRosterService, ClanCrucibleService, ClanGambitService } from '@destiny/data';
 import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selectors';
+import { convertSealAndProfile } from '@destiny/components/lib/seals/player-seals';
 @Injectable()
 export class PlayerService extends BasePlayerService {
   //private profileComponents = [100, 104, 200, 202, 900];
@@ -201,7 +202,7 @@ export class PlayerService extends BasePlayerService {
 
       return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), [member], hashes).pipe(
         map((sealProfiles) => {
-          return sealProfiles;
+          return convertSealAndProfile(this.sealNodes, sealProfiles);
         })
       );
     })
