@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PlayerSeal } from '.';
 
 @Component({
   selector: 'lib-player-seals',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player-seals.component.scss']
 })
 export class PlayerSealsComponent implements OnInit {
+  @Input()
+  playerSealse: PlayerSeal[];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
