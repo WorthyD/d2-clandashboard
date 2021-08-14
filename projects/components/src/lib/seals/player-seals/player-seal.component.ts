@@ -4,13 +4,14 @@ import { PlayerSeal } from '.';
 @Component({
   selector: 'lib-player-seal',
   template: `
-    <section>
-      <h4 *ngIf="playerSeal.guilded">Guilded</h4>
-      <div>
+    <section [matTooltip]="playerSeal.sealDescription">
+      <div [ngClass]="{ 'seal-completed': playerSeal.complete }">
         <img src="//bungie.net/{{ playerSeal.sealImage }}" alt="{{ playerSeal.sealTitle }}" />
       </div>
-      <h3>{{ playerSeal.sealTitle }}</h3>
-      <p>{{ playerSeal.sealDescription }}</p>
+      <h3>
+        {{ playerSeal.sealTitle }}
+        <mat-icon *ngIf="playerSeal.guilded" matTooltip="Guilded">workspace_premium </mat-icon>
+      </h3>
     </section>
   `,
   styles: [
@@ -24,10 +25,16 @@ import { PlayerSeal } from '.';
         position: relative;
         overflow: hidden;
         display: block;
+        margin: 0 auto;
+      }
+      h3 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      div:after {
-        animation: shine 5s ease-in-out infinite;
+      .seal-completed:after {
+        animation: shine 3s ease-in-out infinite;
         animation-fill-mode: forwards;
         content: '';
         position: absolute;
@@ -47,8 +54,7 @@ import { PlayerSeal } from '.';
           rgba(255, 255, 255, 0) 100%
         );
       }
-      .div:active:after {
-        opacity: 0;
+      .seal-completed:active:after {
       }
       /* h4 {
         padding: 12px 48px;
@@ -79,7 +85,7 @@ import { PlayerSeal } from '.';
           top: -30%;
           left: -30%;
           transition-property: left, top, opacity;
-          transition-duration: 1s, 1s, 0.15s;
+          transition-duration: 0.7s, 0.7s, 0.15s;
           transition-timing-function: ease;
         }
         100% {

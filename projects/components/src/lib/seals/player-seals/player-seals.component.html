@@ -4,18 +4,13 @@
   </mat-card-title>
   <mat-card-content>
     <div class="player-seal__list">
-      {{playerSeals?.length}}
       <ng-container *ngFor="let seal of guildedSeals">
         <lib-player-seal [playerSeal]="seal"></lib-player-seal>
       </ng-container>
-      <hr>
-      complete
       <ng-container *ngFor="let seal of completedSeals">
         <lib-player-seal [playerSeal]="seal"></lib-player-seal>
       </ng-container>
-      <hr>
-      none
-       <ng-container *ngFor="let seal of partialSeals">
+      <ng-container *ngFor="let seal of partialSeals">
         <lib-player-seal [playerSeal]="seal"></lib-player-seal>
       </ng-container>
 
