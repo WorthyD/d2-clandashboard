@@ -5,21 +5,26 @@ import { PlayerSeal } from '.';
   selector: 'lib-player-seal',
   template: `
     <section [matTooltip]="playerSeal.sealDescription">
-      <div [ngClass]="{ 'seal-completed': playerSeal.complete }">
+      <div [ngClass]="{ 'seal-completed': playerSeal.complete, 'seal-image': true }">
         <img src="//bungie.net/{{ playerSeal.sealImage }}" alt="{{ playerSeal.sealTitle }}" />
       </div>
       <h3>
         {{ playerSeal.sealTitle }}
         <mat-icon *ngIf="playerSeal.guilded" matTooltip="Guilded">workspace_premium </mat-icon>
       </h3>
+      <div *ngIf="!playerSeal.complete" class="seal-progress">
+        <mat-progress-bar mode="determinate" [value]="playerSeal.progress"></mat-progress-bar>
+        {{ playerSeal.progress }}%
+      </div>
     </section>
   `,
   styles: [
     `
       section {
         text-align: center;
+        padding: 1rem;
       }
-      div {
+      .seal-image {
         height: 127px;
         width: 127px;
         position: relative;
@@ -56,6 +61,9 @@ import { PlayerSeal } from '.';
       }
       .seal-completed:active:after {
       }
+      mat-progress-bar {
+        margin-right: 0.5rem;
+      }
       /* h4 {
         padding: 12px 48px;
         color: #ffffff;
@@ -79,6 +87,10 @@ import { PlayerSeal } from '.';
           background-position: 280px;
         }
       } */
+      .seal-progress {
+        display: flex;
+        align-items: center;
+      }
       @keyframes shine {
         10% {
           opacity: 1;
