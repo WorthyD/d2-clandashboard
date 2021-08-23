@@ -13,13 +13,16 @@ import {
   getInfamyResets,
   getValorPoints,
   getValorResets,
-  BungieInfoService
+  BungieInfoService,
+  PresentationNodeDefinitionService
 } from '@destiny/data';
 import { DecimalPipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../shared/components/dialog/dialog.component';
 import { select, Store } from '@ngrx/store';
 import { selectEffectiveTheme } from '../root-store/settings/settings.selectors';
+
+import { convertSealAndProfile } from '@destiny/components/lib/seals/player-seals';
 
 @Injectable()
 export class PlayerService extends BasePlayerService {
@@ -30,10 +33,16 @@ export class PlayerService extends BasePlayerService {
     private decimalPipe: DecimalPipe,
     private bungieInfoService: BungieInfoService,
     public dialog: MatDialog,
+    private presentationNodeService: PresentationNodeDefinitionService,
     private router: Router
   ) {
     super();
   }
+  legacySealNode = this.presentationNodeService.getDefinitionsByHash(1881970629);
+  currentSealNodes = this.presentationNodeService.getDefinitionsByHash(616318467);
+  allNodes = this.getNodes(this.currentSealNodes).concat(this.getNodes(this.legacySealNode));
+
+  sealNodes = this.presentationNodeService.getDefinitionsGroupByHash(this.allNodes);
 
   themeSource$: BehaviorSubject<string> = new BehaviorSubject('');
   theme$ = this.store.pipe(select(selectEffectiveTheme));
@@ -100,6 +109,19 @@ export class PlayerService extends BasePlayerService {
         triumphScore: memberStats.profileRecords.data.activeScore,
         lifetimeScore: memberStats.profileRecords.data.lifetimeScore
       };
+    })
+  );
+  memberSealInfo$ = this.memberProfile$.pipe(
+    filter((profile) => !!profile),
+    map((memberStats) => {
+      const hashes = this.sealNodes.map((x) => x.completionRecordHash);
+      const stuff = hashes.map((x) => {
+        return {
+          milestoneHash: x,
+          profiles: [memberStats]
+        };
+      });
+      return convertSealAndProfile(this.sealNodes, stuff);
     })
   );
 
@@ -190,6 +212,10 @@ export class PlayerService extends BasePlayerService {
           return of();
         })
       );
+  }
+
+  private getNodes(node) {
+    return node.children.presentationNodes.map((x) => x.presentationNodeHash);
   }
 
   openError(error) {
