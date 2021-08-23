@@ -10,10 +10,11 @@ export function convertSealAndProfile(seals: PresentationNodeDefinition[], recor
     const profileRecord = profile?.profileRecords?.data?.records[seal.completionRecordHash]?.objectives[0];
 
     const completionRecordCount = seal.children.records.length;
+    const hasGuilded = profileRecord.completionValue !== completionRecordCount;
 
     return {
       complete: profileRecord?.complete || false,
-      guilded: completionRecordCount === profileRecord?.progress,
+      guilded: hasGuilded && completionRecordCount === profileRecord?.progress,
       progress:
         profileRecord?.progress > 0 ? Math.floor((profileRecord?.progress / profileRecord?.completionValue) * 100) : 0,
       sealDescription: seal.displayProperties.description,

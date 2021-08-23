@@ -17,7 +17,6 @@ export class SealsComponent implements OnInit {
   }
 
   viewSeal(seal: PresentationNodeDefinition) {
-    console.log('view seal', seal);
 
     this.router.navigate([seal.hash], {
       relativeTo: this.route
