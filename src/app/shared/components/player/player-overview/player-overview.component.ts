@@ -19,6 +19,7 @@ export class PlayerOverviewComponent implements OnInit {
   memberSnapShot$ = this.playerService.memberSnapShot$;
   bungieInfo$ = this.playerService.bungieInfo$;
   bungieInfoLoading$ = this.playerService.bungieInfoLoading$;
+  memberSealInfo$ = this.playerService.memberSealInfo$;
 
   //memberId;
   activityIsLoading = this.playerActivityService.playerActivitiesLoading;

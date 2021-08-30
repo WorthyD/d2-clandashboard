@@ -10,8 +10,9 @@
       </div>
 
       <div class="my-3">
-      <lib-season-pass *ngIf="seasonPass$ | async as seasonPass" [clanMemberSeasonPass]="seasonPass"></lib-season-pass>
-</div>
+        <lib-season-pass *ngIf="seasonPass$ | async as seasonPass" [clanMemberSeasonPass]="seasonPass">
+        </lib-season-pass>
+      </div>
     </div>
     <div class="col">
       <lib-bungie-info [bungieInfo]="bungieInfo$ | async" [isLoading]="bungieInfoLoading$ | async">
@@ -27,6 +28,11 @@
     <div class="col">
       <lib-member-callout [title]="'Player Snapshot'" [callouts]="memberSnapShot$ | async">
       </lib-member-callout>
+    </div>
+  </div>
+  <div class="row my-3">
+    <div class="col">
+      <lib-player-seals [playerSeals]="memberSealInfo$ | async"></lib-player-seals>
     </div>
   </div>
 

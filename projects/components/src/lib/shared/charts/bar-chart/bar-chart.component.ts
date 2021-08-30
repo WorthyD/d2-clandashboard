@@ -49,8 +49,8 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
       [tooltip]="tooltip"
       [xaxis]="xaxis"
       [theme]="{
-      mode: colorTheme
-    }"
+        mode: colorTheme
+      }"
     ></apx-chart>
   `,
   styleUrls: ['./bar-chart.component.scss'],
@@ -187,12 +187,13 @@ export class BarChartComponent implements OnInit {
         this.xaxis = {
           type: 'datetime'
         };
+        cleanedData = this.prepDateData(sourceData, true);
       } else {
         this.xaxis = {
           type: 'category'
         };
+        cleanedData = this.prepDateData(sourceData, false);
       }
-      cleanedData = this.prepDateData(sourceData);
       this.series = [
         {
           name: '',
@@ -202,7 +203,7 @@ export class BarChartComponent implements OnInit {
     }
   }
 
-  private prepDateData(sourceData) {
+  private prepDateData(sourceData, sort) {
     const preppedData = [];
     sourceData.forEach((data) => {
       let convertedSeconds = 0;
@@ -214,6 +215,10 @@ export class BarChartComponent implements OnInit {
 
       preppedData.push({ x: data.date, y: convertedSeconds });
     });
+
+    if (!sort) {
+      return preppedData;
+    }
 
     return preppedData.sort((a, b) => {
       return compare(a.x, b.x, true);

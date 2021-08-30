@@ -7,7 +7,16 @@ import { distinctUntilChanged, filter, map, shareReplay, switchMap } from 'rxjs/
 import { PlayerService as BasePlayerService } from '../../shared/components/player/player.service';
 import { latestSeason } from '@destiny/models';
 import { Callout, ClanMemberSeasonPassProgression } from '@destiny/components';
-import { BungieInfoService, getGloryPoints, getInfamyPoints, getInfamyResets, getValorPoints, getValorResets } from '@destiny/data';
+import {
+  BungieInfoService,
+  getGloryPoints,
+  getInfamyPoints,
+  getInfamyResets,
+  getValorPoints,
+  getValorResets,
+  PresentationNodeDefinitionService,
+  ProfileMilestonesService
+} from '@destiny/data';
 import { DecimalPipe } from '@angular/common';
 import { select, Store } from '@ngrx/store';
 import * as clanMemberSelectors from '../store/clan-members/clan-members.selectors';
@@ -21,6 +30,7 @@ import * as clanIdSelectors from '../store/clan-id/clan-id.selector';
 import { getClanMemberById, getIsMembersProfilesLoaded } from '../store/member-profiles/member-profiles.selectors';
 import { ClanRosterService, ClanCrucibleService, ClanGambitService } from '@destiny/data';
 import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selectors';
+import { convertSealAndProfile } from '@destiny/components/lib/seals/player-seals';
 @Injectable()
 export class PlayerService extends BasePlayerService {
   //private profileComponents = [100, 104, 200, 202, 900];
@@ -31,10 +41,19 @@ export class PlayerService extends BasePlayerService {
     private clanRosterService: ClanRosterService,
     private clanCrucibleService: ClanCrucibleService,
     private clanGambitService: ClanGambitService,
-    private bungieInfoService: BungieInfoService
+    private bungieInfoService: BungieInfoService,
+    private presentationNodeService: PresentationNodeDefinitionService,
+
+    private profileMilestonesService: ProfileMilestonesService
   ) {
     super();
   }
+
+  legacySealNode = this.presentationNodeService.getDefinitionsByHash(1881970629);
+  currentSealNodes = this.presentationNodeService.getDefinitionsByHash(616318467);
+  allNodes = this.getNodes(this.currentSealNodes).concat(this.getNodes(this.legacySealNode));
+
+  sealNodes = this.presentationNodeService.getDefinitionsGroupByHash(this.allNodes);
 
   themeSource$: BehaviorSubject<string> = new BehaviorSubject('');
   theme$ = this.store.pipe(select(selectEffectiveTheme));
@@ -121,44 +140,6 @@ export class PlayerService extends BasePlayerService {
       return response.Response;
     })
   );
-  /*
-  selectMemberTriumphs$ = this.memberProfile.pipe(
-    filter((profile) => !!profile),
-    map((memberStats) => {
-      return {
-        triumphScore: memberStats.profileRecords.data.activeScore,
-        lifetimeScore: memberStats.profileRecords.data.lifetimeScore
-      };
-    })
-  );
-
-  selectMemberCrucibleStats$: Observable<ActivityStats> = this.memberProfile.pipe(
-    filter((profile) => !!profile),
-    map((profile) => {
-      return {
-        memberProfile: null,
-        stats: {
-          valorPoints: getValorPoints(profile),
-          valorResets: getValorResets(profile.profileRecords),
-          gloryPoints: getGloryPoints(profile)
-        }
-      };
-    })
-  );
-
-  selectMemberGambitStats$: Observable<ActivityStats> = this.memberProfile.pipe(
-    filter((profile) => !!profile),
-    map((profile) => {
-      return {
-        memberProfile: null,
-        stats: {
-          infamyPoints: getInfamyPoints(profile),
-          infamyResets: getInfamyResets(profile.profileRecords)
-        }
-      };
-    })
-  )
-  */
   selectMemberTriumphs$ = this.preload$.pipe(
     switchMap(([isMemberLoaded, clanId, member]) => {
       return this.clanRosterService.getMemberRosterStats(clanId, member);
@@ -214,29 +195,23 @@ export class PlayerService extends BasePlayerService {
       ];
     })
   );
+  // SEAL INFO
+  memberSealInfo$ = this.preload$.pipe(
+    switchMap(([isMemberLoaded, clanId, member]) => {
+      const hashes = this.sealNodes.map((x) => x.completionRecordHash);
 
+      return this.profileMilestonesService.getSerializedProfilesByHash(clanId.toString(), [member], hashes).pipe(
+        map((sealProfiles) => {
+          return convertSealAndProfile(this.sealNodes, sealProfiles);
+        })
+      );
+    })
+  );
   setMemberId(memberId) {
     this.memberIdSource.next(memberId);
   }
 
-  // getMemberId() {
-  //   console.log(this.activatedRoute);
-  //   // return this.activatedRoute.parent.params.pipe(
-  //   //   map((x) => {
-  //   //     console.log(x);
-  //   //     return x;
-  //   //   }, distinctUntilChanged())
-  //   // );
-  //   return this.activatedRoute?.params.pipe(map((x) => x.memberId, distinctUntilChanged()));
-  // }
-
-  // getPlayerProfile(platformId: string, profileId: string): Observable<MemberProfile> {
-  //   return this.d2Service
-  //     .destiny2GetProfile((profileId as unknown) as number, (platformId as unknown) as number, this.profileComponents)
-  //     .pipe(
-  //       map((memberProfileResponse) => {
-  //         return memberProfileResponse.Response;
-  //       })
-  //     );
-  // }
+  private getNodes(node) {
+    return node.children.presentationNodes.map((x) => x.presentationNodeHash);
+  }
 }

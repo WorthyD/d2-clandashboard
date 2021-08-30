@@ -13,3 +13,5 @@ export * from './season10';
 export * from './season11';
 export * from './season12';
 export * from './season13';
+export * from './season14';
+export * from './season15';
