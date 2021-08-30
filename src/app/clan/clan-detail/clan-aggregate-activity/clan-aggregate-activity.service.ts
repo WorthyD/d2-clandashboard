@@ -48,7 +48,6 @@ export class ClanAggregateActivityService {
 
       const summedActivities = service.getClanActivityStatsForDuration(activities, 0);
       this.events2 = summedActivities;
-      console.log(this.events2);
       this.isLoading = false;
     })
   );
