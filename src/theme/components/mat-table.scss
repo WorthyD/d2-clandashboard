@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin d2-mat-table-theme($theme) {
   $background: map-get($theme, background);
   $accent: map-get($theme, accent);
@@ -13,13 +14,13 @@
   // }
   .mat-table .mat-row:hover {
     transition: background-color 0.2s;
-    background-color: darken(mat-color($background, background), 5%);
+    background-color: darken(mat.get-color-from-palette($background, background), 5%);
   }
 
   .mat-card-hover {
     transition: background-color 0.2s;
   }
   .mat-card-hover:hover {
-    background-color: darken(mat-color($background, background), 5%);
+    background-color: darken(mat.get-color-from-palette($background, background), 5%);
   }
 }

@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 @mixin activity-bar-chart-component-theme($theme) {
@@ -6,7 +7,7 @@
 
   .activity-bar {
     opacity: 0.6;
-    fill: mat-color($fg, text);
+    fill: mat.get-color-from-palette($fg, text);
 
     transition: opacity 0.5s;
     &:hover {
@@ -18,23 +19,23 @@
   // }
   .activity-bar-chart {
     .year-label {
-      fill: mat-color($fg, text);
+      fill: mat.get-color-from-palette($fg, text);
     }
     .day-label {
-      fill: mat-color($fg, text);
+      fill: mat.get-color-from-palette($fg, text);
     }
     .month-label {
-      fill: mat-color($fg, text);
+      fill: mat.get-color-from-palette($fg, text);
     }
     .legend-key {
-      fill: mat-color($fg, text);
+      fill: mat.get-color-from-palette($fg, text);
     }
 
     .legend-desc {
-      fill: mat-color($fg, text);
+      fill: mat.get-color-from-palette($fg, text);
     }
   }
   .activity-tooltip {
-    background: mat-color($bg, background);
+    background: mat.get-color-from-palette($bg, background);
   }
 }

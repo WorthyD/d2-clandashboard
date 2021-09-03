@@ -107,7 +107,7 @@ export class ClanSearchComponent implements OnInit {
   }
 
   textPlayerSearch(currentQuery) {
-    return this.destiny2Service.destiny2SearchDestinyPlayer(currentQuery, -1, true).pipe(
+    return this.destiny2Service.destiny2SearchDestinyPlayer(currentQuery, -1).pipe(
       map((searchResults) => {
         return searchResults.Response.slice(0, 10).map((profile) => {
           return {

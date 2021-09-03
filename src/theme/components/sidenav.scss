@@ -1,14 +1,15 @@
+@use '~@angular/material' as mat;
 @mixin d2-side-menu-theme($theme) {
   $background: map-get($theme, background);
   $accent: map-get($theme, accent);
   $primary: map-get($theme, primary);
   .mat-nav-list .active-link {
     //background: mat-color($accent);;
-    color: mat-color($primary, default-contrast) !important;
-    background: mat-color($primary);
+    color: mat.get-color-from-palette($primary, default-contrast) !important;
+    background: mat.get-color-from-palette($primary);
 
     &:hover, &:focus {
-      background-color: mat-color($primary, darker) !important;
+      background-color: mat.get-color-from-palette($primary, darker) !important;
     }
   }
 }
