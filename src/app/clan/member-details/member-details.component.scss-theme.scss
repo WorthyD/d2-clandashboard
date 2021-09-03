@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 @mixin member-details-theme($theme) {
@@ -5,8 +6,8 @@
 
   button {
     &.active-link {
-      color: mat-color($accent, default-contrast);
-      background-color: mat-color($accent);
+      color: mat.get-color-from-palette($accent, default-contrast);
+      background-color: mat.get-color-from-palette($accent);
     }
 
   }

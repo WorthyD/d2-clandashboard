@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 @mixin activity-heatmap-component-theme($theme) {
@@ -10,24 +11,24 @@
   .activity-heatmap {
     //  display: block;
     .year-label {
-      fill: mat-color($fg, text);
+      fill: mat.get-color-from-palette($fg, text);
     }
     .day-label {
-      fill: mat-color($fg, text);
+      fill: mat.get-color-from-palette($fg, text);
     }
     .month-label {
-      fill: mat-color($fg, text);
+      fill: mat.get-color-from-palette($fg, text);
     }
     .legend-key {
-      fill: mat-color($fg, text);
+      fill: mat.get-color-from-palette($fg, text);
     }
 
     .legend-desc {
-      fill: mat-color($fg, text);
+      fill: mat.get-color-from-palette($fg, text);
     }
   }
 
   .heatmap-tooltip {
-    background: mat-color($bg, background);
+    background: mat.get-color-from-palette($bg, background);
   }
 }

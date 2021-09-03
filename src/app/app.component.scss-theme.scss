@@ -1,15 +1,16 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 @mixin app-component-theme($theme) {
   $bg: map-get($theme, background);
   $fg: map-get($theme, foreground);
   .content-wrapper {
-    background: mat-color($bg, background);
-    color: mat-color($fg, text);
+    background: mat.get-color-from-palette($bg, background);
+    color: mat.get-color-from-palette($fg, text);
   }
   .mobile-disclaimer{
-    background: mat-color($bg, background);
-    color: mat-color($fg, text);
+    background: mat.get-color-from-palette($bg, background);
+    color: mat.get-color-from-palette($fg, text);
     display: block;
   }
 }

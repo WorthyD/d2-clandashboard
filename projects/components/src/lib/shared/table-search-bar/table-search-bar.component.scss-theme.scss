@@ -1,10 +1,11 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 @mixin table-search-bar-theme($theme) {
   $bg: map-get($theme, background);
   .table-search-bar {
     //    background:red;
-    background: mat-color($bg, 'card');
+    background: mat.get-color-from-palette($bg, 'card');
   }
 
   // button {

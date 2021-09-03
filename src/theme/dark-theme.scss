@@ -1,8 +1,9 @@
-$destiny-dark-primary: mat-palette($mat-grey, 700, 300, 900);
-$destiny-dark-accent: mat-palette($mat-blue-grey, 400);
-$destiny-dark-warn: mat-palette($mat-red, 500);
+@use '~@angular/material' as mat;
+$destiny-dark-primary: mat.define-palette(mat.$grey-palette, 700, 300, 900);
+$destiny-dark-accent: mat.define-palette(mat.$blue-grey-palette, 400);
+$destiny-dark-warn: mat.define-palette(mat.$red-palette, 500);
 
-$destiny-dark-theme: mat-dark-theme(
+$destiny-dark-theme: mat.define-dark-theme(
   $destiny-dark-primary,
   $destiny-dark-accent,
   $destiny-dark-warn
