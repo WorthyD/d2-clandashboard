@@ -1,41 +1,15 @@
 import { Injectable } from '@angular/core';
 
-import { Actions, Effect, ofType, createEffect } from '@ngrx/effects';
-import { Store, select, Action } from '@ngrx/store';
-// import { empty, of, from } from 'rxjs';
-
-// //import * as clanDetailActions from './clan-detail.actions';
-// // import * as clanMemberActions from './clan-members.actions';
-
-// // import { ClanDatabase } from '../../../services/ClanDatabase';
-// import { ClanDatabase } from '../../../../../projects/data/src/lib/clan-db/ClanDatabase';
-// // import { MemberUpdater } from '../../services/memberUpdater';
-
-// // import { MemberProfile } from 'bungie-models';
-
-// // import * as memberProfileActions from './member-profiles.actions';
+import { Actions, ofType, createEffect } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import * as memberActivityActions from './member-activities.actions';
-// // import * as clanMemberActions from '../clan-members/clan-members.actions';
 
 import { ClanMemberActivityService } from '@destiny/data';
 import * as clanIdSelectors from '../clan-id/clan-id.selector';
 
-import {
-  catchError,
-  map,
-  switchMap,
-  distinctUntilChanged,
-  first,
-  filter,
-  concatMap,
-  tap,
-  mergeMap,
-  take,
-  withLatestFrom
-} from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { loadMemberProfileSuccess } from '../member-profiles/member-profiles.actions';
-import { getAllMembers, getMemberProfileEntities } from '../member-profiles/member-profiles.selectors';
+import { getAllMembers } from '../member-profiles/member-profiles.selectors';
 import { nowPlusMinutes } from 'projects/data/src/lib/utility/date-utils';
 import { addNotification, removeNotification, updateNotification } from '../notifications/notifications.actions';
 

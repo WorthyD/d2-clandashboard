@@ -54,6 +54,7 @@
     "idb": "^4.0.5",
     "ng-apexcharts": "^1.5.12",
     "ngx-logger": "^4.1.9",
+    "observable-webworker": "^3.4.0",
     "rxjs": "~6.5.4",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.4"

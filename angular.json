@@ -35,7 +35,8 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
             "production": {
@@ -93,7 +94,8 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": ["src/styles.scss"],
             "scripts": [],
-            "assets": ["src/favicon.ico", "src/assets", "src/manifest.webmanifest"]
+            "assets": ["src/favicon.ico", "src/assets", "src/manifest.webmanifest"],
+            "webWorkerTsConfig": "tsconfig.worker.json"
           }
         },
         "lint": {
