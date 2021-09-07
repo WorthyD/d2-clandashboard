@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Destiny2Service } from 'bungie-api-angular';
 import { ClanMember, MemberProfile } from 'bungie-models';
 import { ClanDatabase } from '../ClanDatabase';
-import { map, take, catchError, mergeMap } from 'rxjs/operators';
+import { map, take, catchError, mergeMap, bufferTime, toArray } from 'rxjs/operators';
 import { Observable, from, of } from 'rxjs';
 
 import { DBObject, StoreId } from '../app-indexed-db';
@@ -88,6 +88,44 @@ export class ProfileService {
 
   getSerializedProfiles(clanId: string, members: ClanMember[]): Observable<MemberProfile> {
     return from(members).pipe(mergeMap((member) => this.getSerializedProfile(clanId, member), this.concurrentRequests));
+  }
+
+  getSerializedProfilesWithProgress(
+    clanId: string,
+    members: ClanMember[],
+    progress?: (done) => any
+  ): Observable<MemberProfile[]> {
+    let complete = 0;
+    return from(members)
+      .pipe(mergeMap((member) => this.getSerializedProfile(clanId, member), this.concurrentRequests))
+      .pipe(
+        bufferTime(1000, undefined, 100),
+        /**
+         * Don't continue processing if the timer in `bufferTime` was reached and
+         *   there are no buffered companies.
+         */
+        mergeMap((memberResp) => {
+          complete += memberResp.length;
+          if (progress) {
+            progress(complete);
+          }
+          // this.store.dispatch(
+          //   updateNotification({
+          //     notification: { id: 'memberProfile', title: 'Updating Profiles', data: { progress } }
+          //   })
+          // );
+          // this.store.dispatch(memberProfileActions.loadMemberProfiles({ memberProfiles: members }));
+          return memberResp;
+        }),
+        toArray()
+        //map((x) => {
+        // this.store.dispatch(
+        //   removeNotification({ notification: { id: 'memberProfile', title: 'Updating Profiles', data: 'done' } })
+        // );
+        //
+        // return memberProfileActions.loadMemberProfileSuccess();
+        //})
+      );
   }
 
   getSerializedProfile(clanId: string, member: ClanMember): Observable<MemberProfile> {

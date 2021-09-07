@@ -1,16 +1,26 @@
 import { Injectable } from '@angular/core';
-import { MemberProfile } from 'bungie-models';
+import { MemberProfile, ClanMember } from 'bungie-models';
 import { fromWorker } from 'observable-webworker';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+
+import { ProfileService } from '@destiny/data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileWorkerService {
-  constructor() {}
+  constructor(private profileService: ProfileService) {}
 
-  doTheThing(): Observable<MemberProfile[]> {
-    return fromWorker(() => new Worker('./profile.worker', { type: 'module' }), null);
+  loadProfiles(clanId: string, clanMembers: ClanMember[], progress?: (done) => any): Observable<MemberProfile[]> {
+    return fromWorker(
+      () => new Worker('./profile.worker', { type: 'module' }),
+      of({
+        clanId,
+        clanMembers,
+        profileService: this.profileService,
+        progress
+      })
+    );
   }
 }
 
