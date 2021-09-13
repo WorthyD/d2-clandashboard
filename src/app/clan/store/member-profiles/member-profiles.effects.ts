@@ -13,7 +13,12 @@ import { ProfileWorkerService } from '../../../workers/profile-worker/profile-wo
 
 @Injectable()
 export class MemberProfileEffects {
-  constructor(private actions$: Actions, private store: Store<any>, private profileService: ProfileService) {}
+  constructor(
+    private actions$: Actions,
+    private store: Store<any>,
+    private profileService: ProfileService,
+    private profileWorkerService: ProfileWorkerService
+  ) {}
 
   loadProfiles$ = createEffect(() => {
     return this.actions$.pipe(
@@ -33,6 +38,15 @@ export class MemberProfileEffects {
             })
           );
         };
+        return this.profileWorkerService.loadProfiles(clanId.toString(), clanMembers, progress).pipe(
+          map((x) => {
+            this.store.dispatch(
+              removeNotification({ notification: { id: 'memberProfile', title: 'Updating Profiles', data: 'done' } })
+            );
+            return memberProfileActions.loadMemberProfileSuccess();
+          })
+        );
+        /*
         return this.profileService.getSerializedProfilesWithProgress(clanId.toString(), clanMembers, progress).pipe(
           map((x) => {
             this.store.dispatch(
@@ -41,6 +55,7 @@ export class MemberProfileEffects {
             return memberProfileActions.loadMemberProfileSuccess();
           })
         );
+        */
 
         // return this.profileService.getSerializedProfiles(clanId.toString(), clanMembers).pipe(
         //   bufferTime(1000, undefined, 100),
