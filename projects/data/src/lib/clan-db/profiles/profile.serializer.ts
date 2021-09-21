@@ -1,6 +1,5 @@
-import { MemberProfile } from 'bungie-models';
 
-export function profileSerializer(p: MemberProfile, progressionHashes: any[]): MemberProfile {
+export function profileSerializer(p: any, progressionHashes: any[]) {
   return {
     profile: {
       data: {

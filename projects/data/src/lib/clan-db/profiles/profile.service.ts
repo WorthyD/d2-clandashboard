@@ -1,45 +1,44 @@
-import { Injectable } from '@angular/core';
-import { Destiny2Service } from 'bungie-api-angular';
-import { ClanMember, MemberProfile } from 'bungie-models';
 import { ClanDatabase } from '../ClanDatabase';
-import { map, take, catchError, mergeMap, bufferTime, toArray } from 'rxjs/operators';
+import { map, catchError, mergeMap, bufferTime, toArray } from 'rxjs/operators';
 import { Observable, from, of } from 'rxjs';
 
-import { DBObject, StoreId } from '../app-indexed-db';
-import { latestSeason } from '@destiny/models';
+import { StoreId } from '../app-indexed-db';
 
 import { profileSerializer } from './profile.serializer';
 import { nowPlusDays, unixTimeStampToDate } from '../../utility/date-utils';
+import { ClanMember } from 'projects/bungie-models/src/lib/models/ClanMember';
+import { latestSeason } from 'projects/bungie-models/src/lib/entities/seasons/season-latest';
+interface MemberProfile {}
 
-@Injectable()
 export class ProfileService {
   private tableName: StoreId = StoreId.MemberProfiles;
   private concurrentRequests = 20;
   private profileComponents = [100, 104, 200, 202];
+
+  constructor(private clanDb: ClanDatabase, private apiKey: string) {}
 
   private getProfileId(member: ClanMember) {
     return `${member.destinyUserInfo.membershipType}-${member.destinyUserInfo.membershipId}`;
   }
 
   private getProfileFromCache(clanId: string, member: ClanMember) {
-    // return this.clanDb.getValues(clanId).MemberProfiles.pipe(
-    //   map((c) => {
-    //     if (c && c.length > 0) {
-    //       return c.find((m) => m.id === this.getProfileId(member));
-    //     }
-    //     return undefined;
-    //   }),
-    //   take(1)
-    // );
     return this.clanDb.getById(clanId, this.tableName, this.getProfileId(member));
   }
 
   private getProfileFromAPI(member: ClanMember) {
-    return this.d2Service.destiny2GetProfile(
-      member.destinyUserInfo.membershipId,
-      member.destinyUserInfo.membershipType,
-      this.profileComponents
-    );
+    const url = `https://www.bungie.net/Platform/Destiny2/${member.destinyUserInfo.membershipType}/Profile/${
+      member.destinyUserInfo.membershipId
+    }/?components=${this.profileComponents.join(',')}`;
+
+    return new Observable((observer) => {
+      fetch(url, { headers: { 'X-API-Key': this.apiKey } })
+        .then((response) => response.json())
+        .then((data) => {
+          observer.next(data);
+          observer.complete();
+        })
+        .catch((err) => observer.error(err));
+    });
   }
 
   getProfile(clanId: string, member: ClanMember): Observable<any> {
@@ -57,7 +56,7 @@ export class ProfileService {
           }
         }
         return this.getProfileFromAPI(member).pipe(
-          map((memberProfileResponse) => {
+          map((memberProfileResponse: any) => {
             if (memberProfileResponse.Response) {
               this.clanDb.update(clanId, this.tableName, [
                 {
@@ -84,8 +83,6 @@ export class ProfileService {
     );
   }
 
-  constructor(private d2Service: Destiny2Service, private clanDb: ClanDatabase) {}
-
   getSerializedProfiles(clanId: string, members: ClanMember[]): Observable<MemberProfile> {
     return from(members).pipe(mergeMap((member) => this.getSerializedProfile(clanId, member), this.concurrentRequests));
   }
@@ -109,22 +106,9 @@ export class ProfileService {
           if (progress) {
             progress(complete);
           }
-          // this.store.dispatch(
-          //   updateNotification({
-          //     notification: { id: 'memberProfile', title: 'Updating Profiles', data: { progress } }
-          //   })
-          // );
-          // this.store.dispatch(memberProfileActions.loadMemberProfiles({ memberProfiles: members }));
           return memberResp;
         }),
         toArray()
-        //map((x) => {
-        // this.store.dispatch(
-        //   removeNotification({ notification: { id: 'memberProfile', title: 'Updating Profiles', data: 'done' } })
-        // );
-        //
-        // return memberProfileActions.loadMemberProfileSuccess();
-        //})
       );
   }
 

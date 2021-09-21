@@ -1,40 +1,23 @@
-// // import { Injectable } from '@angular/core';
-// //import { Destiny2Service } from 'bungie-api-angular';
-// // import { ClanMember, MemberProfile } from 'bungie-models';
-// import { ClanDatabase } from '../ClanDatabase';
-// // import { map, mergeMap } from 'rxjs/operators';
+// // export function getSerializedProfilesWithProgress() {
 
-// import { StoreId } from '../app-indexed-db';
-// import { from, of } from 'rxjs';
-// import { bufferTime, catchError, map, mergeMap, toArray } from 'rxjs/operators';
-// // import { ClanMember } from 'projects/bungie-models/src/lib/models/ClanMember';
-// // import { latestSeason } from '@destiny/models';
 
-// // import { profileSerializer } from './profile.serializer';
+
+// // }
+// import { Destiny2Service } from 'bungie-api-angular';
+// import { ClanMember, MemberProfile } from 'bungie-models';
+// import { ClanDatabase } from '../../ClanDatabase';
+// import { map, take, catchError, mergeMap, bufferTime, toArray } from 'rxjs/operators';
+// import { Observable, from, of } from 'rxjs';
+
+// import { DBObject, StoreId } from '../app-indexed-db';
+// import { latestSeason } from '@destiny/models';
+
 // import { nowPlusDays, unixTimeStampToDate } from '../../utility/date-utils';
-// import { profileSerializer } from './profile.serializer';
-// import { latestSeason } from 'projects/bungie-models/src/lib/entities/seasons/season-latest';
 
-// interface ClanMember {
-//   memberType?: number;
-//   isOnline?: boolean;
-//   lastOnlineStatusChange?: number;
-//   groupId?: number;
-//   destinyUserInfo?: any;
-//   bungieNetUserInfo?: any;
-//   joinDate?: string;
-// }
-// interface MemberProfile {}
-
-// // @Injectable()
 // export class ProfileService {
 //   private tableName: StoreId = StoreId.MemberProfiles;
 //   private concurrentRequests = 20;
 //   private profileComponents = [100, 104, 200, 202];
-//   constructor(
-//     //private d2Service: Destiny2Service,
-//     private clanDb: ClanDatabase
-//   ) {}
 
 //   private getProfileId(member: ClanMember) {
 //     return `${member.destinyUserInfo.membershipType}-${member.destinyUserInfo.membershipId}`;
@@ -54,15 +37,14 @@
 //   }
 
 //   private getProfileFromAPI(member: ClanMember) {
-//     // return this.d2Service.destiny2GetProfile(
-//     //   member.destinyUserInfo.membershipId,
-//     //   member.destinyUserInfo.membershipType,
-//     //   this.profileComponents
-//     // );
-//     return of(null);
+//     return this.d2Service.destiny2GetProfile(
+//       member.destinyUserInfo.membershipId,
+//       member.destinyUserInfo.membershipType,
+//       this.profileComponents
+//     );
 //   }
 
-//   getProfile(clanId: string, member: ClanMember): any {
+//   getProfile(clanId: string, member: ClanMember): Observable<any> {
 //     return from(this.getProfileFromCache(clanId, member)).pipe(
 //       mergeMap((cachedData) => {
 //         if (cachedData && cachedData.createDate) {
@@ -102,15 +84,19 @@
 //         );
 //       })
 //     );
-//     // return null;
 //   }
 
-//   getSerializedProfiles(clanId: string, members: ClanMember[]): any {
+//   constructor(private d2Service: Destiny2Service, private clanDb: ClanDatabase) {}
+
+//   getSerializedProfiles(clanId: string, members: ClanMember[]): Observable<MemberProfile> {
 //     return from(members).pipe(mergeMap((member) => this.getSerializedProfile(clanId, member), this.concurrentRequests));
-//     // return null;
 //   }
 
-//   getSerializedProfilesWithProgress(clanId: string, members: ClanMember[], progress?: (done) => any): any {
+//   getSerializedProfilesWithProgress(
+//     clanId: string,
+//     members: ClanMember[],
+//     progress?: (done) => any
+//   ): Observable<MemberProfile[]> {
 //     let complete = 0;
 //     return from(members)
 //       .pipe(mergeMap((member) => this.getSerializedProfile(clanId, member), this.concurrentRequests))
@@ -142,10 +128,9 @@
 //         // return memberProfileActions.loadMemberProfileSuccess();
 //         //})
 //       );
-//     return null;
 //   }
 
-//   getSerializedProfile(clanId: string, member: ClanMember): any {
+//   getSerializedProfile(clanId: string, member: ClanMember): Observable<MemberProfile> {
 //     return this.getProfile(clanId, member).pipe(
 //       map((profile) => {
 //         return (profileSerializer(profile, [
@@ -154,6 +139,5 @@
 //         ]) as unknown) as MemberProfile;
 //       })
 //     );
-//     //return null;
 //   }
 // }

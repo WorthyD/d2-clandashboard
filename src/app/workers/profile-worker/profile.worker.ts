@@ -1,29 +1,20 @@
-import { DoWork, runWorker } from 'observable-webworker';
-import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
-import { MemberProfile, ClanMember } from 'bungie-models';
+import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
+import { ProfileService } from 'projects/data/src/lib/clan-db/profiles/profile.service';
+import { take } from 'rxjs/operators';
+//import { environment } from '../../../environments/environment';
 
-import { ProfileService } from '@destiny/data';
+addEventListener('message', ({ data }) => {
+  const clanDatabase = new ClanDatabase();
+  const profileService = new ProfileService(clanDatabase, data.apiKey);
 
-export interface ProfileWorkerInput {
-  clanId: string;
-  clanMembers: ClanMember[];
-  profileService: ProfileService;
-  progress(done): any;
-}
+  const progress = (progressData) => {
+    postMessage({ type: 'progress', data: progressData });
+  };
 
-export class ProfileWorker implements DoWork<ProfileWorkerInput, MemberProfile[]> {
-  public work(input$: Observable<ProfileWorkerInput>): Observable<MemberProfile[]> {
-    return input$.pipe(
-      switchMap((message) => {
-        return message.profileService.getSerializedProfilesWithProgress(
-          message.clanId,
-          message.clanMembers,
-          message.progress
-        );
-      })
-    );
-  }
-}
-
-runWorker(ProfileWorker);
+  profileService
+    .getSerializedProfilesWithProgress(data.clanId, data.clanMembers, progress)
+    .pipe(take(1))
+    .subscribe((x) => {
+      postMessage({ type: 'complete', data: x });
+    });
+});

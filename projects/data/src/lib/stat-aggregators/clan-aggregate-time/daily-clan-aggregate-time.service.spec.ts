@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { MemberActivityRecentStatsActivity, MemberProfile } from 'bungie-models';
 import { of } from 'rxjs';
 
-import { ClanDatabase, ClanMemberRecentActivityService, ProfileService } from '../../clan-db';
+import { ClanDatabase, ClanMemberRecentActivityService } from '../../clan-db';
 import { MOCK_RESP_ACTIVITIES_COMBINED } from '../../testing-utils/objects/member-activities.mock';
 import { nowPlusDays } from '../../utility/date-utils';
 import { DailyClanAggregateTimeService } from './daily-clan-aggregate-time.service';
@@ -110,16 +110,16 @@ import { formatDate } from '../../utility/format-date';
 
 describe('DailyClanAggregateTimeService', () => {
   let service: DailyClanAggregateTimeService;
-  let profileService: ProfileService;
+  // let profileService: ProfileService;
   let activityService: ClanMemberRecentActivityService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProfileService, ClanMemberRecentActivityService, ClanDatabase]
+      providers: [ClanMemberRecentActivityService, ClanDatabase]
     });
     service = TestBed.inject(DailyClanAggregateTimeService);
-    profileService = TestBed.inject(ProfileService);
+    // profileService = TestBed.inject(ProfileService);
     activityService = TestBed.inject(ClanMemberRecentActivityService);
   });
   const yesterday = nowPlusDays(-1);

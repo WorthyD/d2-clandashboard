@@ -3,7 +3,9 @@ import { ActivityStats, MemberProfile, ClanMember } from 'bungie-models';
 import { forkJoin, from, Observable } from 'rxjs';
 
 import { map, mergeMap, toArray } from 'rxjs/operators';
-import { ProfileMilestonesService, ProfileService } from '../clan-db';
+import { ClanDatabase, ProfileMilestonesService, ProfileService } from '../clan-db';
+
+import { environment } from '../../../../../src/environments/environment';
 
 export interface RosterMember {
   member: ClanMember;
@@ -15,8 +17,10 @@ export interface RosterMember {
 })
 export class ClanRosterService {
   readonly CONCURRENT_COUNT = 10;
-
-  constructor(private profileService: ProfileService, private profileMilestonesService: ProfileMilestonesService) {}
+  private profileService: ProfileService;
+  constructor(private profileMilestonesService: ProfileMilestonesService, private clanDb: ClanDatabase) {
+    this.profileService = new ProfileService(clanDb, environment.bungieAPI);
+  }
 
   getClanRosterStats(clanId: number, clanMemberProfiles: ClanMember[]) {
     return from(clanMemberProfiles).pipe(
