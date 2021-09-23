@@ -12,13 +12,14 @@ import { loadMemberProfileSuccess } from '../member-profiles/member-profiles.act
 import { getAllMembers } from '../member-profiles/member-profiles.selectors';
 import { nowPlusMinutes } from 'projects/data/src/lib/utility/date-utils';
 import { addNotification, removeNotification, updateNotification } from '../notifications/notifications.actions';
+import { ProfileActivityWorkerService } from 'src/app/workers/profile-activity/profile-activity.service';
 
 @Injectable()
 export class MemberActivityEffects {
   constructor(
     private actions$: Actions,
     private store: Store<any>,
-    private memberActivityService: ClanMemberActivityService
+    private memberActivityService: ProfileActivityWorkerService
   ) {}
 
   profilesLoaded$ = createEffect(() => {
@@ -36,7 +37,7 @@ export class MemberActivityEffects {
       ofType(memberActivityActions.loadMemberActivities),
       withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
       switchMap(([action, clanId]) =>
-        this.memberActivityService.getAllActivitiesFromCache2(clanId, action.member).pipe(
+        this.memberActivityService.getAllActivitiesFromCache(clanId.toString(), action.member).pipe(
           map((x) => {
             const lastUpdate = new Date(window.localStorage.getItem('lastActivityUpdate-' + clanId));
             const refreshThreshold = nowPlusMinutes(-60);
@@ -78,15 +79,17 @@ export class MemberActivityEffects {
           );
         };
 
-        return this.memberActivityService.updateAllActivityCache(clanId, action.member, progress).pipe(
+        console.time('activities');
+        return this.memberActivityService.updateAllActivityCache(clanId.toString(), action.member, progress).pipe(
           switchMap(() => {
+            console.timeEnd('activities');
             window.localStorage.setItem('lastActivityUpdate-' + clanId, new Date().toString());
             this.store.dispatch(
               removeNotification({
                 notification: { id: 'memberActivity', title: 'Updating Member Activities', data: { progress: 100 } }
               })
             );
-            return this.memberActivityService.getAllActivitiesFromCache2(clanId, action.member);
+            return this.memberActivityService.getAllActivitiesFromCache(clanId.toString(), action.member);
           })
         );
       }),

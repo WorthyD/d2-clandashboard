@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { ActivityStats, MemberProfile, ClanMember } from 'bungie-models';
 import { forkJoin, from, Observable } from 'rxjs';
 import { map, mergeMap, toArray } from 'rxjs/operators';
-import { ClanMemberRecentActivityService,  } from '../clan-db';
+import { ClanDatabase, ClanMemberRecentActivityService } from '../clan-db';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class ClanActivityService {
   readonly CONCURRENT_COUNT = 10;
-  constructor( private memberActivityService: ClanMemberRecentActivityService) {}
+  private memberActivityService: ClanMemberRecentActivityService;
+  constructor(private clanDb: ClanDatabase, private apiKey) {
+    this.memberActivityService = new ClanMemberRecentActivityService(clanDb, apiKey);
+  }
 
   getClanActivityStats(clanId: number, clanMemberProfiles: MemberProfile[], activityMode: number = 0) {
     return from(clanMemberProfiles).pipe(

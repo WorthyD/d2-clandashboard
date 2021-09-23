@@ -12,11 +12,12 @@ import { clanMemberActivitySerializer } from '../clan-member-activity/clan-membe
 @Injectable()
 export class ClanMemberRecentActivityService extends BaseMemberActivityService {
   private concurrentRequests = 5;
-  constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
+  constructor(private clanDB: ClanDatabase, private baseApiKey: string) {
     super(
       clanDB,
       StoreId.MemberRecentActivities,
-      d2Service,
+      baseApiKey,
+      // d2Service,
       new Date(new Date().setDate(new Date().getDate() + ((2 + 7 - new Date().getDay()) % 7) - 189)),
       6
     );

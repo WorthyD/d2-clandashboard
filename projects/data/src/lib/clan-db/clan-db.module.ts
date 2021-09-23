@@ -18,7 +18,7 @@ import { MemberMetricsService } from './member-metrics/member-metrics.service';
     ClanDatabase,
     ClanMembersService,
     ClanRewardsService,
-    ClanMemberActivityService,
+   // ClanMemberActivityService,
     ProfileMilestonesService,
     ProfileCollectionsService,
     MemberActivityStatsService,
