@@ -22,7 +22,7 @@ import { MemberMetricsService } from './member-metrics/member-metrics.service';
     ProfileMilestonesService,
     ProfileCollectionsService,
     MemberActivityStatsService,
-    ClanMemberRecentActivityService,
+    // ClanMemberRecentActivityService,
     MemberMetricsService
   ]
 })

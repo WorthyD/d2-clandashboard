@@ -9,7 +9,6 @@ import { MemberActivityStats, MemberProfile, MemberActivityRecentStats } from 'b
 import { clanMemberRecentActivitySerializer } from './clan-member-recent-activity.serializer';
 import { clanMemberActivitySerializer } from '../clan-member-activity/clan-member-activity.serializer';
 
-@Injectable()
 export class ClanMemberRecentActivityService extends BaseMemberActivityService {
   private concurrentRequests = 5;
   constructor(private clanDB: ClanDatabase, private baseApiKey: string) {

@@ -28,6 +28,7 @@ export function initConfig(appConfig: ManifestService) {
 }
 import { PlayerSearchModule } from './player-search/player-search.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AppConfig } from './app.config';
 
 @NgModule({
   declarations: [AppComponent],
@@ -67,7 +68,15 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       deps: [ManifestService],
       multi: true
     },
-   // { provide: WindowToken, useFactory: windowProvider }
+    {
+      provide: AppConfig,
+      useFactory: () =>
+        new AppConfig({
+          apiKey: environment.bungieAPI
+        }),
+      multi: false
+    }
+    // { provide: WindowToken, useFactory: windowProvider }
   ],
   bootstrap: [AppComponent]
 })
