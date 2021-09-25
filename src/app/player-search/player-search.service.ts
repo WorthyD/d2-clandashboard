@@ -17,10 +17,8 @@ export class PlayerSearchService {
     return this.httpClient.get(url).pipe(
       map((searchResults: any) => {
         return searchResults.Response.searchResults.slice(0, 10).map((profile) => {
-          console.log(profile);
           const displayName = `${profile.bungieGlobalDisplayName}#${profile.bungieGlobalDisplayNameCode}`;
           const memberships = profile.destinyMemberships;
-          console.log(memberships);
           const crossSaveOverride = memberships.find((x) => x.crossSaveOverride !== 0);
           let membership;
           if (crossSaveOverride) {
@@ -28,7 +26,6 @@ export class PlayerSearchService {
           } else {
             membership = memberships[0];
           }
-          console.log(membership);
 
           return {
             iconName: this.getIcon(membership.membershipType),

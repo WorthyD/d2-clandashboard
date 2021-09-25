@@ -18,6 +18,7 @@ import { ClanSearchState } from 'src/app/clan-search/state/clan-search.state';
 import { actionSettingsChangeClan } from '../../root-store/settings/settings.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { SearchErrorDialogComponent } from './search-error-dialog/search-error-dialog.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-clan-search',
@@ -34,7 +35,8 @@ export class ClanSearchComponent implements OnInit {
     private destiny2Service: Destiny2Service,
     private router: Router,
     private store: Store<ClanSearchState>,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private httpClient: HttpClient
   ) {}
 
   autocompleteControl = new FormControl('');
@@ -107,14 +109,25 @@ export class ClanSearchComponent implements OnInit {
   }
 
   textPlayerSearch(currentQuery) {
-    return this.destiny2Service.destiny2SearchDestinyPlayer(currentQuery, -1).pipe(
-      map((searchResults) => {
-        return searchResults.Response.slice(0, 10).map((profile) => {
+    const url = `https://www.bungie.net/Platform//User/Search/Prefix/${currentQuery}/0`;
+    return this.httpClient.get(url).pipe(
+      map((searchResults: any) => {
+        return searchResults.Response.searchResults.slice(0, 10).map((profile) => {
+          const displayName = `${profile.bungieGlobalDisplayName}#${profile.bungieGlobalDisplayNameCode}`;
+          const memberships = profile.destinyMemberships;
+          const crossSaveOverride = memberships.find((x) => x.crossSaveOverride !== 0);
+          let membership;
+          if (crossSaveOverride) {
+            membership = memberships.find((x) => x.membershipType === crossSaveOverride.crossSaveOverride);
+          } else {
+            membership = memberships[0];
+          }
+
           return {
-            iconName: this.getIcon(profile.membershipType),
-            name: profile.displayName,
-            membershipType: profile.membershipType,
-            membershipId: profile.membershipId,
+            iconName: this.getIcon(membership.membershipType),
+            name: displayName,
+            membershipType: membership.membershipType,
+            membershipId: membership.membershipId,
             type: 'player'
           };
         });
