@@ -22,9 +22,9 @@ export class PlayerSealsComponent implements OnInit {
   }
 
   applySeals(seals: PlayerSeal[]) {
-    this.guildedSeals = seals.filter((x) => x.guilded === true && x.complete === true);
-    this.completedSeals = seals.filter((x) => x.complete === true && x.guilded === false);
-    this.partialSeals = seals.filter((x) => x.complete === false && x.guilded === false);
+    this.guildedSeals = seals?.filter((x) => x.guilded === true && x.complete === true);
+    this.completedSeals = seals?.filter((x) => x.complete === true && x.guilded === false);
+    this.partialSeals = seals?.filter((x) => x.complete === false && x.guilded === false);
   }
 
   constructor() {}
