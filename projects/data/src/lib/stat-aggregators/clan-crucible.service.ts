@@ -5,8 +5,11 @@ import { map, mergeMap, toArray } from 'rxjs/operators';
 import { ProfileService } from '../clan-db/profiles/profile.service';
 import { ActivityHashes, RecordHashes } from '@destiny/models';
 import { ProfileMilestonesService } from '../clan-db/profile-milestones/profile-milestones.service';
-import { SingleComponentResponseOfDestinyProfileRecordsComponent } from 'bungie-api-angular';
+import { Destiny2Service, SingleComponentResponseOfDestinyProfileRecordsComponent } from 'bungie-api-angular';
 import { getGloryPoints, getValorPoints, getValorResets } from '../member-profile/member-stats-crucible';
+import { ClanDatabase } from '../clan-db';
+
+import { environment } from '../../../../../src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +17,15 @@ import { getGloryPoints, getValorPoints, getValorResets } from '../member-profil
 export class ClanCrucibleService {
   readonly CONCURRENT_COUNT = 10;
 
-  constructor(private profileService: ProfileService, private profileMilestonesService: ProfileMilestonesService) {}
+  profileService: ProfileService;
+
+  constructor(
+    private profileMilestonesService: ProfileMilestonesService,
+    private d2Service: Destiny2Service,
+    private clanDb: ClanDatabase
+  ) {
+    this.profileService = new ProfileService(clanDb, environment.bungieAPI);
+  }
 
   getClanCrucibleStats(clanId: number, clanMemberProfiles: ClanMember[]) {
     return from(clanMemberProfiles).pipe(

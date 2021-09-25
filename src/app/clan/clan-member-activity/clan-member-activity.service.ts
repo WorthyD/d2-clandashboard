@@ -10,18 +10,21 @@ import {
   getIsMembersProfilesLoaded,
   getIsMembersProfilesLoading
 } from '../store/member-profiles/member-profiles.selectors';
-import { ActivityModeService, ClanActivityService } from '@destiny/data';
+import { ActivityModeService, ClanActivityService, ClanDatabase } from '@destiny/data';
 import { ActivityModeDefinition } from 'bungie-models';
 import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selectors';
-
+import { environment } from '../../../environments/environment';
 @Injectable()
 export class ClanMemberActivityService {
   activityModeDefinitionOptions: ActivityModeDefinition[];
+  private clanActivityService: ClanActivityService;
   constructor(
     private store: Store<any>,
-    private clanActivityService: ClanActivityService,
-    private activityModeService: ActivityModeService
+    private activityModeService: ActivityModeService,
+    private clanDB: ClanDatabase
   ) {
+    this.clanActivityService = new ClanActivityService(clanDB, environment.bungieAPI);
+
     const activityModeDefinitions = this.activityModeService.getDefinitions();
     const defArray = Object.keys(activityModeDefinitions).map((id) => activityModeDefinitions[id]);
     const wantedTypes = [0, 2, 3, 4, 5, 6, 18, 63, 82, 84];
@@ -63,7 +66,6 @@ export class ClanMemberActivityService {
           return selectedMembers.indexOf(members.profile.data.userInfo.displayName) > -1;
         });
       }
-
 
       return this.clanActivityService.getClanActivityStats(id, clanMembers, selectedActivity).pipe(
         bufferTime(500, undefined, 20),

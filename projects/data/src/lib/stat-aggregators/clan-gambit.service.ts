@@ -6,14 +6,18 @@ import { ProfileService } from '../clan-db/profiles/profile.service';
 import { ActivityHashes, RecordHashes } from '@destiny/models';
 import { ProfileMilestonesService } from '../clan-db/profile-milestones/profile-milestones.service';
 import { SingleComponentResponseOfDestinyProfileRecordsComponent } from 'bungie-api-angular';
+import { ClanDatabase } from '../clan-db';
+import { environment } from '../../../../../src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClanGambitService {
   readonly CONCURRENT_COUNT = 10;
-
-  constructor(private profileService: ProfileService, private profileMilestonesService: ProfileMilestonesService) {}
+  private profileService: ProfileService;
+  constructor(private profileMilestonesService: ProfileMilestonesService, private clanDb: ClanDatabase) {
+    this.profileService = new ProfileService(clanDb, environment.bungieAPI);
+  }
 
   getClanGambitStats(clanId: number, clanMemberProfiles: ClanMember[]) {
     return from(clanMemberProfiles).pipe(
@@ -24,19 +28,7 @@ export class ClanGambitService {
   }
 
   getMemberGambitStats(clanId: number, member: ClanMember): Observable<ActivityStats> {
-    //console.log(member);
-    // return from(member.profile.data.characterIds).pipe(
-    //   mergeMap((characterId: number) => {
-    //     return this.getCharacterCrucibleStats(clanId, member, characterId);
-    //   }),
-    //   toArray(),
-    //   map((characterStats) => {
-    //     return {
-    //       memberProfile: { profile: member.profile },
-    //       stats: null //this.combineCharacterActivityStats(characterStats)
-    //     };
-    //   })
-    // );
+
 
     return forkJoin([
       this.profileService.getProfile(clanId.toString(), member),

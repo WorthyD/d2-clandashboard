@@ -21,13 +21,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AlertModule } from './alert/alert.module';
 import { environment } from 'src/environments/environment';
 //TODO: proper export
-import { windowProvider, WindowToken } from 'projects/data/src/lib/injection-tokens/window-token';
+// import { windowProvider, WindowToken } from 'projects/data/src/lib/injection-tokens/window-token';
 //import { MaterialModule } from '@destiny/components';
 export function initConfig(appConfig: ManifestService) {
   return () => appConfig.loadManifest();
 }
 import { PlayerSearchModule } from './player-search/player-search.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AppConfig } from './app.config';
 
 @NgModule({
   declarations: [AppComponent],
@@ -67,7 +68,15 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       deps: [ManifestService],
       multi: true
     },
-    { provide: WindowToken, useFactory: windowProvider }
+    {
+      provide: AppConfig,
+      useFactory: () =>
+        new AppConfig({
+          apiKey: environment.bungieAPI
+        }),
+      multi: false
+    }
+    // { provide: WindowToken, useFactory: windowProvider }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,26 +1,33 @@
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
 
-import {
-  Destiny2Service,
-  DestinyHistoricalStatsDestinyActivityHistoryResults,
-  DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup
-} from 'bungie-api-angular';
-import { BaseClanService } from '../base-clan.service';
+// import {
+//   Destiny2Service,
+//   DestinyHistoricalStatsDestinyActivityHistoryResults,
+//   DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup
+// } from 'bungie-api-angular';
+// import { BaseClanService } from '../base-clan.service';
 import { BaseMemberActivityService } from '../base-member-activity.service';
 import { ClanDatabase } from '../ClanDatabase';
-import { MemberProfile, MemberActivityStats, MemberActivityTime } from 'bungie-models';
-import { from, of, Observable, defer, concat, EMPTY, forkJoin, combineLatest } from 'rxjs';
-import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo, tap, switchMap } from 'rxjs/operators';
+
+// import { MemberProfile, MemberActivityStats, MemberActivityTime } from 'bungie-models';
+import { from, Observable } from 'rxjs';
+import { mergeMap, map, toArray, tap, switchMap } from 'rxjs/operators';
 
 import { clanMemberActivitySerializer } from './clan-member-activity.serializer';
-import { DBObject, StoreId } from '../app-indexed-db';
-import { nowPlusDays } from '../../utility/date-utils';
-import { groupActivitiesByDate } from '../../utility/group-activity-by-date';
 
-@Injectable()
+import { DBObject, StoreId } from '../app-indexed-db';
+
+import { nowPlusDays } from '../../utility/date-utils';
+
+import { groupActivitiesByDate } from '../../utility/group-activity-by-date';
+import { MemberProfile } from 'projects/bungie-models/src/lib/models/MemberProfile';
+import { MemberActivityStats } from 'projects/bungie-models/src/lib/models/MemberActivityStat';
+import { MemberActivityTime } from 'projects/bungie-models/src/lib/models/MemberActivityTime';
+
+// @Injectable()
 export class ClanMemberActivityService extends BaseMemberActivityService {
-  constructor(private d2Service: Destiny2Service, private clanDB: ClanDatabase) {
-    super(clanDB, StoreId.MemberActivities, d2Service,  nowPlusDays(-365), 30);
+  constructor(private clanDB: ClanDatabase, private baseApiKey: string) {
+    super(clanDB, StoreId.MemberActivities, baseApiKey, nowPlusDays(-365), 30);
     //super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-30), 6); // TODO: remove this eventually for larger numbers
   }
 
@@ -53,7 +60,7 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
         return memberProfilesObs.pipe(
           mergeMap((memberProfile) => {
             return from(memberProfile.profile.data.characterIds).pipe(
-              mergeMap((characterId) => {
+              mergeMap((characterId: number) => {
                 const characterActivityId = this.getMemberActivityId(memberProfile, characterId);
                 const characterActivityCache = cachedData.find((x) => x.id === characterActivityId);
 
@@ -141,7 +148,7 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
 
   getMemberActivity(clanId: number, member: MemberProfile, activityMode: number = 0): Observable<MemberActivityStats> {
     return from(member.profile.data.characterIds).pipe(
-      mergeMap((characterId) => {
+      mergeMap((characterId: number) => {
         return this.getMemberCharacterActivitySerialized(clanId, member, characterId, activityMode);
       }),
       map((x) => {

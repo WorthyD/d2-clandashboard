@@ -1,5 +1,6 @@
-import { MemberActivityStat } from 'bungie-models';
-import { DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api-angular';
+// import { DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api-angular';
+
+import { DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api-angular/lib/model/destinyHistoricalStatsDestinyHistoricalStatsPeriodGroup';
 
 export function clanMemberActivitySerializer(
   activity: DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup

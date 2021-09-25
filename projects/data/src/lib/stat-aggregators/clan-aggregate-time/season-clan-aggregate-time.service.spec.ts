@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { MemberProfile } from 'bungie-models';
 import { of } from 'rxjs';
 
-import { ClanDatabase, ClanMemberRecentActivityService, ProfileService } from '../../clan-db';
 import { MOCK_RESP_ACTIVITIES_COMBINED } from '../../testing-utils/objects/member-activities.mock';
 import { getBungieStartDate, nowPlusDays } from '../../utility/date-utils';
 import { WeeklyClanAggregateTimeService } from './weekly-clan-aggregate-time.service';

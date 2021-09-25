@@ -28,16 +28,16 @@ const dummyActivities = dates.map((x) => {
 });
 describe('WeeklyClanAggregateTimeService', () => {
   let service: WeeklyClanAggregateTimeService;
-  let profileService: ProfileService;
+  //let profileService: ProfileService;
   let activityService: ClanMemberRecentActivityService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProfileService, ClanMemberRecentActivityService, ClanDatabase]
+      providers: [ ClanMemberRecentActivityService, ClanDatabase]
     });
     service = TestBed.inject(WeeklyClanAggregateTimeService);
-    profileService = TestBed.inject(ProfileService);
+    // profileService = TestBed.inject(ProfileService);
     activityService = TestBed.inject(ClanMemberRecentActivityService);
   });
 

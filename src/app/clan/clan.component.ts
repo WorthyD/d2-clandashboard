@@ -24,7 +24,6 @@ import { Observable, Subject, Subscription, forkJoin, of, interval, from } from 
 import { filter, map, distinctUntilChanged, takeUntil, take, mergeMap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
-import { ProfileService } from '@destiny/data';
 import { ClanDatabase } from '@destiny/data';
 import { AboutComponent } from '../about/about.component';
 import { MatDialog } from '@angular/material/dialog';

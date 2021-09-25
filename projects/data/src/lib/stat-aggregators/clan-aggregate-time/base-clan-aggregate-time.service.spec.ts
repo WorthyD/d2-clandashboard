@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { MemberProfile } from 'bungie-models';
 import { of } from 'rxjs';
 
-import { ClanDatabase, ClanMemberRecentActivityService, ProfileService } from '../../clan-db';
+import { ClanDatabase, ClanMemberRecentActivityService,  } from '../../clan-db';
 import { MOCK_RESP_ACTIVITIES_COMBINED } from '../../testing-utils/objects/member-activities.mock';
 import { BaseClanAggregateTimeService } from './base-clan-aggregate-time.service';
 
@@ -67,30 +67,29 @@ const dummyActivities = {
     }
   ]
 };
-const memberProfile = {
-  profile: {
-    data: {
-      userInfo: {
-        membershipId: 1,
-        membershipType: 1
-      },
-      dateLastPlayed: new Date()
-    }
-  }
-} as MemberProfile;
+// const memberProfile = {
+//   profile: {
+//     data: {
+//       userInfo: {
+//         membershipId: 1,
+//         membershipType: 1
+//       },
+//       dateLastPlayed: new Date()
+//     }
+//   }
+// } as MemberProfile;
 
 describe('BaseClanAggregateTimeService', () => {
   let service: BaseClanAggregateTimeService;
-  let profileService: ProfileService;
   let activityService: ClanMemberRecentActivityService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProfileService, ClanMemberRecentActivityService, ClanDatabase]
+      providers: [ ClanMemberRecentActivityService, ClanDatabase]
     });
     service = TestBed.inject(BaseClanAggregateTimeService);
-    profileService = TestBed.inject(ProfileService);
+    //profileService = TestBed.inject(ProfileService);
     activityService = TestBed.inject(ClanMemberRecentActivityService);
   });
 

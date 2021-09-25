@@ -1,13 +1,8 @@
-import { Injectable } from '@angular/core';
 import { AppIndexedDb, StoreId, DBObject } from './app-indexed-db';
 
-@Injectable()
 export class ClanDatabase {
   private database: AppIndexedDb;
 
-  // getValues(repository: string) {
-  //   return this.getDatabase(repository).initialValues;
-  // }
 
   getAll(repository: string, type: StoreId): Promise<DBObject[]> {
     return this.getDatabase(repository).getAllData(type);

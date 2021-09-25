@@ -22,7 +22,7 @@ import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selec
   providedIn: 'root'
 })
 export class ClanAggregateActivityService {
-  constructor(private store: Store<any>, private service: DailyClanAggregateTimeService, private injector: Injector) {}
+  constructor(private store: Store<any>, private injector: Injector) {}
 
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfileService } from './profiles/profile.service';
 import { ClanDatabase } from './ClanDatabase';
 import { ClanDetailsService } from './clan-details/clan-details.service';
 import { ClanMembersService } from './clan-members/clan-members.service';
@@ -15,16 +14,15 @@ import { MemberMetricsService } from './member-metrics/member-metrics.service';
   declarations: [],
   imports: [CommonModule],
   providers: [
-    ProfileService,
     ClanDetailsService,
     ClanDatabase,
     ClanMembersService,
     ClanRewardsService,
-    ClanMemberActivityService,
+   // ClanMemberActivityService,
     ProfileMilestonesService,
     ProfileCollectionsService,
     MemberActivityStatsService,
-    ClanMemberRecentActivityService,
+    // ClanMemberRecentActivityService,
     MemberMetricsService
   ]
 })

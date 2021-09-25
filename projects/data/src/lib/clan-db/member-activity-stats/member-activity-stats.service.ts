@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Destiny2Service, DestinyHistoricalStatsDestinyAggregateActivityStats } from 'bungie-api-angular';
+import { Destiny2Service } from 'bungie-api-angular';
 import { ClanDatabase } from '../ClanDatabase';
 import { from, of, Observable } from 'rxjs';
 import { BaseClanService } from '../base-clan.service';
@@ -7,6 +7,7 @@ import { map, catchError, switchMap, mergeMap } from 'rxjs/operators';
 import { StoreId } from '../app-indexed-db';
 import { ClanMember, MemberProfile, MemberAggregateActivityStats } from 'bungie-models';
 import { memberActivityStatSerializer } from './member-activity-stat.serializer';
+import { DestinyHistoricalStatsDestinyAggregateActivityStats } from 'projects/bungie-models/src/lib/models/ServiceModels/destinyHistoricalStatsDestinyAggregateActivityStats';
 
 @Injectable()
 export class MemberActivityStatsService extends BaseClanService {
