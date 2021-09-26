@@ -1,15 +1,12 @@
 mat-table {
   max-width: 100%;
-  //overflow: auto;
 }
 mat-row {
-  //  transition: height 1s;
   transition: flex 0.3s ease-out;
 }
 .mat-column-activityChart {
   flex: 2 0 0;
-  // Too wide and it breaks the whole experience.
-    min-width: 700px;
+  min-width: 700px;
   > div {
     width: 100%;
 
