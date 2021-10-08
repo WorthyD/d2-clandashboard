@@ -1,5 +1,3 @@
-import { MemberProfile } from 'bungie-models';
-
 export const MOCK_MEMBER_PROFILE = {
   profile: {
     data: {
@@ -10,9 +8,9 @@ export const MOCK_MEMBER_PROFILE = {
       dateLastPlayed: new Date()
     }
   }
-} as MemberProfile;
+};
 
-export function GET_MOCK_PROFILES(count: number): MemberProfile[] {
+export function GET_MOCK_PROFILES(count: number) {
   const profiles = [];
   for (let i = 0; i < count; i++) {
     profiles.push({
@@ -26,7 +24,7 @@ export function GET_MOCK_PROFILES(count: number): MemberProfile[] {
           dateLastPlayed: new Date()
         }
       }
-    } as MemberProfile);
+    });
   }
   return profiles;
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SandboxComponent } from './sandbox.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ActivityInfoModule } from '@destiny/components';
 
 const routes: Routes = [
   {
@@ -17,6 +18,6 @@ export class SandboxRoutingModule {}
 
 @NgModule({
   declarations: [SandboxComponent],
-  imports: [CommonModule, SandboxRoutingModule]
+  imports: [CommonModule, SandboxRoutingModule, ActivityInfoModule]
 })
 export class SandboxModule {}

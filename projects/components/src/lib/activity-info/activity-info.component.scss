@@ -1,0 +1,16 @@
+.activity-info {
+  &__main {
+    display: flex;
+  }
+  &__time {
+    width: 75%;
+  }
+  &__player-list {
+    width: 25%;
+    padding:1rem;
+  }
+  &__player-info {
+    display: flex;
+    justify-content: space-between;
+  }
+}
