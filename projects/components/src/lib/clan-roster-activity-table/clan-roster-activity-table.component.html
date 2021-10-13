@@ -40,7 +40,7 @@
     </ng-container>
 
     <ng-container matColumnDef="activityLink">
-      <mat-header-cell *matHeaderCellDef>Activity Link</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef><button mat-stroked-button (click)="export()">Export</button></mat-header-cell>
       <mat-cell *matCellDef="let element">
         <button mat-stroked-button (click)="memberClick(element)">View</button>
       </mat-cell>

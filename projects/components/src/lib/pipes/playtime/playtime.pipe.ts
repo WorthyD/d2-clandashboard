@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'playtime'
 })
 export class PlaytimePipe implements PipeTransform {
-  transform(input: number, showSeconds: boolean = true): unknown {
+  transform(input: number, showSeconds: boolean = true): string {
     let totalSeconds = input;
     const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
     totalSeconds %= 3600;
@@ -18,7 +18,7 @@ export class PlaytimePipe implements PipeTransform {
   name: 'playtimems'
 })
 export class PlaytimeMillisecondsPipe implements PipeTransform {
-  transform(input: number): unknown {
+  transform(input: number): string {
     if (input === 0) {
       return '';
     }
