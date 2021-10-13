@@ -108,8 +108,11 @@ export class ClanRosterActivityTableComponent implements OnInit {
       return {
         profileName: x.memberProfile.profile.data?.userInfo?.displayName,
         lastNinetyDays: this.pipe.transform(x.stats.lastNinetyDays),
+        lastNinetyDaysMinutes: Math.floor(x.stats.lastNinetyDays / 60),
         lastMonth: this.pipe.transform(x.stats.lastMonth),
-        lastWeek: this.pipe.transform(x.stats.lastWeek)
+        lastMonthMinutes: Math.floor(x.stats.lastMonth / 60),
+        lastWeek: this.pipe.transform(x.stats.lastWeek),
+        lastWeekMinutes: Math.floor(x.stats.lastWeek / 60)
       };
     });
   }
