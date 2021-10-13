@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivityInfo } from './activity-info-config';
 import { MOCK_GRID_ITEMS } from '../shared/charts/bar-chart/_MOCK_GRID_ITEMS';
 @Component({
@@ -10,6 +10,9 @@ import { MOCK_GRID_ITEMS } from '../shared/charts/bar-chart/_MOCK_GRID_ITEMS';
 export class ActivityInfoComponent implements OnInit {
   @Input() activityInfo: ActivityInfo;
   events = MOCK_GRID_ITEMS;
+
+  @Output() viewMember = new EventEmitter<string>();
+
   players = [
     {
       name: 'WorthyD',
