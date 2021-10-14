@@ -1,6 +1,6 @@
 {
   "name": "destiny-dashboard",
-  "version": "0.72.0",
+  "version": "0.74.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4321 --open",
@@ -14,7 +14,7 @@
     "test-service-worker": "http-server -p 4321 -c-1 dist/destiny-dashboard",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "netlify": "netlify deploy --dir=./dist/destiny-dashboard --configuration production",
+    "netlify": "netlify deploy --dir=./dist/destiny-dashboard --prod",
     "deploy:patch": "npm run release && ng build --configuration production && npm run netlify",
     "deploy": "npm run release-minor && ng build --configuration production && npm run netlify",
     "release": "standard-version",
