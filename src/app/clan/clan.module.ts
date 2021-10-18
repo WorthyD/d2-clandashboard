@@ -14,7 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ClanDetailModule } from './clan-detail/clan-detail.module';
 import { MaterialModule } from '@destiny/components';
-import { ClanDatabase, ClanDbModule, WeeklyClanAggregateTimeService } from '@destiny/data';
+import { ClanDatabase, ClanDbModule, DailyClanAggregateTimeService, MonthlyClanAggregateTimeService, SeasonClanAggregateTimeService, WeeklyClanAggregateTimeService } from '@destiny/data';
 import { AboutModule } from '../about/about.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DirectivesModule } from '../shared/directives/directives.module';
@@ -45,6 +45,21 @@ import { AppConfig } from '../app.config';
     {
       provide: WeeklyClanAggregateTimeService,
       useClass: WeeklyClanAggregateTimeService,
+      deps: [ClanDatabase, AppConfig]
+    },
+    {
+      provide: MonthlyClanAggregateTimeService,
+      useClass: MonthlyClanAggregateTimeService,
+      deps: [ClanDatabase, AppConfig]
+    },
+    {
+      provide: SeasonClanAggregateTimeService,
+      useClass: SeasonClanAggregateTimeService,
+      deps: [ClanDatabase, AppConfig]
+    },
+    {
+      provide: DailyClanAggregateTimeService,
+      useClass: DailyClanAggregateTimeService,
       deps: [ClanDatabase, AppConfig]
     }
   ]

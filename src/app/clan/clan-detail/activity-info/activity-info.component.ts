@@ -35,11 +35,15 @@ export class ActivityInfoComponent implements OnInit {
 
   event$ = combineLatest([this.clanId$, this.clanMemberProfiles$]).pipe(
     switchMap(([clanId, clanMemberProfiles]) => {
-      return this.service.getAllClanActivities(clanId.toString(), clanMemberProfiles, 16);
+      return this.service.getAllClanActivities(clanId.toString(), clanMemberProfiles, 18);
     })
   );
 
   constructor(private service: ProfileActivityWorkerService, private store: Store<any>) {}
 
   ngOnInit(): void {}
+  // Raid 4
+  // Crucible 5
+  // Strikes 18
+  // Gambit 63
 }

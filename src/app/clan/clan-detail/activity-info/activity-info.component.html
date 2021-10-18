@@ -1,5 +1,5 @@
 <div>
-  <lib-activity-info [activityInfo]="activityInfo"></lib-activity-info>
+  <lib-activity-info [activityInfo]="activityInfo" [events]="(event$ | async)?.events" [players]="(event$ | async)?.players"></lib-activity-info>
 </div>
 
 <pre><code>

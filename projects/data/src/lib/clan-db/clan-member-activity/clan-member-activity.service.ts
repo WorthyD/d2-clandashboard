@@ -111,7 +111,6 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
 
     const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
 
-    console.log(activityMode);
     const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
       activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
     );

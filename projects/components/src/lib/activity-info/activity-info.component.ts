@@ -9,34 +9,38 @@ import { MOCK_GRID_ITEMS } from '../shared/charts/bar-chart/_MOCK_GRID_ITEMS';
 })
 export class ActivityInfoComponent implements OnInit {
   @Input() activityInfo: ActivityInfo;
-  events = MOCK_GRID_ITEMS;
+
+  @Input()
+  events;
+  @Input()
+  players;
 
   @Output() viewMember = new EventEmitter<string>();
 
-  players = [
-    {
-      name: 'WorthyD',
-      value: '1'
-    },
-    {
-      name: 'WorthyD',
-      value: '1'
-    },
-    {
-      name: 'WorthyD',
-      value: '1'
-    },
+  // players = [
+  //   {
+  //     name: 'WorthyD',
+  //     value: '1'
+  //   },
+  //   {
+  //     name: 'WorthyD',
+  //     value: '1'
+  //   },
+  //   {
+  //     name: 'WorthyD',
+  //     value: '1'
+  //   },
 
-    {
-      name: 'WorthyD',
-      value: '1'
-    },
+  //   {
+  //     name: 'WorthyD',
+  //     value: '1'
+  //   },
 
-    {
-      name: 'WorthyD',
-      value: '1'
-    }
-  ];
+  //   {
+  //     name: 'WorthyD',
+  //     value: '1'
+  //   }
+  // ];
 
   constructor() {}
 
