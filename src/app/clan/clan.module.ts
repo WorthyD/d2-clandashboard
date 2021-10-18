@@ -14,11 +14,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ClanDetailModule } from './clan-detail/clan-detail.module';
 import { MaterialModule } from '@destiny/components';
-import { ClanDbModule } from '@destiny/data';
+import { ClanDatabase, ClanDbModule, WeeklyClanAggregateTimeService } from '@destiny/data';
 import { AboutModule } from '../about/about.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DirectivesModule } from '../shared/directives/directives.module';
 import { NotificationsModule } from '@destiny/components';
+import { AppConfig } from '../app.config';
 
 @NgModule({
   declarations: [ClanComponent],
@@ -40,6 +41,12 @@ import { NotificationsModule } from '@destiny/components';
     StoreModule.forFeature('clan', clanState.reducers),
     EffectsModule.forFeature(clanState.ClanEffects)
   ],
-  providers: []
+  providers: [
+    {
+      provide: WeeklyClanAggregateTimeService,
+      useClass: WeeklyClanAggregateTimeService,
+      deps: [ClanDatabase, AppConfig]
+    }
+  ]
 })
 export class ClanModule {}
