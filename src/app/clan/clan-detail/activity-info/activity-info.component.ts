@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivityInfo } from '@destiny/components';
 import { select, Store } from '@ngrx/store';
 import { ProfileActivityWorkerService } from 'src/app/workers/profile-activity/profile-activity.service';
@@ -11,7 +11,7 @@ import {
   getClanMemberActivitiesUpdating
 } from '../../store/member-activities/member-activities.selectors';
 import { combineLatest } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-activity-info',
@@ -19,14 +19,8 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./activity-info.component.scss']
 })
 export class ActivityInfoComponent implements OnInit {
-  activityInfo: ActivityInfo = {
-    title: 'Card Title',
-    activityTypes: [
-      { label: 'Strikes', value: '1234' },
-      { label: 'Strikes', value: '1234' },
-      { label: 'Strikes', value: '1234' }
-    ]
-  };
+  @Input()
+  activityInfo: ActivityInfo;
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);
 
   clanMemberProfiles$ = this.store.pipe(select(getAllMembers));
@@ -34,8 +28,9 @@ export class ActivityInfoComponent implements OnInit {
   activitiesUpdating$ = this.store.pipe(select(getClanMemberActivitiesUpdating));
 
   event$ = combineLatest([this.clanId$, this.clanMemberProfiles$]).pipe(
+    filter(([clanId, clanMemberProfiles]) => !!clanMemberProfiles),
     switchMap(([clanId, clanMemberProfiles]) => {
-      return this.service.getAllClanActivities(clanId.toString(), clanMemberProfiles, 18);
+      return this.service.getAllClanActivities(clanId.toString(), clanMemberProfiles, this.activityInfo.activityCode);
     })
   );
 

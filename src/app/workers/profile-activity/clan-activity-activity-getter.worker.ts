@@ -15,16 +15,16 @@ addEventListener('message', ({ data }) => {
     .getAllActivitiesFromCache2(data.clanId, data.memberProfiles, data.activityId)
     .pipe(
       take(1),
-      map((x) => {
-        return x.map((y) => {
-          return {
-            ...y,
-            profileName: data.memberProfiles.find(
-              (p) => `${p.profile.data.userInfo.membershipType}-${p.profile.data.userInfo.membershipId}` === y.id
-            )?.profile.data.userInfo.displayName
-          };
-        });
-      }),
+      // map((x) => {
+      //   return x.map((y) => {
+      //     return {
+      //       ...y,
+      //       profileName: data.memberProfiles.find(
+      //         (p) => `${p.profile.data.userInfo.membershipType}-${p.profile.data.userInfo.membershipId}` === y.id
+      //       )?.profile.data.userInfo.displayName
+      //     };
+      //   });
+      // }),
       map((x) => {
         return {
           events: weekAggregator.getClanActivityStatsForDuration(x, 0),

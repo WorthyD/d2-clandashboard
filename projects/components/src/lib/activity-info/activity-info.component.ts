@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivityInfo } from './activity-info-config';
-import { MOCK_GRID_ITEMS } from '../shared/charts/bar-chart/_MOCK_GRID_ITEMS';
+import { ActivityData, ActivityInfo } from './activity-info-config';
 @Component({
   selector: 'lib-activity-info',
   templateUrl: './activity-info.component.html',
@@ -9,6 +8,9 @@ import { MOCK_GRID_ITEMS } from '../shared/charts/bar-chart/_MOCK_GRID_ITEMS';
 })
 export class ActivityInfoComponent implements OnInit {
   @Input() activityInfo: ActivityInfo;
+
+  @Input()
+  activityData: ActivityData;
 
   @Input()
   events;

@@ -16,11 +16,11 @@
 
 <div class="activity-info__main">
   <div class="activity-info__time">
-    <lib-bar-chart *ngIf="events" [convertTo]="'Hours'" [events]="events"></lib-bar-chart>
+    <lib-bar-chart [convertTo]="'Hours'" [events]="activityData?.events"></lib-bar-chart>
   </div>
   <aside class="activity-info__player-list">
 
-    <div *ngFor="let player of players" class="activity-info__player-info">
+    <div *ngFor="let player of activityData?.players" class="activity-info__player-info">
       {{player.name}}
       <span>{{player.value}}</span>
 

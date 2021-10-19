@@ -19,34 +19,42 @@ import { Store, select } from '@ngrx/store';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { filter, map, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { ClanDetailService } from './clan-detail.service';
+import { ActivityInfo } from '@destiny/components';
 
 @Component({
-    selector: 'app-clan-detail',
-    templateUrl: './clan-detail.component.html',
-    styleUrls: ['./clan-detail.component.scss'],
-    providers: [ClanDetailService]
+  selector: 'app-clan-detail',
+  templateUrl: './clan-detail.component.html',
+  styleUrls: ['./clan-detail.component.scss'],
+  providers: [ClanDetailService]
 })
 export class ClanDetailComponent implements OnInit, OnDestroy {
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private store: Store<clanDetailStore.ClanDetailState>,
-        public clanDetails: ClanDetailService
-    ) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private store: Store<clanDetailStore.ClanDetailState>,
+    public clanDetails: ClanDetailService
+  ) {}
 
-    // private clanId = this.activatedRoute.params.pipe(
-    //     map(x => x.id, distinctUntilChanged())
-    // );
+  strikeInfo: ActivityInfo = {
+    title: 'Strikes',
+    activityCode: 18
+    // activityTypes: [
+    //   { label: 'Strikes', value: '1234' },
+    //   { label: 'Strikes', value: '1234' },
+    //   { label: 'Strikes', value: '1234' }
+    // ]
+  };
+  // private clanId = this.activatedRoute.params.pipe(
+  //     map(x => x.id, distinctUntilChanged())
+  // );
 
-    clanDetails$: Observable<ClanDetails> = this.store.pipe(
-        select(clanDetailSelectors.getClanDetail)
-    );
+  clanDetails$: Observable<ClanDetails> = this.store.pipe(select(clanDetailSelectors.getClanDetail));
 
-    private destroyed = new Subject();
+  private destroyed = new Subject();
 
-    ngOnInit() {}
+  ngOnInit() {}
 
-    ngOnDestroy() {
-        this.destroyed.next();
-        this.destroyed.complete();
-    }
+  ngOnDestroy() {
+    this.destroyed.next();
+    this.destroyed.complete();
+  }
 }

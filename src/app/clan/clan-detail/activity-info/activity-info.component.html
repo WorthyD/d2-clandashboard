@@ -1,7 +1,7 @@
 <div>
-  <lib-activity-info [activityInfo]="activityInfo" [events]="(event$ | async)?.events" [players]="(event$ | async)?.players"></lib-activity-info>
+  <lib-activity-info [activityInfo]="activityInfo" [activityData]="(event$ | async)"></lib-activity-info>
 </div>
 
-<pre><code>
+<!-- <pre><code>
   {{(event$ | async) | json}}
-</code></pre>
+</code></pre> -->
