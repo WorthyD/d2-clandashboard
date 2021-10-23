@@ -1,6 +1,7 @@
-import { MemberActivityStats, MemberActivityRecentStats, MemberActivityRecentStatsActivity } from 'bungie-models';
-import { DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api-angular';
-import { formatDate } from '../../utility/format-date';
+// import { MemberActivityStats, MemberActivityRecentStats, MemberActivityRecentStatsActivity } from 'bungie-models';
+import { MemberActivityRecentStats, MemberActivityRecentStatsActivity } from 'projects/bungie-models/src/lib/models/MemberActivityRecentStats';
+import { MemberActivityStats } from 'projects/bungie-models/src/lib/models/MemberActivityStat';
+// import { MemberActivityRecentStats } from 'projects/components/src/lib/clan-roster-activity-table/clan-roster-activity-table.component';
 import { groupActivities } from '../../utility/group-activity-by-date';
 //import { getBungieStartDate } from '../../utility/date-utils';
 //import { groupActivitiesByWeek } from '../../utility/group-activity-by-week';

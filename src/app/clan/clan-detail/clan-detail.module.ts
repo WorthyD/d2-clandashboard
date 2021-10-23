@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClanDetailComponent } from './clan-detail.component';
-import { ClanActivePopulationModule, ClanWeeklyProgressModule } from '@destiny/components';
+import { ActivityInfoModule, ClanActivePopulationModule, ClanWeeklyProgressModule } from '@destiny/components';
 import { ClanOverviewModule } from '@destiny/components/lib/clan-overview';
 import { ClanSeasonProgressModule, ClanMembersCardModule } from '@destiny/components';
 import { InactiveMembersComponent } from './inactive-members/inactive-members.component';
@@ -10,6 +10,7 @@ import { RecentlyActiveMembersComponent } from './recently-active-members/recent
 import { BaseMemberCardComponent } from './base-member-card/base-member-card.component';
 import { PipesModule } from '@destiny/components';
 import { ClanAggregateActivityModule } from './clan-aggregate-activity/clan-aggregate-activity.module';
+import { ActivityInfoComponent } from './activity-info/activity-info.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ClanAggregateActivityModule } from './clan-aggregate-activity/clan-aggr
     InactiveMembersComponent,
     HighestpowerMembersComponent,
     RecentlyActiveMembersComponent,
-    BaseMemberCardComponent
+    BaseMemberCardComponent,
+    ActivityInfoComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { ClanAggregateActivityModule } from './clan-aggregate-activity/clan-aggr
     ClanMembersCardModule,
     PipesModule,
     ClanAggregateActivityModule,
-    ClanActivePopulationModule
+    ClanActivePopulationModule,
+    ActivityInfoModule
   ]
 })
 export class ClanDetailModule {}

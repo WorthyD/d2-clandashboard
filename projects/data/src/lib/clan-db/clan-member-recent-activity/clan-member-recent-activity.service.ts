@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
 import { BaseMemberActivityService } from '../base-member-activity.service';
 import { ClanDatabase } from '../ClanDatabase';
 import { StoreId } from '../app-indexed-db';
-import { Destiny2Service } from 'bungie-api-angular';
-import { from, of, Observable, defer, concat, EMPTY, forkJoin } from 'rxjs';
-import { mergeMap, map, catchError, concatAll, mergeAll, toArray, mapTo } from 'rxjs/operators';
-import { MemberActivityStats, MemberProfile, MemberActivityRecentStats } from 'bungie-models';
+import { from, Observable } from 'rxjs';
+import { mergeMap, map, toArray } from 'rxjs/operators';
+// import { MemberActivityStats, MemberProfile, MemberActivityRecentStats } from 'bungie-models';
+
 import { clanMemberRecentActivitySerializer } from './clan-member-recent-activity.serializer';
 import { clanMemberActivitySerializer } from '../clan-member-activity/clan-member-activity.serializer';
+import { MemberProfile } from 'projects/bungie-models/src/lib/models/MemberProfile';
+import { MemberActivityStats } from 'projects/bungie-models/src/lib/models/MemberActivityStat';
+import { MemberActivityRecentStats } from 'projects/bungie-models/src/lib/models/MemberActivityRecentStats';
 
 export class ClanMemberRecentActivityService extends BaseMemberActivityService {
   private concurrentRequests = 5;

@@ -1,30 +1,31 @@
-import { Injectable } from '@angular/core';
-import { ActivityStats, MemberProfile, ClanMember, MemberActivityTime } from 'bungie-models';
-import { forkJoin, from, Observable } from 'rxjs';
-import { map, mergeMap, toArray } from 'rxjs/operators';
+//import { Injectable } from '@angular/core';
+//import { ActivityStats, MemberProfile, ClanMember, MemberActivityTime } from 'bungie-models';
+//import { forkJoin, from, Observable } from 'rxjs';
+//import { map, mergeMap, toArray } from 'rxjs/operators';
+import { MemberActivityTime } from 'projects/bungie-models/src/lib/models/MemberActivityTime';
 import { nowPlusDays } from '../../utility/date-utils';
-import { groupActivitiesByDate, groupActivityStatsByDate } from '../../utility/group-activity-by-date';
+import { groupActivityStatsByDate } from '../../utility/group-activity-by-date';
 import { BaseClanAggregateTimeService } from './base-clan-aggregate-time.service';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class DailyClanAggregateTimeService extends BaseClanAggregateTimeService {
-  getClanActivityStatsForDuration(
-    memberActivities: MemberActivityTime[],
-    //startData: Date,
-    activityMode: any
-  ) {
-
-    const x = this.filterDates(memberActivities, nowPlusDays(-60));
-    //console.log('x', x);
+  getClanActivityStatsForDuration(memberActivities: MemberActivityTime[], activityMode: any, days = 60) {
+    const x = this.filterDates(memberActivities, nowPlusDays(-days));
 
     const activities = [...x.map((y) => y.activities)];
-    //    console.log('activities', activities);
     const flatActivities = [].concat.apply([], activities);
-    //   console.log('flatActivities', flatActivities);
     const summedActivities = groupActivityStatsByDate(flatActivities);
-    //  console.log('summedActivities', summedActivities);
     return summedActivities;
+  }
+  getClanActivityByPlayer(memberActivities: MemberActivityTime[], activityMode: any, days = 60) {
+    const x = this.filterDates(memberActivities, nowPlusDays(-days));
+
+    const results = x.map((y) => {
+      return {
+        id: y.id,
+        seconds: y.activities.reduce((prev, next) => prev + next.seconds, 0)
+      };
+    });
+
+    return results;
   }
 }

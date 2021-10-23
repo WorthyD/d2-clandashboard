@@ -79,11 +79,8 @@ export class MemberActivityEffects {
           );
         };
 
-        console.time('activities');
         return this.memberActivityService.updateAllActivityCache(clanId.toString(), action.member, progress).pipe(
           switchMap((x) => {
-            console.log(x);
-            console.timeEnd('activities');
             window.localStorage.setItem('lastActivityUpdate-' + clanId, new Date().toString());
             this.store.dispatch(
               removeNotification({

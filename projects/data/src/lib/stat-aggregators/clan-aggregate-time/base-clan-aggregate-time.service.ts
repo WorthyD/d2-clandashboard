@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
-import { ActivityStats, MemberProfile, ClanMember, MemberActivityTime } from 'bungie-models';
-import { forkJoin, from, Observable } from 'rxjs';
-import { map, mergeMap, toArray } from 'rxjs/operators';
+// import { Injectable } from '@angular/core';
+// import { ActivityStats, MemberProfile, MemberActivityTime } from 'bungie-models';
+import { ActivityStats } from 'projects/bungie-models/src/lib/models/ActivityStats';
+import { MemberActivityTime } from 'projects/bungie-models/src/lib/models/MemberActivityTime';
+import { MemberProfile } from 'projects/bungie-models/src/lib/models/MemberProfile';
+import { from, Observable } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 import { AppConfig } from 'src/app/app.config';
-import { ClanMemberRecentActivityService, ClanDatabase } from '../../clan-db';
+import { ClanMemberRecentActivityService } from '../../clan-db/clan-member-recent-activity/clan-member-recent-activity.service';
+import { ClanDatabase } from '../../clan-db/ClanDatabase';
+// import { ClanMemberRecentActivityService, ClanDatabase } from '../../clan-db';
 
-@Injectable({
-  providedIn: 'root'
-})
 export abstract class BaseClanAggregateTimeService {
   readonly CONCURRENT_COUNT = 10;
   private memberActivityService: ClanMemberRecentActivityService;

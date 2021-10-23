@@ -41,4 +41,20 @@ export class ProfileActivityWorkerService {
     });
     return memberActivities;
   }
+
+  getAllClanActivities(clanId: string, memberProfiles: MemberProfile[], activityId: number): Observable<any> {
+    const memberActivities = new Subject();
+    const worker = new Worker(new URL('./clan-activity-activity-getter.worker', import.meta.url));
+    worker.onmessage = ({ data }) => {
+      memberActivities.next(data.data);
+    };
+
+    worker.postMessage({
+      clanId,
+      memberProfiles,
+      apiKey: environment.bungieAPI,
+      activityId
+    });
+    return memberActivities;
+  }
 }

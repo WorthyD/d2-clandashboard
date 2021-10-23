@@ -1,7 +1,6 @@
 import { ClanDatabase } from 'projects/data/src/lib/clan-db/ClanDatabase';
 import { ProfileService } from 'projects/data/src/lib/clan-db/profiles/profile.service';
 import { take } from 'rxjs/operators';
-//import { environment } from '../../../environments/environment';
 
 addEventListener('message', ({ data }) => {
   const clanDatabase = new ClanDatabase();

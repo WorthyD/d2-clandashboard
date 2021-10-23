@@ -39,11 +39,14 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     );
   }
 
-  getAllActivitiesFromCache2(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityTime[]> {
+  getAllActivitiesFromCache2(
+    clanId: number,
+    memberProfiles: MemberProfile[],
+    activityMode = 0
+  ): Observable<MemberActivityTime[]> {
     return from(this.getAllDataFromCache(clanId.toString())).pipe(
       map((x) => {
-        const y = this.groupActivitiesToMembers2(memberProfiles, x);
-
+        const y = this.groupActivitiesToMembers2(memberProfiles, x, activityMode);
         return y;
       })
     );
@@ -93,20 +96,32 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     });
   }
 
-  private groupActivitiesToMembers2(memberProfiles: MemberProfile[], allActivities: DBObject[]): any[] {
+  private groupActivitiesToMembers2(
+    memberProfiles: MemberProfile[],
+    allActivities: DBObject[],
+    activityMode: number = 0
+  ): any[] {
     return memberProfiles.map((memberProfile) => {
-      return this.groupActivitiesToMember2(memberProfile, allActivities);
+      return this.groupActivitiesToMember2(memberProfile, allActivities, activityMode);
     });
   }
-  private groupActivitiesToMember2(memberProfile: MemberProfile, allActivities: DBObject[]) {
+  private groupActivitiesToMember2(memberProfile: MemberProfile, allActivities: DBObject[], activityMode: number = 0) {
     const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
 
     const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
+
     const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
       activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
     );
 
-    const timed = groupActivitiesByDate([].concat(...memberActivitiesSerialized));
+    const allFilteredActivities =
+      activityMode > 0
+        ? memberActivitiesSerialized.map((items) =>
+            items.filter((a) => a.activityDetails.modes.indexOf(activityMode) > -1)
+          )
+        : memberActivitiesSerialized;
+
+    const timed = groupActivitiesByDate([].concat(...allFilteredActivities));
 
     return {
       id: memberProfileId,

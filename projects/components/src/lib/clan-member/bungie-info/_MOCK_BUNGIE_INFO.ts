@@ -1,5 +1,4 @@
-import { BungieInfo } from 'bungie-models';
-export const USER: BungieInfo = {
+export const USER = {
   membershipId: 3877062,
   uniqueName: '3877062',
   displayName: 'zonedguy',

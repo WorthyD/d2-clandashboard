@@ -45,6 +45,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
       [yaxis]="yaxis"
       [legend]="legend"
       [fill]="fill"
+      [colors]="colors"
       [stroke]="stroke"
       [tooltip]="tooltip"
       [xaxis]="xaxis"
@@ -82,6 +83,10 @@ export class BarChartComponent implements OnInit {
   @Input()
   colorTheme: 'light' | 'dark';
 
+  @Input()
+  barColor: string = '#3399FF';
+  //color: string = '#000';
+
   _events;
   @Input()
   get events(): [] {
@@ -100,19 +105,7 @@ export class BarChartComponent implements OnInit {
   chart: ApexChart = { type: 'bar', height: 400, zoom: { enabled: false } };
   yaxis: ApexYAxis;
   theme: ApexTheme;
-  // yaxis: ApexYAxis = {
-  //   title: {
-  //     text: this.convertTo
-  //     //text: '$ (thousands)'
-  //   },
-  //   labels: {
-  //     // formatter: (x) => {
-  //     //   // dynamically calculate
-  //     //   //return `${this.formatPipe.transform(x, false)}`;
-  //     //   return `${this.formatPipe.transform(x, false)}`;
-  //     // }
-  //   }
-  // };
+
   xaxis: ApexXAxis;
   legend: ApexLegend = {};
 
@@ -134,7 +127,6 @@ export class BarChartComponent implements OnInit {
     width: 2,
     colors: ['transparent']
   };
-
   tooltip: ApexTooltip = {
     y: {
       formatter: (val) => {
@@ -148,10 +140,12 @@ export class BarChartComponent implements OnInit {
       }
     }
   };
-
+  colors
   // private changeSubject = new Subject<any>();
 
-  constructor(private elRef: ElementRef, private cd: ChangeDetectorRef, private zone: NgZone) {}
+  constructor(private elRef: ElementRef, private cd: ChangeDetectorRef, private zone: NgZone) {
+
+  }
 
   private updateChart(eventData) {
     // if (!this.svg) {
@@ -163,6 +157,7 @@ export class BarChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.colors =  [this.barColor];
     this.yaxis = {
       title: {
         text: this.convertTo
