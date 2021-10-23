@@ -47,7 +47,6 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     return from(this.getAllDataFromCache(clanId.toString())).pipe(
       map((x) => {
         const y = this.groupActivitiesToMembers2(memberProfiles, x, activityMode);
-
         return y;
       })
     );

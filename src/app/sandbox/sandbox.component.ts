@@ -20,6 +20,7 @@ import { ActivityInfo } from '@destiny/components';
 export class SandboxComponent implements OnInit {
   activityInfo: ActivityInfo = {
     title: 'Card Title',
+    color:'',
     activityTypes: [
       { label: 'Strikes', value: '1234' },
       { label: 'Strikes', value: '1234' },

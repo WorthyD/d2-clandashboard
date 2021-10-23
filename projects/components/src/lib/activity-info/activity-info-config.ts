@@ -2,7 +2,7 @@ export interface ActivityInfo {
   title: string;
   activityCode?: number;
   activityTypes?: ActivityTypes[];
-
+  color: string;
 }
 
 export interface ActivityTypes {

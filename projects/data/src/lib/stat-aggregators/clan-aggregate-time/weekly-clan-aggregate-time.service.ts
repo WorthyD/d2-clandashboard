@@ -17,7 +17,6 @@ export class WeeklyClanAggregateTimeService extends BaseClanAggregateTimeService
 
   getClanActivityByPlayer(memberActivities: MemberActivityTime[], activityMode: any) {
     const x = this.filterDates(memberActivities, nowPlusWeeks(-24));
-    console.log('stuff', x);
 
     const results = x.map((y) => {
       return {
@@ -25,10 +24,6 @@ export class WeeklyClanAggregateTimeService extends BaseClanAggregateTimeService
         seconds: y.activities.reduce((prev, next) => prev + next.seconds, 0)
       };
     });
-    //    const activities = [...x.map((y) => [...y.activities])];
-    //const flatActivities = [].concat.apply([], activities);
-
-    //    const summedActivities = groupActivityStatsByWeek(flatActivities);
 
     return results;
   }

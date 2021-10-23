@@ -1,30 +1,48 @@
-<header>
-  <h3>{{activityInfo.title}}</h3>
-  <button mat-button [matMenuTriggerFor]="more">index</button>
-  <mat-menu #more="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="viewBy">View By</button>
-    <button mat-menu-item [matMenuTriggerFor]="activities">Activities</button>
-  </mat-menu>
-  <mat-menu #viewBy="matMenu">
-    <button mat-menu-item>Time</button>
-    <button mat-menu-item>Completions</button>
-  </mat-menu>
-  <mat-menu #activities="matMenu">
-    <button mat-menu-item *ngFor="let activity of activityInfo.activityTypes">{{activity.label}}</button>
-  </mat-menu>
-</header>
+<mat-card>
+  <header>
+    <h3>{{activityInfo.title}}</h3>
+    <!-- <button mat-button [matMenuTriggerFor]="more">index</button>
+    <mat-menu #more="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="viewBy">View By</button>
+      <button mat-menu-item [matMenuTriggerFor]="activities">Activities</button>
+    </mat-menu>
+    <mat-menu #viewBy="matMenu">
+      <button mat-menu-item>Time</button>
+      <button mat-menu-item>Completions</button>
+    </mat-menu>
+    <mat-menu #activities="matMenu">
+      <button mat-menu-item *ngFor="let activity of activityInfo.activityTypes">{{activity.label}}</button>
+    </mat-menu> -->
+  </header>
 
-<div class="activity-info__main">
-  <div class="activity-info__time">
-    <lib-bar-chart [convertTo]="'Hours'" [events]="activityData?.events"></lib-bar-chart>
+  <div class="activity-info__main">
+    <ng-container *ngIf="!loading;else loadingTemplate">
+      <div class="activity-info__time">
+        <lib-bar-chart [convertTo]="'Hours'" [events]="activityData?.events" [barColor]="activityInfo?.color"
+          [colorTheme]="theme === 'dark-theme' ?  'dark':'light'"></lib-bar-chart>
+      </div>
+      <aside class="activity-info__player-list">
+        <div class="activity-info__player-list-scroll">
+
+          <ng-container *ngFor="let player of activityData?.players">
+            <div class="activity-info__player-info">
+              {{player.name}}
+              <span>{{player.value}}</span>
+            </div>
+          </ng-container>
+        </div>
+      </aside>
+    </ng-container>
   </div>
-  <aside class="activity-info__player-list">
+</mat-card>
 
-    <div *ngFor="let player of activityData?.players" class="activity-info__player-info">
-      {{player.name}}
-      <span>{{player.value}}</span>
-
+<ng-template #loadingTemplate>
+  <div class="activity-info__loading">
+    <lib-loading></lib-loading>
+    <div class="text-center">
+      <div class="h3">
+        Loading Activities...
+      </div>
     </div>
-
-  </aside>
-</div>
+  </div>
+</ng-template>

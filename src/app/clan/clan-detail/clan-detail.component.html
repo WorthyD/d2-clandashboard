@@ -1,23 +1,32 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-12 col-md-6">
+  <!-- <div class="row">
+    <div class="col-12">
       <div class="m-3">
-        <!-- <lib-clan-overview [clanDetails]="clanDetails$ | async" [isLoading]="clanDetails.clanDetailsLoading$ | async">
-        </lib-clan-overview> -->
-        <app-activity-info [activityInfo]="strikeInfo"></app-activity-info>
+        <lib-clan-overview [clanDetails]="clanDetails$ | async" [isLoading]="clanDetails.clanDetailsLoading$ | async">
+        </lib-clan-overview>
       </div>
     </div>
+  </div> -->
+
+  <!-- <app-activity-info [activityInfo]="strikeInfo"></app-activity-info> -->
+  <div class="row">
     <div class="col-12 col-md-6">
       <div class="m-3">
         <lib-clan-weekly-progress [clanRewards]="clanDetails.clanWeekRewards$ | async"
           [clanRewardsLastWeek]="clanDetails.clanLastWeekRewards$ | async"
           [isLoading]="clanDetails.clanWeekRewardsLoading$ | async"></lib-clan-weekly-progress>
       </div>
+    </div>
+
+    <div class="col-12 col-md-6">
       <div *ngIf="clanDetails.clanSeasonalProgression$ | async as clanProgress" class=" m-3">
         <lib-clan-season-progress [clanProgress]="clanProgress"></lib-clan-season-progress>
       </div>
     </div>
   </div>
+
+
+
   <div class="row">
     <div class="col m-3" *ngIf="clanDetails.events2$ | async as events">
       <lib-clan-active-population [last24Hours]="events.last24Hours" [prev24Hours]="events.previous24Hours"
@@ -30,7 +39,30 @@
       <app-clan-aggregate-activity></app-clan-aggregate-activity>
     </div>
   </div>
-
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <div class="m-3">
+        <app-activity-info [activityInfo]="strikeInfo"></app-activity-info>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="m-3">
+        <app-activity-info [activityInfo]="crucibleInfo"></app-activity-info>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <div class="m-3">
+        <app-activity-info [activityInfo]="gambitInfo"></app-activity-info>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="m-3">
+        <app-activity-info [activityInfo]="raidInfo"></app-activity-info>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col col-md-6 col-xl-4 my-3">
       <app-highestpower-members></app-highestpower-members>

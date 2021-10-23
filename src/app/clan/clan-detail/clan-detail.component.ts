@@ -35,17 +35,25 @@ export class ClanDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   strikeInfo: ActivityInfo = {
-    title: 'Strikes',
-    activityCode: 18
-    // activityTypes: [
-    //   { label: 'Strikes', value: '1234' },
-    //   { label: 'Strikes', value: '1234' },
-    //   { label: 'Strikes', value: '1234' }
-    // ]
+    title: 'Strike Activity',
+    activityCode: 18,
+    color:'#306d85'
   };
-  // private clanId = this.activatedRoute.params.pipe(
-  //     map(x => x.id, distinctUntilChanged())
-  // );
+  crucibleInfo: ActivityInfo = {
+    title: 'Crucible Activity',
+    activityCode: 5,
+    color:'#8e2323'
+  };
+  gambitInfo: ActivityInfo = {
+    title: 'Gambit Activity',
+    activityCode: 63,
+    color:'#44eaae'
+  };
+  raidInfo: ActivityInfo = {
+    title: 'Raid Activity',
+    activityCode: 4,
+    color:'#d6812c'
+  };
 
   clanDetails$: Observable<ClanDetails> = this.store.pipe(select(clanDetailSelectors.getClanDetail));
 

@@ -11,8 +11,8 @@ import {
   getClanMemberActivitiesUpdating
 } from '../../store/member-activities/member-activities.selectors';
 import { combineLatest } from 'rxjs';
-import { filter, switchMap } from 'rxjs/operators';
-
+import { filter, switchMap, tap } from 'rxjs/operators';
+import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selectors';
 @Component({
   selector: 'app-activity-info',
   templateUrl: './activity-info.component.html',
@@ -26,12 +26,16 @@ export class ActivityInfoComponent implements OnInit {
   clanMemberProfiles$ = this.store.pipe(select(getAllMembers));
   activitiesLoaded$ = this.store.pipe(select(getClanMemberActivitiesLoaded));
   activitiesUpdating$ = this.store.pipe(select(getClanMemberActivitiesUpdating));
+  theme$ = this.store.pipe(select(selectEffectiveTheme));
+  loading: boolean = true;
 
-  event$ = combineLatest([this.clanId$, this.clanMemberProfiles$]).pipe(
-    filter(([clanId, clanMemberProfiles]) => !!clanMemberProfiles),
-    switchMap(([clanId, clanMemberProfiles]) => {
+  event$ = combineLatest([this.clanId$, this.clanMemberProfiles$, this.activitiesUpdating$]).pipe(
+    tap(() => (this.loading = true)),
+    filter(([clanId, clanMemberProfiles, updating]) => !!clanMemberProfiles && clanMemberProfiles.length > 0),
+    switchMap(([clanId, clanMemberProfiles, updating]) => {
       return this.service.getAllClanActivities(clanId.toString(), clanMemberProfiles, this.activityInfo.activityCode);
-    })
+    }),
+    tap(() => (this.loading = false))
   );
 
   constructor(private service: ProfileActivityWorkerService, private store: Store<any>) {}

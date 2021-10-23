@@ -14,35 +14,18 @@ export class ActivityInfoComponent implements OnInit {
 
   @Input()
   events;
+
   @Input()
   players;
 
+  @Input()
+  loading;
+  @Input()
+  theme;
+
   @Output() viewMember = new EventEmitter<string>();
 
-  // players = [
-  //   {
-  //     name: 'WorthyD',
-  //     value: '1'
-  //   },
-  //   {
-  //     name: 'WorthyD',
-  //     value: '1'
-  //   },
-  //   {
-  //     name: 'WorthyD',
-  //     value: '1'
-  //   },
 
-  //   {
-  //     name: 'WorthyD',
-  //     value: '1'
-  //   },
-
-  //   {
-  //     name: 'WorthyD',
-  //     value: '1'
-  //   }
-  // ];
 
   constructor() {}
 
