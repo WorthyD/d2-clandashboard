@@ -35,3 +35,4 @@ export * from './lib/core/notifications/notifications.component';
 export * from './lib/clan-member/bungie-info/index';
 export * from './lib/shared/base-component';
 export * from './lib/seals/player-seals';
+export * from './lib/activity-info';

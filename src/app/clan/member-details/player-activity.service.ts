@@ -9,7 +9,11 @@ import { PlayerActivityService as BasePlayerService } from '../../shared/compone
 
 import { PlayerService } from './player.service';
 import { latestSeason } from '@destiny/models';
-import { ClanMemberActivityService, PlayerActivityService as DataPlayerActivityService } from '@destiny/data';
+import {
+  ClanDatabase,
+  ClanMemberActivityService,
+  PlayerActivityService as DataPlayerActivityService
+} from '@destiny/data';
 import {
   DailyClanAggregateTimeService,
   MonthlyClanAggregateTimeService,
@@ -24,19 +28,22 @@ import {
   getSelectedClanMemberActivities
 } from '../store/member-activities/member-activities.selectors';
 import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selectors';
-
+import { environment } from '../../../environments/environment';
 @Injectable()
 export class PlayerActivityService extends BasePlayerService {
+  private clanMemberActivityService: ClanMemberActivityService;
   constructor(
     private playerServiceBase: PlayerService,
     // private playerActivityService: DataPlayerActivityService,
     private memberStore: Store<ClanMemberState>,
     private profileStore: Store<MemberProfileState>,
-    private clanMemberActivityService: ClanMemberActivityService,
     private store: Store<any>,
-    private injector: Injector
+    private injector: Injector,
+    private clanDb: ClanDatabase
   ) {
     super();
+    // const clanDatabase = new ClanDatabase();
+    this.clanMemberActivityService = new ClanMemberActivityService(clanDb, environment.bungieAPI);
   }
   themeSource$: BehaviorSubject<string> = new BehaviorSubject('');
   theme$ = this.store.pipe(select(selectEffectiveTheme));

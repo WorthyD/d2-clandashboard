@@ -3,9 +3,17 @@
     <button mat-icon-button class="d-lg-none" (click)="toggleMenuEvent()">
       <mat-icon>menu</mat-icon>
     </button>
-    <div class="clan-name"  >
-      <span *ngIf=" clanDetails"> {{clanDetails.name}}</span>
+    <div class="clan-name">
+      <span> {{clanDetails?.name}}</span>
     </div>
+    <div class="navbar__member-count">
+      <mat-icon matListIcon>people</mat-icon>
+      {{clanDetails?.memberCount}}
+    </div>
+    <a mat-icon-button href="https://www.bungie.net/en/ClanV2?groupid={{clanDetails?.groupId}}" target="_blank"
+      matTooltip="Bungie Group Page">
+      <mat-icon>open_in_new</mat-icon>
+    </a>
     <button mat-icon-button [matMenuTriggerFor]="themePicker">
       <mat-icon>
         colorize

@@ -1,0 +1,25 @@
+.activity-info {
+  &__main {
+    display: flex;
+  }
+  &__loading {
+    margin: 0 auto;
+  }
+  &__time {
+    width: 65%;
+  }
+  &__player-list {
+    width: 35%;
+    padding: 1rem;
+    height: 415px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  &__player-list-scroll {
+  }
+  &__player-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
