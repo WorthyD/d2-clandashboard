@@ -1,77 +1,33 @@
-<div class="container-fluid">
-  <!-- <div class="row">
-    <div class="col-12">
-      <div class="m-3">
-        <lib-clan-overview [clanDetails]="clanDetails$ | async" [isLoading]="clanDetails.clanDetailsLoading$ | async">
-        </lib-clan-overview>
-      </div>
-    </div>
-  </div> -->
+<div class="clan-details">
+  <div class="clan-details__info">
+    <lib-clan-weekly-progress [clanRewards]="clanDetails.clanWeekRewards$ | async"
+      [clanRewardsLastWeek]="clanDetails.clanLastWeekRewards$ | async"
+      [isLoading]="clanDetails.clanWeekRewardsLoading$ | async"></lib-clan-weekly-progress>
 
-  <!-- <app-activity-info [activityInfo]="strikeInfo"></app-activity-info> -->
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <div class="m-3">
-        <lib-clan-weekly-progress [clanRewards]="clanDetails.clanWeekRewards$ | async"
-          [clanRewardsLastWeek]="clanDetails.clanLastWeekRewards$ | async"
-          [isLoading]="clanDetails.clanWeekRewardsLoading$ | async"></lib-clan-weekly-progress>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6">
-      <div *ngIf="clanDetails.clanSeasonalProgression$ | async as clanProgress" class=" m-3">
-        <lib-clan-season-progress [clanProgress]="clanProgress"></lib-clan-season-progress>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="row">
-    <div class="col m-3" *ngIf="clanDetails.events2$ | async as events">
+    <ng-container *ngIf="clanDetails.clanSeasonalProgression$ | async as clanProgress">
+      <lib-clan-season-progress [clanProgress]="clanProgress"></lib-clan-season-progress>
+    </ng-container>
+    <div *ngIf="clanDetails.events2$ | async as events">
       <lib-clan-active-population [last24Hours]="events.last24Hours" [prev24Hours]="events.previous24Hours"
         [lastWeek]="events.lastWeek" [prevWeek]="events.previousWeek" [lastMonth]="events.lastMonth"
         [prevMonth]="events.previousMonth" [isUpdating]="activitiesUpdating$ | async"></lib-clan-active-population>
     </div>
+    <app-highestpower-members></app-highestpower-members>
+    <app-recently-active-members></app-recently-active-members>
+    <app-inactive-members></app-inactive-members>
   </div>
-  <div class="row">
-    <div class="col m-3">
-      <app-clan-aggregate-activity></app-clan-aggregate-activity>
-    </div>
+  <div class="clan-details__charts">
+
+    <app-clan-aggregate-activity></app-clan-aggregate-activity>
+
+    <app-activity-info [activityInfo]="strikeInfo"></app-activity-info>
+
+    <app-activity-info [activityInfo]="crucibleInfo"></app-activity-info>
+
+    <app-activity-info [activityInfo]="gambitInfo"></app-activity-info>
+
+    <app-activity-info [activityInfo]="raidInfo"></app-activity-info>
   </div>
-  <div class="row">
-    <div class="col-12 col-lg-6">
-      <div class="m-3">
-        <app-activity-info [activityInfo]="strikeInfo"></app-activity-info>
-      </div>
-    </div>
-    <div class="col-12 col-lg-6">
-      <div class="m-3">
-        <app-activity-info [activityInfo]="crucibleInfo"></app-activity-info>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-lg-6">
-      <div class="m-3">
-        <app-activity-info [activityInfo]="gambitInfo"></app-activity-info>
-      </div>
-    </div>
-    <div class="col-12 col-lg-6">
-      <div class="m-3">
-        <app-activity-info [activityInfo]="raidInfo"></app-activity-info>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-md-6 col-xl-4 my-3">
-      <app-highestpower-members></app-highestpower-members>
-    </div>
-    <div class="col col-md-6 col-xl-4 my-3">
-      <app-recently-active-members></app-recently-active-members>
-    </div>
-    <div class="col col-md-6 col-xl-4 my-3">
-      <app-inactive-members></app-inactive-members>
-    </div>
-  </div>
+
+
 </div>
