@@ -17,11 +17,12 @@
 .mat-card-content {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .mat-card-footer {
   .update-info {
     text-align: right;
-  padding-right: 1rem;
+    padding-right: 1rem;
   }
 }
 .info {
