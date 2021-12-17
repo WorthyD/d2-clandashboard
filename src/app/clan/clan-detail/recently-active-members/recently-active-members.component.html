@@ -3,7 +3,7 @@
     (viewMember)="viewMember($event)" [itemTemplate]="itemTemplate">
     <ng-template let-member #itemTemplate>
       <div>
-        {{member.profile?.profile.data.dateLastPlayed |  bungieDateTime}}
+        {{member.profile?.profile.data.dateLastPlayed |  bungieDate}}
       </div>
     </ng-template>
   </lib-clan-members-card>
