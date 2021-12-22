@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivityInfo } from '@destiny/components';
 import { select, Store } from '@ngrx/store';
-import { ProfileActivityWorkerService } from 'src/app/workers/profile-activity/profile-activity.service';
+// import { ProfileActivityWorkerService } from 'src/app/workers/profile-activity/profile-activity.service';
+import { ProfileRecentActivityWorkerService } from 'src/app/workers/profile-recent-activity/profile-recent-activity.service';
 
 import * as clanIdSelectors from '../../store/clan-id/clan-id.selector';
 import { getAllMembers, getIsMembersProfilesLoaded } from '../../store/member-profiles/member-profiles.selectors';
@@ -13,6 +14,7 @@ import {
 import { combineLatest } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
 import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selectors';
+
 @Component({
   selector: 'app-activity-info',
   templateUrl: './activity-info.component.html',
@@ -33,12 +35,17 @@ export class ActivityInfoComponent implements OnInit {
     tap(() => (this.loading = true)),
     filter(([clanId, clanMemberProfiles, updating]) => !!clanMemberProfiles && clanMemberProfiles.length > 0),
     switchMap(([clanId, clanMemberProfiles, updating]) => {
-      return this.service.getAllClanActivities(clanId.toString(), clanMemberProfiles, this.activityInfo.activityCode);
+      return this.service.getAllecentClanActivities(
+        clanId.toString(),
+        clanMemberProfiles,
+        this.activityInfo.activityCode
+      );
     }),
     tap(() => (this.loading = false))
   );
 
-  constructor(private service: ProfileActivityWorkerService, private store: Store<any>) {}
+  // constructor(private service: ProfileActivityWorkerService, private store: Store<any>) {}
+  constructor(private service: ProfileRecentActivityWorkerService, private store: Store<any>) {}
 
   ngOnInit(): void {}
   // Raid 4

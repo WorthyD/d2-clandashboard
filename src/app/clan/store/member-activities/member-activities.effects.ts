@@ -13,13 +13,15 @@ import { getAllMembers } from '../member-profiles/member-profiles.selectors';
 import { nowPlusMinutes } from 'projects/data/src/lib/utility/date-utils';
 import { addNotification, removeNotification, updateNotification } from '../notifications/notifications.actions';
 import { ProfileActivityWorkerService } from 'src/app/workers/profile-activity/profile-activity.service';
+import { ProfileRecentActivityWorkerService } from 'src/app/workers/profile-recent-activity/profile-recent-activity.service';
 
 @Injectable()
 export class MemberActivityEffects {
   constructor(
     private actions$: Actions,
     private store: Store<any>,
-    private memberActivityService: ProfileActivityWorkerService
+    // private memberActivityService: ProfileActivityWorkerService
+    private memberActivityService: ProfileRecentActivityWorkerService
   ) {}
 
   profilesLoaded$ = createEffect(() => {
@@ -37,7 +39,8 @@ export class MemberActivityEffects {
       ofType(memberActivityActions.loadMemberActivities),
       withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
       switchMap(([action, clanId]) =>
-        this.memberActivityService.getAllActivitiesFromCache(clanId.toString(), action.member).pipe(
+        // this.memberActivityService.getAllActivitiesFromCache(clanId.toString(), action.member).pipe(
+        this.memberActivityService.getAllRecentActivitiesFromCache(clanId.toString(), action.member).pipe(
           map((x) => {
             const lastUpdate = new Date(window.localStorage.getItem('lastActivityUpdate-' + clanId));
             const refreshThreshold = nowPlusMinutes(-60);
@@ -79,7 +82,8 @@ export class MemberActivityEffects {
           );
         };
 
-        return this.memberActivityService.updateAllActivityCache(clanId.toString(), action.member, progress).pipe(
+        return this.memberActivityService.updateAllRecentActivityCache(clanId.toString(), action.member, progress).pipe(
+          // return this.memberActivityService.updateAllActivityCache(clanId.toString(), action.member, progress).pipe(
           switchMap((x) => {
             window.localStorage.setItem('lastActivityUpdate-' + clanId, new Date().toString());
             this.store.dispatch(
@@ -87,7 +91,7 @@ export class MemberActivityEffects {
                 notification: { id: 'memberActivity', title: 'Updating Member Activities', data: { progress: 100 } }
               })
             );
-            return this.memberActivityService.getAllActivitiesFromCache(clanId.toString(), action.member);
+            return this.memberActivityService.getAllRecentActivitiesFromCache(clanId.toString(), action.member);
           })
         );
       }),

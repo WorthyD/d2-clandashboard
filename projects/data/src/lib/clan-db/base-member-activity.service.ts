@@ -12,6 +12,7 @@ import { clanMemberActivitySerializer } from './clan-member-activity/clan-member
 import { MemberProfile } from 'projects/bungie-models/src/lib/models/MemberProfile';
 import { MemberActivityTime } from 'projects/bungie-models/src/lib/models/MemberActivityTime';
 import { MemberActivityStats } from 'projects/bungie-models/src/lib/models/MemberActivityStat';
+import { MemberActivityRecentStats } from 'projects/bungie-models/src/lib/models/MemberActivityRecentStats';
 
 interface ActivityCollection {
   activities: any[];
@@ -300,4 +301,5 @@ export class BaseMemberActivityService extends BaseClanService {
       })
     );
   }
+
 }
