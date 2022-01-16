@@ -12,6 +12,7 @@ import { getAllMembers } from '../member-profiles/member-profiles.selectors';
 import { nowPlusMinutes } from 'projects/data/src/lib/utility/date-utils';
 import { addNotification, removeNotification, updateNotification } from '../notifications/notifications.actions';
 import { ProfileActivityWorkerService } from 'src/app/workers/profile-activity/profile-activity.service';
+import { refreshMemberActivitiesComplete } from '../member-activities/member-activities.actions';
 
 @Injectable()
 export class MemberActivityAllEffects {
@@ -21,37 +22,36 @@ export class MemberActivityAllEffects {
     private memberActivityService: ProfileActivityWorkerService
   ) {}
 
-  profilesLoaded$ = createEffect(() => {
+  memberActivitiesUpated$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(loadMemberProfileSuccess),
-      withLatestFrom(this.store.select(getAllMembers)),
-      map(([action, memberProfiles]) => {
-        return memberActivityActions.loadMemberActivities({ member: memberProfiles });
+      ofType(refreshMemberActivitiesComplete),
+      map(() => {
+        return memberActivityActions.loadMemberAllActivities();
       })
     );
   });
 
   loadMemberActivities$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(memberActivityActions.loadMemberActivities),
-      withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
-      map(([action, clanId]) => {
+      ofType(memberActivityActions.loadMemberAllActivities),
+      withLatestFrom(this.store.select(clanIdSelectors.getClanIdState), this.store.select(getAllMembers)),
+      map(([action, clanId, members]) => {
         const lastUpdate = new Date(window.localStorage.getItem('lastActivityAllUpdate-' + clanId));
         const refreshThreshold = nowPlusMinutes(-60);
 
         // Updating is expensive. Limit it to 1 time an hour.
         if (refreshThreshold > lastUpdate) {
-          return memberActivityActions.refreshMemberActivities({ member: action.member });
+          return memberActivityActions.refreshMemberAllActivities({ member: members });
         }
 
-        return memberActivityActions.loadMemberActivitiesSuccess();
+        return memberActivityActions.loadMemberAllActivitiesSuccess();
       })
     )
   );
 
   updateMemberActivities$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(memberActivityActions.refreshMemberActivities),
+      ofType(memberActivityActions.refreshMemberAllActivities),
       withLatestFrom(this.store.select(clanIdSelectors.getClanIdState)),
       switchMap(([action, clanId]) => {
         this.store.dispatch(
@@ -79,7 +79,7 @@ export class MemberActivityAllEffects {
                 notification: { id: 'memberActivityAll', title: 'Updating Member Activities', data: { progress: 100 } }
               })
             );
-            return memberActivityActions.loadMemberActivitiesSuccess();
+            return memberActivityActions.loadMemberAllActivitiesSuccess();
           })
         );
       })

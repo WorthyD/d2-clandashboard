@@ -9,25 +9,25 @@ export const loadClanMembersActivities = createAction(
 );
 
 // -----------------------------
-export const loadMemberActivities = createAction(`${base} Load MemberActivities`, props<{ member: MemberProfile[] }>());
+export const loadMemberAllActivities = createAction(`${base} Load MemberActivities`);
 
-export const loadMemberActivitiesSuccess = createAction(`${base} Load Clan Members Success`);
+export const loadMemberAllActivitiesSuccess = createAction(`${base} Load Clan Members Success`);
 
 // export const loadClanMemberFailure = createAction(`${base} Load Clan Members Failure`, props<{ error: any }>());
 
 // -----------------------------
 
-export const refreshMemberActivities = createAction(
+export const refreshMemberAllActivities = createAction(
   `${base} Update MemberActivities From API`,
   props<{ member: MemberProfile[] }>()
 );
 
-export const refreshMemberActivitiesComplete = createAction(
+export const refreshMemberAllActivitiesComplete = createAction(
   `${base} Update MemberActivities From API Complete`,
   props<{ memberActivities: MemberActivityTime[] }>()
 );
 
-export const refreshMemberActivitiesFailure = createAction(
+export const refreshMemberAllActivitiesFailure = createAction(
   `${base} refresh Clan Members Failure`,
   props<{ error: any }>()
 );

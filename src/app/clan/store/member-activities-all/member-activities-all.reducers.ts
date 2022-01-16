@@ -7,16 +7,17 @@ export const MemberActivitiesAllReducer = createReducer(
   on(MemberActivityActions.loadClanMembersActivities, (state) => {
     return { ...state, loaded: true };
   }),
-  on(MemberActivityActions.refreshMemberActivities, (state, { member }) => {
+  on(MemberActivityActions.refreshMemberAllActivities, (state, { member }) => {
     return {
       ...state,
       updating: true
     };
   }),
-  on(MemberActivityActions.refreshMemberActivitiesComplete, (state, { memberActivities }) => {
+  on(MemberActivityActions.refreshMemberAllActivitiesComplete, (state, { memberActivities }) => {
     return {
       ...state,
-      updating: false
+      updating: false,
+      loaded: true
     };
   })
 );
