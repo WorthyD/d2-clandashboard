@@ -4,7 +4,6 @@
   $accent: map-get($theme, accent);
   $primary: map-get($theme, primary);
   .mat-nav-list .active-link {
-    //background: mat-color($accent);;
     color: mat.get-color-from-palette($primary, default-contrast) !important;
     background: mat.get-color-from-palette($primary);
 

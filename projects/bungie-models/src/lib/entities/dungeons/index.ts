@@ -6,6 +6,7 @@ import { ZeroHour, ZeroHourHeroic } from './zero-hour';
 import { NiobeLabs } from './niobe';
 import { Harbinger } from './harbinger';
 import { Presage, PresageMaster } from './presage';
+import { GraspOfAvarice, GraspOfAvariceMaster } from './grasp';
 export * from './pit';
 export * from './prophecy';
 export * from './throne';
@@ -14,6 +15,7 @@ export * from './zero-hour';
 export * from './niobe';
 export * from './harbinger';
 export * from './presage';
+export * from './grasp';
 
 export const AllDungeons = [
   ShatteredThrone,
@@ -26,5 +28,7 @@ export const AllDungeons = [
   NiobeLabs,
   Harbinger,
   Presage,
-  PresageMaster
+  PresageMaster,
+  GraspOfAvarice,
+  GraspOfAvariceMaster
 ];

@@ -4,15 +4,6 @@
 @mixin table-search-bar-theme($theme) {
   $bg: map-get($theme, background);
   .table-search-bar {
-    //    background:red;
     background: mat.get-color-from-palette($bg, 'card');
   }
-
-  // button {
-  //   &.active-link {
-  //     color: mat-color($accent, default-contrast);
-  //     background-color: mat-color($accent);
-  //   }
-
-  // }
 }
