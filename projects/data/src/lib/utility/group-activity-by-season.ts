@@ -43,19 +43,19 @@ function getFirstDayOfSeason(date) {
     if (date < ALL_SEASONS[i].endDate && date > ALL_SEASONS[i].startDate) {
       retDate = ALL_SEASONS[i].startDate;
 
-      // if (i === 5) {
-      //   console.log(ALL_SEASONS[i].name, retDate);
-      // }
-
       break;
     }
   }
+  // console.log(retDate)
   return retDate;
 }
 export function compare(a: number | string | Date, b: number | string | Date, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
 function lastWord(words) {
-  const n = words.split(' ');
-  return n[n.length - 1];
+  const n = words?.split(' ');
+  if (n && n.length) {
+    return n[n?.length - 1];
+  }
+  return '';
 }

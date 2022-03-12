@@ -1,5 +1,5 @@
 import { Season } from './season';
-import { season15 } from './season15';
+import { season16 } from './season16';
 
 // TODO: Find fancier way to do this.
-export const latestSeason: Season = season15;
+export const latestSeason: Season = season16;

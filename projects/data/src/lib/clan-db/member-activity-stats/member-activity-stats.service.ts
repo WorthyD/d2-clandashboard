@@ -56,7 +56,7 @@ export class MemberActivityStatsService extends BaseClanService {
     clanId: number,
     member: MemberProfile,
     characterId: number
-  ): Observable<DestinyHistoricalStatsDestinyAggregateActivityStats[]> {
+  ): Observable<any[]> {
     return this.getMemberActivityStats(clanId, member, characterId).pipe(
       map((activityStats) => {
         return activityStats;
@@ -70,7 +70,7 @@ export class MemberActivityStatsService extends BaseClanService {
     characterId: number,
     statHashes: number[],
     trackedStats: string[]
-  ): Observable<DestinyHistoricalStatsDestinyAggregateActivityStats[]> {
+  ): Observable<any[]> {
     return this.getMemberActivityStats(clanId, member, characterId).pipe(
       map((activityStats) => {
         return memberActivityStatSerializer(activityStats.activities, statHashes, trackedStats);
