@@ -31,117 +31,108 @@ export class ClanMemberActivityService extends BaseMemberActivityService {
     //super(clanDB, StoreId.MemberActivities, d2Service, nowPlusDays(-30), 6); // TODO: remove this eventually for larger numbers
   }
 
-  getAllActivitiesFromCache(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityStats[]> {
-    return from(this.getAllDataFromCache(clanId.toString())).pipe(
-      map((x) => {
-        return this.groupActivitiesToMembers(memberProfiles, x);
-      })
-    );
-  }
+  // getAllActivitiesFromCache(clanId: number, memberProfiles: MemberProfile[]): Observable<MemberActivityStats[]> {
+  //   return from(this.getAllDataFromCache(clanId.toString())).pipe(
+  //     map((x) => {
+  //       return this.groupActivitiesToMembers(memberProfiles, x);
+  //     })
+  //   );
+  // }
 
-  getAllActivitiesFromCache2(
-    clanId: number,
-    memberProfiles: MemberProfile[],
-    activityMode = 0
-  ): Observable<MemberActivityTime[]> {
-    return from(this.getAllDataFromCache(clanId.toString())).pipe(
-      map((x) => {
-        const y = this.groupActivitiesToMembers2(memberProfiles, x, activityMode);
-        return y;
-      })
-    );
-  }
 
   // TODO: Add progress indicator?
-  updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[], progress?: (done) => any) {
-    const memberProfilesObs = from(memberProfiles);
-    const cacheDataObs = from(this.getAllDataFromCache(clanId.toString()));
+  // updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[], progress?: (done) => any) {
+  //   const memberProfilesObs = from(memberProfiles);
+  //   const cacheDataObs = from(this.getAllDataFromCache(clanId.toString()));
 
-    return cacheDataObs.pipe(
-      switchMap((cachedData) => {
-        let complete = 0;
-        return memberProfilesObs.pipe(
-          mergeMap((memberProfile) => {
-            return from(memberProfile.profile.data.characterIds).pipe(
-              mergeMap((characterId: number) => {
-                const characterActivityId = this.getMemberActivityId(memberProfile, characterId);
-                const characterActivityCache = cachedData.find((x) => x.id === characterActivityId);
+  //   return cacheDataObs.pipe(
+  //     switchMap((cachedData) => {
+  //       let complete = 0;
+  //       return memberProfilesObs.pipe(
+  //         mergeMap((memberProfile) => {
+  //           return from(memberProfile.profile.data.characterIds).pipe(
+  //             mergeMap((characterId: number) => {
+  //               const characterActivityId = this.getMemberActivityId(memberProfile, characterId);
+  //               const characterActivityCache = cachedData.find((x) => x.id === characterActivityId);
 
-                return this.verifyCacheIntegrity(clanId, memberProfile, characterId, characterActivityCache);
-              }),
-              toArray(),
-              map((x) => {
-                const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
-                return {
-                  id: memberProfileId
-                };
-              })
-            );
-          }, 3),
-          tap((x) => {
-            complete++;
-            if (progress) {
-              progress(complete);
-            }
-          }),
-          toArray()
-        );
-      })
-    );
-  }
+  //               return this.verifyCacheIntegrity(clanId, memberProfile, characterId, characterActivityCache);
+  //             }),
+  //             toArray(),
+  //             map((x) => {
+  //               const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
+  //               return {
+  //                 id: memberProfileId
+  //               };
+  //             })
+  //           );
+  //         }, 3),
+  //         tap((x) => {
+  //           complete++;
+  //           if (progress) {
+  //             progress(complete);
+  //           }
+  //         }),
+  //         toArray()
+  //       );
+  //     })
+  //   );
+  // }
 
-  private groupActivitiesToMembers(memberProfiles: MemberProfile[], allActivities: DBObject[]): MemberActivityStats[] {
-    return memberProfiles.map((memberProfile) => {
-      return this.groupActivitiesToMember(memberProfile, allActivities);
-    });
-  }
+  // private groupActivitiesToMembers(memberProfiles: MemberProfile[], allActivities: DBObject[]): MemberActivityStats[] {
+  //   return memberProfiles.map((memberProfile) => {
+  //     return this.groupActivitiesToMember(memberProfile, allActivities);
+  //   });
+  // }
 
-  private groupActivitiesToMembers2(
-    memberProfiles: MemberProfile[],
-    allActivities: DBObject[],
-    activityMode: number = 0
-  ): any[] {
-    return memberProfiles.map((memberProfile) => {
-      return this.groupActivitiesToMember2(memberProfile, allActivities, activityMode);
-    });
-  }
-  private groupActivitiesToMember2(memberProfile: MemberProfile, allActivities: DBObject[], activityMode: number = 0) {
-    const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
+  //Moved
+  // private groupActivitiesToMembers2(
+  //   memberProfiles: MemberProfile[],
+  //   allActivities: DBObject[],
+  //   activityMode: number = 0
+  // ): any[] {
+  //   return memberProfiles.map((memberProfile) => {
+  //     return this.groupActivitiesToMember2(memberProfile, allActivities, activityMode);
+  //   });
+  // }
 
-    const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
+  // Moved
+  // private groupActivitiesToMember2(memberProfile: MemberProfile, allActivities: DBObject[], activityMode: number = 0) {
+  //   const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
 
-    const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
-      activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
-    );
+  //   const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
 
-    const allFilteredActivities =
-      activityMode > 0
-        ? memberActivitiesSerialized.map((items) =>
-            items.filter((a) => a.activityDetails.modes.indexOf(activityMode) > -1)
-          )
-        : memberActivitiesSerialized;
+  //   const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
+  //     activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
+  //   );
 
-    const timed = groupActivitiesByDate([].concat(...allFilteredActivities));
+  //   const allFilteredActivities =
+  //     activityMode > 0
+  //       ? memberActivitiesSerialized.map((items) =>
+  //           items.filter((a) => a.activityDetails.modes.indexOf(activityMode) > -1)
+  //         )
+  //       : memberActivitiesSerialized;
 
-    return {
-      id: memberProfileId,
-      activities: timed
-    };
-  }
+  //   const timed = groupActivitiesByDate([].concat(...allFilteredActivities));
 
-  private groupActivitiesToMember(memberProfile: MemberProfile, allActivities: DBObject[]) {
-    const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
+  //   return {
+  //     id: memberProfileId,
+  //     activities: timed
+  //   };
+  // }
 
-    const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
-    const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
-      activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
-    );
+  // private groupActivitiesToMember(memberProfile: MemberProfile, allActivities: DBObject[]) {
+  //   const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
 
-    return {
-      id: memberProfileId,
-      activities: [].concat(...memberActivitiesSerialized)
-    };
-  }
+  //   const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
+  //   const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
+  //     activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
+  //   );
+
+  //   return {
+  //     id: memberProfileId,
+  //     activities: [].concat(...memberActivitiesSerialized)
+  //   };
+  // }
 
   getMemberCharacterActivitySerialized(
     clanId: number,

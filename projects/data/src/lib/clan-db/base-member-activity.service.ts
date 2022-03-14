@@ -1,14 +1,18 @@
 import { BaseClanService } from './base-clan.service';
 import { ClanDatabase } from './ClanDatabase';
 import { StoreId, DBObject } from './app-indexed-db';
+import { groupActivitiesByDate } from '../utility/group-activity-by-date';
 
 //import { Destiny2Service, DestinyHistoricalStatsDestinyHistoricalStatsPeriodGroup } from 'bungie-api-angular';
 
 // import { MemberProfile } from 'bungie-models';
-import { mergeMap, map, catchError, toArray } from 'rxjs/operators';
+import { mergeMap, map, catchError, toArray, switchMap, tap } from 'rxjs/operators';
 import { Observable, of, from, defer, concat, EMPTY, forkJoin } from 'rxjs';
 import { clanMemberActivitySerializer } from './clan-member-activity/clan-member-activity.serializer';
 import { MemberProfile } from 'projects/bungie-models/src/lib/models/MemberProfile';
+import { MemberActivityTime } from 'projects/bungie-models/src/lib/models/MemberActivityTime';
+import { MemberActivityStats } from 'projects/bungie-models/src/lib/models/MemberActivityStat';
+import { MemberActivityRecentStats } from 'projects/bungie-models/src/lib/models/MemberActivityRecentStats';
 
 interface ActivityCollection {
   activities: any[];
@@ -181,4 +185,121 @@ export class BaseMemberActivityService extends BaseClanService {
       })
     );
   }
+  groupActivitiesToMember2(memberProfile: MemberProfile, allActivities: DBObject[], activityMode: number = 0) {
+    const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
+
+    const memberActivitiesDB = allActivities.filter((x) => x.id.startsWith(memberProfileId));
+
+    const memberActivitiesSerialized = memberActivitiesDB.map((activityDB) =>
+      activityDB.data.map((activity) => clanMemberActivitySerializer(activity))
+    );
+
+    const allFilteredActivities =
+      activityMode > 0
+        ? memberActivitiesSerialized.map((items) =>
+            items.filter((a) => a.activityDetails.modes.indexOf(activityMode) > -1)
+          )
+        : memberActivitiesSerialized;
+
+    const timed = groupActivitiesByDate([].concat(...allFilteredActivities));
+
+    return {
+      id: memberProfileId,
+      activities: timed
+    };
+  }
+
+  groupActivitiesToMembers2(
+    memberProfiles: MemberProfile[],
+    allActivities: DBObject[],
+    activityMode: number = 0
+  ): any[] {
+    return memberProfiles.map((memberProfile) => {
+      return this.groupActivitiesToMember2(memberProfile, allActivities, activityMode);
+    });
+  }
+
+  getAllActivitiesFromCache2(
+    clanId: number,
+    memberProfiles: MemberProfile[],
+    activityMode = 0
+  ): Observable<MemberActivityTime[]> {
+    return from(this.getAllDataFromCache(clanId.toString())).pipe(
+      map((x) => {
+        const y = this.groupActivitiesToMembers2(memberProfiles, x, activityMode);
+        return y;
+      })
+    );
+  }
+  updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[], progress?: (done) => any) {
+    const memberProfilesObs = from(memberProfiles);
+    const cacheDataObs = from(this.getAllDataFromCache(clanId.toString()));
+
+    return cacheDataObs.pipe(
+      switchMap((cachedData) => {
+        let complete = 0;
+        return memberProfilesObs.pipe(
+          mergeMap((memberProfile) => {
+            return from(memberProfile.profile.data.characterIds).pipe(
+              mergeMap((characterId: number) => {
+                const characterActivityId = this.getMemberActivityId(memberProfile, characterId);
+                const characterActivityCache = cachedData.find((x) => x.id === characterActivityId);
+
+                return this.verifyCacheIntegrity(clanId, memberProfile, characterId, characterActivityCache);
+              }),
+              toArray(),
+              map((x) => {
+                const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
+                return {
+                  id: memberProfileId
+                };
+              })
+            );
+          }, 3),
+          tap((x) => {
+            complete++;
+            if (progress) {
+              progress(complete);
+            }
+          }),
+          toArray()
+        );
+      })
+    );
+  }
+  getMemberActivity(clanId: number, member: MemberProfile, activityMode: number = 0): Observable<MemberActivityStats> {
+    return from(member.profile.data.characterIds).pipe(
+      mergeMap((characterId) => {
+        return this.getMemberCharacterActivitySerialized(clanId, member, characterId, activityMode);
+      }),
+      map((x) => {
+        return x.activities;
+      }),
+      toArray(),
+      map((x) => {
+        return {
+          id: `${member.profile.data.userInfo.membershipType}-${member.profile.data.userInfo.membershipId}`,
+          activities: [].concat(...x)
+        };
+      })
+    );
+  }
+  getMemberCharacterActivitySerialized(
+    clanId: number,
+    member: MemberProfile,
+    characterId: number,
+    activityMode: number = 0
+  ) {
+    return this.getMemberCharacterActivity(clanId, member, characterId).pipe(
+      map((activity) => {
+        if (activityMode > 0) {
+          activity = activity.filter((a) => a.activityDetails.modes.indexOf(activityMode) > -1);
+        }
+        return {
+          activities: activity.map((a) => clanMemberActivitySerializer(a))
+        };
+      })
+    );
+  }
+
 }
