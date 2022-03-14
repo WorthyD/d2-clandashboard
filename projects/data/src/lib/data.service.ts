@@ -1,16 +1,14 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Destiny2Service } from 'bungie-api-angular';
 import { ManifestDatabaseService } from './services/manifest-database.service';
 
 import { CachedManifest } from './models/CachedManifest';
-import { NGXLogger } from 'ngx-logger';
 import { nowPlusMinutes } from './utility/date-utils';
 
-const DOWNLOADING = 'downloading manifest';
 export const STATUS_EXTRACTING_TABLES = 'extracting tables';
 export const STATUS_UNZIPPING = 'unzipping';
 export const STATUS_DONE = 'done';
@@ -31,7 +29,7 @@ export class DataService {
     if (jsonPathExp && jsonPath) {
       const jsonDate = new Date(jsonPathExp);
       if (jsonDate < nowPlusMinutes(-60)) {
-        return jsonPath;
+        return of(jsonPath);
       }
     }
     return this.getManifest(language).pipe(
@@ -52,10 +50,6 @@ export class DataService {
     );
   }
 
-  // private allDataFromRemote(dbPath, tablesNames) {
-  //   return this.requestDefinitionsArchive(dbPath, tablesNames);
-  // }
-
   pruneTables(obj, keys) {
     if (!keys.length) {
       return obj;
@@ -70,6 +64,7 @@ export class DataService {
   }
 
   requestDefinitionsArchive(dbPath, tableNames) {
+    // TODO This takes about a second and a half to execute
     return this.db.getValues('manifest').then((cachedValue) => {
       const versionKey = `${VERSION}:${dbPath}`;
 
@@ -93,7 +88,7 @@ export class DataService {
   }
 
   public loadManifestData(language: string = 'en', tableNames): Promise<CachedManifest> {
-    return this.getManifest(language)
+    return this.getManifestFromCache(language)
       .toPromise()
       .then((path) => this.requestDefinitionsArchive(path, tableNames));
   }
