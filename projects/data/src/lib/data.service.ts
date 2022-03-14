@@ -8,11 +8,14 @@ import { ManifestDatabaseService } from './services/manifest-database.service';
 
 import { CachedManifest } from './models/CachedManifest';
 import { NGXLogger } from 'ngx-logger';
+import { nowPlusMinutes } from './utility/date-utils';
 
 const DOWNLOADING = 'downloading manifest';
 export const STATUS_EXTRACTING_TABLES = 'extracting tables';
 export const STATUS_UNZIPPING = 'unzipping';
 export const STATUS_DONE = 'done';
+const MANIFEST_PATH_KEY = 'MANIFEST_PATH_KEY';
+const MANIFEST_PATH_EXP_KEY = 'MANIFEST_PATH_EXP_KEY';
 
 const VERSION = 'v1';
 
@@ -20,14 +23,30 @@ const VERSION = 'v1';
   providedIn: 'root'
 })
 export class DataService {
-  constructor(
-    private d2service: Destiny2Service,
-    private db: ManifestDatabaseService
-  ) {}
+  constructor(private d2service: Destiny2Service, private db: ManifestDatabaseService) {}
+
+  private getManifestFromCache(language: string) {
+    const jsonPath = window.localStorage.getItem(MANIFEST_PATH_KEY);
+    const jsonPathExp = window.localStorage.getItem(MANIFEST_PATH_EXP_KEY);
+    if (jsonPathExp && jsonPath) {
+      const jsonDate = new Date(jsonPathExp);
+      if (jsonDate < nowPlusMinutes(-60)) {
+        return jsonPath;
+      }
+    }
+    return this.getManifest(language).pipe(
+      map((x) => {
+        window.localStorage.setItem(MANIFEST_PATH_KEY, x);
+        window.localStorage.setItem(MANIFEST_PATH_EXP_KEY, new Date().toString());
+        return x;
+      })
+    );
+  }
 
   private getManifest(language: string) {
     return this.d2service.destiny2GetDestinyManifest().pipe(
       map((response) => {
+        console.log(response.Response.jsonWorldContentPaths[language]);
         return response.Response.jsonWorldContentPaths[language];
       })
     );

@@ -25,7 +25,7 @@
         <div class="activity-info__player-list-scroll">
 
           <ng-container *ngFor="let player of activityData?.players">
-            <div class="activity-info__player-info">
+            <div class="activity-info__player-info" *ngIf="player.value !== '00:00'">
               {{player.name}}
               <span>{{player.value}}</span>
             </div>
