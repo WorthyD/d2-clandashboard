@@ -7,7 +7,6 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectEffectiveTheme } from './root-store/settings/settings.selectors';
 import { routeAnimations } from './core/core.module';
-import { AlertComponent } from './alert/alert.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

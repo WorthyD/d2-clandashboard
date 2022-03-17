@@ -12,17 +12,13 @@ import { RootStoreModule } from './root-store/root-store.module';
 
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import { ClanSearchModule } from './clan-search/clan-search.module';
 import { HomeModule } from './home/home.module';
 import { ManifestService } from './services/manifest.service';
 
 import { MaterialModule } from '@destiny/components';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AlertModule } from './alert/alert.module';
 import { environment } from 'src/environments/environment';
-//TODO: proper export
-// import { windowProvider, WindowToken } from 'projects/data/src/lib/injection-tokens/window-token';
-//import { MaterialModule } from '@destiny/components';
+
 export function initConfig(appConfig: ManifestService) {
   return () => appConfig.loadManifest();
 }
@@ -40,7 +36,6 @@ import { AppConfig } from './app.config';
     MatDialogModule,
     RootStoreModule,
     MaterialModule,
-    AlertModule,
     LoggerModule.forRoot({
       level: NgxLoggerLevel.TRACE,
       serverLogLevel: NgxLoggerLevel.ERROR,

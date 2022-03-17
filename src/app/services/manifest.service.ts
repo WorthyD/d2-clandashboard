@@ -26,7 +26,6 @@ import { NGXLogger } from 'ngx-logger';
 })
 export class ManifestService {
   constructor(
-    private logger: NGXLogger,
     private data: DataService,
     private activityService: ActivitiesService,
     private activityModeService: ActivityModeService,
@@ -36,6 +35,7 @@ export class ManifestService {
 
   // TODO: Call for api/settings and look at destiny2CoreSettings
   loadManifest() {
+    console.time('loadManifest');
     const tables = [
       //            'DestinyChecklistDefinition',
       //            'DestinyObjectiveDefinition',
@@ -56,30 +56,30 @@ export class ManifestService {
       //            'DestinyPlaceDefinition',
       //            'DestinyFactionDefinition'
     ];
-    return (
-      this.data
-        .loadManifestData('en', tables)
-        .then((x) => {
-          if (x && x.data) {
-            if (x.data.DestinyActivityModeDefinition) {
-              this.activityModeService.initializeCache(x.data.DestinyActivityModeDefinition);
-            }
-            if (x.data.DestinyActivityDefinition) {
-              this.activityService.initializeCache(x.data.DestinyActivityDefinition);
-            }
-
-            if (x.data.DestinyMilestoneDefinition) {
-              this.milestoneDefinitionService.initializeCache(x.data.DestinyMilestoneDefinition);
-            }
-            if (x.data.DestinyPresentationNodeDefinition) {
-              this.presentationNodeDefinitionService.initializeCache(x.data.DestinyPresentationNodeDefinition);
-            }
+    return this.data
+      .loadManifestData('en', tables)
+      .then((x) => {
+        if (x && x.data) {
+          if (x.data.DestinyActivityModeDefinition) {
+            this.activityModeService.initializeCache(x.data.DestinyActivityModeDefinition);
           }
-          return true;
-        })
-        .catch((err: any) => {
-          console.error(err);
-        })
-    );
+          if (x.data.DestinyActivityDefinition) {
+            this.activityService.initializeCache(x.data.DestinyActivityDefinition);
+          }
+
+          if (x.data.DestinyMilestoneDefinition) {
+            this.milestoneDefinitionService.initializeCache(x.data.DestinyMilestoneDefinition);
+          }
+          if (x.data.DestinyPresentationNodeDefinition) {
+            this.presentationNodeDefinitionService.initializeCache(x.data.DestinyPresentationNodeDefinition);
+          }
+        }
+
+        console.timeEnd('loadManifest');
+        return true;
+      })
+      .catch((err: any) => {
+        console.error(err);
+      });
   }
 }

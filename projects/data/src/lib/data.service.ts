@@ -1,18 +1,19 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Destiny2Service } from 'bungie-api-angular';
 import { ManifestDatabaseService } from './services/manifest-database.service';
 
 import { CachedManifest } from './models/CachedManifest';
-import { NGXLogger } from 'ngx-logger';
+import { nowPlusMinutes } from './utility/date-utils';
 
-const DOWNLOADING = 'downloading manifest';
 export const STATUS_EXTRACTING_TABLES = 'extracting tables';
 export const STATUS_UNZIPPING = 'unzipping';
 export const STATUS_DONE = 'done';
+const MANIFEST_PATH_KEY = 'MANIFEST_PATH_KEY';
+const MANIFEST_PATH_EXP_KEY = 'MANIFEST_PATH_EXP_KEY';
 
 const VERSION = 'v1';
 
@@ -20,22 +21,34 @@ const VERSION = 'v1';
   providedIn: 'root'
 })
 export class DataService {
-  constructor(
-    private d2service: Destiny2Service,
-    private db: ManifestDatabaseService
-  ) {}
+  constructor(private d2service: Destiny2Service, private db: ManifestDatabaseService) {}
 
-  private getManifest(language: string) {
-    return this.d2service.destiny2GetDestinyManifest().pipe(
-      map((response) => {
-        return response.Response.jsonWorldContentPaths[language];
+  private getManifestFromCache(language: string) {
+    const jsonPath = window.localStorage.getItem(MANIFEST_PATH_KEY);
+    const jsonPathExp = window.localStorage.getItem(MANIFEST_PATH_EXP_KEY);
+    if (jsonPathExp && jsonPath) {
+      const jsonDate = new Date(jsonPathExp);
+      if (jsonDate < nowPlusMinutes(-60)) {
+        return of(jsonPath);
+      }
+    }
+    return this.getManifest(language).pipe(
+      map((x) => {
+        window.localStorage.setItem(MANIFEST_PATH_KEY, x);
+        window.localStorage.setItem(MANIFEST_PATH_EXP_KEY, new Date().toString());
+        return x;
       })
     );
   }
 
-  // private allDataFromRemote(dbPath, tablesNames) {
-  //   return this.requestDefinitionsArchive(dbPath, tablesNames);
-  // }
+  private getManifest(language: string) {
+    return this.d2service.destiny2GetDestinyManifest().pipe(
+      map((response) => {
+        console.log(response.Response.jsonWorldContentPaths[language]);
+        return response.Response.jsonWorldContentPaths[language];
+      })
+    );
+  }
 
   pruneTables(obj, keys) {
     if (!keys.length) {
@@ -51,6 +64,7 @@ export class DataService {
   }
 
   requestDefinitionsArchive(dbPath, tableNames) {
+    // TODO This takes about a second and a half to execute
     return this.db.getValues('manifest').then((cachedValue) => {
       const versionKey = `${VERSION}:${dbPath}`;
 
@@ -74,7 +88,7 @@ export class DataService {
   }
 
   public loadManifestData(language: string = 'en', tableNames): Promise<CachedManifest> {
-    return this.getManifest(language)
+    return this.getManifestFromCache(language)
       .toPromise()
       .then((path) => this.requestDefinitionsArchive(path, tableNames));
   }

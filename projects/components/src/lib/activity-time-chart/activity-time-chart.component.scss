@@ -2,9 +2,18 @@
   display: flex;
   justify-content: space-between;
 }
-.update-info{
-  text-align: right;;
+.update-info {
+  text-align: right;
 }
 .chart-container {
-  margin:0 auto;
+  margin: 0 auto;
+}
+
+.loading-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: 415px;
 }

@@ -16,23 +16,26 @@
   </header>
 
   <div class="activity-info__main">
-    <ng-container *ngIf="!loading;else loadingTemplate">
-      <div class="activity-info__time">
+    <div class="activity-info__time">
+      <ng-container *ngIf="!loading;else loadingTemplate">
         <lib-bar-chart [convertTo]="'Hours'" [events]="activityData?.events" [barColor]="activityInfo?.color"
           [colorTheme]="theme === 'dark-theme' ?  'dark':'light'"></lib-bar-chart>
-      </div>
-      <aside class="activity-info__player-list">
-        <div class="activity-info__player-list-scroll">
+      </ng-container>
+    </div>
+    <aside class="activity-info__player-list">
+      <div class="activity-info__player-list-scroll">
+        <ng-container *ngIf="!loading;else loadingUsers">
 
           <ng-container *ngFor="let player of activityData?.players">
-            <div class="activity-info__player-info">
+            <div class="activity-info__player-info" *ngIf="player.value !== '00:00'">
               {{player.name}}
               <span>{{player.value}}</span>
             </div>
           </ng-container>
-        </div>
-      </aside>
-    </ng-container>
+
+        </ng-container>
+      </div>
+    </aside>
   </div>
 </mat-card>
 
@@ -45,4 +48,23 @@
       </div>
     </div>
   </div>
+</ng-template>
+
+<ng-template #loadingUsers>
+  <!-- TODO: Externalize this -->
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
+  <span class="skeleton-box" style="width:100%;"></span>
 </ng-template>

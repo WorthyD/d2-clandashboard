@@ -9,7 +9,7 @@ import { select } from '@ngrx/store';
 import { Store } from '@ngrx/store';
 
 import { BehaviorSubject, combineLatest } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 import * as clanIdSelectors from '../../store/clan-id/clan-id.selector';
 import { getAllMembers, getIsMembersProfilesLoaded } from '../../store/member-profiles/member-profiles.selectors';
 import {
@@ -18,11 +18,17 @@ import {
   getClanMemberActivitiesUpdating
 } from '../../store/member-activities/member-activities.selectors';
 import { selectEffectiveTheme } from 'src/app/root-store/settings/settings.selectors';
+
+import { ProfileActivityWorkerService } from '../../../workers/profile-activity/profile-activity.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ClanAggregateActivityService {
-  constructor(private store: Store<any>, private injector: Injector) {}
+  constructor(
+    private store: Store<any>,
+    private injector: Injector,
+    private activityService: ProfileActivityWorkerService
+  ) {}
 
   isMembersLoaded$ = this.store.pipe(select(getIsMembersProfilesLoaded));
   clanId$ = this.store.select(clanIdSelectors.getClanIdState);
@@ -36,19 +42,39 @@ export class ClanAggregateActivityService {
   activitiesUpdating$ = this.store.pipe(select(getClanMemberActivitiesUpdating));
   selectedDuration$ = new BehaviorSubject('daily');
 
-  events2 = [];
-  events2$ = combineLatest([this.activities$, this.activitiesLoaded$, this.selectedDuration$]).pipe(
-    filter(([activities, isLoaded, selectedDuration]) => isLoaded === true),
-    map(([activities, isLoaded, selectedDuration]) => {
-      const service = this.getInjector(selectedDuration);
-      // console.log('a', activities[0]);
-      // const clonedActivities = activities.map((x) => {
-      //   return Object.assign({}, x);
-      // });
+  allActivities$ = combineLatest([this.clanId$, this.clanMemberProfiles$]).pipe(
+    switchMap(([clanId, memberProfiles]) => {
+      return this.activityService.getAllActivitiesFromCache(clanId.toString(), memberProfiles);
+    })
+  );
 
-      const summedActivities = service.getClanActivityStatsForDuration(activities, 0);
-      this.events2 = summedActivities;
-      this.isLoading = false;
+  events2 = [];
+  events2$ = combineLatest([this.activitiesLoaded$, this.selectedDuration$]).pipe(
+    filter(([isLoaded, selectedDuration]) => isLoaded === true),
+    switchMap(([isLoaded, selectedDuration]) => {
+      const service = this.getInjector(selectedDuration);
+      switch (selectedDuration) {
+        case 'monthly':
+        case 'season':
+          this.isLoading = true;
+          return this.allActivities$.pipe(
+            map((activities) => {
+              const summedActivities = service.getClanActivityStatsForDuration(activities, 0);
+              this.events2 = summedActivities;
+              this.isLoading = false;
+            })
+          );
+
+        case 'weekly':
+        default:
+          return this.activities$.pipe(
+            map((activities) => {
+              const summedActivities = service.getClanActivityStatsForDuration(activities, 0);
+              this.events2 = summedActivities;
+              this.isLoading = false;
+            })
+          );
+      }
     })
   );
 
@@ -60,6 +86,17 @@ export class ClanAggregateActivityService {
         return this.injector.get(MonthlyClanAggregateTimeService);
       case 'season':
         return this.injector.get(SeasonClanAggregateTimeService);
+      default:
+        return this.injector.get(DailyClanAggregateTimeService);
+    }
+  }
+
+  private getService(duration: string) {
+    switch (duration) {
+      case 'monthly':
+      case 'season':
+        return this.activityService.getAllActivitiesFromCache;
+      case 'weekly':
       default:
         return this.injector.get(DailyClanAggregateTimeService);
     }
