@@ -49,21 +49,16 @@ export class ClanAggregateActivityService {
   );
 
   events2 = [];
-  // events2$ = combineLatest([this.activities$, this.activitiesLoaded$, this.selectedDuration$]).pipe(
   events2$ = combineLatest([this.activitiesLoaded$, this.selectedDuration$]).pipe(
     filter(([isLoaded, selectedDuration]) => isLoaded === true),
     switchMap(([isLoaded, selectedDuration]) => {
       const service = this.getInjector(selectedDuration);
-      // console.log('a', activities[0]);
-      // const clonedActivities = activities.map((x) => {
-      //   return Object.assign({}, x);
-      // });
       switch (selectedDuration) {
         case 'monthly':
         case 'season':
+          this.isLoading = true;
           return this.allActivities$.pipe(
             map((activities) => {
-              console.log(activities);
               const summedActivities = service.getClanActivityStatsForDuration(activities, 0);
               this.events2 = summedActivities;
               this.isLoading = false;

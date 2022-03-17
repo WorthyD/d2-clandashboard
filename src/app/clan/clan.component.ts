@@ -89,6 +89,10 @@ export class ClanComponent implements OnInit, OnDestroy {
   resetDatabase() {
     this.clanId.pipe(take(1)).subscribe((x) => {
       this.db.deleteDatabase(x);
+      window.localStorage.removeItem(`lastActivityUpdate-${x}`)
+      window.localStorage.removeItem(`lastActivityAllUpdate-${x}`)
+      window.localStorage.removeItem(`MANIFEST_PATH_KEY`)
+      window.localStorage.removeItem(`MANIFEST_PATH_EXP_KEY`)
       this.router.navigate(['/']);
     });
   }
