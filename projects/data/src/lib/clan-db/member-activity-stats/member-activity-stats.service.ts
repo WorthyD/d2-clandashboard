@@ -72,7 +72,7 @@ export class MemberActivityStatsService extends BaseClanService {
     trackedStats: string[]
   ): Observable<any[]> {
     return this.getMemberActivityStats(clanId, member, characterId).pipe(
-      map((activityStats) => {
+      map((activityStats : any) => {
         return memberActivityStatSerializer(activityStats.activities, statHashes, trackedStats);
       })
     );

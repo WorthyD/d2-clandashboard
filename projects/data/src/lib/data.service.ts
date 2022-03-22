@@ -44,7 +44,7 @@ export class DataService {
   private getManifest(language: string) {
     return this.d2service.destiny2GetDestinyManifest().pipe(
       map((response) => {
-        console.log(response.Response.jsonWorldContentPaths[language]);
+       // console.log(response.Response.jsonWorldContentPaths[language]);
         return response.Response.jsonWorldContentPaths[language];
       })
     );

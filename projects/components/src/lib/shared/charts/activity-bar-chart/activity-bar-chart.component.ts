@@ -56,20 +56,18 @@ export class ActivityBarChartComponent implements OnInit {
   @Input()
   convertTo = 'Minutes';
 
-  // @Input()
-  // maxBarCount = 25;
-
-  //@Input()
   startDate: Date;
 
-  // @Input()
   endDate: Date;
 
   // ----------------
   series: ApexAxisChartSeries = [];
   chart: ApexChart = {
     type: 'bar',
-    height: 100,
+    height: 75,
+    animations: {
+      enabled: false
+    },
     sparkline: {
       enabled: true
     }
@@ -78,15 +76,8 @@ export class ActivityBarChartComponent implements OnInit {
   yaxis: ApexYAxis = {
     title: {
       text: this.convertTo
-      //text: '$ (thousands)'
     },
-    labels: {
-      // formatter: (x) => {
-      //   // dynamically calculate
-      //   //return `${this.formatPipe.transform(x, false)}`;
-      //   return `${this.formatPipe.transform(x, false)}`;
-      // }
-    }
+    labels: {}
   };
   theme: ApexTheme = {
     mode: 'light'
@@ -129,28 +120,14 @@ export class ActivityBarChartComponent implements OnInit {
           convertedVal = val * 60 * 60;
         }
         return `${this.formatPipe.transform(convertedVal)}`;
-
       }
     },
     marker: {
       show: false
     }
-    // y: {
-    //   formatter: (val) => {
-    //     let convertedVal = 0;
-    //     if (this.convertTo === 'Minutes') {
-    //       convertedVal = val * 60;
-    //     } else if (this.convertTo === 'Hours') {
-    //       convertedVal = val * 60 * 60;
-    //     }
-    //     return `${this.formatPipe.transform(convertedVal)}`;
-    //   }
-    // }
   };
 
   constructor(private elRef: ElementRef, private cd: ChangeDetectorRef) {
-    // this.hostElement = this.elRef.nativeElement;
-    // this.cd.detach();
     const date = new Date();
     const offset = date.getDay() >= 2 ? 2 : -5;
     this.endDate = new Date(date.setDate(date.getDate() - date.getDay() + offset));
@@ -158,47 +135,11 @@ export class ActivityBarChartComponent implements OnInit {
   }
 
   private updateChart(eventData) {
-    // if (!this.svg) {
-    //   this.createChart(eventData);
-    //   return;
-    // }
     this.processData(eventData);
   }
 
   ngOnInit(): void {}
 
-  // private createChart(eventData) {
-  //   this.removeExistingChartFromParent();
-  //   this.setChartDimentions();
-
-  //   this.addToolTip();
-
-  //   this.processData(eventData);
-  // }
-
-  // private removeExistingChartFromParent() {
-  //   // !!!!Caution!!!
-  //   // Make sure not to do;
-  //   //     d3.select('svg').remove();
-  //   // That will clear all other SVG elements in the DOM
-  //   d3.select(this.hostElement).select('svg').remove();
-  // }
-
-  // private setChartDimentions() {
-  //   this.svg = d3
-  //     .select(this.hostElement)
-  //     .attr('class', 'activity-heatmap')
-  //     .append('svg')
-  //     .attr('width', '100%')
-  //     .attr('viewBox', `0 0 ${this.chartWidth} ${this.chartHeight}`)
-  //     .append('g');
-  //   //    this.x = d3.scaleBand().range([0, this.chartWidth], 0.05);
-  //   this.x = d3.scaleTime().range([0, this.chartWidth]);
-  //   this.y = d3.scaleLinear().range([this.chartHeight, 0]);
-  // }
-  // private addToolTip() {
-  //   this.tooltip = d3.select(this.hostElement).append('div').attr('class', 'activity-tooltip');
-  // }
   private processData(sourceData) {
     if (sourceData) {
       const cleanedData = this.prepData(sourceData);
@@ -208,42 +149,6 @@ export class ActivityBarChartComponent implements OnInit {
           data: cleanedData
         }
       ];
-
-      // this.x.domain(
-      //   cleanedData.map(function (d) {
-      //     return d.date;
-      //   })
-      // );
-      // this.x.domain([cleanedData[0].date, cleanedData[cleanedData.length - 1].date]);
-      // this.y.domain([0, this.threshHold]);
-
-      // const bars = this.svg.selectAll('bar').data(cleanedData).enter().append('rect');
-
-      // bars
-      //   .attr('class', 'activity-bar')
-      //   .attr('x', (d) => {
-      //     return this.x(d.date);
-      //   })
-      //   .attr('y', (d) => {
-      //     return this.y(d.seconds);
-      //   })
-      //   //.attr('width', this.x.bandwidth())
-      //   .attr('width', this.chartWidth / cleanedData.length)
-      //   .attr('height', (d) => {
-      //     return this.chartHeight - this.y(d.seconds);
-      //   });
-
-      // bars
-      //   .on('mouseover', (d) => {
-      //     this.tooltip.style('opacity', 0.9);
-      //     this.tooltip.html(`Week Starting: ${formatDate(d.date)}<br/> Time:  ${this.formatPipe.transform(d.seconds)}`);
-      //   })
-      //   .on('mousemove', () => {
-      //     this.tooltip.style('left', d3.event.pageX + 30 + 'px').style('top', d3.event.pageY + 'px');
-      //   })
-      //   .on('mouseout', (d) => {
-      //     this.tooltip.style('opacity', 0);
-      //   });
     }
   }
 
@@ -282,31 +187,5 @@ export class ActivityBarChartComponent implements OnInit {
     });
 
     return preppedData;
-    // return sourceData
-    //   .sort((a, b) => {
-    //     return compare(a.date, b.date, true);
-    //   })
-    //   .map((x) => {
-    //     return {
-    //       date: new Date(x.date),
-    //       seconds: x.seconds
-    //     };
-    //   });
   }
 }
-
-// function formatDate(date) {
-//   const d = new Date(date);
-//   let month = '' + (d.getMonth() + 1),
-//     day = '' + d.getDate();
-//   const year = d.getFullYear();
-
-//   if (month.length < 2) {
-//     month = '0' + month;
-//   }
-//   if (day.length < 2) {
-//     day = '0' + day;
-//   }
-
-//   return [year, month, day].join('-');
-// }

@@ -185,6 +185,8 @@ export class BaseMemberActivityService extends BaseClanService {
       })
     );
   }
+
+  // TODO: Update the 2 nonsense.
   groupActivitiesToMember2(memberProfile: MemberProfile, allActivities: DBObject[], activityMode: number = 0) {
     const memberProfileId = `${memberProfile.profile.data.userInfo.membershipType}-${memberProfile.profile.data.userInfo.membershipId}`;
 
@@ -231,6 +233,7 @@ export class BaseMemberActivityService extends BaseClanService {
       })
     );
   }
+  // TODO: Turn this up to 11
   updateAllActivityCache(clanId: number, memberProfiles: MemberProfile[], progress?: (done) => any) {
     const memberProfilesObs = from(memberProfiles);
     const cacheDataObs = from(this.getAllDataFromCache(clanId.toString()));

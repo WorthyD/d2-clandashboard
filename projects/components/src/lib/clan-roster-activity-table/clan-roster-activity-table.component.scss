@@ -6,11 +6,11 @@ mat-row {
 }
 .mat-column-activityChart {
   flex: 2 0 0;
-  min-width: 700px;
+  max-width: 700px;
   > div {
     width: 100%;
 
-    max-width: 1000px;
+    max-width: 700px;
   }
 }
 .mat-column-displayName {

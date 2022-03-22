@@ -3,16 +3,16 @@ import { BaseAppIndexedDb } from '../utility/base-indexed-db';
 const DB_VERSION = 5;
 
 export enum StoreId {
-  CacheDetails = 'CacheDetails',
+  CacheDetails = 'CacheDetails',  //TODO: Verify
   ClanDetails = 'ClanDetails',
-  ClanRewards = 'ClanRewards',
+  ClanRewards = 'ClanRewards',  // TODO: Verify
   MemberProfiles = 'MemberProfiles',
   MemberActivities = 'MemberActivities',
-  MemberActivityStats = 'MemberActivityStats',
+  MemberActivityStats = 'MemberActivityStats',  // TODO: Verify
   MemberRecentActivities = 'MemberRecentActivities',
-  ProfileMilestones = 'ProfileMilestones',
-  ProfileMetrics = 'ProfileMetrics',
-  Raids = 'Raids'
+  ProfileMilestones = 'ProfileMilestones',  // TODO  Verfiy
+  ProfileMetrics = 'ProfileMetrics',  // TODO: Verify
+  Raids = 'Raids'  // TODO verify
 }
 
 export const STORE_IDS: StoreId[] = [

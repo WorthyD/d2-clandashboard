@@ -67,8 +67,9 @@ export class ClanMemberActivityService {
         });
       }
 
+      // TODO: Optimize this.
       return this.clanActivityService.getClanActivityStats(id, clanMembers, selectedActivity).pipe(
-        bufferTime(500, undefined, 20),
+        bufferTime(1000, undefined, 50),
         mergeMap((members) => {
           this.activityStats = this.activityStats.concat(members);
           return members;
