@@ -56,7 +56,7 @@ export class MemberActivityAllEffects {
       switchMap(([action, clanId]) => {
         this.store.dispatch(
           addNotification({
-            notification: { id: 'memberActivityAll', title: 'Updating Member Activities', data: { progress: 0 } }
+            notification: { id: 'memberActivityAll', title: 'Updating Member Historical Activities', data: { progress: 0 } }
           })
         );
         const progress = (progressCount) => {
@@ -76,7 +76,7 @@ export class MemberActivityAllEffects {
             window.localStorage.setItem('lastActivityAllUpdate-' + clanId, new Date().toString());
             this.store.dispatch(
               removeNotification({
-                notification: { id: 'memberActivityAll', title: 'Updating Member Activities', data: { progress: 100 } }
+                notification: { id: 'memberActivityAll', title: 'Updating Member Historical Activities', data: { progress: 100 } }
               })
             );
             return memberActivityActions.loadMemberAllActivitiesSuccess();

@@ -7,6 +7,8 @@ import { compare } from '../utilities/compare';
 import { rowsAnimation } from '../core/animations/table-row';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { PlaytimePipe } from '../pipes/playtime/playtime.pipe';
+import { downloadCSV } from 'projects/data/src/lib/utility/export-to-csv';
+import { formatDate } from 'projects/data/src/lib/utility/format-date';
 
 export interface MemberActivityRecentStats {
   profileName: string;
@@ -45,42 +47,9 @@ export class ClanRosterActivityTableComponent implements OnInit {
     this.sortedData = value.slice();
   }
 
-  // _memberActivityStats;
-  // @Input()
-  // get memberActivityStats(): MemberActivityRecentStats[] {
-  //   return this._memberActivityStats;
-  // }
-  // set memberActivityStat(value) {
-  //   this._memberActivityStats = value;
-  //   if (value) {
-  //     this.sortedData = value.slice();
-  //   }
-  // }
-
   viewModel: MemberActivityRecentStats[] = [];
 
-  // _members;
-  // @Input()
-  // get memberProfiles(): MemberProfile[] {
-  //   return this._members;
-  // }
-  // set memberProfiles(value) {
-  //   this._members = value;
-  //   this.updateViewModel();
-  // }
-
-  // _memberActivities;
-  // @Input()
-  // get memberActivities(): MemberActivityRecentStats[] {
-  //   return this._memberActivities;
-  // }
-  // set memberActivities(value) {
-  //   this._memberActivities = value;
-  //   this.updateViewModel();
-  // }
-
   @Output() viewMember = new EventEmitter<MemberProfile>();
-  //  sortedData: MemberProfile[];
 
   calculatedColumns = [
     { key: 'lastWeek', value: 'Last Week' },
@@ -99,8 +68,7 @@ export class ClanRosterActivityTableComponent implements OnInit {
 
   ngOnInit(): void {}
   export() {
-    console.log(this.applyValues(this.sortedData));
-    this.downloadCSV('', this.applyValues(this.sortedData));
+    downloadCSV({ filename: `recent-activity-${formatDate(new Date())}` }, this.applyValues(this.sortedData));
   }
 
   applyValues(stats: ActivityStats[]): MemberActivityRecentStats[] {
@@ -116,29 +84,6 @@ export class ClanRosterActivityTableComponent implements OnInit {
       };
     });
   }
-
-  // updateViewModel() {
-  //   if (this.memberProfiles.length > 0) {
-  //     if (this.memberProfiles.length !== this.viewModel.length) {
-  //       this.viewModel = this.memberProfiles.map((x) => {
-  //         return { profile: x, id: getMemberProfileId(x) };
-  //       });
-  //     }
-
-  //     if (this.memberActivities) {
-  //       this.memberActivities.forEach((x) => {
-  //         const vmIndex = this.viewModel.findIndex((vm) => vm.id === x.id);
-  //         if (vmIndex > -1) {
-  //           const vm = this.viewModel[vmIndex];
-  //           vm.lastMonth = x.lastMonth ?? 0;
-  //           vm.lastNinetyDays = x.lastNinetyDays ?? 0;
-  //           vm.lastWeek = x.lastWeek ?? 0;
-  //           vm.activities = x.activities;
-  //         }
-  //       });
-  //     }
-  //   }
-  // }
 
   memberClick(m: any) {
     this.viewMember.emit(m.memberProfile);
@@ -168,57 +113,57 @@ export class ClanRosterActivityTableComponent implements OnInit {
       }
     });
   }
-  convertArrayOfObjectsToCSV(args) {
-    let result, ctr, keys, columnDelimiter, lineDelimiter, data;
+  // convertArrayOfObjectsToCSV(args) {
+  //   let result, ctr, keys, columnDelimiter, lineDelimiter, data;
 
-    data = args.data || null;
-    if (data == null || !data.length) {
-      return null;
-    }
+  //   data = args.data || null;
+  //   if (data == null || !data.length) {
+  //     return null;
+  //   }
 
-    columnDelimiter = args.columnDelimiter || ',';
-    lineDelimiter = args.lineDelimiter || '\n';
+  //   columnDelimiter = args.columnDelimiter || ',';
+  //   lineDelimiter = args.lineDelimiter || '\n';
 
-    keys = Object.keys(data[0]);
+  //   keys = Object.keys(data[0]);
 
-    result = '';
-    result += keys.join(columnDelimiter);
-    result += lineDelimiter;
+  //   result = '';
+  //   result += keys.join(columnDelimiter);
+  //   result += lineDelimiter;
 
-    data.forEach(function (item) {
-      ctr = 0;
-      keys.forEach(function (key) {
-        if (ctr > 0) {
-          result += columnDelimiter;
-        }
+  //   data.forEach(function (item) {
+  //     ctr = 0;
+  //     keys.forEach(function (key) {
+  //       if (ctr > 0) {
+  //         result += columnDelimiter;
+  //       }
 
-        result += item[key];
-        ctr++;
-      });
-      result += lineDelimiter;
-    });
+  //       result += item[key];
+  //       ctr++;
+  //     });
+  //     result += lineDelimiter;
+  //   });
 
-    return result;
-  }
-  downloadCSV(args, stockData) {
-    let data, filename, link;
-    let csv = this.convertArrayOfObjectsToCSV({
-      data: stockData
-    });
-    if (csv == null) {
-      return;
-    }
+  //   return result;
+  // }
+  // downloadCSV(args, stockData) {
+  //   let data, filename, link;
+  //   let csv = this.convertArrayOfObjectsToCSV({
+  //     data: stockData
+  //   });
+  //   if (csv == null) {
+  //     return;
+  //   }
 
-    filename = args.filename || 'export.csv';
+  //   filename = args.filename || 'export.csv';
 
-    if (!csv.match(/^data:text\/csv/i)) {
-      csv = 'data:text/csv;charset=utf-8,' + csv;
-    }
-    data = encodeURI(csv);
+  //   if (!csv.match(/^data:text\/csv/i)) {
+  //     csv = 'data:text/csv;charset=utf-8,' + csv;
+  //   }
+  //   data = encodeURI(csv);
 
-    link = document.createElement('a');
-    link.setAttribute('href', data);
-    link.setAttribute('download', filename);
-    link.click();
-  }
+  //   link = document.createElement('a');
+  //   link.setAttribute('href', data);
+  //   link.setAttribute('download', filename);
+  //   link.click();
+  // }
 }

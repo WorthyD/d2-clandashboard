@@ -62,7 +62,7 @@ export class MemberActivityEffects {
       switchMap(([action, clanId]) => {
         this.store.dispatch(
           addNotification({
-            notification: { id: 'memberActivity', title: 'Updating Member Activities', data: { progress: 0 } }
+            notification: { id: 'memberActivity', title: 'Updating Member Recent Activities', data: { progress: 0 } }
           })
         );
         const progress = (progressCount) => {
@@ -70,7 +70,7 @@ export class MemberActivityEffects {
             updateNotification({
               notification: {
                 id: 'memberActivity',
-                title: 'Updating Member Activities',
+                title: 'Updating Member Recent Activities',
                 data: { progress: progressCount }
               }
             })
@@ -85,7 +85,7 @@ export class MemberActivityEffects {
               removeNotification({
                 notification: {
                   id: 'memberActivity',
-                  title: 'Updating Recent Member Activities',
+                  title: 'Updating Member Recent Activities',
                   data: { progress: 100 }
                 }
               })

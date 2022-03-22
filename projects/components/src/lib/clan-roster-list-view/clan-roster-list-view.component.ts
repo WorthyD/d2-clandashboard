@@ -7,6 +7,9 @@ import { Sort } from '@angular/material/sort';
 import { ClanMemberListItem } from '../models/ClanMemberListItem';
 import { compare } from '../utilities/compare';
 import { rowsAnimation } from '../core/animations/table-row';
+import { downloadCSV } from 'projects/data/src/lib/utility/export-to-csv';
+import { formatDate } from 'projects/data/src/lib/utility/format-date';
+import { MembershipTypes } from '@destiny/models/enums';
 
 export { ClanMemberListItem } from '../models/ClanMemberListItem';
 
@@ -118,5 +121,63 @@ export class ClanRosterListViewComponent {
 
   memberClick(m: ClanMemberListItem) {
     this.viewMember.emit(m.member);
+  }
+  export() {
+    downloadCSV({ filename: `recent-activity-${formatDate(new Date())}` }, this.applyValues(this.sortedData));
+  }
+  applyValues(stats: ClanMemberListItem[]) {
+    return stats.map((x) => {
+      const firstChar = x.profile.profile.data.characterIds[0];
+      const secondChar = x.profile.profile.data.characterIds[1];
+      const thirdChar = x.profile.profile.data.characterIds[2];
+
+      return {
+        'Destiny Membership Id': x.member.destinyUserInfo.membershipId,
+        Platform: this.getMembershipType(x.member.destinyUserInfo.membershipType),
+        'Destiny Display Name': x.member.destinyUserInfo?.displayName,
+        'Bungie Display Name': x.member.bungieNetUserInfo?.displayName,
+        'Character One Type': this.getClassType(x.profile.characters.data[firstChar]?.classType) || '',
+        'Character One Power': x.profile.characters.data[firstChar]?.light || '',
+        'Character Two Type': this.getClassType(x.profile.characters.data[secondChar]?.classType),
+        'Character Two Power': x.profile.characters.data[secondChar]?.light || '',
+        'Character Three Type': this.getClassType(x.profile.characters.data[thirdChar]?.classType) || '',
+        'Character Three Power': x.profile.characters.data[thirdChar]?.light || '',
+        'Power Bonus': x.profile?.profileProgression?.data?.seasonalArtifact?.powerBonus,
+        'Active Triumph': x.profile?.profileRecords?.data?.activeScore,
+        'Lifetime Triumph': x.profile?.profileRecords?.data?.lifetimeScore,
+        'Clan Join Date': x.member?.joinDate,
+        'Last Played': x.profile?.profile.data.dateLastPlayed
+      };
+    });
+  }
+
+  // TODO: Externalize this
+  getClassType(classType) {
+    switch (classType) {
+      case 0:
+        return 'titan';
+      case 1:
+        return 'hunter';
+      case 2:
+        return 'warlock';
+      default:
+        return '';
+    }
+  }
+
+  // TODO: Externalize this
+  getMembershipType(value) {
+    switch (value) {
+      case MembershipTypes.Xbox:
+        return 'xbox';
+      case MembershipTypes.Psn:
+        return 'playstation';
+      case MembershipTypes.Steam:
+        return 'steam';
+      case MembershipTypes.Stadia:
+        return 'stadia';
+      default:
+        return '';
+    }
   }
 }

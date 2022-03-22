@@ -1,30 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, createSelector, select } from '@ngrx/store';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { BehaviorSubject, combineLatest } from 'rxjs';
 
-import { getClanMemberEntities, getAllMembers } from '../store/clan-members/clan-members.selectors';
-import { getMemberProfileEntities } from '../store/member-profiles/member-profiles.selectors';
 
 import { getIsMembersProfilesLoaded } from '../store/member-profiles/member-profiles.selectors';
 import * as clanMemberSelectors from '../store/clan-members/clan-members.selectors';
 import * as clanIdSelectors from '../store/clan-id/clan-id.selector';
 
-import { ClanMemberListItem } from '@destiny/components';
 import { Router, ActivatedRoute } from '@angular/router';
 import { getClanMemberId, ClanRosterService } from '@destiny/data';
 import { ClanMember } from 'bungie-models';
 import { bufferTime, filter, map, mergeMap, switchMap, take, toArray } from 'rxjs/operators';
 
-// const clanMembers = createSelector(getAllMembers, getMemberProfileEntities, (members, profiles) => {
-//   const allUsers: ClanMemberListItem[] = [];
-//   members.forEach((x) => {
-//     allUsers.push({
-//       member: x,
-//       profile: profiles[getClanMemberId(x)]
-//     });
-//   });
-//   return allUsers;
-// });
 
 @Component({
   selector: 'app-clan-roster',
@@ -62,7 +49,7 @@ export class ClanRosterComponent implements OnInit {
       }
 
       return this.clanRosterService.getClanRosterStats(id, clanMembers).pipe(
-        bufferTime(500, undefined, 20),
+        bufferTime(1000, undefined, 100),
         mergeMap((members) => {
           this.members = this.members.concat(members);
           return members;

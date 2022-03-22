@@ -96,7 +96,9 @@
   </ng-container>
 
   <ng-container matColumnDef="controls">
-    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>
+      <button mat-stroked-button (click)="export()">Export</button>
+    </mat-header-cell>
     <mat-cell *matCellDef="let element">
       <button mat-stroked-button (click)="memberClick(element)">View</button>
 
