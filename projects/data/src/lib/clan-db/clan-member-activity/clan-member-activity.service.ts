@@ -24,7 +24,7 @@ import { MemberActivityStats } from 'projects/bungie-models/src/lib/models/Membe
 
 export class ClanMemberActivityService extends BaseMemberActivityService {
   constructor(private clanDB: ClanDatabase, private baseApiKey: string) {
-    super(clanDB, StoreId.MemberActivities, baseApiKey, nowPlusDays(-365), 30);
+    super(clanDB, StoreId.MemberActivities, baseApiKey, new Date(2017, 5, 1), 120);
   }
 
   getMemberCharacterActivitySerialized(
