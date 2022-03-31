@@ -5,6 +5,6 @@
   </ng-container>
 
 </lib-table-search-bar>
-<lib-clan-gambit-stats-table [memberGambitStats]="gambitService.gambitStats" [isLoading]="gambitService.isLoading">
+<lib-clan-gambit-stats-table [memberGambitStats]="gambitService.gambitStats" [isLoading]="gambitService.isLoading"  (viewMember)="viewMember($event)">
 </lib-clan-gambit-stats-table>
 
