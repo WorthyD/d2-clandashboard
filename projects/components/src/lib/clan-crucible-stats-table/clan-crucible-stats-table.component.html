@@ -29,6 +29,16 @@
         <td mat-cell *matCellDef="let element">{{element.stats.gloryPoints}}</td>
       </ng-container>
 
+      <ng-container matColumnDef="controls">
+        <th mat-header-cell *matHeaderCellDef>
+          <button mat-stroked-button (click)="export()">Export</button>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-stroked-button (click)="memberClick(element)">View</button>
+
+        </td>
+      </ng-container>
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
 
       <tr mat-header-row *matHeaderRowDef="['loadingRow'] ; sticky:true"
