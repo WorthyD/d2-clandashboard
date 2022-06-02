@@ -7,6 +7,7 @@ import { NiobeLabs } from './niobe';
 import { Harbinger } from './harbinger';
 import { Presage, PresageMaster } from './presage';
 import { GraspOfAvarice, GraspOfAvariceMaster } from './grasp';
+import { Duality, DualityMaster } from './duality';
 export * from './pit';
 export * from './prophecy';
 export * from './throne';
@@ -16,6 +17,7 @@ export * from './niobe';
 export * from './harbinger';
 export * from './presage';
 export * from './grasp';
+export * from './duality';
 
 export const AllDungeons = [
   ShatteredThrone,
@@ -30,5 +32,7 @@ export const AllDungeons = [
   Presage,
   PresageMaster,
   GraspOfAvarice,
-  GraspOfAvariceMaster
+  GraspOfAvariceMaster,
+  Duality,
+  DualityMaster
 ];

@@ -14,6 +14,7 @@ import { season13 } from './season13';
 import { season14 } from './season14';
 import { season15 } from './season15';
 import { season16 } from './season16';
+import { season17 } from './season17';
 export const ALL_SEASONS = [
   season01,
   season02,
@@ -30,5 +31,6 @@ export const ALL_SEASONS = [
   season13,
   season14,
   season15,
-  season16
+  season16,
+  season17
 ];
