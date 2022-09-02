@@ -25,6 +25,7 @@ export * from './deep-stone-crypt';
 import { VaultOfGlass, VaultOfGlassGG, VaultOfGlassInfo } from './vault-of-glass';
 
 import { VowOfTheDiscipleInfo, VowOfTheDisciple, VowOfTheDiscipleGG } from './vow-of-the-disciple';
+import { KingsFall, KingsFallInfo } from './kings-fall';
 
 export const AllRaids = [
   Leviathan,
@@ -49,10 +50,12 @@ export const AllRaids = [
   VaultOfGlass,
   VaultOfGlassGG,
   VowOfTheDisciple,
-  VowOfTheDiscipleGG
+  VowOfTheDiscipleGG,
+  KingsFall
 ];
 
 export const AllRaidInfos = [
+  KingsFallInfo,
   VowOfTheDiscipleInfo,
   VaultOfGlassInfo,
   DeepStoneCryptInfo,
