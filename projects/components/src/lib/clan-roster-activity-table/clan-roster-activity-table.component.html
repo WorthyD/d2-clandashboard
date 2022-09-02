@@ -38,7 +38,12 @@
 
       </mat-cell>
     </ng-container>
-
+    <ng-container matColumnDef="lastActivity" sticky>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Last Activity</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{element.memberProfile?.profile.data.dateLastPlayed  | bungieDateTime}}
+      </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="activityLink">
       <mat-header-cell *matHeaderCellDef><button mat-stroked-button (click)="export()">Export</button></mat-header-cell>
       <mat-cell *matCellDef="let element">

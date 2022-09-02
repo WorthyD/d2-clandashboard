@@ -61,6 +61,7 @@ export class ClanRosterActivityTableComponent implements OnInit {
     'displayName',
     'activityChart',
     ...this.calculatedColumns.map((x) => x.key),
+    'lastActivity',
     'activityLink'
   ];
 
@@ -80,7 +81,8 @@ export class ClanRosterActivityTableComponent implements OnInit {
         lastMonth: this.pipe.transform(x.stats.lastMonth),
         lastMonthMinutes: Math.floor(x.stats.lastMonth / 60),
         lastWeek: this.pipe.transform(x.stats.lastWeek),
-        lastWeekMinutes: Math.floor(x.stats.lastWeek / 60)
+        lastWeekMinutes: Math.floor(x.stats.lastWeek / 60),
+        lastPlayed: x.memberProfile?.profile.data.dateLastPlayed
       };
     });
   }
@@ -104,6 +106,8 @@ export class ClanRosterActivityTableComponent implements OnInit {
             b.memberProfile.profile.data.userInfo.displayName.toLowerCase(),
             isAsc
           );
+        case 'lastActivity':
+          return compare(a.memberProfile?.profile.data.dateLastPlayed, b.memberProfile?.profile.data.dateLastPlayed, isAsc);
         case 'lastWeek':
         case 'lastMonth':
         case 'lastNinetyDays':
