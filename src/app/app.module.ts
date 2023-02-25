@@ -25,15 +25,18 @@ export function initConfig(appConfig: ManifestService) {
 import { PlayerSearchModule } from './player-search/player-search.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppConfig } from './app.config';
+import { AppSunsetComponent, AppSunsetDialog } from './app-sunset/app-sunset.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AppSunsetComponent, AppSunsetDialog],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ClanModule,
     MatDialogModule,
+    MatButtonModule,
     RootStoreModule,
     MaterialModule,
     LoggerModule.forRoot({

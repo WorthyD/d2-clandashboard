@@ -1,6 +1,6 @@
 import { BaseAppIndexedDb } from '../utility/base-indexed-db';
 
-const DB_VERSION = 5;
+const DB_VERSION = 8;
 
 export enum StoreId {
   CacheDetails = 'CacheDetails',  //TODO: Verify
