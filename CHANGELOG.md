@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.88.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.87.0...v0.88.0) (2023-02-25)
+
 ## [0.87.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.86.0...v0.87.0) (2022-09-02)
 
 ## [0.86.0](https://github.com/WorthyD/d2-clandashboard/compare/v0.83.0...v0.86.0) (2022-09-01)
